@@ -1,11 +1,14 @@
 {
-  "name": "frontend-notule-editor",
+  "name": "frontend-embeddable-notule-editor",
   "version": "0.0.0",
   "private": true,
-  "description": "Small description for frontend-notule-editor goes here",
-  "repository": "",
+  "description": "Notule editor which may be embedded in another application.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lblod/frontend-embeddable-notule-editor"
+  },
   "license": "MIT",
-  "author": "",
+  "author": "redpencil.io",
   "directories": {
     "doc": "doc",
     "test": "tests"
