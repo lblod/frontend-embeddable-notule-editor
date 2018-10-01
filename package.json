@@ -23,9 +23,9 @@
   "devDependencies": {
     "@ember/jquery": "^0.5.2",
     "@ember/optional-features": "^0.6.3",
-    "@lblod/ember-rdfa-editor": "^0.17.5",
+    "@lblod/ember-rdfa-editor": "^0.17.6",
     "@lblod/ember-rdfa-editor-plugin-system-dispatcher": "^0.5.6",
-    "@lblod/ember-rdfa-editor-standard-template-plugin": "^0.6.2",
+    "@lblod/ember-rdfa-editor-standard-template-plugin": "^0.6.3",
     "@lblod/ember-vo-webuniversum": "^0.16.3",
     "broccoli-asset-rev": "^2.7.0",
     "ember-ajax": "^3.1.0",
@@ -53,7 +53,6 @@
     "ember-welcome-page": "^3.2.0",
     "eslint-plugin-ember": "^5.2.0",
     "loader.js": "^4.7.0",
-    "postscribe": "^2.0.8",
     "qunit-dom": "^0.7.1"
   },
   "engines": {
