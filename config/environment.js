@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'frontend-notule-editor',
+    modulePrefix: 'frontend-embeddable-notule-editor',
     environment,
     rootURL: '/',
     locationType: 'auto',
