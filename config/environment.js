@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'frontend-embeddable-notule-editor',
     environment,
     rootURL: '/',
-    locationType: 'auto',
+    locationType: 'none',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -20,6 +20,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      autoboot: false
     }
   };
 
