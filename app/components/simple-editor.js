@@ -1,3 +1,4 @@
+import { next } from '@ember/runloop';
 import { computed } from '@ember/object';
 import Component from '@ember/component';
 import PublicDomMixin from 'ember-public-dom-interface/mixins/public-dom';
@@ -41,6 +42,9 @@ export default Component.extend(PublicDomMixin, {
       // method for this exists for input events which were not
       // understood.
       this.set('model.content', content);
+      next(() => {
+        this.editor.externalDomUpdate('public DOM interface', () => {});
+      });
     }
   }
 });
