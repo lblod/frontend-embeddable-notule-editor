@@ -21,6 +21,7 @@
     "test": "ember test"
   },
   "devDependencies": {
+    "@lblod/ember-rdfa-editor-generic-model-plugin": "^0.1.6",
     "@ember/jquery": "^0.5.2",
     "@ember/optional-features": "^0.6.3",
     "@lblod/ember-rdfa-editor": "^0.18.5",
