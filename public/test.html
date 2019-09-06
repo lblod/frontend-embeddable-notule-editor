@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>I have two editors in my document</title>
+
+    <!-- Requirements for the style -->
+    <link href="//dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui.css" rel="stylesheet" type="text/css" />
+    <link href="//dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui-corporate.css" rel="stylesheet" type="text/css" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link integrity="" rel="stylesheet" href="assets/vendor.css">
+    <link integrity="" rel="stylesheet" href="assets/frontend-embeddable-notule-editor.css">
+
+    <!-- Sources of the editor -->
+    <script src="assets/vendor.js"></script>
+    <script src="assets/frontend-embeddable-notule-editor.js"></script>
+  </head>
+
+  Next up, we put some tags in the body of our web page. We'll place the editor in those tags.
+
+  <body>
+    <p>Here is the first editor:</p>
+    <div id="my-editor" style="border: 1px solid red;"></div>
+    <p>Here is the second editor:</p>
+    <div id="another-editor" style="border: 1px solid blue;"></div>
+
+    Lastly, we'll instantiate the two editors. We wait until the dom has loaded using jQuery and we'd put this script in the head, but you can use another method if desired.
+
+    <script>
+     $(function() {
+       let App = require("frontend-embeddable-notule-editor/app").default.create({
+         autoboot: false,
+         name: "frontend-embeddable-notule-editor"
+       });
+
+       let options = {
+         rootElement: '#my-editor'
+       };
+
+       // Lanuch the first editor
+       App.visit('/', options);
+
+
+       let AnotherApp = require("frontend-embeddable-notule-editor/app").default.create({
+         autoboot: false,
+         name: "frontend-embeddable-notule-editor"
+       });
+
+       let otherOptions = {
+         rootElement: '#another-editor'
+       };
+
+       // Launch the second editor
+       AnotherApp.visit('/', otherOptions);
+
+     });
+    </script>
+  </body>
+</html>
