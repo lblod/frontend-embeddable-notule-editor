@@ -1,3 +1,6 @@
+.toolbar__styling-tools + div {
+  display: none;
+}
 em, i {
 	 font-style: italic;
 }
