@@ -17,8 +17,8 @@ const defaultContext = {
 export default Route.extend({
   model() {
     return EmberObject.create({
-      title: "hello",
-      content: "Hi there",
+      title: "new document",
+      content: "<p>&nbsp;</p>",
       context: defaultContext
     });
   }
