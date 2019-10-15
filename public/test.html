@@ -16,15 +16,12 @@
   Next up, we put some tags in the body of our web page. We'll place the editor in those tags.
 
   <body>
-    <p>Here is the first editor:</p>
     <div prefix="besluit: http://data.vlaanderen.be/ns/besluit#">
       <div typeof="besluit:Besluit" property="besluit:motivering">
-        <div id="my-editor" style="border: 1px solid red;"></div>
+        <div id="my-editor" style="border: 1px solid red;">
+        </div>
       </div>
     </div>
-    <p>Here is the second editor with a besluit annotation:</p>
-    <div id="another-editor" style="border: 1px solid blue;"></div>
-
     Lastly, we'll instantiate the two editors. We wait until the dom has loaded using jQuery and we'd put this script in the head, but you can use another method if desired.
 
     <script>
