@@ -23,7 +23,8 @@
   "devDependencies": {
     "@ember/jquery": "^0.6.0",
     "@ember/optional-features": "^0.7.0",
-    "@lblod/ember-rdfa-editor": "0.28.3",
+    "@lblod/ember-rdfa-editor": "0.28.4",
+    "@lblod/marawa": "0.6.0",
     "@lblod/ember-rdfa-editor-citaten-plugin": "^0.8.0",
     "@lblod/ember-rdfa-editor-generic-model-plugin": "0.3.0",
     "@lblod/ember-rdfa-editor-mandataris-plugin": "0.7.0",
