@@ -2,14 +2,14 @@
 
 This application allows you to ember the editor in other applications without integrating with EmberJS directly.  It will behave like any other HTML editor.
 
-## Target useage
+## Target usage
 
 The idea is that you can have multiple tags in which you initialize the editor.  In order for this to work, we require some resources so the right content is available.  We set up the editor when everything has finished loading and rendering, and we can initialize it with some content.
 
     <html>
       <head>
         <title>I have two editors in my document</title>
-      
+
         <!-- Requirements for the style -->
         <link href="//dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui.css" rel="stylesheet" type="text/css" />
         <link href="//dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui-corporate.css" rel="stylesheet" type="text/css" />
@@ -29,7 +29,7 @@ Next up, we put some tags in the body of our web page.  We'll place the editor i
         <div id="my-editor" style="border: 1px solid red;"></div>
         <p>Here is the second editor:</p>
         <div id="another-editor" style="border: 1px solid blue;"></div>
-        
+
 Lastly, we'll instantiate the two editors.  We wait until the dom has loaded using jQuery and we'd put this script in the head, but you can use another method if desired.
 
         <script>
@@ -117,8 +117,10 @@ You will need the following things properly installed on your computer.
 ## Running / Development
 
 * `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+* Visit your app at [http://localhost:4200/test.html](http://localhost:4200/test.html).
 * Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+
+If you go to any other page than test.html, the application will fall back on https://dev.gelinkt-notuleren.lblod.info/login .
 
 ### Code Generators
 
