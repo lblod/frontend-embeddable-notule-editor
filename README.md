@@ -67,8 +67,8 @@ Lastly, we'll instantiate the two editors.  We wait until the dom has loaded usi
 Once the editor is initialized, you can get the relevant document node and set its content.  You can play with this by opening the developer console and executing the following:
 
     editorElement = document.getElementById("another-editor").getElementsByTagName("notule-editor")[0]
-    element.setHtmlContent("<h1>Hello World</h1>");  // note the content in the page changing
-    element.getHtmlContent();  // note there may be a difference in returned content
+    editorElement.setHtmlContent("<h1>Hello World</h1>");  // note the content in the page changing
+    editorElement.getHtmlContent();  // note there may be a difference in returned content
 
 The contents may be slightly different between the two modes.  As the editor evolves, the exporting functionality will be able to better filter out the relevant html and remove temporary styling.
 
