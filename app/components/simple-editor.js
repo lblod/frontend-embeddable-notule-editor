@@ -28,23 +28,16 @@ export default Component.extend(PublicDomMixin, {
 
   actions: {
     handleRdfaEditorInit(editor){
-      this.set('editor', editor); // not sure where we'll need this yet
+      this.set('editor', editor);
     }
   },
 
   publicInterface: {
     getHtmlContent(){
-      return this.editor.rootNode.innerHTML;
+      return this.editor.htmlContent;
     },
     setHtmlContent(content){
-      // TODO: Alter this to set the innerHTML of the correct DOM
-      // node, and request the editor's to refresh its inner state.  A
-      // method for this exists for input events which were not
-      // understood.
       this.set('model.content', content);
-      next(() => {
-        this.editor.externalDomUpdate('public DOM interface', () => {});
-      });
     }
   }
 });
