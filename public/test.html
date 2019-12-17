@@ -37,20 +37,6 @@
 
        // Lanuch the first editor
        App.visit('/', options);
-
-
-       let AnotherApp = require("frontend-embeddable-notule-editor/app").default.create({
-         autoboot: false,
-         name: "frontend-embeddable-notule-editor"
-       });
-
-       let otherOptions = {
-         rootElement: '#another-editor'
-       };
-
-       // Launch the second editor
-       AnotherApp.visit('/', otherOptions);
-
      });
     </script>
   </body>
