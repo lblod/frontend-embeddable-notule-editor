@@ -37,7 +37,7 @@ export default Component.extend(PublicDomMixin, {
       return this.editor.htmlContent;
     },
     setHtmlContent(content){
-      this.set('model.content', content);
+      this.editor.setHtmlContent(content);
     }
   }
 });
