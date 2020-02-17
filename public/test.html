@@ -1,7 +1,7 @@
 <html>
   <head>
-    <title>I have two editors in my document</title>
-
+    <title>I have an editor in my document</title>
+    <meta charset="utf-8">
     <!-- Requirements for the style -->
     <link href="//dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui.css" rel="stylesheet" type="text/css" />
     <link href="//dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui-corporate.css" rel="stylesheet" type="text/css" />
@@ -22,6 +22,7 @@
         </div>
       </div>
     </div>
+    <button id="theButton">inserHTML</button>
     Lastly, we'll instantiate the two editors. We wait until the dom has loaded using jQuery and we'd put this script in the head, but you can use another method if desired.
 
     <script>
@@ -37,6 +38,16 @@
 
        // Lanuch the first editor
        App.visit('/', options);
+       setTimeout(function() {
+         const editorElement = document.getElementById("my-editor").getElementsByTagName("notule-editor")[0]
+         editorElement.setHtmlContent("decreet gemeentedecreet ");  // note the content in the page changing
+         console.log(editorElement.getHtmlContent());  // note there may be a difference in returned content
+       }, 1000);
+       var i = 0;
+       $('#theButton').click( () => {
+         const editorElement = document.getElementById("my-editor").getElementsByTagName("notule-editor")[0];
+         editorElement.setHtmlContent('<b>the content ' + i++ + '</b>');
+       });
      });
     </script>
   </body>
