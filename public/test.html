@@ -13,17 +13,20 @@
     <script src="assets/frontend-embeddable-notule-editor.js"></script>
   </head>
 
-  Next up, we put some tags in the body of our web page. We'll place the editor in those tags.
+  <!-- Next up, we put some tags in the body of our web page. We'll place the editor in those tags. -->
 
   <body>
-    <div prefix="besluit: http://data.vlaanderen.be/ns/besluit#">
-      <div typeof="besluit:Besluit" property="besluit:motivering">
-        <div id="my-editor" style="border: 1px solid red;">
+    <div style="display:flex;flex-direction:column;height:100%;overflow:hidden;position:relative;">
+      <div prefix="besluit: http://data.vlaanderen.be/ns/besluit#" style="position:relative;height: 100%;overflow:hidden;">
+        <div typeof="besluit:Besluit" property="besluit:motivering" style=>
+          <div id="my-editor" style="border: 1px solid red;height:100%;overflow:auto;">
+          </div>
         </div>
       </div>
+      <button id="theButton" class="button button--dark">insertHTML</button>
     </div>
-    <button id="theButton">inserHTML</button>
-    Lastly, we'll instantiate the two editors. We wait until the dom has loaded using jQuery and we'd put this script in the head, but you can use another method if desired.
+
+    <!-- Lastly, we'll instantiate the two editors. We wait until the dom has loaded using jQuery and we'd put this script in the head, but you can use another method if desired. #} -->
 
     <script>
      $(function() {

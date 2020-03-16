@@ -7,6 +7,11 @@ module.exports = function(defaults) {
     storeConfigInMeta: false,
     fingerprint: {
       enabled: false
+    },
+    sassOptions: {
+      includePaths: [
+        'node_modules/@lblod/ember-rdfa-editor/app/styles'
+      ]
     }
   });
 
