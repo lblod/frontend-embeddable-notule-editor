@@ -1,8 +1,3 @@
-// Setup RDFA plugin variables
-@import "say-colors";
-@import "say-settings";
-@import "say-theme";
-
 // Load RDFA plugin styles
 @import "ember-rdfa-editor";
 
@@ -11,55 +6,58 @@
   display: none;
 }
 em, i {
-	 font-style: italic;
+  font-style: italic;
 }
- .document-publish ul.bullet-list, .say-paper ul.bullet-list, .document-print ul.bullet-list {
-	 padding-left: 0;
+
+.document-publish ul.bullet-list, .say-paper ul.bullet-list, .document-print ul.bullet-list {
+  padding-left: 0;
 }
- .document-publish ul ol:before, .say-paper ul ol:before, .document-print ul ol:before, .document-publish ol ol:before, .say-paper ol ol:before, .document-print ol ol:before, .document-publish ul ul:before, .say-paper ul ul:before, .document-print ul ul:before, .document-publish ol ul:before, .say-paper ol ul:before, .document-print ol ul:before {
-	 content: "";
-	 display: block;
-	 position: absolute;
-	 width: 1.5rem;
-	 height: 1.5rem;
-	 left: -2rem;
-	 top: 0.5rem;
-	 background-color: white;
-	 z-index: 1;
+
+.document-publish ul ol:before, .say-paper ul ol:before, .document-print ul ol:before, .document-publish ol ol:before, .say-paper ol ol:before, .document-print ol ol:before, .document-publish ul ul:before, .say-paper ul ul:before, .document-print ul ul:before, .document-publish ol ul:before, .say-paper ol ul:before, .document-print ol ul:before {
+   content: "";
+   display: block;
+   position: absolute;
+   width: 1.5rem;
+   height: 1.5rem;
+   left: -2rem;
+   top: 0.5rem;
+   background-color: white;
+   z-index: 1;
 }
- .document-publish ol:not(.bullet-list):not(.numbered-list), .say-paper ol:not(.bullet-list):not(.numbered-list), .document-print ol:not(.bullet-list):not(.numbered-list), .document-publish ul:not(.bullet-list):not(.numbered-list), .say-paper ul:not(.bullet-list):not(.numbered-list), .document-print ul:not(.bullet-list):not(.numbered-list) {
-	 padding-left: 1.75em;
+
+.document-publish ol:not(.bullet-list):not(.numbered-list), .say-paper ol:not(.bullet-list):not(.numbered-list), .document-print ol:not(.bullet-list):not(.numbered-list), .document-publish ul:not(.bullet-list):not(.numbered-list), .say-paper ul:not(.bullet-list):not(.numbered-list), .document-print ul:not(.bullet-list):not(.numbered-list) {
+   padding-left: 1.75em;
 }
  .document-publish ol:not(.bullet-list):not(.numbered-list) > li, .say-paper ol:not(.bullet-list):not(.numbered-list) > li, .document-print ol:not(.bullet-list):not(.numbered-list) > li, .document-publish ul:not(.bullet-list):not(.numbered-list) > li, .say-paper ul:not(.bullet-list):not(.numbered-list) > li, .document-print ul:not(.bullet-list):not(.numbered-list) > li {
-	 list-style-type: initial;
+   list-style-type: initial;
 }
  .document-publish ul:not(.bullet-list):not(.numbered-list) li > ul > li, .say-paper ul:not(.bullet-list):not(.numbered-list) li > ul > li, .document-print ul:not(.bullet-list):not(.numbered-list) li > ul > li {
-	 list-style-type: circle;
+   list-style-type: circle;
 }
  .document-publish ul:not(.bullet-list):not(.numbered-list) li > ul > li > ul > li, .say-paper ul:not(.bullet-list):not(.numbered-list) li > ul > li > ul > li, .document-print ul:not(.bullet-list):not(.numbered-list) li > ul > li > ul > li {
-	 list-style-type: square;
+   list-style-type: square;
 }
  .document-publish ul:not(.bullet-list):not(.numbered-list) li > ul > li > ul > li > ul > li, .say-paper ul:not(.bullet-list):not(.numbered-list) li > ul > li > ul > li > ul > li, .document-print ul:not(.bullet-list):not(.numbered-list) li > ul > li > ul > li > ul > li {
-	 list-style-type: initial;
+   list-style-type: initial;
 }
  .document-publish ul:not(.bullet-list):not(.numbered-list) li > ul > li > ul > li > ul > li > ul > li, .say-paper ul:not(.bullet-list):not(.numbered-list) li > ul > li > ul > li > ul > li > ul > li, .document-print ul:not(.bullet-list):not(.numbered-list) li > ul > li > ul > li > ul > li > ul > li {
-	 list-style-type: circle;
+   list-style-type: circle;
 }
  .document-publish ul:not(.bullet-list):not(.numbered-list) li > ul > li > ul > li > ul > li > ul > li > ul > li, .say-paper ul:not(.bullet-list):not(.numbered-list) li > ul > li > ul > li > ul > li > ul > li > ul > li, .document-print ul:not(.bullet-list):not(.numbered-list) li > ul > li > ul > li > ul > li > ul > li > ul > li {
-	 list-style-type: square;
+   list-style-type: square;
 }
  .document-publish ul:not(.bullet-list):not(.numbered-list) li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li, .say-paper ul:not(.bullet-list):not(.numbered-list) li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li, .document-print ul:not(.bullet-list):not(.numbered-list) li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li {
-	 list-style-type: initial;
+   list-style-type: initial;
 }
  .document-publish ul:not(.bullet-list):not(.numbered-list) li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li, .say-paper ul:not(.bullet-list):not(.numbered-list) li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li, .document-print ul:not(.bullet-list):not(.numbered-list) li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li {
-	 list-style-type: circle;
+   list-style-type: circle;
 }
  .document-publish ul:not(.bullet-list):not(.numbered-list) li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li, .say-paper ul:not(.bullet-list):not(.numbered-list) li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li, .document-print ul:not(.bullet-list):not(.numbered-list) li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li {
-	 list-style-type: square;
+   list-style-type: square;
 }
  .document-publish ol:not(.bullet-list):not(.numbered-list) > li, .say-paper ol:not(.bullet-list):not(.numbered-list) > li, .document-print ol:not(.bullet-list):not(.numbered-list) > li {
-	 list-style-type: decimal;
+   list-style-type: decimal;
 }
  .document-publish [property="besluit:heeftAgenda"] > ul:not(.bullet-list) li, .say-paper [property="besluit:heeftAgenda"] > ul:not(.bullet-list) li, .document-print [property="besluit:heeftAgenda"] > ul:not(.bullet-list) li {
-	 list-style-type: none;
+   list-style-type: none;
 }
