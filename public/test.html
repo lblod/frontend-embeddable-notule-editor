@@ -8,6 +8,7 @@
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
     <link integrity="" rel="stylesheet" href="assets/frontend-embeddable-notule-editor.css">
     <link integrity="" rel="stylesheet" href="assets/vendor.css">
+    <link integrity="" rel="stylesheet" href="/test.css">
     <!-- Sources of the editor -->
     <script src="assets/vendor.js"></script>
     <script src="assets/frontend-embeddable-notule-editor.js"></script>
@@ -16,14 +17,20 @@
   <!-- Next up, we put some tags in the body of our web page. We'll place the editor in those tags. -->
 
   <body>
-    <div style="display:flex;flex-direction:column;height:100%;overflow:hidden;position:relative;">
-      <div prefix="besluit: http://data.vlaanderen.be/ns/besluit#" style="position:relative;height: 100%;overflow:hidden;">
-        <div typeof="besluit:Besluit" property="besluit:motivering" style=>
-          <div id="my-editor" style="border: 1px solid red;height:100%;overflow:auto;">
+    <div class="test-container">
+      <div class="test-header">
+        <h1>Embeddable RDFA editor</h1>
+        <p>Test environment. <a href="https://say-editor.com/docs/core/lblod/frontend-embeddable-notule-editor">Documentation</a></p>
+      </div>
+      <div prefix="besluit: http://data.vlaanderen.be/ns/besluit#" class="test-editor">
+        <div typeof="besluit:Besluit" property="besluit:motivering">
+          <div id="my-editor" class="test-editor__inner">
           </div>
         </div>
       </div>
-      <button id="theButton" class="button button--dark">insertHTML</button>
+      <div class="test-button">
+        <button id="theButton" class="button button--dark">Insert HTML</button>
+      </div>
     </div>
 
     <!-- Lastly, we'll instantiate the two editors. We wait until the dom has loaded using jQuery and we'd put this script in the head, but you can use another method if desired. #} -->
