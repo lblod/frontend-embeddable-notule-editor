@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@ember/optional-features": "^1.0.0",
-    "@lblod/ember-rdfa-editor": "^0.35.0",
+    "@lblod/ember-rdfa-editor": "^0.36.0",
     "@lblod/ember-rdfa-editor-citaten-plugin": "0.10.0",
     "@lblod/ember-rdfa-editor-generic-model-plugin": "0.3.0",
     "@lblod/ember-rdfa-editor-mandataris-plugin": "0.7.1",
