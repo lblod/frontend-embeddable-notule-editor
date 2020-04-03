@@ -1,9 +1,8 @@
 ---
 language: node_js
 node_js:
-  - "8"
+  - "10"
 
-sudo: false
 dist: trusty
 
 addons:
@@ -23,6 +22,4 @@ branches:
     - master
 
 script:
-  - npm run lint:hbs
-  - npm run lint:js
   - npm test
