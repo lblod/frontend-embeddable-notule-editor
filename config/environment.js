@@ -45,6 +45,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV.featureFlags = {"editor-html-paste": true};
     // here you can enable a production-specific feature
   }
 
