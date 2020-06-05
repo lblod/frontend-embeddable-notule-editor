@@ -39,29 +39,29 @@
     <!-- Lastly, we'll instantiate the two editors. We wait until the dom has loaded using jQuery and we'd put this script in the head, but you can use another method if desired. #} -->
 
     <script>
-     $(function() {
-       let App = require("frontend-embeddable-notule-editor/app").default.create({
-         autoboot: false,
-         name: "frontend-embeddable-notule-editor"
-       });
+      $(function() {
+        let App = require("frontend-embeddable-notule-editor/app").default.create({
+          autoboot: false,
+          name: "frontend-embeddable-notule-editor"
+        });
 
-       let options = {
-         rootElement: '#my-editor'
-       };
+        let options = {
+          rootElement: '#my-editor'
+        };
 
-       // Lanuch the first editor
-       App.visit('/', options);
-       setTimeout(function() {
-         const editorElement = document.getElementById("my-editor").getElementsByTagName("notule-editor")[0]
-         editorElement.setHtmlContent("decreet gemeentedecreet ");  // note the content in the page changing
-         console.log(editorElement.getHtmlContent());  // note there may be a difference in returned content
-       }, 1000);
-       var i = 0;
-       $('#theButton').click( () => {
-         const editorElement = document.getElementById("my-editor").getElementsByTagName("notule-editor")[0];
-         editorElement.setHtmlContent('<b>the content ' + i++ + '</b>');
-       });
-     });
+        // Lanuch the first editor
+        App.visit('/', options);
+        setTimeout(function() {
+          const editorElement = document.getElementById("my-editor").getElementsByTagName("notule-editor")[0]
+          editorElement.setHtmlContent("decreet gemeentedecreet ");  // note the content in the page changing
+          console.log(editorElement.getHtmlContent());  // note there may be a difference in returned content
+        }, 1000);
+        var i = 0;
+        $('#theButton').click( () => {
+          const editorElement = document.getElementById("my-editor").getElementsByTagName("notule-editor")[0];
+          editorElement.setHtmlContent('<b>the content ' + i++ + '</b>');
+        });
+      });
     </script>
   </body>
 </html>
