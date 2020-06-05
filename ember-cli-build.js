@@ -7,6 +7,9 @@ module.exports = function(defaults) {
     storeConfigInMeta: false,
     fingerprint: {
       enabled: false
+    },
+    flatpickr: {
+      locales: ['nl']
     }
   });
 
