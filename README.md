@@ -94,7 +94,7 @@ The editor can be customized to best fit your application. In order to use the e
 
 ### adding/removing plugins
 
-The editor can be configured by adding plugins.  The enabled plugins are currently conifgured in the `app/config/editor-profiles.js` file.  Install the desired plugins through npm install, and add their services to this file.  You can usually derive the plugin's name from the name of the repository.
+The editor can be configured by adding plugins.  The enabled plugins are currently conifgured in the `app/config/editor-profiles.js` file.  Install the desired plugins through npm install, and add their services to this file.  You can usually derive the plugin's name from the name of the repository, a good starting point is this [search](https://github.com/search?q=org%3Alblod+ember-rdfa-editor-*-plugin) on the [lblod github organization](https://github.com/lblod/).
 
 ### localization
 Localization of the editor is an ongoing effort, the main target usage of embeddable is currently dutch speaking users. Some plugins, like the [citation plugin](https://github.com/lblod/ember-rdfa-editor-citaten-plugin/), use date pickers. The display format of these dates can be configured in the localization initializer.
