@@ -90,9 +90,18 @@ In the 'dist' folder structure, two css files and two JavaScript files will have
 
 ## Configuring the editor
 
+The editor can be customized to best fit your application. In order to use the editor with these options, be sure to rebuild the sources.
+
+### adding/removing plugins
+
 The editor can be configured by adding plugins.  The enabled plugins are currently conifgured in the `app/config/editor-profiles.js` file.  Install the desired plugins through npm install, and add their services to this file.  You can usually derive the plugin's name from the name of the repository.
 
-In order to use the editor with these options, be sure to rebuild the sources.
+### localization
+Localization of the editor is an ongoing effort, the main target usage of embeddable is currently dutch speaking users. Some plugins, like the [citation plugin](https://github.com/lblod/ember-rdfa-editor-citaten-plugin/), use date pickers. The display format of these dates can be configured in the localization initializer.
+
+### styling
+Styling the editor is covered in the [README](https://github.com/lblod/ember-rdfa-editor#customisation) of ember-rdfa-editor. This frontend supports sass, customizations can be added to [app.scss](https://github.com/lblod/frontend-embeddable-notule-editor/blob/master/app/styles/app.scss)
+
 
 # Development of frontend-embeddable-notule-editor
 
