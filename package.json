@@ -1,6 +1,6 @@
 {
   "name": "frontend-embeddable-notule-editor",
-  "version": "0.7.2",
+  "version": "0.8.0",
   "private": true,
   "description": "Notule editor which may be embedded in another application.",
   "repository": {
@@ -27,7 +27,7 @@
     "@glimmer/component": "^1.0.0",
     "@glimmer/tracking": "^1.0.0",
     "@lblod/ember-rdfa-editor": "0.38.0",
-    "@lblod/ember-rdfa-editor-citaten-plugin": "0.11.3",
+    "@lblod/ember-rdfa-editor-citaten-plugin": "0.11.4",
     "@lblod/ember-rdfa-editor-generic-model-plugin": "0.3.0",
     "@lblod/ember-rdfa-editor-mandataris-plugin": "0.7.1",
     "@lblod/ember-rdfa-editor-plugin-system-dispatcher": "0.5.8",
