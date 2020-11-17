@@ -53,7 +53,7 @@
         App.visit('/', options);
         setTimeout(function() {
           const editorElement = document.getElementById("my-editor").getElementsByTagName("notule-editor")[0]
-          editorElement.setHtmlContent("decreet gemeentedecreet ");  // note the content in the page changing
+          editorElement.setHtmlContent("");  // note the content in the page changing
           console.log(editorElement.getHtmlContent());  // note there may be a difference in returned content
         }, 1000);
         var i = 0;
