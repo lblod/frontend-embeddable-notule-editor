@@ -18,7 +18,7 @@ export default Route.extend({
   model() {
     return EmberObject.create({
       title: "new document",
-      content: `<p>&nbsp;</p>`,
+      content: "",
       context: defaultContext
     });
   }
