@@ -43,12 +43,6 @@ kind: pipeline
 type: docker
 name: release
 steps:
-- name: build-dry-run
-  image: plugins/docker
-  settings:
-    repo: lblod/frontend-embeddable-notule-editor
-    dry_run: true
-    purge: true
 - name: push-tagged-build
   image: plugins/docker
   settings:
@@ -59,3 +53,6 @@ steps:
     password:
       from_secret: docker_password
     purge: true
+trigger:
+  event:
+    - tag
