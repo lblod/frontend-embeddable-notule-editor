@@ -6,7 +6,7 @@ steps:
 - name: build-dry-run
   image: plugins/docker
   settings:
-    repo: lblod/frontend-embeddable-notule-editor
+    repo: lblod/frontend-embeddable-editor
     dry_run: true
     purge: true
 - name: test
@@ -26,7 +26,7 @@ steps:
 - name: push-latest-build
   image: plugins/docker
   settings:
-    repo: lblod/frontend-embeddable-notule-editor
+    repo: lblod/frontend-embeddable-editor
     username:
       from_secret: docker_username
     password:
@@ -46,7 +46,7 @@ steps:
 - name: push-tagged-build
   image: plugins/docker
   settings:
-    repo: lblod/frontend-embeddable-notule-editor
+    repo: lblod/frontend-embeddable-editor
     tags: ${DRONE_TAG##v}
     username:
       from_secret: docker_username
