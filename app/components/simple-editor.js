@@ -38,6 +38,12 @@ export default Component.extend(PublicDomMixin, {
     },
     setHtmlContent(content){
       this.editor.setHtmlContent(content);
+    },
+    on(eventName, callback) {
+      this.editor.on(eventName, callback);
+    },
+    off(eventName, callback) {
+      this.editor.off(eventName, callback);
     }
   }
 });
