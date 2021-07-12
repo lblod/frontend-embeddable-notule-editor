@@ -1,6 +1,6 @@
 {
   "name": "frontend-embeddable-notule-editor",
-  "version": "0.12.1",
+  "version": "0.13.0",
   "private": true,
   "description": "Notule editor which may be embedded in another application.",
   "repository": {
