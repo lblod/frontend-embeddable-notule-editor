@@ -1,4 +1,14 @@
 
+
+## 0.15.0 (2021-09-23)
+
+#### :bug: Bug Fix
+* [#9](https://github.com/lblod/frontend-embeddable-notule-editor/pull/9) Remove broken plugins and bump everything to working versions ([@abeforgit](https://github.com/abeforgit))
+
+#### Committers: 1
+- Arne Bertrand ([@abeforgit](https://github.com/abeforgit))
+
+
 ## 0.14.0 (2021-09-01)
 
 #### :rocket: Enhancement
