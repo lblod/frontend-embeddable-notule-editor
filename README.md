@@ -135,6 +135,17 @@ If you go to any other page than test.html, the application will fall back on ht
 
 Make use of the many generators for code, try `ember help generate` for more details
 
+### Running Tests
+
+* `ember test`
+* `ember test --server`
+
+### Linting
+
+* `npm run lint:hbs`
+* `npm run lint:js`
+* `npm run lint:js -- --fix`
+
 ### Building
 
 * `ember build` (development)
