@@ -1,2 +1,14 @@
-// Load RDFA plugin styles
+@import "appuniversum/g-font";
+@import "appuniversum/e-page";
 @import "ember-rdfa-editor";
+
+// Appuniversum theme
+@import "ember-appuniversum";
+@import "appuniversum/s-colors.scss";
+@import "appuniversum/s-global";
+@import "appuniversum/s-utilities";
+@import "appuniversum/s-root";
+// End appuniversum theme
+
+// This partial is missing in ember-rdfa-editor
+@import "ember-appuniversum/p-ember-power-select";
