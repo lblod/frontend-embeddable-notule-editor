@@ -1,0 +1,26 @@
+<div
+  {{did-insert this.insertedInDom}}
+  class="notule-editor"
+  vocab={{this.vocabString}}
+  something={{this.prefixString}}>
+  
+  <Rdfa::RdfaEditor
+    class="rdfa-editor"
+    @profile={{@profile}}
+    @value={{@model.content}}
+    @rdfaEditorInit={{this.handleRdfaEditorInit}}
+    @editorOptions={{hash
+      showToggleRdfaAnnotations="true"
+      showInsertButton=null
+      showRdfa="true"
+      showRdfaHighlight="true"
+      showRdfaHover="true"
+    }}
+    @toolbarOptions={{hash
+      showTextStyleButtons="true"
+      showListButtons="true"
+      showIndentButtons="true"
+    }}
+  />
+</div>
+{{yield}}
