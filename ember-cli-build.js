@@ -6,11 +6,8 @@ module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     storeConfigInMeta: false,
     fingerprint: {
-      enabled: false
+      enabled: false,
     },
-    flatpickr: {
-      locales: ['nl']
-    }
   });
 
   // Use `app.import` to add additional libraries to the generated
