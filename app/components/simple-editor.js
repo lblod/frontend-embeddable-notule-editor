@@ -24,10 +24,26 @@ export default class SimpleEditorComponent extends Component {
 
   @action
   insertedInDom(element) {
+    this.setVocab(element);
+    this.setPrefix(element);
     element.getHtmlContent = this.getHtmlContent;
     element.setHtmlContent = this.setHtmlContent;
     element.on = this.on;
     element.off = this.off;
+  }
+
+  /**
+   * this is a workaround because emberjs does not allow us to assign the prefix attribute in the template
+   * see https://github.com/emberjs/ember.js/issues/19369
+   */
+  @action
+  setPrefix(element) {
+    element.setAttribute('prefix', this.prefixString);
+  }
+
+  @action
+  setVocab(element) {
+    element.setAttribute('vocab', this.vocabString);
   }
 
   @action
