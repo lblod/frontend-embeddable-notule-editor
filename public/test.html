@@ -27,10 +27,10 @@
       </div>
     </div>
 
-    <!-- Lastly, we'll instantiate the editor. We wait until the dom has loaded using jQuery and we'd put this script in the head, but you can use another method if desired. -->
+    <!-- Lastly, we'll instantiate the editor. We wait until the dom has loaded using an event listener and we'd put this script in the head, but you can use another method if desired. -->
 
     <script>
-      $(function() {
+      window.addEventListener("load", function () {
         let App = require("frontend-embeddable-notule-editor/app").default.create({
           autoboot: false,
           name: "frontend-embeddable-notule-editor"
@@ -49,7 +49,7 @@
           console.log(editorElement.getHtmlContent());  // note there may be a difference in returned content
         }, 1000);
         var i = 0;
-        $('#theButton').click(() => {
+        document.getElementById('theButton').addEventListener("click", function () {
           const editorElement = document.getElementById("my-editor").getElementsByClassName("notule-editor")[0];
           editorElement.setHtmlContent('<b>the content ' + i++ + '</b>');
           console.log(editorElement.getHtmlContent());
