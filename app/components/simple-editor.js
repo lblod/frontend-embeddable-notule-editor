@@ -1,49 +1,52 @@
-import { next } from '@ember/runloop';
-import { computed } from '@ember/object';
-import Component from '@ember/component';
-import PublicDomMixin from 'ember-public-dom-interface/mixins/public-dom';
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
-export default Component.extend(PublicDomMixin, {
-  profile: 'default',
+export default class SimpleEditorComponent extends Component {
+  @tracked editor;
+  @tracked profile = 'default';
 
-  tagName: "notule-editor",
-
-  vocabString: computed( 'model.context', function(){
-    return this.model.context.vocab;
-  }),
-
-  prefixString: computed( 'model.context', function(){
-    const ctx = this.model.context;
-
-    return Object.keys(ctx.prefix).map( function(key) {
-      return `${key}: ${ctx.prefix[key]}`;
-    } ).join(" ");
-  }),
-
-  didInsertElement(){
-    this._super(...arguments);
-    this.element.setAttribute("vocab", this.vocabString);
-    this.element.setAttribute("prefix", this.prefixString);
-  },
-
-  actions: {
-    handleRdfaEditorInit(editor){
-      this.set('editor', editor);
-    }
-  },
-
-  publicInterface: {
-    getHtmlContent(){
-      return this.editor.htmlContent;
-    },
-    setHtmlContent(content){
-      this.editor.setHtmlContent(content);
-    },
-    on(eventName, callback) {
-      this.editor.on(eventName, callback);
-    },
-    off(eventName, callback) {
-      this.editor.off(eventName, callback);
-    }
+  get vocabString() {
+    return this.args.model.context.vocab;
   }
-});
+
+  get prefixString() {
+    const ctx = this.args.model.context;
+    return Object.keys(ctx.prefix)
+      .map((key) => `${key}: ${ctx.prefix[key]}`)
+      .join(' ');
+  }
+
+  @action
+  handleRdfaEditorInit(editor) {
+    this.editor = editor;
+  }
+
+  @action
+  insertedInDom(element) {
+    element.getHtmlContent = this.getHtmlContent;
+    element.setHtmlContent = this.setHtmlContent;
+    element.on = this.on;
+    element.off = this.off;
+  }
+
+  @action
+  getHtmlContent() {
+    return this.editor.htmlContent;
+  }
+
+  @action
+  setHtmlContent(content) {
+    this.editor.setHtmlContent(content);
+  }
+
+  @action
+  on(eventName, callback) {
+    this.editor.on(eventName, callback);
+  }
+
+  @action
+  off(eventName, callback) {
+    this.editor.off(eventName, callback);
+  }
+}

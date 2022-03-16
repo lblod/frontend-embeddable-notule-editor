@@ -52,13 +52,14 @@
         // Lanuch the first editor
         App.visit('/', options);
         setTimeout(function() {
-          const editorElement = document.getElementById("my-editor").getElementsByTagName("notule-editor")[0]
+          const editors = document.getElementById("my-editor");
+		  const editorElement = editors.getElementsByClassName("notule-editor")[0]
           editorElement.setHtmlContent("");  // note the content in the page changing
           console.log(editorElement.getHtmlContent());  // note there may be a difference in returned content
         }, 1000);
         var i = 0;
         $('#theButton').click( () => {
-          const editorElement = document.getElementById("my-editor").getElementsByTagName("notule-editor")[0];
+          const editorElement = document.getElementById("my-editor").getElementsByClassName("notule-editor")[0];
           editorElement.setHtmlContent('<b>the content ' + i++ + '</b>');
         });
       });
