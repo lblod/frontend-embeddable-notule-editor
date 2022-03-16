@@ -1,12 +1,26 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const webpack = require('webpack');
 
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     storeConfigInMeta: false,
     fingerprint: {
       enabled: false,
+    },
+    autoImport: {
+      webpack: {
+        output: {
+          chunkFilename: 'frontend-embeddable-notule-editor-[name].js',
+          filename: 'frontend-embeddable-notule-editor-[name].js',
+        },
+        plugins: [
+          new webpack.optimize.LimitChunkCountPlugin({
+            maxChunks: 1,
+          }),
+        ],
+      },
     },
   });
 
