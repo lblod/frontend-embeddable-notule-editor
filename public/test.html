@@ -4,8 +4,8 @@
     <title>I have an editor in my document</title>
     <meta charset="utf-8">
     <!-- Requirements for the style -->
-    <link integrity="" rel="stylesheet" href="assets/frontend-embeddable-notule-editor.css">
-    <link integrity="" rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/frontend-embeddable-notule-editor.css">
+    <link rel="stylesheet" href="assets/vendor.css">
     <!-- Sources of the editor -->
     <script src="assets/vendor.js"></script>
     <script src="assets/frontend-embeddable-notule-editor.js"></script>
@@ -31,27 +31,23 @@
     <!-- Lastly, we'll instantiate the editor. We wait until the dom has loaded using an event listener and we'd put this script in the head, but you can use another method if desired. -->
 
     <script>
-      window.addEventListener("load", function () {
-        let App = require("frontend-embeddable-notule-editor/app").default.create({
+      window.addEventListener('load', function () {
+        let App = require('frontend-embeddable-notule-editor/app').default.create({
           autoboot: false,
-          name: "frontend-embeddable-notule-editor"
+          name: 'frontend-embeddable-notule-editor'
         });
 
-        let options = {
-          rootElement: '#my-editor'
-        };
-
         // Lanuch the editor
-        App.visit('/', options);
+        App.visit('/', { rootElement: '#my-editor' });
         setTimeout(function() {
-          const editors = document.getElementById("my-editor");
-		  const editorElement = editors.getElementsByClassName("notule-editor")[0]
-          editorElement.setHtmlContent("");  // note the content in the page changing
+          const editorContainer = document.getElementById('my-editor');
+          const editorElement = editorContainer.getElementsByClassName('notule-editor')[0]
+          editorElement.setHtmlContent('');  // note the content in the page changing
           console.log(editorElement.getHtmlContent());  // note there may be a difference in returned content
         }, 1000);
         var i = 0;
-        document.getElementById('theButton').addEventListener("click", function () {
-          const editorElement = document.getElementById("my-editor").getElementsByClassName("notule-editor")[0];
+        document.getElementById('theButton').addEventListener('click', function () {
+          const editorElement = document.getElementById('my-editor').getElementsByClassName('notule-editor')[0];
           editorElement.setHtmlContent('<b>the content ' + i++ + '</b>');
           console.log(editorElement.getHtmlContent());
         });
