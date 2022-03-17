@@ -10,7 +10,7 @@ The idea is that you can have multiple tags in which you initialize the editor. 
 <!DOCTYPE html>
 <html>
   <head>
-    <title>I have two editors in my document</title>
+    <title>I have an editor in my document</title>
 
     <!-- Requirements for the style -->
     <link rel="stylesheet" href="assets/frontend-embeddable-notule-editor.css">
@@ -27,7 +27,7 @@ The idea is that you can have multiple tags in which you initialize the editor. 
 </html>
 ```
 
-Next, put some tags in the body of the web page. We'll place the editor in those tags.
+Next, put some tags in the body of the page. We'll place the editor in those tags.
 
 ```html
 <body>
@@ -62,16 +62,18 @@ For a complete version of this example, checkout this file: [public/test.html](p
 
 ## Building the sources
 
-In order to build the JavaScript and CSS sources of this repository you will need `ember-cli` installed (more info at section Development of frontend-embeddable-notule-editor below), then execute the following:
+In order to build the JavaScript and CSS sources of this repository you will need `ember-cli` installed (more info at section *Development of frontend-embeddable-notule-editor* below), then execute the following:
 
-    git clone https://github.com/lblod/frontend-embeddable-notule-editor.git
-    cd frontend-embeddable-notule-editor
-    npm install
-    ember build -prod
+```bash
+git clone https://github.com/lblod/frontend-embeddable-notule-editor.git
+cd frontend-embeddable-notule-editor
+npm install
+ember build -prod
+```
 
 In the 'dist' folder structure, two CSS files and three JavaScript files will have been generated. These are the files to use, as demonstrated in the example above. Note that the fingerprints of your files may vary.
 
-```
+```bash
 dist
 └── assets
     ├── frontend-embeddable-notule-editor-app.js
