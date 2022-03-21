@@ -1,65 +1,55 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>I have an editor in my document</title>
     <meta charset="utf-8">
     <!-- Requirements for the style -->
-    <link href="//dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui.css" rel="stylesheet" type="text/css" />
-    <link href="//dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui-corporate.css" rel="stylesheet" type="text/css" />
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link integrity="" rel="stylesheet" href="assets/frontend-embeddable-notule-editor.css">
-    <link integrity="" rel="stylesheet" href="assets/vendor.css">
-    <!-- Test page styles -->
-    <style>
-      html{box-sizing:border-box}html,html:after,html:before{box-sizing:inherit}html{font-family:BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;font-size:62.5%;min-height:100%;background-color:#ffffff;text-rendering:optimizeLegibility;-webkit-overflow-scrolling:touch}body{font-size:1.8rem;line-height:1.5}::-moz-selection{color:#3b4146;background-color:#E8EBEE}::selection{color:#3b4146;background-color:#E8EBEE}.test-container{display:flex;flex-direction:column;height:100%;overflow:hidden;position:relative}.test-header{position:relative;z-index:3;padding:1rem;background-color:#fff}.test-header h1{font-size:2rem;font-weight:600}.test-editor{position:relative;overflow:hidden;padding-left:1rem;padding-right:1rem}.test-editor__inner{height:100%;overflow:auto;border:2px solid #CBD2DA}.test-button{padding:1rem}.test-button button{display:block;width:100%}a{transition:color 0.2s cubic-bezier(0.190, 1.000, 0.220, 1.000);font-weight:500;text-decoration-color:#e7c7ff}a,a:visited{color:#9000FA}a:focus,a:hover{color:#a62eff;text-decoration-color:#e7c7ff}a:focus{outline:2px dashed #e7c7ff;outline-offset:0.2rem}
-    </style>
+    <link rel="stylesheet" href="assets/frontend-embeddable-notule-editor.css">
+    <link rel="stylesheet" href="assets/vendor.css">
     <!-- Sources of the editor -->
     <script src="assets/vendor.js"></script>
     <script src="assets/frontend-embeddable-notule-editor.js"></script>
+    <script src="assets/frontend-embeddable-notule-editor-app.js"></script>
   </head>
 
   <!-- Next up, we put some tags in the body of our web page. We'll place the editor in those tags. -->
 
   <body>
-    <div class="test-container">
-      <div class="test-header">
-        <h1>Embeddable RDFA editor</h1>
-        <p>Test environment. <a href="https://say-editor.com/docs/core/lblod/frontend-embeddable-notule-editor">Documentation</a></p>
-      </div>
-      <div prefix="besluit: http://data.vlaanderen.be/ns/besluit#" class="test-editor">
-        <div typeof="besluit:Besluit" property="besluit:motivering">
-          <div id="my-editor" class="test-editor__inner">
-          </div>
-        </div>
-      </div>
-      <div class="test-button">
-        <button id="theButton" class="button button--dark">Insert HTML</button>
+    <div class="au-c-content au-u-padding-small">
+      <h1>Embeddable RDFa editor</h1>
+      <p>
+        Test environment. <a href="https://say-editor.com/docs/core/lblod/frontend-embeddable-notule-editor">Documentation</a>
+      </p>
+      <button id="theButton" class="au-c-button au-c-button--primary au-u-margin au-u-margin-left-none">Insert HTML</button>
+    </div>
+    <div prefix="besluit: http://data.vlaanderen.be/ns/besluit#">
+      <div typeof="besluit:Besluit" property="besluit:motivering">
+        <div id="my-editor"></div>
       </div>
     </div>
 
-    <!-- Lastly, we'll instantiate the two editors. We wait until the dom has loaded using jQuery and we'd put this script in the head, but you can use another method if desired. #} -->
+    <!-- Lastly, we'll instantiate the editor. We wait until the dom has loaded using an event listener and we'd put this script in the head, but you can use another method if desired. -->
 
     <script>
-      $(function() {
-        let App = require("frontend-embeddable-notule-editor/app").default.create({
+      window.addEventListener('load', function () {
+        let App = require('frontend-embeddable-notule-editor/app').default.create({
           autoboot: false,
-          name: "frontend-embeddable-notule-editor"
+          name: 'frontend-embeddable-notule-editor'
         });
 
-        let options = {
-          rootElement: '#my-editor'
-        };
-
-        // Lanuch the first editor
-        App.visit('/', options);
+        // Lanuch the editor
+        App.visit('/', { rootElement: '#my-editor' });
         setTimeout(function() {
-          const editorElement = document.getElementById("my-editor").getElementsByTagName("notule-editor")[0]
-          editorElement.setHtmlContent("");  // note the content in the page changing
+          const editorContainer = document.getElementById('my-editor');
+          const editorElement = editorContainer.getElementsByClassName('notule-editor')[0]
+          editorElement.setHtmlContent('');  // note the content in the page changing
           console.log(editorElement.getHtmlContent());  // note there may be a difference in returned content
         }, 1000);
         var i = 0;
-        $('#theButton').click( () => {
-          const editorElement = document.getElementById("my-editor").getElementsByTagName("notule-editor")[0];
+        document.getElementById('theButton').addEventListener('click', function () {
+          const editorElement = document.getElementById('my-editor').getElementsByClassName('notule-editor')[0];
           editorElement.setHtmlContent('<b>the content ' + i++ + '</b>');
+          console.log(editorElement.getHtmlContent());
         });
       });
     </script>

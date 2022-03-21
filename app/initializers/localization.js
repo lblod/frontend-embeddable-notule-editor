@@ -3,7 +3,5 @@ export function initialize(/* application */) {
 }
 
 export default {
-  initialize() {
-    flatpickr.localize(flatpickr.l10ns.nl);
-  }
+  initialize() {},
 };
