@@ -6,6 +6,7 @@ export default class SimpleEditorComponent extends Component {
   @tracked editor;
   // For future plugin system
   //@tracked plugins = ['rdfa-editor-citaten-plugin'];
+  @tracked plugins = ['besluit', 'template-variable', 'roadsign-regulation'];
   // Remove this in future plugin system, together with @profile on component, and editor-profiles.js
   @tracked profile = 'default';
 
