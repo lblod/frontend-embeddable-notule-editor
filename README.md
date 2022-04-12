@@ -1,10 +1,10 @@
 # frontend-embeddable-notule-editor
 
-This application allows you to embed the editor in other applications without integrating with EmberJS directly. It will behave like any other HTML editor.
+This application allows you to embed the RDFa editor in other applications without integrating with EmberJS directly. It will behave like any other HTML editor.
 
 ## Target usage
 
-The idea is that you can have multiple tags in which you initialize the editor. In order for this to work, we require some resources so the right content is available. We set up the editor when everything has finished loading and rendering, and we can initialize it with some content.
+The idea is that you can have multiple HTML tags in which you can initialize an editor. We'll explain how it works and the process can be repeated if multiple editors are required. We need some HTML structure to start with, and then set-up the editor when everything has finished loading and rendering. We can also initialize the editor with some content or set it later via an event. Use something like the following HTML snippet as a base. *Note that the order of the JavaScript files matters.*
 
 ```html
 <!DOCTYPE html>
@@ -16,10 +16,10 @@ The idea is that you can have multiple tags in which you initialize the editor. 
     <link rel="stylesheet" href="assets/frontend-embeddable-notule-editor.css">
     <link rel="stylesheet" href="assets/vendor.css">
 
-    <!-- Sources of the editor -->
+    <!-- Sources of the editor, THE ORDER MATTERS -->
     <script src="assets/vendor.js"></script>
-    <script src="assets/frontend-embeddable-notule-editor.js"></script>
     <script src="assets/frontend-embeddable-notule-editor-app.js"></script>
+    <script src="assets/frontend-embeddable-notule-editor.js"></script>
   </head>
   <body>
     ...
@@ -35,7 +35,7 @@ Next, put some tags in the body of the page. We'll place the editor in those tag
 </body>
 ```
 
-Lastly, we'll instantiate the editor. We wait until the DOM has loaded and then initialize the embedded EmberJS app with the editor inside. Put this script in the head of the HTML page with `<script>...</script>`, or use another method if desired.
+Lastly, we'll instantiate the editor. We wait until the DOM has loaded and then initialize the embedded EmberJS app with the editor inside. Put this script in the head of the HTML page with `<script>...</script>`, or use another method if desired (e.g. at the bottom of the HTML).
 
 ```javascript
 window.addEventListener('load', function () {
@@ -56,9 +56,9 @@ editorElement.setHtmlContent('<h1>Hello World</h1>');  // note: the content in t
 console.log(editorElement.getHtmlContent());           // note: there may be a difference in returned content
 ```
 
-The contents may be slightly different between the two modes. As the editor evolves, the exporting functionality will be able to better filter out the relevant html and remove temporary styling.
+The contents may be slightly different between the two modes. As the editor evolves, the exporting functionality will be able to better filter out the relevant HTML and remove temporary styling.
 
-For a complete version of this example, checkout this file: [public/test.html](public/test.html).
+For a complete version of this example, checkout this file: [public/test.html](public/test.html). It also includes another button that inserts a template in the editor to showcase the plugins (see later to enable or disable the plugins).
 
 ## Building the sources
 
@@ -89,7 +89,7 @@ The editor can be customized to best fit your application. In order to use the e
 
 ### Adding/removing plugins
 
-The editor can be configured by adding plugins. The enabled plugins are currently conifgured in the `app/config/editor-profiles.js` file. Install the desired plugins through npm install, and add their services to this file. You can usually derive the plugin's name from the name of the repository, a good starting point is this [search](https://github.com/search?q=org%3Alblod+ember-rdfa-editor-*-plugin) on the [lblod github organization](https://github.com/lblod/).
+The editor can be configured by adding plugins. The enabled plugins are currently configured in the `app/components/simple-editor.js` file via the tracked `plugins` array at the top of the file. Install the desired plugins through `npm install`, and add their name to this array. You can usually derive the plugin's name from the name of the repository, a good starting point is this [search](https://github.com/search?q=org%3Alblod+ember-rdfa-editor-*-plugin) on the [lblod github organization](https://github.com/lblod/). Removing plugins works in the same way, but backwards: uninstall the plugins with `npm` and remove their reference from the plugins array in the described location above. You should be able to temporarily disable the plugin by just removing its reference, but a complete uninstall is always preferred to reduce package sizes.
 
 ### Localization
 
