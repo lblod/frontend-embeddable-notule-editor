@@ -8,7 +8,7 @@ export default class SimpleEditorComponent extends Component {
     'citaten-plugin',
     'besluit',
     'template-variable',
-    'roadsign-regulation'
+    'roadsign-regulation',
   ];
 
   get vocabString() {
