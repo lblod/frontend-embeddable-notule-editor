@@ -4,8 +4,10 @@
     <title>I have an editor in my document</title>
     <meta charset="utf-8">
     <!-- Requirements for the style -->
-    <link rel="stylesheet" href="assets/frontend-embeddable-notule-editor.css">
-    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/frontend-embeddable-notule-editor.css" />
+    <link rel="stylesheet" href="assets/vendor.css" />
+    <!-- Style of this demo app, NOT REQUIRED -->
+    <link rel="stylesheet" href="assets/demo.css" />
     <!-- Sources of the editor -->
     <script src="assets/vendor.js"></script>
     <script src="assets/frontend-embeddable-notule-editor-app.js"></script>
@@ -15,18 +17,15 @@
   <!-- Next up, we put some tags in the body of our web page. We'll place the editor in those tags. -->
 
   <body>
-    <div class="au-c-content au-u-padding-small">
+    <div class="au-c-content au-u-padding-tiny au-u-padding-left demo-header">
       <h1>Embeddable RDFa editor</h1>
-      <p>
+      <p class="au-u-margin-tiny au-u-margin-left-none">
         Test environment. <a href="https://say-editor.com/docs/core/lblod/frontend-embeddable-notule-editor">Documentation</a>
       </p>
-      <button id="theButton" class="au-c-button au-c-button--primary au-u-margin au-u-margin-left-none">Insert counter test</button>
-      <button id="insertBesluit" class="au-c-button au-c-button--primary au-u-margin au-u-margin-left-none">Insert besluit template</button>
+      <button id="theButton" class="au-c-button au-c-button--primary au-u-margin-tiny au-u-margin-left-none">Insert counter test</button>
+      <button id="insertBesluit" class="au-c-button au-c-button--primary au-u-margin-tiny au-u-margin-left-none">Insert besluit template</button>
     </div>
-    <div prefix="besluit: http://data.vlaanderen.be/ns/besluit#">
-      <div typeof="besluit:Besluit" property="besluit:motivering">
-        <div id="my-editor"></div>
-      </div>
+    <div id="my-editor" class="demo-content" prefix="besluit: http://data.vlaanderen.be/ns/besluit#" typeof="besluit:Besluit" property="besluit:motivering">
     </div>
 
     <!-- Lastly, we'll instantiate the editor. We wait until the dom has loaded using an event listener and we'd put this script in the head, but you can use another method if desired. -->
