@@ -25,7 +25,7 @@
       <button id="theButton" class="au-c-button au-c-button--primary au-u-margin-tiny au-u-margin-left-none">Insert counter test</button>
       <button id="insertBesluit" class="au-c-button au-c-button--primary au-u-margin-tiny au-u-margin-left-none">Insert besluit template</button>
     </div>
-    <div id="my-editor" class="demo-content" prefix="besluit: http://data.vlaanderen.be/ns/besluit#" typeof="besluit:Besluit" property="besluit:motivering">
+    <div id="my-editor" class="demo-content" prefix="besluit: http://data.vlaanderen.be/ns/besluit#">
     </div>
 
     <!-- Lastly, we'll instantiate the editor. We wait until the dom has loaded using an event listener and we'd put this script in the head, but you can use another method if desired. -->
@@ -53,7 +53,7 @@
         });
         document.getElementById('insertBesluit').addEventListener('click', function () {
           const editorElement = document.getElementById('my-editor').getElementsByClassName('notule-editor')[0];
-          editorElement.setHtmlContent(`<div property="prov:generated" resource="http://data.lblod.info/id/besluiten/abc1234567890" typeof="besluit:Besluit ext:BesluitNieuweStijl">
+          editorElement.setHtmlContent(`<div property="prov:generated" resource="http://data.lblod.info/id/besluiten/abc1234567890" typeof="besluit:Besluit ext:BesluitNieuweStijl https://data.vlaanderen.be/id/concept/BesluitType/256bd04a-b74b-4f2a-8f5d-14dda4765af9">
             <p>Openbare titel besluit:</p>
             <h4 class="h4" property="eli:title" datatype="xsd:string"><span class="mark-highlight-manual">Geef titel besluit op</span></h4>
             <span style="display:none;" property="eli:language" resource="http://publications.europa.eu/resource/authority/language/NLD" typeof="skos:Concept">&nbsp;</span>
