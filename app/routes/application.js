@@ -15,7 +15,7 @@ const defaultContext = {
     besluittype: 'https://data.vlaanderen.be/id/concept/BesluitType/',
     dct: 'http://purl.org/dc/terms/',
     mobiliteit: 'https://data.vlaanderen.be/ns/mobiliteit#',
-    lblodmow: 'http://data.lblod.info/vocabularies/mobiliteit/'
+    lblodmow: 'http://data.lblod.info/vocabularies/mobiliteit/',
   },
 };
 
