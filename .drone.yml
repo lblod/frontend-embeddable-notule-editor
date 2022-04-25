@@ -24,6 +24,7 @@ steps:
 
 - name: lint:dependencies
   image: danlynn/ember-cli:3.28.5-node_16.13
+  failure: ignore
   commands:
   - ember dependency-lint
   depends_on:
@@ -31,6 +32,7 @@ steps:
 
 - name: test
   image: danlynn/ember-cli:3.28.5-node_16.13
+  failure: ignore
   commands:
   - npm run test:ember
   depends_on:
