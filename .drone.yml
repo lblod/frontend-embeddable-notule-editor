@@ -1,24 +1,47 @@
----
 kind: pipeline
 type: docker
 name: verify-pr
+
 steps:
-- name: build-dry-run
-  image: plugins/docker
-  settings:
-    repo: lblod/frontend-embeddable-editor
-    dry_run: true
-    purge: true
-- name: test
-  image: danlynn/ember-cli:3.20.0
+- name: install
+  image: danlynn/ember-cli:3.28.5-node_16.13
   commands:
-  - npm install
-  - npm test
+  - npm ci
+
+- name: lint:js
+  image: danlynn/ember-cli:3.28.5-node_16.13
+  commands:
+  - npm run lint:js
+  depends_on:
+  - install
+
+- name: lint:hbs
+  image: danlynn/ember-cli:3.28.5-node_16.13
+  commands:
+  - npm run lint:hbs
+  depends_on:
+  - install
+
+- name: lint:dependencies
+  image: danlynn/ember-cli:3.28.5-node_16.13
+  commands:
+  - ember dependency-lint
+  depends_on:
+  - install
+
+- name: test
+  image: danlynn/ember-cli:3.28.5-node_16.13
+  commands:
+  - npm run test:ember
+  depends_on:
+  - install
+
 trigger:
   event:
     - pull_request
 
 ---
+
 kind: pipeline
 type: docker
 name: push-latest-build
@@ -38,7 +61,9 @@ trigger:
   event:
     exclude:
     - pull_request
+
 ---
+
 kind: pipeline
 type: docker
 name: release
@@ -56,15 +81,21 @@ steps:
 trigger:
   event:
     - tag
+
 ---
+
 kind: secret
 name: docker_username
 data: HXC8pZ1VXDfM56k+lF5rWHF2vQ44lCiUNmbC5kTHt9EQahQGSOlqig==
+
 ---
+
 kind: secret
 name: docker_password
 data: M75cyHu+IxPrb5LePaeHUpf4Nq5YBgxmSLB+uQFwbiuqeHUrUae5q3e5tuQEt9MA/me6bqqJMMHhTQ13gEaTfA==
+
 ---
+
 kind: signature
 hmac: ae4aed20849b5724a8e4604c115092dc9eb6ffd1e0e659601697be5fbda91ef8
 
