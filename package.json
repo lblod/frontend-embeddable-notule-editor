@@ -35,7 +35,7 @@
     "@ember/test-helpers": "^2.6.0",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
-    "@lblod/ember-rdfa-editor": "0.56.0",
+    "@lblod/ember-rdfa-editor": "0.56.1",
     "@lblod/ember-rdfa-editor-besluit-plugin": "0.3.0",
     "@lblod/ember-rdfa-editor-citaten-plugin": "0.16.0",
     "@lblod/ember-rdfa-editor-roadsign-regulation-plugin": "0.7.2",
