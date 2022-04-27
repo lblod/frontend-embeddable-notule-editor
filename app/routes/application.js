@@ -11,6 +11,11 @@ const defaultContext = {
     ext: 'http://mu.semte.ch/vocabularies/ext/',
     person: 'http://www.w3.org/ns/person#',
     foaf: 'http://xmlns.com/foaf/0.1/',
+    dateplugin: 'http://say.data.gift/manipulators/insertion/',
+    besluittype: 'https://data.vlaanderen.be/id/concept/BesluitType/',
+    dct: 'http://purl.org/dc/terms/',
+    mobiliteit: 'https://data.vlaanderen.be/ns/mobiliteit#',
+    lblodmow: 'http://data.lblod.info/vocabularies/mobiliteit/',
   },
 };
 

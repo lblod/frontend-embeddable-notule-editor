@@ -1,8 +1,9 @@
+<div id="ember-appuniversum-wormhole"></div>
+<div id="ember-basic-dropdown-wormhole"></div>
 <div {{did-insert this.insertedInDom}} class="notule-editor">
   <Rdfa::RdfaEditor
     class="rdfa-editor"
     @value={{@model.content}}
-    @profile={{this.profile}}
     @plugins={{this.plugins}}
     @rdfaEditorInit={{this.handleRdfaEditorInit}}
     @editorOptions={{hash

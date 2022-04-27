@@ -4,10 +4,12 @@ import { tracked } from '@glimmer/tracking';
 
 export default class SimpleEditorComponent extends Component {
   @tracked editor;
-  // For future plugin system
-  //@tracked plugins = ['rdfa-editor-citaten-plugin'];
-  // Remove this in future plugin system, together with @profile on component, and editor-profiles.js
-  @tracked profile = 'default';
+  @tracked plugins = [
+    'citaten-plugin',
+    'besluit',
+    'template-variable',
+    'roadsign-regulation',
+  ];
 
   get vocabString() {
     return this.args.model.context.vocab;

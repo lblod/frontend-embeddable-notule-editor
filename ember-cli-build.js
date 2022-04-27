@@ -12,7 +12,6 @@ module.exports = function (defaults) {
     autoImport: {
       webpack: {
         output: {
-          chunkFilename: 'frontend-embeddable-notule-editor-[name].js',
           filename: 'frontend-embeddable-notule-editor-[name].js',
         },
         plugins: [
