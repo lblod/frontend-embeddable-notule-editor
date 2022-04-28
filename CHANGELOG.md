@@ -1,5 +1,21 @@
 
 
+## 0.16.0 (2022-04-28)
+
+#### :rocket: Enhancement
+* [#13](https://github.com/lblod/frontend-embeddable-notule-editor/pull/13) Adding roadsign regulation related plugins ([@benjay10](https://github.com/benjay10))
+* [#10](https://github.com/lblod/frontend-embeddable-notule-editor/pull/10) Upgrade ember 3.28 ([@benjay10](https://github.com/benjay10))
+
+#### :bug: Bug Fix
+* [#12](https://github.com/lblod/frontend-embeddable-notule-editor/pull/12) Fix ember-concurrency dependency ([@benjay10](https://github.com/benjay10))
+
+#### :house: Internal
+* [#10](https://github.com/lblod/frontend-embeddable-notule-editor/pull/10) Upgrade ember 3.28 ([@benjay10](https://github.com/benjay10))
+* [#11](https://github.com/lblod/frontend-embeddable-notule-editor/pull/11) Fix Drone setup ([@benjay10](https://github.com/benjay10))
+
+#### Committers: 1
+- Ben ([@benjay10](https://github.com/benjay10))
+
 ## 0.15.0 (2021-09-23)
 
 #### :bug: Bug Fix
