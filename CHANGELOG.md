@@ -1,6 +1,16 @@
 
 
 
+
+## 0.16.2 (2022-05-06)
+
+#### :bug: Bug Fix
+* [#18](https://github.com/lblod/frontend-embeddable-notule-editor/pull/18) Add needed "optional" powerselect dependency ([@abeforgit](https://github.com/abeforgit))
+
+#### Committers: 1
+- Arne Bertrand ([@abeforgit](https://github.com/abeforgit))
+
+
 ## 0.16.1 (2022-05-06)
 
 #### :bug: Bug Fix
