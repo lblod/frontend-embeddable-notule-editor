@@ -1,5 +1,18 @@
 
 
+
+## 0.16.1 (2022-05-06)
+
+#### :bug: Bug Fix
+* [#17](https://github.com/lblod/frontend-embeddable-notule-editor/pull/17) Fix roadsign-regulation-plugin crashing on opening of modal ([@abeforgit](https://github.com/abeforgit))
+
+#### :house: Internal
+* [#14](https://github.com/lblod/frontend-embeddable-notule-editor/pull/14) Bump chownr from 1.0.1 to 1.1.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 1
+- Arne Bertrand ([@abeforgit](https://github.com/abeforgit))
+
+
 ## 0.16.0 (2022-04-28)
 
 #### :rocket: Enhancement
