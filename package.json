@@ -26,7 +26,7 @@
     "test:ember": "ember test"
   },
   "devDependencies": {
-    "@appuniversum/ember-appuniversum": "^1.0.8",
+    "@appuniversum/ember-appuniversum": "^1.0.12",
     "@codemirror/basic-setup": "^0.20.0",
     "@codemirror/lang-html": "^0.20.0",
     "@codemirror/lang-xml": "^0.20.0",
