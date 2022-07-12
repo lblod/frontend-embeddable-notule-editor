@@ -2,6 +2,20 @@
 
 
 
+
+## 0.16.3 (2022-07-12)
+
+#### :rocket: Enhancement
+* [#19](https://github.com/lblod/frontend-embeddable-notule-editor/pull/19) bump plugins and editor ([@nvdk](https://github.com/nvdk))
+
+#### :house: Internal
+* [#23](https://github.com/lblod/frontend-embeddable-notule-editor/pull/23) bumped editor, citation plugin, rdfa-date plugin ([@Asergey91](https://github.com/Asergey91))
+
+#### Committers: 3
+- Arne Bertrand ([@abeforgit](https://github.com/abeforgit))
+- Niels V ([@nvdk](https://github.com/nvdk))
+- Sergey Andreev ([@Asergey91](https://github.com/Asergey91))
+
 ## 0.16.2 (2022-05-06)
 
 #### :bug: Bug Fix
