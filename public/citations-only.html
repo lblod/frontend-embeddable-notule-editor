@@ -39,6 +39,13 @@
          name: 'frontend-embeddable-notule-editor'
        });
 
+       const ENV =
+          require('frontend-embeddable-notule-editor/config/environment').default;
+        ENV.APP.plugins = [
+          'citaten-plugin'
+        ];
+      
+
        // Lanuch the editor
        App.visit('/', { rootElement: '#my-editor' });
        setTimeout(function() {

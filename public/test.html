@@ -2,9 +2,12 @@
 <html>
   <head>
     <title>I have an editor in my document</title>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <!-- Requirements for the style -->
-    <link rel="stylesheet" href="assets/frontend-embeddable-notule-editor.css" />
+    <link
+      rel="stylesheet"
+      href="assets/frontend-embeddable-notule-editor.css"
+    />
     <link rel="stylesheet" href="assets/vendor.css" />
     <!-- Style of this demo app, NOT REQUIRED -->
     <link rel="stylesheet" href="assets/demo.css" />
@@ -20,41 +23,76 @@
     <div class="au-c-content au-u-padding-tiny au-u-padding-left demo-header">
       <h1>Embeddable RDFa editor</h1>
       <p class="au-u-margin-tiny au-u-margin-left-none">
-        Test environment. <a href="https://github.com/lblod/frontend-embeddable-notule-editor">Documentation</a> | <a href="test.html">full editor example</a> | <a href="citations-only.html">citations only</a>
-
+        Test environment.
+        <a href="https://github.com/lblod/frontend-embeddable-notule-editor"
+          >Documentation</a
+        >
+        | <a href="test.html">full editor example</a> |
+        <a href="citations-only.html">citations only</a>
       </p>
-      <button id="theButton" class="au-c-button au-c-button--primary au-u-margin-tiny au-u-margin-left-none">Insert counter test</button>
-      <button id="insertBesluit" class="au-c-button au-c-button--primary au-u-margin-tiny au-u-margin-left-none">Insert besluit template</button>
+      <button
+        id="theButton"
+        class="au-c-button au-c-button--primary au-u-margin-tiny au-u-margin-left-none"
+      >
+        Insert counter test
+      </button>
+      <button
+        id="insertBesluit"
+        class="au-c-button au-c-button--primary au-u-margin-tiny au-u-margin-left-none"
+      >
+        Insert besluit template
+      </button>
     </div>
-    <div id="my-editor" class="demo-content" prefix="besluit: http://data.vlaanderen.be/ns/besluit#">
-    </div>
+    <div
+      id="my-editor"
+      class="demo-content"
+      prefix="besluit: http://data.vlaanderen.be/ns/besluit#"
+    ></div>
 
     <!-- Lastly, we'll instantiate the editor. We wait until the dom has loaded using an event listener and we'd put this script in the head, but you can use another method if desired. -->
 
     <script>
       window.addEventListener('load', function () {
-        let App = require('frontend-embeddable-notule-editor/app').default.create({
-          autoboot: false,
-          name: 'frontend-embeddable-notule-editor'
-        });
+        let App =
+          require('frontend-embeddable-notule-editor/app').default.create({
+            autoboot: false,
+            name: 'frontend-embeddable-notule-editor',
+          });
 
+        const ENV =
+          require('frontend-embeddable-notule-editor/config/environment').default;
+        ENV.APP.plugins = [
+          'citaten-plugin',
+          'besluit',
+          'template-variable',
+          'roadsign-regulation',
+        ];
         // Lanuch the editor
         App.visit('/', { rootElement: '#my-editor' });
-        setTimeout(function() {
+        setTimeout(function () {
           const editorContainer = document.getElementById('my-editor');
-          const editorElement = editorContainer.getElementsByClassName('notule-editor')[0]
-          editorElement.setHtmlContent('');  // note the content in the page changing
-          console.log(editorElement.getHtmlContent());  // note there may be a difference in returned content
+          const editorElement =
+            editorContainer.getElementsByClassName('notule-editor')[0];
+          editorElement.setHtmlContent(''); // note the content in the page changing
+          console.log(editorElement.getHtmlContent()); // note there may be a difference in returned content
         }, 1000);
         var i = 0;
-        document.getElementById('theButton').addEventListener('click', function () {
-          const editorElement = document.getElementById('my-editor').getElementsByClassName('notule-editor')[0];
-          editorElement.setHtmlContent('<b>the content ' + i++ + '</b>');
-          console.log(editorElement.getHtmlContent());
-        });
-        document.getElementById('insertBesluit').addEventListener('click', function () {
-          const editorElement = document.getElementById('my-editor').getElementsByClassName('notule-editor')[0];
-          editorElement.setHtmlContent(`<div property="prov:generated" resource="http://data.lblod.info/id/besluiten/abc1234567890" typeof="besluit:Besluit ext:BesluitNieuweStijl https://data.vlaanderen.be/id/concept/BesluitType/256bd04a-b74b-4f2a-8f5d-14dda4765af9">
+        document
+          .getElementById('theButton')
+          .addEventListener('click', function () {
+            const editorElement = document
+              .getElementById('my-editor')
+              .getElementsByClassName('notule-editor')[0];
+            editorElement.setHtmlContent('<b>the content ' + i++ + '</b>');
+            console.log(editorElement.getHtmlContent());
+          });
+        document
+          .getElementById('insertBesluit')
+          .addEventListener('click', function () {
+            const editorElement = document
+              .getElementById('my-editor')
+              .getElementsByClassName('notule-editor')[0];
+            editorElement.setHtmlContent(`<div property="prov:generated" resource="http://data.lblod.info/id/besluiten/abc1234567890" typeof="besluit:Besluit ext:BesluitNieuweStijl https://data.vlaanderen.be/id/concept/BesluitType/256bd04a-b74b-4f2a-8f5d-14dda4765af9">
             <p>Openbare titel besluit:</p>
             <h4 class="h4" property="eli:title" datatype="xsd:string"><span class="mark-highlight-manual">Geef titel besluit op</span></h4>
             <span style="display:none;" property="eli:language" resource="http://publications.europa.eu/resource/authority/language/NLD" typeof="skos:Concept">&nbsp;</span>
@@ -98,7 +136,7 @@
               <br>
             </div>
           </div>`);
-        });
+          });
       });
     </script>
   </body>

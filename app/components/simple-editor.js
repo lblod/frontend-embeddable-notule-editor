@@ -1,21 +1,22 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import { getOwner } from '@ember/application';
+import ENV from 'frontend-embeddable-notule-editor/config/environment';
 
 export default class SimpleEditorComponent extends Component {
   @tracked editor;
-  @tracked plugins = [
-    'citaten-plugin',
-    'besluit',
-    'template-variable',
-    'roadsign-regulation',
-  ];
 
+  get plugins() {
+    return ENV.APP.plugins;
+  }
   get vocabString() {
     return this.args.model.context.vocab;
   }
 
   get prefixString() {
+    let applicationInstance = getOwner(this);
+    console.log('PLUGINS', applicationInstance.get('plugins'));
     const ctx = this.args.model.context;
     return Object.keys(ctx.prefix)
       .map((key) => `${key}: ${ctx.prefix[key]}`)
