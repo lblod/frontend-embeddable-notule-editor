@@ -64,7 +64,7 @@ export default class SimpleEditorComponent extends Component {
 
   @action
   enablePlugin(plugin) {
-    this.plugins.add(plugin)
+    this.plugins.add(plugin);
   }
 
   @action
