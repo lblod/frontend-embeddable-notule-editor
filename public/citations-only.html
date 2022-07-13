@@ -38,12 +38,6 @@
          autoboot: false,
          name: 'frontend-embeddable-notule-editor'
        });
-
-       const ENV =
-          require('frontend-embeddable-notule-editor/config/environment').default;
-        ENV.APP.plugins = [
-          'citaten-plugin'
-        ];
       
 
        // Lanuch the editor
@@ -53,6 +47,7 @@
          const editorElement = editorContainer.getElementsByClassName('notule-editor')[0]
          editorElement.setHtmlContent('');  // note the content in the page changing
          console.log(editorElement.getHtmlContent());  // note there may be a difference in returned content
+         editorElement.enablePlugin('citaten-plugin')
        }, 1000);
      });
     </script>
