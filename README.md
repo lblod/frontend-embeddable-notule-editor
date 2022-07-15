@@ -58,6 +58,13 @@ console.log(editorElement.getHtmlContent());           // note: there may be a d
 
 The contents may be slightly different between the two modes. As the editor evolves, the exporting functionality will be able to better filter out the relevant HTML and remove temporary styling.
 
+You can also dynamically enable and disable plugins using the following methods:
+```javascript
+editorElement.enablePlugin('citaten-plugin'); // enabling the citaten-plugin
+editorElement.disablePlugin('citaten-plugin'); // disabling the citaten-plugin
+editorElement.setActivePlugins('citaten-plugin', 'besluit'); // sets citaten-plugin and besluit as the active plugins.
+```
+
 For a complete version of this example, checkout this file: [public/test.html](public/test.html). It also includes another button that inserts a template in the editor to showcase the plugins (see later to enable or disable the plugins).
 
 ## Building the sources
