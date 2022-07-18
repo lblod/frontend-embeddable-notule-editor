@@ -27,21 +27,18 @@
         <a href="https://github.com/lblod/frontend-embeddable-notule-editor"
           >Documentation</a
         >
-        | <a href="test.html">full editor example</a> |
-        <a href="citations-only.html">citations only</a>
       </p>
-      <button
-        id="theButton"
-        class="au-c-button au-c-button--primary au-u-margin-tiny au-u-margin-left-none"
-      >
-        Insert counter test
-      </button>
       <button
         id="insertBesluit"
         class="au-c-button au-c-button--primary au-u-margin-tiny au-u-margin-left-none"
       >
         Insert besluit template
       </button>
+      Plugins:
+      <input type="checkbox" id="plugin-besluit" value="besluit" checked="checked" /> besluit
+      <input type="checkbox" id="plugin-citaat" value="citaten-plugin" checked="checked" /> citaten
+      <input type="checkbox" id="plugin-roadsign" value="roadsign-regulation" checked="checked" /> mobiliteitsmaatregelen
+      <input type="checkbox" id="plugin-variable" value="template-variable" checked="checked" /> template variabelen
     </div>
     <div
       id="my-editor"
@@ -59,17 +56,33 @@
             name: 'frontend-embeddable-notule-editor',
           });
         // Lanuch the editor
-        App.visit('/', { rootElement: '#my-editor' });
-        setTimeout(function () {
+        let editor;
+        App.visit('/', { rootElement: '#my-editor' }).then(() => {
           const editorContainer = document.getElementById('my-editor');
           const editorElement =
-            editorContainer.getElementsByClassName('notule-editor')[0];
-          editorElement.setHtmlContent(''); // note the content in the page changing
-          console.log(editorElement.getHtmlContent()); // note there may be a difference in returned content
+          editorContainer.getElementsByClassName('notule-editor')[0];
           editorElement.setActivePlugins('citaten-plugin', 'besluit', 'template-variable',
-          'roadsign-regulation');
-        }, 1000);
-        var i = 0;
+                                         'roadsign-regulation');
+          editor = editorElement;
+        });
+        const pluginCheckboxes = document.querySelectorAll('input[id^=plugin]');
+        for (const checkbox of pluginCheckboxes) {
+          checkbox.addEventListener('change', function() {
+            if (this.checked) {
+              editor.enablePlugin(this.value);
+            }
+            else {
+              editor.disablePlugin(this.value);
+            }
+          });
+        }
+        document
+          .getElementById('insertBesluit')
+          .addEventListener('click', function () {
+            const editorElement = document
+              .getElementById('my-editor')
+              .getElementsByClassName('notule-editor')[0];
+            editorElement.setHtmlContent(`<div property="prov:generated" resource="http://data.lblod.info/id/besluit        var i = 0;
         document
           .getElementById('theButton')
           .addEventListener('click', function () {
@@ -79,13 +92,7 @@
             editorElement.setHtmlContent('<b>the content ' + i++ + '</b>');
             console.log(editorElement.getHtmlContent());
           });
-        document
-          .getElementById('insertBesluit')
-          .addEventListener('click', function () {
-            const editorElement = document
-              .getElementById('my-editor')
-              .getElementsByClassName('notule-editor')[0];
-            editorElement.setHtmlContent(`<div property="prov:generated" resource="http://data.lblod.info/id/besluiten/abc1234567890" typeof="besluit:Besluit ext:BesluitNieuweStijl https://data.vlaanderen.be/id/concept/BesluitType/256bd04a-b74b-4f2a-8f5d-14dda4765af9">
+en/abc1234567890" typeof="besluit:Besluit ext:BesluitNieuweStijl https://data.vlaanderen.be/id/concept/BesluitType/256bd04a-b74b-4f2a-8f5d-14dda4765af9">
             <p>Openbare titel besluit:</p>
             <h4 class="h4" property="eli:title" datatype="xsd:string"><span class="mark-highlight-manual">Geef titel besluit op</span></h4>
             <span style="display:none;" property="eli:language" resource="http://publications.europa.eu/resource/authority/language/NLD" typeof="skos:Concept">&nbsp;</span>
@@ -124,9 +131,6 @@
                   <span class="mark-highlight-manual">Voer inhoud in</span>
                 </div>
               </div>
-              <br>
-              <div class="mark-highlight-manual">Voeg nieuw artikel in</div>
-              <br>
             </div>
           </div>`);
           });
