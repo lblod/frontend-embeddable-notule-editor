@@ -1,6 +1,5 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import { getOwner } from '@ember/application';
 import { tracked } from 'tracked-built-ins';
 export default class SimpleEditorComponent extends Component {
   @tracked editor;
