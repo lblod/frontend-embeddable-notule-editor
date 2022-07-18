@@ -1,15 +1,10 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
-
+import { tracked } from 'tracked-built-ins';
 export default class SimpleEditorComponent extends Component {
   @tracked editor;
-  @tracked plugins = [
-    'citaten-plugin',
-    'besluit',
-    'template-variable',
-    'roadsign-regulation',
-  ];
+
+  @tracked plugins = tracked(Set);
 
   get vocabString() {
     return this.args.model.context.vocab;
@@ -35,6 +30,9 @@ export default class SimpleEditorComponent extends Component {
     element.setHtmlContent = this.setHtmlContent;
     element.on = this.on;
     element.off = this.off;
+    element.enablePlugin = this.enablePlugin;
+    element.setActivePlugins = this.setActivePlugins;
+    element.disablePlugin = this.disablePlugin;
   }
 
   /**
@@ -59,6 +57,21 @@ export default class SimpleEditorComponent extends Component {
   @action
   setHtmlContent(content) {
     this.editor.setHtmlContent(content);
+  }
+
+  @action
+  enablePlugin(plugin) {
+    this.plugins.add(plugin);
+  }
+
+  @action
+  disablePlugin(plugin) {
+    this.plugins.delete(plugin);
+  }
+
+  @action
+  setActivePlugins(...plugins) {
+    this.plugins = tracked(new Set(plugins));
   }
 
   @action

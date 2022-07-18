@@ -58,7 +58,14 @@ console.log(editorElement.getHtmlContent());           // note: there may be a d
 
 The contents may be slightly different between the two modes. As the editor evolves, the exporting functionality will be able to better filter out the relevant HTML and remove temporary styling.
 
-For a complete version of this example, checkout this file: [public/test.html](public/test.html). It also includes another button that inserts a template in the editor to showcase the plugins (see later to enable or disable the plugins).
+You can also dynamically enable and disable plugins using the following methods:
+```javascript
+editorElement.enablePlugin('citaten-plugin'); // enabling the citaten-plugin
+editorElement.disablePlugin('citaten-plugin'); // disabling the citaten-plugin
+editorElement.setActivePlugins('citaten-plugin', 'besluit'); // sets citaten-plugin and besluit as the active plugins.
+```
+
+For a complete version of this example, checkout this file: [public/test.html](public/test.html). It also includes another button that inserts a template in the editor to showcase the plugins.
 
 ## Building the sources
 
@@ -88,8 +95,14 @@ dist
 The editor can be customized to best fit your application. In order to use the editor with these options, be sure to rebuild the sources.
 
 ### Adding/removing plugins
+Embeddable ships with all available plugins available. Currently the following plugins are provided:
+* `besluit`: mostly provides functionality for managing articles, see [lblod/ember-rdfa-editor-besluit-plugin](https://github.com/lblod/ember-rdfa-editor-besluit-plugin) for more info
+* `citaten-plugin`: recognizes citations and allows inserting an annotation manually, see [lblod/ember-rdfa-editor-citaten-plugin](https://github.com/lblod/ember-rdfa-editor-citaten-plugin) for more info
+* `rdfa-data`: allow inserting and modifying annoted date and times, see [lblod/ember-rdfa-editor-rdfa-date-plugin](https://github.com/lblod/ember-rdfa-editor-rdfa-date-plugin) for more info
+* `roadsign-regulation`: allow inserting roadsign regulation, based on the registry managed and provided by MOW. See [lblod/ember-rdfa-editor-roadsign-regulation-plugin](https://github.com/lblod/ember-rdfa-editor-roadsign-regulation-plugin)
+* `template-variable`: Related to the roadsign-regulation plugin, allows filling in variables in the road sign regulation templates. See [lblod/ember-rdfa-editor-template-variable-plugin](https://github.com/lblod/ember-rdfa-editor-template-variable-plugin)
 
-The editor can be configured by adding plugins. The enabled plugins are currently configured in the `app/components/simple-editor.js` file via the tracked `plugins` array at the top of the file. Install the desired plugins through `npm install`, and add their name to this array. You can usually derive the plugin's name from the name of the repository, a good starting point is this [search](https://github.com/search?q=org%3Alblod+ember-rdfa-editor-*-plugin) on the [lblod github organization](https://github.com/lblod/). Removing plugins works in the same way, but backwards: uninstall the plugins with `npm` and remove their reference from the plugins array in the described location above. You should be able to temporarily disable the plugin by just removing its reference, but a complete uninstall is always preferred to reduce package sizes.
+See above for how these plugins can be enabled and disabled. If you are building your own package and wish to reduce the package size you can remove plugins by uninstalling the plugins with `npm`. 
 
 ### Localization
 
