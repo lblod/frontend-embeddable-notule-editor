@@ -3,6 +3,14 @@
 
 
 
+## 0.17.0 (2022-07-18)
+
+#### :rocket: Enhancement
+* [#22](https://github.com/lblod/frontend-embeddable-notule-editor/pull/22) Dynamic plugin configuration ([@elpoelma](https://github.com/elpoelma))
+
+#### Committers: 1
+- Elena Poelman ([@elpoelma](https://github.com/elpoelma))
+
 ## 0.16.3 (2022-07-12)
 
 #### :rocket: Enhancement
