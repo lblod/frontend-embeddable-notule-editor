@@ -12,7 +12,6 @@ export default class SimpleEditorComponent extends Component {
   }
 
   get prefixString() {
-    let applicationInstance = getOwner(this);
     const ctx = this.args.model.context;
     return Object.keys(ctx.prefix)
       .map((key) => `${key}: ${ctx.prefix[key]}`)
