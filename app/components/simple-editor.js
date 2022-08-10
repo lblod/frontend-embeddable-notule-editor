@@ -6,6 +6,8 @@ export default class SimpleEditorComponent extends Component {
 
   @tracked plugins = tracked(Set);
 
+  @tracked environment = '';
+
   get vocabString() {
     return this.args.model.context.vocab;
   }
@@ -33,6 +35,7 @@ export default class SimpleEditorComponent extends Component {
     element.enablePlugin = this.enablePlugin;
     element.setActivePlugins = this.setActivePlugins;
     element.disablePlugin = this.disablePlugin;
+    element.setEnvironment = this.setEnvironment;
   }
 
   /**
@@ -72,6 +75,11 @@ export default class SimpleEditorComponent extends Component {
   @action
   setActivePlugins(...plugins) {
     this.plugins = tracked(new Set(plugins));
+  }
+
+  @action
+  setEnvironment(environment) {
+    this.environment = environment;
   }
 
   @action

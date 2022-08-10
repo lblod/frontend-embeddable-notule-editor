@@ -22,12 +22,6 @@
   <body>
     <div class="au-c-content au-u-padding-tiny au-u-padding-left demo-header">
       <h1>Embeddable RDFa editor</h1>
-      <p class="au-u-margin-tiny au-u-margin-left-none">
-        Test environment.
-        <a href="https://github.com/lblod/frontend-embeddable-notule-editor"
-          >Documentation</a
-        >
-      </p>
       <button
         id="insertBesluit"
         class="au-c-button au-c-button--primary au-u-margin-tiny au-u-margin-left-none"
@@ -63,6 +57,7 @@
           editorContainer.getElementsByClassName('notule-editor')[0];
           editorElement.setActivePlugins('citaten-plugin', 'besluit', 'template-variable',
                                          'roadsign-regulation');
+          editorElement.setEnvironment('Test');
           editor = editorElement;
         });
         const pluginCheckboxes = document.querySelectorAll('input[id^=plugin]');

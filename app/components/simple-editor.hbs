@@ -1,5 +1,8 @@
 <div id="ember-appuniversum-wormhole"></div>
 <div id="ember-basic-dropdown-wormhole"></div>
+{{#if this.environment}}
+<EnvironmentBanner @environmentName={{this.environment}}/>
+{{/if}}
 <div {{did-insert this.insertedInDom}} class="notule-editor">
   <Rdfa::RdfaEditor
     class="rdfa-editor"

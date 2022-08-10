@@ -1,6 +1,39 @@
 'use strict';
 
+const mainPjson = require('../package.json');
+const fs = require('fs');
+
+function extractRepoUrl(pjson) {
+  const repo = pjson.repository;
+  if (typeof repo === 'string') {
+    return repo.replace('git+', '');
+  } else if (typeof repo === 'object') {
+    return repo?.url?.replace('git+', '');
+  }
+}
+function getPackages() {
+  const packages = {
+    [mainPjson.name]: {
+      version: mainPjson.version,
+      url: extractRepoUrl(mainPjson),
+    },
+  };
+  const dirs = fs
+    .readdirSync('node_modules/@lblod')
+    .filter((dir) => dir.startsWith('ember-rdfa-editor'));
+  dirs.forEach((dir) => {
+    const file = `../node_modules/@lblod/${dir}/package.json`;
+    const pjson = require(file);
+    packages[pjson.name] = {
+      version: pjson.version,
+      url: extractRepoUrl(pjson),
+    };
+  });
+  return packages;
+}
+
 module.exports = function (environment) {
+  const editorDeps = getPackages();
   let ENV = {
     modulePrefix: 'frontend-embeddable-notule-editor',
     environment,
@@ -22,6 +55,9 @@ module.exports = function (environment) {
       // when it is created
       autoboot: false,
       plugins: [],
+      packages: {
+        ...editorDeps,
+      },
     },
   };
 
