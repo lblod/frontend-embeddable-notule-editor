@@ -8,6 +8,8 @@ export default class SimpleEditorComponent extends Component {
 
   @tracked environment = '';
 
+  @tracked showEnvironmentBanner = false;
+
   get vocabString() {
     return this.args.model.context.vocab;
   }
@@ -35,7 +37,7 @@ export default class SimpleEditorComponent extends Component {
     element.enablePlugin = this.enablePlugin;
     element.setActivePlugins = this.setActivePlugins;
     element.disablePlugin = this.disablePlugin;
-    element.setEnvironment = this.setEnvironment;
+    element.enableEnvironmentBanner = this.enableEnvironmentBanner;
   }
 
   /**
@@ -80,6 +82,12 @@ export default class SimpleEditorComponent extends Component {
   @action
   setEnvironment(environment) {
     this.environment = environment;
+  }
+
+  @action
+  enableEnvironmentBanner(environment = 'Test') {
+    this.environment = environment;
+    this.showEnvironmentBanner = true;
   }
 
   @action

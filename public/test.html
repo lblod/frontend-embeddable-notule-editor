@@ -57,7 +57,7 @@
           editorContainer.getElementsByClassName('notule-editor')[0];
           editorElement.setActivePlugins('citaten-plugin', 'besluit', 'template-variable',
                                          'roadsign-regulation');
-          editorElement.setEnvironment('Test');
+          editorElement.enableEnvironmentBanner();
           editor = editorElement;
         });
         const pluginCheckboxes = document.querySelectorAll('input[id^=plugin]');
