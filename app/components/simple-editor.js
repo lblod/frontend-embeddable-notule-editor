@@ -38,6 +38,7 @@ export default class SimpleEditorComponent extends Component {
     element.setActivePlugins = this.setActivePlugins;
     element.disablePlugin = this.disablePlugin;
     element.enableEnvironmentBanner = this.enableEnvironmentBanner;
+    element.disableEnvironmentBanner = this.disableEnvironmentBanner;
   }
 
   /**
@@ -88,6 +89,11 @@ export default class SimpleEditorComponent extends Component {
   enableEnvironmentBanner(environment = 'Test') {
     this.environment = environment;
     this.showEnvironmentBanner = true;
+  }
+
+  @action
+  disableEnvironmentBanner(){
+    this.showEnvironmentBanner = false;
   }
 
   @action
