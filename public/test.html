@@ -28,11 +28,16 @@
       >
         Insert besluit template
       </button>
-      Plugins:
-      <input type="checkbox" id="plugin-besluit" value="besluit" checked="checked" /> besluit
-      <input type="checkbox" id="plugin-citaat" value="citaten-plugin" checked="checked" /> citaten
-      <input type="checkbox" id="plugin-roadsign" value="roadsign-regulation" checked="checked" /> mobiliteitsmaatregelen
-      <input type="checkbox" id="plugin-variable" value="template-variable" checked="checked" /> template variabelen
+      <div>
+        Plugins:
+        <input type="checkbox" id="plugin-besluit" value="besluit" checked="checked" /> besluit
+        <input type="checkbox" id="plugin-citaat" value="citaten-plugin" checked="checked" /> citaten
+        <input type="checkbox" id="plugin-roadsign" value="roadsign-regulation" checked="checked" /> mobiliteitsmaatregelen
+        <input type="checkbox" id="plugin-variable" value="template-variable" checked="checked" /> template variabelen
+        <br>
+        Environment banner
+        <input type="checkbox" id="environment-banner" checked="checked" /> 
+      </div>
     </div>
     <div
       id="my-editor"
@@ -71,6 +76,14 @@
             }
           });
         }
+        const environmentBannerCheckbox = document.querySelector('input[id=environment-banner]')
+        environmentBannerCheckbox.addEventListener('change', function() {
+          if (this.checked) {
+            editor.enableEnvironmentBanner();
+          } else {
+            editor.disableEnvironmentBanner();
+          }
+        })
         document
           .getElementById('insertBesluit')
           .addEventListener('click', function () {
