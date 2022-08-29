@@ -35,6 +35,7 @@
     "@ember/test-helpers": "^2.8.1",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
+    "@lblod/ember-environment-banner": "git+https://github.com/lblod/ember-environment-banner.git",
     "@lblod/ember-rdfa-editor": "0.60.5",
     "@lblod/ember-rdfa-editor-besluit-plugin": "0.4.0",
     "@lblod/ember-rdfa-editor-citaten-plugin": "0.17.4",

@@ -92,7 +92,7 @@ export default class SimpleEditorComponent extends Component {
   }
 
   @action
-  disableEnvironmentBanner(){
+  disableEnvironmentBanner() {
     this.showEnvironmentBanner = false;
   }
 
