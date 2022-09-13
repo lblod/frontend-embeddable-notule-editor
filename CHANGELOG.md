@@ -4,6 +4,20 @@
 
 
 
+
+## 0.18.0 (2022-09-13)
+
+#### :rocket: Enhancement
+* [#25](https://github.com/lblod/frontend-embeddable-notule-editor/pull/25) Introduce environment banner ([@elpoelma](https://github.com/elpoelma))
+
+#### :bug: Bug Fix
+* [#26](https://github.com/lblod/frontend-embeddable-notule-editor/pull/26) Chore/bump editor v0.63.1 ([@abeforgit](https://github.com/abeforgit))
+
+#### Committers: 2
+- Arne Bertrand ([@abeforgit](https://github.com/abeforgit))
+- Elena Poelman ([@elpoelma](https://github.com/elpoelma))
+
+
 ## 0.17.1 (2022-08-18)
 
 #### :house: Internal
