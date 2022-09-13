@@ -5,6 +5,16 @@
 
 
 
+
+## 0.18.1 (2022-09-13)
+
+#### :house: Internal
+* [#27](https://github.com/lblod/frontend-embeddable-notule-editor/pull/27) chore(deps): bump editor to v0.63.2 ([@abeforgit](https://github.com/abeforgit))
+
+#### Committers: 1
+- Arne Bertrand ([@abeforgit](https://github.com/abeforgit))
+
+
 ## 0.18.0 (2022-09-13)
 
 #### :rocket: Enhancement
