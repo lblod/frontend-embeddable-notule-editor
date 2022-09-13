@@ -65,6 +65,13 @@ editorElement.disablePlugin('citaten-plugin'); // disabling the citaten-plugin
 editorElement.setActivePlugins('citaten-plugin', 'besluit'); // sets citaten-plugin and besluit as the active plugins.
 ```
 
+Additionally you can enable/disable an environment banner using the following methods:
+```javascript
+editorElement.enableEnvironmentBanner('Testing');
+editorElement.enableEnvironmentBanner(); // the default environment name is 'Test'
+editorElement.disableEnvironmentBanner();
+```
+
 For a complete version of this example, checkout this file: [public/test.html](public/test.html). It also includes another button that inserts a template in the editor to showcase the plugins.
 
 ## Building the sources
@@ -103,6 +110,11 @@ Embeddable ships with all available plugins available. Currently the following p
 * `template-variable`: Related to the roadsign-regulation plugin, allows filling in variables in the road sign regulation templates. See [lblod/ember-rdfa-editor-template-variable-plugin](https://github.com/lblod/ember-rdfa-editor-template-variable-plugin)
 
 See above for how these plugins can be enabled and disabled. If you are building your own package and wish to reduce the package size you can remove plugins by uninstalling the plugins with `npm`. 
+
+### Enabling/disabling the environment banner
+The environment banner is a visual indication of the environment you are currently using and which versions of embeddable, the editor and editor-plugins are in use.
+
+You can enable/disable the banner using the following methods: `enableEnvironmentBanner` and `disableEnvironmentBanner`.
 
 ### Localization
 
