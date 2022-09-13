@@ -3,6 +3,13 @@
 
 
 
+
+## 0.17.1 (2022-08-18)
+
+#### :house: Internal
+* [#24](https://github.com/lblod/frontend-embeddable-notule-editor/pull/24) Bump terser from 4.8.0 to 4.8.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+
 ## 0.17.0 (2022-07-18)
 
 #### :rocket: Enhancement
