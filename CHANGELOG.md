@@ -6,6 +6,23 @@
 
 
 
+
+## 0.18.2 (2022-10-27)
+
+#### :house: Internal
+* [#37](https://github.com/lblod/frontend-embeddable-notule-editor/pull/37) chore(deps): upgrade eslint setup ([@abeforgit](https://github.com/abeforgit))
+* [#34](https://github.com/lblod/frontend-embeddable-notule-editor/pull/34) Bump ember-auto-import from 2.4.2 to 2.4.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#32](https://github.com/lblod/frontend-embeddable-notule-editor/pull/32) Bump sass from 1.54.9 to 1.55.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#31](https://github.com/lblod/frontend-embeddable-notule-editor/pull/31) Bump eslint-plugin-prettier from 3.4.1 to 4.2.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#36](https://github.com/lblod/frontend-embeddable-notule-editor/pull/36) chore(deps): bump inhouse deps to latest ([@abeforgit](https://github.com/abeforgit))
+* [#30](https://github.com/lblod/frontend-embeddable-notule-editor/pull/30) feat(bot): enable dependabot ([@abeforgit](https://github.com/abeforgit))
+* [#29](https://github.com/lblod/frontend-embeddable-notule-editor/pull/29) Bump mout from 1.2.3 to 1.2.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#28](https://github.com/lblod/frontend-embeddable-notule-editor/pull/28) Bump @xmldom/xmldom from 0.8.2 to 0.8.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 1
+- Arne Bertrand ([@abeforgit](https://github.com/abeforgit))
+
+
 ## 0.18.1 (2022-09-13)
 
 #### :house: Internal
