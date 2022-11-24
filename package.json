@@ -34,7 +34,7 @@
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
     "@lblod/ember-environment-banner": "^0.1.2",
-    "@lblod/ember-rdfa-editor": "0.63.5",
+    "@lblod/ember-rdfa-editor": "0.64.0",
     "@lblod/ember-rdfa-editor-besluit-plugin": "0.5.7",
     "@lblod/ember-rdfa-editor-citaten-plugin": "0.18.3",
     "@lblod/ember-rdfa-editor-rdfa-date-plugin": "0.3.2",
