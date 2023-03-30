@@ -60,22 +60,12 @@
           const editorContainer = document.getElementById('my-editor');
           const editorElement =
           editorContainer.getElementsByClassName('notule-editor')[0];
-          editorElement.setActivePlugins('citaten-plugin', 'besluit', 'template-variable',
-                                         'roadsign-regulation');
+          console.log(editorElement);
+          editorElement.initEditor(['citation', 'besluit', 'template-variable','rdfa-date', 'article-structure', 'variable', 'table-of-contents',
+                                         'roadsign-regulation']);
           editorElement.enableEnvironmentBanner();
           editor = editorElement;
         });
-        const pluginCheckboxes = document.querySelectorAll('input[id^=plugin]');
-        for (const checkbox of pluginCheckboxes) {
-          checkbox.addEventListener('change', function() {
-            if (this.checked) {
-              editor.enablePlugin(this.value);
-            }
-            else {
-              editor.disablePlugin(this.value);
-            }
-          });
-        }
         const environmentBannerCheckbox = document.querySelector('input[id=environment-banner]')
         environmentBannerCheckbox.addEventListener('change', function() {
           if (this.checked) {

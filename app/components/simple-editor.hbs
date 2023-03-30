@@ -4,26 +4,122 @@
 <EnvironmentBanner @environmentName={{this.environment}} @applicationName='Embeddable Notule Editor'/>
 {{/if}}
 <div {{did-insert this.insertedInDom}} class="notule-editor">
-  <Rdfa::RdfaEditor
-    class="rdfa-editor"
-    @value={{@model.content}}
-    @plugins={{this.plugins}}
-    @rdfaEditorInit={{this.handleRdfaEditorInit}}
-    @editorOptions={{hash
-      showToggleRdfaAnnotations="true"
-      showInsertButton=null
-      showPaper="true"
-      showRdfa="true"
-      showRdfaHighlight="true"
-      showRdfaHover="true"
-      showSidebar="true"
-      showToolbarBottom=null
-    }}
-    @toolbarOptions={{hash
-      showTextStyleButtons="true"
-      showListButtons="true"
-      showIndentButtons="true"
-    }}
-  />
+  {{#if this.initCompleted}}
+    <EditorContainer
+      @editorOptions={{hash
+        showRdfa='true'
+        showRdfaHighlight='true'
+        showRdfaHover='true'
+        showPaper='true'
+        showToolbarBottom=null
+      }}
+      @showRdfaBlocks={{this.controller.showRdfaBlocks}}
+    >
+      <:top>
+        {{#if this.controller}}
+          <Toolbar as |Tb|>
+            <Tb.Group>
+              <Plugins::History::Undo @controller={{@controller}}/>
+              <Plugins::History::Redo @controller={{@controller}}/>
+            </Tb.Group>
+            <Tb.Group>
+              <Plugins::TextStyle::Bold @controller={{@controller}}/>
+              <Plugins::TextStyle::Italic @controller={{@controller}}/>
+              <Plugins::TextStyle::Strikethrough @controller={{@controller}}/>
+              <Plugins::TextStyle::Underline @controller={{@controller}}/>
+            </Tb.Group>
+            <Tb.Group>
+              <Plugins::List::Unordered @controller={{@controller}}/>
+              <Plugins::List::Ordered @controller={{@controller}}/>
+              <Plugins::Indentation::IndentationMenu @controller={{this.controller}}/>
+            </Tb.Group>
+            <Tb.Group>
+              <Plugins::Link::LinkMenu @controller={{this.controller}}/>
+            </Tb.Group>
+            <Tb.Group>
+              <Plugins::Table::TableMenu @controller={{this.controller}}/>
+            </Tb.Group>
+            <Tb.Group>
+              <Plugins::Heading::HeadingMenu @controller={{this.controller}}/>
+            </Tb.Group>
+            <Tb.Spacer/>
+            <Tb.Group>
+              {{#if (array-includes this.activePlugins 'table-of-contents')}}
+                <TableOfContentsPlugin::ToolbarButton @controller={{this.controller}}/>
+              {{/if}}
+              <Plugins::RdfaBlockRender::RdfaBlocksToggle @controller={{this.controller}}/>
+            </Tb.Group>
+          </Toolbar>
+        {{/if}}
+      </:top>
+      <:default>
+        <Editor
+          @plugins={{this.plugins}}
+          @schema={{this.schema}}
+          @nodeViews={{this.nodeViews}}
+          @rdfaEditorInit={{this.handleRdfaEditorInit}}/>
+      </:default>
+      <:aside>
+        {{#if this.controller}}
+          <Sidebar as |Sidebar|>
+              <Sidebar.Collapsible @title='Insert'>
+                {{#if (array-includes this.activePlugins 'article-structure')}}
+                  <ArticleStructurePlugin::ArticleStructureCard 
+                    @controller={{this.controller}}
+                    @options={{this.config.structures}}
+                  />
+                {{/if}}
+                {{#if (array-includes this.activePlugins 'citation')}}
+                  <CitationPlugin::CitationInsert 
+                    @controller={{this.controller}} 
+                    @plugin={{this.citationPlugin}}
+                    @config={{this.config.citation}}
+                  />
+                {{/if}}
+                {{#if (array-includes this.activePlugins 'rdfa-date')}}
+                  <RdfaDatePlugin::Insert 
+                    @controller={{this.controller}}
+                    @options={{this.config.date}}
+                  />
+                {{/if}}
+                {{#if (array-includes this.activePlugins 'roadsign-regulation')}}
+                  <RoadsignRegulationPlugin::RoadsignRegulationCard @controller={{this.controller}}/>
+                {{/if}}
+              </Sidebar.Collapsible>
+              {{#if (array-includes this.activePlugins 'article-structure')}}
+                <ArticleStructurePlugin::StructureCard 
+                  @controller={{this.controller}} 
+                  @options={{this.config.structures}}
+                />
+              {{/if}}
+              {{#if (array-includes this.activePlugins 'besluit')}}
+                <BesluitPlugin::BesluitPluginCard @controller={{this.controller}}/>
+              {{/if}}
+              {{#if (array-includes this.activePlugins 'citation')}}
+                <CitationPlugin::CitationCard 
+                  @controller={{this.controller}} 
+                  @plugin={{this.citationPlugin}}
+                />
+              {{/if}}
+              {{#if (array-includes this.activePlugins 'rdfa-date')}}
+                <RdfaDatePlugin::Card 
+                  @controller={{this.controller}}
+                  @options={{this.config.date}}
+                />
+              {{/if}}
+              {{#if (array-includes this.activePlugins 'template-variable')}}
+                <VariablePlugin::TemplateVariableCard @controller={{this.controller}}/>
+              {{/if}}
+              {{#if (array-includes this.activePlugins 'variable')}}
+                <VariablePlugin::InsertVariableCard 
+                  @controller={{this.controller}}
+                  @options={{this.config.variable}}
+                />
+              {{/if}}
+          </Sidebar>
+        {{/if}}
+      </:aside>
+    </EditorContainer>
+  {{/if}}  
 </div>
 {{yield}}

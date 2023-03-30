@@ -27,24 +27,20 @@
     "release": "release-it"
   },
   "devDependencies": {
-    "@appuniversum/ember-appuniversum": "^1.8.2",
+    "@appuniversum/ember-appuniversum": "^2.4.0",
+    "@babel/core": "^7.19.6",
+    "@babel/eslint-parser": "^7.19.1",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-decorators": "^7.19.6",
+    "@babel/plugin-syntax-decorators": "^7.19.0",
     "@ember/optional-features": "^2.0.0",
     "@ember/render-modifiers": "^2.0.4",
     "@ember/test-helpers": "^2.8.1",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
     "@lblod/ember-environment-banner": "^0.1.2",
-    "@lblod/ember-rdfa-editor": "0.64.1",
-    "@lblod/ember-rdfa-editor-besluit-plugin": "0.5.7",
-    "@lblod/ember-rdfa-editor-citaten-plugin": "0.18.3",
-    "@lblod/ember-rdfa-editor-rdfa-date-plugin": "0.3.2",
-    "@lblod/ember-rdfa-editor-roadsign-regulation-plugin": "0.9.4",
-    "@lblod/ember-rdfa-editor-template-variable-plugin": "0.9.0",
-    "@babel/core": "^7.19.6",
-    "@babel/eslint-parser": "^7.19.1",
-    "@babel/plugin-proposal-class-properties": "^7.18.6",
-    "@babel/plugin-proposal-decorators": "^7.19.6",
-    "@babel/plugin-syntax-decorators": "^7.19.0",
+    "@lblod/ember-rdfa-editor": "3.3.0",
+    "@lblod/ember-rdfa-editor-lblod-plugins": "^3.0.0",
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-import": "^2.4.3",
     "ember-cli": "~3.28.6",
@@ -95,5 +91,8 @@
     "last 2 Chrome version",
     "last 2 Firefox version",
     "last 2 Edge version"
-  ]
+  ],
+  "dependencies": {
+    "ember-intl": "^5.7.2"
+  }
 }
