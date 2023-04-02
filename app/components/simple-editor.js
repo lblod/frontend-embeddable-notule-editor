@@ -90,7 +90,6 @@ export default class SimpleEditorComponent extends Component {
 
   @action
   insertedInDom(element) {
-    console.log('inserted');
     this.setVocab(element);
     this.setPrefix(element);
     element.getHtmlContent = this.getHtmlContent;
@@ -194,31 +193,31 @@ export default class SimpleEditorComponent extends Component {
     };
     const plugins = [tablePlugin, tableKeymap, linkPasteHandler(nodes.link)];
     if (activePlugins.includes('rdfa-date')) {
-      const dateConfig = userConfig.date ?? {};
-      config.date = {
-        placeholder: {
-          insertDate:
-            dateConfig.insertDateText ?? this.intl.t('date-plugin.insert.date'),
-          insertDateTime:
-            dateConfig.insertDatetimeText ??
-            this.intl.t('date-plugin.insert.datetime'),
-        },
-        formats: dateConfig.formats ?? [
-          {
-            label: 'Short Date',
-            key: 'short',
-            dateFormat: 'dd/MM/yy',
-            dateTimeFormat: 'dd/MM/yy HH:mm',
+      if (!userConfig.date) {
+        config.date = {
+          placeholder: {
+            insertDate: this.intl.t('date-plugin.insert.date'),
+            insertDateTime: this.intl.t('date-plugin.insert.datetime'),
           },
-          {
-            label: 'Long Date',
-            key: 'long',
-            dateFormat: 'EEEE dd MMMM yyyy',
-            dateTimeFormat: 'PPPPp',
-          },
-        ],
-        allowCustomFormat: dateConfig.allowCustomFormat ?? true,
-      };
+          formats: [
+            {
+              label: 'Short Date',
+              key: 'short',
+              dateFormat: 'dd/MM/yy',
+              dateTimeFormat: 'dd/MM/yy HH:mm',
+            },
+            {
+              label: 'Long Date',
+              key: 'long',
+              dateFormat: 'EEEE dd MMMM yyyy',
+              dateTimeFormat: 'PPPPp',
+            },
+          ],
+          allowCustomFormat: true,
+        };
+      } else {
+        config.date = userConfig.date;
+      }
       nodes.date = date(config.date);
     }
     if (activePlugins.includes('citation')) {
@@ -237,8 +236,6 @@ export default class SimpleEditorComponent extends Component {
       plugins.push(citationPluginVariable);
     }
     if (activePlugins.includes('article-structure')) {
-      console.log(STRUCTURE_SPECS);
-      console.log(STRUCTURE_NODES);
       config.structures = STRUCTURE_SPECS;
       nodes = { ...nodes, ...STRUCTURE_NODES };
     }
@@ -249,9 +246,8 @@ export default class SimpleEditorComponent extends Component {
       nodes.roadsign_regulation = roadsign_regulation;
     }
     if (activePlugins.includes('variable')) {
-      console.log('includes variable');
       nodes.variable = variable;
-      config.variable = {
+      config.variable = userConfig.variable ?? {
         defaultEndpoint: 'https://dev.roadsigns.lblod.info/sparql',
       };
     }
@@ -269,7 +265,6 @@ export default class SimpleEditorComponent extends Component {
     this.config = config;
     this.schema = new Schema({ nodes, marks });
     this.plugins = plugins;
-    console.log(config.tableOfContents);
     this.nodeViews = (controller) => {
       return {
         variable: activePlugins.includes('variable')
