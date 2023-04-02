@@ -56,6 +56,8 @@ import {
   tableOfContentsView,
   table_of_contents,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/table-of-contents-plugin/nodes';
+import { firefoxCursorFix } from '@lblod/ember-rdfa-editor/plugins/firefox-cursor-fix';
+import { lastKeyPressedPlugin } from '@lblod/ember-rdfa-editor/plugins/last-key-pressed';
 
 export default class SimpleEditorComponent extends Component {
   @tracked controller;
@@ -190,7 +192,13 @@ export default class SimpleEditorComponent extends Component {
       underline,
       strikethrough,
     };
-    const plugins = [tablePlugin, tableKeymap, linkPasteHandler(nodes.link)];
+    const plugins = [
+      tablePlugin,
+      tableKeymap,
+      linkPasteHandler(nodes.link),
+      firefoxCursorFix(),
+      lastKeyPressedPlugin,
+    ];
     if (activePlugins.includes('rdfa-date')) {
       if (!userConfig.date) {
         config.date = {
