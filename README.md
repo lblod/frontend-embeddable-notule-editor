@@ -113,13 +113,15 @@ Embeddable ships with the following plugins available, for more info on each of 
 * `article-structure`: Provides several structures to better manage official documents, like titles, chapters, articles and paragraphs. Allows you to insert, move and delete them in an easy way
 * `table-of-contents`: Provides a table of contents that allow you to click on it to go to the different sections specified with the article-structure plugin
 
-See above for how these plugins can be enabled and disabled.
+See above for how these plugins can be enabled.
+ATTENTION: Currently the besluit node is incompatible with the article-structure node, so you can only have one active at the moment
 
 ### Default configuration
 We provide the following defaults in case you enable a plugin and don't provide any configuration to it, you can take it as a base for your desired configuration. Take into account that if you provide any configuration to a plugin all of the default will be overrided, so make sure you include all the relevant attributes.
 
 ```
 {
+  docContent: 'table_of_contents? ((chapter|block)+|(title|block)+)',
   date: {
     placeholder: {
       insertDate: this.intl.t('date-plugin.insert.date'),

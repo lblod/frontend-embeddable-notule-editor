@@ -17,7 +17,6 @@ import {
   paragraph,
   repaired_block,
   text,
-  doc,
 } from '@lblod/ember-rdfa-editor/nodes';
 import {
   tableNodes,
