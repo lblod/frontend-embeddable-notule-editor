@@ -29,7 +29,6 @@ import {
   paragraph,
   repaired_block,
   text,
-  doc,
 } from '@lblod/ember-rdfa-editor/nodes';
 import {
   tableKeymap,
@@ -273,7 +272,7 @@ export default class SimpleEditorComponent extends Component {
       } else {
         config.structures = STRUCTURE_SPECS;
       }
-      //nodes = { ...nodes, ...STRUCTURE_NODES };
+      nodes = { ...nodes, ...STRUCTURE_NODES };
     }
     if (activePlugins.includes('besluit')) {
       nodes = { ...nodes, ...besluitNodes };

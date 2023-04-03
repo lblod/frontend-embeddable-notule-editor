@@ -110,11 +110,13 @@ Embeddable ships with the following plugins available, for more info on each of 
 * `roadsign-regulation`: allow inserting roadsign regulation, based on the registry managed and provided by MOW.
 * `template-variable`: Related to the roadsign-regulation plugin, allows filling in variables in the road sign regulation templates.
 * `variable`: Allows insertion of custom variables to be later filled by the template-variable plugin
-* `article-structure`: Provides several structures to better manage official documents, like titles, chapters, articles and paragraphs. Allows you to insert, move and delete them in an easy way
+* `article-structure`: Provides several structures to better manage official documents, like titles, chapters, articles and paragraphs. Allows you to insert, move and delete them in an easy way, it has 2 modes that can be set in the configuration 'besluit' for only being able to add besluit_articles and 'regulatoryStatement' for all the other structures.
 * `table-of-contents`: Provides a table of contents that allow you to click on it to go to the different sections specified with the article-structure plugin
+* `formatting-toggle`: Allows to toggle on and off the formatting marks
+* `rdfa-blocks-toggle`: Allows to toggle on and off the visual indications of the rdfa blocks
 
 See above for how these plugins can be enabled.
-ATTENTION: Currently the besluit node is incompatible with the article-structure node, so you can only have one active at the moment
+ATTENTION: Currently the besluit plugin is incompatible with the regulatoryStatement mode in the article-structure plugin, so if you want to activate that mode you will need to disable the besluit plugin
 
 ### Default configuration
 We provide the following defaults in case you enable a plugin and don't provide any configuration to it, you can take it as a base for your desired configuration. Take into account that if you provide any configuration to a plugin all of the default will be overrided, so make sure you include all the relevant attributes.
