@@ -151,7 +151,7 @@ We provide the following defaults in case you enable a plugin and don't provide 
     type: 'ranges',
     activeInRanges: (state) => [[0, state.doc.content.size]],
   },
-  table-of-contents: [
+  tableOfContents: [
     {
       nodeHierarchy: [
         'title|chapter|section|subsection|article',
@@ -159,6 +159,9 @@ We provide the following defaults in case you enable a plugin and don't provide 
       ],
     },
   ],
+  articleStructure: {
+    mode: 'regulatoryStatement',
+  }
 }
 ```
 

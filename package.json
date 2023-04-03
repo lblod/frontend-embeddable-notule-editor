@@ -39,8 +39,8 @@
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
     "@lblod/ember-environment-banner": "^0.1.2",
-    "@lblod/ember-rdfa-editor": "3.3.0",
-    "@lblod/ember-rdfa-editor-lblod-plugins": "^3.0.0",
+    "@lblod/ember-rdfa-editor": "3.4.1",
+    "@lblod/ember-rdfa-editor-lblod-plugins": "^4.0.1",
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-import": "^2.4.3",
     "ember-cli": "~3.28.6",
@@ -93,6 +93,7 @@
     "last 2 Edge version"
   ],
   "dependencies": {
-    "ember-intl": "^5.7.2"
+    "ember-intl": "^5.7.2",
+    "ember-unique-id-helper-polyfill": "^1.2.2"
   }
 }

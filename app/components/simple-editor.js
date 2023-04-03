@@ -3,10 +3,22 @@ import { action } from '@ember/object';
 import { tracked } from 'tracked-built-ins';
 import { inject as service } from '@ember/service';
 
+import { Schema } from '@lblod/ember-rdfa-editor';
+
+import { linkPasteHandler } from '@lblod/ember-rdfa-editor/plugins/link';
+import {
+  tableOfContentsView,
+  table_of_contents,
+} from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/table-of-contents-plugin/nodes';
+import { firefoxCursorFix } from '@lblod/ember-rdfa-editor/plugins/firefox-cursor-fix';
+import { lastKeyPressedPlugin } from '@lblod/ember-rdfa-editor/plugins/last-key-pressed';
+
 import {
   em,
   strikethrough,
   strong,
+  subscript,
+  superscript,
   underline,
 } from '@lblod/ember-rdfa-editor/plugins/text-style';
 import {
@@ -19,15 +31,14 @@ import {
   text,
 } from '@lblod/ember-rdfa-editor/nodes';
 import {
+  tableKeymap,
   tableNodes,
   tablePlugin,
 } from '@lblod/ember-rdfa-editor/plugins/table';
-import { link, linkView } from '@lblod/ember-rdfa-editor/nodes/link';
 import {
   STRUCTURE_NODES,
   STRUCTURE_SPECS,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/article-structure-plugin/structures';
-import { besluitNodes } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/standard-template-plugin';
 import {
   variable,
   variableView,
@@ -41,23 +52,29 @@ import { placeholder } from '@lblod/ember-rdfa-editor/plugins/placeholder';
 import { heading } from '@lblod/ember-rdfa-editor/plugins/heading';
 import { blockquote } from '@lblod/ember-rdfa-editor/plugins/blockquote';
 import { code_block } from '@lblod/ember-rdfa-editor/plugins/code';
-import { image } from '@lblod/ember-rdfa-editor/plugins/image';
+import { image, imageView } from '@lblod/ember-rdfa-editor/plugins/image';
 import { inline_rdfa } from '@lblod/ember-rdfa-editor/marks';
 import date from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/rdfa-date-plugin/nodes/date';
 
-import { Schema } from '@lblod/ember-rdfa-editor';
-
-import { citation } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/citation-plugin/marks/citation';
-import { citationPlugin } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/citation-plugin';
-import { tableKeymap } from '@lblod/ember-rdfa-editor/plugins/table';
-import { linkPasteHandler } from '@lblod/ember-rdfa-editor/plugins/link';
-import { roadsign_regulation } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/roadsign-regulation-plugin/nodes';
 import {
-  tableOfContentsView,
-  table_of_contents,
-} from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/table-of-contents-plugin/nodes';
-import { firefoxCursorFix } from '@lblod/ember-rdfa-editor/plugins/firefox-cursor-fix';
-import { lastKeyPressedPlugin } from '@lblod/ember-rdfa-editor/plugins/last-key-pressed';
+  createInvisiblesPlugin,
+  hardBreak,
+  heading as headingInvisible,
+  paragraph as paragraphInvisible,
+  space,
+} from '@lblod/ember-rdfa-editor/plugins/invisibles';
+
+import {
+  besluitNodes,
+  structureSpecs,
+} from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/standard-template-plugin';
+
+import { citationPlugin } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/citation-plugin';
+
+import { roadsign_regulation } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/roadsign-regulation-plugin/nodes';
+import { link, linkView } from '@lblod/ember-rdfa-editor/plugins/link';
+import { highlight } from '@lblod/ember-rdfa-editor/plugins/highlight/marks/highlight';
+import { color } from '@lblod/ember-rdfa-editor/plugins/color/marks/color';
 
 export default class SimpleEditorComponent extends Component {
   @tracked controller;
@@ -191,6 +208,10 @@ export default class SimpleEditorComponent extends Component {
       strong,
       underline,
       strikethrough,
+      highlight,
+      color,
+      subscript,
+      superscript,
     };
     const plugins = [
       tablePlugin,
@@ -198,6 +219,12 @@ export default class SimpleEditorComponent extends Component {
       linkPasteHandler(nodes.link),
       firefoxCursorFix(),
       lastKeyPressedPlugin,
+      createInvisiblesPlugin(
+        [space, hardBreak, paragraphInvisible, headingInvisible],
+        {
+          shouldShowInvisibles: false,
+        }
+      ),
     ];
     if (activePlugins.includes('rdfa-date')) {
       if (!userConfig.date) {
@@ -237,13 +264,19 @@ export default class SimpleEditorComponent extends Component {
           activeInRanges: (state) => [[0, state.doc.content.size]],
         };
       }
-      marks.citation = citation;
       const citationPluginVariable = citationPlugin(config.citation);
       this.citationPlugin = citationPluginVariable;
       plugins.push(citationPluginVariable);
     }
     if (activePlugins.includes('article-structure')) {
-      config.structures = STRUCTURE_SPECS;
+      if (
+        userConfig.articleStructure &&
+        userConfig.articleStructure.mode === 'besluit'
+      ) {
+        config.structures = structureSpecs;
+      } else {
+        config.structures = STRUCTURE_SPECS;
+      }
       nodes = { ...nodes, ...STRUCTURE_NODES };
     }
     if (activePlugins.includes('besluit')) {
@@ -281,6 +314,7 @@ export default class SimpleEditorComponent extends Component {
           ? tableOfContentsView(config.tableOfContents)(controller)
           : undefined,
         link: linkView(this.config.link)(controller),
+        image: imageView(controller),
       };
     };
     this.initCompleted = true;
