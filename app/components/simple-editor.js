@@ -29,6 +29,7 @@ import {
   paragraph,
   repaired_block,
   text,
+  doc,
 } from '@lblod/ember-rdfa-editor/nodes';
 import {
   tableKeymap,
@@ -180,9 +181,7 @@ export default class SimpleEditorComponent extends Component {
     };
     let nodes = {
       doc: {
-        content:
-          userConfig.docContent ??
-          'table_of_contents? ((chapter|block)+|(title|block)+)',
+        content: userConfig.docContent ?? 'block+',
       },
       paragraph,
       repaired_block,
@@ -190,15 +189,12 @@ export default class SimpleEditorComponent extends Component {
       ordered_list,
       bullet_list,
       placeholder,
-      heading,
       blockquote,
       horizontal_rule,
       code_block,
       text,
       image,
       hard_break,
-      invisible_rdfa,
-      block_rdfa,
       ...tableNodes({ tableGroup: 'block', cellContent: 'block+' }),
       link: link(config.link),
     };
@@ -277,7 +273,7 @@ export default class SimpleEditorComponent extends Component {
       } else {
         config.structures = STRUCTURE_SPECS;
       }
-      nodes = { ...nodes, ...STRUCTURE_NODES };
+      //nodes = { ...nodes, ...STRUCTURE_NODES };
     }
     if (activePlugins.includes('besluit')) {
       nodes = { ...nodes, ...besluitNodes };
@@ -303,6 +299,7 @@ export default class SimpleEditorComponent extends Component {
       nodes.table_of_contents = table_of_contents(config.tableOfContents);
     }
     this.config = config;
+    nodes = { ...nodes, heading, invisible_rdfa, block_rdfa };
     this.schema = new Schema({ nodes, marks });
     this.plugins = plugins;
     this.nodeViews = (controller) => {
