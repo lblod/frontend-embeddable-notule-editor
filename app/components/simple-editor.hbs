@@ -19,14 +19,14 @@
         {{#if this.controller}}
           <Toolbar as |Tb|>
             <Tb.Group>
-              <Plugins::History::Undo @controller={{@controller}}/>
-              <Plugins::History::Redo @controller={{@controller}}/>
+              <Plugins::History::Undo @controller={{this.controller}}/>
+              <Plugins::History::Redo @controller={{this.controller}}/>
             </Tb.Group>
             <Tb.Group>
-              <Plugins::TextStyle::Bold @controller={{@controller}}/>
-              <Plugins::TextStyle::Italic @controller={{@controller}}/>
-              <Plugins::TextStyle::Strikethrough @controller={{@controller}}/>
-              <Plugins::TextStyle::Underline @controller={{@controller}}/>
+              <Plugins::TextStyle::Bold @controller={{this.controller}}/>
+              <Plugins::TextStyle::Italic @controller={{this.controller}}/>
+              <Plugins::TextStyle::Strikethrough @controller={{this.controller}}/>
+              <Plugins::TextStyle::Underline @controller={{this.controller}}/>
               <Plugins::TextStyle::Subscript @controller={{this.controller}}/>
               <Plugins::TextStyle::Superscript @controller={{this.controller}}/>
               <Plugins::TextStyle::Highlight
@@ -39,8 +39,8 @@
               />
             </Tb.Group>
             <Tb.Group>
-              <Plugins::List::Unordered @controller={{@controller}}/>
-              <Plugins::List::Ordered @controller={{@controller}}/>
+              <Plugins::List::Unordered @controller={{this.controller}}/>
+              <Plugins::List::Ordered @controller={{this.controller}}/>
               <Plugins::Indentation::IndentationMenu @controller={{this.controller}}/>
             </Tb.Group>
             <Tb.Group>
