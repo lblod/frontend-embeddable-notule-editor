@@ -7,6 +7,26 @@
 
 
 
+
+## 1.0.0 (2023-04-07)
+
+#### :boom: Breaking Change
+* [#78](https://github.com/lblod/frontend-embeddable-notule-editor/pull/78) Feature/update editor ([@lagartoverde](https://github.com/lagartoverde))
+
+#### :rocket: Enhancement
+* [#78](https://github.com/lblod/frontend-embeddable-notule-editor/pull/78) Feature/update editor ([@lagartoverde](https://github.com/lagartoverde))
+
+#### :house: Internal
+* [#70](https://github.com/lblod/frontend-embeddable-notule-editor/pull/70) Bump eslint-plugin-ember from 11.1.0 to 11.4.7 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#68](https://github.com/lblod/frontend-embeddable-notule-editor/pull/68) Bump ember-qunit from 5.1.5 to 6.2.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#54](https://github.com/lblod/frontend-embeddable-notule-editor/pull/54) Bump @lblod/ember-rdfa-editor from 0.63.5 to 0.64.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#51](https://github.com/lblod/frontend-embeddable-notule-editor/pull/51) Bump decode-uri-component from 0.2.0 to 0.2.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#46](https://github.com/lblod/frontend-embeddable-notule-editor/pull/46) Bump engine.io from 6.2.0 to 6.2.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 1
+- Oscar Rodriguez Villalobos ([@lagartoverde](https://github.com/lagartoverde))
+
+
 ## 0.18.2 (2022-10-27)
 
 #### :house: Internal
