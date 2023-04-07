@@ -60,9 +60,8 @@
           const editorContainer = document.getElementById('my-editor');
           const editorElement =
           editorContainer.getElementsByClassName('notule-editor')[0];
-          console.log(editorElement);
           editorElement.initEditor(['citation', 'besluit', 'template-variable','rdfa-date', 'article-structure', 'variable', 'table-of-contents',
-                                         'roadsign-regulation']);
+                                         'roadsign-regulation', 'formatting-toggle']);
           editorElement.enableEnvironmentBanner();
           editor = editorElement;
         });
