@@ -43,8 +43,15 @@ window.addEventListener('load', function () {
     autoboot: false,
     name: 'frontend-embeddable-notule-editor'
   });
-  App.visit('/', { rootElement: '#my-editor' });
-});
+  App.visit('/', { rootElement: '#my-editor' }).then(() => {
+    const editorContainer = document.getElementById('my-editor');
+    const editorElement =
+    editorContainer.getElementsByClassName('notule-editor')[0];
+    console.log(editorElement);
+    const arrayOfPluginNames = ['citation', 'rdfa-date'];
+    const userConfigObject = {}
+    editorElement.initEditor(arrayOfPluginNames, userConfigObject);;
+  });
 ```
 
 Once the editor is initialized, you can get the relevant document node and set its content. You can play with this by opening the developer console and executing the following, or use the following code in another script:
@@ -58,14 +65,8 @@ console.log(editorElement.getHtmlContent());           // note: there may be a d
 
 The contents may be slightly different between the two modes. As the editor evolves, the exporting functionality will be able to better filter out the relevant HTML and remove temporary styling.
 
-You can also dynamically enable and disable plugins using the following methods:
-```javascript
-editorElement.enablePlugin('citaten-plugin'); // enabling the citaten-plugin
-editorElement.disablePlugin('citaten-plugin'); // disabling the citaten-plugin
-editorElement.setActivePlugins('citaten-plugin', 'besluit'); // sets citaten-plugin and besluit as the active plugins.
-```
 
-Additionally you can enable/disable an environment banner using the following methods:
+You can enable/disable an environment banner using the following methods:
 ```javascript
 editorElement.enableEnvironmentBanner('Testing');
 editorElement.enableEnvironmentBanner(); // the default environment name is 'Test'
@@ -102,14 +103,69 @@ dist
 The editor can be customized to best fit your application. In order to use the editor with these options, be sure to rebuild the sources.
 
 ### Adding/removing plugins
-Embeddable ships with all available plugins available. Currently the following plugins are provided:
-* `besluit`: mostly provides functionality for managing articles, see [lblod/ember-rdfa-editor-besluit-plugin](https://github.com/lblod/ember-rdfa-editor-besluit-plugin) for more info
-* `citaten-plugin`: recognizes citations and allows inserting an annotation manually, see [lblod/ember-rdfa-editor-citaten-plugin](https://github.com/lblod/ember-rdfa-editor-citaten-plugin) for more info
-* `rdfa-data`: allow inserting and modifying annoted date and times, see [lblod/ember-rdfa-editor-rdfa-date-plugin](https://github.com/lblod/ember-rdfa-editor-rdfa-date-plugin) for more info
-* `roadsign-regulation`: allow inserting roadsign regulation, based on the registry managed and provided by MOW. See [lblod/ember-rdfa-editor-roadsign-regulation-plugin](https://github.com/lblod/ember-rdfa-editor-roadsign-regulation-plugin)
-* `template-variable`: Related to the roadsign-regulation plugin, allows filling in variables in the road sign regulation templates. See [lblod/ember-rdfa-editor-template-variable-plugin](https://github.com/lblod/ember-rdfa-editor-template-variable-plugin)
+Embeddable ships with the following plugins available, for more info on each of them and posible configurations, check the documentation of [lblod/ember-rdfa-editor-lblod-plugins](https://github.com/lblod/ember-rdfa-editor-lblod-plugins):
+* `besluit`: mostly provides the correct nodes for constructing a besluit, it's mostly useful for validation in prosemirror internals
+* `citation`: recognizes citations and allows inserting an annotation manually
+* `rdfa-date`: allow inserting and modifying annoted date and times
+* `roadsign-regulation`: allow inserting roadsign regulation, based on the registry managed and provided by MOW.
+* `template-variable`: Related to the roadsign-regulation plugin, allows filling in variables in the road sign regulation templates.
+* `variable`: Allows insertion of custom variables to be later filled by the template-variable plugin
+* `article-structure`: Provides several structures to better manage official documents, like titles, chapters, articles and paragraphs. Allows you to insert, move and delete them in an easy way, it has 2 modes that can be set in the configuration 'besluit' for only being able to add besluit_articles and 'regulatoryStatement' for all the other structures.
+* `table-of-contents`: Provides a table of contents that allow you to click on it to go to the different sections specified with the article-structure plugin
+* `formatting-toggle`: Allows to toggle on and off the formatting marks
+* `rdfa-blocks-toggle`: Allows to toggle on and off the visual indications of the rdfa blocks
 
-See above for how these plugins can be enabled and disabled. If you are building your own package and wish to reduce the package size you can remove plugins by uninstalling the plugins with `npm`. 
+See above for how these plugins can be enabled.
+ATTENTION: Currently the besluit plugin is incompatible with the regulatoryStatement mode in the article-structure plugin, so if you want to activate that mode you will need to disable the besluit plugin
+
+### Default configuration
+We provide the following defaults in case you enable a plugin and don't provide any configuration to it, you can take it as a base for your desired configuration. Take into account that if you provide any configuration to a plugin all of the default will be overrided, so make sure you include all the relevant attributes.
+
+```
+{
+  docContent: 'table_of_contents? ((chapter|block)+|(title|block)+)',
+  date: {
+    placeholder: {
+      insertDate: this.intl.t('date-plugin.insert.date'),
+      insertDateTime: this.intl.t('date-plugin.insert.datetime'),
+    },
+    formats: [
+      {
+        label: 'Short Date',
+        key: 'short',
+        dateFormat: 'dd/MM/yy',
+        dateTimeFormat: 'dd/MM/yy HH:mm',
+      },
+      {
+        label: 'Long Date',
+        key: 'long',
+        dateFormat: 'EEEE dd MMMM yyyy',
+        dateTimeFormat: 'PPPPp',
+      },
+    ],
+    allowCustomFormat: true,
+  },
+  citation: {
+    type: 'ranges',
+    activeInRanges: (state) => [[0, state.doc.content.size]],
+  },
+  variable: {
+    type: 'ranges',
+    activeInRanges: (state) => [[0, state.doc.content.size]],
+  },
+  tableOfContents: [
+    {
+      nodeHierarchy: [
+        'title|chapter|section|subsection|article',
+        'structure_header|article_header',
+      ],
+    },
+  ],
+  articleStructure: {
+    mode: 'regulatoryStatement',
+  }
+}
+```
 
 ### Enabling/disabling the environment banner
 The environment banner is a visual indication of the environment you are currently using and which versions of embeddable, the editor and editor-plugins are in use.

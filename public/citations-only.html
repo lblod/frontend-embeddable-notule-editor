@@ -40,7 +40,6 @@
          const editorContainer = document.getElementById('my-editor');
          const editorElement = editorContainer.getElementsByClassName('notule-editor')[0]
          editorElement.setHtmlContent('');  // note the content in the page changing
-         console.log(editorElement.getHtmlContent());  // note there may be a difference in returned content
          editorElement.enablePlugin('citaten-plugin');
          editorElement.enableEnvironmentBanner();
        }, 1000);
