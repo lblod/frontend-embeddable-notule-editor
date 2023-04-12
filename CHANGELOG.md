@@ -8,6 +8,16 @@
 
 
 
+
+## 1.0.1 (2023-04-12)
+
+#### :rocket: Enhancement
+* [#83](https://github.com/lblod/frontend-embeddable-notule-editor/pull/83) Use `ResponsiveToolbar` component ([@elpoelma](https://github.com/elpoelma))
+
+#### Committers: 2
+- Elena Poelman ([@elpoelma](https://github.com/elpoelma))
+- [@x-m-el](https://github.com/x-m-el)
+
 ## 1.0.0 (2023-04-07)
 
 #### :boom: Breaking Change
