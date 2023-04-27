@@ -129,13 +129,13 @@ The editor can be customized to best fit your application. In order to use the e
 ### Adding/removing plugins
 Embeddable ships with the following plugins available, for more info on each of them and posible configurations, check the documentation of [lblod/ember-rdfa-editor-lblod-plugins](https://github.com/lblod/ember-rdfa-editor-lblod-plugins):
 * `besluit`: mostly provides the correct nodes for constructing a besluit, it's mostly useful for validation in prosemirror internals
-* `citation`: recognizes citations and allows inserting an annotation manually, see more at the (plugin docs)[https://github.com/lblod/ember-rdfa-editor-lblod-plugins#citaten-plugin]
-* `rdfa-date`: allow inserting and modifying annoted date and times, see more at the (plugin docs)[https://github.com/lblod/ember-rdfa-editor-lblod-plugins#rdfa-date-plugin]
-* `roadsign-regulation`: allow inserting roadsign regulation, based on the registry managed and provided by MOW, see more at the (plugin docs)[https://github.com/lblod/ember-rdfa-editor-lblod-plugins#roadsign-regulation-plugin]
-* `template-variable`: Related to the roadsign-regulation plugin, allows filling in variables in the road sign regulation templates, see more at the (plugin docs)[https://github.com/lblod/ember-rdfa-editor-lblod-plugins#template-variable-plugin]
-* `variable`: Allows insertion of custom variables to be later filled by the template-variable plugin, see more at the (plugin docs)[https://github.com/lblod/ember-rdfa-editor-lblod-plugins#insert-variable-plugin]
+* `citation`: recognizes citations and allows inserting an annotation manually, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#citaten-plugin)
+* `rdfa-date`: allow inserting and modifying annoted date and times, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#rdfa-date-plugin)
+* `roadsign-regulation`: allow inserting roadsign regulation, based on the registry managed and provided by MOW, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#roadsign-regulation-plugin)
+* `template-variable`: Related to the roadsign-regulation plugin, allows filling in variables in the road sign regulation templates, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#template-variable-plugin)
+* `variable`: Allows insertion of custom variables to be later filled by the template-variable plugin, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#insert-variable-plugin)
 * `article-structure`: Provides several structures to better manage official documents, like titles, chapters, articles and paragraphs. Allows you to insert, move and delete them in an easy way, it has 2 modes that can be set in the configuration 'besluit' for only being able to add besluit_articles and 'regulatoryStatement' for all the other structures.
-* `table-of-contents`: Provides a table of contents that allow you to click on it to go to the different sections specified with the article-structure plugin, see more at the (plugin docs)[https://github.com/lblod/ember-rdfa-editor-lblod-plugins#table-of-contents-plugin]
+* `table-of-contents`: Provides a table of contents that allow you to click on it to go to the different sections specified with the article-structure plugin, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#table-of-contents-plugin)
 * `formatting-toggle`: Allows to toggle on and off the formatting marks
 * `rdfa-blocks-toggle`: Allows to toggle on and off the visual indications of the rdfa blocks
 
@@ -194,7 +194,7 @@ We provide the following defaults in case you enable a plugin and don't provide 
 Let's break down this configuration block by block:
 
 `docContent: 'block+'`
-The property docContent specifies which nodes do you want to allow in your document, in this case we allow one or more nodes that are of the supertype block, for more info about this check the (prosemirror docs)[https://prosemirror.net/docs/guide/#schema.content_expressions]
+The property docContent specifies which nodes do you want to allow in your document, in this case we allow one or more nodes that are of the supertype block, for more info about this check the [prosemirror docs](https://prosemirror.net/docs/guide/#schema.content_expressions)
 
 ```
 date: {
@@ -226,7 +226,7 @@ Then we define the formats offered to the user, each format has 4 attributes:
 - dateFormat: The format to use when the user is inserting a date
 - dateTimeFormat: The format to use when the user is inserting a date with time information
 The final property is `allowCustomFormat` if this is set to true the user will be able to specify it's own format when inserting the date
-For more information about date formats check the documentation of the underlying library used (date-fns)[https://date-fns.org/v2.29.3/docs/format]
+For more information about date formats check the documentation of the underlying library used [date-fns](https://date-fns.org/v2.29.3/docs/format)
 
 ```
 citation: {
@@ -238,7 +238,7 @@ variable: {
   activeInRanges: (state) => [[0, state.doc.content.size]],
 },
 ```
-This block configures both the citation and the variable plugin in the same way, it basically set the configuration type as `ranges` and set the active range of the plugin to trigger in the entire document, this is a very basic configuration, to see how to specify a different trigger zone or hopw to define custom variables check the docs of the (citation)[https://github.com/lblod/ember-rdfa-editor-lblod-plugins#citaten-plugin] and the (variable)[https://github.com/lblod/ember-rdfa-editor-lblod-plugins#insert-variable-plugin] plugins
+This block configures both the citation and the variable plugin in the same way, it basically set the configuration type as `ranges` and set the active range of the plugin to trigger in the entire document, this is a very basic configuration, to see how to specify a different trigger zone or hopw to define custom variables check the docs of the [citation](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#citaten-plugin) and the [variable](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#insert-variable-plugin) plugins
 
 ```
 tableOfContents: [
@@ -257,7 +257,7 @@ articleStructure: {
   mode: 'besluit',
 }
 ```
-As said in the plugin description the articleStructure we have simplified this plugin to be basically a toggle between 2 modes, you can select if you want the `mode: 'besluit'` that basically includes the besluit_article structure, or the mode: 'regulatoryStatement
+As said in the plugin description the articleStructure we have simplified this plugin to be basically a toggle between 2 modes, you can select if you want the `mode: 'besluit'` that basically includes the besluit_article structure, or the `mode: 'regulatoryStatement'` that includes all the other structures like title, chapter, section, subsection, article ...
 
 
 ### Enabling/disabling the environment banner
