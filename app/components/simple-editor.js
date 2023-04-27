@@ -112,6 +112,7 @@ export default class SimpleEditorComponent extends Component {
     this.setPrefix(element);
     element.getHtmlContent = this.getHtmlContent;
     element.setHtmlContent = this.setHtmlContent;
+    element.controller = this.controller;
     element.on = this.on;
     element.off = this.off;
     element.initEditor = this.initEditor;
@@ -266,11 +267,11 @@ export default class SimpleEditorComponent extends Component {
     if (activePlugins.includes('article-structure')) {
       if (
         userConfig.articleStructure &&
-        userConfig.articleStructure.mode === 'besluit'
+        userConfig.articleStructure.mode === 'regulatoryStatement'
       ) {
-        config.structures = structureSpecs;
-      } else {
         config.structures = STRUCTURE_SPECS;
+      } else {
+        config.structures = structureSpecs;
       }
       nodes = { ...nodes, ...STRUCTURE_NODES };
     }

@@ -50,7 +50,7 @@ window.addEventListener('load', function () {
     console.log(editorElement);
     const arrayOfPluginNames = ['citation', 'rdfa-date'];
     const userConfigObject = {}
-    editorElement.initEditor(arrayOfPluginNames, userConfigObject);;
+    editorElement.initEditor(arrayOfPluginNames, userConfigObject);
   });
 ```
 
@@ -74,6 +74,30 @@ editorElement.disableEnvironmentBanner();
 ```
 
 For a complete version of this example, checkout this file: [public/test.html](public/test.html). It also includes another button that inserts a template in the editor to showcase the plugins.
+
+## Prosemirror
+
+The rdfa editor uses prosemirror as a base, after the `editorElement.initEditor()` function is called you will have access to the editor controller with `editorElement.controller` this is an instance of the `ProseController` class fo the (ember-rdfa-editor)[https://github.com/lblod/ember-rdfa-editor]
+It provides the following methods:
+- `toggleMark(name: string, includeEmbeddedView = false)`: method which allows to enable/disable a specific mark on the current selection. Expects the name of the mark to toggle and whether the command should be applied on an embedded editor view if such a view is active.
+- `focus(includeEmbeddedView = false)`: method which allows one to focus the main editor view (or an embedded view, if such a view is active).
+- `setHtmlContent(content: string)`: sets the content of the main editor.
+- `doCommand(command: Command, includeEmbeddedView = false)`: executes a Prosemirror command (https://prosemirror.net/docs/guide/#commands) on the main editor, or when active an embedded editor instance.
+- `checkCommand(command: Command, includeEmbeddedView = false)`: checks whether a Prosemirror command may be executed.
+- `isMarkActive(mark: MarkType, includeEmbeddedView = false)`: checks whether a mark is currently active.
+- `withTransaction(callback: (tr: Transaction) => Transaction | null, includeEmbeddedView = false)`: method which allows you to apply a transaction on the main view (or currently active embedded view). When you want to apply the transaction, the callback should return a transaction object.
+- `getState(includeEmbeddedView = false)`: used to request the current state of the main editor view (or an embedded view if active).
+- `getView`: used to request the main editor view (or an embedded view if active).
+- `setEmbeddedView(view: RdfaEditorView)`: activate a specific embedded view.
+- `clearEmbeddedView`: deactive the current embedded view.
+
+Additionally, a controller provides the following attributes:
+- `externalContextStore`: provides an instance of `ProseStore` describing the RDFa around the editor element.
+- `datastore`: provides an instance of `ProseStore` describing the RDFa inside the editor element.
+- `schema`: provides the schema of the main editor.
+- `state`: provides the current state (see https://prosemirror.net/docs/guide/#state) of the main editor.
+- `view`: provides the main editor view (see https://prosemirror.net/docs/guide/#view).
+
 
 ## Building the sources
 
@@ -105,13 +129,13 @@ The editor can be customized to best fit your application. In order to use the e
 ### Adding/removing plugins
 Embeddable ships with the following plugins available, for more info on each of them and posible configurations, check the documentation of [lblod/ember-rdfa-editor-lblod-plugins](https://github.com/lblod/ember-rdfa-editor-lblod-plugins):
 * `besluit`: mostly provides the correct nodes for constructing a besluit, it's mostly useful for validation in prosemirror internals
-* `citation`: recognizes citations and allows inserting an annotation manually
-* `rdfa-date`: allow inserting and modifying annoted date and times
-* `roadsign-regulation`: allow inserting roadsign regulation, based on the registry managed and provided by MOW.
-* `template-variable`: Related to the roadsign-regulation plugin, allows filling in variables in the road sign regulation templates.
-* `variable`: Allows insertion of custom variables to be later filled by the template-variable plugin
+* `citation`: recognizes citations and allows inserting an annotation manually, see more at the (plugin docs)[https://github.com/lblod/ember-rdfa-editor-lblod-plugins#citaten-plugin]
+* `rdfa-date`: allow inserting and modifying annoted date and times, see more at the (plugin docs)[https://github.com/lblod/ember-rdfa-editor-lblod-plugins#rdfa-date-plugin]
+* `roadsign-regulation`: allow inserting roadsign regulation, based on the registry managed and provided by MOW, see more at the (plugin docs)[https://github.com/lblod/ember-rdfa-editor-lblod-plugins#roadsign-regulation-plugin]
+* `template-variable`: Related to the roadsign-regulation plugin, allows filling in variables in the road sign regulation templates, see more at the (plugin docs)[https://github.com/lblod/ember-rdfa-editor-lblod-plugins#template-variable-plugin]
+* `variable`: Allows insertion of custom variables to be later filled by the template-variable plugin, see more at the (plugin docs)[https://github.com/lblod/ember-rdfa-editor-lblod-plugins#insert-variable-plugin]
 * `article-structure`: Provides several structures to better manage official documents, like titles, chapters, articles and paragraphs. Allows you to insert, move and delete them in an easy way, it has 2 modes that can be set in the configuration 'besluit' for only being able to add besluit_articles and 'regulatoryStatement' for all the other structures.
-* `table-of-contents`: Provides a table of contents that allow you to click on it to go to the different sections specified with the article-structure plugin
+* `table-of-contents`: Provides a table of contents that allow you to click on it to go to the different sections specified with the article-structure plugin, see more at the (plugin docs)[https://github.com/lblod/ember-rdfa-editor-lblod-plugins#table-of-contents-plugin]
 * `formatting-toggle`: Allows to toggle on and off the formatting marks
 * `rdfa-blocks-toggle`: Allows to toggle on and off the visual indications of the rdfa blocks
 
@@ -123,7 +147,7 @@ We provide the following defaults in case you enable a plugin and don't provide 
 
 ```
 {
-  docContent: 'table_of_contents? ((chapter|block)+|(title|block)+)',
+  docContent: 'block+',
   date: {
     placeholder: {
       insertDate: this.intl.t('date-plugin.insert.date'),
@@ -162,10 +186,79 @@ We provide the following defaults in case you enable a plugin and don't provide 
     },
   ],
   articleStructure: {
-    mode: 'regulatoryStatement',
+    mode: 'besluit',
   }
 }
 ```
+
+Let's break down this configuration block by block:
+
+`docContent: 'block+'`
+The property docContent specifies which nodes do you want to allow in your document, in this case we allow one or more nodes that are of the supertype block, for more info about this check the (prosemirror docs)[https://prosemirror.net/docs/guide/#schema.content_expressions]
+
+```
+date: {
+  placeholder: {
+    insertDate: this.intl.t('date-plugin.insert.date'),
+    insertDateTime: this.intl.t('date-plugin.insert.datetime'),
+  },
+  formats: [
+    {
+      label: 'Short Date',
+      key: 'short',
+      dateFormat: 'dd/MM/yy',
+      dateTimeFormat: 'dd/MM/yy HH:mm',
+    },
+    {
+      label: 'Long Date',
+      key: 'long',
+      dateFormat: 'EEEE dd MMMM yyyy',
+      dateTimeFormat: 'PPPPp',
+    },
+  ],
+  allowCustomFormat: true,
+},
+```
+This block configures the date plugin, first the placeholder block specifies 2 attributes `insertDate` and `insertDateTime` in the default config we use `intl` to correctly set the string to the language of the user, for example the corresponding strings in english are `Insert date` and `Insert date and time`.
+Then we define the formats offered to the user, each format has 4 attributes:
+- label: This is the label to be shown to the user on the card, is an optional property, if no label is specified the dateFormat and dateTimeFormat will be used as labels
+- key: A unique key to identify the format, if the key is not unique it might cause problems
+- dateFormat: The format to use when the user is inserting a date
+- dateTimeFormat: The format to use when the user is inserting a date with time information
+The final property is `allowCustomFormat` if this is set to true the user will be able to specify it's own format when inserting the date
+For more information about date formats check the documentation of the underlying library used (date-fns)[https://date-fns.org/v2.29.3/docs/format]
+
+```
+citation: {
+  type: 'ranges',
+  activeInRanges: (state) => [[0, state.doc.content.size]],
+},
+variable: {
+  type: 'ranges',
+  activeInRanges: (state) => [[0, state.doc.content.size]],
+},
+```
+This block configures both the citation and the variable plugin in the same way, it basically set the configuration type as `ranges` and set the active range of the plugin to trigger in the entire document, this is a very basic configuration, to see how to specify a different trigger zone or hopw to define custom variables check the docs of the (citation)[https://github.com/lblod/ember-rdfa-editor-lblod-plugins#citaten-plugin] and the (variable)[https://github.com/lblod/ember-rdfa-editor-lblod-plugins#insert-variable-plugin] plugins
+
+```
+tableOfContents: [
+  {
+    nodeHierarchy: [
+      'title|chapter|section|subsection|article',
+      'structure_header|article_header',
+    ],
+  },
+],
+```
+This block configures the table of contents plugin, it just specifies the nodeHierarchy that the node has to follow. This can be configured with your custom nodes or changing the order of the default ones if you want.
+
+```
+articleStructure: {
+  mode: 'besluit',
+}
+```
+As said in the plugin description the articleStructure we have simplified this plugin to be basically a toggle between 2 modes, you can select if you want the `mode: 'besluit'` that basically includes the besluit_article structure, or the mode: 'regulatoryStatement
+
 
 ### Enabling/disabling the environment banner
 The environment banner is a visual indication of the environment you are currently using and which versions of embeddable, the editor and editor-plugins are in use.
