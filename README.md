@@ -53,6 +53,34 @@ window.addEventListener('load', function () {
   });
 ```
 
+Let's break down this code, the entire snippet is executed inside a load listener, that will only trigger when the document has loaded.
+
+```javascript
+let App = require('frontend-embeddable-notule-editor/app').default.create({
+  autoboot: false,
+  name: 'frontend-embeddable-notule-editor'
+});
+```
+These lines create the app that will be in charge of rendering our editor
+
+```
+App.visit('/', { rootElement: '#my-editor' })
+```
+Then we visit the main route of the application and render inside our root element, that in this case it will be the HTML div with id `my-editor`, this returns a Promise, that we can await or chain a `.then` as we do in the example code. After this promise is resolved our editor will be rendered so we can start interacting with it.
+
+```javascript
+const editorContainer = document.getElementById('my-editor');
+const editorElement = editorContainer.getElementsByClassName('notule-editor')[0];
+```
+After rendering the editor we have to find the editorElement that we will do with the previous code, basically we get the editorContainer where we rendered our app and then find inside the editor div that has the `notule-editor` class.
+
+```javascript
+const arrayOfPluginNames = ['citation', 'rdfa-date'];
+const userConfigObject = {}
+editorElement.initEditor(arrayOfPluginNames, userConfigObject);
+```
+After finding the editor we just have to create an array with the names of the plugins we want to use and an object with custom configuration if needed (See [configuring the editor](#configuring-the-editor) for more info about plugin names and configuration options) and initialize the editor with the `initEditor` function
+
 Once the editor is initialized, you can get the relevant document node and set its content. You can play with this by opening the developer console and executing the following, or use the following code in another script:
 
 ```javascript
@@ -144,7 +172,7 @@ ATTENTION: Currently the besluit plugin is incompatible with the regulatoryState
 ### Default configuration
 We provide the following defaults in case you enable a plugin and don't provide any configuration to it, you can take it as a base for your desired configuration. Take into account that if you provide any configuration to a plugin all of the default will be overrided, so make sure you include all the relevant attributes.
 
-```
+```javascript
 {
   docContent: 'block+',
   date: {
@@ -195,7 +223,7 @@ Let's break down this configuration block by block:
 `docContent: 'block+'`
 The property docContent specifies which nodes do you want to allow in your document, in this case we allow one or more nodes that are of the supertype block, for more info about this check the [prosemirror docs](https://prosemirror.net/docs/guide/#schema.content_expressions)
 
-```
+```javascript
 date: {
   placeholder: {
     insertDate: this.intl.t('date-plugin.insert.date'),
@@ -227,7 +255,7 @@ Then we define the formats offered to the user, each format has 4 attributes:
 The final property is `allowCustomFormat` if this is set to true the user will be able to specify it's own format when inserting the date
 For more information about date formats check the documentation of the underlying library used [date-fns](https://date-fns.org/v2.29.3/docs/format)
 
-```
+```javascript
 citation: {
   type: 'ranges',
   activeInRanges: (state) => [[0, state.doc.content.size]],
@@ -239,7 +267,7 @@ variable: {
 ```
 This block configures both the citation and the variable plugin in the same way, it basically set the configuration type as `ranges` and set the active range of the plugin to trigger in the entire document, this is a very basic configuration, to see how to specify a different trigger zone or hopw to define custom variables check the docs of the [citation](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#citaten-plugin) and the [variable](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#insert-variable-plugin) plugins
 
-```
+```javascript
 tableOfContents: [
   {
     nodeHierarchy: [
@@ -251,7 +279,7 @@ tableOfContents: [
 ```
 This block configures the table of contents plugin, it just specifies the nodeHierarchy that the node has to follow. This can be configured with your custom nodes or changing the order of the default ones if you want.
 
-```
+```javascript
 articleStructure: {
   mode: 'besluit',
 }
