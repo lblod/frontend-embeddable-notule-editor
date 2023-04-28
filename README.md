@@ -340,6 +340,8 @@ For this plugin you will need to be in a besluit with one of these types:
 
 If this condition is met you will find a button called `Voeg mobiliteitsmaatregel in` in the insert menu. When this button is clicked a modal will apear where you can filter and select which roadsign regulation you want to insert.
 
+![roadsign regulation modal](https://i.imgur.com/z7My8lm.png)
+
 ### Variable
 This plugin allows you to insert variables in the document, a variable is a value to be filled by another user, ideally you will have 2 separate instances of the editor, the first one will enable this plugin and the other will enable the template-variable plugin.
 In order to insert a variable you will need to use the insert variable card.
@@ -359,7 +361,8 @@ Using this card you will be able to select one of the codelist values.
 This plugin is in charge of inserting and manipulating structures, for inserting the structures you will find the buttons on the insert menu of the right sidebar, for example if you are in besluit mode you will only have a button that says `Insert article`, if you are in regulatory statement mode you will be able to insert titles, chapters, sections...
 After inserting a structure you will be presented with a card, where you can move up and down the structure or delete it. For deleting you have 2 options, deleting just the structure (if possible) trying to upwrap the content or deleting the structure with its content.
 
-Note that all ofthese buttons can be disabled if the action is not possible.
+Note that all of these buttons can be disabled if the action is not possible.
+
 ![article structure card](https://imgur.com/2zkbNw3.png)
 
 ### Table of Contents
