@@ -47,7 +47,6 @@ window.addEventListener('load', function () {
     const editorContainer = document.getElementById('my-editor');
     const editorElement =
     editorContainer.getElementsByClassName('notule-editor')[0];
-    console.log(editorElement);
     const arrayOfPluginNames = ['citation', 'rdfa-date'];
     const userConfigObject = {}
     editorElement.initEditor(arrayOfPluginNames, userConfigObject);
