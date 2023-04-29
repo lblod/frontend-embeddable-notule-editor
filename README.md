@@ -116,7 +116,10 @@ It provides the following methods:
 - activeEditorState: the state instance of the active editor. This is usually the same as the mainEditorState, except when inside a nested instance (like in a variable field)
 for typical use, the mainEditorState is the one you will most likely need
 
-- `getView`: used to request the main editor view (or an embedded view if active).
+- mainEditorView: the [view](https://prosemirror.net/docs/ref/#view.EditorView) instance of the main editor
+
+- activeEditorView: the view instance of the active editor. (see above for the distinction between the main and active editor)
+
 - `setEmbeddedView(view: RdfaEditorView)`: activate a specific embedded view.
 - `clearEmbeddedView`: deactive the current embedded view.
 
