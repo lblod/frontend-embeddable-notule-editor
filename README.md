@@ -108,7 +108,7 @@ The rdfa editor uses [the prosemirror toolkit](https://prosemirror.net/) as a ba
 It provides the following methods:
 - `focus()`: method which allows one to focus the main editor view
 - `setHtmlContent(content: string)`: sets the content of the main editor.
-- `doCommand(command: Command, includeEmbeddedView = false)`: executes a Prosemirror command (https://prosemirror.net/docs/guide/#commands) on the main editor, or when active an embedded editor instance.
+- `doCommand(command: Command, { view = this.activeEditorView } = {})`: executes a Prosemirror command (https://prosemirror.net/docs/guide/#commands) on the main view. A different view can be provided, which is mainly used internally to control nested editor instances (e.g. for the implementation of the variables)
 - `checkCommand(command: Command, includeEmbeddedView = false)`: checks whether a Prosemirror command may be executed.
 - `isMarkActive(mark: MarkType, includeEmbeddedView = false)`: checks whether a mark is currently active.
 - `withTransaction(callback: (tr: Transaction) => Transaction | null, includeEmbeddedView = false)`: method which allows you to apply a transaction on the main view (or currently active embedded view). When you want to apply the transaction, the callback should return a transaction object.
