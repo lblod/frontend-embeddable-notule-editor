@@ -79,7 +79,7 @@ const arrayOfPluginNames = ['citation', 'rdfa-date'];
 const userConfigObject = {}
 editorElement.initEditor(arrayOfPluginNames, userConfigObject);
 ```
-After finding the editor we just have to create an array with the names of the plugins we want to use and an object with custom configuration if needed (See [configuring the editor](#configuring-the-editor) for more info about plugin names and configuration options) and initialize the editor with the `initEditor` function.
+After finding the editor we create an array with the names of the plugins we want to use and an object with custom configuration if needed (See [configuring the editor](#configuring-the-editor) for more info about plugin names and configuration options). Finally, we initialize the editor with the `initEditor` function.
 
 Once the editor is initialized, you can get the relevant document node and set its content. You can play with this by opening the developer console and executing the following, or use the following code in another script:
 
