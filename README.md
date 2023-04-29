@@ -249,7 +249,7 @@ date: {
 ```
 This block configures the date plugin, first the placeholder block specifies 2 attributes `insertDate` and `insertDateTime` in the default config we use `intl` to correctly set the string to the language of the user, for example the corresponding strings in english are `Insert date` and `Insert date and time`.
 Then we define the formats offered to the user, each format has 4 attributes:
-- label: This is the label to be shown to the user on the card, is an optional property, if no label is specified the dateFormat and dateTimeFormat will be used as labels.
+- label: This is the label to be shown to the user on the card. It is an optional property, if no label is specified, the formats themselves will be used as labels, e.g.: `dd/MM/yyyy`
 - key: A unique key to identify the format, if the key is not unique it might cause problems.
 - dateFormat: The format to use when the user is inserting a date.
 - dateTimeFormat: The format to use when the user is inserting a date with time information.
