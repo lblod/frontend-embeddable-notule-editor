@@ -343,6 +343,8 @@ If this condition is met you will find a button called `Voeg mobiliteitsmaatrege
 
 ![roadsign regulation modal](https://i.imgur.com/z7My8lm.png)
 
+The data for this plugin is pulled from [the roadsign registry](https://register.mobiliteit.vlaanderen.be), specifically using the [public facing sparql endpoint](https://register.mobiliteit.vlaanderen.be/sparql). This data is maintained by experts at [MOW Vlaanderen](https://www.vlaanderen.be/departement-mobiliteit-en-openbare-werken)
+
 ### Variable
 This plugin allows you to insert variables in the document, a variable is a value to be filled by another user, ideally you will have 2 separate instances of the editor, the first one will enable this plugin and the other will enable the template-variable plugin.
 In order to insert a variable you will need to use the insert variable card.
