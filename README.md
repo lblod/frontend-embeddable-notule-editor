@@ -66,7 +66,7 @@ These lines create the app that will be in charge of rendering our editor
 ```javascript
 App.visit('/', { rootElement: '#my-editor' })
 ```
-Then we visit the main route of the application and render inside our root element, that in this case it will be the HTML div with id `my-editor`, this returns a Promise, that we can await or chain a `.then` as we do in the example code. After this promise is resolved our editor will be rendered so we can start interacting with it.
+Then we visit the main route of the application and render inside our root element, which in this case will be the HTML div with id `my-editor`. This returns a Promise, which we can await or chain with `.then` as we do in the example code. After this promise is resolved, our editor will be rendered so we can start interacting with it.
 
 ```javascript
 const editorContainer = document.getElementById('my-editor');
