@@ -51,6 +51,7 @@ window.addEventListener('load', function () {
     const userConfigObject = {}
     editorElement.initEditor(arrayOfPluginNames, userConfigObject);
   });
+})
 ```
 
 Let's break down this code, the entire snippet is executed inside a load listener, that will only trigger when the document has loaded.
@@ -203,6 +204,7 @@ We provide the following defaults in case you enable a plugin and don't provide 
   variable: {
     type: 'ranges',
     activeInRanges: (state) => [[0, state.doc.content.size]],
+    defaultEndpoint: 'https://dev.roadsigns.lblod.info/sparql',
   },
   tableOfContents: [
     {
@@ -263,9 +265,11 @@ citation: {
 variable: {
   type: 'ranges',
   activeInRanges: (state) => [[0, state.doc.content.size]],
+  defaultEndpoint: 'https://dev.roadsigns.lblod.info/sparql',
 },
 ```
 This block configures both the citation and the variable plugin in the same way, it basically set the configuration type as `ranges` and set the active range of the plugin to trigger in the entire document, this is a very basic configuration, to see how to specify a different trigger zone or how to define custom variables check the docs of the [citation](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#citaten-plugin) and the [variable](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#insert-variable-plugin) plugins.
+You can specify the endpoint where the codelists are fetched with the defaultEndpoint attribute in the variable plugin configuration.
 
 ```javascript
 tableOfContents: [
