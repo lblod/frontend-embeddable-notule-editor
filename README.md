@@ -250,7 +250,7 @@ date: {
   allowCustomFormat: true,
 },
 ```
-This block configures the date plugin, first the placeholder block specifies 2 attributes `insertDate` and `insertDateTime` in the default config we use `intl` to correctly set the string to the language of the user, for example the corresponding strings in english are `Insert date` and `Insert date and time`.
+This block configures the date plugin, first the placeholder block specifies 2 attributes `insertDate` and `insertDateTime`. In the default config we use the ember internationalization mechanism to correctly set the string to either dutch or English, depending on the browser configuration of the user. The corresponding strings in English are `Insert date` and `Insert date and time`. If you wish to provide custom values here, you have to manage any i18n yourself.
 Then we define the formats offered to the user, each format has 4 attributes:
 - label: This is the label to be shown to the user on the card. It is an optional property, if no label is specified, the formats themselves will be used as labels, e.g.: `dd/MM/yyyy`
 - key: A unique key to identify the format, if the key is not unique it might cause problems.
