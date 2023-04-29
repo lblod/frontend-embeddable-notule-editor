@@ -122,7 +122,6 @@ for typical use, the mainEditorState is the one you will most likely need
 - `clearEmbeddedView`: deactive the current embedded view.
 
 Additionally, a controller provides the following attributes:
-- `externalContextStore`: provides an instance of `ProseStore` describing the RDFa around the editor element.
 - `datastore`: provides an instance of `ProseStore` describing the RDFa inside the editor element.
 - `schema`: provides the schema of the main editor.
 - `state`: provides the current state (see https://prosemirror.net/docs/guide/#state) of the main editor.
