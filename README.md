@@ -120,7 +120,7 @@ for typical use, the mainEditorState is the one you will most likely need
 
 - activeEditorView: the view instance of the active editor. (see above for the distinction between the main and active editor)
 
-- `setEmbeddedView(view: RdfaEditorView)`: activate a specific embedded view.
+- `setActiveView(view: RdfaEditorView)`: activate a specific view.
 - `clearEmbeddedView`: deactive the current embedded view.
 
 Additionally, a controller provides the following attributes:
