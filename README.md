@@ -364,7 +364,7 @@ Using this card you will be able to select one of the codelist values.
 This plugin is in charge of inserting and manipulating structures. You will find buttons for this in the insert menu of the right sidebar. If you are in "besluit" mode (see above) you can only insert articles, if you are in regulatory statement mode you will be able to insert titles, chapters, sections...
 After inserting a structure you will be presented with a card, where you can move the structure up and down or delete it. For deleting you have 2 options, deleting just the structure (if possible), which tries to unwrap the content, or deleting the structure with its content.
 
-Note that all of these buttons can be disabled if the action is not possible.
+Note that all of these buttons will be disabled if the action is not possible.
 
 ![article structure card](https://imgur.com/2zkbNw3.png)
 
