@@ -123,7 +123,6 @@ for typical use, the mainEditorState is the one you will most likely need
 - `setActiveView(view: RdfaEditorView)`: activate a specific view.
 - `clearEmbeddedView`: deactive the current embedded view.
 
-Additionally, a controller provides the following attributes:
 
 
 ## Building the sources
