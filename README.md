@@ -122,7 +122,6 @@ for typical use, the mainEditorState is the one you will most likely need
 - `clearEmbeddedView`: deactive the current embedded view.
 
 Additionally, a controller provides the following attributes:
-- `view`: provides the main editor view (see https://prosemirror.net/docs/guide/#view).
 
 
 ## Building the sources
