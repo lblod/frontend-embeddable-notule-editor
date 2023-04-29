@@ -113,7 +113,10 @@ It provides the following methods:
 - `checkCommand(command: Command, includeEmbeddedView = false)`: checks whether a Prosemirror command may be executed.
 - `isMarkActive(mark: MarkType, includeEmbeddedView = false)`: checks whether a mark is currently active.
 - `withTransaction(callback: (tr: Transaction) => Transaction | null, includeEmbeddedView = false)`: method which allows you to apply a transaction on the main view (or currently active embedded view). When you want to apply the transaction, the callback should return a transaction object.
-- `getState(includeEmbeddedView = false)`: used to request the current state of the main editor view (or an embedded view if active).
+- mainEditorState: the [state](https://prosemirror.net/docs/ref/#state.Editor_State) instance of the main editor
+- activeEditorState: the state instance of the active editor. This is usually the same as the mainEditorState, except when inside a nested instance (like in a variable field)
+for typical use, the mainEditorState is the one you will most likely need
+
 - `getView`: used to request the main editor view (or an embedded view if active).
 - `setEmbeddedView(view: RdfaEditorView)`: activate a specific embedded view.
 - `clearEmbeddedView`: deactive the current embedded view.
