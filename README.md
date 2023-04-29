@@ -283,7 +283,10 @@ articleStructure: {
   mode: 'besluit',
 }
 ```
-As said in the above section the articleStructure plugin has been simplified to be basically a toggle between 2 modes, you can select if you want the `mode: 'besluit'` that basically includes the besluit_article structure, or the `mode: 'regulatoryStatement'` that includes all the other structures like title, chapter, section, subsection, article ...
+The articleStructure plugin has 2 modes:
+
+- 'besluit'`: for manipulating articles in decisions
+- 'regulatoryStatement'`: for manipulating chapters, sections, etc in regulatory statements.
 
 ### Enabling/disabling the environment banner
 The environment banner is a visual indication of the environment you are currently using and which versions of embeddable, the editor and editor-plugins are in use.
