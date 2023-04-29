@@ -104,7 +104,7 @@ For a complete version of this example, checkout this file: [public/test.html](p
 
 ## Prosemirror
 
-The rdfa editor uses prosemirror as a base, after the `editorElement.initEditor()` function is called you will have access to the editor controller with `editorElement.controller` this is an instance of the `ProseController` class fo the [ember-rdfa-editor](https://github.com/lblod/ember-rdfa-editor)
+The rdfa editor uses [the prosemirror toolkit](https://prosemirror.net/) as a base. After the `editorElement.initEditor()` function is called you will have access to the editor controller with `editorElement.controller`. This is an instance of the [SayController](https://github.com/lblod/ember-rdfa-editor/blob/d4472d2e237256d30333cfcc20ce6eea7db241f2/addon/core/say-controller.ts) class of the [ember-rdfa-editor](https://github.com/lblod/ember-rdfa-editor)
 It provides the following methods:
 - `toggleMark(name: string, includeEmbeddedView = false)`: method which allows to enable/disable a specific mark on the current selection. Expects the name of the mark to toggle and whether the command should be applied on an embedded editor view if such a view is active.
 - `focus(includeEmbeddedView = false)`: method which allows one to focus the main editor view (or an embedded view, if such a view is active).
