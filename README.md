@@ -377,7 +377,9 @@ This plugin provides a toggle in the top bar that says `Show formatting marks`, 
 ![document with formatting annotations](https://imgur.com/KTNxuBW.png)
 
 ### Rdfa Blocks Toggle
-This plugin provides a toggle in the top bar that says `Show annotations`, when you click on this toggle the styling will change to show all the rdfa information contained in the document, this plugin is useful if you want to check for errors in your rdfa structure or just look to hidden information.
+This plugin provides a toggle in the top bar that says `Show annotations`, when you click on this toggle the styling will change to show all the rdfa information contained in the document. This plugin is useful if you want to check for errors in the rdfa structure, or simply have a look at what data the editor is generating behind the scenes.
+
+It is very much a work in progress visualization, meant for expert users.
 
 ![document with rdfa blocks visible](https://imgur.com/Asdu2aN.png)
 
