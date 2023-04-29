@@ -110,7 +110,7 @@ It provides the following methods:
 - `setHtmlContent(content: string)`: sets the content of the main editor.
 - `doCommand(command: Command, { view = this.activeEditorView } = {})`: executes a Prosemirror command (https://prosemirror.net/docs/guide/#commands) on the main view. A different view can be provided, which is mainly used internally to control nested editor instances (e.g. for the implementation of the variables)
 - `checkCommand(command: Command, includeEmbeddedView = false)`: checks whether a Prosemirror command may be executed.
-- `isMarkActive(mark: MarkType, includeEmbeddedView = false)`: checks whether a mark is currently active.
+- `isMarkActive(mark: MarkType)`: checks whether a mark is currently active. This is currently of not much use in this package, since we do not expose the MarkType interface yet. (But for the curious, this is what the toolbar buttons use to update their active state)
 - `withTransaction(callback: (tr: Transaction) => Transaction | null, includeEmbeddedView = false)`: method which allows you to apply a transaction on the main view (or currently active embedded view). When you want to apply the transaction, the callback should return a transaction object.
 - mainEditorState: the [state](https://prosemirror.net/docs/ref/#state.Editor_State) instance of the main editor
 - activeEditorState: the state instance of the active editor. This is usually the same as the mainEditorState, except when inside a nested instance (like in a variable field)
