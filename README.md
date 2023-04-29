@@ -325,7 +325,7 @@ The other way of triggering the plugin is to write one of the trigger phrases de
 * **ministerieel besluit** [words to search for]
 * **genummerd besluit** [words to search for]
 
-After writting this a little card will appear on the right that you can expand to the big modal.
+After writing this a little card will appear on the right which you can expand to the big modal.
 
 ![citation plugin](https://imgur.com/oerd9rV.png)
 
