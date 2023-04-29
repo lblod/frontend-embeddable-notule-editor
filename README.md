@@ -72,7 +72,7 @@ Then we visit the main route of the application and render inside our root eleme
 const editorContainer = document.getElementById('my-editor');
 const editorElement = editorContainer.getElementsByClassName('notule-editor')[0];
 ```
-After rendering the editor we have to find the editorElement that we will do with the previous code, basically we get the editorContainer where we rendered our app and then find inside the editor div that has the `notule-editor` class.
+After rendering the editor we have to find the editorElement, which we  do with the above code. We get the editorContainer in which we rendered our app, and then find the editor div that has the `notule-editor` class.
 
 ```javascript
 const arrayOfPluginNames = ['citation', 'rdfa-date'];
