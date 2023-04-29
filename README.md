@@ -276,7 +276,7 @@ tableOfContents: [
   },
 ],
 ```
-This block configures the table of contents plugin, it just specifies the nodeHierarchy that the node has to follow. This can be configured with your custom nodes or changing the order of the default ones if you want.
+This block configures the table of contents plugin, it specifies the nodeHierarchy that the node has to follow. At the moment, we ask not to change this configuration while we iron out the kinks in the public interface for this library. Essentially this relates to the [prosemirror schema](https://prosemirror.net/docs/guide/#schema), which is not yet configurable in this package.
 
 ```javascript
 articleStructure: {
