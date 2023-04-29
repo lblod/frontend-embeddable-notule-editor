@@ -108,6 +108,7 @@ The rdfa editor uses [the prosemirror toolkit](https://prosemirror.net/) as a ba
 It provides the following methods:
 - `focus()`: method which allows one to focus the main editor view
 - `setHtmlContent(content: string)`: sets the content of the main editor.
+- htmlContent: getter property containing the "serialized" html content of the editor. This is essentially the raw content without all the plugin bells and whistles, suitable for storing in a database. It can then be loaded with the abovementioned `setHtmlContent`
 - `doCommand(command: Command, { view = this.activeEditorView } = {})`: executes a Prosemirror command (https://prosemirror.net/docs/guide/#commands) on the main view. A different view can be provided, which is mainly used internally to control nested editor instances (e.g. for the implementation of the variables)
 - `checkCommand(command: Command, { view = this.activeEditorView } = {})`: checks whether a Prosemirror command may be executed.
 - `isMarkActive(mark: MarkType)`: checks whether a mark is currently active. This is currently of not much use in this package, since we do not expose the MarkType interface yet. (But for the curious, this is what the toolbar buttons use to update their active state)
