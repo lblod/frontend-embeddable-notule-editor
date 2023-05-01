@@ -376,7 +376,7 @@ Note that all of these buttons will be disabled if the action is not possible.
 ![article structure card](https://imgur.com/2zkbNw3.png)
 
 ### Table of Contents
-This plugin provides a toggle in the top bar that says `Show Table of Contents` if you click this toggle the table of contents will appear, take into account that the table of contents works with the regulatory statement mode of the article structure by default but this can be modified.
+This plugin provides a toggle in the top bar that says `Show Table of Contents`. If you click this toggle the table of contents will appear. Take into account that the table of contents works with the regulatory statement mode of the article structure by default but this can be modified. At this time, we have not settled on a clean interface for this. It is recommended to open an issue on this repo should you wish to use the ToC plugin in a different situation, so we can assist.
 
 ### Formatting Toggle
 This plugin provides a toggle in the top bar that says `Show formatting marks`, after this toggle is active all the formatting marks of the document such as break lines, paragraphs... will be visible.
