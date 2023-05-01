@@ -2,6 +2,30 @@
 
 This application allows you to embed the RDFa editor in other applications without integrating with EmberJS directly. It will behave like any other HTML editor.
 
+## Building the sources
+
+⚠️ At the time of writing, we do not publish a prebuild package yet. We are working to rectify this as soon as possible ⚠️
+
+In order to build the JavaScript and CSS sources of this repository you will need `ember-cli` installed (more info at section *Development of frontend-embeddable-notule-editor* below), then execute the following:
+
+```bash
+git clone https://github.com/lblod/frontend-embeddable-notule-editor.git
+cd frontend-embeddable-notule-editor
+npm install
+ember build -prod
+```
+
+In the 'dist' folder structure, two CSS files and three JavaScript files will have been generated. These are the files to use, as demonstrated in the example above. Note that the fingerprints of your files may vary.
+
+```bash
+dist
+└── assets
+    ├── frontend-embeddable-notule-editor-app.js
+    ├── frontend-embeddable-notule-editor.css
+    ├── frontend-embeddable-notule-editor.js
+    ├── vendor.css
+    └── vendor.js
+```
 ## Target usage
 
 The idea is that you can have multiple HTML tags in which you can initialize an editor. We'll explain how it works and the process can be repeated if multiple editors are required. We need some HTML structure to start with, and then set-up the editor when everything has finished loading and rendering. We can also initialize the editor with some content or set it later via an event. Use something like the following HTML snippet as a base. *Note that the order of the JavaScript files matters.*
@@ -126,28 +150,6 @@ for typical use, the mainEditorState is the one you will most likely need
 
 
 
-## Building the sources
-
-In order to build the JavaScript and CSS sources of this repository you will need `ember-cli` installed (more info at section *Development of frontend-embeddable-notule-editor* below), then execute the following:
-
-```bash
-git clone https://github.com/lblod/frontend-embeddable-notule-editor.git
-cd frontend-embeddable-notule-editor
-npm install
-ember build -prod
-```
-
-In the 'dist' folder structure, two CSS files and three JavaScript files will have been generated. These are the files to use, as demonstrated in the example above. Note that the fingerprints of your files may vary.
-
-```bash
-dist
-└── assets
-    ├── frontend-embeddable-notule-editor-app.js
-    ├── frontend-embeddable-notule-editor.css
-    ├── frontend-embeddable-notule-editor.js
-    ├── vendor.css
-    └── vendor.js
-```
 
 ## Configuring the editor
 
