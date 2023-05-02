@@ -9,6 +9,19 @@
 
 
 
+
+## 1.0.2 (2023-05-02)
+
+#### :rocket: Enhancement
+* [#88](https://github.com/lblod/frontend-embeddable-notule-editor/pull/88) Feature/improve docs and expose controller ([@lagartoverde](https://github.com/lagartoverde))
+
+#### :house: Internal
+* [#88](https://github.com/lblod/frontend-embeddable-notule-editor/pull/88) Feature/improve docs and expose controller ([@lagartoverde](https://github.com/lagartoverde))
+
+#### Committers: 1
+- Oscar Rodriguez Villalobos ([@lagartoverde](https://github.com/lagartoverde))
+
+
 ## 1.0.1 (2023-04-12)
 
 #### :rocket: Enhancement
