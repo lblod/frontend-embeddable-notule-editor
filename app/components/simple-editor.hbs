@@ -1,9 +1,9 @@
 <div id="ember-appuniversum-wormhole"></div>
-<div id="ember-basic-dropdown-wormhole"></div>
 {{#if this.showEnvironmentBanner}}
 <EnvironmentBanner @environmentName={{this.environment}} @applicationName='Embeddable Notule Editor'/>
 {{/if}}
 <div {{did-insert this.insertedInDom}} class="notule-editor">
+  <div id="ember-basic-dropdown-wormhole"></div>
   {{#if this.initCompleted}}
     <EditorContainer
       @editorOptions={{hash

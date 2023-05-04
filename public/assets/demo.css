@@ -12,7 +12,6 @@ body {
 }
 
 .demo-content {
-  position: relative;
   height: 100%;
   overflow: hidden;
   width: 100%;
@@ -20,4 +19,9 @@ body {
 
 .notule-editor {
   height: 100%;
+}
+
+
+.notule-editor #ember-basic-dropdown-wormhole {
+  position: static;
 }
