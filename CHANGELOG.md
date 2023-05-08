@@ -10,6 +10,17 @@
 
 
 
+
+## 1.0.2-vendor (2023-05-08)
+
+#### :bug: Bug Fix
+* [#91](https://github.com/lblod/frontend-embeddable-notule-editor/pull/91) Solved dropdown problems ([@lagartoverde](https://github.com/lagartoverde))
+
+#### Committers: 2
+- Niels V ([@nvdk](https://github.com/nvdk))
+- Oscar Rodriguez Villalobos ([@lagartoverde](https://github.com/lagartoverde))
+
+
 ## 1.0.2 (2023-05-02)
 
 #### :rocket: Enhancement
