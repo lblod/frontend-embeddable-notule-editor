@@ -11,6 +11,10 @@
 
 
 
+## 1.0.2-vendor.2 (2023-05-08)
+hopefully fix docker config
+
+
 ## 1.0.2-vendor (2023-05-08)
 
 #### :bug: Bug Fix
