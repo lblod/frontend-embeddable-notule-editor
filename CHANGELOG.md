@@ -11,6 +11,10 @@
 
 
 
+## 1.0.2-vendor.6 (2023-05-09)
+add svgxuse workaround
+
+
 ## 1.0.2-vendor.5 (2023-05-09)
 remove cors config hack
 
