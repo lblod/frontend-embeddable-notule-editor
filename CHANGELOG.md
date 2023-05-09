@@ -11,6 +11,10 @@
 
 
 
+## 1.0.2-vendor.4 (2023-05-09)
+hopefully fix copy directive
+
+
 ## 1.0.2-vendor.3 (2023-05-08)
 revert CI back to drone
 
