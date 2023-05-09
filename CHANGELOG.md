@@ -11,6 +11,10 @@
 
 
 
+## 1.0.2-vendor.5 (2023-05-09)
+remove cors config hack
+
+
 ## 1.0.2-vendor.4 (2023-05-09)
 hopefully fix copy directive
 
