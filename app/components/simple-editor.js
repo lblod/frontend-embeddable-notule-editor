@@ -280,11 +280,24 @@ export default class SimpleEditorComponent extends Component {
     }
     if (activePlugins.includes('roadsign-regulation')) {
       nodes.roadsign_regulation = roadsign_regulation;
+      config.roadsignRegulation = userConfig.roadsignRegulation ?? {
+        endpoint: 'https://dev.roadsigns.lblod.info/sparql',
+        imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
+      };
     }
     if (activePlugins.includes('variable')) {
       nodes.variable = variable;
       config.variable = userConfig.variable ?? {
         defaultEndpoint: 'https://dev.roadsigns.lblod.info/sparql',
+      };
+    }
+    if (activePlugins.includes('template-variable')) {
+      config.templateVariable = userConfig.templateVariable ?? {
+        endpoint: 'https://dev.roadsigns.lblod.info/sparql',
+        zonalLocationCodelistUri:
+          'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
+        nonZonalLocationCodelistUri:
+          'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
       };
     }
     if (activePlugins.includes('table-of-contents')) {

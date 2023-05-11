@@ -240,6 +240,17 @@ We provide the following defaults in case you enable a plugin and don't provide 
   ],
   articleStructure: {
     mode: 'besluit',
+  },
+  roadsignRegulation: {
+    endpoint: 'https://dev.roadsigns.lblod.info/sparql',
+    imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
+  },
+  templateVariable: {
+    endpoint: 'https://dev.roadsigns.lblod.info/sparql',
+    zonalLocationCodelistUri:
+      'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
+    nonZonalLocationCodelistUri:
+      'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
   }
 }
 ```
@@ -317,6 +328,26 @@ The articleStructure plugin has 2 modes:
 
 - 'besluit'`: for manipulating articles in decisions
 - 'regulatoryStatement'`: for manipulating chapters, sections, etc in regulatory statements.
+
+```javascript
+roadsignRegulation: {
+  endpoint: 'https://dev.roadsigns.lblod.info/sparql',
+  imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
+}
+```
+This plugin exposes 2 variables to configure, the first one specifies the endpoint to fetch the roadsigns, and the second one is a way to fix the images that don't specify a base url, in this case `https://register.mobiliteit.vlaanderen.be/` will be used.
+
+```
+templateVariable: {
+  endpoint: 'https://dev.roadsigns.lblod.info/sparql',
+  zonalLocationCodelistUri:
+    'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
+  nonZonalLocationCodelistUri:
+    'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
+}
+```
+
+The template variable plugin needs to specify a endpoint to fetch the codelist variables that don't specify a source. Also you have 2 configurable codelist uris, one for the zonal locations and other for the non zonal.
 
 ### Enabling/disabling the environment banner
 The environment banner is a visual indication of the environment you are currently using and which versions of embeddable, the editor and editor-plugins are in use.
