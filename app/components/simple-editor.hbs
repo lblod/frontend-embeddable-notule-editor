@@ -118,6 +118,7 @@
                 <CitationPlugin::CitationCard 
                   @controller={{this.controller}} 
                   @plugin={{this.citationPlugin}}
+                  @config={{this.config.citation}}
                 />
               {{/if}}
               {{#if (array-includes this.activePlugins 'rdfa-date')}}

@@ -224,6 +224,7 @@ We provide the following defaults in case you enable a plugin and don't provide 
   citation: {
     type: 'ranges',
     activeInRanges: (state) => [[0, state.doc.content.size]],
+    endpoint: '/codex/sparql',
   },
   variable: {
     type: 'ranges',
@@ -296,6 +297,7 @@ For more information about date formats check the documentation of the underlyin
 citation: {
   type: 'ranges',
   activeInRanges: (state) => [[0, state.doc.content.size]],
+  endpoint: '/codex/sparql',
 },
 variable: {
   type: 'ranges',
