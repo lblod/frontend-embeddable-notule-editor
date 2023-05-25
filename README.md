@@ -14,8 +14,8 @@ not be saved.
 The prebuilt bundles are currently hosted on `https://embeddable.gelinkt-notuleren.lblod.info/`.
 For information on how to include them in your html file, see the [target usage](#target-usage) section below.
 This is considered a test environment and is subject to change, so it is not recommended to use it in production.
-A stable hosted package solution is being worked on in the meantime.
 
+For production, use the prebuilt packages in the [Github releases](https://github.com/lblod/frontend-embeddable-notule-editor/releases/). At this point `vendor.css` is empty and is not added to the release. It can be ignored.
 
 ⚠️When using the prebuilt sources, the citation plugin will not yet work. We are working on resolving this ASAP.⚠️
 
