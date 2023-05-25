@@ -3,6 +3,7 @@ pipeline:
     image: danlynn/ember-cli:4.8.0
     commands:
       - npm ci
+      - ember build -prod
   release:
     image: plugins/npm
     settings:
@@ -15,6 +16,18 @@ pipeline:
       tags: "${CI_COMMIT_TAG##v}"
       secrets: [ docker_username, docker_password ]
       purge: true
+  publish:
+    image: plugins/github-release
+    settings:
+      api-key: 
+        from_secret: github_api_key
+      files: 
+        - dist/assets/frontend-embeddable-notule-editor-app.js 
+        - dist/assets/frontend-embeddable-notule-editor.css 
+        - dist/assets/frontend-embeddable-notule-editor.js
+        - dist/assets/vendor.js
+        # vendor.css is empty as this point. Github releases does not accept empty files.
+        #- dist/assets/vendor.css
 when:
   event: tag
   tag: v*
