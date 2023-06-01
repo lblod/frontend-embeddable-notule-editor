@@ -258,6 +258,7 @@ export default class SimpleEditorComponent extends Component {
         config.citation = {
           type: 'ranges',
           activeInRanges: (state) => [[0, state.doc.content.size]],
+          endpoint: '/codex/sparql',
         };
       }
       const citationPluginVariable = citationPlugin(config.citation);
