@@ -21,6 +21,9 @@ module.exports = function (defaults) {
         ],
       },
     },
+    '@appuniversum/ember-appuniversum': {
+      disableWormholeElement: true,
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
