@@ -2,9 +2,24 @@
 
 This application allows you to embed the RDFa editor in other applications without integrating with EmberJS directly. It will behave like any other HTML editor.
 
-## Building the sources
+## Live demo
+A [live demo](https://embeddable.gelinkt-notuleren.lblod.info) is available for easy testing. 
+This environment is NOT suited for any production use, as it might change without notice. Any content entered here will 
+not be saved.
 
-⚠️ At the time of writing, we do not publish a prebuild package yet. We are working to rectify this as soon as possible ⚠️
+## Using the embeddable editor in your app
+
+### Using the prebuilt bundles
+
+The prebuilt bundles are currently hosted on `https://embeddable.gelinkt-notuleren.lblod.info/`.
+For information on how to include them in your html file, see the [target usage](#target-usage) section below.
+This is considered a test environment and is subject to change, so it is not recommended to use it in production.
+
+⚠️When using the prebuilt sources, the citation plugin will not yet work. We are working on resolving this ASAP.⚠️
+
+For **production**, use the prebuilt packages in the [Github releases](https://github.com/lblod/frontend-embeddable-notule-editor/releases/). At this point `vendor.css` is empty and is not added to the release. It can be ignored.
+
+### Building the sources yourself
 
 In order to build the JavaScript and CSS sources of this repository you will need `ember-cli` installed (more info at section *Development of frontend-embeddable-notule-editor* below), then execute the following:
 
@@ -26,9 +41,16 @@ dist
     ├── vendor.css
     └── vendor.js
 ```
+
 ## Target usage
 
 The idea is that you can have multiple HTML tags in which you can initialize an editor. We'll explain how it works and the process can be repeated if multiple editors are required. We need some HTML structure to start with, and then set-up the editor when everything has finished loading and rendering. We can also initialize the editor with some content or set it later via an event. Use something like the following HTML snippet as a base. *Note that the order of the JavaScript files matters.*
+
+In this section, we will assume you are using the prebuilt package. If you choose to build and host the bundles yourself,
+simply link the corresponding files to the correct location for your setup.
+
+
+For an interactive example, refer to this [jsfiddle](https://jsfiddle.net/0qd27rmg/).
 
 ```html
 <!DOCTYPE html>
@@ -37,13 +59,13 @@ The idea is that you can have multiple HTML tags in which you can initialize an 
     <title>I have an editor in my document</title>
 
     <!-- Requirements for the style -->
-    <link rel="stylesheet" href="assets/frontend-embeddable-notule-editor.css">
-    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="https://embeddable.gelinkt-notuleren.lblod.info/assets/frontend-embeddable-notule-editor.css">
+    <link rel="stylesheet" href="https://embeddable.gelinkt-notuleren.lblod.info/assets/vendor.css">
 
     <!-- Sources of the editor, THE ORDER MATTERS -->
-    <script src="assets/vendor.js"></script>
-    <script src="assets/frontend-embeddable-notule-editor-app.js"></script>
-    <script src="assets/frontend-embeddable-notule-editor.js"></script>
+    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/vendor.js"></script>
+    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/frontend-embeddable-notule-editor-app.js"></script>
+    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/frontend-embeddable-notule-editor.js"></script>
   </head>
   <body>
     ...
@@ -202,6 +224,7 @@ We provide the following defaults in case you enable a plugin and don't provide 
   citation: {
     type: 'ranges',
     activeInRanges: (state) => [[0, state.doc.content.size]],
+    endpoint: '/codex/sparql',
   },
   variable: {
     type: 'ranges',
@@ -218,6 +241,17 @@ We provide the following defaults in case you enable a plugin and don't provide 
   ],
   articleStructure: {
     mode: 'besluit',
+  },
+  roadsignRegulation: {
+    endpoint: 'https://dev.roadsigns.lblod.info/sparql',
+    imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
+  },
+  templateVariable: {
+    endpoint: 'https://dev.roadsigns.lblod.info/sparql',
+    zonalLocationCodelistUri:
+      'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
+    nonZonalLocationCodelistUri:
+      'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
   }
 }
 ```
@@ -263,6 +297,7 @@ For more information about date formats check the documentation of the underlyin
 citation: {
   type: 'ranges',
   activeInRanges: (state) => [[0, state.doc.content.size]],
+  endpoint: '/codex/sparql',
 },
 variable: {
   type: 'ranges',
@@ -272,6 +307,7 @@ variable: {
 ```
 This block configures both the citation and the variable plugin in the same way, it basically set the configuration type as `ranges` and set the active range of the plugin to trigger in the entire document, this is a very basic configuration, to see how to specify a different trigger zone or how to define custom variables check the docs of the [citation](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#citaten-plugin) and the [variable](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#insert-variable-plugin) plugins.
 You can specify the endpoint where the codelists are fetched with the defaultEndpoint attribute in the variable plugin configuration.
+⚠️When using the prebuilt sources, the citation plugin will not yet work. We are working on resolving this ASAP.⚠️
 
 ```javascript
 tableOfContents: [
@@ -294,6 +330,26 @@ The articleStructure plugin has 2 modes:
 
 - 'besluit'`: for manipulating articles in decisions
 - 'regulatoryStatement'`: for manipulating chapters, sections, etc in regulatory statements.
+
+```javascript
+roadsignRegulation: {
+  endpoint: 'https://dev.roadsigns.lblod.info/sparql',
+  imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
+}
+```
+This plugin exposes 2 variables to configure, the first one specifies the endpoint to fetch the roadsigns, and the second one is a way to fix the images that don't specify a base url, in this case `https://register.mobiliteit.vlaanderen.be/` will be used.
+
+```
+templateVariable: {
+  endpoint: 'https://dev.roadsigns.lblod.info/sparql',
+  zonalLocationCodelistUri:
+    'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
+  nonZonalLocationCodelistUri:
+    'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
+}
+```
+
+The template variable plugin needs to specify a endpoint to fetch the codelist variables that don't specify a source. Also you have 2 configurable codelist uris, one for the zonal locations and other for the non zonal.
 
 ### Enabling/disabling the environment banner
 The environment banner is a visual indication of the environment you are currently using and which versions of embeddable, the editor and editor-plugins are in use.

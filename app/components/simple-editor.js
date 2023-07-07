@@ -54,7 +54,14 @@ import { blockquote } from '@lblod/ember-rdfa-editor/plugins/blockquote';
 import { code_block } from '@lblod/ember-rdfa-editor/plugins/code';
 import { image, imageView } from '@lblod/ember-rdfa-editor/plugins/image';
 import { inline_rdfa } from '@lblod/ember-rdfa-editor/marks';
-import date from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/rdfa-date-plugin/nodes/date';
+import {
+  date,
+  dateView,
+} from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/rdfa-date-plugin/nodes/date';
+import {
+  number,
+  numberView,
+} from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/variable-plugin/number';
 
 import {
   createInvisiblesPlugin,
@@ -258,6 +265,7 @@ export default class SimpleEditorComponent extends Component {
         config.citation = {
           type: 'ranges',
           activeInRanges: (state) => [[0, state.doc.content.size]],
+          endpoint: '/codex/sparql',
         };
       }
       const citationPluginVariable = citationPlugin(config.citation);
@@ -280,11 +288,25 @@ export default class SimpleEditorComponent extends Component {
     }
     if (activePlugins.includes('roadsign-regulation')) {
       nodes.roadsign_regulation = roadsign_regulation;
+      config.roadsignRegulation = userConfig.roadsignRegulation ?? {
+        endpoint: 'https://dev.roadsigns.lblod.info/sparql',
+        imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
+      };
     }
     if (activePlugins.includes('variable')) {
       nodes.variable = variable;
       config.variable = userConfig.variable ?? {
         defaultEndpoint: 'https://dev.roadsigns.lblod.info/sparql',
+      };
+      nodes.number = number;
+    }
+    if (activePlugins.includes('template-variable')) {
+      config.templateVariable = userConfig.templateVariable ?? {
+        endpoint: 'https://dev.roadsigns.lblod.info/sparql',
+        zonalLocationCodelistUri:
+          'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
+        nonZonalLocationCodelistUri:
+          'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
       };
     }
     if (activePlugins.includes('table-of-contents')) {
@@ -307,11 +329,17 @@ export default class SimpleEditorComponent extends Component {
         variable: activePlugins.includes('variable')
           ? variableView(controller)
           : undefined,
+        number: activePlugins.includes('variable')
+          ? numberView(controller)
+          : undefined,
         table_of_contents: activePlugins.includes('table-of-contents')
           ? tableOfContentsView(config.tableOfContents)(controller)
           : undefined,
         link: linkView(this.config.link)(controller),
         image: imageView(controller),
+        date: activePlugins.includes('rdfa-date')
+          ? dateView(this.config.date)(controller)
+          : undefined,
       };
     };
     this.initCompleted = true;
