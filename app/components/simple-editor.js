@@ -54,7 +54,14 @@ import { blockquote } from '@lblod/ember-rdfa-editor/plugins/blockquote';
 import { code_block } from '@lblod/ember-rdfa-editor/plugins/code';
 import { image, imageView } from '@lblod/ember-rdfa-editor/plugins/image';
 import { inline_rdfa } from '@lblod/ember-rdfa-editor/marks';
-import date from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/rdfa-date-plugin/nodes/date';
+import {
+  date,
+  dateView,
+} from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/rdfa-date-plugin/nodes/date';
+import {
+  number,
+  numberView,
+} from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/variable-plugin/number';
 
 import {
   createInvisiblesPlugin,
@@ -291,6 +298,7 @@ export default class SimpleEditorComponent extends Component {
       config.variable = userConfig.variable ?? {
         defaultEndpoint: 'https://dev.roadsigns.lblod.info/sparql',
       };
+      nodes.number = number;
     }
     if (activePlugins.includes('template-variable')) {
       config.templateVariable = userConfig.templateVariable ?? {
@@ -321,11 +329,17 @@ export default class SimpleEditorComponent extends Component {
         variable: activePlugins.includes('variable')
           ? variableView(controller)
           : undefined,
+        number: activePlugins.includes('variable')
+          ? numberView(controller)
+          : undefined,
         table_of_contents: activePlugins.includes('table-of-contents')
           ? tableOfContentsView(config.tableOfContents)(controller)
           : undefined,
         link: linkView(this.config.link)(controller),
         image: imageView(controller),
+        date: activePlugins.includes('rdfa-date')
+          ? dateView(this.config.date)(controller)
+          : undefined,
       };
     };
     this.initCompleted = true;
