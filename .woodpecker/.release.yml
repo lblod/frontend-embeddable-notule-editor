@@ -1,20 +1,11 @@
-pipeline:
-  install:
-    image: danlynn/ember-cli:4.8.0
-    commands:
-      - npm ci
-  release:
-    image: plugins/npm
-    settings:
-      token:
-        from_secret: npm_access_token
+steps:
   push-tagged-build:
     image: plugins/docker
     settings:
       repo: lblod/frontend-embeddable-editor
       tags: "${CI_COMMIT_TAG##v}"
-      secrets: [ docker_username, docker_password ]
       purge: true
+    secrets: [ docker_username, docker_password ]
 when:
   event: tag
-  tag: v*
+  ref: refs/tags/v*
