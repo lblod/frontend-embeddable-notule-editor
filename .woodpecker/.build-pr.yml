@@ -1,0 +1,9 @@
+pipeline:
+  build-pr:
+    image: plugins/docker
+    settings:
+      repo: lblod/frontend-embeddable-editor
+      dry_run: true
+when:
+  event:
+    - pull_request
