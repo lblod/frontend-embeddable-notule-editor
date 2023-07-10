@@ -92,7 +92,7 @@
     "last 2 Edge version"
   ],
   "dependencies": {
-    "ember-intl": "^5.7.2",
+    "ember-intl": "^6.0.0",
     "ember-unique-id-helper-polyfill": "^1.2.2",
     "svgxuse": "^1.2.6"
   }
