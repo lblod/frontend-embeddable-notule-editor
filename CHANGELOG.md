@@ -12,6 +12,15 @@
 
 
 
+
+## 1.2.0 (2023-07-10)
+
+#### :rocket: Enhancement
+* [#123](https://github.com/lblod/frontend-embeddable-notule-editor/pull/123) Get citation-plugin working in prebuilt sources ([@elpoelma](https://github.com/elpoelma))
+
+#### Committers: 1
+- Elena Poelman ([@elpoelma](https://github.com/elpoelma))
+
 ## 1.1.0 (2023-07-10)
 
 #### :rocket: Enhancement
