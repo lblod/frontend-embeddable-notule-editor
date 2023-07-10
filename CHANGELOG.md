@@ -11,6 +11,32 @@
 
 
 
+
+## 1.1.0 (2023-07-10)
+
+#### :rocket: Enhancement
+* [#93](https://github.com/lblod/frontend-embeddable-notule-editor/pull/93) Feature/new configurable plugins ([@lagartoverde](https://github.com/lagartoverde))
+
+#### :house: Internal
+* [#122](https://github.com/lblod/frontend-embeddable-notule-editor/pull/122) Add link to article-structure-plugin docs in README ([@elpoelma](https://github.com/elpoelma))
+* [#121](https://github.com/lblod/frontend-embeddable-notule-editor/pull/121) Add link to decision-plugin docs in README ([@elpoelma](https://github.com/elpoelma))
+* [#120](https://github.com/lblod/frontend-embeddable-notule-editor/pull/120) Clarify readme to indicate which plugin each config block configures ([@elpoelma](https://github.com/elpoelma))
+* [#114](https://github.com/lblod/frontend-embeddable-notule-editor/pull/114) Bump engine.io and socket.io ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#113](https://github.com/lblod/frontend-embeddable-notule-editor/pull/113) Use au-modal-container component ([@elpoelma](https://github.com/elpoelma))
+* [#112](https://github.com/lblod/frontend-embeddable-notule-editor/pull/112) Bump eslint-plugin-qunit from 7.3.1 to 8.0.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#73](https://github.com/lblod/frontend-embeddable-notule-editor/pull/73) Bump @xmldom/xmldom from 0.8.3 to 0.8.6 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#109](https://github.com/lblod/frontend-embeddable-notule-editor/pull/109) GN-4411: update editor plugins to 8.4.1 ([@elpoelma](https://github.com/elpoelma))
+* [#71](https://github.com/lblod/frontend-embeddable-notule-editor/pull/71) Bump minimist from 0.2.2 to 0.2.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#108](https://github.com/lblod/frontend-embeddable-notule-editor/pull/108) Update editor to 3.10.0 ([@elpoelma](https://github.com/elpoelma))
+* [#101](https://github.com/lblod/frontend-embeddable-notule-editor/pull/101) Bump socket.io-parser from 4.2.1 to 4.2.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#102](https://github.com/lblod/frontend-embeddable-notule-editor/pull/102) Bump webpack from 5.74.0 to 5.85.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 4
+- Deniss Kozickis ([@dkozickis](https://github.com/dkozickis))
+- Elena Poelman ([@elpoelma](https://github.com/elpoelma))
+- Oscar Rodriguez Villalobos ([@lagartoverde](https://github.com/lagartoverde))
+- [@x-m-el](https://github.com/x-m-el)
+
 ## 1.0.2-vendor.6 (2023-05-09)
 add svgxuse workaround
 
