@@ -15,8 +15,6 @@ The prebuilt bundles are currently hosted on `https://embeddable.gelinkt-notuler
 For information on how to include them in your html file, see the [target usage](#target-usage) section below.
 This is considered a test environment and is subject to change, so it is not recommended to use it in production.
 
-⚠️When using the prebuilt sources, the citation plugin will not yet work. We are working on resolving this ASAP.⚠️
-
 For **production**, use the prebuilt packages in the [Github releases](https://github.com/lblod/frontend-embeddable-notule-editor/releases/). At this point `vendor.css` is empty and is not added to the release. It can be ignored.
 
 ### Building the sources yourself
@@ -307,7 +305,6 @@ variable: {
 ```
 This block configures both the citation and the variable plugin in the same way, it basically set the configuration type as `ranges` and set the active range of the plugin to trigger in the entire document, this is a very basic configuration, to see how to specify a different trigger zone or how to define custom variables check the docs of the [citation](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#citaten-plugin) and the [variable](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#insert-variable-plugin) plugins.
 You can specify the endpoint where the codelists are fetched with the defaultEndpoint attribute in the variable plugin configuration.
-⚠️When using the prebuilt sources, the citation plugin will not yet work. We are working on resolving this ASAP.⚠️
 
 ```javascript
 tableOfContents: [
