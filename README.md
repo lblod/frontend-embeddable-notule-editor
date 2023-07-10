@@ -179,7 +179,7 @@ The editor can be customized to best fit your application. In order to use the e
 
 ### Adding/removing plugins
 Embeddable ships with the following plugins available, for more info on each of them and posible configurations, check the documentation of [lblod/ember-rdfa-editor-lblod-plugins](https://github.com/lblod/ember-rdfa-editor-lblod-plugins):
-* `besluit`: mostly provides the correct nodes for constructing a besluit, it's mostly useful for validation in prosemirror internals.
+* `besluit`: mostly provides the correct nodes for constructing a besluit, it's mostly useful for validation in prosemirror internals. More information about this plugin can be found in the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#decision-plugin).
 * `citation`: recognizes citations and allows inserting an annotation manually, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#citaten-plugin).
 * `rdfa-date`: allow inserting and modifying annoted date and times, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#rdfa-date-plugin).
 * `roadsign-regulation`: allow inserting roadsign regulation, based on the registry managed and provided by MOW, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#roadsign-regulation-plugin).
