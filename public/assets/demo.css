@@ -20,8 +20,3 @@ body {
 .notule-editor {
   height: 100%;
 }
-
-
-.notule-editor #ember-basic-dropdown-wormhole {
-  position: static;
-}
