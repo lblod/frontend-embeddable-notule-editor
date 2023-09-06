@@ -1,9 +1,12 @@
-<div id="ember-appuniversum-wormhole"></div>
+<div id='ember-appuniversum-wormhole'></div>
 {{#if this.showEnvironmentBanner}}
-<EnvironmentBanner @environmentName={{this.environment}} @applicationName='Embeddable Notule Editor'/>
+  <EnvironmentBanner
+    @environmentName={{this.environment}}
+    @applicationName='Embeddable Notule Editor'
+  />
 {{/if}}
-<div {{did-insert this.insertedInDom}} class="notule-editor">
-  <div id="ember-basic-dropdown-wormhole"></div>
+<div {{did-insert this.insertedInDom}} class='notule-editor'>
+  <div id='ember-basic-dropdown-wormhole'></div>
   {{#if this.initCompleted}}
     <EditorContainer
       @editorOptions={{hash
@@ -20,51 +23,69 @@
           <ResponsiveToolbar>
             <:main as |Tb|>
               <Tb.Group>
-                <Plugins::History::Undo @controller={{this.controller}}/>
-                <Plugins::History::Redo @controller={{this.controller}}/>
+                <Plugins::History::Undo @controller={{this.controller}} />
+                <Plugins::History::Redo @controller={{this.controller}} />
               </Tb.Group>
               <Tb.Group>
-                <Plugins::TextStyle::Bold @controller={{this.controller}}/>
-                <Plugins::TextStyle::Italic @controller={{this.controller}}/>
-                <Plugins::TextStyle::Strikethrough @controller={{this.controller}}/>
-                <Plugins::TextStyle::Underline @controller={{this.controller}}/>
-                <Plugins::TextStyle::Subscript @controller={{this.controller}}/>
-                <Plugins::TextStyle::Superscript @controller={{this.controller}}/>
+                <Plugins::TextStyle::Bold @controller={{this.controller}} />
+                <Plugins::TextStyle::Italic @controller={{this.controller}} />
+                <Plugins::TextStyle::Strikethrough
+                  @controller={{this.controller}}
+                />
+                <Plugins::TextStyle::Underline
+                  @controller={{this.controller}}
+                />
+                <Plugins::TextStyle::Subscript
+                  @controller={{this.controller}}
+                />
+                <Plugins::TextStyle::Superscript
+                  @controller={{this.controller}}
+                />
                 <Plugins::TextStyle::Highlight
                   @controller={{this.controller}}
-                  @defaultColor="#FFEA00"
+                  @defaultColor='#FFEA00'
                 />
                 <Plugins::TextStyle::Color
                   @controller={{this.controller}}
-                  @defaultColor="#000000"
+                  @defaultColor='#000000'
                 />
               </Tb.Group>
               <Tb.Group>
-                <Plugins::List::Unordered @controller={{this.controller}}/>
-                <Plugins::List::Ordered @controller={{this.controller}}/>
-                <Plugins::Indentation::IndentationMenu @controller={{this.controller}}/>
+                <Plugins::List::Unordered @controller={{this.controller}} />
+                <Plugins::List::Ordered @controller={{this.controller}} />
+                <Plugins::Indentation::IndentationMenu
+                  @controller={{this.controller}}
+                />
               </Tb.Group>
               <Tb.Group>
-                <Plugins::Link::LinkMenu @controller={{this.controller}}/>
-                <Plugins::Image::InsertMenu @controller={{this.controller}}/>
+                <Plugins::Link::LinkMenu @controller={{this.controller}} />
+                <Plugins::Image::InsertMenu @controller={{this.controller}} />
               </Tb.Group>
               <Tb.Group>
-                <Plugins::Table::TableMenu @controller={{this.controller}}/>
+                <Plugins::Table::TableMenu @controller={{this.controller}} />
               </Tb.Group>
               <Tb.Group>
-                <Plugins::Heading::HeadingMenu @controller={{this.controller}}/>
-              </Tb.Group>            
+                <Plugins::Heading::HeadingMenu
+                  @controller={{this.controller}}
+                />
+              </Tb.Group>
             </:main>
             <:side as |Tb|>
               <Tb.Group>
                 {{#if (array-includes this.activePlugins 'table-of-contents')}}
-                  <TableOfContentsPlugin::ToolbarButton @controller={{this.controller}}/>
+                  <TableOfContentsPlugin::ToolbarButton
+                    @controller={{this.controller}}
+                  />
                 {{/if}}
                 {{#if (array-includes this.activePlugins 'formatting-toggle')}}
-                  <Plugins::Formatting::FormattingToggle @controller={{this.controller}}/>
+                  <Plugins::Formatting::FormattingToggle
+                    @controller={{this.controller}}
+                  />
                 {{/if}}
                 {{#if (array-includes this.activePlugins 'rdfa-blocks-toggle')}}
-                  <Plugins::RdfaBlockRender::RdfaBlocksToggle @controller={{this.controller}}/>
+                  <Plugins::RdfaBlockRender::RdfaBlocksToggle
+                    @controller={{this.controller}}
+                  />
                 {{/if}}
               </Tb.Group>
             </:side>
@@ -76,70 +97,57 @@
           @plugins={{this.plugins}}
           @schema={{this.schema}}
           @nodeViews={{this.nodeViews}}
-          @rdfaEditorInit={{this.handleRdfaEditorInit}}/>
+          @rdfaEditorInit={{this.handleRdfaEditorInit}}
+        />
       </:default>
       <:aside>
         {{#if this.controller}}
           <Sidebar as |Sidebar|>
-              <Sidebar.Collapsible @title='Insert'>
-                {{#if (array-includes this.activePlugins 'article-structure')}}
-                  <ArticleStructurePlugin::ArticleStructureCard 
-                    @controller={{this.controller}}
-                    @options={{this.config.structures}}
-                  />
-                {{/if}}
-                {{#if (array-includes this.activePlugins 'citation')}}
-                  <CitationPlugin::CitationInsert 
-                    @controller={{this.controller}} 
-                    @plugin={{this.citationPlugin}}
-                    @config={{this.config.citation}}
-                  />
-                {{/if}}
-                {{#if (array-includes this.activePlugins 'rdfa-date')}}
-                  <RdfaDatePlugin::Insert 
-                    @controller={{this.controller}}
-                    @options={{this.config.date}}
-                  />
-                {{/if}}
-                {{#if (array-includes this.activePlugins 'roadsign-regulation')}}
-                  <RoadsignRegulationPlugin::RoadsignRegulationCard @controller={{this.controller}} @options={{this.config.roadsignRegulation}}/>
-                {{/if}}
-              </Sidebar.Collapsible>
+            <Sidebar.Collapsible @title='Insert'>
               {{#if (array-includes this.activePlugins 'article-structure')}}
-                <ArticleStructurePlugin::StructureCard 
-                  @controller={{this.controller}} 
+                <ArticleStructurePlugin::ArticleStructureCard
+                  @controller={{this.controller}}
                   @options={{this.config.structures}}
                 />
               {{/if}}
-              {{#if (array-includes this.activePlugins 'besluit')}}
-                <DecisionPlugin::DecisionPluginCard @controller={{this.controller}}/>
-              {{/if}}
               {{#if (array-includes this.activePlugins 'citation')}}
-                <CitationPlugin::CitationCard 
-                  @controller={{this.controller}} 
+                <CitationPlugin::CitationInsert
+                  @controller={{this.controller}}
                   @plugin={{this.citationPlugin}}
                   @config={{this.config.citation}}
                 />
               {{/if}}
               {{#if (array-includes this.activePlugins 'rdfa-date')}}
-                <RdfaDatePlugin::Card 
+                <RdfaDatePlugin::Insert
                   @controller={{this.controller}}
                   @options={{this.config.date}}
                 />
               {{/if}}
-              {{#if (array-includes this.activePlugins 'template-variable')}}
-                <VariablePlugin::TemplateVariableCard @controller={{this.controller}} @options={{this.config.templateVariable}}/>
-              {{/if}}
-              {{#if (array-includes this.activePlugins 'variable')}}
-                <VariablePlugin::InsertVariableCard 
+              {{#if (array-includes this.activePlugins 'roadsign-regulation')}}
+                <RoadsignRegulationPlugin::RoadsignRegulationCard
                   @controller={{this.controller}}
-                  @options={{this.config.variable}}
+                  @options={{this.config.roadsignRegulation}}
                 />
               {{/if}}
+            </Sidebar.Collapsible>
+            {{#if (array-includes this.activePlugins 'article-structure')}}
+              <ArticleStructurePlugin::StructureCard
+                @controller={{this.controller}}
+                @options={{this.config.structures}}
+              />
+            {{/if}}
+            {{#if (array-includes this.activePlugins 'variable')}}
+              {{#if this.config.variable.insert.enable}}
+                <VariablePlugin::InsertVariableCard
+                  @controller={{this.controller}}
+                  @variableTypes={{this.config.variable.insertableVariableTypes}}
+                />
+              {{/if}}
+            {{/if}}
           </Sidebar>
         {{/if}}
       </:aside>
     </EditorContainer>
-  {{/if}}  
+  {{/if}}
 </div>
 {{yield}}

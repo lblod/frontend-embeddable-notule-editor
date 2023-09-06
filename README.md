@@ -181,8 +181,7 @@ Embeddable ships with the following plugins available, for more info on each of 
 * `citation`: recognizes citations and allows inserting an annotation manually, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#citaten-plugin).
 * `rdfa-date`: allow inserting and modifying annoted date and times, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#rdfa-date-plugin).
 * `roadsign-regulation`: allow inserting roadsign regulation, based on the registry managed and provided by MOW, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#roadsign-regulation-plugin).
-* `template-variable`: Related to the roadsign-regulation plugin, allows filling in variables in the road sign regulation templates, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#template-variable-plugin).
-* `variable`: Allows insertion of custom variables to be later filled by the template-variable plugin, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#insert-variable-plugin).
+* `variable`: Allows insertion and filling in of custom variables, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#insert-variable-plugin).
 * `article-structure`: Provides several structures to better manage official documents, like titles, chapters, articles and paragraphs. Allows you to insert, move and delete them in an easy way, it has 2 modes that can be set in the configuration 'besluit' for only being able to add besluit_articles and 'regulatoryStatement' for all the other structures. For more information about this plugin, see the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#article-structure-plugin)
 * `table-of-contents`: Provides a table of contents that allow you to click on it to go to the different sections specified with the article-structure plugin, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#table-of-contents-plugin).
 * `formatting-toggle`: Allows to toggle on and off the formatting marks.
@@ -225,9 +224,19 @@ We provide the following defaults in case you enable a plugin and don't provide 
     endpoint: '/codex/sparql',
   },
   variable: {
-    type: 'ranges',
-    activeInRanges: (state) => [[0, state.doc.content.size]],
-    defaultEndpoint: 'https://dev.roadsigns.lblod.info/sparql',
+    insert: {
+      enable: true,
+      codelistEndpoint: 'https://dev.roadsigns.lblod.info/sparql',
+      codelistPublisher: null,
+
+    },
+    edit: {
+      enable: true,
+      zonalLocationCodelistUri:
+        'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
+      nonZonalLocationCodelistUri:
+        'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
+    }
   },
   tableOfContents: [
     {
@@ -245,11 +254,6 @@ We provide the following defaults in case you enable a plugin and don't provide 
     imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
   },
   templateVariable: {
-    endpoint: 'https://dev.roadsigns.lblod.info/sparql',
-    zonalLocationCodelistUri:
-      'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
-    nonZonalLocationCodelistUri:
-      'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
   }
 }
 ```
