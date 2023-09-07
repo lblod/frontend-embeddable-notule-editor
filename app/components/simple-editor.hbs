@@ -129,10 +129,18 @@
                   @options={{this.config.roadsignRegulation}}
                 />
               {{/if}}
+              {{#if (array-includes this.activePlugins 'template-comments')}}
+
+                <TemplateCommentsPlugin::Insert
+                  @controller={{this.controller}}
+                />
+              {{/if}}
 
               {{#if (array-includes this.activePlugins 'variable')}}
                 {{#if this.config.variable.insert.enable}}
-                  <VariablePlugin::Address::Insert @controller={{this.controller}} />
+                  <VariablePlugin::Address::Insert
+                    @controller={{this.controller}}
+                  />
                 {{/if}}
               {{/if}}
             </Sidebar.Collapsible>
@@ -149,6 +157,7 @@
                   @variableTypes={{this.config.variable.insert.variableTypes}}
                 />
               {{/if}}
+
               {{#if this.config.variable.edit.enable}}
 
                 <VariablePlugin::Codelist::Edit
@@ -162,6 +171,12 @@
                 <VariablePlugin::Address::Edit
                   @controller={{this.controller}}
                   @defaultMunicipality={{this.config.variable.edit.address.defaultMunicipality}}
+                />
+              {{/if}}
+
+              {{#if (array-includes this.activePlugins 'template-comments')}}
+                <TemplateCommentsPlugin::EditCard
+                  @controller={{this.controller}}
                 />
               {{/if}}
             {{/if}}

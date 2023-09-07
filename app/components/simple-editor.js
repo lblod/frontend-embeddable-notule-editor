@@ -77,6 +77,10 @@ import { highlight } from '@lblod/ember-rdfa-editor/plugins/highlight/marks/high
 import { color } from '@lblod/ember-rdfa-editor/plugins/color/marks/color';
 
 import {
+  templateComment,
+  templateCommentView,
+} from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/template-comments-plugin';
+import {
   address,
   addressView,
   codelist,
@@ -257,6 +261,9 @@ export default class SimpleEditorComponent extends Component {
     if (activePlugins.includes('table-of-contents')) {
       this.setupTOCPlugin(setup);
     }
+    if (activePlugins.includes('template-comments')) {
+      this.setupTemplateCommentsPlugin(setup);
+    }
     this.config = setup.config;
     setup.nodes = { ...setup.nodes, heading, invisible_rdfa, block_rdfa };
     this.schema = new Schema({ nodes: setup.nodes, marks: setup.marks });
@@ -404,7 +411,9 @@ export default class SimpleEditorComponent extends Component {
 
     if (config.variable.edit.enable) {
       config.variable.edit.location = {
-        endpoint: userConfig.variable?.edit?.location?.endpoint ?? 'https://dev.roadsigns.lblod.info/sparql',
+        endpoint:
+          userConfig.variable?.edit?.location?.endpoint ??
+          'https://dev.roadsigns.lblod.info/sparql',
         zonalLocationCodelistUri:
           userConfig.variable?.edit?.location?.zonalLocationCodelistUri ??
           'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
@@ -441,5 +450,10 @@ export default class SimpleEditorComponent extends Component {
 
     nodeViews.table_of_contents = (controller) =>
       tableOfContentsView(config.tableOfContents)(controller);
+  }
+  setupTemplateCommentsPlugin(setup) {
+    const { nodes, nodeViews } = setup;
+    nodes.templateComment = templateComment;
+    nodeViews.templateComment = (controller) => templateCommentView(controller);
   }
 }
