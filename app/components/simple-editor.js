@@ -349,14 +349,12 @@ export default class SimpleEditorComponent extends Component {
 
   setupVariablePlugin(setup) {
     const { config, userConfig, nodes, nodeViews } = setup;
-    config.variable = userConfig.variable ?? {
-      defaultEndpoint: 'https://dev.roadsigns.lblod.info/sparql',
-    };
     nodes.text_variable = text_variable;
     nodes.number = number;
     nodes.address = address;
     nodes.location = location;
     nodes.codelist = codelist;
+    config.variable = {};
     config.variable.insert = {
       enable: userConfig.variable?.insert?.enable ?? true,
     };
@@ -364,7 +362,7 @@ export default class SimpleEditorComponent extends Component {
       enable: userConfig.variable?.edit?.enable ?? true,
     };
     if (config.variable.insert.enable) {
-      config.variable.insertableVariableTypes = [
+      config.variable.insert.variableTypes = [
         {
           label: 'text',
           component: {
@@ -394,7 +392,9 @@ export default class SimpleEditorComponent extends Component {
           component: {
             path: 'variable-plugin/codelist/insert',
             options: {
-              endpoint: userConfig.variable?.insert?.codelistEndpoint ?? 'https://reglementairebijlagen.lblod.info/sparql',
+              endpoint:
+                userConfig.variable?.insert?.codelistEndpoint ??
+                'https://reglementairebijlagen.lblod.info/sparql',
               publisher: userConfig.variable?.insert?.codelistPublisher,
             },
           },
@@ -403,12 +403,20 @@ export default class SimpleEditorComponent extends Component {
     }
 
     if (config.variable.edit.enable) {
-      config.variable.edit.zonalLocationCodelistUri =
-        userConfig.variable?.edit?.zonalLocationCodelistUri ??
-        'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF';
-      config.variable.edit.nonZonalLocationCodelistUri =
-        userConfig.variable?.edit?.nonZonalLocationCodelistUri ??
-        'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2';
+      config.variable.edit.location = {
+        endpoint: userConfig.variable?.edit?.location?.endpoint ?? 'https://dev.roadsigns.lblod.info/sparql',
+        zonalLocationCodelistUri:
+          userConfig.variable?.edit?.location?.zonalLocationCodelistUri ??
+          'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
+        nonZonalLocationCodelistUri:
+          userConfig.variable?.edit?.loation?.nonZonalLocationCodelistUri ??
+          'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
+      };
+      config.variable.edit.codelist = {};
+      config.variable.edit.address = {
+        defaultMunicipality:
+          userConfig.variable?.edit?.address?.defaultMunicipality,
+      };
     }
 
     nodeViews.address = (controller) => addressView(controller);

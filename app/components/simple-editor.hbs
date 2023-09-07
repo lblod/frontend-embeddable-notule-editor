@@ -129,6 +129,12 @@
                   @options={{this.config.roadsignRegulation}}
                 />
               {{/if}}
+
+              {{#if (array-includes this.activePlugins 'variable')}}
+                {{#if this.config.variable.insert.enable}}
+                  <VariablePlugin::Address::Insert @controller={{this.controller}} />
+                {{/if}}
+              {{/if}}
             </Sidebar.Collapsible>
             {{#if (array-includes this.activePlugins 'article-structure')}}
               <ArticleStructurePlugin::StructureCard
@@ -140,7 +146,22 @@
               {{#if this.config.variable.insert.enable}}
                 <VariablePlugin::InsertVariableCard
                   @controller={{this.controller}}
-                  @variableTypes={{this.config.variable.insertableVariableTypes}}
+                  @variableTypes={{this.config.variable.insert.variableTypes}}
+                />
+              {{/if}}
+              {{#if this.config.variable.edit.enable}}
+
+                <VariablePlugin::Codelist::Edit
+                  @controller={{this.controller}}
+                  @options={{this.config.variable.edit.codelist}}
+                />
+                <VariablePlugin::Location::Edit
+                  @controller={{this.controller}}
+                  @options={{this.config.variable.edit.location}}
+                />
+                <VariablePlugin::Address::Edit
+                  @controller={{this.controller}}
+                  @defaultMunicipality={{this.config.variable.edit.address.defaultMunicipality}}
                 />
               {{/if}}
             {{/if}}
