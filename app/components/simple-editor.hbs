@@ -130,7 +130,6 @@
                 />
               {{/if}}
               {{#if (array-includes this.activePlugins 'template-comments')}}
-
                 <TemplateCommentsPlugin::Insert
                   @controller={{this.controller}}
                 />
@@ -149,6 +148,12 @@
                 @controller={{this.controller}}
                 @options={{this.config.structures}}
               />
+            {{/if}}
+            {{#if (array-includes this.activePlugins 'rdfa-date')}}
+                <RdfaDatePlugin::Card
+                  @controller={{this.controller}}
+                  @options={{this.config.date}}
+                />
             {{/if}}
             {{#if (array-includes this.activePlugins 'variable')}}
               {{#if this.config.variable.insert.enable}}
