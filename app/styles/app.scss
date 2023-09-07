@@ -8,6 +8,7 @@
 @import "variable-plugin";
 @import "besluit-plugin";
 @import 'article-structure-plugin';
+@import 'template-comments-plugin';
 
 div.table-of-contents {
   padding: $au-unit-small !important;

@@ -186,6 +186,7 @@ Embeddable ships with the following plugins available, for more info on each of 
 * `table-of-contents`: Provides a table of contents that allow you to click on it to go to the different sections specified with the article-structure plugin, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#table-of-contents-plugin).
 * `formatting-toggle`: Allows to toggle on and off the formatting marks.
 * `rdfa-blocks-toggle`: Allows to toggle on and off the visual indications of the rdfa blocks.
+* `template-comments`: Allows insertion and editing of comment blocks. These are visually distinct units with a special RDFa type, which allows them to be filtered out by postprocessing. These are intended to display information to document creators/editors that is not intended to be included in the final publication. See more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#template-comments-plugin). This plugin has no additional configuration parameters.
 
 See above for how these plugins can be enabled.
 
