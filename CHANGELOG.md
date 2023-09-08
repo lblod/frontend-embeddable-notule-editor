@@ -13,6 +13,27 @@
 
 
 
+
+## 1.2.1 (2023-09-08)
+
+#### :bug: Bug Fix
+* [#128](https://github.com/lblod/frontend-embeddable-notule-editor/pull/128) GN-4483: Remove styling for `#ember-basic-dropdown-wormhole` ([@dkozickis](https://github.com/dkozickis))
+
+#### :house: Internal
+* [#138](https://github.com/lblod/frontend-embeddable-notule-editor/pull/138) Add release-it packages ([@elpoelma](https://github.com/elpoelma))
+* [#134](https://github.com/lblod/frontend-embeddable-notule-editor/pull/134) Bump eslint-config-prettier from 8.5.0 to 9.0.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#135](https://github.com/lblod/frontend-embeddable-notule-editor/pull/135) Bump eslint-plugin-ember from 11.4.7 to 11.11.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#136](https://github.com/lblod/frontend-embeddable-notule-editor/pull/136) add woodpecker pipeline responsible for verifying PR ([@elpoelma](https://github.com/elpoelma))
+* [#117](https://github.com/lblod/frontend-embeddable-notule-editor/pull/117) Bump qunit from 2.19.3 to 2.19.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#119](https://github.com/lblod/frontend-embeddable-notule-editor/pull/119) Bump ember-auto-import from 2.6.1 to 2.6.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#124](https://github.com/lblod/frontend-embeddable-notule-editor/pull/124) Bump semver from 5.7.1 to 5.7.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#125](https://github.com/lblod/frontend-embeddable-notule-editor/pull/125) Bump webpack from 5.85.1 to 5.88.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#126](https://github.com/lblod/frontend-embeddable-notule-editor/pull/126) Bump word-wrap from 1.2.3 to 1.2.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 2
+- Deniss Kozickis ([@dkozickis](https://github.com/dkozickis))
+- Elena Poelman ([@elpoelma](https://github.com/elpoelma))
+
 ## 1.2.0 (2023-07-10)
 
 #### :rocket: Enhancement
