@@ -126,6 +126,9 @@ export default class SimpleEditorComponent extends Component {
   insertedInDom(element) {
     this.setVocab(element);
     this.setPrefix(element);
+    // This is the public-facing logic available to the consumer.
+    // This includes the controller with most of the functionality
+    // and some other helper functions for easy accessing.
     element.getHtmlContent = this.getHtmlContent;
     element.setHtmlContent = this.setHtmlContent;
     element.controller = this.controller;

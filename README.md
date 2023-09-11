@@ -4,8 +4,8 @@ This application allows you to embed the RDFa editor in other applications witho
 
 ## Live demo
 A [live demo](https://embeddable.gelinkt-notuleren.lblod.info) is available for easy testing. 
-This environment is NOT suited for any production use, as it might change without notice. Any content entered here will 
-not be saved.
+This environment is NOT suited for any production use, as it might change without notice and might be an outdated version. 
+Any content entered here will not be saved.
 
 ## Using the embeddable editor in your app
 
@@ -458,11 +458,7 @@ It is very much a work in progress visualization, meant for expert users.
 
 # Development of frontend-embeddable-notule-editor
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
-
 ## Prerequisites
-
 You will need the following things properly installed on your computer.
 
 * [Git](https://git-scm.com/)
@@ -472,42 +468,38 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
+* `git clone https://github.com/lblod/frontend-embeddable-notule-editor.git` this repository
 * `cd frontend-embeddable-notule-editor`
 * `npm install`
 
-## Running / Development
-
+## Running
 * `ember serve`
-* Visit your app at [http://localhost:4200/test.html](http://localhost:4200/test.html).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
-
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
+* Visit an example of the embeddable at [http://localhost:4200/test.html](http://localhost:4200/test.html).
 ### Linting
-
 * `npm run lint:hbs`
 * `npm run lint:js`
 * `npm run lint:js -- --fix`
 
 ### Building
-
 * `ember build` (development)
 * `ember build --environment production` (production)
+### Releasing
+Take special care when releasing a new version of this.
+- The changelog is automatically created using the PRs. 
+- To avoid a connection to Github, build files are not automatically added to the release
+	- Add the files under `dist/assets` from a production build to the release in a .zip archive. 
 
-### Deploying
+### Developing
+#### How it works
+This repository includes [the editor](https://github.com/lblod/ember-rdfa-editor) and [editor plugins](https://github.com/lblod/ember-rdfa-editor-lblod-plugins) packaged together with Ember so the editor can be used in projects outside of Ember. This is mostly done by adjust the build process in `ember-cli-build.js`, by specifying the output filename and limiting the chunks to one file, for easy importing.
 
-Specify what it takes to deploy your app.
+the consumer loads the editor in their own div element. This editor is fully defined in `app/components/simple-editor.js`, with all consumer-facing logic bound in `insertedInDom`. 
+Because the editor is a black box for the consumer, it is not possible to load plugins the same way as in Ember for them. Instead, all plugins are loaded in ember code depending on a config the consumer passes. 
 
+#### Important notes
+- Because the consumer can only choose to enable or disable a plugin, it is important to fully specify everything a plugin needs correctly (like buttons). Unlike with the dummy-app of ember-rdfa-editor, everything placed in the template will be visible, so give some thought about placement and CSS.
+- Make sure to update the Readme for any changes to PRs (e.g. bumping the editor-plugins version). The Readme includes quite a lot of duplicate explanation as there can be subtle differences for using a plugin in the Embeddable.
 ## Further Reading / Useful Links
-
 * [ember.js](https://emberjs.com/)
 * [ember-cli](https://ember-cli.com/)
 * Development Browser Extensions
