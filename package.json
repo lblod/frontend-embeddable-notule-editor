@@ -25,6 +25,11 @@
     "test:ember": "ember test",
     "release": "release-it"
   },
+  "dependencies": {
+    "ember-intl": "^5.7.2",
+    "ember-unique-id-helper-polyfill": "^1.2.2",
+    "svgxuse": "^1.2.6"
+  },
   "devDependencies": {
     "@appuniversum/ember-appuniversum": "^2.4.0",
     "@babel/core": "^7.19.6",
@@ -93,10 +98,5 @@
     "last 2 Chrome version",
     "last 2 Firefox version",
     "last 2 Edge version"
-  ],
-  "dependencies": {
-    "ember-intl": "^5.7.2",
-    "ember-unique-id-helper-polyfill": "^1.2.2",
-    "svgxuse": "^1.2.6"
-  }
+  ]
 }
