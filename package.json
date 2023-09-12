@@ -99,7 +99,6 @@
   ],
   "dependencies": {
     "ember-intl": "^5.7.2",
-    "ember-unique-id-helper-polyfill": "^1.2.2",
-    "svgxuse": "^1.2.6"
+    "ember-unique-id-helper-polyfill": "^1.2.2"
   }
 }
