@@ -168,110 +168,139 @@ for typical use, the mainEditorState is the one you will most likely need
 
 - `setActiveView(view: RdfaEditorView)`: activate a specific view.
 
+# Configuring the editor
 
+The editor can be customized to best fit your application. 
+* [Managing Plugins](#managing-plugins): A list of plugins you can enable, including explanation of how to use them
+* [Environment banner](#enabling-disabling-the-environment-banner): how to enable/disable this banner
+* [Localization](#localization): language options in the editor
+* [styling](#styling)
 
+## Managing Plugins
+Embeddable ships with the following plugins available. 
+This Readme contains all the important info and configuration for the plugins. For more technical and Ember-specific explanation of every plugin, you can check out the Readme of [lblod/ember-rdfa-editor-lblod-plugins](https://github.com/lblod/ember-rdfa-editor-lblod-plugins).
 
-## Configuring the editor
+Every plugin can be enabled by passing its name to `activePlugins` array and its configuration to `pluginsConfig` with the initialization function `initEditor(activePlugins, pluginsConfig)`.
+> :warning: The values shown for the config are default values used if you do not pass a config. If you pass **any** config for a plugin, it will not use any of these defaults and only use the config provided. Make sure to pass all required attributes in this case, even if you do not change them.
 
-The editor can be customized to best fit your application. In order to use the editor with these options, be sure to rebuild the sources.
+* [article-structure](#article-structure): Provides structures to better manage official documents, like titles, chapters, articles and paragraphs. It allows you to insert, move and delete them. It has two modes: `besluit` for besluit articles and `regulatoryStatement` for all other structures.
+* [besluit](#besluit): Provides the correct rdfa-structure for constructing a decisions ("besluiten") and some basic validation if mandatory structures are present in the document.
+* [citation](#citation): Search and insert references to citations (a legal resource/expression)
+* [rdfa-date](#rdfa-date): Inserting and modify annotated date and times
+* [roadsign-regulation](#roadsign-regulation): Insert roadsign regulation, based on the registry managed and provided by MOW (Mobiliteit en Openbare Werken)
+* [table-of-contents](#table-of-contents): Show a table of contents with clickable sections defined by [article-structure](#article-structure)
+* [variable](#rdfa-variables): Allows insertion and filling in of custom rdfa variables
+* [formatting-toggle](#formatting-toggle): Allows to toggle the formatting marks with a button
+* [rdfa-blocks-toggle](#rdfa-blocks-toggle): Allows to toggle the visual indications of the rdfa blocks with a button.
+* [template-comments](template-comments): Allows insertion and editing of comment blocks to provide extra information to a user filling in a document. These are visually distinct units with a special RDFa type, which allows them to be filtered out during postprocessing.
+##### General Config options
+There are some options you can pass to `pluginsConfig` in `initEditor` that are not connected to a plugin.
+- `docContent: 'block+'`: The property docContent specifies which nodes are allowed in the document. By default we allow one or more nodes of the supertype block, which includes most content. For more info about this check the [prosemirror docs](https://prosemirror.net/docs/guide/#schema.content_expressions). 
+  See `public/test.html` where `docContent` is specified to allow [article-structure](#Article Structure) nodes in a specific order.
 
-### Adding/removing plugins
-Embeddable ships with the following plugins available, for more info on each of them and posible configurations, check the documentation of [lblod/ember-rdfa-editor-lblod-plugins](https://github.com/lblod/ember-rdfa-editor-lblod-plugins):
-* `besluit`: mostly provides the correct nodes for constructing a besluit, it's mostly useful for validation in prosemirror internals. More information about this plugin can be found in the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#decision-plugin).
-* `citation`: recognizes citations and allows inserting an annotation manually, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#citaten-plugin).
-* `rdfa-date`: allow inserting and modifying annoted date and times, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#rdfa-date-plugin).
-* `roadsign-regulation`: allow inserting roadsign regulation, based on the registry managed and provided by MOW, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#roadsign-regulation-plugin).
-* `variable`: Allows insertion and filling in of custom variables, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#insert-variable-plugin).
-* `article-structure`: Provides several structures to better manage official documents, like titles, chapters, articles and paragraphs. Allows you to insert, move and delete them in an easy way, it has 2 modes that can be set in the configuration 'besluit' for only being able to add besluit_articles and 'regulatoryStatement' for all the other structures. For more information about this plugin, see the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#article-structure-plugin)
-* `table-of-contents`: Provides a table of contents that allow you to click on it to go to the different sections specified with the article-structure plugin, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#table-of-contents-plugin).
-* `formatting-toggle`: Allows to toggle on and off the formatting marks.
-* `rdfa-blocks-toggle`: Allows to toggle on and off the visual indications of the rdfa blocks.
-* `template-comments`: Allows insertion and editing of comment blocks. These are visually distinct units with a special RDFa type, which allows them to be filtered out by postprocessing. These are intended to display information to document creators/editors that is not intended to be included in the final publication. See more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#template-comments-plugin). This plugin has no additional configuration parameters.
+### Article Structure
+This plugin is in charge of inserting and manipulating structures. There are insertion buttons in the insert menu of the right sidebar. The plugin has two modes, being `besluit` and `regulatoryStatement`. 
 
-See above for how these plugins can be enabled.
+- `besluit` Mode
+	- Only allowed to insert articles
+- `regulatoryStatement` mode
+	- Able to insert titles, chapters, sections... 
+	- [table-of-contents](#Table of Contents) default config works with this mode.
 
-ATTENTION: Currently the besluit plugin is incompatible with the regulatoryStatement mode in the article-structure plugin, so if you want to activate that mode you will need to disable the besluit plugin
+After inserting a structure and selecting it, a card will show to move and delete the structure. These might be disabled if the action is not possible. 
 
-### Default configuration
-We provide the following defaults in case you enable a plugin and don't provide any configuration to it, you can take it as a base for your desired configuration. Take into account that if you provide any configuration to a plugin all of the default will be overrided, so make sure you include all the relevant attributes.
+Using the button "with content" will also delete everything included in the structure, instead of just the closest heading. 
+![article structure card](https://imgur.com/2zkbNw3.png)
+***
+:heavy_plus_sign: Enable by adding `"article-structure"` to `activePlugins` array.
 
 ```javascript
-{
-  docContent: 'block+',
-  date: {
-    placeholder: {
-      insertDate: this.intl.t('date-plugin.insert.date'),
-      insertDateTime: this.intl.t('date-plugin.insert.datetime'),
-    },
-    formats: [
-      {
-        label: 'Short Date',
-        key: 'short',
-        dateFormat: 'dd/MM/yy',
-        dateTimeFormat: 'dd/MM/yy HH:mm',
-      },
-      {
-        label: 'Long Date',
-        key: 'long',
-        dateFormat: 'EEEE dd MMMM yyyy',
-        dateTimeFormat: 'PPPPp',
-      },
-    ],
-    allowCustomFormat: true,
-  },
-  citation: {
-    type: 'ranges',
-    activeInRanges: (state) => [[0, state.doc.content.size]],
-    endpoint: '/codex/sparql',
-  },
-  variable: {
-    insert: {
-      enable: true,
-      codelistEndpoint: 'https://dev.roadsigns.lblod.info/sparql',
-      codelistPublisher: null,
-
-    },
-    edit: {
-      enable: true,
-      location: {
-        endpoint: 'https://dev.roadsigns.lblod.info'
-        zonalLocationCodelistUri:
-          'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
-        nonZonalLocationCodelistUri:
-          'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
-      }
-    }
-  },
-  tableOfContents: [
-    {
-      nodeHierarchy: [
-        'title|chapter|section|subsection|article',
-        'structure_header|article_header',
-      ],
-    },
-  ],
-  articleStructure: {
-    mode: 'besluit',
-  },
-  roadsignRegulation: {
-    endpoint: 'https://dev.roadsigns.lblod.info/sparql',
-    imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
-  },
-  templateVariable: {
-  }
+// pass to pluginsConfig
+articleStructure: {
+  mode: 'besluit',
 }
 ```
+The options for mode are:
+- 'besluit' (default): for manipulating articles in decisions. 
+- 'regulatoryStatement': for manipulating chapters, sections, etc as regulatory statements.
 
-Let's break down this configuration block by block:
+### Besluit 
+ :warning: The besluit plugin is incompatible with the `regulatoryStatement` mode of  [article-structure](#Article Structure).
 
-`docContent: 'block+'`
-The property docContent specifies which nodes do you want to allow in your document, in this case we allow one or more nodes that are of the supertype block, for more info about this check the [prosemirror docs](https://prosemirror.net/docs/guide/#schema.content_expressions).
+This will add needed rdfa structures to create a besluit and add some validation. There is no direct interaction with the plugin. The validation will pop up in the sidebar. You can try this out by deleting the title and seeing the following pop up:
+![besluit plugin](https://imgur.com/iwCudJy.png)
+***
+:heavy_plus_sign: Enable by adding `"besluit"` to `activePlugins` array.
+No configuration is needed.
+
+### Citation
+Add the possibility to add references to specific legal documents. There are two ways to use this plugin
+
+**A. Insert Button**
+Click `insert reference` button in the right sidebar
+This will open a modal where you can search for different type of legal documents, preview them and insert if desired.
+
+**B. Type Keyword**
+Type one of the trigger phrases, where `[words to search for]` will be filled in as a search term.
+* [specification]**decreet** [words to search for] *(e.g. "gemeentedecreet wijziging")*
+* **omzendbrief** [words to search for]
+* **verdrag** [words to search for]
+* **grondwetswijziging** [words to search for]
+* **samenwerkingsakkoord** [words to search for]
+* [specification]**wetboek** [words to search for]
+* **protocol** [words to search for]
+* **besluit van de vlaamse regering** [words to search for]
+* **gecoordineerde wetten** [words to search for]
+* [specification]**wet** [words to search for] *(e.g. "kieswet wijziging", or "grondwet")*
+* **koninklijk besluit** [words to search for]
+* **ministerieel besluit** [words to search for]
+* **genummerd besluit** [words to search for]
+
+After typing this trigger phrase, a card will shop up in the right sidebar with the type and search term filled in. Press `Advanced search` to pop open the same modal as shown in **A.** 
+![citation plugin](https://imgur.com/oerd9rV.png)
+***
+:heavy_plus_sign: Enable by adding `"citation"` to `activePlugins` array.
 
 ```javascript
+// pass to pluginsConfig
+
+// activate everywhere using type 'ranges'
+citation: {
+  endpoint: '/codex/sparql',
+  type: 'ranges',
+  // The doc node is the main node and contains the whole document
+  activeInRanges: (state) => [[0, state.doc.content.size]],
+},
+
+// activate everywhere using type 'nodes'
+citation: {
+  endpoint: '/codex/sparql',
+  type: 'nodes',
+  activeInNodeTypes(schema, _state) {
+    // the root node of the document is the doc.
+    return new Set([schema.nodes.doc]);
+  }
+},
+```
+- `endpoint`: where to fetch the citation data from (the codex)
+- `type`: this is `'nodes'` or `'ranges'` and specifies the type of check that can be specified. 
+	- if type `'nodes'`:
+		- `activeInNodeTypes`: given the prosemirror schema and editor state, return a `Set` of nodetypes inside which the plugin should be active. Embeddable does not expose the schema directly, so some internal knowledge is needed to use this effectively.
+	- if type `'ranges'`: 
+		- `activeInRanges`: given the prosemirror editor state, return an array of ranges for the plugin to be active in, for example `[[0,50], [70,100]]`
+
+Both examples show how to activate the plugin for the *whole* document.
+
+### RDFa Date
+A simple plugin to insert and modify *semantic* dates and timestamps in an editor document. When added, an `insert date` button will be available in the right insert sidebar. When selecting a date, a card will show up at the same place to edit this date and choose a format for display. 
+***
+:heavy_plus_sign: Enable by adding `"rdfa-date"` to `activePlugins` array.
+```javascript
+// pass to pluginsConfig
 date: {
   placeholder: {
-    insertDate: this.intl.t('date-plugin.insert.date'),
-    insertDateTime: this.intl.t('date-plugin.insert.datetime'),
+    insertDate: 'Insert date',
+    insertDateTime: 'Insert date and time',
   },
   formats: [
     {
@@ -290,31 +319,64 @@ date: {
   allowCustomFormat: true,
 },
 ```
-This block configures the date plugin, first the placeholder block specifies 2 attributes `insertDate` and `insertDateTime`. In the default config we use the ember internationalization mechanism to correctly set the string to either dutch or English, depending on the browser configuration of the user. The corresponding strings in English are `Insert date` and `Insert date and time`. If you wish to provide custom values here, you have to manage any i18n yourself.
-Then we define the formats offered to the user, each format has 4 attributes:
-- label: This is the label to be shown to the user on the card. It is an optional property, if no label is specified, the formats themselves will be used as labels, e.g.: `dd/MM/yyyy`
-- key: A unique key to identify the format, if the key is not unique it might cause problems.
-- dateFormat: The format to use when the user is inserting a date.
-- dateTimeFormat: The format to use when the user is inserting a date with time information.
-The final property is `allowCustomFormat` if this is set to true the user will be able to specify it's own format when inserting the date.
-For more information about date formats check the documentation of the underlying library used [date-fns](https://date-fns.org/v2.29.3/docs/format).
+- `placeholder`:
+	- `insertDate`: placeholder to show when inserting a date that has no data yet.
+	- `insertDateTime`: placeholder to show when inserting a datetime that has no data yet.
+- `formats`: specify default formats to show for selection in the date card.
+	- `label` (optional): The label shown to the user on the card. If not provided, the format is used instead e.g.: `dd/MMvariable/yyyy`
+	- `key`: A **unique** identifier used for identification in the internal code. 
+	- `dateFormat`: The date format used when this is selected.
+	- `dateTimeFormat`: The datetime format to use when this is selected. Used when the user selected "Include time".
+- `allowCustomFormat`: true/false, determines if the option to insert a fully custom format is available.
 
+For more information about the syntax of defining date(time) formats check the documentation of the underlying library used [date-fns](https://date-fns.org/v2.29.3/docs/format).
+
+### Roadsign Regulation
+Add annnotated *mobiliteitsmaatregelen* from a specified registry, which will most likely be using the [public facing sparql endpoint](https://register.mobiliteit.vlaanderen.be/sparql) of [the roadsign registry](https://register.mobiliteit.vlaanderen.be). This data is maintained by experts at [MOW Vlaanderen](https://www.vlaanderen.be/departement-mobiliteit-en-openbare-werken).
+
+:warning: This plugin will only activate in *besluiten* with a certain rdf type.
+<details><summary>Exhaustive list of types</summary>
+`https://data.vlaanderen.be/id/concept/BesluitType/4d8f678a-6fa4-4d5f-a2a1-80974e43bf34`
+
+`https://data.vlaanderen.be/id/concept/BesluitType/7d95fd2e-3cc9-4a4c-a58e-0fbc408c2f9b`
+
+`https://data.vlaanderen.be/id/concept/BesluitType/3bba9f10-faff-49a6-acaa-85af7f2199a3`
+
+`https://data.vlaanderen.be/id/concept/BesluitType/0d1278af-b69e-4152-a418-ec5cfd1c7d0b`
+
+`https://data.vlaanderen.be/id/concept/BesluitType/e8afe7c5-9640-4db8-8f74-3f023bec3241`
+
+`https://data.vlaanderen.be/id/concept/BesluitType/256bd04a-b74b-4f2a-8f5d-14dda4765af9`
+
+`https://data.vlaanderen.be/id/concept/BesluitType/67378dd0-5413-474b-8996-d992ef81637a`
+</details>
+
+When the cursor is inside such a *besluit*, the button `Voeg mobiliteitsmaatregel in` will appear under the insert menu. Clicking this will show a modal to filter and select roadsign regulation to insert.
+
+![roadsign regulation modal](https://i.imgur.com/z7My8lm.png)
+***
+:heavy_plus_sign: Enable by adding `"roadsign-regulation"` to `activePlugins` array.
 ```javascript
-citation: {
-  type: 'ranges',
-  activeInRanges: (state) => [[0, state.doc.content.size]],
-  endpoint: '/codex/sparql',
-},
-variable: {
-  type: 'ranges',
-  activeInRanges: (state) => [[0, state.doc.content.size]],
-  defaultEndpoint: 'https://dev.roadsigns.lblod.info/sparql',
-},
+
+// pass to pluginsConfig
+roadsignRegulation: {
+  endpoint: 'https://dev.roadsigns.lblod.info/sparql',
+  imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
+}
 ```
-This block configures both the citation and the variable plugin in the same way, it basically set the configuration type as `ranges` and set the active range of the plugin to trigger in the entire document, this is a very basic configuration, to see how to specify a different trigger zone or how to define custom variables check the docs of the [citation](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#citaten-plugin) and the [variable](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#insert-variable-plugin) plugins.
-You can specify the endpoint where the codelists are fetched with the defaultEndpoint attribute in the variable plugin configuration.
+- `endpoint`: The sparql endpoint to fetch roadsigns. By default the development endpoint is used, so make sure to change this in production to your own registry or `https://register.mobiliteit.vlaanderen.be/sparql`.
+- `imageBaseUrl`: In production, some old roadsigns of MOW miss a base URL for images, which will be prepend with this URL. If you provide your own registry with correct data, this will not be used.
 
+### Table of Contents
+Add a table of contents at the top of the document. It can be toggled with a button in the top toolbar. 
+
+At this time it will only work well together with [article-structure plugin](#article-structure) in `regulatoryStatement` mode by using the default config.
+
+:warning: For use in different situations, open an issue on this repo with the usecase, so we can help. The [prosemirror schema](https://prosemirror.net/docs/guide/#schema) that is used in the config is public-facing yet, so changing this is not trivial.
+***
+:heavy_plus_sign: Enable by adding `"table-of-contents"` to `activePlugins` array.
 ```javascript
+// pass to pluginsConfig
 tableOfContents: [
   {
     nodeHierarchy: [
@@ -324,137 +386,98 @@ tableOfContents: [
   },
 ],
 ```
-This block configures the table of contents plugin, it specifies the nodeHierarchy that the node has to follow. At the moment, we ask not to change this configuration while we iron out the kinks in the public interface for this library. Essentially this relates to the [prosemirror schema](https://prosemirror.net/docs/guide/#schema), which is not yet configurable in this package.
+- `nodeHierarchy`: a list of regex strings to specify the node structure. The default value works for the [article-structure plugin](#article-structure). 
+  The first string are the main nodes that should be added to the structure.
+  The strings afterwards are the sub-nodes of the main node that should be used to find the actual content to display in the table of contents.
 
+**note**: this config is a *list*. Multiple `nodeHierarchy`s can be passed to let the table of contents work in multiple situation. The last matching hierarchy will be used.
+
+### RDFa Variables
+> :warning: [RDFa date plugin](rdfa-date) is required to be added when using this plugin.
+
+These are placeholders that can be inserted in a document. A variable placeholder has a specific type (text, number, date, address or codelist), which changes the type of input it can receive. These placeholders can then be filled in by a user using the document.
+
+Usually variables are inserted in an editor made to create *templates* (documents to be filled in), and only edited in an editor to fill in these *templates*. Via the config you can customize if you want to allow insertion and/or filling in a variable.
+**Note**: a user will always be able to remove a variable, even if insertion is not allowed.
+
+A variable can be inserted with the card shown in the right sidebar.
+![insert variable card](https://imgur.com/9kSqgXc.png)
+
+**Types of variables:**
+- *text*: a variable that any text can be typed in
+- *number*: pops up an input box that will validate constraints and includes a button to show the number in words. Constraints (min/max) can be set when inserting the variable.
+- *date*: works just like the [RDFa date plugin](rdfa-date), where a user can input a date in specified formats.
+- *location*: choose out of a list of location options, that can contain placeholders themselves. 
+- *codelist*: when inserting, a specific codelist has to be chosen. This codelist is a list of values the user can choose from to fill in the variable. Either the user can select one (single selection) or multiple (multiple selection). 
+- *address*: when inserted, the user can click this to get a modal for searching addresses from the Belgium address register. This can be used to insert existing addresses.
+  **note**: when searching for submunicipalities, only the main municipality will show up in the search. However, when searching for a street, the correct zip-code will be used.
+***
+:heavy_plus_sign: Enable by adding `"variable"` to `activePlugins` array.
 ```javascript
-articleStructure: {
-  mode: 'besluit',
-}
+// pass to pluginsConfig
+variable: {
+  insert: {
+      enable: true,
+      codelistEndpoint: 'https://dev.roadsigns.lblod.info/sparql',
+      codelistPublisher: null,
+      locationEndpoint: 'https://dev.roadsigns.lblod.info'
+    },
+    edit: {
+      enable: true,
+      location: {
+        endpoint: 'https://dev.roadsigns.lblod.info',
+        zonalLocationCodelistUri:
+          'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
+        nonZonalLocationCodelistUri:
+          'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
+      }
+    }
+},
 ```
-This block configures the article-structure plugin. The article-structure plugin has 2 modes:
+- `insert`: configuration for inserting a variable
+	- `enable`: is inserting a variable allowed (removing is always possible!)
+	- `codelistEndpoint`: the endpoint from which to fetch the codelists, which will be added to a codelist variable's RDFa. For production you'll likely want to use https://register.mobiliteit.vlaanderen.be/sparql`.
+	- `codelistPublisher`: Limit the codelists to a specific publisher. *null* will allow all codelists.
+	- `locationEndpoint`: the endpoint to fetch location options, which will be added to the location variable's RDFa and used as the endpoint when selecting a location variable. For production you'll likely want to use `https://register.mobiliteit.vlaanderen.be`.
+- `edit`: configuration for editing an inserted variable
+	- `enable`: is editing a variable allowed (removing is always possible!)
+	- `location`: config for location variable
+		- `endpoint`: *fallback* endpoint for location variable if the variable is missing the endpoint in its RDFa. This will most likely be the same as the endpoint used for inserting.
+		- `zonalLocationCodelistUri`: the URI to search for if the location variable is included in a zonal traffic measure.
+		- `nonZonalLocationCodelistUri`: the URI to search for if the location variable is included in a non-zonal traffic measure.
 
-- 'besluit'`: for manipulating articles in decisions
-- 'regulatoryStatement'`: for manipulating chapters, sections, etc in regulatory statements.
+### Formatting Toggle
+This will add a button in the top toolbar `Show formatting marks`. This toggles the visibility of all formatting marks of the document such as break lines, paragraphs...
+![document with formatting annotations](https://imgur.com/KTNxuBW.png)
+***
+:heavy_plus_sign: Enable by adding `"formatting-toggle"` to `activePlugins` array.
+No configuration is needed.
 
-```javascript
-roadsignRegulation: {
-  endpoint: 'https://dev.roadsigns.lblod.info/sparql',
-  imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
-}
-```
-This block configures the roadsign-regulation plugin.
-The plugin exposes 2 variables to configure, the first one specifies the endpoint to fetch the roadsigns, and the second one is a way to fix the images that don't specify a base url, in this case `https://register.mobiliteit.vlaanderen.be/` will be used.
+### Rdfa Blocks Toggle
+This will add a button in the top toolbar `Show annotations`. This toggles the visibility of RDFa information contained in the document. This is useful if you want to check for errors in the RDFa structure, or simply have a look at what data the editor is generating behind the scenes. As such, it is mostly useful for expert users.
 
-```
-templateVariable: {
-  endpoint: 'https://dev.roadsigns.lblod.info/sparql',
-  zonalLocationCodelistUri:
-    'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
-  nonZonalLocationCodelistUri:
-    'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
-}
-```
-This plugin configures the template-variable plugin.
-The template-variable plugin needs to specify a endpoint to fetch the codelist variables that don't specify a source. Also you have 2 configurable codelist uris, one for the zonal locations and other for the non zonal.
+![document with rdfa blocks visible](https://imgur.com/Asdu2aN.png)
+***
+:heavy_plus_sign: Enable by adding `"rdfa-blocks-toggle"` to `activePlugins` array.
+No configuration is needed.
 
-### Enabling/disabling the environment banner
-The environment banner is a visual indication of the environment you are currently using and which versions of embeddable, the editor and editor-plugins are in use.
+### Template Comments
+Adds buttons to the right sidebar for insertion, moving and removing of comment blocks, also called *toelichtings- of voorbeeldbepaling*. These blocks are meant to provide extra info to users filling in a document that do not need to be published when the document is complete.
+
+It has a special RDFa type `ext:TemplateComment` with `ext` the prefix for `http://mu.semte.ch/vocabularies/ext/`, so this can be filtered out when a document is finished.
+***
+:heavy_plus_sign: Enable by adding `"template-comments"` to `activePlugins` array.
+No configuration is needed.
+## Enabling/disabling the environment banner
+The environment banner is a visual indication of the environment you are currently using and which versions of Embeddable, the editor and editor-plugins are in use.
 
 You can enable/disable the banner using the following methods: `enableEnvironmentBanner` and `disableEnvironmentBanner`.
 
-### Localization
+## Localization
+Localization of the editor is an ongoing effort, the main target usage of Embeddable is currently Dutch speaking users. Some plugins, like the [citation plugin](https://github.com/lblod/ember-rdfa-editor-citaten-plugin/), use date pickers. The display format of these dates can be configured in the localization initializer.
 
-Localization of the editor is an ongoing effort, the main target usage of embeddable is currently Dutch speaking users. Some plugins, like the [citation plugin](https://github.com/lblod/ember-rdfa-editor-citaten-plugin/), use date pickers. The display format of these dates can be configured in the localization initializer.
-
-### Styling
-
+## Styling
 Styling the editor is covered in the [README](https://github.com/lblod/ember-rdfa-editor#customisation) of ember-rdfa-editor. This frontend supports SASS, customizations can be added to [app.scss](app/styles/app.scss)
-
-## How to use the plugins
-
-### Besluit
-As said above this plugin is mostly useful for validation, if you are working with decisions we recommend to enable this plugin. The only way to interact with this plugin is by deleting the title of a besluit, in this case a card will appear saying that the decision is missing a title and will provide a button to insert it.
-
-![besluit plugin](https://imgur.com/iwCudJy.png)
-
-### Citation
-You have 2 ways of inserting a citation, first if you open the insert menu on the right sidebar you will see a button that says `Insert reference`, if you click on that button a modal will appear where you can search and insert the citation you want.
-The other way of triggering the plugin is to write one of the trigger phrases described in the plugin docs:
-* [specification]**decreet** [words to search for] *(e.g. "gemeentedecreet wijziging")*
-* **omzendbrief** [words to search for]
-* **verdrag** [words to search for]
-* **grondwetswijziging** [words to search for]
-* **samenwerkingsakkoord** [words to search for]
-* [specification]**wetboek** [words to search for]
-* **protocol** [words to search for]
-* **besluit van de vlaamse regering** [words to search for]
-* **gecoordineerde wetten** [words to search for]
-* [specification]**wet** [words to search for] *(e.g. "kieswet wijziging", or "grondwet")*
-* **koninklijk besluit** [words to search for]
-* **ministerieel besluit** [words to search for]
-* **genummerd besluit** [words to search for]
-
-After writing this a little card will appear on the right which you can expand to the big modal.
-
-![citation plugin](https://imgur.com/oerd9rV.png)
-
-### Roadsign Regulation
-For this plugin you will need to be in a besluit with one of these types:
-* `https://data.vlaanderen.be/id/concept/BesluitType/4d8f678a-6fa4-4d5f-a2a1-80974e43bf34`
-* `https://data.vlaanderen.be/id/concept/BesluitType/7d95fd2e-3cc9-4a4c-a58e-0fbc408c2f9b`
-* `https://data.vlaanderen.be/id/concept/BesluitType/3bba9f10-faff-49a6-acaa-85af7f2199a3`
-* `https://data.vlaanderen.be/id/concept/BesluitType/0d1278af-b69e-4152-a418-ec5cfd1c7d0b`
-* `https://data.vlaanderen.be/id/concept/BesluitType/e8afe7c5-9640-4db8-8f74-3f023bec3241`
-* `https://data.vlaanderen.be/id/concept/BesluitType/256bd04a-b74b-4f2a-8f5d-14dda4765af9`
-* `https://data.vlaanderen.be/id/concept/BesluitType/67378dd0-5413-474b-8996-d992ef81637a`
-
-If this condition is met you will find a button called `Voeg mobiliteitsmaatregel in` in the insert menu. When this button is clicked a modal will apear where you can filter and select which roadsign regulation you want to insert.
-
-![roadsign regulation modal](https://i.imgur.com/z7My8lm.png)
-
-The data for this plugin is pulled from [the roadsign registry](https://register.mobiliteit.vlaanderen.be), specifically using the [public facing sparql endpoint](https://register.mobiliteit.vlaanderen.be/sparql). This data is maintained by experts at [MOW Vlaanderen](https://www.vlaanderen.be/departement-mobiliteit-en-openbare-werken)
-
-### Variable
-This plugin allows you to insert variables in the document. A variable is essentially a placeholder where a value can later be filled in. This makes the most sense if you consider 2 separate instances of the editor, the first one with this plugin enabled and the other with the template-variable plugin. The former can then be used to "build a template document", containing a bunch of places values need to be completed. A user can then use the `template-variable-plugin` in the other instance to fill in the values.
-In order to insert a variable you will need to use the insert variable card.
-
-![insert variable card](https://imgur.com/9kSqgXc.png)
-
-In this dropdown you can select one of the 4 default types of variables (or more if you added your custom variables to the config): text, number, date or codelist. If codelist is selected you will need to specify which codelist you want to use
-
-### Template variable
-This plugin allows to fill the codelist variables generated by the variable plugin, if you are in one of these variables the following card will appear:
-
-![template variable card](https://imgur.com/b5Kmmqj.png)
-
-Using this card you will be able to select one of the codelist values.
-
-Other value types (text and number) can simply be filled in in the main editor. As of yet there is no validation on the number type.
-
-### Article Structure
-This plugin is in charge of inserting and manipulating structures. You will find buttons for this in the insert menu of the right sidebar. If you are in "besluit" mode (see above) you can only insert articles, if you are in regulatory statement mode you will be able to insert titles, chapters, sections...
-After inserting a structure you will be presented with a card, where you can move the structure up and down or delete it. For deleting you have 2 options, deleting just the structure (if possible), which tries to unwrap the content, or deleting the structure with its content.
-
-Note that all of these buttons will be disabled if the action is not possible.
-
-![article structure card](https://imgur.com/2zkbNw3.png)
-
-### Table of Contents
-This plugin provides a toggle in the top bar that says `Show Table of Contents`. If you click this toggle the table of contents will appear. Take into account that the table of contents works with the regulatory statement mode of the article structure by default but this can be modified. At this time, we have not settled on a clean interface for this. It is recommended to open an issue on this repo should you wish to use the ToC plugin in a different situation, so we can assist.
-
-### Formatting Toggle
-This plugin provides a toggle in the top bar that says `Show formatting marks`, after this toggle is active all the formatting marks of the document such as break lines, paragraphs... will be visible.
-
-![document with formatting annotations](https://imgur.com/KTNxuBW.png)
-
-### Rdfa Blocks Toggle
-This plugin provides a toggle in the top bar that says `Show annotations`, when you click on this toggle the styling will change to show all the rdfa information contained in the document. This plugin is useful if you want to check for errors in the rdfa structure, or simply have a look at what data the editor is generating behind the scenes.
-
-It is very much a work in progress visualization, meant for expert users.
-
-![document with rdfa blocks visible](https://imgur.com/Asdu2aN.png)
-
-**The following section is automatically generated. It can provide usefull information on how to get started on development on this editor and with EmberJS.**
 
 # Development of frontend-embeddable-notule-editor
 
@@ -496,9 +519,13 @@ This repository includes [the editor](https://github.com/lblod/ember-rdfa-editor
 the consumer loads the editor in their own div element. This editor is fully defined in `app/components/simple-editor.js`, with all consumer-facing logic bound in `insertedInDom`. 
 Because the editor is a black box for the consumer, it is not possible to load plugins the same way as in Ember for them. Instead, all plugins are loaded in ember code depending on a config the consumer passes. 
 
-#### Important notes
-- Because the consumer can only choose to enable or disable a plugin, it is important to fully specify everything a plugin needs correctly (like buttons). Unlike with the dummy-app of ember-rdfa-editor, everything placed in the template will be visible, so give some thought about placement and CSS.
-- Make sure to update the Readme for any changes to PRs (e.g. bumping the editor-plugins version). The Readme includes quite a lot of duplicate explanation as there can be subtle differences for using a plugin in the Embeddable.
+#### Important Develop notes 
+- **Placement of UI elements is important**: Because the consumer can only choose to enable or disable a plugin, it is important to fully specify everything a plugin needs correctly (like buttons). Unlike with the dummy-app of ember-rdfa-editor, everything placed in the template will be visible, so give some thought about placement and CSS.
+- **Update Readme**: Make sure to update the Readme for any changes to PRs (e.g. bumping the editor-plugins version). The Readme includes quite a lot of duplicate explanation as there can be subtle differences for using a plugin in the Embeddable. This means that updating the plugins might also mean having to update the readme to include some new changes.
+
+#### Specific Embeddable Quirks
+- **SVGs icons are inline**: `ember-svg-jar` is used in a custom `AuIcon` component to render SVGs inline. This is because linking to the icons via `@appUniversum` would create CORS errors. 
+
 ## Further Reading / Useful Links
 * [ember.js](https://emberjs.com/)
 * [ember-cli](https://ember-cli.com/)
