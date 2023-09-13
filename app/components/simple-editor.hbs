@@ -134,14 +134,7 @@
                   @controller={{this.controller}}
                 />
               {{/if}}
-
-              {{#if (array-includes this.activePlugins 'variable')}}
-                {{#if this.config.variable.insert.enable}}
-                  <VariablePlugin::Address::Insert
-                    @controller={{this.controller}}
-                  />
-                {{/if}}
-              {{/if}}
+              
             </Sidebar.Collapsible>
             {{#if (array-includes this.activePlugins 'article-structure')}}
               <ArticleStructurePlugin::StructureCard
