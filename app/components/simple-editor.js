@@ -383,6 +383,17 @@ export default class SimpleEditorComponent extends Component {
           },
         },
         {
+          label: 'location',
+          component: {
+            path: 'variable-plugin/location/insert',
+            options: {
+              endpoint:
+                userConfig.variable?.insert?.locationEndpoint ??
+                'https://dev.roadsigns.lblod.info/sparql',
+            },
+          },
+        },
+        {
           label: 'address',
           component: {
             path: 'variable-plugin/address/insert',

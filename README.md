@@ -229,12 +229,13 @@ We provide the following defaults in case you enable a plugin and don't provide 
       enable: true,
       codelistEndpoint: 'https://dev.roadsigns.lblod.info/sparql',
       codelistPublisher: null,
+      locationEndpoint: 'https://dev.roadsigns.lblod.info',
 
     },
     edit: {
       enable: true,
       location: {
-        endpoint: 'https://dev.roadsigns.lblod.info'
+        endpoint: 'https://dev.roadsigns.lblod.info',
         zonalLocationCodelistUri:
           'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
         nonZonalLocationCodelistUri:
