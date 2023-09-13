@@ -43,7 +43,6 @@ module.exports = function (environment) {
 
   if (environment === 'production') {
     ENV.featureFlags = { 'editor-html-paste': true };
-    ENV.rootURL = 'https://embeddable.gelinkt-notuleren.lblod.info/';
     // here you can enable a production-specific feature
   }
 
