@@ -19,7 +19,7 @@ For **production**, use the prebuilt packages in the [Github releases](https://g
 
 ### Building the sources yourself
 
-In order to build the JavaScript and CSS sources of this repository you will need `ember-cli` installed (more info at section *Development of frontend-embeddable-notule-editor* below), then execute the following:
+In order to build the JavaScript and CSS sources of this repository you will need `ember-cli` installed (more info at the [Development section](#development-of-frontend-embeddable-notule-editor)), then execute the following:
 
 ```bash
 git clone https://github.com/lblod/frontend-embeddable-notule-editor.git
@@ -36,17 +36,15 @@ dist
     ├── frontend-embeddable-notule-editor-app.js
     ├── frontend-embeddable-notule-editor.css
     ├── frontend-embeddable-notule-editor.js
-    ├── vendor.css
+    ├── vendor.css // currently empty and not needed
     └── vendor.js
 ```
 
-## Target usage
+## Basic Example: The editor in an HTML file 
+The idea is that you can have multiple HTML tags in which you can initialize an editor. We'll explain how it works and the process can be repeated if multiple editors are required. We need some HTML structure to start with, and then set-up the editor when everything has finished loading and rendering. We can also initialize the editor with some content or set it later via an event. Use something like the following HTML snippet as a base. 
+**Note**: the order of the JavaScript files matters.
 
-The idea is that you can have multiple HTML tags in which you can initialize an editor. We'll explain how it works and the process can be repeated if multiple editors are required. We need some HTML structure to start with, and then set-up the editor when everything has finished loading and rendering. We can also initialize the editor with some content or set it later via an event. Use something like the following HTML snippet as a base. *Note that the order of the JavaScript files matters.*
-
-In this section, we will assume you are using the prebuilt package. If you choose to build and host the bundles yourself,
-simply link the corresponding files to the correct location for your setup.
-
+In this section, we will assume you are using the prebuilt package. If you choose to build and host the bundles yourself, simply link the corresponding files to the correct location for your setup.
 
 For an interactive example, refer to this [jsfiddle](https://jsfiddle.net/0qd27rmg/).
 
@@ -58,6 +56,7 @@ For an interactive example, refer to this [jsfiddle](https://jsfiddle.net/0qd27r
 
     <!-- Requirements for the style -->
     <link rel="stylesheet" href="https://embeddable.gelinkt-notuleren.lblod.info/assets/frontend-embeddable-notule-editor.css">
+    <!-- Can be left out as `vendor.css` is currently empty -->
     <link rel="stylesheet" href="https://embeddable.gelinkt-notuleren.lblod.info/assets/vendor.css">
 
     <!-- Sources of the editor, THE ORDER MATTERS -->
@@ -117,7 +116,7 @@ Then we visit the main route of the application and render inside our root eleme
 const editorContainer = document.getElementById('my-editor');
 const editorElement = editorContainer.getElementsByClassName('notule-editor')[0];
 ```
-After rendering the editor we have to find the editorElement, which we  do with the above code. We get the editorContainer in which we rendered our app, and then find the editor div that has the `notule-editor` class.
+After rendering the editor we have to find the editorElement, which we do with the above code. We get the editorContainer in which we rendered our app, and then find the editor div that has the `notule-editor` class.
 
 ```javascript
 const arrayOfPluginNames = ['citation', 'rdfa-date'];
@@ -126,20 +125,21 @@ editorElement.initEditor(arrayOfPluginNames, userConfigObject);
 ```
 After finding the editor we create an array with the names of the plugins we want to use and an object with custom configuration if needed (See [configuring the editor](#configuring-the-editor) for more info about plugin names and configuration options). Finally, we initialize the editor with the `initEditor` function.
 
-Once the editor is initialized, you can get the relevant document node and set its content. You can play with this by opening the developer console and executing the following, or use the following code in another script:
-
+Once the editor is initialized, you can get the relevant document node and set its content. You can play with this by opening the developer console and executing the following, or use the following code in another script.
 ```javascript
+// run after waiting for the editor to initialize 
 const editorContainer = document.getElementById('my-editor');
 const editorElement = editorContainer.getElementsByClassName('notule-editor')[0]
-editorElement.setHtmlContent('<h1>Hello World</h1>');  // note: the content in the page changes
-console.log(editorElement.getHtmlContent());           // note: there may be a difference in returned content
+editorElement.setHtmlContent('<h1>Hello World</h1>'); // the content in the page changes
+console.log(editorElement.getHtmlContent()); // there may be a difference in returned content
 ```
 
-The contents may be slightly different between the two modes. As the editor evolves, the exporting functionality will be able to better filter out the relevant HTML and remove temporary styling.
+The contents may be slightly different between setting and getting the content. As the editor evolves, the exporting functionality will be able to better filter out the relevant HTML and remove temporary styling.
 
 
 You can enable/disable an environment banner using the following methods:
 ```javascript
+// run after waiting for the editor to initialize 
 editorElement.enableEnvironmentBanner('Testing');
 editorElement.enableEnvironmentBanner(); // the default environment name is 'Test'
 editorElement.disableEnvironmentBanner();
@@ -147,10 +147,10 @@ editorElement.disableEnvironmentBanner();
 
 For a complete version of this example, checkout this file: [public/test.html](public/test.html). It also includes another button that inserts a template in the editor to showcase the plugins.
 
-## Prosemirror
+## Editor API
+The RDFa editor uses [the prosemirror toolkit](https://prosemirror.net/) as a base. After the `editorElement.initEditor()` function is called you will have access to the editor methods, including the controller with `editorElement.controller`. This controller is an instance of the [SayController](https://github.com/lblod/ember-rdfa-editor/blob/d4472d2e237256d30333cfcc20ce6eea7db241f2/addon/core/say-controller.ts) class of the [ember-rdfa-editor](https://github.com/lblod/ember-rdfa-editor). 
 
-The rdfa editor uses [the prosemirror toolkit](https://prosemirror.net/) as a base. After the `editorElement.initEditor()` function is called you will have access to the editor controller with `editorElement.controller`. This is an instance of the [SayController](https://github.com/lblod/ember-rdfa-editor/blob/d4472d2e237256d30333cfcc20ce6eea7db241f2/addon/core/say-controller.ts) class of the [ember-rdfa-editor](https://github.com/lblod/ember-rdfa-editor)
-It provides the following methods:
+The controller provides following methods.
 - `focus()`: method which allows one to focus the main editor view
 - `setHtmlContent(content: string)`: sets the content of the main editor.
 - htmlContent: getter property containing the "serialized" html content of the editor. This is essentially the raw content without all the plugin bells and whistles, suitable for storing in a database. It can then be loaded with the abovementioned `setHtmlContent`
@@ -158,14 +158,11 @@ It provides the following methods:
 - `checkCommand(command: Command, { view = this.activeEditorView } = {})`: checks whether a Prosemirror command may be executed.
 - `isMarkActive(mark: MarkType)`: checks whether a mark is currently active. This is currently of not much use in this package, since we do not expose the MarkType interface yet. (But for the curious, this is what the toolbar buttons use to update their active state)
 - `withTransaction(callback: (tr: Transaction) => Transaction | null, includeEmbeddedView = false)`: method which allows you to apply a [transaction](https://prosemirror.net/docs/ref/#state.Transaction) on the main view (or currently active embedded view). When you want to apply the transaction, the callback should return the transaction object.
-- mainEditorState: the [state](https://prosemirror.net/docs/ref/#state.Editor_State) instance of the main editor
-- activeEditorState: the state instance of the active editor. This is usually the same as the mainEditorState, except when inside a nested instance (like in a variable field)
+- `mainEditorState`: the [state](https://prosemirror.net/docs/ref/#state.Editor_State) instance of the main editor
+- `activeEditorState`: the state instance of the active editor. This is usually the same as the mainEditorState, except when inside a nested instance (like in a variable field)
 for typical use, the mainEditorState is the one you will most likely need
-
-- mainEditorView: the [view](https://prosemirror.net/docs/ref/#view.EditorView) instance of the main editor
-
-- activeEditorView: the view instance of the active editor. (see above for the distinction between the main and active editor)
-
+- `mainEditorView`: the [view](https://prosemirror.net/docs/ref/#view.EditorView) instance of the main editor
+- `activeEditorView`: the view instance of the active editor. (see above for the distinction between the main and active editor)
 - `setActiveView(view: RdfaEditorView)`: activate a specific view.
 
 # Configuring the editor
@@ -180,7 +177,7 @@ The editor can be customized to best fit your application.
 Embeddable ships with the following plugins available. 
 This Readme contains all the important info and configuration for the plugins. For more technical and Ember-specific explanation of every plugin, you can check out the Readme of [lblod/ember-rdfa-editor-lblod-plugins](https://github.com/lblod/ember-rdfa-editor-lblod-plugins).
 
-Every plugin can be enabled by passing its name to `activePlugins` array and its configuration to `pluginsConfig` with the initialization function `initEditor(activePlugins, pluginsConfig)`.
+Every plugin can be enabled by passing its name to `arrayOfPluginNames` array and its configuration to `userConfigObject` with the initialization function `initEditor(arrayOfPluginNames, userConfigObject)`.
 > :warning: The values shown for the config are default values used if you do not pass a config. If you pass **any** config for a plugin, it will not use any of these defaults and only use the config provided. Make sure to pass all required attributes in this case, even if you do not change them.
 
 * [article-structure](#article-structure): Provides structures to better manage official documents, like titles, chapters, articles and paragraphs. It allows you to insert, move and delete them. It has two modes: `besluit` for besluit articles and `regulatoryStatement` for all other structures.
@@ -212,7 +209,7 @@ After inserting a structure and selecting it, a card will show to move and delet
 Using the button "with content" will also delete everything included in the structure, instead of just the closest heading. 
 ![article structure card](https://imgur.com/2zkbNw3.png)
 ***
-:heavy_plus_sign: Enable by adding `"article-structure"` to `activePlugins` array.
+:heavy_plus_sign: Enable by adding `"article-structure"` to `arrayOfPluginNames` array.
 
 ```javascript
 // pass to pluginsConfig
@@ -230,7 +227,7 @@ The options for mode are:
 This will add needed rdfa structures to create a besluit and add some validation. There is no direct interaction with the plugin. The validation will pop up in the sidebar. You can try this out by deleting the title and seeing the following pop up:
 ![besluit plugin](https://imgur.com/iwCudJy.png)
 ***
-:heavy_plus_sign: Enable by adding `"besluit"` to `activePlugins` array.
+:heavy_plus_sign: Enable by adding `"besluit"` to `arrayOfPluginNames` array.
 No configuration is needed.
 
 ### Citation
@@ -259,7 +256,7 @@ Type one of the trigger phrases, where `[words to search for]` will be filled in
 After typing this trigger phrase, a card will shop up in the right sidebar with the type and search term filled in. Press `Advanced search` to pop open the same modal as shown in **A.** 
 ![citation plugin](https://imgur.com/oerd9rV.png)
 ***
-:heavy_plus_sign: Enable by adding `"citation"` to `activePlugins` array.
+:heavy_plus_sign: Enable by adding `"citation"` to `arrayOfPluginNames` array.
 
 ```javascript
 // pass to pluginsConfig
@@ -294,7 +291,7 @@ Both examples show how to activate the plugin for the *whole* document.
 ### RDFa Date
 A simple plugin to insert and modify *semantic* dates and timestamps in an editor document. When added, an `insert date` button will be available in the right insert sidebar. When selecting a date, a card will show up at the same place to edit this date and choose a format for display. 
 ***
-:heavy_plus_sign: Enable by adding `"rdfa-date"` to `activePlugins` array.
+:heavy_plus_sign: Enable by adding `"rdfa-date"` to `arrayOfPluginNames` array.
 ```javascript
 // pass to pluginsConfig
 date: {
@@ -355,7 +352,7 @@ When the cursor is inside such a *besluit*, the button `Voeg mobiliteitsmaatrege
 
 ![roadsign regulation modal](https://i.imgur.com/z7My8lm.png)
 ***
-:heavy_plus_sign: Enable by adding `"roadsign-regulation"` to `activePlugins` array.
+:heavy_plus_sign: Enable by adding `"roadsign-regulation"` to `arrayOfPluginNames` array.
 ```javascript
 
 // pass to pluginsConfig
@@ -374,7 +371,7 @@ At this time it will only work well together with [article-structure plugin](#ar
 
 :warning: For use in different situations, open an issue on this repo with the usecase, so we can help. The [prosemirror schema](https://prosemirror.net/docs/guide/#schema) that is used in the config is public-facing yet, so changing this is not trivial.
 ***
-:heavy_plus_sign: Enable by adding `"table-of-contents"` to `activePlugins` array.
+:heavy_plus_sign: Enable by adding `"table-of-contents"` to `arrayOfPluginNames` array.
 ```javascript
 // pass to pluginsConfig
 tableOfContents: [
@@ -412,7 +409,7 @@ A variable can be inserted with the card shown in the right sidebar.
 - *address*: when inserted, the user can click this to get a modal for searching addresses from the Belgium address register. This can be used to insert existing addresses.
   **note**: when searching for submunicipalities, only the main municipality will show up in the search. However, when searching for a street, the correct zip-code will be used.
 ***
-:heavy_plus_sign: Enable by adding `"variable"` to `activePlugins` array.
+:heavy_plus_sign: Enable by adding `"variable"` to `arrayOfPluginNames` array.
 ```javascript
 // pass to pluginsConfig
 variable: {
@@ -450,7 +447,7 @@ variable: {
 This will add a button in the top toolbar `Show formatting marks`. This toggles the visibility of all formatting marks of the document such as break lines, paragraphs...
 ![document with formatting annotations](https://imgur.com/KTNxuBW.png)
 ***
-:heavy_plus_sign: Enable by adding `"formatting-toggle"` to `activePlugins` array.
+:heavy_plus_sign: Enable by adding `"formatting-toggle"` to `arrayOfPluginNames` array.
 No configuration is needed.
 
 ### Rdfa Blocks Toggle
@@ -458,7 +455,7 @@ This will add a button in the top toolbar `Show annotations`. This toggles the v
 
 ![document with rdfa blocks visible](https://imgur.com/Asdu2aN.png)
 ***
-:heavy_plus_sign: Enable by adding `"rdfa-blocks-toggle"` to `activePlugins` array.
+:heavy_plus_sign: Enable by adding `"rdfa-blocks-toggle"` to `arrayOfPluginNames` array.
 No configuration is needed.
 
 ### Template Comments
@@ -466,7 +463,7 @@ Adds buttons to the right sidebar for insertion, moving and removing of comment 
 
 It has a special RDFa type `ext:TemplateComment` with `ext` the prefix for `http://mu.semte.ch/vocabularies/ext/`, so this can be filtered out when a document is finished.
 ***
-:heavy_plus_sign: Enable by adding `"template-comments"` to `activePlugins` array.
+:heavy_plus_sign: Enable by adding `"template-comments"` to `arrayOfPluginNames` array.
 No configuration is needed.
 ## Enabling/disabling the environment banner
 The environment banner is a visual indication of the environment you are currently using and which versions of Embeddable, the editor and editor-plugins are in use.
