@@ -2,7 +2,15 @@
 
 This application allows you to embed the RDFa editor in other applications without integrating with EmberJS directly. It will behave like any other HTML editor.
 
-## Live demo
+The readme is structures as follows
+- [Live Demo](#live-demo): an online demo to test out the application and what is possible.
+- [Using the editor yourself](#using-the-embeddable-editor-in-your-app): How to get the needed packages for use in your app.
+- [Code Example](#basic-example--the-editor-in-an-html-file): An example to start from how to use initialize and use the editor.
+- [Editor API](editor-api): list of methods and properties to customize the editor and interact with it through code.
+- [Configuring The Editor](configuring-the-editor): ways to configure the editor during loading. The editor includes a list of plugins that can be enabled and configured as explained in [Managing Plugins](managing-plugins). 
+
+
+## Live Demo
 A [live demo](https://embeddable.gelinkt-notuleren.lblod.info) is available for easy testing. 
 This environment is NOT suited for any production use, as it might change without notice and might be an outdated version. 
 Any content entered here will not be saved.
@@ -175,7 +183,7 @@ These methods are accessible via `editorElement.controller` and contain a way to
 - `activeEditorView`: the view instance of the active editor. (see above for the distinction between the main and active editor)
 - `setActiveView(view: RdfaEditorView)`: activate a specific view.
 
-# Configuring the editor
+# Configuring The Editor
 
 The editor can be customized to best fit your application. 
 * [Managing Plugins](#managing-plugins): A list of plugins you can enable, including explanation of how to use them
