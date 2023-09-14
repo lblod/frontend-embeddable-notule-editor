@@ -9,7 +9,6 @@ The readme is structures as follows
 - [Editor API](editor-api): list of methods and properties to customize the editor and interact with it through code.
 - [Configuring The Editor](configuring-the-editor): ways to configure the editor during loading. The editor includes a list of plugins that can be enabled and configured as explained in [Managing Plugins](managing-plugins). 
 
-
 ## Live Demo
 A [live demo](https://embeddable.gelinkt-notuleren.lblod.info) is available for easy testing. 
 This environment is NOT suited for any production use, as it might change without notice and might be an outdated version. 
@@ -167,6 +166,9 @@ These are function available from the editor element, which is the HTML element 
 - `controller`: direct access the the [SayController](https://github.com/lblod/ember-rdfa-editor/blob/d4472d2e237256d30333cfcc20ce6eea7db241f2/addon/core/say-controller.ts) object. See [controller API](controller-api).
 - `setHtmlContent(content: string)`: set the HTML content inside the editor, overwriting all previous content.  
 - `getHtmlContent()`: Get the HTML content of the editor. This can be different than custom content set via `setHtmlContent`, because of HTML parsing logic.
+- `setLocalToDutch()`: Set the local (language used) of the editor to Dutch.
+- `setLocalToEnglish()`: Set the local (language used) of the editor to English.
+- `getLocal()`: returns the current local of the editor, being `nl-BE`, `en-US` or the user's browser locale. See more at [Localization](localization).
 
 #### controller API
 These methods are accessible via `editorElement.controller` and contain a way to directly interact with the Prosemirror logic underneath. This is an instance of [SayController](https://github.com/lblod/ember-rdfa-editor/blob/d4472d2e237256d30333cfcc20ce6eea7db241f2/addon/core/say-controller.ts). Not all possible methods are shown.
@@ -490,8 +492,11 @@ The environment banner is a visual indication of the environment you are current
 You can enable/disable the banner using the following methods: `enableEnvironmentBanner` and `disableEnvironmentBanner`.
 
 ## Localization
-Localization of the editor is an ongoing effort, the main target usage of Embeddable is currently Dutch speaking users. Some plugins, like the [citation plugin](https://github.com/lblod/ember-rdfa-editor-citaten-plugin/), use date pickers. The display format of these dates can be configured in the localization initializer.
+Localization of the editor is an ongoing effort, the main target usage of Embeddable is currently Dutch speaking users. The editor will use the user's browser language and supports English (en-US) and Dutch (nl-BE). If the user has a different language set, the editor will default to Dutch.
 
+Some plugins, like the [citation plugin](https://github.com/lblod/ember-rdfa-editor-citaten-plugin/), use date pickers. The display format of these dates are connected with the local.
+
+The local can be overwritten with `setLocalToDutch()` and `setLocalToEnglish()`. You can call one of these functions after `initEditor()` to always use the same language for the editor, ignoring the user's browser language.
 ## Styling
 Styling the editor is covered in the [README](https://github.com/lblod/ember-rdfa-editor#customisation) of ember-rdfa-editor. This frontend supports SASS, customizations can be added to [app.scss](app/styles/app.scss)
 
