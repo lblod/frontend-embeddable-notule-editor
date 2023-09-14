@@ -132,8 +132,6 @@ export default class SimpleEditorComponent extends Component {
     element.getHtmlContent = this.getHtmlContent;
     element.setHtmlContent = this.setHtmlContent;
     element.controller = this.controller;
-    element.on = this.on;
-    element.off = this.off;
     element.initEditor = this.initEditor;
     element.enableEnvironmentBanner = this.enableEnvironmentBanner;
     element.disableEnvironmentBanner = this.disableEnvironmentBanner;
@@ -177,16 +175,6 @@ export default class SimpleEditorComponent extends Component {
   @action
   disableEnvironmentBanner() {
     this.showEnvironmentBanner = false;
-  }
-
-  @action
-  on(eventName, callback) {
-    this.controller.on(eventName, callback);
-  }
-
-  @action
-  off(eventName, callback) {
-    this.controller.off(eventName, callback);
   }
 
   @action
