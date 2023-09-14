@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
+import merge from 'lodash.merge';
 
 import { Schema } from '@lblod/ember-rdfa-editor';
 
@@ -92,6 +93,75 @@ import {
   text_variable,
   textVariableView,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/variable-plugin/variables';
+
+/**
+ * If the user config is present, merge it with the default config.
+ * Otherwise return the default config.
+ * @param defaultConfig
+ * @param userConfig
+ * @returns {*}
+ */
+const maybeMergeUserConfig = (defaultConfig, userConfig) => {
+  if (userConfig) {
+    return merge(defaultConfig, userConfig);
+  }
+
+  return defaultConfig;
+};
+
+/**
+ * @type {import('@lblod/ember-rdfa-editor-lblod-plugins/plugins/rdfa-date-plugin/index').DateOptions}
+ */
+const defaultRdfaDatePluginConfig = (t) => ({
+  placeholder: {
+    insertDate: t('date-plugin.insert.date'),
+    insertDateTime: t('date-plugin.insert.datetime'),
+  },
+  formats: [
+    {
+      label: 'Short Date',
+      key: 'short',
+      dateFormat: 'dd/MM/yy',
+      dateTimeFormat: 'dd/MM/yy HH:mm',
+    },
+    {
+      label: 'Long Date',
+      key: 'long',
+      dateFormat: 'EEEE dd MMMM yyyy',
+      dateTimeFormat: 'PPPPp',
+    },
+  ],
+  allowCustomFormat: true,
+});
+
+/**
+ * @type {import('@lblod/ember-rdfa-editor-lblod-plugins/plugins/citation-plugin').CitationPluginEmberComponentConfig}
+ */
+const defaultCitationPluginConfig = {
+  type: 'ranges',
+  activeInRanges: (state) => [[0, state.doc.content.size]],
+  endpoint: '/codex/sparql',
+};
+
+/**
+ * @type {import('@lblod/ember-rdfa-editor-lblod-plugins/plugins/roadsign-regulation-plugin').RoadsignRegulationPluginOptions}
+ */
+const defaultRoadsignRegulationPluginConfig = {
+  endpoint: 'https://dev.roadsigns.lblod.info/sparql',
+  imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
+};
+
+/**
+ * @type {import("@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/location/edit").LocationEditOptions}
+ */
+const defaultLocationVariablePluginConfig = {
+  endpoint: 'https://dev.roadsigns.lblod.info/sparql',
+  zonalLocationCodelistUri:
+    'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
+  nonZonalLocationCodelistUri:
+    'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
+};
+
 export default class SimpleEditorComponent extends Component {
   @tracked controller;
 
@@ -282,46 +352,21 @@ export default class SimpleEditorComponent extends Component {
   }
 
   setupDatePlugin({ nodes, userConfig, config, nodeViews }) {
-    if (!userConfig.date) {
-      config.date = {
-        placeholder: {
-          insertDate: this.intl.t('date-plugin.insert.date'),
-          insertDateTime: this.intl.t('date-plugin.insert.datetime'),
-        },
-        formats: [
-          {
-            label: 'Short Date',
-            key: 'short',
-            dateFormat: 'dd/MM/yy',
-            dateTimeFormat: 'dd/MM/yy HH:mm',
-          },
-          {
-            label: 'Long Date',
-            key: 'long',
-            dateFormat: 'EEEE dd MMMM yyyy',
-            dateTimeFormat: 'PPPPp',
-          },
-        ],
-        allowCustomFormat: true,
-      };
-    } else {
-      config.date = userConfig.date;
-    }
+    config.date = maybeMergeUserConfig(
+      defaultRdfaDatePluginConfig(this.intl.t.bind(this.intl)),
+      userConfig.date
+    );
+
     nodes.date = date(config.date);
     nodeViews.date = (controller) => dateView(this.config.date)(controller);
   }
 
   setupCitationPlugin({ userConfig, config, plugins }) {
-    const citationConfig = userConfig.citation;
-    if (citationConfig) {
-      config.citation = citationConfig;
-    } else {
-      config.citation = {
-        type: 'ranges',
-        activeInRanges: (state) => [[0, state.doc.content.size]],
-        endpoint: '/codex/sparql',
-      };
-    }
+    config.citation = maybeMergeUserConfig(
+      defaultCitationPluginConfig,
+      userConfig.citation
+    );
+
     const citationPluginVariable = citationPlugin(config.citation);
     this.citationPlugin = citationPluginVariable;
     plugins.push(citationPluginVariable);
@@ -348,10 +393,11 @@ export default class SimpleEditorComponent extends Component {
     const { nodes, config, userConfig } = setup;
 
     nodes.roadsign_regulation = roadsign_regulation;
-    config.roadsignRegulation = userConfig.roadsignRegulation ?? {
-      endpoint: 'https://dev.roadsigns.lblod.info/sparql',
-      imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
-    };
+
+    config.roadsignRegulation = maybeMergeUserConfig(
+      defaultRoadsignRegulationPluginConfig,
+      userConfig.roadsignRegulation
+    );
   }
 
   setupVariablePlugin(setup) {
@@ -421,18 +467,13 @@ export default class SimpleEditorComponent extends Component {
     }
 
     if (config.variable.edit.enable) {
-      config.variable.edit.location = {
-        endpoint:
-          userConfig.variable?.edit?.location?.endpoint ??
-          'https://dev.roadsigns.lblod.info/sparql',
-        zonalLocationCodelistUri:
-          userConfig.variable?.edit?.location?.zonalLocationCodelistUri ??
-          'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
-        nonZonalLocationCodelistUri:
-          userConfig.variable?.edit?.loation?.nonZonalLocationCodelistUri ??
-          'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
-      };
+      config.variable.edit.location = maybeMergeUserConfig(
+        defaultLocationVariablePluginConfig,
+        userConfig.variable?.edit?.location
+      );
+
       config.variable.edit.codelist = {};
+
       config.variable.edit.address = {
         defaultMunicipality:
           userConfig.variable?.edit?.address?.defaultMunicipality,
@@ -462,6 +503,7 @@ export default class SimpleEditorComponent extends Component {
     nodeViews.table_of_contents = (controller) =>
       tableOfContentsView(config.tableOfContents)(controller);
   }
+
   setupTemplateCommentsPlugin(setup) {
     const { nodes, nodeViews } = setup;
     nodes.templateComment = templateComment;
