@@ -181,12 +181,12 @@ Embeddable ships with the following plugins available, for more info on each of 
 * `citation`: recognizes citations and allows inserting an annotation manually, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#citaten-plugin).
 * `rdfa-date`: allow inserting and modifying annoted date and times, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#rdfa-date-plugin).
 * `roadsign-regulation`: allow inserting roadsign regulation, based on the registry managed and provided by MOW, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#roadsign-regulation-plugin).
-* `template-variable`: Related to the roadsign-regulation plugin, allows filling in variables in the road sign regulation templates, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#template-variable-plugin).
-* `variable`: Allows insertion of custom variables to be later filled by the template-variable plugin, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#insert-variable-plugin).
+* `variable`: Allows insertion and filling in of custom variables, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#insert-variable-plugin).
 * `article-structure`: Provides several structures to better manage official documents, like titles, chapters, articles and paragraphs. Allows you to insert, move and delete them in an easy way, it has 2 modes that can be set in the configuration 'besluit' for only being able to add besluit_articles and 'regulatoryStatement' for all the other structures. For more information about this plugin, see the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#article-structure-plugin)
 * `table-of-contents`: Provides a table of contents that allow you to click on it to go to the different sections specified with the article-structure plugin, see more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#table-of-contents-plugin).
 * `formatting-toggle`: Allows to toggle on and off the formatting marks.
 * `rdfa-blocks-toggle`: Allows to toggle on and off the visual indications of the rdfa blocks.
+* `template-comments`: Allows insertion and editing of comment blocks. These are visually distinct units with a special RDFa type, which allows them to be filtered out by postprocessing. These are intended to display information to document creators/editors that is not intended to be included in the final publication. See more at the [plugin docs](https://github.com/lblod/ember-rdfa-editor-lblod-plugins#template-comments-plugin). This plugin has no additional configuration parameters.
 
 See above for how these plugins can be enabled.
 
@@ -225,9 +225,23 @@ We provide the following defaults in case you enable a plugin and don't provide 
     endpoint: '/codex/sparql',
   },
   variable: {
-    type: 'ranges',
-    activeInRanges: (state) => [[0, state.doc.content.size]],
-    defaultEndpoint: 'https://dev.roadsigns.lblod.info/sparql',
+    insert: {
+      enable: true,
+      codelistEndpoint: 'https://dev.roadsigns.lblod.info/sparql',
+      codelistPublisher: null,
+      locationEndpoint: 'https://dev.roadsigns.lblod.info',
+
+    },
+    edit: {
+      enable: true,
+      location: {
+        endpoint: 'https://dev.roadsigns.lblod.info',
+        zonalLocationCodelistUri:
+          'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
+        nonZonalLocationCodelistUri:
+          'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
+      }
+    }
   },
   tableOfContents: [
     {
@@ -245,11 +259,6 @@ We provide the following defaults in case you enable a plugin and don't provide 
     imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
   },
   templateVariable: {
-    endpoint: 'https://dev.roadsigns.lblod.info/sparql',
-    zonalLocationCodelistUri:
-      'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
-    nonZonalLocationCodelistUri:
-      'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
   }
 }
 ```
@@ -337,18 +346,6 @@ roadsignRegulation: {
 This block configures the roadsign-regulation plugin.
 The plugin exposes 2 variables to configure, the first one specifies the endpoint to fetch the roadsigns, and the second one is a way to fix the images that don't specify a base url, in this case `https://register.mobiliteit.vlaanderen.be/` will be used.
 
-```
-templateVariable: {
-  endpoint: 'https://dev.roadsigns.lblod.info/sparql',
-  zonalLocationCodelistUri:
-    'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
-  nonZonalLocationCodelistUri:
-    'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
-}
-```
-This plugin configures the template-variable plugin.
-The template-variable plugin needs to specify a endpoint to fetch the codelist variables that don't specify a source. Also you have 2 configurable codelist uris, one for the zonal locations and other for the non zonal.
-
 ### Enabling/disabling the environment banner
 The environment banner is a visual indication of the environment you are currently using and which versions of embeddable, the editor and editor-plugins are in use.
 
@@ -407,21 +404,12 @@ If this condition is met you will find a button called `Voeg mobiliteitsmaatrege
 The data for this plugin is pulled from [the roadsign registry](https://register.mobiliteit.vlaanderen.be), specifically using the [public facing sparql endpoint](https://register.mobiliteit.vlaanderen.be/sparql). This data is maintained by experts at [MOW Vlaanderen](https://www.vlaanderen.be/departement-mobiliteit-en-openbare-werken)
 
 ### Variable
-This plugin allows you to insert variables in the document. A variable is essentially a placeholder where a value can later be filled in. This makes the most sense if you consider 2 separate instances of the editor, the first one with this plugin enabled and the other with the template-variable plugin. The former can then be used to "build a template document", containing a bunch of places values need to be completed. A user can then use the `template-variable-plugin` in the other instance to fill in the values.
+This plugin allows you to insert variables in the document. A variable is essentially a placeholder where a value can later be filled in. This makes the most sense if you consider 2 separate instances of the editor.
 In order to insert a variable you will need to use the insert variable card.
 
 ![insert variable card](https://imgur.com/9kSqgXc.png)
 
-In this dropdown you can select one of the 4 default types of variables (or more if you added your custom variables to the config): text, number, date or codelist. If codelist is selected you will need to specify which codelist you want to use
-
-### Template variable
-This plugin allows to fill the codelist variables generated by the variable plugin, if you are in one of these variables the following card will appear:
-
-![template variable card](https://imgur.com/b5Kmmqj.png)
-
-Using this card you will be able to select one of the codelist values.
-
-Other value types (text and number) can simply be filled in in the main editor. As of yet there is no validation on the number type.
+In this dropdown you can select one of the 6 default types of variables (or more if you added your custom variables to the config): text, number, date, location, address or codelist. If codelist is selected you will need to specify which codelist you want to use
 
 ### Article Structure
 This plugin is in charge of inserting and manipulating structures. You will find buttons for this in the insert menu of the right sidebar. If you are in "besluit" mode (see above) you can only insert articles, if you are in regulatory statement mode you will be able to insert titles, chapters, sections...

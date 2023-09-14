@@ -25,6 +25,10 @@
     "test:ember": "ember test",
     "release": "release-it"
   },
+  "dependencies": {
+    "ember-intl": "^5.7.2",
+    "ember-unique-id-helper-polyfill": "^1.2.2"
+  },
   "devDependencies": {
     "@appuniversum/ember-appuniversum": "^2.4.0",
     "@babel/core": "^7.19.6",
@@ -40,9 +44,8 @@
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
     "@lblod/ember-environment-banner": "^0.2.0",
-    "@lblod/ember-rdfa-editor": "^3.10.0",
-    "@lblod/ember-rdfa-editor-lblod-plugins": "^8.4.1",
-    "@release-it-plugins/lerna-changelog": "^6.0.0",
+    "@lblod/ember-rdfa-editor": "^5.3.0",
+    "@lblod/ember-rdfa-editor-lblod-plugins": "^12.0.0",
     "broccoli-asset-rev": "^3.0.0",
     "changesets-release-it-plugin": "^0.1.1",
     "ember-auto-import": "^2.4.3",
@@ -96,9 +99,5 @@
     "last 2 Chrome version",
     "last 2 Firefox version",
     "last 2 Edge version"
-  ],
-  "dependencies": {
-    "ember-intl": "^5.7.2",
-    "ember-unique-id-helper-polyfill": "^1.2.2"
-  }
+  ]
 }

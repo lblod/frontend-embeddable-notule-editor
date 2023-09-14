@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import { tracked } from 'tracked-built-ins';
+import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
 import { Schema } from '@lblod/ember-rdfa-editor';
@@ -22,6 +22,7 @@ import {
   underline,
 } from '@lblod/ember-rdfa-editor/plugins/text-style';
 import {
+  docWithConfig,
   block_rdfa,
   hard_break,
   horizontal_rule,
@@ -40,10 +41,6 @@ import {
   STRUCTURE_SPECS,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/article-structure-plugin/structures';
 import {
-  variable,
-  variableView,
-} from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/variable-plugin/nodes';
-import {
   bullet_list,
   list_item,
   ordered_list,
@@ -58,10 +55,6 @@ import {
   date,
   dateView,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/rdfa-date-plugin/nodes/date';
-import {
-  number,
-  numberView,
-} from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/variable-plugin/number';
 
 import {
   createInvisiblesPlugin,
@@ -83,6 +76,22 @@ import { link, linkView } from '@lblod/ember-rdfa-editor/plugins/link';
 import { highlight } from '@lblod/ember-rdfa-editor/plugins/highlight/marks/highlight';
 import { color } from '@lblod/ember-rdfa-editor/plugins/color/marks/color';
 
+import {
+  templateComment,
+  templateCommentView,
+} from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/template-comments-plugin';
+import {
+  address,
+  addressView,
+  codelist,
+  codelistView,
+  number,
+  numberView,
+  location,
+  locationView,
+  text_variable,
+  textVariableView,
+} from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/variable-plugin/variables';
 export default class SimpleEditorComponent extends Component {
   @tracked controller;
 
@@ -187,9 +196,9 @@ export default class SimpleEditorComponent extends Component {
       },
     };
     let nodes = {
-      doc: {
+      doc: docWithConfig({
         content: userConfig.docContent ?? 'block+',
-      },
+      }),
       paragraph,
       repaired_block,
       list_item,
@@ -229,119 +238,233 @@ export default class SimpleEditorComponent extends Component {
         }
       ),
     ];
+    const nodeViews = {};
+    const setup = { nodes, marks, plugins, nodeViews, userConfig, config };
     if (activePlugins.includes('rdfa-date')) {
-      if (!userConfig.date) {
-        config.date = {
-          placeholder: {
-            insertDate: this.intl.t('date-plugin.insert.date'),
-            insertDateTime: this.intl.t('date-plugin.insert.datetime'),
-          },
-          formats: [
-            {
-              label: 'Short Date',
-              key: 'short',
-              dateFormat: 'dd/MM/yy',
-              dateTimeFormat: 'dd/MM/yy HH:mm',
-            },
-            {
-              label: 'Long Date',
-              key: 'long',
-              dateFormat: 'EEEE dd MMMM yyyy',
-              dateTimeFormat: 'PPPPp',
-            },
-          ],
-          allowCustomFormat: true,
-        };
-      } else {
-        config.date = userConfig.date;
-      }
-      nodes.date = date(config.date);
+      this.setupDatePlugin(setup);
     }
     if (activePlugins.includes('citation')) {
-      const citationConfig = userConfig.citation;
-      if (citationConfig) {
-        config.citation = citationConfig;
-      } else {
-        config.citation = {
-          type: 'ranges',
-          activeInRanges: (state) => [[0, state.doc.content.size]],
-          endpoint: '/codex/sparql',
-        };
-      }
-      const citationPluginVariable = citationPlugin(config.citation);
-      this.citationPlugin = citationPluginVariable;
-      plugins.push(citationPluginVariable);
+      this.setupCitationPlugin(setup);
     }
     if (activePlugins.includes('article-structure')) {
-      if (
-        userConfig.articleStructure &&
-        userConfig.articleStructure.mode === 'regulatoryStatement'
-      ) {
-        config.structures = STRUCTURE_SPECS;
-      } else {
-        config.structures = structureSpecs;
-      }
-      nodes = { ...nodes, ...STRUCTURE_NODES };
+      this.setupStructurePlugin(setup);
     }
     if (activePlugins.includes('besluit')) {
-      nodes = { ...nodes, ...besluitNodes };
+      this.setupBesluitPlugin(setup);
     }
     if (activePlugins.includes('roadsign-regulation')) {
-      nodes.roadsign_regulation = roadsign_regulation;
-      config.roadsignRegulation = userConfig.roadsignRegulation ?? {
-        endpoint: 'https://dev.roadsigns.lblod.info/sparql',
-        imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
-      };
+      this.setupRoadsignPlugin(setup);
     }
     if (activePlugins.includes('variable')) {
-      nodes.variable = variable;
-      config.variable = userConfig.variable ?? {
-        defaultEndpoint: 'https://dev.roadsigns.lblod.info/sparql',
-      };
-      nodes.number = number;
-    }
-    if (activePlugins.includes('template-variable')) {
-      config.templateVariable = userConfig.templateVariable ?? {
-        endpoint: 'https://dev.roadsigns.lblod.info/sparql',
-        zonalLocationCodelistUri:
-          'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
-        nonZonalLocationCodelistUri:
-          'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
-      };
+      this.setupVariablePlugin(setup);
     }
     if (activePlugins.includes('table-of-contents')) {
-      config.tableOfContents = userConfig.tableOfContents ?? [
-        {
-          nodeHierarchy: [
-            'title|chapter|section|subsection|article',
-            'structure_header|article_header',
-          ],
-        },
-      ];
-      nodes.table_of_contents = table_of_contents(config.tableOfContents);
+      this.setupTOCPlugin(setup);
     }
-    this.config = config;
-    nodes = { ...nodes, heading, invisible_rdfa, block_rdfa };
-    this.schema = new Schema({ nodes, marks });
-    this.plugins = plugins;
+    if (activePlugins.includes('template-comments')) {
+      this.setupTemplateCommentsPlugin(setup);
+    }
+    this.config = setup.config;
+    setup.nodes = { ...setup.nodes, heading, invisible_rdfa, block_rdfa };
+    this.schema = new Schema({ nodes: setup.nodes, marks: setup.marks });
+    this.plugins = setup.plugins;
     this.nodeViews = (controller) => {
-      return {
-        variable: activePlugins.includes('variable')
-          ? variableView(controller)
-          : undefined,
-        number: activePlugins.includes('variable')
-          ? numberView(controller)
-          : undefined,
-        table_of_contents: activePlugins.includes('table-of-contents')
-          ? tableOfContentsView(config.tableOfContents)(controller)
-          : undefined,
-        link: linkView(this.config.link)(controller),
+      const views = {
+        link: linkView(setup.config.link)(controller),
         image: imageView(controller),
-        date: activePlugins.includes('rdfa-date')
-          ? dateView(this.config.date)(controller)
-          : undefined,
       };
+      for (const [key, value] of Object.entries(setup.nodeViews)) {
+        views[key] = value(controller);
+      }
+      return views;
     };
     this.initCompleted = true;
+  }
+
+  setupDatePlugin({ nodes, userConfig, config, nodeViews }) {
+    if (!userConfig.date) {
+      config.date = {
+        placeholder: {
+          insertDate: this.intl.t('date-plugin.insert.date'),
+          insertDateTime: this.intl.t('date-plugin.insert.datetime'),
+        },
+        formats: [
+          {
+            label: 'Short Date',
+            key: 'short',
+            dateFormat: 'dd/MM/yy',
+            dateTimeFormat: 'dd/MM/yy HH:mm',
+          },
+          {
+            label: 'Long Date',
+            key: 'long',
+            dateFormat: 'EEEE dd MMMM yyyy',
+            dateTimeFormat: 'PPPPp',
+          },
+        ],
+        allowCustomFormat: true,
+      };
+    } else {
+      config.date = userConfig.date;
+    }
+    nodes.date = date(config.date);
+    nodeViews.date = (controller) => dateView(this.config.date)(controller);
+  }
+
+  setupCitationPlugin({ userConfig, config, plugins }) {
+    const citationConfig = userConfig.citation;
+    if (citationConfig) {
+      config.citation = citationConfig;
+    } else {
+      config.citation = {
+        type: 'ranges',
+        activeInRanges: (state) => [[0, state.doc.content.size]],
+        endpoint: '/codex/sparql',
+      };
+    }
+    const citationPluginVariable = citationPlugin(config.citation);
+    this.citationPlugin = citationPluginVariable;
+    plugins.push(citationPluginVariable);
+  }
+
+  setupStructurePlugin(setup) {
+    const { userConfig, config, nodes } = setup;
+    if (
+      userConfig.articleStructure &&
+      userConfig.articleStructure.mode === 'regulatoryStatement'
+    ) {
+      config.structures = STRUCTURE_SPECS;
+    } else {
+      config.structures = structureSpecs;
+    }
+    setup.nodes = { ...nodes, ...STRUCTURE_NODES };
+  }
+
+  setupBesluitPlugin(setup) {
+    setup.nodes = { ...setup.nodes, ...besluitNodes };
+  }
+
+  setupRoadsignPlugin(setup) {
+    const { nodes, config, userConfig } = setup;
+
+    nodes.roadsign_regulation = roadsign_regulation;
+    config.roadsignRegulation = userConfig.roadsignRegulation ?? {
+      endpoint: 'https://dev.roadsigns.lblod.info/sparql',
+      imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
+    };
+  }
+
+  setupVariablePlugin(setup) {
+    const { config, userConfig, nodes, nodeViews } = setup;
+    nodes.text_variable = text_variable;
+    nodes.number = number;
+    nodes.address = address;
+    nodes.location = location;
+    nodes.codelist = codelist;
+    config.variable = {};
+    config.variable.insert = {
+      enable: userConfig.variable?.insert?.enable ?? true,
+    };
+    config.variable.edit = {
+      enable: userConfig.variable?.edit?.enable ?? true,
+    };
+    if (config.variable.insert.enable) {
+      config.variable.insert.variableTypes = [
+        {
+          label: 'text',
+          component: {
+            path: 'variable-plugin/text/insert',
+          },
+        },
+        {
+          label: 'number',
+          component: {
+            path: 'variable-plugin/number/insert',
+          },
+        },
+        {
+          label: 'location',
+          component: {
+            path: 'variable-plugin/location/insert',
+            options: {
+              endpoint:
+                userConfig.variable?.insert?.locationEndpoint ??
+                'https://dev.roadsigns.lblod.info/sparql',
+            },
+          },
+        },
+        {
+          label: 'address',
+          component: {
+            path: 'variable-plugin/address/insert',
+          },
+        },
+        {
+          label: 'date',
+          component: {
+            path: 'variable-plugin/date/insert',
+          },
+        },
+        {
+          label: 'codelist',
+          component: {
+            path: 'variable-plugin/codelist/insert',
+            options: {
+              endpoint:
+                userConfig.variable?.insert?.codelistEndpoint ??
+                'https://reglementairebijlagen.lblod.info/sparql',
+              publisher: userConfig.variable?.insert?.codelistPublisher,
+            },
+          },
+        },
+      ];
+    }
+
+    if (config.variable.edit.enable) {
+      config.variable.edit.location = {
+        endpoint:
+          userConfig.variable?.edit?.location?.endpoint ??
+          'https://dev.roadsigns.lblod.info/sparql',
+        zonalLocationCodelistUri:
+          userConfig.variable?.edit?.location?.zonalLocationCodelistUri ??
+          'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
+        nonZonalLocationCodelistUri:
+          userConfig.variable?.edit?.loation?.nonZonalLocationCodelistUri ??
+          'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
+      };
+      config.variable.edit.codelist = {};
+      config.variable.edit.address = {
+        defaultMunicipality:
+          userConfig.variable?.edit?.address?.defaultMunicipality,
+      };
+    }
+
+    nodeViews.address = (controller) => addressView(controller);
+    nodeViews.number = (controller) => numberView(controller);
+    nodeViews.text_variable = (controller) => textVariableView(controller);
+    nodeViews.location = (controller) => locationView(controller);
+    nodeViews.codelist = (controller) => codelistView(controller);
+  }
+
+  setupTOCPlugin(setup) {
+    const { config, userConfig, nodes, nodeViews } = setup;
+
+    config.tableOfContents = userConfig.tableOfContents ?? [
+      {
+        nodeHierarchy: [
+          'title|chapter|section|subsection|article',
+          'structure_header|article_header',
+        ],
+      },
+    ];
+    nodes.table_of_contents = table_of_contents(config.tableOfContents);
+
+    nodeViews.table_of_contents = (controller) =>
+      tableOfContentsView(config.tableOfContents)(controller);
+  }
+  setupTemplateCommentsPlugin(setup) {
+    const { nodes, nodeViews } = setup;
+    nodes.templateComment = templateComment;
+    nodeViews.templateComment = (controller) => templateCommentView(controller);
   }
 }
