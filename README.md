@@ -333,6 +333,7 @@ Add annnotated *mobiliteitsmaatregelen* from a specified registry, which will mo
 
 :warning: This plugin will only activate in *besluiten* with a certain rdf type.
 <details><summary>Exhaustive list of types</summary>
+
 `https://data.vlaanderen.be/id/concept/BesluitType/4d8f678a-6fa4-4d5f-a2a1-80974e43bf34`
 
 `https://data.vlaanderen.be/id/concept/BesluitType/7d95fd2e-3cc9-4a4c-a58e-0fbc408c2f9b`
@@ -513,9 +514,10 @@ Take special care when releasing a new version of this.
 #### How it works
 This repository includes [the editor](https://github.com/lblod/ember-rdfa-editor) and [editor plugins](https://github.com/lblod/ember-rdfa-editor-lblod-plugins) packaged together with Ember so the editor can be used in projects outside of Ember. This is mostly done by adjust the build process in `ember-cli-build.js`, by specifying the output filename and limiting the chunks to one file, for easy importing.
 
-the consumer loads the editor in their own div element. This editor is fully defined in `app/components/simple-editor.js`, with all consumer-facing logic bound in `insertedInDom`. 
+the consumer loads the editor in their own div element. This editor is fully defined in `app/components/simple-editor.js`, with consumer-facing logic bound in `insertedInDom` and  logic that needs a controller bound in `handleRdfaEditorInit`. 
 Because the editor is a black box for the consumer, it is not possible to load plugins the same way as in Ember for them. Instead, all plugins are loaded in ember code depending on a config the consumer passes. 
 
+The consumer will access the controller and other methods by accessing the `notule-editor` element. For developing, you can access this element easily in the console by searching for the div with `class="notule-editor"`, right-click and select click "use in console" (Firefox) or "store as global variable" (Chrome).
 #### Important Develop notes 
 - **Placement of UI elements is important**: Because the consumer can only choose to enable or disable a plugin, it is important to fully specify everything a plugin needs correctly (like buttons). Unlike with the dummy-app of ember-rdfa-editor, everything placed in the template will be visible, so give some thought about placement and CSS.
 - **Update Readme**: Make sure to update the Readme for any changes to PRs (e.g. bumping the editor-plugins version). The Readme includes quite a lot of duplicate explanation as there can be subtle differences for using a plugin in the Embeddable. This means that updating the plugins might also mean having to update the readme to include some new changes.
