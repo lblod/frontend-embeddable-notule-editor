@@ -25,6 +25,10 @@
     "test:ember": "ember test",
     "release": "release-it"
   },
+  "dependencies": {
+    "ember-intl": "^5.7.2",
+    "ember-unique-id-helper-polyfill": "^1.2.2"
+  },
   "devDependencies": {
     "@appuniversum/ember-appuniversum": "^2.4.0",
     "@babel/core": "^7.19.6",
@@ -67,6 +71,7 @@
     "ember-qunit": "^6.2.0",
     "ember-resolver": "^8.0.3",
     "ember-source": "~3.28.9",
+    "ember-svg-jar": "^2.4.6",
     "ember-template-lint": "^3.15.0",
     "eslint": "^8.26.0",
     "eslint-config-prettier": "^9.0.0",
@@ -94,10 +99,5 @@
     "last 2 Chrome version",
     "last 2 Firefox version",
     "last 2 Edge version"
-  ],
-  "dependencies": {
-    "ember-intl": "^5.7.2",
-    "ember-unique-id-helper-polyfill": "^1.2.2",
-    "svgxuse": "^1.2.6"
-  }
+  ]
 }

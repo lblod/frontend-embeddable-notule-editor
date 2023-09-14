@@ -24,6 +24,11 @@ module.exports = function (defaults) {
     '@appuniversum/ember-appuniversum': {
       disableWormholeElement: true,
     },
+    svgJar: {
+      sourceDirs: [
+        'node_modules/@appuniversum/ember-appuniversum/public/icons',
+      ],
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
