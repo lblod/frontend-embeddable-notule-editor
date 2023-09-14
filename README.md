@@ -148,19 +148,29 @@ editorElement.disableEnvironmentBanner();
 For a complete version of this example, checkout this file: [public/test.html](public/test.html). It also includes another button that inserts a template in the editor to showcase the plugins.
 
 ## Editor API
-The RDFa editor uses [the prosemirror toolkit](https://prosemirror.net/) as a base. After the `editorElement.initEditor()` function is called you will have access to the editor methods, including the controller with `editorElement.controller`. This controller is an instance of the [SayController](https://github.com/lblod/ember-rdfa-editor/blob/d4472d2e237256d30333cfcc20ce6eea7db241f2/addon/core/say-controller.ts) class of the [ember-rdfa-editor](https://github.com/lblod/ember-rdfa-editor). 
+The RDFa editor uses [the Prosemirror toolkit](https://prosemirror.net/) as a base. After the `editorElement.initEditor()` function is called you will have access to the editor methods, including the controller with `editorElement.controller`. This controller is an instance of the [SayController](https://github.com/lblod/ember-rdfa-editor/blob/d4472d2e237256d30333cfcc20ce6eea7db241f2/addon/core/say-controller.ts) class of the [ember-rdfa-editor](https://github.com/lblod/ember-rdfa-editor). 
 
-The controller provides following methods.
-- `focus()`: method which allows one to focus the main editor view
-- `setHtmlContent(content: string)`: sets the content of the main editor.
-- htmlContent: getter property containing the "serialized" html content of the editor. This is essentially the raw content without all the plugin bells and whistles, suitable for storing in a database. It can then be loaded with the abovementioned `setHtmlContent`
-- `doCommand(command: Command, { view = this.activeEditorView } = {})`: executes a Prosemirror command (https://prosemirror.net/docs/guide/#commands) on the main view. A different view can be provided, which is mainly used internally to control nested editor instances (e.g. for the implementation of the variables)
-- `checkCommand(command: Command, { view = this.activeEditorView } = {})`: checks whether a Prosemirror command may be executed.
-- `isMarkActive(mark: MarkType)`: checks whether a mark is currently active. This is currently of not much use in this package, since we do not expose the MarkType interface yet. (But for the curious, this is what the toolbar buttons use to update their active state)
-- `withTransaction(callback: (tr: Transaction) => Transaction | null, includeEmbeddedView = false)`: method which allows you to apply a [transaction](https://prosemirror.net/docs/ref/#state.Transaction) on the main view (or currently active embedded view). When you want to apply the transaction, the callback should return the transaction object.
-- `mainEditorState`: the [state](https://prosemirror.net/docs/ref/#state.Editor_State) instance of the main editor
-- `activeEditorState`: the state instance of the active editor. This is usually the same as the mainEditorState, except when inside a nested instance (like in a variable field)
-for typical use, the mainEditorState is the one you will most likely need
+#### editorElement API
+These are function available from the editor element, which is the HTML element with the class `notule-editor`. 
+- `initEditor(arrayOfPluginNames: string[], userConfigObject)`: Initialize the editor by passing an array of plugin names that should be activated and an object that contains the configuration for the editor and its plugins. See [Managing Plugins](managing-plugins) for more info. 
+  :warning: **This has to be called before accessing any other methods**.
+- `enableEnvironmentBanner()`: enable the banner that shows the environment and versions of plugins used.
+- `disableEnvironmentBanner()`: disable the banner.
+- `controller`: direct access the the [SayController](https://github.com/lblod/ember-rdfa-editor/blob/d4472d2e237256d30333cfcc20ce6eea7db241f2/addon/core/say-controller.ts) object. See [controller API](controller-api).
+- `setHtmlContent(content: string)`: set the HTML content inside the editor, overwriting all previous content.  
+- `getHtmlContent()`: Get the HTML content of the editor. This can be different than custom content set via `setHtmlContent`, because of HTML parsing logic.
+
+#### controller API
+These methods are accessible via `editorElement.controller` and contain a way to directly interact with the Prosemirror logic underneath. This is an instance of [SayController](https://github.com/lblod/ember-rdfa-editor/blob/d4472d2e237256d30333cfcc20ce6eea7db241f2/addon/core/say-controller.ts). Not all possible methods are shown.
+- `focus()`: focus the window to the main editor view
+- `setHtmlContent(content: string)`: sets the content of the main editor, overwriting all previous content.
+- `htmlContent`: property containing the "serialized" html content of the editor. This is essentially the raw content without all the plugin bells and whistles, suitable for storing in a database. It can then be loaded with `setHtmlContent`.
+- `doCommand(command: Command, { view = this.activeEditorView } = {})`: executes a [Prosemirror command](https://prosemirror.net/docs/guide/#commands) on the main view. A different view can be provided, which is mainly used internally to control nested editor instances (e.g. for the implementation of the variables)
+- `checkCommand(command: Command, { view = this.activeEditorView } = {})`: checks whether a [Prosemirror command](https://prosemirror.net/docs/guide/#commands) may be executed. Often used together with `doCommand` to disable an action if it is not allowed.
+- `isMarkActive(mark: MarkType)`: checks whether a mark is currently active. This is currently of not much use in this package, since we do not expose the MarkType interface yet. (But for the curious, this is what the toolbar buttons use to update their active state).
+- `withTransaction(callback: (tr: Transaction) => Transaction | null, includeEmbeddedView = false)`: apply a [Prosemirror transaction](https://prosemirror.net/docs/ref/#state.Transaction) on the main view (or currently active embedded view). When you want to apply the transaction, the callback should return the transaction object.
+- `mainEditorState`: the [editor state](https://prosemirror.net/docs/ref/#state.Editor_State) instance of the main editor
+- `activeEditorState`: the state instance of the active editor. This is usually the same as the `mainEditorState`, except when inside a nested instance (like in a variable field). For typical use, the `mainEditorState` is the one you will most likely need.
 - `mainEditorView`: the [view](https://prosemirror.net/docs/ref/#view.EditorView) instance of the main editor
 - `activeEditorView`: the view instance of the active editor. (see above for the distinction between the main and active editor)
 - `setActiveView(view: RdfaEditorView)`: activate a specific view.
@@ -192,7 +202,7 @@ Every plugin can be enabled by passing its name to `arrayOfPluginNames` array an
 * [template-comments](template-comments): Allows insertion and editing of comment blocks to provide extra information to a user filling in a document. These are visually distinct units with a special RDFa type, which allows them to be filtered out during postprocessing.
 ##### General Config options
 There are some options you can pass to `pluginsConfig` in `initEditor` that are not connected to a plugin.
-- `docContent: 'block+'`: The property docContent specifies which nodes are allowed in the document. By default we allow one or more nodes of the supertype block, which includes most content. For more info about this check the [prosemirror docs](https://prosemirror.net/docs/guide/#schema.content_expressions). 
+- `docContent: 'block+'`: The property docContent specifies which nodes are allowed in the document. By default we allow one or more nodes of the supertype block, which includes most content. For more info about this check the [Prosemirror docs](https://prosemirror.net/docs/guide/#schema.content_expressions). 
   See `public/test.html` where `docContent` is specified to allow [article-structure](#Article Structure) nodes in a specific order.
 
 ### Article Structure
@@ -282,9 +292,9 @@ citation: {
 - `endpoint`: where to fetch the citation data from (the codex)
 - `type`: this is `'nodes'` or `'ranges'` and specifies the type of check that can be specified. 
 	- if type `'nodes'`:
-		- `activeInNodeTypes`: given the prosemirror schema and editor state, return a `Set` of nodetypes inside which the plugin should be active. Embeddable does not expose the schema directly, so some internal knowledge is needed to use this effectively.
+		- `activeInNodeTypes`: given the Prosemirror schema and editor state, return a `Set` of nodetypes inside which the plugin should be active. Embeddable does not expose the schema directly, so some internal knowledge is needed to use this effectively.
 	- if type `'ranges'`: 
-		- `activeInRanges`: given the prosemirror editor state, return an array of ranges for the plugin to be active in, for example `[[0,50], [70,100]]`
+		- `activeInRanges`: given the Prosemirror editor state, return an array of ranges for the plugin to be active in, for example `[[0,50], [70,100]]`
 
 Both examples show how to activate the plugin for the *whole* document.
 
@@ -370,7 +380,7 @@ Add a table of contents at the top of the document. It can be toggled with a but
 
 At this time it will only work well together with [article-structure plugin](#article-structure) in `regulatoryStatement` mode by using the default config.
 
-:warning: For use in different situations, open an issue on this repo with the usecase, so we can help. The [prosemirror schema](https://prosemirror.net/docs/guide/#schema) that is used in the config is public-facing yet, so changing this is not trivial.
+:warning: For use in different situations, open an issue on this repo with the usecase, so we can help. The [Prosemirror schema](https://prosemirror.net/docs/guide/#schema) that is used in the config is public-facing yet, so changing this is not trivial.
 ***
 :heavy_plus_sign: Enable by adding `"table-of-contents"` to `arrayOfPluginNames` array.
 ```javascript
