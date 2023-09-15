@@ -5,9 +5,9 @@ This application allows you to embed the RDFa editor in other applications witho
 The readme is structured as follows
 - [Live Demo](#live-demo): an online demo to test out the application and what is possible.
 - [Using the editor yourself](#using-the-embeddable-editor-in-your-app): How to get the needed packages for use in your app.
-- [Code Example](#basic-example--the-editor-in-an-html-file): An example which gives a basic showcase on how to initialize and use the editor.
-- [Editor API](editor-api): list of methods and properties to customize the editor and interact with it through code.
-- [Configuring The Editor](configuring-the-editor): ways to configure the editor during loading. The editor includes a list of plugins that can be enabled and configured as explained in [Managing Plugins](managing-plugins). 
+- [Code Example](#basic-example-the-editor-in-an-html-file): An example which gives a basic showcase on how to initialize and use the editor.
+- [Editor API](#editor-api): list of methods and properties to customize the editor and interact with it through code.
+- [Configuring The Editor](#configuring-the-editor): ways to configure the editor during loading. The editor includes a list of plugins that can be enabled and configured as explained in [Managing Plugins](#managing-plugins). 
 
 ## Live Demo
 A [live demo](https://embeddable.gelinkt-notuleren.lblod.info) is available for easy testing. 
@@ -19,7 +19,7 @@ Any content entered here will not be saved.
 ### Using the prebuilt bundles
 
 The prebuilt bundles are currently hosted on `https://embeddable.gelinkt-notuleren.lblod.info/`.
-For information on how to include them in your html file, see the [target usage](#target-usage) section below.
+For information on how to include them in your html file, see the [Code Example](#basic-example-the-editor-in-an-html-file) section below.
 This is considered a test environment and is subject to change, so it is not recommended to use it in production.
 
 For **production**, use the prebuilt packages in the [Github releases](https://github.com/lblod/frontend-embeddable-notule-editor/releases/). At this point `vendor.css` is empty and can be ignored.
@@ -35,7 +35,7 @@ npm install
 ember build -prod
 ```
 
-In the 'dist' folder structure, two CSS files and three JavaScript files will have been generated under assets. These are the files to use, as demonstrated in the [Code Example](#basic-example--the-editor-in-an-html-file). Note that the fingerprints of your files may vary. Other files in the dist folder can be ignored at this point, as they are not needed.
+In the 'dist' folder structure, two CSS files and three JavaScript files will have been generated under assets. These are the files to use, as demonstrated in the [Code Example](#basic-example-the-editor-in-an-html-file). Note that the fingerprints of your files may vary. Other files in the dist folder can be ignored at this point, as they are not needed.
 
 ```bash
 dist
@@ -212,7 +212,7 @@ Any configuration value not provided will use the default value, which are shown
 * [variable](#rdfa-variables): Allows insertion and filling in of custom rdfa variables
 * [formatting-toggle](#formatting-toggle): Allows to toggle the formatting marks with a button
 * [rdfa-blocks-toggle](#rdfa-blocks-toggle): Allows to toggle the visual indications of the rdfa blocks with a button.
-* [template-comments](template-comments): Allows insertion and editing of comment blocks to provide extra information to a user filling in a document. These are visually distinct units with a special RDFa type, which allows them to be filtered out during postprocessing.
+* [template-comments](#template-comments): Allows insertion and editing of comment blocks to provide extra information to a user filling in a document. These are visually distinct units with a special RDFa type, which allows them to be filtered out during postprocessing.
 ##### General Config options
 There are some options you can pass to `pluginsConfig` in `initEditor` that are not connected to a plugin.
 - `docContent: 'block+'`: The property docContent specifies which nodes are allowed in the document. By default we allow one or more nodes of the supertype block, which includes most content. For more info about this check the [Prosemirror docs](https://prosemirror.net/docs/guide/#schema.content_expressions). 
@@ -497,7 +497,7 @@ You can enable/disable the banner using the following methods: `enableEnvironmen
 ## Localization
 Localization of the editor is an ongoing effort, the main target usage of Embeddable is currently Dutch speaking users. The editor will use the user's browser language and supports English (en-US) and Dutch (nl-BE). If the user has a different language set, the editor will default to Dutch.
 
-Some plugins, like the [citation plugin](https://github.com/lblod/ember-rdfa-editor-citaten-plugin/), use date pickers. The display format of these dates are connected with the local.
+Some plugins, like the [citation plugin](#citation), use date pickers. The display format of these dates are connected with the local.
 
 The local can be overwritten with `setLocalToDutch()` and `setLocalToEnglish()`. You can call one of these functions after `initEditor()` to always use the same language for the editor, ignoring the user's browser language.
 ## Styling
