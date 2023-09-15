@@ -23,7 +23,7 @@ The prebuilt bundles are currently hosted on `https://embeddable.gelinkt-notuler
 For information on how to include them in your html file, see the [target usage](#target-usage) section below.
 This is considered a test environment and is subject to change, so it is not recommended to use it in production.
 
-For **production**, use the prebuilt packages in the [Github releases](https://github.com/lblod/frontend-embeddable-notule-editor/releases/). At this point `vendor.css` is empty and is not added to the release. It can be ignored.
+For **production**, use the prebuilt packages in the [Github releases](https://github.com/lblod/frontend-embeddable-notule-editor/releases/). At this point `vendor.css` is empty and can be ignored.
 
 ### Building the sources yourself
 
@@ -36,7 +36,7 @@ npm install
 ember build -prod
 ```
 
-In the 'dist' folder structure, two CSS files and three JavaScript files will have been generated. These are the files to use, as demonstrated in the example above. Note that the fingerprints of your files may vary.
+In the 'dist' folder structure, two CSS files and three JavaScript files will have been generated under assets. These are the files to use, as demonstrated in the [Code Example](#basic-example--the-editor-in-an-html-file). Note that the fingerprints of your files may vary. Other files in the dist folder can be ignored at this point, as they are not needed.
 
 ```bash
 dist
@@ -44,7 +44,7 @@ dist
     ├── frontend-embeddable-notule-editor-app.js
     ├── frontend-embeddable-notule-editor.css
     ├── frontend-embeddable-notule-editor.js
-    ├── vendor.css // currently empty and not needed
+    ├── vendor.css # currently empty and not needed
     └── vendor.js
 ```
 
@@ -529,7 +529,16 @@ You will need the following things properly installed on your computer.
 Take special care when releasing a new version of this.
 - The changelog is automatically created using the PRs. 
 - To avoid a connection to Github, build files are not automatically added to the release
-	- Add the files under `dist/assets` from a production build to the release in a .zip archive. 
+	- Create a .zip archive with the important files from a production build. Remove any other files from dist and assets. Make sure the .zip release has the following structure:
+		```bash
+		dist
+		└── assets
+		    ├── frontend-embeddable-notule-editor-app.js
+		    ├── frontend-embeddable-notule-editor.css
+		    ├── frontend-embeddable-notule-editor.js
+		    ├── vendor.css # currently empty, but added for consistency
+		    └── vendor.js
+		```
 
 ### Developing
 #### How it works
