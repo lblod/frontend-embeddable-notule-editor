@@ -166,9 +166,10 @@ These are function available from the editor element, which is the HTML element 
 - `controller`: direct access the the [SayController](https://github.com/lblod/ember-rdfa-editor/blob/d4472d2e237256d30333cfcc20ce6eea7db241f2/addon/core/say-controller.ts) object. See [controller API](controller-api).
 - `setHtmlContent(content: string)`: set the HTML content inside the editor, overwriting all previous content.  
 - `getHtmlContent()`: Get the HTML content of the editor. This can be different than custom content set via `setHtmlContent`, because of HTML parsing logic.
-- `setLocalToDutch()`: Set the local (language used) of the editor to Dutch.
-- `setLocalToEnglish()`: Set the local (language used) of the editor to English.
-- `getLocal()`: returns the current local of the editor, being `nl-BE`, `en-US` or the user's browser locale. See more at [Localization](localization).
+- `setLocaleToDutch()`: Set the locale (language used) of the editor to Dutch.
+- `setLocaleToEnglish()`: Set the locale (language used) of the editor to English.
+- `getLocale()`: returns the current locale of the editor. This will be the user's browser locale, the set local with `setLocale`, or `nl-BE`/`en-US`, the supported languages. See more at [Localization](localization).
+- `setLocale(locale: string)`: set the current locale of the editor. Any locale is accepted, but will fallback to `nl-BE` if it is not `nl-BE` or `en-US` (the supported languages).
 
 #### controller API
 These methods are accessible via `editorElement.controller` and contain a way to directly interact with the Prosemirror logic underneath. This is an instance of [SayController](https://github.com/lblod/ember-rdfa-editor/blob/d4472d2e237256d30333cfcc20ce6eea7db241f2/addon/core/say-controller.ts). Not all possible methods are shown.

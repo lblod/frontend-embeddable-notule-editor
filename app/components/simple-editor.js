@@ -138,9 +138,10 @@ export default class SimpleEditorComponent extends Component {
     this.editorElement.initEditor = this.initEditor;
     this.editorElement.enableEnvironmentBanner = this.enableEnvironmentBanner;
     this.editorElement.disableEnvironmentBanner = this.disableEnvironmentBanner;
-    this.editorElement.setLocalToDutch = this.setLocalToDutch;
-    this.editorElement.setLocalToEnglish = this.setLocalToEnglish;
-    this.editorElement.getLocal = this.getLocal;
+    this.editorElement.setLocaleToDutch = this.setLocaleToDutch;
+    this.editorElement.setLocaleToEnglish = this.setLocaleToEnglish;
+    this.editorElement.getLocale = this.getLocale;
+    this.editorElement.setLocale = this.setLocale;
   }
 
   /**
@@ -168,18 +169,23 @@ export default class SimpleEditorComponent extends Component {
   }
 
   @action
-  setLocalToDutch() {
+  setLocaleToDutch() {
     this.intl.setLocale(['nl-BE']);
   }
 
   @action
-  setLocalToEnglish() {
+  setLocaleToEnglish() {
     this.intl.setLocale(['en-US', 'nl-BE']);
   }
 
   @action
-  getLocal() {
+  getLocale() {
     return this.intl.primaryLocale;
+  }
+
+  @action
+  setLocale(locale) {
+    return this.intl.setLocale([locale, 'nl-BE']);
   }
 
   @action
