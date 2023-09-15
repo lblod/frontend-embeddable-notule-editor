@@ -493,7 +493,8 @@ You can enable/disable the banner using the following methods: `enableEnvironmen
 Localization of the editor is an ongoing effort, the main target usage of Embeddable is currently Dutch speaking users. Some plugins, like the [citation plugin](https://github.com/lblod/ember-rdfa-editor-citaten-plugin/), use date pickers. The display format of these dates can be configured in the localization initializer.
 
 ## Styling
-Styling the editor is covered in the [README](https://github.com/lblod/ember-rdfa-editor#customisation) of ember-rdfa-editor. This frontend supports SASS, customizations can be added to [app.scss](app/styles/app.scss)
+Styling the editor can be done by overriding some CSS variables as covered in the [README of ember-rdfa-editor](https://github.com/lblod/ember-rdfa-editor#customisation).For other customizations, override other CSS as usual. 
+Alternatively, the frontend supports SASS, which can be added to [app.scss](app/styles/app.scss) before building the Embeddable yourself.
 
 # Development of frontend-embeddable-notule-editor
 
