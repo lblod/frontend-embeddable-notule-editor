@@ -9,7 +9,6 @@ The readme is structured as follows
 - [Editor API](editor-api): list of methods and properties to customize the editor and interact with it through code.
 - [Configuring The Editor](configuring-the-editor): ways to configure the editor during loading. The editor includes a list of plugins that can be enabled and configured as explained in [Managing Plugins](managing-plugins). 
 
-
 ## Live Demo
 A [live demo](https://embeddable.gelinkt-notuleren.lblod.info) is available for easy testing. 
 This environment is NOT suited for any production use, as it might change without notice and might be an outdated version. 
@@ -197,8 +196,8 @@ The editor can be customized to best fit your application.
 Embeddable ships with the following plugins available. 
 This Readme contains all the important info and configuration for the plugins. For more technical and Ember-specific explanations of every plugin, you can check out the Readme of [lblod/ember-rdfa-editor-lblod-plugins](https://github.com/lblod/ember-rdfa-editor-lblod-plugins).
 
-Every plugin can be enabled by passing its name to the `arrayOfPluginNames` array and its configuration to `userConfigObject` with the initialization function `initEditor(arrayOfPluginNames, userConfigObject)`.
-> :warning: The values shown for the config are default values used if you do not pass a config. If you pass **any** config for a plugin, it will not use any of these defaults and only use the config provided. Make sure to pass all required attributes in this case, even if you do not change them.
+Every plugin can be enabled by passing its name to the `arrayOfPluginNames` array and optionally its configuration to `userConfigObject` with the initialization function `initEditor(arrayOfPluginNames, userConfigObject)`. 
+Any configuration value not provided will use the default value, which are shown in the example configs of the plugins.
 
 * [article-structure](#article-structure): Provides structures to better manage official documents, like titles, chapters, articles and paragraphs. It allows you to insert, move and delete them. It has two modes: `besluit` for besluit articles and `regulatoryStatement` for all other structures.
 * [besluit](#besluit): Provides the correct rdfa-structure for constructing a decision ("besluiten") and some basic validation which checks whether mandatory structures are present in the document.

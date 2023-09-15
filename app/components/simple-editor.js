@@ -5,10 +5,14 @@ import { inject as service } from '@ember/service';
 
 import { Schema } from '@lblod/ember-rdfa-editor';
 
-import { linkPasteHandler } from '@lblod/ember-rdfa-editor/plugins/link';
 import {
-  tableOfContentsView,
+  link,
+  linkPasteHandler,
+  linkView,
+} from '@lblod/ember-rdfa-editor/plugins/link';
+import {
   table_of_contents,
+  tableOfContentsView,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/table-of-contents-plugin/nodes';
 import { firefoxCursorFix } from '@lblod/ember-rdfa-editor/plugins/firefox-cursor-fix';
 import { lastKeyPressedPlugin } from '@lblod/ember-rdfa-editor/plugins/last-key-pressed';
@@ -22,8 +26,8 @@ import {
   underline,
 } from '@lblod/ember-rdfa-editor/plugins/text-style';
 import {
-  docWithConfig,
   block_rdfa,
+  docWithConfig,
   hard_break,
   horizontal_rule,
   invisible_rdfa,
@@ -72,7 +76,6 @@ import {
 import { citationPlugin } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/citation-plugin';
 
 import { roadsign_regulation } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/roadsign-regulation-plugin/nodes';
-import { link, linkView } from '@lblod/ember-rdfa-editor/plugins/link';
 import { highlight } from '@lblod/ember-rdfa-editor/plugins/highlight/marks/highlight';
 import { color } from '@lblod/ember-rdfa-editor/plugins/color/marks/color';
 
@@ -85,13 +88,23 @@ import {
   addressView,
   codelist,
   codelistView,
-  number,
-  numberView,
   location,
   locationView,
+  number,
+  numberView,
   text_variable,
   textVariableView,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/variable-plugin/variables';
+
+import {
+  defaultCitationPluginConfig,
+  defaultLocationVariablePluginConfig,
+  defaultRdfaDatePluginConfig,
+  defaultRoadsignRegulationPluginConfig,
+  defaultTableOfContentsPluginConfig,
+  mergeConfigs,
+} from '../config/defaults';
+
 export default class SimpleEditorComponent extends Component {
   @tracked controller;
 
@@ -276,46 +289,21 @@ export default class SimpleEditorComponent extends Component {
   }
 
   setupDatePlugin({ nodes, userConfig, config, nodeViews }) {
-    if (!userConfig.date) {
-      config.date = {
-        placeholder: {
-          insertDate: this.intl.t('date-plugin.insert.date'),
-          insertDateTime: this.intl.t('date-plugin.insert.datetime'),
-        },
-        formats: [
-          {
-            label: 'Short Date',
-            key: 'short',
-            dateFormat: 'dd/MM/yy',
-            dateTimeFormat: 'dd/MM/yy HH:mm',
-          },
-          {
-            label: 'Long Date',
-            key: 'long',
-            dateFormat: 'EEEE dd MMMM yyyy',
-            dateTimeFormat: 'PPPPp',
-          },
-        ],
-        allowCustomFormat: true,
-      };
-    } else {
-      config.date = userConfig.date;
-    }
+    config.date = mergeConfigs(
+      defaultRdfaDatePluginConfig(this.intl.t.bind(this.intl)),
+      userConfig.date
+    );
+
     nodes.date = date(config.date);
     nodeViews.date = (controller) => dateView(this.config.date)(controller);
   }
 
   setupCitationPlugin({ userConfig, config, plugins }) {
-    const citationConfig = userConfig.citation;
-    if (citationConfig) {
-      config.citation = citationConfig;
-    } else {
-      config.citation = {
-        type: 'ranges',
-        activeInRanges: (state) => [[0, state.doc.content.size]],
-        endpoint: '/codex/sparql',
-      };
-    }
+    config.citation = mergeConfigs(
+      defaultCitationPluginConfig,
+      userConfig.citation
+    );
+
     const citationPluginVariable = citationPlugin(config.citation);
     this.citationPlugin = citationPluginVariable;
     plugins.push(citationPluginVariable);
@@ -342,10 +330,11 @@ export default class SimpleEditorComponent extends Component {
     const { nodes, config, userConfig } = setup;
 
     nodes.roadsign_regulation = roadsign_regulation;
-    config.roadsignRegulation = userConfig.roadsignRegulation ?? {
-      endpoint: 'https://dev.roadsigns.lblod.info/sparql',
-      imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
-    };
+
+    config.roadsignRegulation = mergeConfigs(
+      defaultRoadsignRegulationPluginConfig,
+      userConfig.roadsignRegulation
+    );
   }
 
   setupVariablePlugin(setup) {
@@ -415,18 +404,13 @@ export default class SimpleEditorComponent extends Component {
     }
 
     if (config.variable.edit.enable) {
-      config.variable.edit.location = {
-        endpoint:
-          userConfig.variable?.edit?.location?.endpoint ??
-          'https://dev.roadsigns.lblod.info/sparql',
-        zonalLocationCodelistUri:
-          userConfig.variable?.edit?.location?.zonalLocationCodelistUri ??
-          'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
-        nonZonalLocationCodelistUri:
-          userConfig.variable?.edit?.loation?.nonZonalLocationCodelistUri ??
-          'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
-      };
+      config.variable.edit.location = mergeConfigs(
+        defaultLocationVariablePluginConfig,
+        userConfig.variable?.edit?.location
+      );
+
       config.variable.edit.codelist = {};
+
       config.variable.edit.address = {
         defaultMunicipality:
           userConfig.variable?.edit?.address?.defaultMunicipality,
@@ -443,19 +427,17 @@ export default class SimpleEditorComponent extends Component {
   setupTOCPlugin(setup) {
     const { config, userConfig, nodes, nodeViews } = setup;
 
-    config.tableOfContents = userConfig.tableOfContents ?? [
-      {
-        nodeHierarchy: [
-          'title|chapter|section|subsection|article',
-          'structure_header|article_header',
-        ],
-      },
-    ];
+    config.tableOfContents = mergeConfigs(
+      defaultTableOfContentsPluginConfig,
+      userConfig.tableOfContents
+    );
+
     nodes.table_of_contents = table_of_contents(config.tableOfContents);
 
     nodeViews.table_of_contents = (controller) =>
       tableOfContentsView(config.tableOfContents)(controller);
   }
+
   setupTemplateCommentsPlugin(setup) {
     const { nodes, nodeViews } = setup;
     nodes.templateComment = templateComment;
