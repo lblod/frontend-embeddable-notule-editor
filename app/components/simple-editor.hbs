@@ -142,7 +142,7 @@
                 @options={{this.config.structures}}
               />
             {{/if}}
-            {{#if (array-includes this.activePlugins 'rdfa-date')}}
+            {{#if (array-includes this.activePlugins 'rdfa-date' 'variable')}}
                 <RdfaDatePlugin::Card
                   @controller={{this.controller}}
                   @options={{this.config.date}}

@@ -414,8 +414,6 @@ tableOfContents: [
 **note**: this config is a *list*. Multiple `nodeHierarchy`s can be passed to let the table of contents work in multiple situation. The last matching hierarchy will be used.
 
 ### RDFa Variables
-> :warning: [RDFa date plugin](rdfa-date) is required to be added when using this plugin.
-
 These are placeholders that can be inserted in a document. A variable placeholder has a specific type (text, number, date, address or codelist), which changes the type of input it can receive. These placeholders can then be filled in by a user using the document.
 
 Usually variables are inserted in an editor made to create *templates* (documents to be filled in), and only edited in an editor to fill in these *templates*. Via the config you can customize if you want to allow insertion and/or filling in a variable.
@@ -436,6 +434,9 @@ A variable can be inserted with the card shown in the right sidebar.
 :heavy_plus_sign: Enable by adding `"variable"` to the `arrayOfPluginNames` array.
 ```javascript
 // pass to pluginsConfig
+date: {
+  // see RDFa Date plugin for config
+},
 variable: {
   insert: {
       enable: true,
@@ -455,17 +456,19 @@ variable: {
     }
 },
 ```
-- `insert`: configuration for inserting a variable
-	- `enable`: is inserting a variable allowed (removing is always possible!)
-	- `codelistEndpoint`: the endpoint from which to fetch the codelists, which will be added to a codelist variable's RDFa. For production you'll likely want to use https://register.mobiliteit.vlaanderen.be/sparql`.
-	- `codelistPublisher`: Limit the codelists to a specific publisher. *null* will allow all codelists.
-	- `locationEndpoint`: the endpoint to fetch location options, which will be added to the location variable's RDFa and used as the endpoint when selecting a location variable. For production you'll likely want to use `https://register.mobiliteit.vlaanderen.be`.
-- `edit`: configuration for editing an inserted variable
-	- `enable`: is editing a variable allowed (removing is always possible!)
-	- `location`: config for location variable
-		- `endpoint`: *fallback* endpoint for location variable if the variable is missing the endpoint in its RDFa. This will most likely be the same as the endpoint used for inserting.
-		- `zonalLocationCodelistUri`: the URI to search for if the location variable is included in a zonal traffic measure.
-		- `nonZonalLocationCodelistUri`: the URI to search for if the location variable is included in a non-zonal traffic measure.
+- `date`: configuration for the date variable, see [RDFa Date plugin](#rdfa-date) how to configure.
+- `variable`: configuration for all variables
+  - `insert`: configuration for inserting a variable
+  	- `enable`: is inserting a variable allowed (removing is always possible!)
+  	- `codelistEndpoint`: the endpoint from which to fetch the codelists, which will be added to a codelist variable's RDFa. For production you'll likely want to use https://register.mobiliteit.vlaanderen.be/sparql`.
+  	- `codelistPublisher`: Limit the codelists to a specific publisher. *null* will allow all codelists.
+  	- `locationEndpoint`: the endpoint to fetch location options, which will be added to the location variable's RDFa and used as the endpoint when selecting a location variable. For production you'll likely want to use `https://register.mobiliteit.vlaanderen.be`.
+  - `edit`: configuration for editing an inserted variable
+  	- `enable`: is editing a variable allowed (removing is always possible!)
+  	- `location`: config for location variable
+  		- `endpoint`: *fallback* endpoint for location variable if the variable is missing the endpoint in its RDFa. This will most likely be the same as the endpoint used for inserting.
+  		- `zonalLocationCodelistUri`: the URI to search for if the location variable is included in a zonal traffic measure.
+  		- `nonZonalLocationCodelistUri`: the URI to search for if the location variable is included in a non-zonal traffic measure.
 
 ### Formatting Toggle
 This will add a button in the top toolbar `Show formatting marks`. This toggles the visibility of all formatting marks of the document such as break lines, paragraphs...
