@@ -178,10 +178,12 @@ These methods are accessible via `editorElement.controller` and contain a way to
 - `isMarkActive(mark: MarkType)`: checks whether a mark is currently active. This is currently of not much use in this package, since we do not expose the MarkType interface yet. (But for the curious, this is what the toolbar buttons use to update their active state).
 - `withTransaction(callback: (tr: Transaction) => Transaction | null, includeEmbeddedView = false)`: apply a [Prosemirror transaction](https://prosemirror.net/docs/ref/#state.Transaction) on the main view (or currently active embedded view). When you want to apply the transaction, the callback should return the transaction object.
 - `mainEditorState`: the [editor state](https://prosemirror.net/docs/ref/#state.Editor_State) instance of the main editor
-- `activeEditorState`: the state instance of the active editor. This is usually the same as the `mainEditorState`, except when inside a nested instance (like in a variable field). For typical use, the `mainEditorState` is the one you will most likely need.
 - `mainEditorView`: the [view](https://prosemirror.net/docs/ref/#view.EditorView) instance of the main editor
-- `activeEditorView`: the view instance of the active editor. (see above for the distinction between the main and active editor)
-- `setActiveView(view: RdfaEditorView)`: activate a specific view.
+
+#### Interacting via Prosemirror Commands
+A good way to add extra interaction to editor, besides the plugins and buttons provided, is via Prosemirror commands. Most of the plugins also use these commands. A command can be a [command from Prosemirror](https://prosemirror.net/docs/ref/#commands) or a custom command.
+These commands might check certain conditions and run `withTransaction` to change something in the editor. A good run-through of how they work can be found on the [ember-rdfa-editor wiki](https://github.com/lblod/ember-rdfa-editor/wiki/Quickstart#commands).
+Do note that more advanced commands will need knowledge about the used schema and other internal information of Embeddable. You can access this (via the `mainEditorState`), but as this is not yet made public, the schema might change in the future.
 
 # Configuring The Editor
 
