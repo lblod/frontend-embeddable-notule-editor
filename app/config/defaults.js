@@ -66,6 +66,7 @@ export const defaultTableOfContentsPluginConfig = [
 ];
 
 const mergeCustomizer = (objValue, srcValue) => {
+  // if the src provides an array, overwrite instead of merging
   if (Array.isArray(objValue) && Array.isArray(srcValue)) {
     return srcValue;
   }
