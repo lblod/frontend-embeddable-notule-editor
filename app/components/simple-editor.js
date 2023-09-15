@@ -168,6 +168,18 @@ const defaultLocationVariablePluginConfig = {
     'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
 };
 
+/**
+ * @type {import("@lblod/ember-rdfa-editor-lblod-plugins/plugins/table-of-contents-plugin").TableOfContentsConfig}
+ */
+const defaultTableOfContentsPluginConfig = [
+  {
+    nodeHierarchy: [
+      'title|chapter|section|subsection|article',
+      'structure_header|article_header',
+    ],
+  },
+];
+
 export default class SimpleEditorComponent extends Component {
   @tracked controller;
 
@@ -496,14 +508,11 @@ export default class SimpleEditorComponent extends Component {
   setupTOCPlugin(setup) {
     const { config, userConfig, nodes, nodeViews } = setup;
 
-    config.tableOfContents = userConfig.tableOfContents ?? [
-      {
-        nodeHierarchy: [
-          'title|chapter|section|subsection|article',
-          'structure_header|article_header',
-        ],
-      },
-    ];
+    config.tableOfContents = mergeConfigs(
+      defaultTableOfContentsPluginConfig,
+      userConfig.tableOfContents
+    );
+
     nodes.table_of_contents = table_of_contents(config.tableOfContents);
 
     nodeViews.table_of_contents = (controller) =>
