@@ -132,21 +132,25 @@ export default class SimpleEditorComponent extends Component {
 
   @action
   handleRdfaEditorInit(controller) {
+    // This, together with `insertedInDom` adds the public-facing logic available to the consumer.
+    // This includes the controller with most of the functionality
+    // and some other helper functions for easy accessing.
     this.controller = controller;
+    this.editorElement.getHtmlContent = this.getHtmlContent;
+    this.editorElement.setHtmlContent = this.setHtmlContent;
+    this.editorElement.controller = this.controller;
   }
 
   @action
   insertedInDom(element) {
     this.setVocab(element);
     this.setPrefix(element);
-    element.getHtmlContent = this.getHtmlContent;
-    element.setHtmlContent = this.setHtmlContent;
-    element.controller = this.controller;
-    element.on = this.on;
-    element.off = this.off;
-    element.initEditor = this.initEditor;
-    element.enableEnvironmentBanner = this.enableEnvironmentBanner;
-    element.disableEnvironmentBanner = this.disableEnvironmentBanner;
+    this.editorElement = element;
+    // `insertedInDom` will run before `handleRdfaEditorInit`, which gives access to the controller
+    // these methods can be used before the controller has been loaded
+    this.editorElement.initEditor = this.initEditor;
+    this.editorElement.enableEnvironmentBanner = this.enableEnvironmentBanner;
+    this.editorElement.disableEnvironmentBanner = this.disableEnvironmentBanner;
   }
 
   /**
@@ -187,16 +191,6 @@ export default class SimpleEditorComponent extends Component {
   @action
   disableEnvironmentBanner() {
     this.showEnvironmentBanner = false;
-  }
-
-  @action
-  on(eventName, callback) {
-    this.controller.on(eventName, callback);
-  }
-
-  @action
-  off(eventName, callback) {
-    this.controller.off(eventName, callback);
   }
 
   @action
