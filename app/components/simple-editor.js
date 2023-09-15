@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
-import merge from 'lodash.merge';
+import merge from 'lodash.mergewith';
 
 import { Schema } from '@lblod/ember-rdfa-editor';
 
@@ -94,6 +94,12 @@ import {
   textVariableView,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/variable-plugin/variables';
 
+const mergeCustomizer = (objValue, srcValue) => {
+  if (Array.isArray(objValue) && Array.isArray(srcValue)) {
+    return srcValue;
+  }
+};
+
 /**
  * If the user config is present, merge it with the default config.
  * Otherwise return the default config.
@@ -101,9 +107,9 @@ import {
  * @param userConfig
  * @returns {*}
  */
-const maybeMergeUserConfig = (defaultConfig, userConfig) => {
+const mergeConfigs = (defaultConfig, userConfig) => {
   if (userConfig) {
-    return merge(defaultConfig, userConfig);
+    return merge(defaultConfig, userConfig, mergeCustomizer);
   }
 
   return defaultConfig;
@@ -352,7 +358,7 @@ export default class SimpleEditorComponent extends Component {
   }
 
   setupDatePlugin({ nodes, userConfig, config, nodeViews }) {
-    config.date = maybeMergeUserConfig(
+    config.date = mergeConfigs(
       defaultRdfaDatePluginConfig(this.intl.t.bind(this.intl)),
       userConfig.date
     );
@@ -362,7 +368,7 @@ export default class SimpleEditorComponent extends Component {
   }
 
   setupCitationPlugin({ userConfig, config, plugins }) {
-    config.citation = maybeMergeUserConfig(
+    config.citation = mergeConfigs(
       defaultCitationPluginConfig,
       userConfig.citation
     );
@@ -394,7 +400,7 @@ export default class SimpleEditorComponent extends Component {
 
     nodes.roadsign_regulation = roadsign_regulation;
 
-    config.roadsignRegulation = maybeMergeUserConfig(
+    config.roadsignRegulation = mergeConfigs(
       defaultRoadsignRegulationPluginConfig,
       userConfig.roadsignRegulation
     );
@@ -467,7 +473,7 @@ export default class SimpleEditorComponent extends Component {
     }
 
     if (config.variable.edit.enable) {
-      config.variable.edit.location = maybeMergeUserConfig(
+      config.variable.edit.location = mergeConfigs(
         defaultLocationVariablePluginConfig,
         userConfig.variable?.edit?.location
       );
