@@ -2,10 +2,10 @@
 
 This application allows you to embed the RDFa editor in other applications without integrating with EmberJS directly. It will behave like any other HTML editor.
 
-The readme is structures as follows
+The readme is structured as follows
 - [Live Demo](#live-demo): an online demo to test out the application and what is possible.
 - [Using the editor yourself](#using-the-embeddable-editor-in-your-app): How to get the needed packages for use in your app.
-- [Code Example](#basic-example--the-editor-in-an-html-file): An example to start from how to use initialize and use the editor.
+- [Code Example](#basic-example--the-editor-in-an-html-file): An example which gives a basic showcase on how to initialize and use the editor.
 - [Editor API](editor-api): list of methods and properties to customize the editor and interact with it through code.
 - [Configuring The Editor](configuring-the-editor): ways to configure the editor during loading. The editor includes a list of plugins that can be enabled and configured as explained in [Managing Plugins](managing-plugins). 
 
@@ -22,7 +22,7 @@ The prebuilt bundles are currently hosted on `https://embeddable.gelinkt-notuler
 For information on how to include them in your html file, see the [target usage](#target-usage) section below.
 This is considered a test environment and is subject to change, so it is not recommended to use it in production.
 
-For **production**, use the prebuilt packages in the [Github releases](https://github.com/lblod/frontend-embeddable-notule-editor/releases/). At this point `vendor.css` is empty and is not added to the release. It can be ignored.
+For **production**, use the prebuilt packages in the [Github releases](https://github.com/lblod/frontend-embeddable-notule-editor/releases/). At this point `vendor.css` is empty and can be ignored.
 
 ### Building the sources yourself
 
@@ -35,7 +35,7 @@ npm install
 ember build -prod
 ```
 
-In the 'dist' folder structure, two CSS files and three JavaScript files will have been generated. These are the files to use, as demonstrated in the example above. Note that the fingerprints of your files may vary.
+In the 'dist' folder structure, two CSS files and three JavaScript files will have been generated under assets. These are the files to use, as demonstrated in the [Code Example](#basic-example--the-editor-in-an-html-file). Note that the fingerprints of your files may vary. Other files in the dist folder can be ignored at this point, as they are not needed.
 
 ```bash
 dist
@@ -43,7 +43,7 @@ dist
     ├── frontend-embeddable-notule-editor-app.js
     ├── frontend-embeddable-notule-editor.css
     ├── frontend-embeddable-notule-editor.js
-    ├── vendor.css // currently empty and not needed
+    ├── vendor.css # currently empty and not needed
     └── vendor.js
 ```
 
@@ -123,14 +123,14 @@ Then we visit the main route of the application and render inside our root eleme
 const editorContainer = document.getElementById('my-editor');
 const editorElement = editorContainer.getElementsByClassName('notule-editor')[0];
 ```
-After rendering the editor we have to find the editorElement, which we do with the above code. We get the editorContainer in which we rendered our app, and then find the editor div that has the `notule-editor` class.
+After rendering the editor we can select the editorElement, which we do with the above code. We get the editorContainer in which we rendered our app, and then select the editor div that has the `notule-editor` class.
 
 ```javascript
 const arrayOfPluginNames = ['citation', 'rdfa-date'];
 const userConfigObject = {}
 editorElement.initEditor(arrayOfPluginNames, userConfigObject);
 ```
-After finding the editor we create an array with the names of the plugins we want to use and an object with custom configuration if needed (See [configuring the editor](#configuring-the-editor) for more info about plugin names and configuration options). Finally, we initialize the editor with the `initEditor` function.
+After selecting the editor element, we create an array with the names of the plugins we want to use and an object with custom configuration if needed (See [configuring the editor](#configuring-the-editor) for more info about plugin names and configuration options). Finally, we initialize the editor with the `initEditor` function.
 
 Once the editor is initialized, you can get the relevant document node and set its content. You can play with this by opening the developer console and executing the following, or use the following code in another script.
 ```javascript
@@ -163,9 +163,9 @@ These are function available from the editor element, which is the HTML element 
   :warning: **This has to be called before accessing any other methods**.
 - `enableEnvironmentBanner()`: enable the banner that shows the environment and versions of plugins used.
 - `disableEnvironmentBanner()`: disable the banner.
-- `controller`: direct access the the [SayController](https://github.com/lblod/ember-rdfa-editor/blob/d4472d2e237256d30333cfcc20ce6eea7db241f2/addon/core/say-controller.ts) object. See [controller API](controller-api).
+- `controller`: provides direct access to a [SayController](https://github.com/lblod/ember-rdfa-editor/blob/d4472d2e237256d30333cfcc20ce6eea7db241f2/addon/core/say-controller.ts) object. See [controller API](controller-api).
 - `setHtmlContent(content: string)`: set the HTML content inside the editor, overwriting all previous content.  
-- `getHtmlContent()`: Get the HTML content of the editor. This can be different than custom content set via `setHtmlContent`, because of HTML parsing logic.
+- `getHtmlContent()`: Get the HTML content of the editor. This might be different than custom content set via `setHtmlContent`, because of HTML parsing logic.
 - `setLocaleToDutch()`: Set the locale (language used) of the editor to Dutch.
 - `setLocaleToEnglish()`: Set the locale (language used) of the editor to English.
 - `getLocale()`: returns the current locale of the editor. This will be the user's browser locale, the set local with `setLocale`, or `nl-BE`/`en-US`, the supported languages. See more at [Localization](localization).
@@ -181,10 +181,12 @@ These methods are accessible via `editorElement.controller` and contain a way to
 - `isMarkActive(mark: MarkType)`: checks whether a mark is currently active. This is currently of not much use in this package, since we do not expose the MarkType interface yet. (But for the curious, this is what the toolbar buttons use to update their active state).
 - `withTransaction(callback: (tr: Transaction) => Transaction | null, includeEmbeddedView = false)`: apply a [Prosemirror transaction](https://prosemirror.net/docs/ref/#state.Transaction) on the main view (or currently active embedded view). When you want to apply the transaction, the callback should return the transaction object.
 - `mainEditorState`: the [editor state](https://prosemirror.net/docs/ref/#state.Editor_State) instance of the main editor
-- `activeEditorState`: the state instance of the active editor. This is usually the same as the `mainEditorState`, except when inside a nested instance (like in a variable field). For typical use, the `mainEditorState` is the one you will most likely need.
 - `mainEditorView`: the [view](https://prosemirror.net/docs/ref/#view.EditorView) instance of the main editor
-- `activeEditorView`: the view instance of the active editor. (see above for the distinction between the main and active editor)
-- `setActiveView(view: RdfaEditorView)`: activate a specific view.
+
+#### Interacting via Prosemirror Commands
+A good way to add extra interaction to editor, besides the plugins and buttons provided, is via Prosemirror commands. Most of the plugins also use these commands. A command can be a [command from Prosemirror](https://prosemirror.net/docs/ref/#commands) or a custom command.
+These commands might check certain conditions and run `withTransaction` to change something in the editor. A good run-through of how they work can be found on the [ember-rdfa-editor wiki](https://github.com/lblod/ember-rdfa-editor/wiki/Quickstart#commands).
+Do note that more advanced commands will need knowledge about the used schema and other internal information of Embeddable. You can access this (via the `mainEditorState`), but as this is not yet made public, the schema might change in the future.
 
 # Configuring The Editor
 
@@ -196,16 +198,16 @@ The editor can be customized to best fit your application.
 
 ## Managing Plugins
 Embeddable ships with the following plugins available. 
-This Readme contains all the important info and configuration for the plugins. For more technical and Ember-specific explanation of every plugin, you can check out the Readme of [lblod/ember-rdfa-editor-lblod-plugins](https://github.com/lblod/ember-rdfa-editor-lblod-plugins).
+This Readme contains all the important info and configuration for the plugins. For more technical and Ember-specific explanations of every plugin, you can check out the Readme of [lblod/ember-rdfa-editor-lblod-plugins](https://github.com/lblod/ember-rdfa-editor-lblod-plugins).
 
-Every plugin can be enabled by passing its name to `arrayOfPluginNames` array and its configuration to `userConfigObject` with the initialization function `initEditor(arrayOfPluginNames, userConfigObject)`.
-> :warning: The values shown for the config are default values used if you do not pass a config. If you pass **any** config for a plugin, it will not use any of these defaults and only use the config provided. Make sure to pass all required attributes in this case, even if you do not change them.
+Every plugin can be enabled by passing its name to the `arrayOfPluginNames` array and optionally its configuration to `userConfigObject` with the initialization function `initEditor(arrayOfPluginNames, userConfigObject)`. 
+Any configuration value not provided will use the default value, which are shown in the example configs of the plugins.
 
 * [article-structure](#article-structure): Provides structures to better manage official documents, like titles, chapters, articles and paragraphs. It allows you to insert, move and delete them. It has two modes: `besluit` for besluit articles and `regulatoryStatement` for all other structures.
-* [besluit](#besluit): Provides the correct rdfa-structure for constructing a decisions ("besluiten") and some basic validation if mandatory structures are present in the document.
+* [besluit](#besluit): Provides the correct rdfa-structure for constructing a decision ("besluiten") and some basic validation which checks whether mandatory structures are present in the document.
 * [citation](#citation): Search and insert references to citations (a legal resource/expression)
-* [rdfa-date](#rdfa-date): Inserting and modify annotated date and times
-* [roadsign-regulation](#roadsign-regulation): Insert roadsign regulation, based on the registry managed and provided by MOW (Mobiliteit en Openbare Werken)
+* [rdfa-date](#rdfa-date): Inserting and modifying annotated dates and times
+* [roadsign-regulation](#roadsign-regulation): Insert roadsign regulations, based on the registry managed and provided by MOW (Mobiliteit en Openbare Werken)
 * [table-of-contents](#table-of-contents): Show a table of contents with clickable sections defined by [article-structure](#article-structure)
 * [variable](#rdfa-variables): Allows insertion and filling in of custom rdfa variables
 * [formatting-toggle](#formatting-toggle): Allows to toggle the formatting marks with a button
@@ -214,7 +216,7 @@ Every plugin can be enabled by passing its name to `arrayOfPluginNames` array an
 ##### General Config options
 There are some options you can pass to `pluginsConfig` in `initEditor` that are not connected to a plugin.
 - `docContent: 'block+'`: The property docContent specifies which nodes are allowed in the document. By default we allow one or more nodes of the supertype block, which includes most content. For more info about this check the [Prosemirror docs](https://prosemirror.net/docs/guide/#schema.content_expressions). 
-  See `public/test.html` where `docContent` is specified to allow [article-structure](#Article Structure) nodes in a specific order.
+  See `public/test.html` where `docContent` is specified to allow [article-structure](#article-structure) nodes in a specific order.
 
 ### Article Structure
 This plugin is in charge of inserting and manipulating structures. There are insertion buttons in the insert menu of the right sidebar. The plugin has two modes, being `besluit` and `regulatoryStatement`. 
@@ -225,12 +227,12 @@ This plugin is in charge of inserting and manipulating structures. There are ins
 	- Able to insert titles, chapters, sections... 
 	- [table-of-contents](#Table of Contents) default config works with this mode.
 
-After inserting a structure and selecting it, a card will show to move and delete the structure. These might be disabled if the action is not possible. 
+After inserting a structure and selecting it, a card will show options to move and delete the structure. These might be disabled if the action is not possible. 
 
 Using the button "with content" will also delete everything included in the structure, instead of just the closest heading. 
 ![article structure card](https://imgur.com/2zkbNw3.png)
 ***
-:heavy_plus_sign: Enable by adding `"article-structure"` to `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"article-structure"` to the `arrayOfPluginNames` array.
 
 ```javascript
 // pass to pluginsConfig
@@ -248,15 +250,15 @@ The options for mode are:
 This will add needed rdfa structures to create a besluit and add some validation. There is no direct interaction with the plugin. The validation will pop up in the sidebar. You can try this out by deleting the title and seeing the following pop up:
 ![besluit plugin](https://imgur.com/iwCudJy.png)
 ***
-:heavy_plus_sign: Enable by adding `"besluit"` to `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"besluit"` to the `arrayOfPluginNames` array.
 No configuration is needed.
 
 ### Citation
 Add the possibility to add references to specific legal documents. There are two ways to use this plugin
 
 **A. Insert Button**
-Click `insert reference` button in the right sidebar
-This will open a modal where you can search for different type of legal documents, preview them and insert if desired.
+Click the `insert reference` button in the right sidebar.
+This will open a modal where you can search for different types of legal documents, preview them and insert them if desired.
 
 **B. Type Keyword**
 Type one of the trigger phrases, where `[words to search for]` will be filled in as a search term.
@@ -277,7 +279,7 @@ Type one of the trigger phrases, where `[words to search for]` will be filled in
 After typing this trigger phrase, a card will shop up in the right sidebar with the type and search term filled in. Press `Advanced search` to pop open the same modal as shown in **A.** 
 ![citation plugin](https://imgur.com/oerd9rV.png)
 ***
-:heavy_plus_sign: Enable by adding `"citation"` to `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"citation"` to the `arrayOfPluginNames` array.
 
 ```javascript
 // pass to pluginsConfig
@@ -312,7 +314,7 @@ Both examples show how to activate the plugin for the *whole* document.
 ### RDFa Date
 A simple plugin to insert and modify *semantic* dates and timestamps in an editor document. When added, an `insert date` button will be available in the right insert sidebar. When selecting a date, a card will show up at the same place to edit this date and choose a format for display. 
 ***
-:heavy_plus_sign: Enable by adding `"rdfa-date"` to `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"rdfa-date"` to the `arrayOfPluginNames` array.
 ```javascript
 // pass to pluginsConfig
 date: {
@@ -341,10 +343,10 @@ date: {
 	- `insertDate`: placeholder to show when inserting a date that has no data yet.
 	- `insertDateTime`: placeholder to show when inserting a datetime that has no data yet.
 - `formats`: specify default formats to show for selection in the date card.
-	- `label` (optional): The label shown to the user on the card. If not provided, the format is used instead e.g.: `dd/MMvariable/yyyy`
+	- `label` (optional): The label shown to the user on the card. If not provided, the format is used instead e.g.: `dd/MM/yyyy`
 	- `key`: A **unique** identifier used for identification in the internal code. 
 	- `dateFormat`: The date format used when this is selected.
-	- `dateTimeFormat`: The datetime format to use when this is selected. Used when the user selected "Include time".
+	- `dateTimeFormat`: The datetime format to use when this is selected. Used when the user selects "Include time".
 - `allowCustomFormat`: true/false, determines if the option to insert a fully custom format is available.
 
 For more information about the syntax of defining date(time) formats check the documentation of the underlying library used [date-fns](https://date-fns.org/v2.29.3/docs/format).
@@ -353,28 +355,28 @@ For more information about the syntax of defining date(time) formats check the d
 Add annnotated *mobiliteitsmaatregelen* from a specified registry, which will most likely be using the [public facing sparql endpoint](https://register.mobiliteit.vlaanderen.be/sparql) of [the roadsign registry](https://register.mobiliteit.vlaanderen.be). This data is maintained by experts at [MOW Vlaanderen](https://www.vlaanderen.be/departement-mobiliteit-en-openbare-werken).
 
 :warning: This plugin will only activate in *besluiten* with a certain rdf type.
-<details><summary>Exhaustive list of types</summary>
+<details><summary>Exhaustive list of decision types in which this plugin will activate</summary>
 
-`https://data.vlaanderen.be/id/concept/BesluitType/4d8f678a-6fa4-4d5f-a2a1-80974e43bf34`
+https://data.vlaanderen.be/id/concept/BesluitType/4d8f678a-6fa4-4d5f-a2a1-80974e43bf34
 
-`https://data.vlaanderen.be/id/concept/BesluitType/7d95fd2e-3cc9-4a4c-a58e-0fbc408c2f9b`
+https://data.vlaanderen.be/id/concept/BesluitType/7d95fd2e-3cc9-4a4c-a58e-0fbc408c2f9b
 
-`https://data.vlaanderen.be/id/concept/BesluitType/3bba9f10-faff-49a6-acaa-85af7f2199a3`
+https://data.vlaanderen.be/id/concept/BesluitType/3bba9f10-faff-49a6-acaa-85af7f2199a3
 
-`https://data.vlaanderen.be/id/concept/BesluitType/0d1278af-b69e-4152-a418-ec5cfd1c7d0b`
+https://data.vlaanderen.be/id/concept/BesluitType/0d1278af-b69e-4152-a418-ec5cfd1c7d0b
 
-`https://data.vlaanderen.be/id/concept/BesluitType/e8afe7c5-9640-4db8-8f74-3f023bec3241`
+https://data.vlaanderen.be/id/concept/BesluitType/e8afe7c5-9640-4db8-8f74-3f023bec3241
 
-`https://data.vlaanderen.be/id/concept/BesluitType/256bd04a-b74b-4f2a-8f5d-14dda4765af9`
+https://data.vlaanderen.be/id/concept/BesluitType/256bd04a-b74b-4f2a-8f5d-14dda4765af9
 
-`https://data.vlaanderen.be/id/concept/BesluitType/67378dd0-5413-474b-8996-d992ef81637a`
+https://data.vlaanderen.be/id/concept/BesluitType/67378dd0-5413-474b-8996-d992ef81637a
 </details>
 
 When the cursor is inside such a *besluit*, the button `Voeg mobiliteitsmaatregel in` will appear under the insert menu. Clicking this will show a modal to filter and select roadsign regulation to insert.
 
 ![roadsign regulation modal](https://i.imgur.com/z7My8lm.png)
 ***
-:heavy_plus_sign: Enable by adding `"roadsign-regulation"` to `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"roadsign-regulation"` to the `arrayOfPluginNames` array.
 ```javascript
 
 // pass to pluginsConfig
@@ -393,7 +395,7 @@ At this time it will only work well together with [article-structure plugin](#ar
 
 :warning: For use in different situations, open an issue on this repo with the usecase, so we can help. The [Prosemirror schema](https://prosemirror.net/docs/guide/#schema) that is used in the config is public-facing yet, so changing this is not trivial.
 ***
-:heavy_plus_sign: Enable by adding `"table-of-contents"` to `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"table-of-contents"` to the `arrayOfPluginNames` array.
 ```javascript
 // pass to pluginsConfig
 tableOfContents: [
@@ -431,7 +433,7 @@ A variable can be inserted with the card shown in the right sidebar.
 - *address*: when inserted, the user can click this to get a modal for searching addresses from the Belgium address register. This can be used to insert existing addresses.
   **note**: when searching for submunicipalities, only the main municipality will show up in the search. However, when searching for a street, the correct zip-code will be used.
 ***
-:heavy_plus_sign: Enable by adding `"variable"` to `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"variable"` to the `arrayOfPluginNames` array.
 ```javascript
 // pass to pluginsConfig
 variable: {
@@ -469,7 +471,7 @@ variable: {
 This will add a button in the top toolbar `Show formatting marks`. This toggles the visibility of all formatting marks of the document such as break lines, paragraphs...
 ![document with formatting annotations](https://imgur.com/KTNxuBW.png)
 ***
-:heavy_plus_sign: Enable by adding `"formatting-toggle"` to `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"formatting-toggle"` to the `arrayOfPluginNames` array.
 No configuration is needed.
 
 ### Rdfa Blocks Toggle
@@ -477,7 +479,7 @@ This will add a button in the top toolbar `Show annotations`. This toggles the v
 
 ![document with rdfa blocks visible](https://imgur.com/Asdu2aN.png)
 ***
-:heavy_plus_sign: Enable by adding `"rdfa-blocks-toggle"` to `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"rdfa-blocks-toggle"` to the `arrayOfPluginNames` array.
 No configuration is needed.
 
 ### Template Comments
@@ -485,7 +487,7 @@ Adds buttons to the right sidebar for insertion, moving and removing of comment 
 
 It has a special RDFa type `ext:TemplateComment` with `ext` the prefix for `http://mu.semte.ch/vocabularies/ext/`, so this can be filtered out when a document is finished.
 ***
-:heavy_plus_sign: Enable by adding `"template-comments"` to `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"template-comments"` to the `arrayOfPluginNames` array.
 No configuration is needed.
 ## Enabling/disabling the environment banner
 The environment banner is a visual indication of the environment you are currently using and which versions of Embeddable, the editor and editor-plugins are in use.
@@ -499,7 +501,8 @@ Some plugins, like the [citation plugin](https://github.com/lblod/ember-rdfa-edi
 
 The local can be overwritten with `setLocalToDutch()` and `setLocalToEnglish()`. You can call one of these functions after `initEditor()` to always use the same language for the editor, ignoring the user's browser language.
 ## Styling
-Styling the editor is covered in the [README](https://github.com/lblod/ember-rdfa-editor#customisation) of ember-rdfa-editor. This frontend supports SASS, customizations can be added to [app.scss](app/styles/app.scss)
+Styling the editor can be done by overriding some CSS variables as covered in the [README of ember-rdfa-editor](https://github.com/lblod/ember-rdfa-editor#customisation).For other customizations, override other CSS as usual. 
+Alternatively, the frontend supports SASS, which can be added to [app.scss](app/styles/app.scss) before building the Embeddable yourself.
 
 # Development of frontend-embeddable-notule-editor
 
@@ -532,7 +535,16 @@ You will need the following things properly installed on your computer.
 Take special care when releasing a new version of this.
 - The changelog is automatically created using the PRs. 
 - To avoid a connection to Github, build files are not automatically added to the release
-	- Add the files under `dist/assets` from a production build to the release in a .zip archive. 
+	- Create a .zip archive with the important files from a production build. Remove any other files from dist and assets. Make sure the .zip release has the following structure:
+		```bash
+		dist
+		└── assets
+		    ├── frontend-embeddable-notule-editor-app.js
+		    ├── frontend-embeddable-notule-editor.css
+		    ├── frontend-embeddable-notule-editor.js
+		    ├── vendor.css # currently empty, but added for consistency
+		    └── vendor.js
+		```
 
 ### Developing
 #### How it works
