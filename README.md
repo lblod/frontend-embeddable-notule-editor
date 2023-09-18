@@ -395,10 +395,12 @@ tableOfContents: [
     ],
   },
 ],
-```
+docContent: 'block',
+``` 
 - `nodeHierarchy`: a list of regex strings to specify the node structure. The default value works for the [article-structure plugin](#article-structure). 
   The first string are the main nodes that should be added to the structure.
   The strings afterwards are the sub-nodes of the main node that should be used to find the actual content to display in the table of contents.
+- `docContent`: defined in [general config options](general-config-options). When enabling this plugin, the string `table_of_contents?` will automatically be appended to `docContent` at the start if it is not part of the `docContent` yet. This is needed as `table_of_contents` is not in the `block` group. You can override this behavior by adding `table_of_contents?` to the desired place in `docContent` instead. 
 
 **note**: this config is a *list*. Multiple `nodeHierarchy`s can be passed to let the table of contents work in multiple situation. The last matching hierarchy will be used.
 

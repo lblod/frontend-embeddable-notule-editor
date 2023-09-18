@@ -225,11 +225,9 @@ export default class SimpleEditorComponent extends Component {
       link: {
         interactive: true,
       },
+      docContent: userConfig.docContent ?? 'block+',
     };
     let nodes = {
-      doc: docWithConfig({
-        content: userConfig.docContent ?? 'block+',
-      }),
       paragraph,
       repaired_block,
       list_item,
@@ -298,8 +296,15 @@ export default class SimpleEditorComponent extends Component {
     if (activePlugins.includes('template-comments')) {
       this.setupTemplateCommentsPlugin(setup);
     }
+
     this.config = setup.config;
-    setup.nodes = { ...setup.nodes, heading, invisible_rdfa, block_rdfa };
+    setup.nodes = {
+      ...setup.nodes,
+      doc: docWithConfig({ content: config.docContent }),
+      heading,
+      invisible_rdfa,
+      block_rdfa,
+    };
     this.schema = new Schema({ nodes: setup.nodes, marks: setup.marks });
     this.plugins = setup.plugins;
     this.nodeViews = (controller) => {
@@ -455,6 +460,10 @@ export default class SimpleEditorComponent extends Component {
       defaultTableOfContentsPluginConfig,
       userConfig.tableOfContents
     );
+
+    if (!config.docContent.includes('table_of_contents')) {
+      config.docContent = 'table_of_contents? ' + config.docContent;
+    }
 
     nodes.table_of_contents = table_of_contents(config.tableOfContents);
 
