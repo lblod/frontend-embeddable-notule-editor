@@ -159,8 +159,8 @@ The RDFa editor uses [the Prosemirror toolkit](https://prosemirror.net/) as a ba
 
 #### editorElement API
 These are function available from the editor element, which is the HTML element with the class `notule-editor`. 
-- `initEditor(arrayOfPluginNames: string[], userConfigObject)`: Initialize the editor by passing an array of plugin names that should be activated and an object that contains the configuration for the editor and its plugins. See [Managing Plugins](managing-plugins) for more info. 
-  :warning: **This has to be called before accessing any other methods**.
+- `initEditor(arrayOfPluginNames: string[], userConfigObject)`: Initialize the editor by passing an array of plugin names that should be activated and an object that contains the configuration for the editor and its plugins. See [Managing Plugins](managing-plugins) for more info.  
+  :warning: **`initEditor` has to be called before accessing any other methods**.
 - `enableEnvironmentBanner()`: enable the banner that shows the environment and versions of plugins used.
 - `disableEnvironmentBanner()`: disable the banner.
 - `controller`: provides direct access to a [SayController](https://github.com/lblod/ember-rdfa-editor/blob/d4472d2e237256d30333cfcc20ce6eea7db241f2/addon/core/say-controller.ts) object. See [controller API](controller-api).
