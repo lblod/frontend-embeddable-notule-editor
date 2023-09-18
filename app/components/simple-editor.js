@@ -70,7 +70,7 @@ import {
 
 import {
   besluitNodes,
-  structureSpecs,
+  structureSpecs as besluitStructure,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/standard-template-plugin';
 
 import { citationPlugin } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/citation-plugin';
@@ -281,7 +281,7 @@ export default class SimpleEditorComponent extends Component {
       this.setupCitationPlugin(setup);
     }
     if (activePlugins.includes('article-structure')) {
-      this.setupStructurePlugin(setup);
+      this.setupArticleStructurePlugin(setup);
     }
     if (activePlugins.includes('besluit')) {
       this.setupBesluitPlugin(setup);
@@ -336,20 +336,17 @@ export default class SimpleEditorComponent extends Component {
     plugins.push(citationPluginVariable);
   }
 
-  setupStructurePlugin(setup) {
-    const { userConfig, config, nodes } = setup;
-    if (
-      userConfig.articleStructure &&
-      userConfig.articleStructure.mode === 'regulatoryStatement'
-    ) {
-      config.structures = STRUCTURE_SPECS;
-    } else {
-      config.structures = structureSpecs;
-    }
-    setup.nodes = { ...nodes, ...STRUCTURE_NODES };
+  setupArticleStructurePlugin(setup) {
+    const { config } = setup;
+    config.articleStructure = {};
+    config.articleStructure.structures = STRUCTURE_SPECS;
+    setup.nodes = { ...setup.nodes, ...STRUCTURE_NODES };
   }
 
   setupBesluitPlugin(setup) {
+    const { config } = setup;
+    config.besluit = {};
+    config.besluit.structures = besluitStructure;
     setup.nodes = { ...setup.nodes, ...besluitNodes };
   }
 

@@ -7,3 +7,9 @@ editor:
     date: date
     codelist: codelist
   insert: Insert
+  besluit:
+    title: Decision
+  article-structure:
+    title: Document Structures
+  others:
+    title: General
