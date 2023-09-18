@@ -247,7 +247,7 @@ The options for mode are:
 ### Besluit 
  :warning: The besluit plugin is incompatible with the `regulatoryStatement` mode of  [article-structure](#Article Structure).
 
-This will add needed rdfa structures to create a besluit.
+This will add rdfa structures to create a besluit.
 ***
 :heavy_plus_sign: Enable by adding `"besluit"` to the `arrayOfPluginNames` array.
 No configuration is needed.
