@@ -1,0 +1,9 @@
+editor:
+  variables:
+    text: text
+    number: number
+    address: address
+    location: location
+    date: date
+    codelist: codelist
+  insert: Insert
