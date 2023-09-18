@@ -5,9 +5,9 @@ This application allows you to embed the RDFa editor in other applications witho
 The readme is structured as follows
 - [Live Demo](#live-demo): an online demo to test out the application and what is possible.
 - [Using the editor yourself](#using-the-embeddable-editor-in-your-app): How to get the needed packages for use in your app.
-- [Code Example](#basic-example--the-editor-in-an-html-file): An example which gives a basic showcase on how to initialize and use the editor.
-- [Editor API](editor-api): list of methods and properties to customize the editor and interact with it through code.
-- [Configuring The Editor](configuring-the-editor): ways to configure the editor during loading. The editor includes a list of plugins that can be enabled and configured as explained in [Managing Plugins](managing-plugins). 
+- [Code Example](#basic-example-the-editor-in-an-html-file): An example which gives a basic showcase on how to initialize and use the editor.
+- [Editor API](#editor-api): list of methods and properties to customize the editor and interact with it through code.
+- [Configuring The Editor](#configuring-the-editor): ways to configure the editor during loading. The editor includes a list of plugins that can be enabled and configured as explained in [Managing Plugins](#managing-plugins). 
 
 ## Live Demo
 A [live demo](https://embeddable.gelinkt-notuleren.lblod.info) is available for easy testing. 
@@ -19,7 +19,7 @@ Any content entered here will not be saved.
 ### Using the prebuilt bundles
 
 The prebuilt bundles are currently hosted on `https://embeddable.gelinkt-notuleren.lblod.info/`.
-For information on how to include them in your html file, see the [target usage](#target-usage) section below.
+For information on how to include them in your html file, see the [Code Example](#basic-example-the-editor-in-an-html-file) section below.
 This is considered a test environment and is subject to change, so it is not recommended to use it in production.
 
 For **production**, use the prebuilt packages in the [Github releases](https://github.com/lblod/frontend-embeddable-notule-editor/releases/). At this point `vendor.css` is empty and can be ignored.
@@ -35,7 +35,7 @@ npm install
 ember build -prod
 ```
 
-In the 'dist' folder structure, two CSS files and three JavaScript files will have been generated under assets. These are the files to use, as demonstrated in the [Code Example](#basic-example--the-editor-in-an-html-file). Note that the fingerprints of your files may vary. Other files in the dist folder can be ignored at this point, as they are not needed.
+In the 'dist' folder structure, two CSS files and three JavaScript files will have been generated under assets. These are the files to use, as demonstrated in the [Code Example](#basic-example-the-editor-in-an-html-file). Note that the fingerprints of your files may vary. Other files in the dist folder can be ignored at this point, as they are not needed.
 
 ```bash
 dist
@@ -48,7 +48,7 @@ dist
 ```
 
 ## Basic Example: The editor in an HTML file 
-The idea is that you can have multiple HTML tags in which you can initialize an editor. We'll explain how it works and the process can be repeated if multiple editors are required. We need some HTML structure to start with, and then set-up the editor when everything has finished loading and rendering. We can also initialize the editor with some content or set it later via an event. Use something like the following HTML snippet as a base. 
+The idea is that you can have multiple HTML tags in which you can initialize an editor. We'll explain how it works and the process can be repeated if multiple editors are required. We need some HTML structure to start with, and then set-up the editor when everything has finished loading and rendering. We can also initialize the editor with some content or set it later via an event. Use something like the following HTML snippet as a base.  
 **Note**: the order of the JavaScript files matters.
 
 In this section, we will assume you are using the prebuilt package. If you choose to build and host the bundles yourself, simply link the corresponding files to the correct location for your setup.
@@ -185,7 +185,7 @@ These methods are accessible via `editorElement.controller` and contain a way to
 
 #### Interacting via Prosemirror Commands
 A good way to add extra interaction to editor, besides the plugins and buttons provided, is via Prosemirror commands. Most of the plugins also use these commands. A command can be a [command from Prosemirror](https://prosemirror.net/docs/ref/#commands) or a custom command.
-These commands might check certain conditions and run `withTransaction` to change something in the editor. A good run-through of how they work can be found on the [ember-rdfa-editor wiki](https://github.com/lblod/ember-rdfa-editor/wiki/Quickstart#commands).
+These commands might check certain conditions and run `withTransaction` to change something in the editor. A good run-through of how they work can be found on the [ember-rdfa-editor wiki](https://github.com/lblod/ember-rdfa-editor/wiki/Quickstart#commands).  
 Do note that more advanced commands will need knowledge about the used schema and other internal information of Embeddable. You can access this (via the `mainEditorState`), but as this is not yet made public, the schema might change in the future.
 
 # Configuring The Editor
@@ -200,7 +200,7 @@ The editor can be customized to best fit your application.
 Embeddable ships with the following plugins available. 
 This Readme contains all the important info and configuration for the plugins. For more technical and Ember-specific explanations of every plugin, you can check out the Readme of [lblod/ember-rdfa-editor-lblod-plugins](https://github.com/lblod/ember-rdfa-editor-lblod-plugins).
 
-Every plugin can be enabled by passing its name to the `arrayOfPluginNames` array and optionally its configuration to `userConfigObject` with the initialization function `initEditor(arrayOfPluginNames, userConfigObject)`. 
+Every plugin can be enabled by passing its name to the `arrayOfPluginNames` array and optionally its configuration to `userConfigObject` with the initialization function `initEditor(arrayOfPluginNames, userConfigObject)`.  
 Any configuration value not provided will use the default value, which are shown in the example configs of the plugins.
 
 * [article-structure](#article-structure): Provides structures to better manage official documents, like titles, chapters, articles and paragraphs. It allows you to insert, move and delete them. It has two modes: `besluit` for besluit articles and `regulatoryStatement` for all other structures.
@@ -212,10 +212,10 @@ Any configuration value not provided will use the default value, which are shown
 * [variable](#rdfa-variables): Allows insertion and filling in of custom rdfa variables
 * [formatting-toggle](#formatting-toggle): Allows to toggle the formatting marks with a button
 * [rdfa-blocks-toggle](#rdfa-blocks-toggle): Allows to toggle the visual indications of the rdfa blocks with a button.
-* [template-comments](template-comments): Allows insertion and editing of comment blocks to provide extra information to a user filling in a document. These are visually distinct units with a special RDFa type, which allows them to be filtered out during postprocessing.
+* [template-comments](#template-comments): Allows insertion and editing of comment blocks to provide extra information to a user filling in a document. These are visually distinct units with a special RDFa type, which allows them to be filtered out during postprocessing.
 ##### General Config options
 There are some options you can pass to `pluginsConfig` in `initEditor` that are not connected to a plugin.
-- `docContent: 'block+'`: The property docContent specifies which nodes are allowed in the document. By default we allow one or more nodes of the supertype block, which includes most content. For more info about this check the [Prosemirror docs](https://prosemirror.net/docs/guide/#schema.content_expressions). 
+- `docContent: 'block+'`: The property docContent specifies which nodes are allowed in the document. By default we allow one or more nodes of the supertype block, which includes most content. For more info about this check the [Prosemirror docs](https://prosemirror.net/docs/guide/#schema.content_expressions).  
   See `public/test.html` where `docContent` is specified to allow [article-structure](#article-structure) nodes in a specific order.
 
 ### Article Structure
@@ -416,7 +416,7 @@ tableOfContents: [
 ### RDFa Variables
 These are placeholders that can be inserted in a document. A variable placeholder has a specific type (text, number, date, address or codelist), which changes the type of input it can receive. These placeholders can then be filled in by a user using the document.
 
-Usually variables are inserted in an editor made to create *templates* (documents to be filled in), and only edited in an editor to fill in these *templates*. Via the config you can customize if you want to allow insertion and/or filling in a variable.
+Usually variables are inserted in an editor made to create *templates* (documents to be filled in), and only edited in an editor to fill in these *templates*. Via the config you can customize if you want to allow insertion and/or filling in a variable.  
 **Note**: a user will always be able to remove a variable, even if insertion is not allowed.
 
 A variable can be inserted with the card shown in the right sidebar.
@@ -428,7 +428,7 @@ A variable can be inserted with the card shown in the right sidebar.
 - *date*: works just like the [RDFa date plugin](rdfa-date), where a user can input a date in specified formats.
 - *location*: choose out of a list of location options, that can contain placeholders themselves. 
 - *codelist*: when inserting, a specific codelist has to be chosen. This codelist is a list of values the user can choose from to fill in the variable. Either the user can select one (single selection) or multiple (multiple selection). 
-- *address*: when inserted, the user can click this to get a modal for searching addresses from the Belgium address register. This can be used to insert existing addresses.
+- *address*: when inserted, the user can click this to get a modal for searching addresses from the Belgium address register. This can be used to insert existing addresses.  
   **note**: when searching for submunicipalities, only the main municipality will show up in the search. However, when searching for a street, the correct zip-code will be used.
 ***
 :heavy_plus_sign: Enable by adding `"variable"` to the `arrayOfPluginNames` array.
@@ -500,9 +500,9 @@ You can enable/disable the banner using the following methods: `enableEnvironmen
 ## Localization
 Localization of the editor is an ongoing effort, the main target usage of Embeddable is currently Dutch speaking users. The editor will use the user's browser language and supports English (en-US) and Dutch (nl-BE). If the user has a different language set, the editor will default to Dutch.
 
-Some plugins, like the [citation plugin](https://github.com/lblod/ember-rdfa-editor-citaten-plugin/), use date pickers. The display format of these dates are connected with the local.
+Some plugins, like the [citation plugin](#citation), use date pickers. The display format of these dates are connected with the local.
 
-The local can be overwritten with `setLocalToDutch()` and `setLocalToEnglish()`. You can call one of these functions after `initEditor()` to always use the same language for the editor, ignoring the user's browser language.
+The locale can be overwritten with `setLocaleToDutch()`, `setLocaleToEnglish()` and `setLocale(locale: string)`. You can call one of these functions after `initEditor()` to always use the same language for the editor, ignoring the user's browser language.
 ## Styling
 Styling the editor can be done by overriding some CSS variables as covered in the [README of ember-rdfa-editor](https://github.com/lblod/ember-rdfa-editor#customisation).For other customizations, override other CSS as usual. 
 Alternatively, the frontend supports SASS, which can be added to [app.scss](app/styles/app.scss) before building the Embeddable yourself.
