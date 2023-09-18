@@ -204,7 +204,7 @@ Every plugin can be enabled by passing its name to the `arrayOfPluginNames` arra
 Any configuration value not provided will use the default value, which are shown in the example configs of the plugins.
 
 * [article-structure](#article-structure): Provides structures to better manage official documents, like titles, chapters, articles and paragraphs. It allows you to insert, move and delete them. It has two modes: `besluit` for besluit articles and `regulatoryStatement` for all other structures.
-* [besluit](#besluit): Provides the correct rdfa-structure for constructing a decision ("besluiten") and some basic validation which checks whether mandatory structures are present in the document.
+* [besluit](#besluit): Provides the correct rdfa-structure for constructing a decision (besluit).
 * [citation](#citation): Search and insert references to citations (a legal resource/expression)
 * [rdfa-date](#rdfa-date): Inserting and modifying annotated dates and times
 * [roadsign-regulation](#roadsign-regulation): Insert roadsign regulations, based on the registry managed and provided by MOW (Mobiliteit en Openbare Werken)
@@ -247,8 +247,7 @@ The options for mode are:
 ### Besluit 
  :warning: The besluit plugin is incompatible with the `regulatoryStatement` mode of  [article-structure](#Article Structure).
 
-This will add needed rdfa structures to create a besluit and add some validation. There is no direct interaction with the plugin. The validation will pop up in the sidebar. You can try this out by deleting the title and seeing the following pop up:
-![besluit plugin](https://imgur.com/iwCudJy.png)
+This will add rdfa structures to create a besluit.
 ***
 :heavy_plus_sign: Enable by adding `"besluit"` to the `arrayOfPluginNames` array.
 No configuration is needed.
