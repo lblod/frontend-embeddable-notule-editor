@@ -103,7 +103,7 @@
       <:aside>
         {{#if this.controller}}
           <Sidebar as |Sidebar|>
-            <Sidebar.Collapsible @title='Insert'>
+            <Sidebar.Collapsible @title={{t "editor.insert"}}>
               {{#if (array-includes this.activePlugins 'article-structure')}}
                 <ArticleStructurePlugin::ArticleStructureCard
                   @controller={{this.controller}}

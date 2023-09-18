@@ -381,19 +381,19 @@ export default class SimpleEditorComponent extends Component {
     if (config.variable.insert.enable) {
       config.variable.insert.variableTypes = [
         {
-          label: 'text',
+          label: this.intl.t('editor.variables.text'),
           component: {
             path: 'variable-plugin/text/insert',
           },
         },
         {
-          label: 'number',
+          label: this.intl.t('editor.variables.number'),
           component: {
             path: 'variable-plugin/number/insert',
           },
         },
         {
-          label: 'location',
+          label: this.intl.t('editor.variables.location'),
           component: {
             path: 'variable-plugin/location/insert',
             options: {
@@ -404,19 +404,19 @@ export default class SimpleEditorComponent extends Component {
           },
         },
         {
-          label: 'address',
+          label: this.intl.t('editor.variables.address'),
           component: {
             path: 'variable-plugin/address/insert',
           },
         },
         {
-          label: 'date',
+          label: this.intl.t('editor.variables.date'),
           component: {
             path: 'variable-plugin/date/insert',
           },
         },
         {
-          label: 'codelist',
+          label: this.intl.t('editor.variables.codelist'),
           component: {
             path: 'variable-plugin/codelist/insert',
             options: {
