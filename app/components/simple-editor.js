@@ -271,7 +271,10 @@ export default class SimpleEditorComponent extends Component {
     ];
     const nodeViews = {};
     const setup = { nodes, marks, plugins, nodeViews, userConfig, config };
-    if (activePlugins.includes('rdfa-date')) {
+    if (
+      activePlugins.includes('rdfa-date') ||
+      activePlugins.includes('variable')
+    ) {
       this.setupDatePlugin(setup);
     }
     if (activePlugins.includes('citation')) {
