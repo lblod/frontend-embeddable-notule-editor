@@ -134,7 +134,7 @@
                   @controller={{this.controller}}
                 />
               {{/if}}
-              
+
             </Sidebar.Collapsible>
             {{#if (array-includes this.activePlugins 'article-structure')}}
               <ArticleStructurePlugin::StructureCard
@@ -155,9 +155,7 @@
                   @variableTypes={{this.config.variable.insert.variableTypes}}
                 />
               {{/if}}
-
               {{#if this.config.variable.edit.enable}}
-
                 <VariablePlugin::Codelist::Edit
                   @controller={{this.controller}}
                   @options={{this.config.variable.edit.codelist}}
@@ -171,12 +169,11 @@
                   @defaultMunicipality={{this.config.variable.edit.address.defaultMunicipality}}
                 />
               {{/if}}
-
-              {{#if (array-includes this.activePlugins 'template-comments')}}
-                <TemplateCommentsPlugin::EditCard
-                  @controller={{this.controller}}
-                />
-              {{/if}}
+            {{/if}}
+            {{#if (array-includes this.activePlugins 'template-comments')}}
+              <TemplateCommentsPlugin::EditCard
+                @controller={{this.controller}}
+              />
             {{/if}}
           </Sidebar>
         {{/if}}
