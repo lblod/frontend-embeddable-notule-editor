@@ -499,7 +499,7 @@ Localization of the editor is an ongoing effort, the main target usage of Embedd
 
 Some plugins, like the [citation plugin](#citation), use date pickers. The display format of these dates are connected with the local.
 
-The local can be overwritten with `setLocalToDutch()` and `setLocalToEnglish()`. You can call one of these functions after `initEditor()` to always use the same language for the editor, ignoring the user's browser language.
+The locale can be overwritten with `setLocaleToDutch()`, `setLocaleToEnglish()` and `setLocale(locale: string)`. You can call one of these functions after `initEditor()` to always use the same language for the editor, ignoring the user's browser language.
 ## Styling
 Styling the editor can be done by overriding some CSS variables as covered in the [README of ember-rdfa-editor](https://github.com/lblod/ember-rdfa-editor#customisation).For other customizations, override other CSS as usual. 
 Alternatively, the frontend supports SASS, which can be added to [app.scss](app/styles/app.scss) before building the Embeddable yourself.
