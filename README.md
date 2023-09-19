@@ -203,8 +203,8 @@ This Readme contains all the important info and configuration for the plugins. F
 Every plugin can be enabled by passing its name to the `arrayOfPluginNames` array and optionally its configuration to `userConfigObject` with the initialization function `initEditor(arrayOfPluginNames, userConfigObject)`.  
 Any configuration value not provided will use the default value, which are shown in the example configs of the plugins.
 
-* [article-structure](#article-structure): Provides structures to better manage official documents, like titles, chapters, articles and paragraphs. It allows you to insert, move and delete them. It has two modes: `besluit` for besluit articles and `regulatoryStatement` for all other structures.
-* [besluit](#besluit): Provides the correct rdfa-structure for constructing a decision (besluit).
+* [article-structure](#article-structure): Provides structures like titles, chapters, articles and paragraphs, which can be used to better manage official documents like regulatory statements. It allows you to insert, move and delete them.
+* [besluit](#besluit): Provides the correct rdfa-structure for constructing a decision (besluit) with ways to move and delete them.
 * [citation](#citation): Search and insert references to citations (a legal resource/expression)
 * [rdfa-date](#rdfa-date): Inserting and modifying annotated dates and times
 * [roadsign-regulation](#roadsign-regulation): Insert roadsign regulations, based on the registry managed and provided by MOW (Mobiliteit en Openbare Werken)
@@ -215,41 +215,31 @@ Any configuration value not provided will use the default value, which are shown
 * [template-comments](#template-comments): Allows insertion and editing of comment blocks to provide extra information to a user filling in a document. These are visually distinct units with a special RDFa type, which allows them to be filtered out during postprocessing.
 ##### General Config options
 There are some options you can pass to `pluginsConfig` in `initEditor` that are not connected to a plugin.
-- `docContent: 'block+'`: The property docContent specifies which nodes are allowed in the document. By default we allow one or more nodes of the supertype block, which includes most content. For more info about this check the [Prosemirror docs](https://prosemirror.net/docs/guide/#schema.content_expressions).  
-  See `public/test.html` where `docContent` is specified to allow [article-structure](#article-structure) nodes in a specific order.
+- `docContent: 'block+'`: The property docContent specifies which nodes are allowed in the document. By default we allow one or more nodes of the group block, which includes most content. A group can be seen as a supertype that includes multiple types. For more info about this check the [Prosemirror docs](https://prosemirror.net/docs/guide/#schema.content_expressions).  
+  See `public/test.html` where `docContent` is specified to allow a [table of contents](#table-of-contents) and [article-structure](#article-structure) nodes in a specific order.
 
 ### Article Structure
-This plugin is in charge of inserting and manipulating structures. There are insertion buttons in the insert menu of the right sidebar. The plugin has two modes, being `besluit` and `regulatoryStatement`. 
+This plugin is in charge of inserting and manipulating structures. There are several insertion buttons in the insert menu of the right sidebar under "Document Structuren".
 
-- `besluit` Mode
-	- Only allowed to insert articles
-- `regulatoryStatement` mode
-	- Able to insert titles, chapters, sections... 
-	- [table-of-contents](#Table of Contents) default config works with this mode.
+After inserting a structure and selecting it, a card will show options to move and delete the structure. These might be disabled if the action is not possible. Using the button "with content" will also delete everything included in the structure, instead of just the closest heading. 
 
-After inserting a structure and selecting it, a card will show options to move and delete the structure. These might be disabled if the action is not possible. 
+Anything part of the `block` group (almost everything) is allowed under these structures. However, the article structure nodes themselves are only allowed in a specific order.
 
-Using the button "with content" will also delete everything included in the structure, instead of just the closest heading. 
 ![article structure card](https://imgur.com/2zkbNw3.png)
 ***
 :heavy_plus_sign: Enable by adding `"article-structure"` to the `arrayOfPluginNames` array.
 
-```javascript
-// pass to pluginsConfig
-articleStructure: {
-  mode: 'besluit',
-}
+These structures are not part of the `block` group. You will need to edit `docContent` to accept one of these structures as a base. The following config will allow a title, chapter or article to be added as the first node, or any general block. See [general config options](general-config-options) for more info.
 ```
-The options for mode are:
-- 'besluit' (default): for manipulating articles in decisions. 
-- 'regulatoryStatement': for manipulating chapters, sections, etc as regulatory statements.
-
+// pass to pluginsConfig
+docContent: '((title|block)+|(chapter|block)+|(article|block)+)'
+```
 ### Besluit 
- :warning: The besluit plugin is incompatible with the `regulatoryStatement` mode of  [article-structure](#Article Structure).
-
-This will add rdfa structures to create a besluit.
+This will add RDFa structures to create a besluit.  
+A besluit is a specific document in a specific format. This means that using it together with [Article Structures](article-structure) might not make sense.
 ***
 :heavy_plus_sign: Enable by adding `"besluit"` to the `arrayOfPluginNames` array.
+
 No configuration is needed.
 
 ### Citation
@@ -390,13 +380,14 @@ roadsignRegulation: {
 ### Table of Contents
 Add a table of contents at the top of the document. It can be toggled with a button in the top toolbar. 
 
-At this time it will only work well together with [article-structure plugin](#article-structure) in `regulatoryStatement` mode by using the default config.
+At this time it will only work well together with [article-structure plugin](#article-structure) by using the default config.
 
 :warning: For use in different situations, open an issue on this repo with the usecase, so we can help. The [Prosemirror schema](https://prosemirror.net/docs/guide/#schema) that is used in the config is public-facing yet, so changing this is not trivial.
 ***
 :heavy_plus_sign: Enable by adding `"table-of-contents"` to the `arrayOfPluginNames` array.
 ```javascript
 // pass to pluginsConfig
+docContent: /*adjust to include `table_of_contents?` as an accepted node*/ ,
 tableOfContents: [
   {
     nodeHierarchy: [
@@ -409,6 +400,7 @@ tableOfContents: [
 - `nodeHierarchy`: a list of regex strings to specify the node structure. The default value works for the [article-structure plugin](#article-structure). 
   The first string are the main nodes that should be added to the structure.
   The strings afterwards are the sub-nodes of the main node that should be used to find the actual content to display in the table of contents.
+- `docContent`: You will need to adjust `docContent` to accept `table_of_contents?`, as it is not part of the `block` group. See [general config options](general-config-options) for more info.
 
 **note**: this config is a *list*. Multiple `nodeHierarchy`s can be passed to let the table of contents work in multiple situation. The last matching hierarchy will be used.
 
