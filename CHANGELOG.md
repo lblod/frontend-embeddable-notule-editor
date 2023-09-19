@@ -1,18 +1,4 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# frontend-embeddable-notule-editor
 
 ## 1.2.1 (2023-09-08)
 
