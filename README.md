@@ -216,7 +216,7 @@ Any configuration value not provided will use the default value, which are shown
 ##### General Config options
 There are some options you can pass to `pluginsConfig` in `initEditor` that are not connected to a plugin.
 - `docContent: 'block+'`: The property docContent specifies which nodes are allowed in the document. By default we allow one or more nodes of the group block, which includes most content. A group can be seen as a supertype that includes multiple types. For more info about this check the [Prosemirror docs](https://prosemirror.net/docs/guide/#schema.content_expressions).  
-  See `public/test.html` where `docContent` is specified to allow [article-structure](#article-structure) nodes in a specific order.
+  See `public/test.html` where `docContent` is specified to allow a [table of contents](#table-of-contents) and [article-structure](#article-structure) nodes in a specific order.
 
 ### Article Structure
 This plugin is in charge of inserting and manipulating structures. There are several insertion buttons in the insert menu of the right sidebar under "Document Structuren".
@@ -387,6 +387,7 @@ At this time it will only work well together with [article-structure plugin](#ar
 :heavy_plus_sign: Enable by adding `"table-of-contents"` to the `arrayOfPluginNames` array.
 ```javascript
 // pass to pluginsConfig
+docContent: /*adjust to include `table_of_contents?` as an accepted node*/ ,
 tableOfContents: [
   {
     nodeHierarchy: [
@@ -399,6 +400,7 @@ tableOfContents: [
 - `nodeHierarchy`: a list of regex strings to specify the node structure. The default value works for the [article-structure plugin](#article-structure). 
   The first string are the main nodes that should be added to the structure.
   The strings afterwards are the sub-nodes of the main node that should be used to find the actual content to display in the table of contents.
+- `docContent`: You will need to adjust `docContent` to accept `table_of_contents?`, as it is not part of the `block` group. See [general config options](general-config-options) for more info.
 
 **note**: this config is a *list*. Multiple `nodeHierarchy`s can be passed to let the table of contents work in multiple situation. The last matching hierarchy will be used.
 
