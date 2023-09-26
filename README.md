@@ -505,7 +505,7 @@ You will need the following things properly installed on your computer.
 
 * [Git](https://git-scm.com/)
 * [Node.js](https://nodejs.org/) (with npm)
-* [Ember CLI](https://ember-cli.com/)
+* [Ember CLI](https://cli.emberjs.com/release/)
 * [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/) or [Google Chrome](https://google.com/chrome/)
 
 ## Installation
@@ -557,7 +557,7 @@ The consumer will access the controller and other methods by accessing the `notu
 
 ## Further Reading / Useful Links
 * [ember.js](https://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
+* [ember-cli](https://cli.emberjs.com/release/)
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
