@@ -2,7 +2,8 @@
 
 This application allows you to embed the RDFa editor in other applications without integrating with EmberJS directly. It will behave like any other HTML editor.
 
-The readme is structured as follows
+The readme is structured as follows:
+
 - [Live Demo](#live-demo): an online demo to test out the application and what is possible.
 - [Using the editor yourself](#using-the-embeddable-editor-in-your-app): How to get the needed packages for use in your app.
 - [Code Example](#basic-example-the-editor-in-an-html-file): An example which gives a basic showcase on how to initialize and use the editor.
@@ -300,45 +301,6 @@ citation: {
 
 Both examples show how to activate the plugin for the *whole* document.
 
-### RDFa Date
-A simple plugin to insert and modify *semantic* dates and timestamps in an editor document. When added, an `insert date` button will be available in the right insert sidebar. When selecting a date, a card will show up at the same place to edit this date and choose a format for display. 
-***
-:heavy_plus_sign: Enable by adding `"rdfa-date"` to the `arrayOfPluginNames` array.
-```javascript
-// pass to pluginsConfig
-date: {
-  placeholder: {
-    insertDate: 'Insert date',
-    insertDateTime: 'Insert date and time',
-  },
-  formats: [
-    {
-      label: 'Short Date',
-      key: 'short',
-      dateFormat: 'dd/MM/yy',
-      dateTimeFormat: 'dd/MM/yy HH:mm',
-    },
-    {
-      label: 'Long Date',
-      key: 'long',
-      dateFormat: 'EEEE dd MMMM yyyy',
-      dateTimeFormat: 'PPPPp',
-    },
-  ],
-  allowCustomFormat: true,
-},
-```
-- `placeholder`:
-	- `insertDate`: placeholder to show when inserting a date that has no data yet.
-	- `insertDateTime`: placeholder to show when inserting a datetime that has no data yet.
-- `formats`: specify default formats to show for selection in the date card.
-	- `label` (optional): The label shown to the user on the card. If not provided, the format is used instead e.g.: `dd/MM/yyyy`
-	- `key`: A **unique** identifier used for identification in the internal code. 
-	- `dateFormat`: The date format used when this is selected.
-	- `dateTimeFormat`: The datetime format to use when this is selected. Used when the user selects "Include time".
-- `allowCustomFormat`: true/false, determines if the option to insert a fully custom format is available.
-
-For more information about the syntax of defining date(time) formats check the documentation of the underlying library used [date-fns](https://date-fns.org/v2.29.3/docs/format).
 
 ### Roadsign Regulation
 Add annnotated *mobiliteitsmaatregelen* from a specified registry, which will most likely be using the [public facing sparql endpoint](https://register.mobiliteit.vlaanderen.be/sparql) of [the roadsign registry](https://register.mobiliteit.vlaanderen.be). This data is maintained by experts at [MOW Vlaanderen](https://www.vlaanderen.be/departement-mobiliteit-en-openbare-werken).
@@ -416,7 +378,7 @@ A variable can be inserted with the card shown in the right sidebar.
 **Types of variables:**
 - *text*: a variable that any text can be typed in
 - *number*: pops up an input box that will validate constraints and includes a button to show the number in words. Constraints (min/max) can be set when inserting the variable.
-- *date*: works just like the [RDFa date plugin](rdfa-date), where a user can input a date in specified formats.
+- *date*: insert date and time values using a datepicker. Supports a variety of formats. For more information about the syntax of defining date(time) formats check the documentation of the underlying library used [date-fns](https://date-fns.org/v2.29.3/docs/format).
 - *location*: choose out of a list of location options, that can contain placeholders themselves. 
 - *codelist*: when inserting, a specific codelist has to be chosen. This codelist is a list of values the user can choose from to fill in the variable. Either the user can select one (single selection) or multiple (multiple selection). 
 - *address*: when inserted, the user can click this to get a modal for searching addresses from the Belgium address register. This can be used to insert existing addresses.  
@@ -425,9 +387,6 @@ A variable can be inserted with the card shown in the right sidebar.
 :heavy_plus_sign: Enable by adding `"variable"` to the `arrayOfPluginNames` array.
 ```javascript
 // pass to pluginsConfig
-date: {
-  // see RDFa Date plugin for config
-},
 variable: {
   insert: {
       enable: true,
@@ -443,23 +402,46 @@ variable: {
           'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
         nonZonalLocationCodelistUri:
           'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
-      }
+      },
+      date: {
+        allowCustomFormat: true,
+        formats: [
+          {
+            label: 'Short Date',
+            key: 'short',
+            dateFormat: 'dd/MM/yy',
+            dateTimeFormat: 'dd/MM/yy HH:mm',
+          },
+          {
+            label: 'Long Date',
+            key: 'long',
+            dateFormat: 'EEEE dd MMMM yyyy',
+            dateTimeFormat: 'PPPPp',
+          },
+        ],
+      },
     }
 },
 ```
-- `date`: configuration for the date variable, see [RDFa Date plugin](#rdfa-date) how to configure.
-- `variable`: configuration for all variables
-  - `insert`: configuration for inserting a variable
-  	- `enable`: is inserting a variable allowed (removing is always possible!)
-  	- `codelistEndpoint`: the endpoint from which to fetch the codelists, which will be added to a codelist variable's RDFa. For production you'll likely want to use https://register.mobiliteit.vlaanderen.be/sparql`.
-  	- `codelistPublisher`: Limit the codelists to a specific publisher. *null* will allow all codelists.
-  	- `locationEndpoint`: the endpoint to fetch location options, which will be added to the location variable's RDFa and used as the endpoint when selecting a location variable. For production you'll likely want to use `https://register.mobiliteit.vlaanderen.be`.
-  - `edit`: configuration for editing an inserted variable
-  	- `enable`: is editing a variable allowed (removing is always possible!)
-  	- `location`: config for location variable
-  		- `endpoint`: *fallback* endpoint for location variable if the variable is missing the endpoint in its RDFa. This will most likely be the same as the endpoint used for inserting.
-  		- `zonalLocationCodelistUri`: the URI to search for if the location variable is included in a zonal traffic measure.
-  		- `nonZonalLocationCodelistUri`: the URI to search for if the location variable is included in a non-zonal traffic measure.
+- `insert`: configuration for inserting a variable
+  - `enable`: is inserting a variable allowed (removing is always possible!)
+  - `codelistEndpoint`: the endpoint from which to fetch the codelists, which will be added to a codelist variable's RDFa. For production you'll likely want to use https://register.mobiliteit.vlaanderen.be/sparql`.
+  - `codelistPublisher`: Limit the codelists to a specific publisher. *null* will allow all codelists.
+  - `locationEndpoint`: the endpoint to fetch location options, which will be added to the location variable's RDFa and used as the endpoint when selecting a location variable. For production you'll likely want to use `https://register.mobiliteit.vlaanderen.be`.
+
+- `edit`: configuration for editing an inserted variable
+  - `enable`: is editing a variable allowed (removing is always possible!)
+  - `location`: config for the location variable
+    - `endpoint`: *fallback* endpoint for location variable if the variable is missing the endpoint in its RDFa. This will most likely be the same as the endpoint used for inserting.
+    - `zonalLocationCodelistUri`: the URI to search for if the location variable is included in a zonal traffic measure.
+    - `nonZonalLocationCodelistUri`: the URI to search for if the location variable is included in a non-zonal traffic measure.
+  - `date`: config for the date variable
+    - `formats`: specify default formats to show for selection in the date card.
+      - `label` (optional): The label shown to the user on the card. If not provided, the format is used instead e.g.: `dd/MM/yyyy`
+      - `key`: A **unique** identifier used for identification in the internal code. 
+      - `dateFormat`: The date format used when this is selected.
+      - `dateTimeFormat`: The datetime format to use when this is selected. Used when the user selects "Include time".
+    - `allowCustomFormat`: true/false, determines if the option to insert a fully custom format is available.
 
 ### Formatting Toggle
 This will add a button in the top toolbar `Show formatting marks`. This toggles the visibility of all formatting marks of the document such as break lines, paragraphs...

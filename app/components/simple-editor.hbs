@@ -126,12 +126,6 @@
                   @config={{this.config.citation}}
                 />
               {{/if}}
-              {{#if (array-includes this.activePlugins 'rdfa-date')}}
-                <RdfaDatePlugin::Insert
-                  @controller={{this.controller}}
-                  @options={{this.config.date}}
-                />
-              {{/if}}
               {{#if (array-includes this.activePlugins 'roadsign-regulation')}}
                 <RoadsignRegulationPlugin::RoadsignRegulationCard
                   @controller={{this.controller}}
@@ -157,12 +151,6 @@
                 @options={{this.config.besluit.structures}}
               />
             {{/if}}
-            {{#if (array-includes this.activePlugins 'rdfa-date' 'variable')}}
-                <RdfaDatePlugin::Card
-                  @controller={{this.controller}}
-                  @options={{this.config.date}}
-                />
-            {{/if}}
             {{#if (array-includes this.activePlugins 'variable')}}
               {{#if this.config.variable.insert.enable}}
                 <VariablePlugin::InsertVariableCard
@@ -174,6 +162,10 @@
                 <VariablePlugin::Codelist::Edit
                   @controller={{this.controller}}
                   @options={{this.config.variable.edit.codelist}}
+                />
+                <VariablePlugin::Date::Edit
+                  @controller={{this.controller}}
+                  @options={{this.config.variable.edit.date}}
                 />
                 <VariablePlugin::Location::Edit
                   @controller={{this.controller}}

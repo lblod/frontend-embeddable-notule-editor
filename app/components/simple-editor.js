@@ -55,10 +55,6 @@ import { blockquote } from '@lblod/ember-rdfa-editor/plugins/blockquote';
 import { code_block } from '@lblod/ember-rdfa-editor/plugins/code';
 import { image, imageView } from '@lblod/ember-rdfa-editor/plugins/image';
 import { inline_rdfa } from '@lblod/ember-rdfa-editor/marks';
-import {
-  date,
-  dateView,
-} from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/rdfa-date-plugin/nodes/date';
 
 import {
   createInvisiblesPlugin,
@@ -86,6 +82,8 @@ import {
 import {
   address,
   addressView,
+  date,
+  dateView,
   codelist,
   codelistView,
   location,
@@ -271,12 +269,6 @@ export default class SimpleEditorComponent extends Component {
     ];
     const nodeViews = {};
     const setup = { nodes, marks, plugins, nodeViews, userConfig, config };
-    if (
-      activePlugins.includes('rdfa-date') ||
-      activePlugins.includes('variable')
-    ) {
-      this.setupDatePlugin(setup);
-    }
     if (activePlugins.includes('citation')) {
       this.setupCitationPlugin(setup);
     }
@@ -301,6 +293,7 @@ export default class SimpleEditorComponent extends Component {
     this.config = setup.config;
     setup.nodes = { ...setup.nodes, heading, invisible_rdfa, block_rdfa };
     this.schema = new Schema({ nodes: setup.nodes, marks: setup.marks });
+
     this.plugins = setup.plugins;
     this.nodeViews = (controller) => {
       const views = {
@@ -313,16 +306,6 @@ export default class SimpleEditorComponent extends Component {
       return views;
     };
     this.initCompleted = true;
-  }
-
-  setupDatePlugin({ nodes, userConfig, config, nodeViews }) {
-    config.date = mergeConfigs(
-      defaultRdfaDatePluginConfig(this.intl.t.bind(this.intl)),
-      userConfig.date
-    );
-
-    nodes.date = date(config.date);
-    nodeViews.date = (controller) => dateView(this.config.date)(controller);
   }
 
   setupCitationPlugin({ userConfig, config, plugins }) {
@@ -363,11 +346,7 @@ export default class SimpleEditorComponent extends Component {
 
   setupVariablePlugin(setup) {
     const { config, userConfig, nodes, nodeViews } = setup;
-    nodes.text_variable = text_variable;
-    nodes.number = number;
-    nodes.address = address;
-    nodes.location = location;
-    nodes.codelist = codelist;
+
     config.variable = {};
     config.variable.insert = {
       enable: userConfig.variable?.insert?.enable ?? true,
@@ -375,6 +354,29 @@ export default class SimpleEditorComponent extends Component {
     config.variable.edit = {
       enable: userConfig.variable?.edit?.enable ?? true,
     };
+    config.variable.edit.date = mergeConfigs(
+      defaultRdfaDatePluginConfig,
+      userConfig.variable?.edit?.date
+    );
+    config.variable.edit.location = mergeConfigs(
+      defaultLocationVariablePluginConfig,
+      userConfig.variable?.edit?.location
+    );
+
+    config.variable.edit.codelist = {};
+
+    config.variable.edit.address = {
+      defaultMunicipality:
+        userConfig.variable?.edit?.address?.defaultMunicipality,
+    };
+
+    nodes.text_variable = text_variable;
+    nodes.number = number;
+    nodes.address = address;
+    nodes.date = date(config.variable.edit.date);
+    nodes.location = location;
+    nodes.codelist = codelist;
+
     if (config.variable.insert.enable) {
       config.variable.insert.variableTypes = [
         {
@@ -409,7 +411,7 @@ export default class SimpleEditorComponent extends Component {
         {
           label: this.intl.t('editor.variables.date'),
           component: {
-            path: 'variable-plugin/date/insert',
+            path: 'variable-plugin/date/insert-variable',
           },
         },
         {
@@ -427,25 +429,12 @@ export default class SimpleEditorComponent extends Component {
       ];
     }
 
-    if (config.variable.edit.enable) {
-      config.variable.edit.location = mergeConfigs(
-        defaultLocationVariablePluginConfig,
-        userConfig.variable?.edit?.location
-      );
-
-      config.variable.edit.codelist = {};
-
-      config.variable.edit.address = {
-        defaultMunicipality:
-          userConfig.variable?.edit?.address?.defaultMunicipality,
-      };
-    }
-
     nodeViews.address = (controller) => addressView(controller);
     nodeViews.number = (controller) => numberView(controller);
     nodeViews.text_variable = (controller) => textVariableView(controller);
     nodeViews.location = (controller) => locationView(controller);
     nodeViews.codelist = (controller) => codelistView(controller);
+    nodeViews.date = (controller) => dateView(config.variable.edit.date)(controller);
   }
 
   setupTOCPlugin(setup) {
