@@ -434,7 +434,8 @@ export default class SimpleEditorComponent extends Component {
     nodeViews.text_variable = (controller) => textVariableView(controller);
     nodeViews.location = (controller) => locationView(controller);
     nodeViews.codelist = (controller) => codelistView(controller);
-    nodeViews.date = (controller) => dateView(config.variable.edit.date)(controller);
+    nodeViews.date = (controller) =>
+      dateView(config.variable.edit.date)(controller);
   }
 
   setupTOCPlugin(setup) {
