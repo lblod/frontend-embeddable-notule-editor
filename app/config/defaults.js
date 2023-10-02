@@ -3,11 +3,7 @@ import merge from 'lodash.mergewith';
 /**
  * @type {import("@lblod/ember-rdfa-editor-lblod-plugins/plugins/rdfa-date-plugin/index").DateOptions}
  */
-export const defaultRdfaDatePluginConfig = (t) => ({
-  placeholder: {
-    insertDate: t('date-plugin.insert.date'),
-    insertDateTime: t('date-plugin.insert.datetime'),
-  },
+export const defaultRdfaDatePluginConfig = {
   formats: [
     {
       label: 'Short Date',
@@ -23,7 +19,7 @@ export const defaultRdfaDatePluginConfig = (t) => ({
     },
   ],
   allowCustomFormat: true,
-});
+};
 
 /**
  * @type {import("@lblod/ember-rdfa-editor-lblod-plugins/plugins/citation-plugin").CitationPluginEmberComponentConfig}
