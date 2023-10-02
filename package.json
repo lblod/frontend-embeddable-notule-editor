@@ -28,8 +28,7 @@
     "release": "release-it"
   },
   "dependencies": {
-    "ember-intl": "^5.7.2",
-    "ember-unique-id-helper-polyfill": "^1.2.2"
+    "ember-intl": "^5.7.2"
   },
   "devDependencies": {
     "@appuniversum/ember-appuniversum": "^2.15.0",
