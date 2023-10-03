@@ -9,6 +9,30 @@ module.exports = function (defaults) {
     fingerprint: {
       enabled: false,
     },
+    postcssOptions: {
+      compile: {
+        enabled: true,
+        extension: 'scss',
+        parser: require('postcss-scss'),
+        plugins: [
+          {
+            module: require('@csstools/postcss-sass'),
+          },
+          {
+            module: require('postcss-rem-to-pixel'),
+            options: {
+              rootValue: 10,
+              unitPrecision: 5,
+              propList: ['*'],
+              selectorBlackList: [],
+              replace: true,
+              mediaQuery: false,
+              minRemValue: 0
+            },
+          },
+        ],
+      },
+    },
     autoImport: {
       webpack: {
         output: {
