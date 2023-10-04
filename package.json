@@ -45,7 +45,7 @@
     "@ember/test-helpers": "^2.9.3",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
-    "@lblod/ember-environment-banner": "^0.2.0",
+    "@lblod/ember-environment-banner": "^0.4.0",
     "@lblod/ember-rdfa-editor": "^6.1.0",
     "@lblod/ember-rdfa-editor-lblod-plugins": "^13.0.0",
     "broccoli-asset-rev": "^3.0.0",
