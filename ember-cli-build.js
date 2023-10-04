@@ -27,7 +27,7 @@ module.exports = function (defaults) {
               selectorBlackList: [],
               replace: true,
               mediaQuery: false,
-              minRemValue: 0
+              minRemValue: 0,
             },
           },
         ],
