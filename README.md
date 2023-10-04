@@ -206,27 +206,29 @@ Any configuration value not provided will use the default value, which are shown
 
 * [article-structure](#article-structure): Provides structures like titles, chapters, articles and paragraphs, which can be used to better manage official documents like regulatory statements. It allows you to insert, move and delete them.
 * [besluit](#besluit): Provides the correct rdfa-structure for constructing a decision (besluit) with ways to move and delete them.
-* [citation](#citation): Search and insert references to citations (a legal resource/expression)
-* [rdfa-date](#rdfa-date): Inserting and modifying annotated dates and times
-* [roadsign-regulation](#roadsign-regulation): Insert roadsign regulations, based on the registry managed and provided by MOW (Mobiliteit en Openbare Werken)
-* [table-of-contents](#table-of-contents): Show a table of contents with clickable sections defined by [article-structure](#article-structure)
-* [variable](#rdfa-variables): Allows insertion and filling in of custom rdfa variables
-* [formatting-toggle](#formatting-toggle): Allows to toggle the formatting marks with a button
+* [citation](#citation): Search and insert references to citations (a legal resource/expression).
+* [rdfa-date](#rdfa-date): Inserting and modifying annotated dates and times.
+* [roadsign-regulation](#roadsign-regulation): Insert roadsign regulations, based on the registry managed and provided by MOW (Mobiliteit en Openbare Werken).
+* [table-of-contents](#table-of-contents): Show a table of contents with clickable sections defined by [article-structure](#article-structure).
+* [variable](#rdfa-variables): Allows insertion and filling in of custom rdfa variables.
+* [formatting-toggle](#formatting-toggle): Allows to toggle the formatting marks with a button.
 * [rdfa-blocks-toggle](#rdfa-blocks-toggle): Allows to toggle the visual indications of the rdfa blocks with a button.
 * [template-comments](#template-comments): Allows insertion and editing of comment blocks to provide extra information to a user filling in a document. These are visually distinct units with a special RDFa type, which allows them to be filtered out during postprocessing.
+
 ##### General Config options
 There are some options you can pass to `pluginsConfig` in `initEditor` that are not connected to a plugin.
 - `docContent: 'block+'`: The property docContent specifies which nodes are allowed in the document. By default we allow one or more nodes of the group block, which includes most content. A group can be seen as a supertype that includes multiple types. For more info about this check the [Prosemirror docs](https://prosemirror.net/docs/guide/#schema.content_expressions).  
   See `public/test.html` where `docContent` is specified to allow a [table of contents](#table-of-contents) and [article-structure](#article-structure) nodes in a specific order.
 
 ### Article Structure
-This plugin is in charge of inserting and manipulating structures. There are several insertion buttons in the insert menu of the right sidebar under "Document Structuren".
+This plugin is in charge of inserting and manipulating structures. There are several insertion buttons in the right sidebar under *Document Structuren*.
 
-After inserting a structure and selecting it, a card will show options to move and delete the structure. These might be disabled if the action is not possible. Using the button "with content" will also delete everything included in the structure, instead of just the closest heading. 
+After inserting a structure and selecting it, a card will show options to move and delete the structure. These might be disabled if the action is not possible. Using the button *en inhoud verwijderen* will also delete everything included in the structure, instead of just the closest heading. 
 
-Anything part of the `block` group (almost everything) is allowed under these structures. However, the article structure nodes themselves are only allowed in a specific order.
+Anything part of the `block` group (almost everything) is allowed under these structures. However, the article structure nodes themselves are only allowed in a specific order. 
 
-![article structure card](https://imgur.com/2zkbNw3.png)
+![article structure card and insert buttons example](https://github.com/lblod/frontend-embeddable-notule-editor/assets/126079676/9920df02-3e9c-43c2-bf7e-fdce182439b9)
+
 ***
 :heavy_plus_sign: Enable by adding `"article-structure"` to the `arrayOfPluginNames` array.
 
@@ -236,7 +238,7 @@ These structures are not part of the `block` group. You will need to edit `docCo
 docContent: '((title|block)+|(chapter|block)+|(article|block)+)'
 ```
 ### Besluit 
-This will add RDFa structures to create a besluit.  
+This will add RDFa structures neccesary to show and edit a besluit. This does not add any UI elements.  
 A besluit is a specific document in a specific format. This means that using it together with [Article Structures](article-structure) might not make sense.
 ***
 :heavy_plus_sign: Enable by adding `"besluit"` to the `arrayOfPluginNames` array.
@@ -247,7 +249,7 @@ No configuration is needed.
 Add the possibility to add references to specific legal documents. There are two ways to use this plugin
 
 **A. Insert Button**
-Click the `insert reference` button in the right sidebar.
+Click the button *citeeropschrijft toevoegen* in the right sidebar.
 This will open a modal where you can search for different types of legal documents, preview them and insert them if desired.
 
 **B. Type Keyword**
@@ -266,8 +268,10 @@ Type one of the trigger phrases, where `[words to search for]` will be filled in
 * **ministerieel besluit** [words to search for]
 * **genummerd besluit** [words to search for]
 
-After typing this trigger phrase, a card will shop up in the right sidebar with the type and search term filled in. Press `Advanced search` to pop open the same modal as shown in **A.** 
-![citation plugin](https://imgur.com/oerd9rV.png)
+After typing this trigger phrase, a card will appear in the right sidebar with the type and search term filled in. Click *Uitgebreid zoeken* to pop open the same modal as shown in **A.**  
+
+![citation plugin examples](https://github.com/lblod/frontend-embeddable-notule-editor/assets/126079676/d3b1e511-412a-4cab-95ba-e3f92371f261)
+
 ***
 :heavy_plus_sign: Enable by adding `"citation"` to the `arrayOfPluginNames` array.
 
@@ -299,13 +303,13 @@ citation: {
 	- if type `'ranges'`: 
 		- `activeInRanges`: given the Prosemirror editor state, return an array of ranges for the plugin to be active in, for example `[[0,50], [70,100]]`
 
-Both examples show how to activate the plugin for the *whole* document.
+Both examples show how to activate the plugin for the *whole* document, which is also the default.
 
 
 ### Roadsign Regulation
 Add annnotated *mobiliteitsmaatregelen* from a specified registry, which will most likely be using the [public facing sparql endpoint](https://register.mobiliteit.vlaanderen.be/sparql) of [the roadsign registry](https://register.mobiliteit.vlaanderen.be). This data is maintained by experts at [MOW Vlaanderen](https://www.vlaanderen.be/departement-mobiliteit-en-openbare-werken).
 
-:warning: This plugin will only activate in *besluiten* with a certain rdf type.
+:warning: This plugin will only activate in *besluiten* with a certain rdf type. You will also need to activate the [Besluit](#besluit) plugin to be able to create *besluiten*.
 <details><summary>Exhaustive list of decision types in which this plugin will activate</summary>
 
 https://data.vlaanderen.be/id/concept/BesluitType/4d8f678a-6fa4-4d5f-a2a1-80974e43bf34
@@ -323,9 +327,10 @@ https://data.vlaanderen.be/id/concept/BesluitType/256bd04a-b74b-4f2a-8f5d-14dda4
 https://data.vlaanderen.be/id/concept/BesluitType/67378dd0-5413-474b-8996-d992ef81637a
 </details>
 
-When the cursor is inside such a *besluit*, the button `Voeg mobiliteitsmaatregel in` will appear under the insert menu. Clicking this will show a modal to filter and select roadsign regulation to insert.
+When the cursor is inside such a *besluit*, the button *Voeg mobiliteitsmaatregel in* will appear under the insert menu. Clicking this will show a modal to filter and select roadsign regulation to insert.
 
-![roadsign regulation modal](https://i.imgur.com/z7My8lm.png)
+![roadsign regulation modal](https://github.com/lblod/frontend-embeddable-notule-editor/assets/126079676/713d32bf-baea-4e90-9b1e-e6e5131c4d54)
+
 ***
 :heavy_plus_sign: Enable by adding `"roadsign-regulation"` to the `arrayOfPluginNames` array.
 ```javascript
@@ -372,8 +377,9 @@ These are placeholders that can be inserted in a document. A variable placeholde
 Usually variables are inserted in an editor made to create *templates* (documents to be filled in), and only edited in an editor to fill in these *templates*. Via the config you can customize if you want to allow insertion and/or filling in a variable.  
 **Note**: a user will always be able to remove a variable, even if insertion is not allowed.
 
-A variable can be inserted with the card shown in the right sidebar.
-![insert variable card](https://imgur.com/9kSqgXc.png)
+A variable can be inserted with the card shown in the right sidebar.  
+![insert variable card](https://github.com/lblod/frontend-embeddable-notule-editor/assets/126079676/7cf29af3-069e-4c45-b65d-3a898ac7b830)
+
 
 **Types of variables:**
 - *text*: a variable that any text can be typed in
@@ -444,16 +450,17 @@ variable: {
     - `allowCustomFormat`: true/false, determines if the option to insert a fully custom format is available.
 
 ### Formatting Toggle
-This will add a button in the top toolbar `Show formatting marks`. This toggles the visibility of all formatting marks of the document such as break lines, paragraphs...
-![document with formatting annotations](https://imgur.com/KTNxuBW.png)
+This will add a button *Toon opmaakmarkeringen* in the top toolbar. This toggles the visibility of all formatting marks of the document such as break lines, paragraphs...  
+![document with formatting annotations](https://github.com/lblod/frontend-embeddable-notule-editor/assets/126079676/bfc7ff1e-b8e3-4220-b80c-b5456d58208e)
+
 ***
 :heavy_plus_sign: Enable by adding `"formatting-toggle"` to the `arrayOfPluginNames` array.
 No configuration is needed.
 
 ### Rdfa Blocks Toggle
-This will add a button in the top toolbar `Show annotations`. This toggles the visibility of RDFa information contained in the document. This is useful if you want to check for errors in the RDFa structure, or simply have a look at what data the editor is generating behind the scenes. As such, it is mostly useful for expert users.
+This will add a button *Toon annotaties* in the top toolbar. This toggles the visibility of RDFa information contained in the document. This is useful if you want to check for errors in the RDFa structure, or simply have a look at what data the editor is generating behind the scenes. As such, it is mostly useful for expert users.  
 
-![document with rdfa blocks visible](https://imgur.com/Asdu2aN.png)
+![document with rdfa blocks visible](https://github.com/lblod/frontend-embeddable-notule-editor/assets/126079676/279900d3-7798-43e5-a560-298d15cf937c)
 ***
 :heavy_plus_sign: Enable by adding `"rdfa-blocks-toggle"` to the `arrayOfPluginNames` array.
 No configuration is needed.
