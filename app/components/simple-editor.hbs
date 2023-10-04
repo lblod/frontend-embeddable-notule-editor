@@ -122,7 +122,6 @@
               {{#if (array-includes this.activePlugins 'citation')}}
                 <CitationPlugin::CitationInsert
                   @controller={{this.controller}}
-                  @plugin={{this.citationPlugin}}
                   @config={{this.config.citation}}
                 />
               {{/if}}
@@ -180,6 +179,13 @@
             {{#if (array-includes this.activePlugins 'template-comments')}}
               <TemplateCommentsPlugin::EditCard
                 @controller={{this.controller}}
+              />
+            {{/if}}
+            {{#if (array-includes this.activePlugins 'citation')}}
+              <CitationPlugin::CitationCard
+                @controller={{this.controller}}
+                @plugin={{this.citationPlugin}}
+                @config={{this.config.citation}}
               />
             {{/if}}
           </Sidebar>
