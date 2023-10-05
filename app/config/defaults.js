@@ -1,7 +1,7 @@
 import merge from 'lodash.mergewith';
 
 /**
- * @type {import("@lblod/ember-rdfa-editor-lblod-plugins/plugins/rdfa-date-plugin/index").DateOptions}
+ * @type {import("@lblod/ember-rdfa-editor-lblod-plugins/plugins/variable-plugin/variables/date").DateOptions}
  */
 export const defaultRdfaDatePluginConfig = {
   formats: [
