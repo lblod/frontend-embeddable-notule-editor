@@ -98,7 +98,7 @@ window.addEventListener('load', function () {
     const editorContainer = document.getElementById('my-editor');
     const editorElement =
     editorContainer.getElementsByClassName('notule-editor')[0];
-    const arrayOfPluginNames = ['citation', 'rdfa-date'];
+    const arrayOfPluginNames = ['citation', 'variable'];
     const userConfigObject = {}
     editorElement.initEditor(arrayOfPluginNames, userConfigObject);
   });
@@ -127,7 +127,7 @@ const editorElement = editorContainer.getElementsByClassName('notule-editor')[0]
 After rendering the editor we can select the editorElement, which we do with the above code. We get the editorContainer in which we rendered our app, and then select the editor div that has the `notule-editor` class.
 
 ```javascript
-const arrayOfPluginNames = ['citation', 'rdfa-date'];
+const arrayOfPluginNames = ['citation', 'variable'];
 const userConfigObject = {}
 editorElement.initEditor(arrayOfPluginNames, userConfigObject);
 ```
@@ -207,7 +207,6 @@ Any configuration value not provided will use the default value, which are shown
 * [article-structure](#article-structure): Provides structures like titles, chapters, articles and paragraphs, which can be used to better manage official documents like regulatory statements. It allows you to insert, move and delete them.
 * [besluit](#besluit): Provides the correct rdfa-structure for constructing a decision (besluit) with ways to move and delete them.
 * [citation](#citation): Search and insert references to citations (a legal resource/expression)
-* [rdfa-date](#rdfa-date): Inserting and modifying annotated dates and times
 * [roadsign-regulation](#roadsign-regulation): Insert roadsign regulations, based on the registry managed and provided by MOW (Mobiliteit en Openbare Werken)
 * [table-of-contents](#table-of-contents): Show a table of contents with clickable sections defined by [article-structure](#article-structure)
 * [variable](#rdfa-variables): Allows insertion and filling in of custom rdfa variables
