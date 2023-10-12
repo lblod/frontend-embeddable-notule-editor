@@ -93,6 +93,12 @@ import {
   text_variable,
   textVariableView,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/variable-plugin/variables';
+import TextVariableInsertComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/text/insert';
+import NumberInsertComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/number/insert';
+import DateInsertVariableComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/date/insert-variable';
+import LocationInsertComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/location/insert';
+import CodelistInsertComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/codelist/insert';
+import VariablePluginAddressInsertVariableComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/address/insert-variable';
 
 import {
   defaultCitationPluginConfig,
@@ -381,49 +387,37 @@ export default class SimpleEditorComponent extends Component {
       config.variable.insert.variableTypes = [
         {
           label: this.intl.t('editor.variables.text'),
-          component: {
-            path: 'variable-plugin/text/insert',
-          },
+          component: TextVariableInsertComponent,
         },
         {
           label: this.intl.t('editor.variables.number'),
-          component: {
-            path: 'variable-plugin/number/insert',
-          },
+          component: NumberInsertComponent,
         },
         {
           label: this.intl.t('editor.variables.location'),
-          component: {
-            path: 'variable-plugin/location/insert',
-            options: {
-              endpoint:
-                userConfig.variable?.insert?.locationEndpoint ??
-                'https://dev.roadsigns.lblod.info/sparql',
-            },
+          component: LocationInsertComponent,
+          options: {
+            endpoint:
+              userConfig.variable?.insert?.locationEndpoint ??
+              'https://dev.roadsigns.lblod.info/sparql',
           },
         },
         {
           label: this.intl.t('editor.variables.address'),
-          component: {
-            path: 'variable-plugin/address/insert',
-          },
+          component: VariablePluginAddressInsertVariableComponent,
         },
         {
           label: this.intl.t('editor.variables.date'),
-          component: {
-            path: 'variable-plugin/date/insert-variable',
-          },
+          component: DateInsertVariableComponent,
         },
         {
           label: this.intl.t('editor.variables.codelist'),
-          component: {
-            path: 'variable-plugin/codelist/insert',
-            options: {
-              endpoint:
-                userConfig.variable?.insert?.codelistEndpoint ??
-                'https://reglementairebijlagen.lblod.info/sparql',
-              publisher: userConfig.variable?.insert?.codelistPublisher,
-            },
+          component: CodelistInsertComponent,
+          options: {
+            endpoint:
+              userConfig.variable?.insert?.codelistEndpoint ??
+              'https://reglementairebijlagen.lblod.info/sparql',
+            publisher: userConfig.variable?.insert?.codelistPublisher,
           },
         },
       ];
