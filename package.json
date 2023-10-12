@@ -44,6 +44,10 @@
     "@ember/render-modifiers": "^2.0.4",
     "@ember/string": "^3.0.1",
     "@ember/test-helpers": "^2.9.3",
+    "@embroider/compat": "^3.2.3",
+    "@embroider/core": "^3.3.0",
+    "@embroider/router": "^2.1.4",
+    "@embroider/webpack": "^3.2.0",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "@lblod/ember-environment-banner": "^0.2.0",
@@ -52,6 +56,7 @@
     "broccoli-asset-rev": "^3.0.0",
     "changesets-release-it-plugin": "^0.1.1",
     "concurrently": "^8.0.1",
+    "crypto-browserify": "^3.12.0",
     "ember-auto-import": "^2.6.3",
     "ember-cli": "~4.12.1",
     "ember-cli-app-version": "^6.0.0",
@@ -91,11 +96,12 @@
     "qunit-dom": "^2.0.0",
     "release-it": "^16.1.5",
     "sass": "^1.55.0",
+    "stream-browserify": "^3.0.0",
     "stylelint": "^15.4.0",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-prettier": "^3.0.0",
     "tracked-built-ins": "^3.1.1",
-    "webpack": "^5.78.0"
+    "webpack": "^5.88.2"
   },
   "overrides": {
     "@appuniversum/ember-appuniversum": {

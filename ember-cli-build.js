@@ -2,6 +2,9 @@
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const webpack = require('webpack');
+const { Webpack } = require('@embroider/webpack');
+const compat = require('@embroider/compat');
+const rdfaEditorWebpackConfig = require('@lblod/ember-rdfa-editor/webpack-config');
 
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
@@ -55,5 +58,9 @@ module.exports = function (defaults) {
     },
   });
 
-  return app.toTree();
+  return compat.compatBuild(app, Webpack, {
+    packagerOptions: {
+      webpackConfig: rdfaEditorWebpackConfig,
+    },
+  });
 };
