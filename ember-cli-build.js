@@ -12,18 +12,18 @@ module.exports = function (defaults) {
     fingerprint: {
       enabled: false,
     },
-    autoImport: {
-      webpack: {
-        output: {
-          filename: 'frontend-embeddable-notule-editor-[name].js',
-        },
-        plugins: [
-          new webpack.optimize.LimitChunkCountPlugin({
-            maxChunks: 1,
-          }),
-        ],
-      },
-    },
+    // autoImport: {
+    //   webpack: {
+    //     output: {
+    //       filename: 'frontend-embeddable-notule-editor-[name].js',
+    //     },
+    //     plugins: [
+    //       new webpack.optimize.LimitChunkCountPlugin({
+    //         maxChunks: 1,
+    //       }),
+    //     ],
+    //   },
+    // },
     '@appuniversum/ember-appuniversum': {
       disableWormholeElement: true,
     },
@@ -36,7 +36,35 @@ module.exports = function (defaults) {
 
   return compat.compatBuild(app, Webpack, {
     packagerOptions: {
-      webpackConfig: rdfaEditorWebpackConfig,
+      webpackConfig: {
+        ...rdfaEditorWebpackConfig,
+        // This is relative to the root of the built app (in node_modules/.embroider/rewritten-app),
+        // not the project source
+        entry: './app.js',
+        output: {
+          filename: 'assets/frontend-embeddable-notule-editor.js',
+          // filename: 'assets/frontend-embeddable-notule-editor-[name].js',
+          globalObject: 'window',
+          library: {
+            name: 'embeddableNotuleEditor',
+            type: 'umd',
+          },
+        },
+        plugins: [
+          new webpack.optimize.LimitChunkCountPlugin({
+            maxChunks: 1,
+          }),
+        ],
+      },
+      // publicAssetURL: 'https://embeddable.gelinkt-notuleren.lblod.info/',
+      // webpackConfig: {
+      //   resolve: {
+      //     fallback: {
+      //       stream: require.resolve('stream-browserify'),
+      //       crypto: require.resolve('crypto-browserify'),
+      //     },
+      //   },
+      // },
     },
   });
 };
