@@ -6,12 +6,9 @@
     "type": "git",
     "url": "git+https://github.com/lblod/frontend-embeddable-notule-editor"
   },
+  "main": "dist/embeddable.js",
   "license": "MIT",
   "author": "redpencil.io",
-  "directories": {
-    "doc": "doc",
-    "test": "tests"
-  },
   "scripts": {
     "build": "ember build --environment=production",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
@@ -25,7 +22,8 @@
     "start": "ember serve",
     "test": "concurrently \"npm:lint\" \"npm:test:*\" --names \"lint,test:\"",
     "test:ember": "ember test",
-    "release": "release-it"
+    "release": "release-it",
+    "prepare": "npm run build && webpack"
   },
   "dependencies": {
     "ember-intl": "^5.7.2"
@@ -92,7 +90,8 @@
     "stylelint-config-standard": "^34.0.0",
     "stylelint-prettier": "^3.0.0",
     "tracked-built-ins": "^3.1.1",
-    "webpack": "^5.78.0"
+    "webpack": "^5.78.0",
+    "webpack-cli": "^5.1.4"
   },
   "overrides": {
     "@appuniversum/ember-appuniversum": {
