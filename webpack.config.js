@@ -5,12 +5,12 @@ module.exports = {
     path: __dirname + '/dist',
     filename: 'embeddable.js',
     globalObject: 'this',
-    library: { name: 'frontend-embeddable-notule-editor', type: 'umd' },
+    library: { name: 'embeddable-say-editor', type: 'umd' },
   },
   externals: {},
   plugins: [
     new webpack.IgnorePlugin({
-      resourceRegExp: /frontend-embeddable-notule-editor\/app/,
+      resourceRegExp: /embeddable-say-editor\/app/,
     }),
   ],
   module: {

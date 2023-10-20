@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="assets/vendor.css" />
     <link
       rel="stylesheet"
-      href="assets/frontend-embeddable-notule-editor.css"
+      href="assets/embeddable-say-editor.css"
     />
     <!-- Style of this demo app, NOT REQUIRED -->
     <link rel="stylesheet" href="assets/demo.css" />
     <!-- Sources of the editor -->
     <script src="assets/vendor.js"></script>
-    <script src="assets/frontend-embeddable-notule-editor-app.js"></script>
-    <script src="assets/frontend-embeddable-notule-editor.js"></script>
+    <script src="assets/embeddable-say-editor-app.js"></script>
+    <script src="assets/embeddable-say-editor.js"></script>
   </head>
 
   <!-- Next up, we put some tags in the body of our web page. We'll place the editor in those tags. -->
@@ -44,9 +44,9 @@
     <script>
       window.addEventListener('load', function () {
         let App =
-          require('frontend-embeddable-notule-editor/app').default.create({
+          require('embeddable-say-editor/app').default.create({
             autoboot: false,
-            name: 'frontend-embeddable-notule-editor',
+            name: 'embeddable-say-editor',
           });
         // Launch the editor
         let editor;

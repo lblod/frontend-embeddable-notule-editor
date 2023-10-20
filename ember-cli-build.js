@@ -36,7 +36,7 @@ module.exports = function (defaults) {
     autoImport: {
       webpack: {
         output: {
-          filename: 'frontend-embeddable-notule-editor-[name].js',
+          filename: 'embeddable-say-editor-[name].js',
         },
         plugins: [
           new webpack.optimize.LimitChunkCountPlugin({
