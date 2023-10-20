@@ -1,5 +1,5 @@
 import EmberRouter from '@ember/routing/router';
-import config from 'frontend-embeddable-notule-editor/config/environment';
+import config from 'embeddable-say-editor/config/environment';
 
 export default class Router extends EmberRouter {
   location = config.locationType;

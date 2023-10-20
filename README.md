@@ -1,4 +1,4 @@
-# frontend-embeddable-notule-editor
+# embeddable-say-editor
 
 This application allows you to embed the RDFa editor in other applications without integrating with EmberJS directly. It will behave like any other HTML editor.
 
@@ -83,7 +83,7 @@ For **production**, use the prebuilt packages in the [Github releases](https://g
 
 ### Building the sources yourself
 
-In order to build the JavaScript and CSS sources of this repository you will need `ember-cli` installed (more info at the [Development section](#development-of-frontend-embeddable-notule-editor)), then execute the following:
+In order to build the JavaScript and CSS sources of this repository you will need `ember-cli` installed (more info at the [Development section](#development-of-embeddable-say-editor)), then execute the following:
 
 ```bash
 git clone https://github.com/lblod/frontend-embeddable-notule-editor.git
@@ -97,9 +97,9 @@ In the 'dist' folder structure, two CSS files and three JavaScript files will ha
 ```bash
 dist
 └── assets
-    ├── frontend-embeddable-notule-editor-app.js
-    ├── frontend-embeddable-notule-editor.css
-    ├── frontend-embeddable-notule-editor.js
+    ├── embeddable-say-editor-app.js
+    ├── embeddable-say-editor.css
+    ├── embeddable-say-editor.js
     ├── vendor.css # currently empty and not needed
     └── vendor.js
 ```
@@ -119,14 +119,14 @@ For an interactive example, refer to this [jsfiddle](https://jsfiddle.net/0qd27r
     <title>I have an editor in my document</title>
 
     <!-- Requirements for the style -->
-    <link rel="stylesheet" href="https://embeddable.gelinkt-notuleren.lblod.info/assets/frontend-embeddable-notule-editor.css">
+    <link rel="stylesheet" href="https://embeddable.gelinkt-notuleren.lblod.info/assets/embeddable-say-editor.css">
     <!-- Can be left out as `vendor.css` is currently empty -->
     <link rel="stylesheet" href="https://embeddable.gelinkt-notuleren.lblod.info/assets/vendor.css">
 
     <!-- Sources of the editor, THE ORDER MATTERS -->
     <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/vendor.js"></script>
-    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/frontend-embeddable-notule-editor-app.js"></script>
-    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/frontend-embeddable-notule-editor.js"></script>
+    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/embeddable-say-editor-app.js"></script>
+    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/embeddable-say-editor.js"></script>
   </head>
   <body>
     ...
@@ -146,9 +146,9 @@ Lastly, we'll instantiate the editor. We wait until the DOM has loaded and then 
 
 ```javascript
 window.addEventListener('load', function () {
-  let App = require('frontend-embeddable-notule-editor/app').default.create({
+  let App = require('embeddable-say-editor/app').default.create({
     autoboot: false,
-    name: 'frontend-embeddable-notule-editor'
+    name: 'embeddable-say-editor'
   });
   App.visit('/', { rootElement: '#my-editor' }).then(() => {
     const editorContainer = document.getElementById('my-editor');
@@ -164,9 +164,9 @@ window.addEventListener('load', function () {
 Let's break down this code, the entire snippet is executed inside a load listener, that will only trigger when the document has loaded.
 
 ```javascript
-let App = require('frontend-embeddable-notule-editor/app').default.create({
+let App = require('embeddable-say-editor/app').default.create({
   autoboot: false,
-  name: 'frontend-embeddable-notule-editor'
+  name: 'embeddable-say-editor'
 });
 ```
 These lines create the app that will be in charge of rendering our editor
@@ -542,7 +542,7 @@ The locale can be overwritten with `setLocaleToDutch()`, `setLocaleToEnglish()` 
 Styling the editor can be done by overriding some CSS variables as covered in the [README of ember-rdfa-editor](https://github.com/lblod/ember-rdfa-editor#customisation).For other customizations, override other CSS as usual. 
 Alternatively, the frontend supports SASS, which can be added to [app.scss](app/styles/app.scss) before building the Embeddable yourself.
 
-# Development of frontend-embeddable-notule-editor
+# Development of embeddable-say-editor
 
 ## Prerequisites
 You will need the following things properly installed on your computer.
@@ -577,9 +577,9 @@ Take special care when releasing a new version of this.
 		```bash
 		dist
 		└── assets
-		    ├── frontend-embeddable-notule-editor-app.js
-		    ├── frontend-embeddable-notule-editor.css
-		    ├── frontend-embeddable-notule-editor.js
+		    ├── embeddable-say-editor-app.js
+		    ├── embeddable-say-editor.css
+		    ├── embeddable-say-editor.js
 		    ├── vendor.css # currently empty, but added for consistency
 		    └── vendor.js
 		```
