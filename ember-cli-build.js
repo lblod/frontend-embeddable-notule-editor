@@ -1,7 +1,6 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-const webpack = require('webpack');
 const { Webpack } = require('@embroider/webpack');
 const compat = require('@embroider/compat');
 const rdfaEditorWebpackConfig = require('@lblod/ember-rdfa-editor/webpack-config');
@@ -33,18 +32,6 @@ module.exports = function (defaults) {
               minRemValue: 0,
             },
           },
-        ],
-      },
-    },
-    autoImport: {
-      webpack: {
-        output: {
-          filename: 'frontend-embeddable-notule-editor-[name].js',
-        },
-        plugins: [
-          new webpack.optimize.LimitChunkCountPlugin({
-            maxChunks: 1,
-          }),
         ],
       },
     },
