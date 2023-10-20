@@ -155,12 +155,10 @@ export class SayWebComponent extends HTMLElement {
 
     shadow.appendChild(editorContainer);
 
-    const App = window
-      .require('embeddable-say-editor/app')
-      .default.create({
-        autoboot: false,
-        name: 'embeddable-say-editor',
-      });
+    const App = window.require('embeddable-say-editor/app').default.create({
+      autoboot: false,
+      name: 'embeddable-say-editor',
+    });
     // Launch the editor
     this.editorPromise = App.visit('/', { rootElement: editorContainer }).then(
       () => {
@@ -181,17 +179,5 @@ export class SayWebComponent extends HTMLElement {
     const editor = await this.editorPromise;
     await editor.initEditor(plugins, options);
     return editor;
-  }
-
-  disconnectedCallback() {
-    console.log('Custom element removed from page.');
-  }
-
-  adoptedCallback() {
-    console.log('Custom element moved to new page.');
-  }
-
-  attributeChangedCallback(name, oldValue, newValue) {
-    console.log(`Attribute ${name} has changed.`);
   }
 }
