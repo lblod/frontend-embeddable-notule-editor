@@ -17,6 +17,62 @@ Any content entered here will not be saved.
 
 ## Using the embeddable editor in your app
 
+### With npm
+
+`npm install embeddable-say-editor`
+
+We export 2 ways of launching the editor in your app. They are functionally identical, but you may prefer one over the other depending on your css requirements.
+
+#### as an iframe
+
+```javascript
+import { renderEditor } from 'embeddable-say-editor';
+
+
+// make a container element for the editor to render in in your html
+// the id is not required, you just need to be able to get hold of this element 
+// in whatever way you like
+
+// note: the editor will replace all children of this element, so best to keep it empty.
+// <div id="editorContainer"></div>
+
+const container = document.getElementById('editorContainer');
+const editor = await renderEditor({
+  element: container,
+  title: 'my editor' // optional, this will set the "title" attribute of the iframe
+  width: '500px', // width attribute of the iframe
+  height: '300px', // height attribute of the iframe
+  plugins = [], // array of plugin names (see below)
+  options = {} // configuration object (see below)
+  })
+
+// the editor is now initialized and can be used
+editor.setHtmlContent('hello world');
+
+```
+
+
+#### as a WebComponent
+
+``` javascript
+import { SayWebComponent } from 'embeddable-say-editor';
+
+// register it 
+customElements.define("say-editor", SayWebComponent);
+
+// use it in your html
+// we recommend giving it an id for easy management later, but it is not required
+// <say-editor id="say-editor-1"></say-editor>
+
+
+// initialize it
+const editorComponent = document.getElementById('say-editor-1');
+const editor = await editorComponent.initEditor([/* plugin list */], {/* config object */});
+
+// the editor is now initialized and ready to be used
+editor.setHtmlContent('hello world');
+```
+
 ### Using the prebuilt bundles
 
 The prebuilt bundles are currently hosted on `https://embeddable.gelinkt-notuleren.lblod.info/`.
