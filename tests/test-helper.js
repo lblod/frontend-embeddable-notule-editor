@@ -1,5 +1,5 @@
-import Application from 'embeddable-say-editor/app';
-import config from 'embeddable-say-editor/config/environment';
+import Application from '@lblod/embeddable-say-editor/app';
+import config from '@lblod/embeddable-say-editor/config/environment';
 import * as QUnit from 'qunit';
 import { setApplication } from '@ember/test-helpers';
 import { setup } from 'qunit-dom';

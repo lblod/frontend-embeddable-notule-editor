@@ -1,7 +1,7 @@
 import vendor from './dist/assets/vendor.js';
-import app from './dist/assets/embeddable-say-editor-app.js';
-import embeddable from './dist/assets/embeddable-say-editor.js';
-import editorCss from './dist/assets/embeddable-say-editor.css';
+import app from './dist/assets/@lblod/embeddable-say-editor-app.js';
+import embeddable from './dist/assets/@lblod/embeddable-say-editor.js';
+import editorCss from './dist/assets/@lblod/embeddable-say-editor.css';
 import vendorCss from './dist/assets/vendor.css';
 
 const srcDoc = `
@@ -91,10 +91,10 @@ export async function renderEditor({
 
   // important here to use window.require so that webpack doesn't interfere
   const App = editorFrame.contentWindow
-    .require('embeddable-say-editor/app')
+    .require('@lblod/embeddable-say-editor/app')
     .default.create({
       autoboot: false,
-      name: 'embeddable-say-editor',
+      name: '@lblod/embeddable-say-editor',
     });
   // Launch the editor
   await App.visit('/', { rootElement: editorContainer });
@@ -155,9 +155,9 @@ export class SayWebComponent extends HTMLElement {
 
     shadow.appendChild(editorContainer);
 
-    const App = window.require('embeddable-say-editor/app').default.create({
+    const App = window.require('@lblod/embeddable-say-editor/app').default.create({
       autoboot: false,
-      name: 'embeddable-say-editor',
+      name: '@lblod/embeddable-say-editor',
     });
     // Launch the editor
     this.editorPromise = App.visit('/', { rootElement: editorContainer }).then(
