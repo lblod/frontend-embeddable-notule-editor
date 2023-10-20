@@ -155,10 +155,12 @@ export class SayWebComponent extends HTMLElement {
 
     shadow.appendChild(editorContainer);
 
-    const App = window.require('@lblod/embeddable-say-editor/app').default.create({
-      autoboot: false,
-      name: '@lblod/embeddable-say-editor',
-    });
+    const App = window
+      .require('@lblod/embeddable-say-editor/app')
+      .default.create({
+        autoboot: false,
+        name: '@lblod/embeddable-say-editor',
+      });
     // Launch the editor
     this.editorPromise = App.visit('/', { rootElement: editorContainer }).then(
       () => {
