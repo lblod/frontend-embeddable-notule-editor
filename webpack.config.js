@@ -5,12 +5,12 @@ module.exports = {
     path: __dirname + '/dist',
     filename: 'embeddable.js',
     globalObject: 'this',
-    library: { name: 'embeddable-say-editor', type: 'umd' },
+    library: { name: '@lblod/embeddable-say-editor', type: 'umd' },
   },
   externals: {},
   plugins: [
     new webpack.IgnorePlugin({
-      resourceRegExp: /embeddable-say-editor\/app/,
+      resourceRegExp: /@lblod\/embeddable-say-editor\/app/,
     }),
   ],
   module: {
