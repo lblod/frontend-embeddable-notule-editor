@@ -6,15 +6,16 @@
     <!-- Requirements for the style -->
     <link rel="stylesheet" href="assets/vendor.css" />
     <link
+      data-embroider-ignore
       rel="stylesheet"
       href="assets/frontend-embeddable-notule-editor.css"
     />
     <!-- Style of this demo app, NOT REQUIRED -->
     <link rel="stylesheet" href="assets/demo.css" />
     <!-- Sources of the editor -->
-    <script src="assets/vendor.js"></script>
-    <script src="assets/frontend-embeddable-notule-editor-app.js"></script>
-    <script src="assets/frontend-embeddable-notule-editor.js"></script>
+    <script data-embroider-ignore src="assets/vendor.js"></script>
+    <script data-embroider-ignore src="assets/frontend-embeddable-notule-editor.js"></script>
+    <script data-embroider-ignore src="assets/frontend-embeddable-notule-editor-app.js"></script>
   </head>
 
   <!-- Next up, we put some tags in the body of our web page. We'll place the editor in those tags. -->
@@ -43,17 +44,16 @@
 
     <script>
       window.addEventListener('load', function () {
-        let App =
-          require('frontend-embeddable-notule-editor/app').default.create({
+        const App = (require('embeddable-say-editor/app').default).create({
             autoboot: false,
-            name: 'frontend-embeddable-notule-editor',
+            name: 'embeddable-say-editor',
           });
         // Launch the editor
         let editor;
-        App.visit('/', { rootElement: '#my-editor' }).then(() => {
+        App.startEditor({ rootElement: '#my-editor' }).then(() => {
           const editorContainer = document.getElementById('my-editor');
           const editorElement =
-          editorContainer.getElementsByClassName('notule-editor')[0];
+            editorContainer.getElementsByClassName('notule-editor')[0];
           editorElement.initEditor(['citation', 'besluit', 'article-structure', 'variable', 'table-of-contents',
                                          'roadsign-regulation', 'formatting-toggle', 'template-comments'], {
                                           docContent: 'table_of_contents? ((chapter|block)+|(title|block)+|(article|block)+)',

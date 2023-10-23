@@ -36,18 +36,6 @@ module.exports = function (defaults) {
         ],
       },
     },
-    autoImport: {
-      webpack: {
-        output: {
-          filename: 'frontend-embeddable-notule-editor-[name].js',
-        },
-        plugins: [
-          new webpack.optimize.LimitChunkCountPlugin({
-            maxChunks: 1,
-          }),
-        ],
-      },
-    },
     '@appuniversum/ember-appuniversum': {
       disableWormholeElement: true,
     },
@@ -60,7 +48,29 @@ module.exports = function (defaults) {
 
   return compat.compatBuild(app, Webpack, {
     packagerOptions: {
-      webpackConfig: rdfaEditorWebpackConfig,
+      webpackConfig: {
+        ...rdfaEditorWebpackConfig,
+        output: {
+          // This is a bit weird, but embroider seems to no longer respect the 'fingerprint'
+          // configuration, so if we don't do this, it appends a hash to chunk names
+          filename: (pathData) => {
+            if (typeof pathData.runtime === 'string') {
+              return pathData.runtime;
+            } else {
+              return 'assets/frontend-embeddable-notule-editor-app.js';
+            }
+          },
+          library: {
+            name: 'embeddable-say-editor',
+            type: 'umd',
+          },
+        },
+        plugins: [
+          new webpack.optimize.LimitChunkCountPlugin({
+            maxChunks: 1,
+          }),
+        ],
+      },
     },
   });
 };

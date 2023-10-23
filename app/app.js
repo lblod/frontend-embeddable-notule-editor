@@ -7,5 +7,17 @@ export default class App extends Application {
   modulePrefix = config.modulePrefix;
   podModulePrefix = config.podModulePrefix;
   Resolver = Resolver;
+
+  async startEditor({ rootElement }) {
+    try {
+      this.rootElement = rootElement;
+      this.autoboot = false;
+      this.init();
+      await this.visit('/', { rootElement });
+    } catch (err) {
+      console.error('Error starting embeddable editor', err);
+    }
+    return this;
+  }
 }
 loadInitializers(App, config.modulePrefix);

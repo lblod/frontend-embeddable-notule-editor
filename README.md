@@ -44,7 +44,6 @@ dist
     ├── frontend-embeddable-notule-editor-app.js
     ├── frontend-embeddable-notule-editor.css
     ├── frontend-embeddable-notule-editor.js
-    ├── vendor.css # currently empty and not needed
     └── vendor.js
 ```
 
@@ -64,8 +63,6 @@ For an interactive example, refer to this [jsfiddle](https://jsfiddle.net/0qd27r
 
     <!-- Requirements for the style -->
     <link rel="stylesheet" href="https://embeddable.gelinkt-notuleren.lblod.info/assets/frontend-embeddable-notule-editor.css">
-    <!-- Can be left out as `vendor.css` is currently empty -->
-    <link rel="stylesheet" href="https://embeddable.gelinkt-notuleren.lblod.info/assets/vendor.css">
 
     <!-- Sources of the editor, THE ORDER MATTERS -->
     <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/vendor.js"></script>
@@ -90,14 +87,14 @@ Lastly, we'll instantiate the editor. We wait until the DOM has loaded and then 
 
 ```javascript
 window.addEventListener('load', function () {
-  let App = require('frontend-embeddable-notule-editor/app').default.create({
+  const App = (require('embeddable-say-editor/app').default).create({
     autoboot: false,
-    name: 'frontend-embeddable-notule-editor'
+    name: 'embeddable-say-editor',
   });
-  App.visit('/', { rootElement: '#my-editor' }).then(() => {
+  App.startEditor({ rootElement: '#my-editor' }).then(() => {
     const editorContainer = document.getElementById('my-editor');
     const editorElement =
-    editorContainer.getElementsByClassName('notule-editor')[0];
+      editorContainer.getElementsByClassName('notule-editor')[0];
     const arrayOfPluginNames = ['citation', 'variable'];
     const userConfigObject = {}
     editorElement.initEditor(arrayOfPluginNames, userConfigObject);
@@ -108,15 +105,15 @@ window.addEventListener('load', function () {
 Let's break down this code, the entire snippet is executed inside a load listener, that will only trigger when the document has loaded.
 
 ```javascript
-let App = require('frontend-embeddable-notule-editor/app').default.create({
+const App = (require('embeddable-say-editor/app').default).create({
   autoboot: false,
-  name: 'frontend-embeddable-notule-editor'
+  name: 'embeddable-say-editor'
 });
 ```
 These lines create the app that will be in charge of rendering our editor
 
 ```javascript
-App.visit('/', { rootElement: '#my-editor' })
+App.startEditor({ rootElement: '#my-editor' })
 ```
 Then we visit the main route of the application and render inside our root element, which in this case will be the HTML div with id `my-editor`. This returns a Promise, which we can await or chain with `.then` as we do in the example code. After this promise is resolved, our editor will be rendered so we can start interacting with it.
 
