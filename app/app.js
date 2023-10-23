@@ -8,16 +8,26 @@ export default class App extends Application {
   podModulePrefix = config.podModulePrefix;
   Resolver = Resolver;
 
-  async startEditor({ rootElement }) {
+  async startEditor({ rootElement, pluginNames, config = {} }) {
+    let editorElement;
+    if (!rootElement || !pluginNames) {
+      throw new Error('Missing configuration when starting embeddable editor');
+    }
     try {
       this.rootElement = rootElement;
       this.autoboot = false;
       this.init();
-      await this.visit('/', { rootElement });
+      const app = await this.visit('/', { rootElement });
+      const editorContainer =
+        app.application._document.getElementById('my-editor');
+      editorElement =
+        editorContainer.getElementsByClassName('notule-editor')[0];
+      editorElement.initEditor(pluginNames, config);
     } catch (err) {
       console.error('Error starting embeddable editor', err);
+      throw err;
     }
-    return this;
+    return editorElement;
   }
 }
 loadInitializers(App, config.modulePrefix);

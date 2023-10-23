@@ -50,19 +50,19 @@
           });
         // Launch the editor
         let editor;
-        App.startEditor({ rootElement: '#my-editor' }).then(() => {
-          const editorContainer = document.getElementById('my-editor');
-          const editorElement =
-            editorContainer.getElementsByClassName('notule-editor')[0];
-          editorElement.initEditor(['citation', 'besluit', 'article-structure', 'variable', 'table-of-contents',
-                                         'roadsign-regulation', 'formatting-toggle', 'template-comments'], {
-                                          docContent: 'table_of_contents? ((chapter|block)+|(title|block)+|(article|block)+)',
-                                          citation: {
-                                            type: 'ranges',
-                                            activeInRanges: (state) => [[0, state.doc.content.size]],
-                                            endpoint: 'https://codex.opendata.api.vlaanderen.be:8888/sparql',
-                                          }
-                                         });
+        App.startEditor({
+          rootElement: '#my-editor',
+          pluginNames: ['citation', 'besluit', 'article-structure', 'variable', 'table-of-contents',
+           'roadsign-regulation', 'formatting-toggle', 'template-comments'],
+          config: {
+            docContent: 'table_of_contents? ((chapter|block)+|(title|block)+|(article|block)+)',
+            citation: {
+              type: 'ranges',
+              activeInRanges: (state) => [[0, state.doc.content.size]],
+              endpoint: 'https://codex.opendata.api.vlaanderen.be:8888/sparql',
+            }
+           },
+        }).then((editorElement) => {
           editorElement.enableEnvironmentBanner();
           editor = editorElement;
         });
