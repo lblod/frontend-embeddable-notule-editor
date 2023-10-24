@@ -1,5 +1,11 @@
 # frontend-embeddable-notule-editor
 
+## 3.0.1
+
+### Patch Changes
+
+- [`117ee38`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/117ee382410f2d8f19fd8c65e6041b4010e6d69b) Thanks [@abeforgit](https://github.com/abeforgit)! - fix typo in ci setup
+
 ## 3.0.0
 
 ### Major Changes
