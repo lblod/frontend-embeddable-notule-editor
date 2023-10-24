@@ -1,5 +1,5 @@
 ---
-"frontend-embeddable-notule-editor": major
+"@lblod/embeddable-say-editor": major
 ---
 
 - replace ember-cli-sass with ember-cli-postcss
