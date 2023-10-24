@@ -1,4 +1,4 @@
-# frontend-embeddable-notule-editor
+# @lblod/embeddable-say-editor
 
 This application allows you to embed the RDFa editor in other applications without integrating with EmberJS directly. It will behave like any other HTML editor.
 
@@ -17,6 +17,43 @@ Any content entered here will not be saved.
 
 ## Using the embeddable editor in your app
 
+### With npm
+
+`npm install @lblod/embeddable-say-editor`
+
+We export a simple function to launch the editor in your app. It currently renders inside an 
+iframe element. A WebComponent version is also in the works and should be available soon after we 
+work out the kinks.
+
+#### as an iframe
+
+
+```javascript
+import { renderEditor } from '@lblod/embeddable-say-editor';
+
+
+// make a container element for the editor to render in in your html
+// the id is not required, you just need to be able to get hold of this element 
+// in whatever way you like
+
+// note: the editor will replace all children of this element, so best to keep it empty.
+// <div id="editorContainer"></div>
+
+const container = document.getElementById('editorContainer');
+const editor = await renderEditor({
+  element: container,
+  title: 'my editor', // optional, this will set the "title" attribute of the iframe
+  width: '500px', // width attribute of the iframe
+  height: '300px', // height attribute of the iframe
+  plugins: [], // array of plugin names (see below)
+  options: {} // configuration object (see below)
+  })
+
+// the editor is now initialized and can be used
+editor.setHtmlContent('hello world');
+
+```
+
 ### Using the prebuilt bundles
 
 The prebuilt bundles are currently hosted on `https://embeddable.gelinkt-notuleren.lblod.info/`.
@@ -27,7 +64,7 @@ For **production**, use the prebuilt packages in the [Github releases](https://g
 
 ### Building the sources yourself
 
-In order to build the JavaScript and CSS sources of this repository you will need `ember-cli` installed (more info at the [Development section](#development-of-frontend-embeddable-notule-editor)), then execute the following:
+In order to build the JavaScript and CSS sources of this repository you will need `ember-cli` installed (more info at the [Development section](#development-of-@lblod/embeddable-say-editor)), then execute the following:
 
 ```bash
 git clone https://github.com/lblod/frontend-embeddable-notule-editor.git
@@ -41,9 +78,9 @@ In the 'dist' folder structure, two CSS files and three JavaScript files will ha
 ```bash
 dist
 └── assets
-    ├── frontend-embeddable-notule-editor-app.js
-    ├── frontend-embeddable-notule-editor.css
-    ├── frontend-embeddable-notule-editor.js
+    ├── @lblod/embeddable-say-editor-app.js
+    ├── @lblod/embeddable-say-editor.css
+    ├── @lblod/embeddable-say-editor.js
     ├── vendor.css # currently empty and not needed
     └── vendor.js
 ```
@@ -63,14 +100,14 @@ For an interactive example, refer to this [jsfiddle](https://jsfiddle.net/0qd27r
     <title>I have an editor in my document</title>
 
     <!-- Requirements for the style -->
-    <link rel="stylesheet" href="https://embeddable.gelinkt-notuleren.lblod.info/assets/frontend-embeddable-notule-editor.css">
+    <link rel="stylesheet" href="https://embeddable.gelinkt-notuleren.lblod.info/assets/@lblod/embeddable-say-editor.css">
     <!-- Can be left out as `vendor.css` is currently empty -->
     <link rel="stylesheet" href="https://embeddable.gelinkt-notuleren.lblod.info/assets/vendor.css">
 
     <!-- Sources of the editor, THE ORDER MATTERS -->
     <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/vendor.js"></script>
-    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/frontend-embeddable-notule-editor-app.js"></script>
-    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/frontend-embeddable-notule-editor.js"></script>
+    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/@lblod/embeddable-say-editor-app.js"></script>
+    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/@lblod/embeddable-say-editor.js"></script>
   </head>
   <body>
     ...
@@ -90,9 +127,9 @@ Lastly, we'll instantiate the editor. We wait until the DOM has loaded and then 
 
 ```javascript
 window.addEventListener('load', function () {
-  let App = require('frontend-embeddable-notule-editor/app').default.create({
+  let App = require('@lblod/embeddable-say-editor/app').default.create({
     autoboot: false,
-    name: 'frontend-embeddable-notule-editor'
+    name: '@lblod/embeddable-say-editor'
   });
   App.visit('/', { rootElement: '#my-editor' }).then(() => {
     const editorContainer = document.getElementById('my-editor');
@@ -108,9 +145,9 @@ window.addEventListener('load', function () {
 Let's break down this code, the entire snippet is executed inside a load listener, that will only trigger when the document has loaded.
 
 ```javascript
-let App = require('frontend-embeddable-notule-editor/app').default.create({
+let App = require('@lblod/embeddable-say-editor/app').default.create({
   autoboot: false,
-  name: 'frontend-embeddable-notule-editor'
+  name: '@lblod/embeddable-say-editor'
 });
 ```
 These lines create the app that will be in charge of rendering our editor
@@ -486,7 +523,7 @@ The locale can be overwritten with `setLocaleToDutch()`, `setLocaleToEnglish()` 
 Styling the editor can be done by overriding some CSS variables as covered in the [README of ember-rdfa-editor](https://github.com/lblod/ember-rdfa-editor#customisation).For other customizations, override other CSS as usual. 
 Alternatively, the frontend supports SASS, which can be added to [app.scss](app/styles/app.scss) before building the Embeddable yourself.
 
-# Development of frontend-embeddable-notule-editor
+# Development of @lblod/embeddable-say-editor
 
 ## Prerequisites
 You will need the following things properly installed on your computer.
@@ -521,9 +558,9 @@ Take special care when releasing a new version of this.
 		```bash
 		dist
 		└── assets
-		    ├── frontend-embeddable-notule-editor-app.js
-		    ├── frontend-embeddable-notule-editor.css
-		    ├── frontend-embeddable-notule-editor.js
+		    ├── @lblod/embeddable-say-editor-app.js
+		    ├── @lblod/embeddable-say-editor.css
+		    ├── @lblod/embeddable-say-editor.js
 		    ├── vendor.css # currently empty, but added for consistency
 		    └── vendor.js
 		```

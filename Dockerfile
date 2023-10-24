@@ -1,10 +1,10 @@
-FROM madnificent/ember:4.12.1-node_18 as builder
+FROM danlynn/ember-cli:4.12.1 as builder
 
 LABEL maintainer="info@redpencil.io"
 
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm ci --ignore-scripts --fund=false
 COPY . .
 RUN ember build -prod
 
