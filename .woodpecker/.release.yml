@@ -1,4 +1,12 @@
 steps:
+  install:
+    image: danlynn/ember-cli:4.12.1
+    commands:
+      - npm ci --ignore-scripts
+  image: plugins/npm
+  settings:
+    token:
+      from_secret: npm_access_token
   push-tagged-build:
     image: plugins/docker
     settings:
