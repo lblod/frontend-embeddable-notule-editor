@@ -303,7 +303,7 @@ export class SayWebComponent extends HTMLElement {
     const editorStyle = document.createElement('style');
     editorStyle.textContent = editorCss;
 
-    const extraStyle = document.createElement("style");
+    const extraStyle = document.createElement('style');
     extraStyle.textContent = extraStyles;
 
     shadow.append(editorStyle, vendorStyle, extraStyle);
