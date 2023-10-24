@@ -1,5 +1,11 @@
 # frontend-embeddable-notule-editor
 
+## 3.0.2
+
+### Patch Changes
+
+- [`b4710f7`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/b4710f7540062268597168f9257b209fd24c109a) Thanks [@abeforgit](https://github.com/abeforgit)! - set package scope to public
+
 ## 3.0.1
 
 ### Patch Changes
