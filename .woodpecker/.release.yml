@@ -8,6 +8,7 @@ steps:
     settings:
       token:
         from_secret: npm_access_token
+      access: public
   push-tagged-build:
     image: plugins/docker
     settings:
