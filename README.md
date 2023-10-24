@@ -21,7 +21,9 @@ Any content entered here will not be saved.
 
 `npm install @lblod/embeddable-say-editor`
 
-We export 2 ways of launching the editor in your app. They are functionally identical, but you may prefer one over the other depending on your css requirements.
+We export a simple function to launch the editor in your app. It currently renders inside an 
+iframe element. A WebComponent version is also in the works and should be available soon after we 
+work out the kinks.
 
 #### as an iframe
 
@@ -50,30 +52,6 @@ const editor = await renderEditor({
 // the editor is now initialized and can be used
 editor.setHtmlContent('hello world');
 
-```
-
-
-#### as a WebComponent
-
-``` javascript
-import { SayWebComponent } from '@lblod/embeddable-say-editor';
-
-// register it 
-// this should only be done once, see 
-// https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define
-customElements.define("say-editor", SayWebComponent);
-
-// use it in your html
-// we recommend giving it an id for easy management later, but it is not required
-// <say-editor id="say-editor-1"></say-editor>
-
-
-// initialize it
-const editorComponent = document.getElementById('say-editor-1');
-const editor = await editorComponent.initEditor([/* plugin list */], {/* config object */});
-
-// the editor is now initialized and ready to be used
-editor.setHtmlContent('hello world');
 ```
 
 ### Using the prebuilt bundles
