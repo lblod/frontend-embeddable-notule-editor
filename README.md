@@ -232,7 +232,7 @@ The editor can be customized to best fit your application.
 * [Managing Plugins](#managing-plugins): A list of plugins you can enable, including explanation of how to use them
 * [Environment banner](#enabling-disabling-the-environment-banner): how to enable/disable this banner
 * [Localization](#localization): language options in the editor
-* [styling](#styling)
+* [Styling](#styling)
 
 ## Managing Plugins
 Embeddable ships with the following plugins available. 
@@ -519,9 +519,45 @@ Localization of the editor is an ongoing effort, the main target usage of Embedd
 Some plugins, like the [citation plugin](#citation), use date pickers. The display format of these dates are connected with the local.
 
 The locale can be overwritten with `setLocaleToDutch()`, `setLocaleToEnglish()` and `setLocale(locale: string)`. You can call one of these functions after `initEditor()` to always use the same language for the editor, ignoring the user's browser language.
+
 ## Styling
-Styling the editor can be done by overriding some CSS variables as covered in the [README of ember-rdfa-editor](https://github.com/lblod/ember-rdfa-editor#customisation).For other customizations, override other CSS as usual. 
-Alternatively, the frontend supports SASS, which can be added to [app.scss](app/styles/app.scss) before building the Embeddable yourself.
+
+Styling the editor can be done in three ways
+
+* Setting CSS variables used by the editor. This is the recommended way to style the editor.
+* Targeting the editor and the classes used in the editor directly in your own CSS. This is prone to breakage when the editor changes, as we do not guarantee that class names will never change.
+* Alternatively, if you choose to build this application on your own - it supports SASS, which can be added to [app.scss](app/styles/app.scss) before building the Embeddable yourself.
+
+> [!CSS Variables]
+> If you choose to set the CSS variables you can use [the following manual as reference](https://github.com/lblod/ember-rdfa-editor#customisation) for the variable names.
+
+### Setting CSS variables when using the `npm` package
+
+When initializing editor with `renderEditor` pass an object `cssVariables` with the variables you want to set.
+
+```js
+const cssVariables = {
+  '--au-font': 'Comic Sans MS', 
+}
+
+const editor = await renderEditor({
+  // all other config options
+  cssVariables,
+})
+```
+
+### Setting CSS variables when using the prebuilt bundles
+
+After calling the `initEditor` on the `editorElement` you can use the snippet to modify CSS variables used by the editor
+
+```js
+// initialization code
+editorElement.initEditor(/* some config */);
+
+// Example of calling the setProperty method on the editorElement
+// Will set default font used by editor to Comic Sans MS
+editorElement.style.setProperty('--au-font', 'Comic Sans MS');
+```
 
 # Development of @lblod/embeddable-say-editor
 
