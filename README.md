@@ -528,10 +528,15 @@ Styling the editor can be done in three ways
 * Targeting the editor and the classes used in the editor directly in your own CSS. This is prone to breakage when the editor changes, as we do not guarantee that class names will never change.
 * Alternatively, if you choose to build this application on your own - it supports SASS, which can be added to [app.scss](app/styles/app.scss) before building the Embeddable yourself.
 
-> [!CSS Variables]
-> If you choose to set the CSS variables you can use [the following manual as reference](https://github.com/lblod/ember-rdfa-editor#customisation) for the variable names.
 
-### Setting CSS variables when using the `npm` package
+### Setting CSS variables
+
+> [!CSS Variables]
+> If you choose to set the CSS variables you can use [this reference](https://appuniversum.github.io/ember-appuniversum/?path=/story/variables-css-variables--page).
+
+You will most likely want to change `--au-font` first to match font of your application.
+
+#### When using the `npm` package
 
 When initializing editor with `renderEditor` pass an object `cssVariables` with the variables you want to set.
 
@@ -546,7 +551,7 @@ const editor = await renderEditor({
 })
 ```
 
-### Setting CSS variables when using the prebuilt bundles
+#### When using the prebuilt bundles
 
 After calling the `initEditor` on the `editorElement` you can use the snippet to modify CSS variables used by the editor
 
