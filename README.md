@@ -522,19 +522,12 @@ The locale can be overwritten with `setLocaleToDutch()`, `setLocaleToEnglish()` 
 
 ## Styling
 
-Styling the editor can be done in three ways
+Styling the editor is supported via setting the CSS Variables used by the editor. You can do it in two ways:
 
-* Setting CSS variables used by the editor. This is the recommended way to style the editor.
-* Targeting the editor and the classes used in the editor directly in your own CSS. This is prone to breakage when the editor changes, as we do not guarantee that class names will never change.
-* Alternatively, if you choose to build this application on your own - it supports SASS, which can be added to [app.scss](app/styles/app.scss) before building the Embeddable yourself.
+* Setting CSS Variables of the editor at runtime.
+* Target the editor in your own CSS and set CSS Variables of the editor in your own CSS.
 
-
-### Setting CSS variables
-
-> [!IMPORTANT]
-> If you choose to set the CSS variables you can use [this reference](https://appuniversum.github.io/ember-appuniversum/?path=/story/variables-css-variables--page).
-
-You will most likely want to change `--au-font` first to match font of your application.
+### Setting CSS variables at runtime
 
 #### When using the `npm` package
 
@@ -542,7 +535,7 @@ When initializing editor with `renderEditor` pass an object `cssVariables` with 
 
 ```js
 const cssVariables = {
-  '--au-font': 'Comic Sans MS', 
+  '--say-font-family': 'Comic Sans MS', 
 }
 
 const editor = await renderEditor({
@@ -561,8 +554,28 @@ editorElement.initEditor(/* some config */);
 
 // Example of calling the setProperty method on the editorElement
 // Will set default font used by editor to Comic Sans MS
-editorElement.style.setProperty('--au-font', 'Comic Sans MS');
+editorElement.style.setProperty('--say-font-family', 'Comic Sans MS');
 ```
+
+### Setting CSS variables by targeting the editor in your own CSS
+
+> [!IMPORTANT]
+> This wont work if you are using the `npm` package and the `renderEditor` it provides, as the editor is isolated inside an `iframe`.
+
+This method uses the CSS specificity to override the default CSS variables used by the editor.
+You can target the editor by using the `notule-editor` class on the element that contains the editor.
+
+Below example expects that the editor was attached to an element with id `my-editor`.
+
+```css
+#my-editor .notule-editor {
+  --say-font-family: 'Comic Sans MS';
+}
+```
+
+### Exposed CSS variables
+
+* `--say-font-family`: controls the font family used by the editor.
 
 # Development of @lblod/embeddable-say-editor
 
