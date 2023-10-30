@@ -531,7 +531,7 @@ Styling the editor can be done in three ways
 
 ### Setting CSS variables
 
-> [!CSS Variables]
+> [!IMPORTANT]
 > If you choose to set the CSS variables you can use [this reference](https://appuniversum.github.io/ember-appuniversum/?path=/story/variables-css-variables--page).
 
 You will most likely want to change `--au-font` first to match font of your application.
