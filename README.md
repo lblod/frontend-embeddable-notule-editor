@@ -576,6 +576,14 @@ Below example expects that the editor was attached to an element with id `my-edi
 ### Exposed CSS variables
 
 * `--say-font-family`: controls the font family used by the editor.
+* `--say-page-bg`: controls the background of the editor (not the background of the editor's page).
+* `--say-font-size-text`: size of the basic text in the editor.
+* `--say-font-size-h1`: size of the Heading 1 in the editor.
+* `--say-font-size-h2`: size of the Heading 2 in the editor.
+* `--say-font-size-h3`: size of the Heading 3 in the editor.
+* `--say-font-size-h4`: size of the Heading 4 in the editor.
+* `--say-font-size-h5`: size of the Heading 5 in the editor.
+* `--say-font-size-h6`: size of the Heading 6 in the editor.
 
 # Development of @lblod/embeddable-say-editor
 
