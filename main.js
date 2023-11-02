@@ -34,6 +34,7 @@ const srcDoc = `
  * and options. It waits for everything to initialize and returns the fully initialized
  * editor element, which has access to a controller and other methods (see docs)
  * @param {RenderOpts} options
+ * @param {Object.<string, string>} Record of CSS Variables and their values to be applied to the editor
  * @returns the enhanced editor element.
  */
 export async function renderEditor({
@@ -43,6 +44,7 @@ export async function renderEditor({
   height,
   plugins = [],
   options = {},
+  cssVariables = {},
 }) {
   // build the iframe
   const editorFrame = document.createElement('iframe');
@@ -107,6 +109,13 @@ export async function renderEditor({
   frameDoc.removeChild(embeddableScript);
   // initialize the editor
   await editorElement.initEditor(plugins, options);
+
+  if (cssVariables && Object.keys(cssVariables).length > 0) {
+    Object.entries(cssVariables).forEach(([key, value]) => {
+      editorElement.style.setProperty(key, value);
+    });
+  }
+
   return editorElement;
 }
 

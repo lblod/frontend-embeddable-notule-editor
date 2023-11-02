@@ -232,7 +232,7 @@ The editor can be customized to best fit your application.
 * [Managing Plugins](#managing-plugins): A list of plugins you can enable, including explanation of how to use them
 * [Environment banner](#enabling-disabling-the-environment-banner): how to enable/disable this banner
 * [Localization](#localization): language options in the editor
-* [styling](#styling)
+* [Styling](#styling)
 
 ## Managing Plugins
 Embeddable ships with the following plugins available. 
@@ -519,9 +519,71 @@ Localization of the editor is an ongoing effort, the main target usage of Embedd
 Some plugins, like the [citation plugin](#citation), use date pickers. The display format of these dates are connected with the local.
 
 The locale can be overwritten with `setLocaleToDutch()`, `setLocaleToEnglish()` and `setLocale(locale: string)`. You can call one of these functions after `initEditor()` to always use the same language for the editor, ignoring the user's browser language.
+
 ## Styling
-Styling the editor can be done by overriding some CSS variables as covered in the [README of ember-rdfa-editor](https://github.com/lblod/ember-rdfa-editor#customisation).For other customizations, override other CSS as usual. 
-Alternatively, the frontend supports SASS, which can be added to [app.scss](app/styles/app.scss) before building the Embeddable yourself.
+
+Styling the editor is supported via setting the CSS Variables used by the editor. You can do it in two ways:
+
+* Setting CSS Variables of the editor at runtime.
+* Target the editor in your own CSS and set CSS Variables of the editor in your own CSS.
+
+### Setting CSS variables at runtime
+
+#### When using the `npm` package
+
+When initializing editor with `renderEditor` pass an object `cssVariables` with the variables you want to set.
+
+```js
+const cssVariables = {
+  '--say-font-family': 'Comic Sans MS', 
+}
+
+const editor = await renderEditor({
+  // all other config options
+  cssVariables,
+})
+```
+
+#### When using the prebuilt bundles
+
+After calling the `initEditor` on the `editorElement` you can use the snippet to modify CSS variables used by the editor
+
+```js
+// initialization code
+editorElement.initEditor(/* some config */);
+
+// Example of calling the setProperty method on the editorElement
+// Will set default font used by editor to Comic Sans MS
+editorElement.style.setProperty('--say-font-family', 'Comic Sans MS');
+```
+
+### Setting CSS variables by targeting the editor in your own CSS
+
+> [!IMPORTANT]
+> This wont work if you are using the `npm` package and the `renderEditor` it provides, as the editor is isolated inside an `iframe`.
+
+This method uses the CSS specificity to override the default CSS variables used by the editor.
+You can target the editor by using the `notule-editor` class on the element that contains the editor.
+
+Below example expects that the editor was attached to an element with id `my-editor`.
+
+```css
+#my-editor .notule-editor {
+  --say-font-family: 'Comic Sans MS';
+}
+```
+
+### Exposed CSS variables
+
+* `--say-font-family`: controls the font family used by the editor.
+* `--say-page-bg`: controls the background of the editor (not the background of the editor's page).
+* `--say-font-size-text`: size of the basic text in the editor.
+* `--say-font-size-h1`: size of the Heading 1 in the editor.
+* `--say-font-size-h2`: size of the Heading 2 in the editor.
+* `--say-font-size-h3`: size of the Heading 3 in the editor.
+* `--say-font-size-h4`: size of the Heading 4 in the editor.
+* `--say-font-size-h5`: size of the Heading 5 in the editor.
+* `--say-font-size-h6`: size of the Heading 6 in the editor.
 
 # Development of @lblod/embeddable-say-editor
 
