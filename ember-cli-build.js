@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const { Webpack } = require('@embroider/webpack');
 const compat = require('@embroider/compat');
 const pluginsWebpackConfig = require('@lblod/ember-rdfa-editor-lblod-plugins/webpack-config');
+const { merge } = require('webpack-merge');
 
 // It seems there's no supported way of controlling whether embroider/webpack adds fingerprint
 // hashes to filenames in production builds, so instead we extend their class to override the
@@ -58,8 +59,7 @@ module.exports = function (defaults) {
 
   return compat.compatBuild(app, FingerprintlessWebpack, {
     packagerOptions: {
-      webpackConfig: {
-        ...pluginsWebpackConfig,
+      webpackConfig: merge(pluginsWebpackConfig, {
         output: {
           // This is a bit weird, but embroider seems to no longer respect the 'fingerprint'
           // configuration, so if we don't do this, it appends a hash to chunk names
@@ -80,7 +80,7 @@ module.exports = function (defaults) {
             maxChunks: 1,
           }),
         ],
-      },
+      }),
     },
   });
 };
