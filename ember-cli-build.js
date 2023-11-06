@@ -4,7 +4,17 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const webpack = require('webpack');
 const { Webpack } = require('@embroider/webpack');
 const compat = require('@embroider/compat');
-const rdfaEditorWebpackConfig = require('@lblod/ember-rdfa-editor/webpack-config');
+const pluginsWebpackConfig = require('@lblod/ember-rdfa-editor-lblod-plugins/webpack-config');
+
+// It seems there's no supported way of controlling whether embroider/webpack adds fingerprint
+// hashes to filenames in production builds, so instead we extend their class to override the
+// method.
+// See https://github.com/embroider-build/embroider/blob/main/packages/webpack/src/ember-webpack.ts
+class FingerprintlessWebpack extends Webpack {
+  getFingerprintedFilename(filename) {
+    return filename;
+  }
+}
 
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
@@ -46,10 +56,10 @@ module.exports = function (defaults) {
     },
   });
 
-  return compat.compatBuild(app, Webpack, {
+  return compat.compatBuild(app, FingerprintlessWebpack, {
     packagerOptions: {
       webpackConfig: {
-        ...rdfaEditorWebpackConfig,
+        ...pluginsWebpackConfig,
         output: {
           // This is a bit weird, but embroider seems to no longer respect the 'fingerprint'
           // configuration, so if we don't do this, it appends a hash to chunk names
