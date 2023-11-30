@@ -1,5 +1,22 @@
 # frontend-embeddable-notule-editor
 
+## 3.1.0
+
+### Minor Changes
+
+- [#183](https://github.com/lblod/frontend-embeddable-notule-editor/pull/183) [`5c5811e`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/5c5811e041014a0dcf72e456efe272073b6ccdc2) Thanks [@dkozickis](https://github.com/dkozickis)! - GN-4562: Inform user how to apply CSS overrides
+
+### Patch Changes
+
+- [#185](https://github.com/lblod/frontend-embeddable-notule-editor/pull/185) [`f49b40a`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/f49b40ae0d323b388ce96d38dd469c60d8f8772e) Thanks [@dkozickis](https://github.com/dkozickis)! - GN-4610: Remove `endpoint` config for citation plugin
+
+  Remove the `endpoint` config for the citation plugin used in the `test.html` file.
+
+- [#184](https://github.com/lblod/frontend-embeddable-notule-editor/pull/184) [`8dbf8d9`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/8dbf8d9d3524dd70af89def788779149ce693a95) Thanks [@dkozickis](https://github.com/dkozickis)! - GN-4615: Fix display of some SVG icons
+
+  Overrides "fill" attribute of "g" elements with `fill="none"` with `fill="currentColor"`
+  to make sure we see the icons. This is an artifact of using `svg-jar` to inline the icons.
+
 ## 3.0.2
 
 ### Patch Changes
