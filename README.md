@@ -196,7 +196,7 @@ For a complete version of this example, checkout this file: [public/test.html](p
 The RDFa editor uses [the Prosemirror toolkit](https://prosemirror.net/) as a base. After the `editorElement.initEditor()` function is called you will have access to the editor methods, including the controller with `editorElement.controller`. This controller is an instance of the [SayController](https://github.com/lblod/ember-rdfa-editor/blob/d4472d2e237256d30333cfcc20ce6eea7db241f2/addon/core/say-controller.ts) class of the [ember-rdfa-editor](https://github.com/lblod/ember-rdfa-editor). 
 
 #### editorElement API
-These are function available from the editor element, which is the HTML element with the class `notule-editor`. 
+These are functions available from the editor element, which is the HTML element with the class `notule-editor`. 
 - `initEditor(arrayOfPluginNames: string[], userConfigObject)`: Initialize the editor by passing an array of plugin names that should be activated and an object that contains the configuration for the editor and its plugins. See [Managing Plugins](managing-plugins) for more info.  
   :warning: **`initEditor` has to be called before accessing any other methods**.
 - `enableEnvironmentBanner()`: enable the banner that shows the environment and versions of plugins used.
@@ -229,10 +229,68 @@ Do note that more advanced commands will need knowledge about the used schema an
 # Configuring The Editor
 
 The editor can be customized to best fit your application. 
+* [Plugin System](#plugin-system): An overview of some of the general concepts behind our plugins.
 * [Managing Plugins](#managing-plugins): A list of plugins you can enable, including explanation of how to use them
 * [Environment banner](#enabling-disabling-the-environment-banner): how to enable/disable this banner
 * [Localization](#localization): language options in the editor
 * [Styling](#styling)
+## Plugin system
+
+The Say-editor is conceptualized as a core component which can be extended through a powerful plugin system.
+This plugin system mirrors Prosemirror's own system, and in fact, the core itself is built using
+a prosemirror instance with various always-enabled plugins, UI elements, and custom commands and utils.
+
+Currently, due to portability concerns, this system is not directly exposed to the embeddable editor.
+Instead, embeddable ships with a few pre-defined plugins which can be turned on or off, and have 
+some of their configuration exposed. 
+
+However, for using and configuring embeddable, it is still useful to understand some of the concepts 
+that plugins use to create a smart editor.
+
+### RDFA
+The [rdfa](https://rdfa.info/) standard is a way to add data annotations to xml (and in particular, html) documents.
+It uses linked data as its data modelling method. 
+RDFA-annotated html is the one and only document format of the say-editor. Because it is a strict superset of html, 
+this also means that the editor can be used as a plain WYSIWYG html editor. But the addition of rdfa-aware
+tools and features is the editor's unique strength, and the reason for it's existence.
+
+Throughout the editor and its plugins, the rdfa-annotated html document is the single format which contains all information.
+This means that any document metadata is also stored in this standard way, allowing easy interop with other
+linked-data tools.
+
+In fact, it can be interesting to paste the output of `getHtmlContent()` in the [reference rdfa parser](https://rdfa.info/play/) 
+to see what data the parser can extract from the document.
+(Note: it's important to use the `getHtmlContent()` method as opposed to copying the html from the browser inspector. We do not guarantee 
+compliance with the standard in the live, editable, html.)
+
+### RDFA-aware plugins
+
+Most plugins use RDFA in some way to provide their features. 
+
+In some cases, they simply use it as a way to store information they need to operate. 
+For example: the [variable plugin](#rdfa-variables) will insert 
+nodes in the document that are are rdfa-annotated with certain properties that the plugin interacts with.
+When loading a document from html, this is what the plugin will use to determine whether to render 
+it's special interactive "pills" for a particular node. 
+
+In other cases, plugins use rdfa to determine whether they should be "active" (show their UI) or not.
+This is usually done based on the idea of "context". 
+
+Because html, and also the internal prosemirror datastructure, is a tree, there is an inherent hierarchy to the document. 
+At the top there's a root element, usually a `div`, which we also call the `doc` node, which contains the entire document.
+It also contains the selection, the blinking text cursor or blue region that you are surely familiar with.
+This idea of the selection being "inside" a certain node is what drives the context-aware plugins.
+Essentially, all they do is walk up the tree structure from the point of the cursor, and see if they encounter 
+any nodes they're interested in.
+
+This means we can have different plugins active depending on where you are in the document!
+
+A third way a plugin might use rdfa, is by searching the document for the existence of a particular rdfa-annotated node,
+and interacting with it (by adding content in that node, for example).
+
+_Technical note: rather than interacting with html/rdfa directly, plugins interact with prosemirror's internal datastructure. 
+This is why adjusting the editor's html in the inspector or with javascript will not give any meaningful results._
+
 
 ## Managing Plugins
 Embeddable ships with the following plugins available. 
@@ -273,13 +331,40 @@ These structures are not part of the `block` group. You will need to edit `docCo
 // pass to pluginsConfig
 docContent: '((title|block)+|(chapter|block)+|(article|block)+)'
 ```
+
+#### rdfa-awareness
+
+The structures the plugin inserts are rdfa-annotated according to a custom model. This model
+is as of yet undocumented. For more information please contact the team.
+
 ### Besluit 
-This will add RDFa structures neccesary to show and edit a besluit. This does not add any UI elements.  
-A besluit is a specific document in a specific format. This means that using it together with [Article Structures](article-structure) might not make sense.
-***
+
 :heavy_plus_sign: Enable by adding `"besluit"` to the `arrayOfPluginNames` array.
 
 No configuration is needed.
+
+### rdfa-awareness
+
+This is a context-sensitive plugin which scans for the existence of a `div` with 
+a `typeof` attribute with a value containing the [Besluit](https://data.vlaanderen.be/ns/besluit/#Besluit) type. 
+It also needs a  BesluitType, a `prov:generated` property, and a uri (which should be unique for each besluit).
+If the selection is inside such a node, the plugin will provide some controls to work with 
+[articles](https://data.vlaanderen.be/ns/besluit/#Artikel) inside a besluit.
+
+These articles are always inserted in the `value` (annotated using the [prov](https://www.w3.org/ns/prov/) namespace) of the besluit, which means a node of that type 
+must also be present.
+a minimal besluit template which activates all of this plugin's features looks something like this:
+
+``` html
+<div typeof="http://data.vlaanderen.be/ns/besluit#Besluit https://data.vlaanderen.be/id/concept/BesluitType/4d8f678a-6fa4-4d5f-a2a1-80974e43bf34"
+     property="prov:generated"
+     resource="http://data.lblod.info/id/besluiten/1">
+  <h5>Beslissing</h5>
+  <div property="prov:value" datatype="xsd:string">
+  </div>
+</div>
+```
+But in practice a much more elaborate template is typically used, [see here] (https://github.com/lblod/frontend-embeddable-notule-editor/blob/ab5a9619385f4b795a44a675fdc30b658bdcb344/public/test.html#L91) for an example.
 
 ### Citation
 Add the possibility to add references to specific legal documents. There are two ways to use this plugin
@@ -341,9 +426,29 @@ citation: {
 
 Both examples show how to activate the plugin for the *whole* document, which is also the default.
 
+#### rdfa-awareness
+The citations inserted are rdfa-annotated, but as you can see above, this plugin uses a 
+different mechanism to determine where it is active.
 
 ### Roadsign Regulation
 Add annnotated *mobiliteitsmaatregelen* from a specified registry, which will most likely be using the [public facing sparql endpoint](https://register.mobiliteit.vlaanderen.be/sparql) of [the roadsign registry](https://register.mobiliteit.vlaanderen.be). This data is maintained by experts at [MOW Vlaanderen](https://www.vlaanderen.be/departement-mobiliteit-en-openbare-werken).
+
+
+***
+:heavy_plus_sign: Enable by adding `"roadsign-regulation"` to the `arrayOfPluginNames` array.
+```javascript
+
+// pass to pluginsConfig
+roadsignRegulation: {
+  endpoint: 'https://dev.roadsigns.lblod.info/sparql',
+  imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
+}
+```
+- `endpoint`: The sparql endpoint to fetch roadsigns. By default the development endpoint is used, so make sure to change this in production to your own registry or `https://register.mobiliteit.vlaanderen.be/sparql`.
+- `imageBaseUrl`: In production, some old roadsigns of MOW miss a base URL for images, which will be prepend with this URL. If you provide your own registry with correct data, this will not be used.
+
+
+#### rdfa-awareness 
 
 :warning: This plugin will only activate in *besluiten* with a certain rdf type. You will also need to activate the [Besluit](#besluit) plugin to be able to create *besluiten*.
 <details><summary>Exhaustive list of decision types in which this plugin will activate</summary>
@@ -366,19 +471,6 @@ https://data.vlaanderen.be/id/concept/BesluitType/67378dd0-5413-474b-8996-d992ef
 When the cursor is inside such a *besluit*, the button *Voeg mobiliteitsmaatregel in* will appear under the insert menu. Clicking this will show a modal to filter and select roadsign regulation to insert.
 
 ![roadsign regulation modal](https://github.com/lblod/frontend-embeddable-notule-editor/assets/126079676/713d32bf-baea-4e90-9b1e-e6e5131c4d54)
-
-***
-:heavy_plus_sign: Enable by adding `"roadsign-regulation"` to the `arrayOfPluginNames` array.
-```javascript
-
-// pass to pluginsConfig
-roadsignRegulation: {
-  endpoint: 'https://dev.roadsigns.lblod.info/sparql',
-  imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
-}
-```
-- `endpoint`: The sparql endpoint to fetch roadsigns. By default the development endpoint is used, so make sure to change this in production to your own registry or `https://register.mobiliteit.vlaanderen.be/sparql`.
-- `imageBaseUrl`: In production, some old roadsigns of MOW miss a base URL for images, which will be prepend with this URL. If you provide your own registry with correct data, this will not be used.
 
 ### Table of Contents
 Add a table of contents at the top of the document. It can be toggled with a button in the top toolbar. 
@@ -406,6 +498,11 @@ tableOfContents: [
 - `docContent`: You will need to adjust `docContent` to accept `table_of_contents?`, as it is not part of the `block` group. See [general config options](general-config-options) for more info.
 
 **note**: this config is a *list*. Multiple `nodeHierarchy`s can be passed to let the table of contents work in multiple situation. The last matching hierarchy will be used.
+
+#### rdfa awareness
+
+As mentioned above, this plugin will only work with structures from the `article-structure` plugin,
+which are of course rdfa-annotated.
 
 ### RDFa Variables
 These are placeholders that can be inserted in a document. A variable placeholder has a specific type (text, number, date, address or codelist), which changes the type of input it can receive. These placeholders can then be filled in by a user using the document.
