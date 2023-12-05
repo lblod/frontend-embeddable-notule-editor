@@ -260,6 +260,7 @@ linked-data tools.
 
 In fact, it can be interesting to paste the output of `getHtmlContent()` in the [reference rdfa parser](https://rdfa.info/play/) 
 to see what data the parser can extract from the document.
+
 (Note: it's important to use the `getHtmlContent()` method as opposed to copying the html from the browser inspector. We do not guarantee 
 compliance with the standard in the live, editable, html.)
 
@@ -269,7 +270,8 @@ Most plugins use RDFA in some way to provide their features.
 
 In some cases, they simply use it as a way to store information they need to operate. 
 For example: the [variable plugin](#rdfa-variables) will insert 
-nodes in the document that are are rdfa-annotated with certain properties that the plugin interacts with.
+nodes in the document that are are rdfa-annotated with certain properties 
+that the plugin interacts with.
 When loading a document from html, this is what the plugin will use to determine whether to render 
 it's special interactive "pills" for a particular node. 
 
@@ -289,7 +291,9 @@ A third way a plugin might use rdfa, is by searching the document for the existe
 and interacting with it (by adding content in that node, for example).
 
 _Technical note: rather than interacting with html/rdfa directly, plugins interact with prosemirror's internal datastructure. 
-This is why adjusting the editor's html in the inspector or with javascript will not give any meaningful results._
+This is why adjusting the page html in the inspector or with javascript will not give any meaningful results. The provided interfaces are the only supported ways to interact with the 
+editor. In fact, the plugins each get their own controller, which is identical to the 
+controller we expose on the embeddable element._
 
 
 ## Managing Plugins
@@ -343,7 +347,7 @@ is as of yet undocumented. For more information please contact the team.
 
 No configuration is needed.
 
-### rdfa-awareness
+#### rdfa-awareness
 
 This is a context-sensitive plugin which scans for the existence of a `div` with 
 a `typeof` attribute with a value containing the [Besluit](https://data.vlaanderen.be/ns/besluit/#Besluit) type. 
@@ -427,6 +431,7 @@ citation: {
 Both examples show how to activate the plugin for the *whole* document, which is also the default.
 
 #### rdfa-awareness
+
 The citations inserted are rdfa-annotated, but as you can see above, this plugin uses a 
 different mechanism to determine where it is active.
 
@@ -582,6 +587,10 @@ variable: {
       - `dateTimeFormat`: The datetime format to use when this is selected. Used when the user selects "Include time".
     - `allowCustomFormat`: true/false, determines if the option to insert a fully custom format is available.
 
+#### rdfa-awareness
+
+The serialization format of these variables uses rdfa to store its data.
+
 ### Formatting Toggle
 This will add a button *Toon opmaakmarkeringen* in the top toolbar. This toggles the visibility of all formatting marks of the document such as break lines, paragraphs...  
 ![document with formatting annotations](https://github.com/lblod/frontend-embeddable-notule-editor/assets/126079676/bfc7ff1e-b8e3-4220-b80c-b5456d58208e)
@@ -590,6 +599,10 @@ This will add a button *Toon opmaakmarkeringen* in the top toolbar. This toggles
 :heavy_plus_sign: Enable by adding `"formatting-toggle"` to the `arrayOfPluginNames` array.
 No configuration is needed.
 
+#### rdfa-awareness
+
+none.
+
 ### Rdfa Blocks Toggle
 This will add a button *Toon annotaties* in the top toolbar. This toggles the visibility of RDFa information contained in the document. This is useful if you want to check for errors in the RDFa structure, or simply have a look at what data the editor is generating behind the scenes. As such, it is mostly useful for expert users.  
 
@@ -597,6 +610,10 @@ This will add a button *Toon annotaties* in the top toolbar. This toggles the vi
 ***
 :heavy_plus_sign: Enable by adding `"rdfa-blocks-toggle"` to the `arrayOfPluginNames` array.
 No configuration is needed.
+
+#### rdfa-awareness
+
+Visualizes rdfa.
 
 ### Template Comments
 Adds buttons to the right sidebar for insertion, moving and removing of comment blocks, also called *toelichtings- of voorbeeldbepaling*. These blocks are meant to provide extra info to users filling in a document that do not need to be published when the document is complete.
@@ -609,6 +626,10 @@ No configuration is needed.
 The environment banner is a visual indication of the environment you are currently using and which versions of Embeddable, the editor and editor-plugins are in use.
 
 You can enable/disable the banner using the following methods: `enableEnvironmentBanner` and `disableEnvironmentBanner`.
+
+#### rdfa-awareness
+
+The serialization format of the comment blocks once again uses rdfa.
 
 ## Localization
 Localization of the editor is an ongoing effort, the main target usage of Embeddable is currently Dutch speaking users. The editor will use the user's browser language and supports English (en-US) and Dutch (nl-BE). If the user has a different language set, the editor will default to Dutch.
