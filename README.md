@@ -270,7 +270,7 @@ Most plugins use RDFA in some way to provide their features.
 
 In some cases, they simply use it as a way to store information they need to operate. 
 For example: the [variable plugin](#rdfa-variables) will insert 
-nodes in the document that are are rdfa-annotated with certain properties 
+nodes in the document that are rdfa-annotated with certain properties 
 that the plugin interacts with.
 When loading a document from html, this is what the plugin will use to determine whether to render 
 its special interactive "pills" for a particular node. 
