@@ -629,7 +629,7 @@ You can enable/disable the banner using the following methods: `enableEnvironmen
 
 #### rdfa-awareness
 
-The serialization format of the comment blocks once again uses rdfa.
+The serialization format of the comment blocks uses rdfa.
 
 ## Localization
 Localization of the editor is an ongoing effort, the main target usage of Embeddable is currently Dutch speaking users. The editor will use the user's browser language and supports English (en-US) and Dutch (nl-BE). If the user has a different language set, the editor will default to Dutch.
