@@ -273,7 +273,7 @@ For example: the [variable plugin](#rdfa-variables) will insert
 nodes in the document that are are rdfa-annotated with certain properties 
 that the plugin interacts with.
 When loading a document from html, this is what the plugin will use to determine whether to render 
-it's special interactive "pills" for a particular node. 
+its special interactive "pills" for a particular node. 
 
 In other cases, plugins use rdfa to determine whether they should be "active" (show their UI) or not.
 This is usually done based on the idea of "context". 
