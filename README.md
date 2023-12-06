@@ -252,7 +252,7 @@ The [rdfa](https://rdfa.info/) standard is a way to add data annotations to xml 
 It uses linked data as its data modelling method. 
 RDFA-annotated html is the one and only document format of the say-editor. Because it is a strict superset of html, 
 this also means that the editor can be used as a plain WYSIWYG html editor. But the addition of rdfa-aware
-tools and features is the editor's unique strength, and the reason for it's existence.
+tools and features is the editor's unique strength, and the reason for its existence.
 
 Throughout the editor and its plugins, the rdfa-annotated html document is the single format which contains all information.
 This means that any document metadata is also stored in this standard way, allowing easy interop with other
