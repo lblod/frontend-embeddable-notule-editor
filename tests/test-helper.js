@@ -1,5 +1,5 @@
-import Application from 'frontend-embeddable-notule-editor/app';
-import config from 'frontend-embeddable-notule-editor/config/environment';
+import Application from '@lblod/embeddable-say-editor/app';
+import config from '@lblod/embeddable-say-editor/config/environment';
 import * as QUnit from 'qunit';
 import { setApplication } from '@ember/test-helpers';
 import { setup } from 'qunit-dom';

@@ -1,4 +1,3 @@
-
 // Appuniversum theme
 @import "ember-power-select";
 @import "ember-appuniversum";
@@ -33,3 +32,50 @@ div.table-of-contents {
     list-style-type: none !important;
   }
 }
+
+.notule-editor {
+  // VARIABLES START
+
+  // Font Family
+  --default-font-family: "flanders-sans", BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --au-font: var(--say-font-family, var(--default-font-family));
+
+  // Font Size
+  --default-text-font-size: 15px;
+  --default-h1-font-size: 44px;
+  --default-h2-font-size: 32px;
+  --default-h3-font-size: 26px;
+  --default-h4-font-size: 20px;
+  --default-h5-font-size: 18px;
+  --default-h6-font-size: 16px;
+
+  // Background color
+  --default-bg-color: #f7f9fc;
+
+  // VARIABLES END
+
+  // TODO: Create a variable inside the editor repo itself, so we can target it instead of using selectors.
+  //       Using this approach for a proof of concept.
+  .say-container--paper .say-editor {
+    background-color: var(--say-page-bg, var(--default-bg-color));
+  }
+
+  .say-content {
+    $headings: h1, h2, h3, h4, h5, h6;
+
+    font-size: var(--say-font-size-text, var(--default-text-font-size));
+
+    @each $heading in $headings {
+      #{$heading} {
+        font-size: var(--say-font-size-#{$heading}, var(--default-#{$heading}-font-size));
+      }
+    }
+  }
+}
+
+.au-c-icon {
+  g[fill="none"] {
+    fill: currentColor;
+  }
+}
+
