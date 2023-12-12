@@ -8,14 +8,14 @@
     <link
       data-embroider-ignore
       rel="stylesheet"
-      href="assets/frontend-embeddable-notule-editor.css"
+      href="assets/@lblod/embeddable-say-editor.css"
     />
     <!-- Style of this demo app, NOT REQUIRED -->
     <link rel="stylesheet" href="assets/demo.css" />
     <!-- Sources of the editor -->
     <script data-embroider-ignore src="assets/vendor.js"></script>
-    <script data-embroider-ignore src="assets/frontend-embeddable-notule-editor.js"></script>
-    <script data-embroider-ignore src="assets/frontend-embeddable-notule-editor-app.js"></script>
+    <script data-embroider-ignore src="assets/@lblod/embeddable-say-editor.js"></script>
+    <script data-embroider-ignore src="assets/@lblod/embeddable-say-editor-app.js"></script>
   </head>
 
   <!-- Next up, we put some tags in the body of our web page. We'll place the editor in those tags. -->
@@ -31,7 +31,7 @@
       </button>
       <div>
         Environment banner
-        <input type="checkbox" id="environment-banner" checked="checked" /> 
+        <input type="checkbox" id="environment-banner" checked="checked" />
       </div>
     </div>
     <div
@@ -44,9 +44,10 @@
 
     <script>
       window.addEventListener('load', function () {
-        const App = (require('embeddable-say-editor/app').default).create({
+        const App =
+          require('@lblod/embeddable-say-editor/app').default.create({
             autoboot: false,
-            name: 'embeddable-say-editor',
+            name: '@lblod/embeddable-say-editor',
           });
         // Launch the editor
         let editor;
@@ -59,7 +60,6 @@
             citation: {
               type: 'ranges',
               activeInRanges: (state) => [[0, state.doc.content.size]],
-              endpoint: 'https://codex.opendata.api.vlaanderen.be:8888/sparql',
             }
            },
         }).then((editorElement) => {

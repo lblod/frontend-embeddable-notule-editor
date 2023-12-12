@@ -67,11 +67,11 @@ module.exports = function (defaults) {
             if (typeof pathData.runtime === 'string') {
               return pathData.runtime;
             } else {
-              return 'assets/frontend-embeddable-notule-editor-app.js';
+              return 'assets/@lblod/embeddable-say-editor-app.js';
             }
           },
           library: {
-            name: 'embeddable-say-editor',
+            name: '@lblod/embeddable-say-editor',
             type: 'umd',
           },
         },

@@ -1,5 +1,56 @@
 # frontend-embeddable-notule-editor
 
+## 3.1.0
+
+### Minor Changes
+
+- [#183](https://github.com/lblod/frontend-embeddable-notule-editor/pull/183) [`5c5811e`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/5c5811e041014a0dcf72e456efe272073b6ccdc2) Thanks [@dkozickis](https://github.com/dkozickis)! - GN-4562: Inform user how to apply CSS overrides
+
+### Patch Changes
+
+- [#185](https://github.com/lblod/frontend-embeddable-notule-editor/pull/185) [`f49b40a`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/f49b40ae0d323b388ce96d38dd469c60d8f8772e) Thanks [@dkozickis](https://github.com/dkozickis)! - GN-4610: Remove `endpoint` config for citation plugin
+
+  Remove the `endpoint` config for the citation plugin used in the `test.html` file.
+
+- [#184](https://github.com/lblod/frontend-embeddable-notule-editor/pull/184) [`8dbf8d9`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/8dbf8d9d3524dd70af89def788779149ce693a95) Thanks [@dkozickis](https://github.com/dkozickis)! - GN-4615: Fix display of some SVG icons
+
+  Overrides "fill" attribute of "g" elements with `fill="none"` with `fill="currentColor"`
+  to make sure we see the icons. This is an artifact of using `svg-jar` to inline the icons.
+
+## 3.0.2
+
+### Patch Changes
+
+- [`b4710f7`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/b4710f7540062268597168f9257b209fd24c109a) Thanks [@abeforgit](https://github.com/abeforgit)! - set package scope to public
+
+## 3.0.1
+
+### Patch Changes
+
+- [`117ee38`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/117ee382410f2d8f19fd8c65e6041b4010e6d69b) Thanks [@abeforgit](https://github.com/abeforgit)! - fix typo in ci setup
+
+## 3.0.0
+
+### Major Changes
+
+- [#163](https://github.com/lblod/frontend-embeddable-notule-editor/pull/163) [`5f61b89`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/5f61b89a8fca291af0f7482b73445efc1082c7aa) Thanks [@Dietr](https://github.com/Dietr)! - - replace ember-cli-sass with ember-cli-postcss
+
+  - add postcss-rem-to-pixels
+  - all rem units are converted to px units
+
+- [#176](https://github.com/lblod/frontend-embeddable-notule-editor/pull/176) [`8a9471d`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/8a9471d0f14da965d776f6819d8ccca180f58d96) Thanks [@abeforgit](https://github.com/abeforgit)! - Adds a way to import the editor through npm
+
+  - rename the package to `@lblod/embeddable-say-editor`
+  - export `renderEditor`, a function which renders the editor in an iframe
+  - export `SayWebComponent`, which can be imported and registered as a custom element
+  - adds a prepare script to bundle the project in an npm-compatible way
+
+### Patch Changes
+
+- [#164](https://github.com/lblod/frontend-embeddable-notule-editor/pull/164) [`ce5a770`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/ce5a770cf5ba0f41698e2069ddd5da042a841c71) Thanks [@x-m-el](https://github.com/x-m-el)! - Add citation card to search for citations that activates when typing citation plugin keywords
+
+- [#166](https://github.com/lblod/frontend-embeddable-notule-editor/pull/166) [`a410031`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/a410031c8ca1019a9575e61c3b2e0b547051c6da) Thanks [@x-m-el](https://github.com/x-m-el)! - remove some left over mentions of rdfa-date plugin in readme and code, as this is now fully encompassed in the variable plugin
+
 ## 2.0.0
 
 ### Major Changes

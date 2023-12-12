@@ -61,7 +61,6 @@ import {
   hardBreak,
   heading as headingInvisible,
   paragraph as paragraphInvisible,
-  space,
 } from '@lblod/ember-rdfa-editor/plugins/invisibles';
 
 import {
@@ -143,6 +142,7 @@ export default class SimpleEditorComponent extends Component {
     this.editorElement.getHtmlContent = this.getHtmlContent;
     this.editorElement.setHtmlContent = this.setHtmlContent;
     this.editorElement.controller = this.controller;
+    this.resolveEditorPromise?.();
   }
 
   @action
@@ -222,7 +222,7 @@ export default class SimpleEditorComponent extends Component {
   }
 
   @action
-  initEditor(activePlugins, userConfig = {}) {
+  async initEditor(activePlugins, userConfig = {}) {
     this.initCompleted = false;
     this.activePlugins = activePlugins;
     const config = {
@@ -267,7 +267,7 @@ export default class SimpleEditorComponent extends Component {
       firefoxCursorFix(),
       lastKeyPressedPlugin,
       createInvisiblesPlugin(
-        [space, hardBreak, paragraphInvisible, headingInvisible],
+        [hardBreak, paragraphInvisible, headingInvisible],
         {
           shouldShowInvisibles: false,
         }
@@ -311,7 +311,12 @@ export default class SimpleEditorComponent extends Component {
       }
       return views;
     };
+
+    const editorPromise = new Promise(
+      (resolve) => (this.resolveEditorPromise = resolve)
+    );
     this.initCompleted = true;
+    await editorPromise;
   }
 
   setupCitationPlugin({ userConfig, config, plugins }) {
