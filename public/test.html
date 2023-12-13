@@ -8,14 +8,14 @@
     <link
       data-embroider-ignore
       rel="stylesheet"
-      href="assets/@lblod/embeddable-say-editor.css"
+      href="assets/embeddable-say-editor.css"
     />
     <!-- Style of this demo app, NOT REQUIRED -->
     <link rel="stylesheet" href="assets/demo.css" />
     <!-- Sources of the editor -->
     <script data-embroider-ignore src="assets/vendor.js"></script>
-    <script data-embroider-ignore src="assets/@lblod/embeddable-say-editor.js"></script>
-    <script data-embroider-ignore src="assets/@lblod/embeddable-say-editor-app.js"></script>
+    <script data-embroider-ignore src="assets/embeddable-say-editor.js"></script>
+    <script data-embroider-ignore src="assets/embeddable-say-editor-app.js"></script>
   </head>
 
   <!-- Next up, we put some tags in the body of our web page. We'll place the editor in those tags. -->
@@ -45,9 +45,9 @@
     <script>
       window.addEventListener('load', function () {
         const App =
-          require('@lblod/embeddable-say-editor/app').default.create({
+          require('embeddable-say-editor/app').default.create({
             autoboot: false,
-            name: '@lblod/embeddable-say-editor',
+            name: 'embeddable-say-editor',
           });
         // Launch the editor
         let editor;

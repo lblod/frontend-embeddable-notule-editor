@@ -19,7 +19,7 @@ Any content entered here will not be saved.
 
 ### With npm
 
-`npm install @lblod/embeddable-say-editor`
+`npm install embeddable-say-editor`
 
 We export a simple function to launch the editor in your app. It currently renders inside an 
 iframe element. A WebComponent version is also in the works and should be available soon after we 
@@ -29,7 +29,7 @@ work out the kinks.
 
 
 ```javascript
-import { renderEditor } from '@lblod/embeddable-say-editor';
+import { renderEditor } from 'embeddable-say-editor';
 
 
 // make a container element for the editor to render in in your html
@@ -100,13 +100,13 @@ For an interactive example, refer to this [jsfiddle](https://jsfiddle.net/0qd27r
     <title>I have an editor in my document</title>
 
     <!-- Requirements for the style -->
-    <link rel="stylesheet" href="https://embeddable.gelinkt-notuleren.lblod.info/assets/@lblod/embeddable-say-editor.css">
+    <link rel="stylesheet" href="https://embeddable.gelinkt-notuleren.lblod.info/assets/embeddable-say-editor.css">
     <link rel="stylesheet" href="https://embeddable.gelinkt-notuleren.lblod.info/assets/vendor.css">
 
     <!-- Sources of the editor, THE ORDER MATTERS -->
     <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/vendor.js"></script>
-    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/@lblod/embeddable-say-editor-app.js"></script>
-    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/@lblod/embeddable-say-editor.js"></script>
+    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/embeddable-say-editor-app.js"></script>
+    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/embeddable-say-editor.js"></script>
   </head>
   <body>
     ...
@@ -126,9 +126,9 @@ Lastly, we'll instantiate the editor. We wait until the DOM has loaded and then 
 
 ```javascript
 window.addEventListener('load', function () {
-  let App = require('@lblod/embeddable-say-editor/app').default.create({
+  let App = require('embeddable-say-editor/app').default.create({
     autoboot: false,
-    name: '@lblod/embeddable-say-editor'
+    name: 'embeddable-say-editor'
   });
   let editor;
   App.startEditor({
@@ -145,9 +145,9 @@ window.addEventListener('load', function () {
 Let's break down this code, the entire snippet is executed inside a load listener, that will only trigger when the document has loaded.
 
 ```javascript
-let App = require('@lblod/embeddable-say-editor/app').default.create({
+let App = require('embeddable-say-editor/app').default.create({
   autoboot: false,
-  name: '@lblod/embeddable-say-editor'
+  name: 'embeddable-say-editor'
 });
 ```
 These lines create the app that will be in charge of rendering our editor
@@ -727,9 +727,9 @@ Take special care when releasing a new version of this.
 		```bash
 		dist
 		└── assets
-		    ├── @lblod/embeddable-say-editor-app.js
-		    ├── @lblod/embeddable-say-editor.css
-		    ├── @lblod/embeddable-say-editor.js
+		    ├── embeddable-say-editor-app.js
+		    ├── embeddable-say-editor.css
+		    ├── embeddable-say-editor.js
 		    ├── vendor.css # currently empty, but added for consistency
 		    └── vendor.js
 		```

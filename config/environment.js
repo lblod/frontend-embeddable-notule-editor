@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   const ENV = {
-    modulePrefix: '@lblod/embeddable-say-editor',
+    modulePrefix: 'embeddable-say-editor',
     environment,
     rootURL: '/',
     locationType: 'none',

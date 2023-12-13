@@ -67,11 +67,11 @@ module.exports = function (defaults) {
             if (typeof pathData.runtime === 'string') {
               return pathData.runtime;
             } else {
-              return 'assets/@lblod/embeddable-say-editor-app.js';
+              return 'assets/embeddable-say-editor-app.js';
             }
           },
           library: {
-            name: '@lblod/embeddable-say-editor',
+            name: 'embeddable-say-editor',
             type: 'umd',
           },
         },
