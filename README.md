@@ -91,7 +91,7 @@ The idea is that you can have multiple HTML tags in which you can initialize an 
 
 In this section, we will assume you are using the prebuilt package. If you choose to build and host the bundles yourself, simply link the corresponding files to the correct location for your setup.
 
-For an interactive example, refer to this [jsfiddle](https://jsfiddle.net/0qd27rmg/).
+For an interactive example, refer to this [jsfiddle](https://jsfiddle.net/nocs02g9/).
 
 ```html
 <!DOCTYPE html>
@@ -136,7 +136,11 @@ window.addEventListener('load', function () {
     const editorElement =
     editorContainer.getElementsByClassName('notule-editor')[0];
     const arrayOfPluginNames = ['citation', 'variable'];
-    const userConfigObject = {}
+    const userConfigObject = {
+      citation: {
+        endpoint: "https://codex.opendata.api.vlaanderen.be:8888/sparql",
+      },
+    };
     editorElement.initEditor(arrayOfPluginNames, userConfigObject);
   });
 })
