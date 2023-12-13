@@ -1,7 +1,6 @@
 import vendor from './dist/assets/vendor.js';
-import app from './dist/assets/@lblod/embeddable-say-editor-app.js';
-import embeddable from './dist/assets/@lblod/embeddable-say-editor.js';
-import editorCss from './dist/assets/@lblod/embeddable-say-editor.css';
+import embeddable from './dist/assets/embeddable-say-editor.js';
+import editorCss from './dist/assets/embeddable-say-editor.css';
 import vendorCss from './dist/assets/vendor.css';
 
 const srcDoc = `
@@ -72,10 +71,6 @@ export async function renderEditor({
   vendorScript.text = vendor;
   frameDoc.appendChild(vendorScript);
 
-  const appScript = document.createElement('script');
-  appScript.text = app;
-  frameDoc.appendChild(appScript);
-
   const embeddableScript = document.createElement('script');
   embeddableScript.text = embeddable;
   frameDoc.appendChild(embeddableScript);
@@ -93,10 +88,10 @@ export async function renderEditor({
 
   // important here to use window.require so that webpack doesn't interfere
   const App = editorFrame.contentWindow
-    .require('@lblod/embeddable-say-editor/app')
+    .require('embeddable-say-editor/app')
     .default.create({
       autoboot: false,
-      name: '@lblod/embeddable-say-editor',
+      name: 'embeddable-say-editor',
     });
   // Launch the editor
   await App.visit('/', { rootElement: editorContainer });
@@ -105,7 +100,6 @@ export async function renderEditor({
     editorContainer.getElementsByClassName('notule-editor')[0];
   // remove the now unnecessary javascript to avoid overloading the dom
   frameDoc.removeChild(vendorScript);
-  frameDoc.removeChild(appScript);
   frameDoc.removeChild(embeddableScript);
   // initialize the editor
   await editorElement.initEditor(plugins, options);
@@ -321,10 +315,6 @@ export class SayWebComponent extends HTMLElement {
     vendorScript.text = vendor;
     shadow.appendChild(vendorScript);
 
-    const appScript = document.createElement('script');
-    appScript.text = app;
-    shadow.appendChild(appScript);
-
     const embeddableScript = document.createElement('script');
     embeddableScript.text = embeddable;
     shadow.appendChild(embeddableScript);
@@ -352,7 +342,6 @@ export class SayWebComponent extends HTMLElement {
       }
     );
     shadow.removeChild(vendorScript);
-    shadow.removeChild(appScript);
     shadow.removeChild(embeddableScript);
   }
   /**

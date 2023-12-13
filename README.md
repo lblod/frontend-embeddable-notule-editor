@@ -19,7 +19,7 @@ Any content entered here will not be saved.
 
 ### With npm
 
-`npm install @lblod/embeddable-say-editor`
+`npm install embeddable-say-editor`
 
 We export a simple function to launch the editor in your app. It currently renders inside an 
 iframe element. A WebComponent version is also in the works and should be available soon after we 
@@ -29,7 +29,7 @@ work out the kinks.
 
 
 ```javascript
-import { renderEditor } from '@lblod/embeddable-say-editor';
+import { renderEditor } from 'embeddable-say-editor';
 
 
 // make a container element for the editor to render in in your html
@@ -78,10 +78,10 @@ In the 'dist' folder structure, two CSS files and three JavaScript files will ha
 ```bash
 dist
 └── assets
-    ├── @lblod/embeddable-say-editor-app.js
-    ├── @lblod/embeddable-say-editor.css
-    ├── @lblod/embeddable-say-editor.js
-    ├── vendor.css # currently empty and not needed
+    ├── frontend-embeddable-notule-editor-app.js
+    ├── frontend-embeddable-notule-editor.css
+    ├── frontend-embeddable-notule-editor.js
+    ├── vendor.css
     └── vendor.js
 ```
 
@@ -100,14 +100,13 @@ For an interactive example, refer to this [jsfiddle](https://jsfiddle.net/nocs02
     <title>I have an editor in my document</title>
 
     <!-- Requirements for the style -->
-    <link rel="stylesheet" href="https://embeddable.gelinkt-notuleren.lblod.info/assets/@lblod/embeddable-say-editor.css">
-    <!-- Can be left out as `vendor.css` is currently empty -->
+    <link rel="stylesheet" href="https://embeddable.gelinkt-notuleren.lblod.info/assets/embeddable-say-editor.css">
     <link rel="stylesheet" href="https://embeddable.gelinkt-notuleren.lblod.info/assets/vendor.css">
 
     <!-- Sources of the editor, THE ORDER MATTERS -->
     <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/vendor.js"></script>
-    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/@lblod/embeddable-say-editor-app.js"></script>
-    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/@lblod/embeddable-say-editor.js"></script>
+    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/embeddable-say-editor-app.js"></script>
+    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/embeddable-say-editor.js"></script>
   </head>
   <body>
     ...
@@ -127,21 +126,22 @@ Lastly, we'll instantiate the editor. We wait until the DOM has loaded and then 
 
 ```javascript
 window.addEventListener('load', function () {
-  let App = require('@lblod/embeddable-say-editor/app').default.create({
+  let App = require('embeddable-say-editor/app').default.create({
     autoboot: false,
-    name: '@lblod/embeddable-say-editor'
+    name: 'embeddable-say-editor'
   });
-  App.visit('/', { rootElement: '#my-editor' }).then(() => {
-    const editorContainer = document.getElementById('my-editor');
-    const editorElement =
-    editorContainer.getElementsByClassName('notule-editor')[0];
-    const arrayOfPluginNames = ['citation', 'variable'];
-    const userConfigObject = {
+  let editor;
+  App.startEditor({
+    rootElement: '#my-editor',
+    pluginNames: ['citation', 'variable'],
+    config: {
       citation: {
         endpoint: "https://codex.opendata.api.vlaanderen.be:8888/sparql",
       },
-    };
-    editorElement.initEditor(arrayOfPluginNames, userConfigObject);
+    },
+  }).then((editorElement) => {
+    // editorElement can be used to manipulate the contents of the editor
+    editor = editorElement;
   });
 })
 ```
@@ -149,49 +149,38 @@ window.addEventListener('load', function () {
 Let's break down this code, the entire snippet is executed inside a load listener, that will only trigger when the document has loaded.
 
 ```javascript
-let App = require('@lblod/embeddable-say-editor/app').default.create({
+let App = require('embeddable-say-editor/app').default.create({
   autoboot: false,
-  name: '@lblod/embeddable-say-editor'
+  name: 'embeddable-say-editor'
 });
 ```
 These lines create the app that will be in charge of rendering our editor
 
 ```javascript
-App.visit('/', { rootElement: '#my-editor' })
+App.startEditor({
+  rootElement: '#my-editor',
+  pluginNames: ['citation', 'variable'],
+  config: {},
+})
 ```
-Then we visit the main route of the application and render inside our root element, which in this case will be the HTML div with id `my-editor`. This returns a Promise, which we can await or chain with `.then` as we do in the example code. After this promise is resolved, our editor will be rendered so we can start interacting with it.
+Then we start our editor inside our root element, which in this case will be the HTML div with id `my-editor`. We also pass an array with the names of the plugins we want to use and an object with custom configuration if needed (See [configuring the editor](#configuring-the-editor) for more info about plugin names and configuration options).
 
-```javascript
-const editorContainer = document.getElementById('my-editor');
-const editorElement = editorContainer.getElementsByClassName('notule-editor')[0];
-```
-After rendering the editor we can select the editorElement, which we do with the above code. We get the editorContainer in which we rendered our app, and then select the editor div that has the `notule-editor` class.
+This returns a Promise, which we can await or chain with `.then` as we do in the example code. After this promise is resolved (with the wrapper element for our instantiated editor), our editor will be rendered so we can start interacting with it.
 
-```javascript
-const arrayOfPluginNames = ['citation', 'variable'];
-const userConfigObject = {}
-editorElement.initEditor(arrayOfPluginNames, userConfigObject);
-```
-After selecting the editor element, we create an array with the names of the plugins we want to use and an object with custom configuration if needed (See [configuring the editor](#configuring-the-editor) for more info about plugin names and configuration options). Finally, we initialize the editor with the `initEditor` function.
-
-Once the editor is initialized, you can get the relevant document node and set its content. You can play with this by opening the developer console and executing the following, or use the following code in another script.
 ```javascript
 // run after waiting for the editor to initialize 
-const editorContainer = document.getElementById('my-editor');
-const editorElement = editorContainer.getElementsByClassName('notule-editor')[0]
-editorElement.setHtmlContent('<h1>Hello World</h1>'); // the content in the page changes
-console.log(editorElement.getHtmlContent()); // there may be a difference in returned content
+editor.setHtmlContent('<h1>Hello World</h1>'); // the content in the page changes
+console.log(editor.getHtmlContent()); // there may be a difference in returned content
 ```
 
 The contents may be slightly different between setting and getting the content. As the editor evolves, the exporting functionality will be able to better filter out the relevant HTML and remove temporary styling.
 
-
 You can enable/disable an environment banner using the following methods:
 ```javascript
 // run after waiting for the editor to initialize 
-editorElement.enableEnvironmentBanner('Testing');
-editorElement.enableEnvironmentBanner(); // the default environment name is 'Test'
-editorElement.disableEnvironmentBanner();
+editor.enableEnvironmentBanner('Testing');
+editor.enableEnvironmentBanner(); // the default environment name is 'Test'
+editor.disableEnvironmentBanner();
 ```
 
 For a complete version of this example, checkout this file: [public/test.html](public/test.html). It also includes another button that inserts a template in the editor to showcase the plugins.
@@ -742,9 +731,9 @@ Take special care when releasing a new version of this.
 		```bash
 		dist
 		└── assets
-		    ├── @lblod/embeddable-say-editor-app.js
-		    ├── @lblod/embeddable-say-editor.css
-		    ├── @lblod/embeddable-say-editor.js
+		    ├── embeddable-say-editor-app.js
+		    ├── embeddable-say-editor.css
+		    ├── embeddable-say-editor.js
 		    ├── vendor.css # currently empty, but added for consistency
 		    └── vendor.js
 		```
