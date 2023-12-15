@@ -13,16 +13,24 @@ module.exports = {
       ],
     },
   },
-  plugins: ['ember'],
+  plugins: ['ember', 'cypress'],
   extends: [
     'eslint:recommended',
     'plugin:ember/recommended',
     'plugin:prettier/recommended',
+    'plugin:cypress/recommended',
   ],
   env: {
     browser: true,
   },
-  rules: {},
+  rules: {
+    'n/no-unpublished-require': [
+      'error',
+      {
+        allowModules: ['cypress'],
+      },
+    ],
+  },
   overrides: [
     // node files
     {
@@ -37,6 +45,7 @@ module.exports = {
         './config/**/*.js',
         './lib/*/index.js',
         './server/**/*.js',
+        './cypress.config.js',
       ],
       parserOptions: {
         sourceType: 'script',
