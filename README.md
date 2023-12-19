@@ -78,6 +78,7 @@ In the 'dist' folder structure, two CSS files and three JavaScript files will ha
 ```bash
 dist
 └── assets
+    ├── @lblod/embeddable-say-editor-vendor-bundle.js
     ├── @lblod/embeddable-say-editor-app.js
     ├── @lblod/embeddable-say-editor.css
     ├── @lblod/embeddable-say-editor.js
@@ -106,6 +107,7 @@ For an interactive example, refer to this [jsfiddle](https://jsfiddle.net/nocs02
 
     <!-- Sources of the editor, THE ORDER MATTERS -->
     <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/vendor.js"></script>
+    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/@lblod/embeddable-say-editor-vendor-bundle.js"></script>
     <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/@lblod/embeddable-say-editor-app.js"></script>
     <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/@lblod/embeddable-say-editor.js"></script>
   </head>
