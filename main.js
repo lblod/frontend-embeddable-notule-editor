@@ -1,4 +1,5 @@
 import vendor from './dist/assets/vendor.js';
+import vendorBundle from './dist/assets/@lblod/embeddable-say-editor-vendor-bundle.js';
 import app from './dist/assets/@lblod/embeddable-say-editor-app.js';
 import embeddable from './dist/assets/@lblod/embeddable-say-editor.js';
 import editorCss from './dist/assets/@lblod/embeddable-say-editor.css';
@@ -72,6 +73,10 @@ export async function renderEditor({
   vendorScript.text = vendor;
   frameDoc.appendChild(vendorScript);
 
+  const vendorBundleScript = document.createElement('script');
+  vendorBundle.text = vendorBundle;
+  frameDoc.appendChild(vendorBundleScript);
+
   const appScript = document.createElement('script');
   appScript.text = app;
   frameDoc.appendChild(appScript);
@@ -105,6 +110,7 @@ export async function renderEditor({
     editorContainer.getElementsByClassName('notule-editor')[0];
   // remove the now unnecessary javascript to avoid overloading the dom
   frameDoc.removeChild(vendorScript);
+  frameDoc.removeChild(vendorBundleScript);
   frameDoc.removeChild(appScript);
   frameDoc.removeChild(embeddableScript);
   // initialize the editor
