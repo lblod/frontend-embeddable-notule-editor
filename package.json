@@ -23,13 +23,13 @@
     "test": "concurrently \"npm:lint\" \"npm:test:*\" --names \"lint,test:\"",
     "test:ember": "ember test",
     "release": "release-it",
-    "prepare": "npm run build && webpack"
+    "prepare": "npm run build && webpack -c ./npm.webpack.config.js"
   },
   "dependencies": {
     "ember-intl": "^5.7.2"
   },
   "devDependencies": {
-    "@appuniversum/ember-appuniversum": "^2.15.0",
+    "@appuniversum/ember-appuniversum": "^2.18.0",
     "@babel/core": "^7.19.6",
     "@babel/eslint-parser": "^7.21.3",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
@@ -45,8 +45,8 @@
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "@lblod/ember-environment-banner": "^0.2.0",
-    "@lblod/ember-rdfa-editor": "^6.3.0",
-    "@lblod/ember-rdfa-editor-lblod-plugins": "^14.0.0",
+    "@lblod/ember-rdfa-editor": "^8.1.0",
+    "@lblod/ember-rdfa-editor-lblod-plugins": "^15.2.1",
     "broccoli-asset-rev": "^3.0.0",
     "changesets-release-it-plugin": "^0.1.1",
     "concurrently": "^8.0.1",
@@ -96,13 +96,12 @@
     "webpack-cli": "^5.1.4"
   },
   "overrides": {
-    "@appuniversum/ember-appuniversum": {
-      "tracked-toolbox": "^2.0.0",
-      "ember-focus-trap": "~1.0.1"
+    "@lblod/ember-rdfa-editor": {
+      "ember-focus-trap": "^1.1.0"
     }
   },
   "engines": {
-    "node": "14.* || 16.* || >= 18"
+    "node": "16.* || >= 18"
   },
   "ember": {
     "edition": "octane"

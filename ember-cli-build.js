@@ -38,6 +38,15 @@ module.exports = function (defaults) {
         output: {
           filename: '@lblod/embeddable-say-editor-[name].js',
         },
+        optimization: {
+          splitChunks: {
+            name: 'vendor-bundle',
+            chunks: 'all',
+            cacheGroups: {
+              default: false,
+            },
+          },
+        },
         plugins: [
           new webpack.optimize.LimitChunkCountPlugin({
             maxChunks: 1,
