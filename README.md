@@ -709,6 +709,9 @@ Below example expects that the editor was attached to an element with id `my-edi
 * `--say-font-size-h5`: size of the Heading 5 in the editor.
 * `--say-font-size-h6`: size of the Heading 6 in the editor.
 
+* `--say-paragraph-spacing`: spacing between paragraphs, default is 12px.
+* `--say-editor-line-height`: line height of the editor, default is 1.5.
+
 # Development of @lblod/embeddable-say-editor
 
 ## Prerequisites
