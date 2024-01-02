@@ -97,7 +97,7 @@ dist
 ### Using the prebuilt bundles
 
 Previously we suggested using prebuilt versions of the packages hosted on a `lblod.info` domain.
-Due to the inability of this system to appropriately support multiple versions, this service is deprectated and will be deactivated in the near future.
+Due to the inability of this system to appropriately support multiple versions, this service is deprecated and will be deactivated in the near future.
 Migration to the unpkg.com hosted version is easy and will allow you to control which version you want to use.
 
 The first step is to replace the script and stylesheet imports with the unpkg.com equivalents, e.g.:
