@@ -25,7 +25,6 @@
     "release": "release-it",
     "cypress:open": "cypress open --config baseUrl=http://localhost:4200",
     "cypress:run": "cypress run --config baseUrl=http://localhost:4200",
-    "cypress:ci": "concurrently --names \"ember,cypress\" --kill-others --success first \"npm run start\" \"cypress run --config baseUrl=http://localhost:4200\"",
     "ci": "start-server-and-test start http://localhost:4200 cypress:run",
     "prepare": "npm run build && webpack -c ./npm.webpack.config.js"
   },
