@@ -268,7 +268,7 @@ Do note that more advanced commands will need knowledge about the used schema an
 The editor can be customized to best fit your application. 
 * [Plugin System](#plugin-system): An overview of some of the general concepts behind our plugins.
 * [Managing Plugins](#managing-plugins): A list of plugins you can enable, including explanation of how to use them
-* [Environment banner](#enabling%2Fdisabling-the-environment-banner): how to enable/disable this banner
+* [Environment banner](#enablingdisabling-the-environment-banner): how to enable/disable this banner
 * [Localization](#localization): language options in the editor
 * [Styling](#styling)
 ## Plugin system
@@ -349,6 +349,7 @@ Any configuration value not provided will use the default value, which are shown
 * [formatting-toggle](#formatting-toggle): Allows to toggle the formatting marks with a button.
 * [rdfa-blocks-toggle](#rdfa-blocks-toggle): Allows to toggle the visual indications of the rdfa blocks with a button.
 * [template-comments](#template-comments): Allows insertion and editing of comment blocks to provide extra information to a user filling in a document. These are visually distinct units with a special RDFa type, which allows them to be filtered out during postprocessing.
+* [Confidential Content](#confidential-content): Allows annotation of parts of the text to be redacted
 
 ##### General Config options
 There are some options you can pass to `pluginsConfig` in `initEditor` that are not connected to a plugin.
@@ -659,14 +660,26 @@ It has a special RDFa type `ext:TemplateComment` with `ext` the prefix for `http
 ***
 :heavy_plus_sign: Enable by adding `"template-comments"` to the `arrayOfPluginNames` array.
 No configuration is needed.
-## Enabling/disabling the environment banner
-The environment banner is a visual indication of the environment you are currently using and which versions of Embeddable, the editor and editor-plugins are in use.
-
-You can enable/disable the banner using the following methods: `enableEnvironmentBanner` and `disableEnvironmentBanner`.
 
 #### rdfa-awareness
 
 The serialization format of the comment blocks uses rdfa.
+
+### Confidential Content
+
+Adds a toolbar button to redact content. This simply adds an RDFa annotation with particular styling applied to it. It is up to any processor handling the document to properly redact the content.
+***
+:heavy_plus_sign: Enable by adding `"confidentiality"` to the `arrayOfPluginNames` array.
+No configuration is needed.
+
+#### rdfa-awareness
+
+Adds the RDFa annotation `property` set to `ext:redacted` for the redacted text.
+
+## Enabling/disabling the environment banner
+The environment banner is a visual indication of the environment you are currently using and which versions of Embeddable, the editor and editor-plugins are in use.
+
+You can enable/disable the banner using the following methods: `enableEnvironmentBanner` and `disableEnvironmentBanner`.
 
 ## Localization
 Localization of the editor is an ongoing effort, the main target usage of Embeddable is currently Dutch speaking users. The editor will use the user's browser language and supports English (en-US) and Dutch (nl-BE). If the user has a different language set, the editor will default to Dutch.
