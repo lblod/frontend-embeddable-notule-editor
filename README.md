@@ -54,13 +54,22 @@ editor.setHtmlContent('hello world');
 
 ```
 
-### Using the prebuilt bundles
+### Using a CDN
 
-The prebuilt bundles are currently hosted on `https://embeddable.gelinkt-notuleren.lblod.info/`.
-For information on how to include them in your html file, see the [Code Example](#basic-example-the-editor-in-an-html-file) section below.
-This is considered a test environment and is subject to change, so it is not recommended to use it in production.
+If you can't use an npm package directly in your app, the easiest way is using a CDN such as unpkg.com to use the version from npm directly in a `<script>` tag. For details on how to use start and customise the editor, see the [basic code example](#basic-example-the-editor-in-an-html-file) section below.
 
-For **production**, use the prebuilt packages in the [Github releases](https://github.com/lblod/frontend-embeddable-notule-editor/releases/). At this point `vendor.css` is empty and can be ignored.
+Unlike the example which does not specify the version, for production use, we recommend to use a fixed major version number to avoid breaking changes. The changelog can be seen [on Github](https://github.com/lblod/frontend-embeddable-notule-editor/releases), any update with breaking changes will have a higher version number. For example, to have the latest version of the v3 release, use the following imports:
+
+> [!NOTE]
+> It's important to use the same version string (it can be any semver range or tag supported by unpkg).
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/@lblod/embeddable-say-editor@~3/dist/assets/vendor.css" />
+<link rel="stylesheet" href="https://unpkg.com/@lblod/embeddable-say-editor@~3/dist/assets/@lblod/embeddable-say-editor.css" />
+<script src="https://unpkg.com/@lblod/embeddable-say-editor@~3/dist/assets/vendor.js"></script>
+<script src="https://unpkg.com/@lblod/embeddable-say-editor@~3/dist/assets/@lblod/embeddable-say-editor.js"></script>
+<script src="https://unpkg.com/@lblod/embeddable-say-editor@~3/dist/assets/@lblod/embeddable-say-editor-app.js"></script>
+```
 
 ### Building the sources yourself
 
@@ -70,7 +79,7 @@ In order to build the JavaScript and CSS sources of this repository you will nee
 git clone https://github.com/lblod/frontend-embeddable-notule-editor.git
 cd frontend-embeddable-notule-editor
 npm install
-ember build -prod
+npm run build
 ```
 
 In the 'dist' folder structure, two CSS files and three JavaScript files will have been generated under assets. These are the files to use, as demonstrated in the [Code Example](#basic-example-the-editor-in-an-html-file). Note that the fingerprints of your files may vary. Other files in the dist folder can be ignored at this point, as they are not needed.
@@ -78,7 +87,6 @@ In the 'dist' folder structure, two CSS files and three JavaScript files will ha
 ```bash
 dist
 └── assets
-    ├── @lblod/embeddable-say-editor-vendor-bundle.js
     ├── @lblod/embeddable-say-editor-app.js
     ├── @lblod/embeddable-say-editor.css
     ├── @lblod/embeddable-say-editor.js
@@ -86,13 +94,37 @@ dist
     └── vendor.js
 ```
 
+### Using the prebuilt bundles
+
+Previously we suggested using prebuilt versions of the packages hosted on a `lblod.info` domain.
+Due to the inability of this system to appropriately support multiple versions, this service is deprecated and will be deactivated in the near future.
+Migration to the unpkg.com hosted version is easy and will allow you to control which version you want to use.
+
+The first step is to replace the script and stylesheet imports with the unpkg.com equivalents, e.g.:
+
+```diff
+- <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/frontend-embeddable-notule-editor.js"></script>
++ <script src="https://unpkg.com/@lblod/embeddable-say-editor@~3/dist/assets/@lblod/embeddable-say-editor.js"></script>
+```
+
+You will also need to change your require statement to remove the outdated package name:
+
+```diff
+ window.addEventListener('load', function() {
+-  let App = require('frontend-embeddable-notule-editor/app').default.create({
++  let App = require('@lblod/embeddable-say-editor/app').default.create({
+     autoboot: false,
+     name: 'embeddable-editor'
+   });
+```
+
 ## Basic Example: The editor in an HTML file 
 The idea is that you can have multiple HTML tags in which you can initialize an editor. We'll explain how it works and the process can be repeated if multiple editors are required. We need some HTML structure to start with, and then set-up the editor when everything has finished loading and rendering. We can also initialize the editor with some content or set it later via an event. Use something like the following HTML snippet as a base.  
 **Note**: the order of the JavaScript files matters.
 
-In this section, we will assume you are using the prebuilt package. If you choose to build and host the bundles yourself, simply link the corresponding files to the correct location for your setup.
+In this section, we will assume you are using unpkg, but using another service that serves npm modules or building and hosting the bundles yourself should work just as well. Simply link the corresponding files to the correct location for your setup.
 
-For an interactive example, refer to this [jsfiddle](https://jsfiddle.net/nocs02g9/).
+For an interactive example, refer to this [jsfiddle](https://jsfiddle.net/piemonkey/oLpv64c2/).
 
 ```html
 <!DOCTYPE html>
@@ -101,15 +133,14 @@ For an interactive example, refer to this [jsfiddle](https://jsfiddle.net/nocs02
     <title>I have an editor in my document</title>
 
     <!-- Requirements for the style -->
-    <link rel="stylesheet" href="https://embeddable.gelinkt-notuleren.lblod.info/assets/@lblod/embeddable-say-editor.css">
+    <link rel="stylesheet" href="https://unpkg.com/@lblod/embeddable-say-editor/dist/assets/@lblod/embeddable-say-editor.css" />
     <!-- Can be left out as `vendor.css` is currently empty -->
-    <link rel="stylesheet" href="https://embeddable.gelinkt-notuleren.lblod.info/assets/vendor.css">
+    <link rel="stylesheet" href="https://unpkg.com/@lblod/embeddable-say-editor/dist/assets/vendor.css" />
 
     <!-- Sources of the editor, THE ORDER MATTERS -->
-    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/vendor.js"></script>
-    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/@lblod/embeddable-say-editor-vendor-bundle.js"></script>
-    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/@lblod/embeddable-say-editor-app.js"></script>
-    <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/@lblod/embeddable-say-editor.js"></script>
+    <script src="https://unpkg.com/@lblod/embeddable-say-editor/dist/assets/vendor.js"></script>
+    <script src="https://unpkg.com/@lblod/embeddable-say-editor/dist/assets/@lblod/embeddable-say-editor.js"></script>
+    <script src="https://unpkg.com/@lblod/embeddable-say-editor/dist/assets/@lblod/embeddable-say-editor-app.js"></script>
   </head>
   <body>
     ...
@@ -721,6 +752,9 @@ Below example expects that the editor was attached to an element with id `my-edi
 * `--say-font-size-h4`: size of the Heading 4 in the editor.
 * `--say-font-size-h5`: size of the Heading 5 in the editor.
 * `--say-font-size-h6`: size of the Heading 6 in the editor.
+
+* `--say-paragraph-spacing`: spacing between paragraphs, default is 12px.
+* `--say-editor-line-height`: line height of the editor, default is 1.5.
 
 # Development of @lblod/embeddable-say-editor
 
