@@ -98,6 +98,7 @@ import DateInsertVariableComponent from '@lblod/ember-rdfa-editor-lblod-plugins/
 import LocationInsertComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/location/insert';
 import CodelistInsertComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/codelist/insert';
 import VariablePluginAddressInsertVariableComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/address/insert-variable';
+import { redacted } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/confidentiality-plugin/marks/redacted';
 
 import {
   defaultCitationPluginConfig,
@@ -296,6 +297,9 @@ export default class SimpleEditorComponent extends Component {
     if (activePlugins.includes('template-comments')) {
       this.setupTemplateCommentsPlugin(setup);
     }
+    if (activePlugins.includes('confidentiality')) {
+      this.setupConfidentialityPlugin(setup);
+    }
     this.config = setup.config;
     setup.nodes = { ...setup.nodes, heading, invisible_rdfa, block_rdfa };
     this.schema = new Schema({ nodes: setup.nodes, marks: setup.marks });
@@ -455,5 +459,10 @@ export default class SimpleEditorComponent extends Component {
     const { nodes, nodeViews } = setup;
     nodes.templateComment = templateComment;
     nodeViews.templateComment = (controller) => templateCommentView(controller);
+  }
+
+  setupConfidentialityPlugin(setup) {
+    const { marks } = setup;
+    marks.redacted = redacted;
   }
 }

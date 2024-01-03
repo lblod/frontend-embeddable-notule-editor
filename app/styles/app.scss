@@ -8,6 +8,7 @@
 @import "besluit-plugin";
 @import 'article-structure-plugin';
 @import 'template-comments-plugin';
+@import 'confidentiality-plugin';
 
 div.table-of-contents {
   padding: $au-unit-small !important;
@@ -52,6 +53,9 @@ div.table-of-contents {
   // Background color
   --default-bg-color: #f7f9fc;
 
+  // Spacing
+  --default-paragraph-spacing: 12px;
+
   // VARIABLES END
 
   // TODO: Create a variable inside the editor repo itself, so we can target it instead of using selectors.
@@ -69,6 +73,12 @@ div.table-of-contents {
       #{$heading} {
         font-size: var(--say-font-size-#{$heading}, var(--default-#{$heading}-font-size));
       }
+    }
+
+    line-height: var(--say-editor-line-height, var(--au-global-line-height));
+
+    p + * {
+      margin-top: var(--say-paragraph-spacing, var(--default-paragraph-spacing));
     }
   }
 }

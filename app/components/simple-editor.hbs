@@ -50,6 +50,11 @@
                   @defaultColor='#000000'
                 />
               </Tb.Group>
+              {{#if (array-includes this.activePlugins 'confidentiality')}}
+                <Tb.Group>
+                  <ConfidentialityPlugin::Toolbar @controller={{this.controller}} />
+                </Tb.Group>
+              {{/if}}
               <Tb.Group>
                 <Plugins::List::Unordered @controller={{this.controller}} />
                 <Plugins::List::Ordered @controller={{this.controller}} />
