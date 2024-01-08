@@ -64,7 +64,7 @@ Unlike the example which does not specify the version, for production use, we re
 > the version string can be any semver range or tag supported by unpkg.
 
 ```html
-<script src="https://unpkg.com/@lblod/embeddable-say-editor@3.1.x"></script>
+<script src="https://unpkg.com/@lblod/embeddable-say-editor@^3.2.1"></script>
 ```
 
 ### Using the prebuilt bundles
@@ -90,7 +90,7 @@ For an interactive example, refer to this [jsfiddle](https://jsfiddle.net/abefor
 
   <head>
     <title>I have an editor in my document</title>
-    <script src="https://unpkg.com/@lblod/embeddable-say-editor@3.1.x"></script>
+    <script src="https://unpkg.com/@lblod/embeddable-say-editor@^3.2.1"></script>
   </head>
 
   <body>
