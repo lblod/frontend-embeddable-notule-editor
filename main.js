@@ -74,7 +74,7 @@ export async function renderEditor({
   frameDoc.appendChild(vendorScript);
 
   const vendorBundleScript = document.createElement('script');
-  vendorBundle.text = vendorBundle;
+  vendorBundleScript.text = vendorBundle;
   frameDoc.appendChild(vendorBundleScript);
 
   const appScript = document.createElement('script');
