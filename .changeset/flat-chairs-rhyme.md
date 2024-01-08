@@ -1,5 +1,5 @@
 ---
-"embeddable-say-editor": minor
+"@lblod/embeddable-say-editor": minor
 ---
 
 Add confidentiality plugin
