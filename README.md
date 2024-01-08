@@ -58,40 +58,13 @@ editor.setHtmlContent('hello world');
 
 If you can't use an npm package directly in your app, the easiest way is using a CDN such as unpkg.com to use the version from npm directly in a `<script>` tag. For details on how to use start and customise the editor, see the [basic code example](#basic-example-the-editor-in-an-html-file) section below.
 
-Unlike the example which does not specify the version, for production use, we recommend to use a fixed major version number to avoid breaking changes. The changelog can be seen [on Github](https://github.com/lblod/frontend-embeddable-notule-editor/releases), any update with breaking changes will have a higher version number. For example, to have the latest version of the v3 release, use the following imports:
+Unlike the example which does not specify the version, for production use, we recommend to use a fixed major version number to avoid breaking changes. The changelog can be seen [on Github](https://github.com/lblod/frontend-embeddable-notule-editor/releases), any update with breaking changes will have a higher version number. For example, to have the latest version of the v3 release, use the following import:
 
 > [!NOTE]
-> It's important to use the same version string (it can be any semver range or tag supported by unpkg).
+> the version string can be any semver range or tag supported by unpkg.
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/@lblod/embeddable-say-editor@~3/dist/assets/vendor.css" />
-<link rel="stylesheet" href="https://unpkg.com/@lblod/embeddable-say-editor@~3/dist/assets/@lblod/embeddable-say-editor.css" />
-<script src="https://unpkg.com/@lblod/embeddable-say-editor@~3/dist/assets/vendor.js"></script>
-<script src="https://unpkg.com/@lblod/embeddable-say-editor@~3/dist/assets/@lblod/embeddable-say-editor.js"></script>
-<script src="https://unpkg.com/@lblod/embeddable-say-editor@~3/dist/assets/@lblod/embeddable-say-editor-app.js"></script>
-```
-
-### Building the sources yourself
-
-In order to build the JavaScript and CSS sources of this repository you will need `ember-cli` installed (more info at the [Development section](#development-of-@lblod/embeddable-say-editor)), then execute the following:
-
-```bash
-git clone https://github.com/lblod/frontend-embeddable-notule-editor.git
-cd frontend-embeddable-notule-editor
-npm install
-npm run build
-```
-
-In the 'dist' folder structure, two CSS files and three JavaScript files will have been generated under assets. These are the files to use, as demonstrated in the [Code Example](#basic-example-the-editor-in-an-html-file). Note that the fingerprints of your files may vary. Other files in the dist folder can be ignored at this point, as they are not needed.
-
-```bash
-dist
-└── assets
-    ├── @lblod/embeddable-say-editor-app.js
-    ├── @lblod/embeddable-say-editor.css
-    ├── @lblod/embeddable-say-editor.js
-    ├── vendor.css # currently empty and not needed
-    └── vendor.js
+<script src="https://unpkg.com/@lblod/embeddable-say-editor@3.1.x"></script>
 ```
 
 ### Using the prebuilt bundles
@@ -100,141 +73,63 @@ Previously we suggested using prebuilt versions of the packages hosted on a `lbl
 Due to the inability of this system to appropriately support multiple versions, this service is deprecated and will be deactivated in the near future.
 Migration to the unpkg.com hosted version is easy and will allow you to control which version you want to use.
 
-The first step is to replace the script and stylesheet imports with the unpkg.com equivalents, e.g.:
-
-```diff
-- <script src="https://embeddable.gelinkt-notuleren.lblod.info/assets/frontend-embeddable-notule-editor.js"></script>
-+ <script src="https://unpkg.com/@lblod/embeddable-say-editor@~3/dist/assets/@lblod/embeddable-say-editor.js"></script>
-```
-
-You will also need to change your require statement to remove the outdated package name:
-
-```diff
- window.addEventListener('load', function() {
--  let App = require('frontend-embeddable-notule-editor/app').default.create({
-+  let App = require('@lblod/embeddable-say-editor/app').default.create({
-     autoboot: false,
-     name: 'embeddable-editor'
-   });
-```
+Simply refer to the basic example below for the basic setup. Instead of passing the plugin configuration to the "initEditor" function, 
+pass it directly to the `renderEditor` function and await it. The resulting object will be 
+fully initialized and ready for use.
 
 ## Basic Example: The editor in an HTML file 
 The idea is that you can have multiple HTML tags in which you can initialize an editor. We'll explain how it works and the process can be repeated if multiple editors are required. We need some HTML structure to start with, and then set-up the editor when everything has finished loading and rendering. We can also initialize the editor with some content or set it later via an event. Use something like the following HTML snippet as a base.  
-**Note**: the order of the JavaScript files matters.
 
 In this section, we will assume you are using unpkg, but using another service that serves npm modules or building and hosting the bundles yourself should work just as well. Simply link the corresponding files to the correct location for your setup.
 
-For an interactive example, refer to this [jsfiddle](https://jsfiddle.net/piemonkey/oLpv64c2/).
+For an interactive example, refer to this [jsfiddle](https://jsfiddle.net/abeforfiddle/7zugt5nv/25/).
 
 ```html
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>I have an editor in my document</title>
-
-    <!-- Requirements for the style -->
-    <link rel="stylesheet" href="https://unpkg.com/@lblod/embeddable-say-editor/dist/assets/@lblod/embeddable-say-editor.css" />
-    <!-- Can be left out as `vendor.css` is currently empty -->
-    <link rel="stylesheet" href="https://unpkg.com/@lblod/embeddable-say-editor/dist/assets/vendor.css" />
-
-    <!-- Sources of the editor, THE ORDER MATTERS -->
-    <script src="https://unpkg.com/@lblod/embeddable-say-editor/dist/assets/vendor.js"></script>
-    <script src="https://unpkg.com/@lblod/embeddable-say-editor/dist/assets/@lblod/embeddable-say-editor.js"></script>
-    <script src="https://unpkg.com/@lblod/embeddable-say-editor/dist/assets/@lblod/embeddable-say-editor-app.js"></script>
+    <script src="https://unpkg.com/@lblod/embeddable-say-editor@3.1.x"></script>
   </head>
+
   <body>
-    ...
+    <div id="my-editor"></div>
   </body>
+
 </html>
 ```
 
-Next, put some tags in the body of the page. We'll place the editor in those tags.
 
-```html
-<body>
-  <div id="my-editor"></div>
-</body>
-```
-
-Lastly, we'll instantiate the editor. We wait until the DOM has loaded and then initialize the embedded EmberJS app with the editor inside. Put this script in the head of the HTML page with `<script>...</script>`, or use another method if desired (e.g. at the bottom of the HTML).
+Next, we'll instantiate the editor. We wait until the DOM has loaded and then render the editor inside it. Put this script in the head of the HTML page with `<script>...</script>`, or use another method if desired (e.g. at the bottom of the HTML, or in a separate js file you refer to in the html).
 
 ```javascript
-window.addEventListener('load', function () {
-  let App = require('@lblod/embeddable-say-editor/app').default.create({
-    autoboot: false,
-    name: '@lblod/embeddable-say-editor'
-  });
-  App.visit('/', { rootElement: '#my-editor' }).then(() => {
-    const editorContainer = document.getElementById('my-editor');
-    const editorElement =
-    editorContainer.getElementsByClassName('notule-editor')[0];
-    const arrayOfPluginNames = ['citation', 'variable'];
-    const userConfigObject = {
-      citation: {
-        endpoint: "https://codex.opendata.api.vlaanderen.be:8888/sparql",
-      },
-    };
-    editorElement.initEditor(arrayOfPluginNames, userConfigObject);
-  });
+window.addEventListener('load', async function() {
+  const renderEditor = window['@lblod/embeddable-say-editor'].renderEditor;
+
+  const editorContainer = document.getElementById('my-editor');
+  const editorElement = await renderEditor({
+    element: editorContainer,
+    title: 'my editor', // optional, this will set the "title" attribute of the iframe
+    width: '500px', // width attribute of the iframe
+    height: '300px', // height attribute of the iframe
+    plugins: [], // array of plugin names (see below)
+    options: {} // configuration object (see below)
+  })
+  await editorElement.initEditor(arrayOfPluginNames, userConfigObject);
 })
 ```
 
-Let's break down this code, the entire snippet is executed inside a load listener, that will only trigger when the document has loaded.
+See below for everything you can do with the editorElement.
 
-```javascript
-let App = require('@lblod/embeddable-say-editor/app').default.create({
-  autoboot: false,
-  name: '@lblod/embeddable-say-editor'
-});
-```
-These lines create the app that will be in charge of rendering our editor
-
-```javascript
-App.visit('/', { rootElement: '#my-editor' })
-```
-Then we visit the main route of the application and render inside our root element, which in this case will be the HTML div with id `my-editor`. This returns a Promise, which we can await or chain with `.then` as we do in the example code. After this promise is resolved, our editor will be rendered so we can start interacting with it.
-
-```javascript
-const editorContainer = document.getElementById('my-editor');
-const editorElement = editorContainer.getElementsByClassName('notule-editor')[0];
-```
-After rendering the editor we can select the editorElement, which we do with the above code. We get the editorContainer in which we rendered our app, and then select the editor div that has the `notule-editor` class.
-
-```javascript
-const arrayOfPluginNames = ['citation', 'variable'];
-const userConfigObject = {}
-editorElement.initEditor(arrayOfPluginNames, userConfigObject);
-```
-After selecting the editor element, we create an array with the names of the plugins we want to use and an object with custom configuration if needed (See [configuring the editor](#configuring-the-editor) for more info about plugin names and configuration options). Finally, we initialize the editor with the `initEditor` function.
-
-Once the editor is initialized, you can get the relevant document node and set its content. You can play with this by opening the developer console and executing the following, or use the following code in another script.
-```javascript
-// run after waiting for the editor to initialize 
-const editorContainer = document.getElementById('my-editor');
-const editorElement = editorContainer.getElementsByClassName('notule-editor')[0]
-editorElement.setHtmlContent('<h1>Hello World</h1>'); // the content in the page changes
-console.log(editorElement.getHtmlContent()); // there may be a difference in returned content
-```
-
-The contents may be slightly different between setting and getting the content. As the editor evolves, the exporting functionality will be able to better filter out the relevant HTML and remove temporary styling.
-
-
-You can enable/disable an environment banner using the following methods:
-```javascript
-// run after waiting for the editor to initialize 
-editorElement.enableEnvironmentBanner('Testing');
-editorElement.enableEnvironmentBanner(); // the default environment name is 'Test'
-editorElement.disableEnvironmentBanner();
-```
-
-For a complete version of this example, checkout this file: [public/test.html](public/test.html). It also includes another button that inserts a template in the editor to showcase the plugins.
 
 ## Editor API
-The RDFa editor uses [the Prosemirror toolkit](https://prosemirror.net/) as a base. After the `editorElement.initEditor()` function is called you will have access to the editor methods, including the controller with `editorElement.controller`. This controller is an instance of the [SayController](https://github.com/lblod/ember-rdfa-editor/blob/d4472d2e237256d30333cfcc20ce6eea7db241f2/addon/core/say-controller.ts) class of the [ember-rdfa-editor](https://github.com/lblod/ember-rdfa-editor). 
+The RDFa editor uses [the Prosemirror toolkit](https://prosemirror.net/) as a base. After the `editorElement.initEditor()` function is called and awaited (the `renderEditor` function does this for you, but you might want to call it again at a later point to re-initialize the editor) you will have access to the editor methods, including the controller with `editorElement.controller`. 
+This controller is an instance of the [SayController](https://github.com/lblod/ember-rdfa-editor/blob/d4472d2e237256d30333cfcc20ce6eea7db241f2/addon/core/say-controller.ts) class of the [ember-rdfa-editor](https://github.com/lblod/ember-rdfa-editor). 
 
 #### editorElement API
 These are functions available from the editor element, which is the HTML element with the class `notule-editor`. 
-- `initEditor(arrayOfPluginNames: string[], userConfigObject)`: Initialize the editor by passing an array of plugin names that should be activated and an object that contains the configuration for the editor and its plugins. See [Managing Plugins](managing-plugins) for more info.  
+- `async initEditor(arrayOfPluginNames: string[], userConfigObject)`: Initialize the editor by passing an array of plugin names that should be activated and an object that contains the configuration for the editor and its plugins. See [Managing Plugins](managing-plugins) for more info.  
   :warning: **`initEditor` has to be called before accessing any other methods**.
 - `enableEnvironmentBanner()`: enable the banner that shows the environment and versions of plugins used.
 - `disableEnvironmentBanner()`: disable the banner.
