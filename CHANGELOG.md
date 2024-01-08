@@ -1,5 +1,32 @@
 # frontend-embeddable-notule-editor
 
+## 3.2.0
+
+### Minor Changes
+
+- [#190](https://github.com/lblod/frontend-embeddable-notule-editor/pull/190) [`0a41560`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/0a41560f8e7ae4142d5f4184128414ad82517d3d) Thanks [@dkozickis](https://github.com/dkozickis)! - GN-4625: Expose CSS variable to adjust line spacing
+
+  - `--say-paragraph-spacing`: spacing between paragraphs, default is 12px.
+  - `--say-editor-line-height`: line height of the editor, default is 1.5.
+
+- [#188](https://github.com/lblod/frontend-embeddable-notule-editor/pull/188) [`3be94d3`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/3be94d3c6f609e2f851583c91188085494d88ac1) Thanks [@piemonkey](https://github.com/piemonkey)! - Add confidentiality plugin
+
+- [#187](https://github.com/lblod/frontend-embeddable-notule-editor/pull/187) [`91cb42b`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/91cb42bdd3c5491ed8b4c0a6a76a4882210099ee) Thanks [@elpoelma](https://github.com/elpoelma)! - Remove `space` invisible from formatting marks in order to improve performance
+
+### Patch Changes
+
+- [#178](https://github.com/lblod/frontend-embeddable-notule-editor/pull/178) [`5f0ef53`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/5f0ef539c2f564431826bc081f02613824002e65) Thanks [@elpoelma](https://github.com/elpoelma)! - Update `@lblod/ember-rdfa-editor` to 8.2.0
+
+- [#189](https://github.com/lblod/frontend-embeddable-notule-editor/pull/189) [`0c31c71`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/0c31c715ae09060274ce584617a2d264625502ff) Thanks [@dkozickis](https://github.com/dkozickis)! - Introduce dummy Cypress test to validate that embeddable is launching
+
+- [#186](https://github.com/lblod/frontend-embeddable-notule-editor/pull/186) [`8920243`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/89202439a77f333b6a871b6c896215fdcc525788) Thanks [@abeforgit](https://github.com/abeforgit)! - Add info about rdfa in the editor
+
+- [#174](https://github.com/lblod/frontend-embeddable-notule-editor/pull/174) [`9794667`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/9794667dea80550c85a2b6c88de9ec46f00f3b75) Thanks [@piemonkey](https://github.com/piemonkey)! - Pass component classes to variable plugin instead of component names
+
+- [#192](https://github.com/lblod/frontend-embeddable-notule-editor/pull/192) [`6a74ab3`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/6a74ab3fee5a0c0235ccfbd21d4a96fa1aaa5d56) Thanks [@piemonkey](https://github.com/piemonkey)! - Update readme to deprecate hosted version and to recommend use of unpkg.com instead
+
+- [#188](https://github.com/lblod/frontend-embeddable-notule-editor/pull/188) [`9287abd`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/9287abd6ddad6a48acb2e67c24242d2318385392) Thanks [@piemonkey](https://github.com/piemonkey)! - Update `@lblod/ember-rdfa-editor-plugins` to 15.2.2
+
 ## 3.1.0
 
 ### Minor Changes
