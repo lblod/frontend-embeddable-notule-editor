@@ -1,5 +1,11 @@
 # frontend-embeddable-notule-editor
 
+## 3.2.1
+
+### Patch Changes
+
+- [`ca2b40d`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/ca2b40d1c68c7af29a1c07a486c1d136fb64666a) Thanks [@elpoelma](https://github.com/elpoelma)! - Fix wrong variable name in `main.js`
+
 ## 3.2.0
 
 ### Minor Changes
