@@ -118,6 +118,7 @@ export default class SimpleEditorComponent extends Component {
   @tracked initCompleted = false;
   @tracked schema;
   @tracked config;
+  @tracked uiConfig;
   @tracked nodeViews;
   @tracked activePlugins;
   @tracked citationPlugin;
