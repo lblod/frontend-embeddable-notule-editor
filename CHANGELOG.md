@@ -1,5 +1,23 @@
 # frontend-embeddable-notule-editor
 
+## 3.3.0
+
+### Minor Changes
+
+- [#207](https://github.com/lblod/frontend-embeddable-notule-editor/pull/207) [`ab49ce3`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/ab49ce3e928c86fe0489b5cecd44eb234bd634ab) Thanks [@abeforgit](https://github.com/abeforgit)! - enable alignment feature
+
+### Patch Changes
+
+- [#197](https://github.com/lblod/frontend-embeddable-notule-editor/pull/197) [`1cbd71c`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/1cbd71c5e9569b52e2f134972be1e3a529e52e11) Thanks [@redpencil-renovate-bot](https://github.com/apps/redpencil-renovate-bot)! - Bump @babel/plugin-syntax-decorators from 7.22.10 to 7.23.3
+
+- [#198](https://github.com/lblod/frontend-embeddable-notule-editor/pull/198) [`f2600d4`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/f2600d478ae0b1def8748a7b2424d8424761f801) Thanks [@redpencil-renovate-bot](https://github.com/apps/redpencil-renovate-bot)! - Bump @ember/test-helpers from 2.9.3 to 2.9.4
+
+- [#208](https://github.com/lblod/frontend-embeddable-notule-editor/pull/208) [`fa384c1`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/fa384c19719a129c77a51f4a482c3893dcb1996b) Thanks [@piemonkey](https://github.com/piemonkey)! - Hide the sidebar or insert menu when there are no plugins that make use of them.
+
+- [#202](https://github.com/lblod/frontend-embeddable-notule-editor/pull/202) [`5f64fb6`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/5f64fb6f43444e1c71a55c19166c3d55b2af1f0a) Thanks [@elpoelma](https://github.com/elpoelma)! - Add default endpoint for citation plugin (https://codex.opendata.api.vlaanderen.be:8888/sparql)
+
+- [#195](https://github.com/lblod/frontend-embeddable-notule-editor/pull/195) [`3bcf658`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/3bcf658030b25b1538636e01a1589509e9998043) Thanks [@abeforgit](https://github.com/abeforgit)! - Use consistent editor initialization method in readme
+
 ## 3.2.1
 
 ### Patch Changes
