@@ -17,6 +17,7 @@
         showToolbarBottom=null
       }}
       @showRdfaBlocks={{this.controller.showRdfaBlocks}}
+      @hideSidebar={{(not this.config.sidebar)}}
     >
       <:top>
         {{#if this.controller}}
@@ -111,41 +112,42 @@
       <:aside>
         {{#if this.controller}}
           <Sidebar as |Sidebar|>
-            <Sidebar.Collapsible @title={{t "editor.insert"}}>
-              {{#if (array-includes this.activePlugins 'besluit')}}
-                <div class="au-u-medium">{{t 'editor.besluit.title'}}</div>
-                <ArticleStructurePlugin::ArticleStructureCard
-                  @controller={{this.controller}}
-                  @options={{this.config.besluit.structures}}
-                />
-              {{/if}}
-              {{#if (array-includes this.activePlugins 'article-structure')}}
-                <div class="au-u-medium">{{t 'editor.article-structure.title'}}</div>
-                <ArticleStructurePlugin::ArticleStructureCard
-                  @controller={{this.controller}}
-                  @options={{this.config.articleStructure.structures}}
-                />
-              {{/if}}
-              <div class="au-u-medium">{{t 'editor.others.title'}}</div>
-              {{#if (array-includes this.activePlugins 'citation')}}
-                <CitationPlugin::CitationInsert
-                  @controller={{this.controller}}
-                  @config={{this.config.citation}}
-                />
-              {{/if}}
-              {{#if (array-includes this.activePlugins 'roadsign-regulation')}}
-                <RoadsignRegulationPlugin::RoadsignRegulationCard
-                  @controller={{this.controller}}
-                  @options={{this.config.roadsignRegulation}}
-                />
-              {{/if}}
-              {{#if (array-includes this.activePlugins 'template-comments')}}
-                <TemplateCommentsPlugin::Insert
-                  @controller={{this.controller}}
-                />
-              {{/if}}
-
-            </Sidebar.Collapsible>
+            {{#if this.uiConfig.insertMenu}}
+              <Sidebar.Collapsible @title={{t "editor.insert"}}>
+                {{#if (array-includes this.activePlugins 'besluit')}}
+                  <div class="au-u-medium">{{t 'editor.besluit.title'}}</div>
+                  <ArticleStructurePlugin::ArticleStructureCard
+                    @controller={{this.controller}}
+                    @options={{this.config.besluit.structures}}
+                  />
+                {{/if}}
+                {{#if (array-includes this.activePlugins 'article-structure')}}
+                  <div class="au-u-medium">{{t 'editor.article-structure.title'}}</div>
+                  <ArticleStructurePlugin::ArticleStructureCard
+                    @controller={{this.controller}}
+                    @options={{this.config.articleStructure.structures}}
+                  />
+                {{/if}}
+                <div class="au-u-medium">{{t 'editor.others.title'}}</div>
+                {{#if (array-includes this.activePlugins 'citation')}}
+                  <CitationPlugin::CitationInsert
+                    @controller={{this.controller}}
+                    @config={{this.config.citation}}
+                  />
+                {{/if}}
+                {{#if (array-includes this.activePlugins 'roadsign-regulation')}}
+                  <RoadsignRegulationPlugin::RoadsignRegulationCard
+                    @controller={{this.controller}}
+                    @options={{this.config.roadsignRegulation}}
+                  />
+                {{/if}}
+                {{#if (array-includes this.activePlugins 'template-comments')}}
+                  <TemplateCommentsPlugin::Insert
+                    @controller={{this.controller}}
+                  />
+                {{/if}}
+              </Sidebar.Collapsible>
+            {{/if}}
             {{#if (array-includes this.activePlugins 'article-structure')}}
               <ArticleStructurePlugin::StructureCard
                 @controller={{this.controller}}
