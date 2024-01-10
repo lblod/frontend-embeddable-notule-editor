@@ -121,6 +121,7 @@ export default class SimpleEditorComponent extends Component {
   @tracked nodeViews;
   @tracked activePlugins;
   @tracked citationPlugin;
+  @tracked hasSidebarPlugins;
   @service intl;
 
   get vocabString() {
@@ -275,7 +276,16 @@ export default class SimpleEditorComponent extends Component {
       ),
     ];
     const nodeViews = {};
-    const setup = { nodes, marks, plugins, nodeViews, userConfig, config };
+    const setup = {
+      nodes,
+      marks,
+      plugins,
+      nodeViews,
+      userConfig,
+      config,
+      // Control whether UI aspects are needed
+      uiConfig: { insertMenu: false, sidebar: false },
+    };
     if (activePlugins.includes('citation')) {
       this.setupCitationPlugin(setup);
     }
@@ -301,6 +311,7 @@ export default class SimpleEditorComponent extends Component {
       this.setupConfidentialityPlugin(setup);
     }
     this.config = setup.config;
+    this.uiConfig = setup.uiConfig;
     setup.nodes = { ...setup.nodes, heading, invisible_rdfa, block_rdfa };
     this.schema = new Schema({ nodes: setup.nodes, marks: setup.marks });
 
@@ -323,7 +334,7 @@ export default class SimpleEditorComponent extends Component {
     await editorPromise;
   }
 
-  setupCitationPlugin({ userConfig, config, plugins }) {
+  setupCitationPlugin({ userConfig, config, plugins, uiConfig }) {
     config.citation = mergeConfigs(
       defaultCitationPluginConfig,
       userConfig.citation
@@ -332,6 +343,8 @@ export default class SimpleEditorComponent extends Component {
     const citationPluginVariable = citationPlugin(config.citation);
     this.citationPlugin = citationPluginVariable;
     plugins.push(citationPluginVariable);
+    uiConfig.insertMenu = true;
+    uiConfig.sidebar = true;
   }
 
   setupArticleStructurePlugin(setup) {
@@ -339,6 +352,8 @@ export default class SimpleEditorComponent extends Component {
     config.articleStructure = {};
     config.articleStructure.structures = STRUCTURE_SPECS;
     setup.nodes = { ...setup.nodes, ...STRUCTURE_NODES };
+    setup.uiConfig.insertMenu = true;
+    setup.uiConfig.sidebar = true;
   }
 
   setupBesluitPlugin(setup) {
@@ -346,6 +361,8 @@ export default class SimpleEditorComponent extends Component {
     config.besluit = {};
     config.besluit.structures = besluitStructure;
     setup.nodes = { ...setup.nodes, ...besluitNodes };
+    setup.uiConfig.insertMenu = true;
+    setup.uiConfig.sidebar = true;
   }
 
   setupRoadsignPlugin(setup) {
@@ -357,6 +374,8 @@ export default class SimpleEditorComponent extends Component {
       defaultRoadsignRegulationPluginConfig,
       userConfig.roadsignRegulation
     );
+    setup.uiConfig.insertMenu = true;
+    setup.uiConfig.sidebar = true;
   }
 
   setupVariablePlugin(setup) {
@@ -439,6 +458,8 @@ export default class SimpleEditorComponent extends Component {
     nodeViews.codelist = (controller) => codelistView(controller);
     nodeViews.date = (controller) =>
       dateView(config.variable.edit.date)(controller);
+
+    setup.uiConfig.sidebar = true;
   }
 
   setupTOCPlugin(setup) {
@@ -459,6 +480,8 @@ export default class SimpleEditorComponent extends Component {
     const { nodes, nodeViews } = setup;
     nodes.templateComment = templateComment;
     nodeViews.templateComment = (controller) => templateCommentView(controller);
+    setup.uiConfig.insertMenu = true;
+    setup.uiConfig.sidebar = true;
   }
 
   setupConfidentialityPlugin(setup) {
