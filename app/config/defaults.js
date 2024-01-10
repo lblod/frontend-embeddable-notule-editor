@@ -27,7 +27,7 @@ export const defaultRdfaDatePluginConfig = {
 export const defaultCitationPluginConfig = {
   type: 'ranges',
   activeInRanges: (state) => [[0, state.doc.content.size]],
-  endpoint: '/codex/sparql',
+  endpoint: 'https://codex.opendata.api.vlaanderen.be:8888/sparql',
 };
 
 /**
