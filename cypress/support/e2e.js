@@ -18,3 +18,11 @@ import './commands';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+beforeEach(() => {
+  cy.viewport(1280, 720);
+  cy.on('window:before:load', (win) => {
+    Object.defineProperty(win.navigator, 'language', {
+      get: cy.stub().returns('en-US').as('language'),
+    });
+  });
+});
