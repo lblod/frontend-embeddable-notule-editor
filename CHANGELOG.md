@@ -1,5 +1,13 @@
 # frontend-embeddable-notule-editor
 
+## 3.4.0
+
+### Minor Changes
+
+- [#216](https://github.com/lblod/frontend-embeddable-notule-editor/pull/216) [`d056b8a`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/d056b8a0402b9ed660718e18bb73982c0ee663a9) Thanks [@abeforgit](https://github.com/abeforgit)! - Add option to have the insert menu open on first load
+
+- [#215](https://github.com/lblod/frontend-embeddable-notule-editor/pull/215) [`2a4b95d`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/2a4b95d8c351406297e1331e5f31be7d18b4b47c) Thanks [@abeforgit](https://github.com/abeforgit)! - enable resizeable table plugin
+
 ## 3.3.0
 
 ### Minor Changes
