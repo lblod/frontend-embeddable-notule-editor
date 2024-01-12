@@ -313,6 +313,7 @@ export default class SimpleEditorComponent extends Component {
     }
     this.config = setup.config;
     this.uiConfig = setup.uiConfig;
+    this.uiConfig.expandInsertMenu = userConfig.ui?.expandInsertMenu ?? false;
     setup.nodes = { ...setup.nodes, heading, invisible_rdfa, block_rdfa };
     this.schema = new Schema({ nodes: setup.nodes, marks: setup.marks });
 

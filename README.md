@@ -251,6 +251,7 @@ Any configuration value not provided will use the default value, which are shown
 There are some options you can pass to `pluginsConfig` in `initEditor` that are not connected to a plugin.
 - `docContent: 'block+'`: The property docContent specifies which nodes are allowed in the document. By default we allow one or more nodes of the group block, which includes most content. A group can be seen as a supertype that includes multiple types. For more info about this check the [Prosemirror docs](https://prosemirror.net/docs/guide/#schema.content_expressions).  
   See `public/test.html` where `docContent` is specified to allow a [table of contents](#table-of-contents) and [article-structure](#article-structure) nodes in a specific order.
+- `ui: { expandInsertMenu: false }`: wether to automatically open the "insert" sidebar menu upon load.
 
 ### Article Structure
 This plugin is in charge of inserting and manipulating structures. There are several insertion buttons in the right sidebar under *Document Structuren*.

@@ -113,7 +113,9 @@
         {{#if this.controller}}
           <Sidebar as |Sidebar|>
             {{#if this.uiConfig.insertMenu}}
-              <Sidebar.Collapsible @title={{t "editor.insert"}}>
+              <Sidebar.Collapsible
+                @title={{t "editor.insert"}}
+                @expandedInitially={{this.uiConfig.expandInsertMenu}}>
                 {{#if (array-includes this.activePlugins 'besluit')}}
                   <div class="au-u-medium">{{t 'editor.besluit.title'}}</div>
                   <ArticleStructurePlugin::ArticleStructureCard
