@@ -38,7 +38,7 @@ import {
 import {
   tableKeymap,
   tableNodes,
-  tablePlugin,
+  tablePlugins,
 } from '@lblod/ember-rdfa-editor/plugins/table';
 import {
   STRUCTURE_NODES,
@@ -264,7 +264,7 @@ export default class SimpleEditorComponent extends Component {
       superscript,
     };
     const plugins = [
-      tablePlugin,
+      ...tablePlugins,
       tableKeymap,
       linkPasteHandler(nodes.link),
       firefoxCursorFix(),
