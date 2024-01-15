@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-module.exports = {
+module.exports = (environment) => ({
   entry: ['./main.js'],
   output: {
     path: __dirname + '/dist',
@@ -13,6 +13,10 @@ module.exports = {
       resourceRegExp: /@lblod\/embeddable-say-editor\/app/,
     }),
   ],
+  mode: environment.development ? 'development' : 'production',
+  devServer: {
+    port: environment.port || 4100,
+  },
   module: {
     rules: [
       {
@@ -42,4 +46,4 @@ module.exports = {
     ],
   },
   // plugins: []
-};
+});
