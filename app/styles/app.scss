@@ -80,6 +80,10 @@ div.table-of-contents {
     p + * {
       margin-top: var(--say-paragraph-spacing, var(--default-paragraph-spacing));
     }
+
+    .column-resize-handle {
+      margin-top: 0;
+    }
   }
 }
 
