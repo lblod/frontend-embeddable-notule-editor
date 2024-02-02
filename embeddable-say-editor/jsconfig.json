@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
-      "experimentalDecorators": true
-  }
+    "experimentalDecorators": true
+  },
+  "exclude": ["node_modules", "dist", "ember-build"]
 }
