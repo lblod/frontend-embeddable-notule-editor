@@ -16,7 +16,14 @@
 
     "cypress:open": "npm run cypress:open --workspace test-app",
     "cypress:run": "npm run cypress:run --workspace test-app",
-    "ci": "start-server-and-test start http://localhost:8080 cypress:run"
+    "ci": "start-server-and-test start http://localhost:8080 cypress:run",
+
+    "lint": "npm run lint --workspaces --if-present",
+    "lint:fix": "npm run lint:fix --workspaces --if-present",
+    "lint:js": "npm run lint:js --workspaces --if-present",
+    "lint:js:fix": "npm run lint:js:fix --workspaces --if-present",
+    "lint:hbs": "npm run lint:hbs --workspaces --if-present",
+    "lint:hbs:fix": "npm run lint:hbs:fix --workspaces --if-present"
   },
   "devDependencies": {
     "changesets-release-it-plugin": "^0.1.2",
