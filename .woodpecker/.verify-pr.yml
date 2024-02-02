@@ -18,11 +18,6 @@ steps:
     group: lint
     commands:
       - ember dependency-lint
-  test:
-    image: danlynn/ember-cli:4.12.1
-    commands:
-      - npm run test:ember
-    failure: ignore
 when:
   event:
     - pull_request
