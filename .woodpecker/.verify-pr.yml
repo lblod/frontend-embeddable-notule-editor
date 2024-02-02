@@ -17,7 +17,7 @@ steps:
     image: danlynn/ember-cli:4.12.1
     group: lint
     commands:
-      - ember dependency-lint
+      - npm run lint:dependencies
 when:
   event:
     - pull_request
