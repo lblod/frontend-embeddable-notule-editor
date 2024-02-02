@@ -1,26 +1,39 @@
+const path = require('path');
 const webpack = require('webpack');
+const CopyPlugin = require('copy-webpack-plugin');
+
 module.exports = (environment) => ({
   entry: ['./main.js'],
   output: {
-    path: __dirname + '/dist',
-    filename: 'embeddable.js',
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'index.js',
     globalObject: 'this',
     library: { name: '@lblod/embeddable-say-editor', type: 'umd' },
   },
   externals: {},
+
   plugins: [
     new webpack.IgnorePlugin({
       resourceRegExp: /@lblod\/embeddable-say-editor\/app/,
     }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, '../README.md'),
+          to: path.resolve(__dirname),
+        },
+        {
+          from: path.resolve(__dirname, '../LICENSE.md'),
+          to: path.resolve(__dirname),
+        },
+      ],
+    }),
   ],
   mode: environment.development ? 'development' : 'production',
-  devServer: {
-    port: environment.port || 4100,
-  },
   module: {
     rules: [
       {
-        test: /dist\/assets\/.*\.js$/,
+        test: /ember-build\/assets\/.*\.js$/,
         type: 'asset/source',
         exclude: /node_modules/,
         // use: {
@@ -45,5 +58,4 @@ module.exports = (environment) => ({
       },
     ],
   },
-  // plugins: []
 });

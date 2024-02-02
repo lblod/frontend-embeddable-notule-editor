@@ -1,0 +1,112 @@
+{
+  "name": "@lblod/embeddable-say-editor",
+  "version": "3.4.0",
+  "description": "Notule editor which may be embedded in another application.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lblod/frontend-embeddable-notule-editor"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "README"
+  ],
+  "license": "MIT",
+  "author": "redpencil.io",
+  "scripts": {
+    "start": "concurrently \"npm:ember:watch\" \"npm:webpack:watch\"",
+    "build": "npm run ember:build && npm run webpack:build",
+    "ember:watch": "ember build --watch",
+    "ember:build": "ember build --environment=production",
+    "webpack:watch": "webpack --watch --env development",
+    "webpack:build": "webpack",
+    "prepack": "npm run build",
+
+    "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
+    "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
+    "lint:hbs": "ember-template-lint .",
+    "lint:hbs:fix": "ember-template-lint . --fix",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "ember-intl": "^5.7.2"
+  },
+  "devDependencies": {
+    "@appuniversum/ember-appuniversum": "^2.18.0",
+    "@babel/core": "^7.23.7",
+    "@babel/eslint-parser": "^7.23.3",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-decorators": "^7.23.7",
+    "@babel/plugin-syntax-decorators": "^7.23.3",
+    "@csstools/postcss-sass": "^5.1.1",
+    "@ember/optional-features": "^2.0.0",
+    "@ember/render-modifiers": "^2.1.0",
+    "@ember/string": "^3.0.1",
+    "@ember/test-helpers": "^2.9.4",
+    "@glimmer/component": "^1.1.2",
+    "@glimmer/tracking": "^1.1.2",
+    "@lblod/ember-environment-banner": "^0.4.0",
+    "@lblod/ember-rdfa-editor": "^8.3.0",
+    "@lblod/ember-rdfa-editor-lblod-plugins": "^15.2.2",
+    "broccoli-asset-rev": "^3.0.0",
+    "concurrently": "^8.2.2",
+    "copy-webpack-plugin": "^12.0.2",
+    "ember-auto-import": "^2.7.2",
+    "ember-cli": "~4.12.1",
+    "ember-cli-app-version": "^6.0.0",
+    "ember-cli-babel": "^7.26.11",
+    "ember-cli-dependency-checker": "^3.3.2",
+    "ember-cli-dependency-lint": "^2.0.1",
+    "ember-cli-htmlbars": "^6.2.0",
+    "ember-cli-inject-live-reload": "^2.1.0",
+    "ember-cli-postcss": "^8.2.0",
+    "ember-cli-sri": "^2.1.1",
+    "ember-cli-terser": "^4.0.2",
+    "ember-concurrency": "^2.1.2",
+    "ember-concurrency-decorators": "^2.0.3",
+    "ember-fetch": "^8.1.2",
+    "ember-load-initializers": "^2.1.2",
+    "ember-modifier": "^3.2.7",
+    "ember-page-title": "^7.0.0",
+    "ember-power-select": "^6.0.1",
+    "ember-qunit": "^6.2.0",
+    "ember-resolver": "^10.0.0",
+    "ember-source": "~4.12.0",
+    "ember-svg-jar": "^2.4.7",
+    "ember-template-lint": "^5.13.0",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-ember": "^11.5.0",
+    "eslint-plugin-n": "^16.2.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-qunit": "^8.0.0",
+    "loader.js": "^4.7.0",
+    "lodash.mergewith": "^4.6.2",
+    "postcss-rem-to-pixel": "^4.1.2",
+    "postcss-scss": "^4.0.9",
+    "prettier": "^2.8.7",
+    "qunit": "^2.20.0",
+    "qunit-dom": "^2.0.0",
+    "sass": "^1.55.0",
+    "tracked-built-ins": "^3.1.1",
+    "webpack": "^5.78.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "overrides": {
+    "@lblod/ember-rdfa-editor": {
+      "ember-focus-trap": "^1.1.0"
+    }
+  },
+  "engines": {
+    "node": "16.* || >= 18"
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "browserslist": [
+    "last 2 Chrome version",
+    "last 2 Firefox version",
+    "last 2 Edge version"
+  ]
+}

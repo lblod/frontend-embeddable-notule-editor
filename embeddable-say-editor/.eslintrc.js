@@ -13,31 +13,20 @@ module.exports = {
       ],
     },
   },
-  plugins: ['ember', 'cypress'],
+  plugins: ['ember'],
   extends: [
     'eslint:recommended',
     'plugin:ember/recommended',
     'plugin:prettier/recommended',
-    'plugin:cypress/recommended',
   ],
   env: {
     browser: true,
-  },
-  rules: {
-    'n/no-unpublished-require': [
-      'error',
-      {
-        allowModules: ['cypress'],
-      },
-    ],
   },
   overrides: [
     // node files
     {
       files: [
         './.eslintrc.js',
-        './.prettierrc.js',
-        './.stylelintrc.js',
         './.template-lintrc.js',
         './ember-cli-build.js',
         './testem.js',
@@ -45,7 +34,7 @@ module.exports = {
         './config/**/*.js',
         './lib/*/index.js',
         './server/**/*.js',
-        './cypress.config.js',
+        './webpack.config.js',
       ],
       parserOptions: {
         sourceType: 'script',
@@ -55,11 +44,6 @@ module.exports = {
         node: true,
       },
       extends: ['plugin:n/recommended'],
-    },
-    {
-      // test files
-      files: ['tests/**/*-test.{js,ts}'],
-      extends: ['plugin:qunit/recommended'],
     },
   ],
 };

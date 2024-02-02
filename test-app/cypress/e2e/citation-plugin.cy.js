@@ -1,6 +1,6 @@
 describe('citation-plugin', () => {
   beforeEach(() => {
-    cy.visit('test.html');
+    cy.visit('/');
 
     cy.get('.say-editor-hints__insert').contains('button', 'Insert').click();
 
