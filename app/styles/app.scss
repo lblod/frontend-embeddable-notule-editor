@@ -85,6 +85,16 @@ div.table-of-contents {
       margin-top: 0;
     }
   }
+
+  .say-editor__paper {
+    &.min-content {
+      min-height: min-content;
+
+      .say-content {
+        min-height: min-content;
+      }
+    }
+  }
 }
 
 .au-c-icon {

@@ -20,23 +20,23 @@ const srcDoc = `
 </html>
 `;
 
-/**
- * @typedef {Object} RenderOpts
- * @property {HTMLElement} element
- * @property {string?} title
- * @property {string} width
- * @property {string} height
- * @property {string[]?} plugins
- * @property {Record<string, any>} options
- */
+const EDITOR_CONTAINER_ID = 'my-editor';
 
 /**
  * Renders the editor in an iframe and initializes it with the passed in plugins
  * and options. It waits for everything to initialize and returns the fully initialized
  * editor element, which has access to a controller and other methods (see docs)
- * @param {RenderOpts} options
- * @param {Object.<string, string>} Record of CSS Variables and their values to be applied to the editor
- * @returns the enhanced editor element.
+ *
+ * @param {Object} options - The options for rendering the editor.
+ * @param {HTMLElement} options.element - The HTML element to render the editor in.
+ * @param {string} [options.title] - The title for the editor.
+ * @param {string} options.width - The width of the editor.
+ * @param {string} options.height - The height of the editor.
+ * @param {string[]} [options.plugins=[]] - The plugins to initialize the editor with.
+ * @param {Record<string, any>} [options.options={}] - The options to initialize the editor with.
+ * @param {Object.<string, string>} [options.cssVariables={}] - Record of CSS Variables and their values to be applied to the editor.
+ * @param {boolean} [options.growEditor=false] - Whether the editor should grow to fit its content.
+ * @returns {Promise<HTMLElement>} - Returns a promise that resolves to the fully initialized editor element.
  */
 export async function renderEditor({
   element,
@@ -46,6 +46,7 @@ export async function renderEditor({
   plugins = [],
   options = {},
   cssVariables = {},
+  growEditor = false,
 }) {
   // build the iframe
   const editorFrame = document.createElement('iframe');
@@ -87,7 +88,7 @@ export async function renderEditor({
 
   // append container
   const editorContainer = document.createElement('div');
-  editorContainer.setAttribute('id', 'my-editor');
+  editorContainer.setAttribute('id', EDITOR_CONTAINER_ID);
   editorContainer.classList.add('demo-content');
   editorContainer.setAttribute(
     'prefix',
@@ -104,7 +105,7 @@ export async function renderEditor({
       name: '@lblod/embeddable-say-editor',
     });
   // Launch the editor
-  await App.visit('/', { rootElement: editorContainer });
+  await App.visit('/', { rootElement: `#${EDITOR_CONTAINER_ID}` });
   // get the element
   const editorElement =
     editorContainer.getElementsByClassName('notule-editor')[0];
@@ -120,6 +121,24 @@ export async function renderEditor({
     Object.entries(cssVariables).forEach(([key, value]) => {
       editorElement.style.setProperty(key, value);
     });
+  }
+
+  if (growEditor) {
+    const editorPaper =
+      editorContainer.getElementsByClassName('say-editor__paper');
+
+    const editorPaperElement = editorPaper[0];
+    editorPaperElement.classList.add('min-content');
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        const { height } = entry.contentRect;
+
+        editorFrame.style.height = `${height}px`;
+      }
+    });
+
+    resizeObserver.observe(frameDoc);
   }
 
   return editorElement;
