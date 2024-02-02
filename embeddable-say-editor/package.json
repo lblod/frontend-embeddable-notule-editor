@@ -80,7 +80,6 @@
     "eslint-plugin-ember": "^11.5.0",
     "eslint-plugin-n": "^16.2.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-qunit": "^8.0.0",
     "loader.js": "^4.7.0",
     "lodash.mergewith": "^4.6.2",
     "postcss-rem-to-pixel": "^4.1.2",
