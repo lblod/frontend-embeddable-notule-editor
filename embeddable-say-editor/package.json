@@ -21,7 +21,6 @@
     "webpack:watch": "webpack --watch --env development",
     "webpack:build": "webpack",
     "prepack": "npm run build",
-
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
     "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
     "lint:hbs": "ember-template-lint .",

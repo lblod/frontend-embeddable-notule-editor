@@ -13,11 +13,9 @@
     "start:addon": "npm start --workspace embeddable-say-editor",
     "start:tests": "npm start --workspace test-app",
     "release": "release-it",
-
     "cypress:open": "npm run cypress:open --workspace test-app",
     "cypress:run": "npm run cypress:run --workspace test-app",
     "ci": "start-server-and-test start http://localhost:8080 cypress:run",
-
     "lint": "npm run lint --workspaces --if-present",
     "lint:fix": "npm run lint:fix --workspaces --if-present",
     "lint:js": "npm run lint:js --workspaces --if-present",
