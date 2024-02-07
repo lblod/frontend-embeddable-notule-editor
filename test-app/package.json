@@ -4,7 +4,7 @@
   "version": "3.4.0",
   "license": "MIT",
   "scripts": {
-    "start": "webpack serve --open --env development",
+    "start": "webpack serve --env development",
     "build": "webpack",
     "cypress:open": "cypress open --config baseUrl=http://localhost:8080",
     "cypress:run": "cypress run --config baseUrl=http://localhost:8080",

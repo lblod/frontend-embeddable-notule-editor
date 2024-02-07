@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "npm run build --workspace embeddable-say-editor",
-    "start": "concurrently 'npm:start:*'",
+    "start": "concurrently --kill-others 'npm:start:*'",
     "start:addon": "npm start --workspace embeddable-say-editor",
     "start:tests": "npm start --workspace test-app",
     "release": "release-it",
