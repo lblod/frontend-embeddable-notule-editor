@@ -9,7 +9,7 @@ module.exports = {
     requireConfigFile: false,
     babelOptions: {
       plugins: [
-        ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: true }],
+        ['@babel/plugin-syntax-decorators', { decoratorsBeforeExport: true }],
       ],
     },
   },
