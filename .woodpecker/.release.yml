@@ -9,6 +9,9 @@ steps:
       token:
         from_secret: npm_access_token
       access: public
+    when:
+      ref:
+        exclude: refs/tags/*-next.*
   push-tagged-build:
     image: plugins/docker
     settings:
