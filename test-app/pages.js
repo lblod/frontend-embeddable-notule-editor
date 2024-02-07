@@ -8,4 +8,8 @@ module.exports = {
     title: 'Multiple editors',
     source: './src/multiple-editors.js',
   },
+  plugins: {
+    title: 'Plugins',
+    source: './src/plugins.js',
+  },
 };
