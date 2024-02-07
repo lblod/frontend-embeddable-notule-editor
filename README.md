@@ -45,6 +45,7 @@ const editor = await renderEditor({
   title: 'my editor', // optional, this will set the "title" attribute of the iframe
   width: '500px', // width attribute of the iframe
   height: '300px', // height attribute of the iframe
+  growEditor: true, // optional, if true the editor will grow to fit the content, this will disregard the height attribute
   plugins: [], // array of plugin names (see below)
   options: {} // configuration object (see below)
   })
@@ -112,9 +113,10 @@ window.addEventListener('load', async function() {
     element: editorContainer,
     title: 'my editor', // optional, this will set the "title" attribute of the iframe
     width: '500px', // width attribute of the iframe
+    growEditor: true, // optional, if true the editor will grow to fit the content, this will disregard the height attribute
     height: '300px', // height attribute of the iframe
     plugins: [], // array of plugin names (see below)
-    options: {} // configuration object (see below)
+    options: {}, // configuration object (see below)
   })
   await editorElement.initEditor(arrayOfPluginNames, userConfigObject);
 })
