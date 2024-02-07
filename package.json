@@ -16,6 +16,7 @@
     "cypress:open": "npm run cypress:open --workspace test-app",
     "cypress:run": "npm run cypress:run --workspace test-app",
     "ci": "start-server-and-test start http://localhost:8080 cypress:run",
+    "docker:build-test": "docker build -f test-app/Dockerfile .",
     "lint": "npm run lint --workspaces --if-present",
     "lint:fix": "npm run lint:fix --workspaces --if-present",
     "lint:js": "npm run lint:js --workspaces --if-present",

@@ -1,0 +1,3 @@
+**/node_modules
+embeddable-say-editor/dist
+test-app/dist
