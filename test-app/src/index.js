@@ -1,6 +1,8 @@
 import { renderEditor } from '@lblod/embeddable-say-editor';
+import { router } from './router';
 
 const container = document.createElement('div');
+document.body.appendChild(router);
 document.body.appendChild(container);
 const editor = await renderEditor({
   element: container,

@@ -1,16 +1,6 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-
-const pages = {
-  index: {
-    title: 'Index',
-    source: './src/index.js',
-  },
-  'multiple-editors': {
-    title: 'Multiple editors',
-    source: './src/multiple-editors.js',
-  },
-};
+const pages = require('./pages');
 
 const htmlPlugins = [];
 const entries = {};
