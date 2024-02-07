@@ -5,7 +5,14 @@
     "skipChecks": true
   },
   "plugins": {
-    "changesets-release-it-plugin": {}
+    "changesets-release-it-plugin": {},
+    "@release-it/bumper": {
+      "out": {
+        "file": "test-app/docker-compose.yml",
+        "path": "services.test-app.image",
+        "versionPrefix": "lblod/embeddable-say-editor-test:v"
+      }
+    }
   },
   "npm": {
     "publish": false,

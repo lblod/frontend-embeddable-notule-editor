@@ -1,0 +1,6 @@
+version: "3.8"
+services:
+  test-app:
+    image: lblod/embeddable-say-editor-test:v3.4.0
+    ports:
+      - "80:80"
