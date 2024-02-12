@@ -2,7 +2,7 @@
   "$schema": "https://unpkg.com/@changesets/config@2.3.1/schema.json",
   "changelog": ["@changesets/changelog-github", {"repo": "lblod/frontend-embeddable-notule-editor"}],
   "commit": false,
-  "fixed": [],
+  "fixed": [["@lblod/embeddable-say-editor", "test-app"]],
   "linked": [],
   "access": "restricted",
   "baseBranch": "master",

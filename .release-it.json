@@ -1,9 +1,12 @@
 {
   "github": {
-    "release": true
+    "release": true,
+    "web": true,
+    "skipChecks": true
   },
   "plugins": {
     "changesets-release-it-plugin": {}
+    }
   },
   "npm": {
     "publish": false,

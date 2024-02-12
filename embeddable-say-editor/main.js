@@ -1,9 +1,9 @@
-import vendor from './dist/assets/vendor.js';
-import vendorBundle from './dist/assets/@lblod/embeddable-say-editor-vendor-bundle.js';
-import app from './dist/assets/@lblod/embeddable-say-editor-app.js';
-import embeddable from './dist/assets/@lblod/embeddable-say-editor.js';
-import editorCss from './dist/assets/@lblod/embeddable-say-editor.css';
-import vendorCss from './dist/assets/vendor.css';
+import vendor from './ember-build/assets/vendor.js';
+import vendorBundle from './ember-build/assets/@lblod/embeddable-say-editor-vendor-bundle.js';
+import app from './ember-build/assets/@lblod/embeddable-say-editor-app.js';
+import embeddable from './ember-build/assets/@lblod/embeddable-say-editor.js';
+import editorCss from './ember-build/assets/@lblod/embeddable-say-editor.css';
+import vendorCss from './ember-build/assets/vendor.css';
 
 const srcDoc = `
 <!DOCTYPE html>

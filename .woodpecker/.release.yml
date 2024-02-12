@@ -3,19 +3,25 @@ steps:
     image: danlynn/ember-cli:4.12.1
     commands:
       - npm ci --ignore-scripts
+  publish-pre-release:
+    image: plugins/npm
+    settings:
+      token:
+        from_secret: npm_access_token
+      access: public
+      tag: next
+    when:
+      ref:
+        include: refs/tags/*-next.*
   publish:
     image: plugins/npm
     settings:
       token:
         from_secret: npm_access_token
       access: public
-  push-tagged-build:
-    image: plugins/docker
-    settings:
-      repo: lblod/frontend-embeddable-editor
-      tags: "${CI_COMMIT_TAG##v}"
-      purge: true
-    secrets: [ docker_username, docker_password ]
+    when:
+      ref:
+        exclude: refs/tags/*-next.*
 when:
   event: tag
   ref: refs/tags/v*

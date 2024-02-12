@@ -59,7 +59,7 @@ module.exports = function (defaults) {
     },
     svgJar: {
       sourceDirs: [
-        'node_modules/@appuniversum/ember-appuniversum/public/icons',
+        '../node_modules/@appuniversum/ember-appuniversum/public/icons',
       ],
     },
   });
