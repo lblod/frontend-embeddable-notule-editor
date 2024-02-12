@@ -22,14 +22,6 @@ steps:
     when:
       ref:
         exclude: refs/tags/*-next.*
-  push-tagged-build:
-    image: plugins/docker
-    settings:
-      dockerfile: test-app/Dockerfile
-      repo: lblod/embeddable-say-editor-test
-      tags: "${CI_COMMIT_TAG##v}"
-      purge: true
-    secrets: [ docker_username, docker_password ]
 when:
   event: tag
   ref: refs/tags/v*

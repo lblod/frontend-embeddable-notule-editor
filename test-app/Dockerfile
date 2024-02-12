@@ -1,3 +1,4 @@
+# NOTE Needs to be built with the root of the monorepo as the context
 FROM node:lts-iron as builder
 
 LABEL maintainer="info@redpencil.io"

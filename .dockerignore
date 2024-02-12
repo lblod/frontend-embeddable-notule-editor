@@ -1,3 +1,5 @@
 **/node_modules
+**/.eslintcache
 embeddable-say-editor/dist
+embeddable-say-editor/ember-build
 test-app/dist
