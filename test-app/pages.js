@@ -8,6 +8,10 @@ module.exports = {
     title: 'Multiple editors',
     source: './src/multiple-editors.js',
   },
+  'multiple-growing-editors': {
+    title: 'Multiple growing editors',
+    source: './src/multiple-growing-editors.js',
+  },
   plugins: {
     title: 'Plugins',
     source: './src/plugins.js',
