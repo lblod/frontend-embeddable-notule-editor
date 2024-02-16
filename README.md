@@ -9,6 +9,8 @@ The readme is structured as follows:
 - [Code Example](#basic-example-the-editor-in-an-html-file): An example which gives a basic showcase on how to initialize and use the editor.
 - [Editor API](#editor-api): list of methods and properties to customize the editor and interact with it through code.
 - [Configuring The Editor](#configuring-the-editor): ways to configure the editor during loading. The editor includes a list of plugins that can be enabled and configured as explained in [Managing Plugins](#managing-plugins). 
+- [Important Concepts](#important-concepts): Important concepts that help to understand the editor.
+- [Development](#development-of-lblodembeddable-say-editor): Set-up details if you want to contribute to development of the embeddable editor.
 
 ## Live Demo
 A [live demo](https://embeddable.gelinkt-notuleren.lblod.info) is available for easy testing. 
@@ -188,57 +190,8 @@ Currently, due to portability concerns, this system is not directly exposed to t
 Instead, embeddable ships with a few pre-defined plugins which can be turned on or off, and have 
 some of their configuration exposed. 
 
-However, for using and configuring embeddable, it is still useful to understand some of the concepts 
+However, for using and configuring embeddable, it is still useful to [understand some of the concepts](#important-concepts)
 that plugins use to create a smart editor.
-
-### RDFA
-The [rdfa](https://rdfa.info/) standard is a way to add data annotations to xml (and in particular, html) documents.
-It uses linked data as its data modelling method. 
-RDFA-annotated html is the one and only document format of the say-editor. Because it is a strict superset of html, 
-this also means that the editor can be used as a plain WYSIWYG html editor. But the addition of rdfa-aware
-tools and features is the editor's unique strength, and the reason for its existence.
-
-Throughout the editor and its plugins, the rdfa-annotated html document is the single format which contains all information.
-This means that any document metadata is also stored in this standard way, allowing easy interop with other
-linked-data tools.
-
-In fact, it can be interesting to paste the output of `getHtmlContent()` in the [reference rdfa parser](https://rdfa.info/play/) 
-to see what data the parser can extract from the document.
-
-(Note: it's important to use the `getHtmlContent()` method as opposed to copying the html from the browser inspector. We do not guarantee 
-compliance with the standard in the live, editable, html.)
-
-### RDFA-aware plugins
-
-Most plugins use RDFA in some way to provide their features. 
-
-In some cases, they simply use it as a way to store information they need to operate. 
-For example: the [variable plugin](#rdfa-variables) will insert 
-nodes in the document that are rdfa-annotated with certain properties 
-that the plugin interacts with.
-When loading a document from html, this is what the plugin will use to determine whether to render 
-its special interactive "pills" for a particular node. 
-
-In other cases, plugins use rdfa to determine whether they should be "active" (show their UI) or not.
-This is usually done based on the idea of "context". 
-
-Because html, and also the internal prosemirror datastructure, is a tree, there is an inherent hierarchy to the document. 
-At the top there's a root element, usually a `div`, which we also call the `doc` node, which contains the entire document.
-It also contains the selection, the blinking text cursor or blue region that you are surely familiar with.
-This idea of the selection being "inside" a certain node is what drives the context-aware plugins.
-Essentially, all they do is walk up the tree structure from the point of the cursor, and see if they encounter 
-any nodes they're interested in.
-
-This means we can have different plugins active depending on where you are in the document!
-
-A third way a plugin might use rdfa, is by searching the document for the existence of a particular rdfa-annotated node,
-and interacting with it (by adding content in that node, for example).
-
-_Technical note: rather than interacting with html/rdfa directly, plugins interact with prosemirror's internal datastructure. 
-This is why adjusting the page html in the inspector or with javascript will not give any meaningful results. The provided interfaces are the only supported ways to interact with the 
-editor. In fact, the plugins each get their own controller, which is identical to the 
-controller we expose on the embeddable element._
-
 
 ## Managing Plugins
 Embeddable ships with the following plugins available. 
@@ -657,6 +610,56 @@ Below example expects that the editor was attached to an element with id `my-edi
 
 * `--say-paragraph-spacing`: spacing between paragraphs, default is 12px.
 * `--say-editor-line-height`: line height of the editor, default is 1.5.
+
+## Important Concepts
+
+### RDFA
+The [rdfa](https://rdfa.info/) standard is a way to add data annotations to xml (and in particular, html) documents.
+It uses linked data as its data modelling method.
+RDFA-annotated html is the one and only document format of the say-editor. Because it is a strict superset of html,
+this also means that the editor can be used as a plain WYSIWYG html editor. But the addition of rdfa-aware
+tools and features is the editor's unique strength, and the reason for its existence.
+
+Throughout the editor and its plugins, the rdfa-annotated html document is the single format which contains all information.
+This means that any document metadata is also stored in this standard way, allowing easy interop with other
+linked-data tools.
+
+In fact, it can be interesting to paste the output of `getHtmlContent()` in the [reference rdfa parser](https://rdfa.info/play/)
+to see what data the parser can extract from the document.
+
+(Note: it's important to use the `getHtmlContent()` method as opposed to copying the html from the browser inspector. We do not guarantee
+compliance with the standard in the live, editable, html.)
+
+### RDFA-aware plugins
+
+Most plugins use RDFA in some way to provide their features.
+
+In some cases, they simply use it as a way to store information they need to operate.
+For example: the [variable plugin](#rdfa-variables) will insert
+nodes in the document that are rdfa-annotated with certain properties
+that the plugin interacts with.
+When loading a document from html, this is what the plugin will use to determine whether to render
+its special interactive "pills" for a particular node.
+
+In other cases, plugins use rdfa to determine whether they should be "active" (show their UI) or not.
+This is usually done based on the idea of "context".
+
+Because html, and also the internal prosemirror datastructure, is a tree, there is an inherent hierarchy to the document.
+At the top there's a root element, usually a `div`, which we also call the `doc` node, which contains the entire document.
+It also contains the selection, the blinking text cursor or blue region that you are surely familiar with.
+This idea of the selection being "inside" a certain node is what drives the context-aware plugins.
+Essentially, all they do is walk up the tree structure from the point of the cursor, and see if they encounter
+any nodes they're interested in.
+
+This means we can have different plugins active depending on where you are in the document!
+
+A third way a plugin might use rdfa, is by searching the document for the existence of a particular rdfa-annotated node,
+and interacting with it (by adding content in that node, for example).
+
+_Technical note: rather than interacting with html/rdfa directly, plugins interact with prosemirror's internal datastructure.
+This is why adjusting the page html in the inspector or with javascript will not give any meaningful results. The provided interfaces are the only supported ways to interact with the
+editor. In fact, the plugins each get their own controller, which is identical to the
+controller we expose on the embeddable element._
 
 # Development of @lblod/embeddable-say-editor
 
