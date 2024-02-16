@@ -115,10 +115,9 @@ window.addEventListener('load', async function() {
     width: '500px', // width attribute of the iframe
     growEditor: true, // optional, if true the editor will grow to fit the content, this will disregard the height attribute
     height: '300px', // height attribute of the iframe
-    plugins: [], // array of plugin names (see below)
-    options: {}, // configuration object (see below)
+    plugins: arrayOfPluginNames, // array of plugin names (see below)
+    options: configurationOptions, // configuration object (see below)
   })
-  await editorElement.initEditor(arrayOfPluginNames, userConfigObject);
 })
 ```
 
@@ -132,7 +131,7 @@ This controller is an instance of the [SayController](https://github.com/lblod/e
 
 #### editorElement API
 These are functions available from the editor element, which is the HTML element with the class `notule-editor`. 
-- `async initEditor(arrayOfPluginNames: string[], userConfigObject)`: Initialize the editor by passing an array of plugin names that should be activated and an object that contains the configuration for the editor and its plugins. See [Managing Plugins](managing-plugins) for more info.  
+- `async initEditor(arrayOfPluginNames: string[], configurationOptions)`: Initialize the editor by passing an array of plugin names that should be activated and an object that contains the configuration for the editor and its plugins. See [Managing Plugins](managing-plugins) for more info.
   :warning: **`initEditor` has to be called before accessing any other methods**.
 - `enableEnvironmentBanner()`: enable the banner that shows the environment and versions of plugins used.
 - `disableEnvironmentBanner()`: disable the banner.
@@ -164,11 +163,20 @@ Do note that more advanced commands will need knowledge about the used schema an
 # Configuring The Editor
 
 The editor can be customized to best fit your application. 
+* [General Config Options](#general-config-options): Options that do not relate to plugins
 * [Plugin System](#plugin-system): An overview of some of the general concepts behind our plugins.
 * [Managing Plugins](#managing-plugins): A list of plugins you can enable, including explanation of how to use them
 * [Environment banner](#enablingdisabling-the-environment-banner): how to enable/disable this banner
 * [Localization](#localization): language options in the editor
 * [Styling](#styling)
+
+## General Config options
+
+There are some options you can pass to `options` in `renderEditor` that are not connected to a plugin.
+- `docContent: 'block+'`: The property docContent specifies which nodes are allowed in the document. By default we allow one or more nodes of the group block, which includes most content. A group can be seen as a supertype that includes multiple types. For more info about this check the [Prosemirror docs](https://prosemirror.net/docs/guide/#schema.content_expressions).
+  See `public/test.html` where `docContent` is specified to allow a [table of contents](#table-of-contents) and [article-structure](#article-structure) nodes in a specific order.
+- `ui: { expandInsertMenu: false }`: wether to automatically open the "insert" sidebar menu upon load.
+
 ## Plugin system
 
 The Say-editor is conceptualized as a core component which can be extended through a powerful plugin system.
@@ -235,7 +243,7 @@ controller we expose on the embeddable element._
 Embeddable ships with the following plugins available. 
 This Readme contains all the important info and configuration for the plugins. For more technical and Ember-specific explanations of every plugin, you can check out the Readme of [lblod/ember-rdfa-editor-lblod-plugins](https://github.com/lblod/ember-rdfa-editor-lblod-plugins).
 
-Every plugin can be enabled by passing its name to the `arrayOfPluginNames` array and optionally its configuration to `userConfigObject` with the initialization function `initEditor(arrayOfPluginNames, userConfigObject)`.  
+Every plugin can be enabled by passing its name to the `plugins` array and optionally its configuration in the `options` object with the `renderEditor` helper or in the initialization function `initEditor(arrayOfPluginNames, configurationOptions)`.
 Any configuration value not provided will use the default value, which are shown in the example configs of the plugins.
 
 * [article-structure](#article-structure): Provides structures like titles, chapters, articles and paragraphs, which can be used to better manage official documents like regulatory statements. It allows you to insert, move and delete them.
@@ -249,12 +257,6 @@ Any configuration value not provided will use the default value, which are shown
 * [template-comments](#template-comments): Allows insertion and editing of comment blocks to provide extra information to a user filling in a document. These are visually distinct units with a special RDFa type, which allows them to be filtered out during postprocessing.
 * [Confidential Content](#confidential-content): Allows annotation of parts of the text to be redacted
 
-##### General Config options
-There are some options you can pass to `pluginsConfig` in `initEditor` that are not connected to a plugin.
-- `docContent: 'block+'`: The property docContent specifies which nodes are allowed in the document. By default we allow one or more nodes of the group block, which includes most content. A group can be seen as a supertype that includes multiple types. For more info about this check the [Prosemirror docs](https://prosemirror.net/docs/guide/#schema.content_expressions).  
-  See `public/test.html` where `docContent` is specified to allow a [table of contents](#table-of-contents) and [article-structure](#article-structure) nodes in a specific order.
-- `ui: { expandInsertMenu: false }`: wether to automatically open the "insert" sidebar menu upon load.
-
 ### Article Structure
 This plugin is in charge of inserting and manipulating structures. There are several insertion buttons in the right sidebar under *Document Structuren*.
 
@@ -265,11 +267,11 @@ Anything part of the `block` group (almost everything) is allowed under these st
 ![article structure card and insert buttons example](https://github.com/lblod/frontend-embeddable-notule-editor/assets/126079676/9920df02-3e9c-43c2-bf7e-fdce182439b9)
 
 ***
-:heavy_plus_sign: Enable by adding `"article-structure"` to the `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"article-structure"` to the `plugins` array.
 
 These structures are not part of the `block` group. You will need to edit `docContent` to accept one of these structures as a base. The following config will allow a title, chapter or article to be added as the first node, or any general block. See [general config options](general-config-options) for more info.
 ```
-// pass to pluginsConfig
+// pass to options
 docContent: '((title|block)+|(chapter|block)+|(article|block)+)'
 ```
 
@@ -280,7 +282,7 @@ is as of yet undocumented. For more information please contact the team.
 
 ### Besluit 
 
-:heavy_plus_sign: Enable by adding `"besluit"` to the `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"besluit"` to the `plugins` array.
 
 No configuration is needed.
 
@@ -335,10 +337,10 @@ After typing this trigger phrase, a card will appear in the right sidebar with t
 ![citation plugin examples](https://github.com/lblod/frontend-embeddable-notule-editor/assets/126079676/d3b1e511-412a-4cab-95ba-e3f92371f261)
 
 ***
-:heavy_plus_sign: Enable by adding `"citation"` to the `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"citation"` to the `plugins` array.
 
 ```javascript
-// pass to pluginsConfig
+// pass to options
 
 // activate everywhere using type 'ranges'
 citation: {
@@ -377,10 +379,10 @@ Add annnotated *mobiliteitsmaatregelen* from a specified registry, which will mo
 
 
 ***
-:heavy_plus_sign: Enable by adding `"roadsign-regulation"` to the `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"roadsign-regulation"` to the `plugins` array.
 ```javascript
 
-// pass to pluginsConfig
+// pass to options
 roadsignRegulation: {
   endpoint: 'https://dev.roadsigns.lblod.info/sparql',
   imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
@@ -421,9 +423,9 @@ At this time it will only work well together with [article-structure plugin](#ar
 
 :warning: For use in different situations, open an issue on this repo with the usecase, so we can help. The [Prosemirror schema](https://prosemirror.net/docs/guide/#schema) that is used in the config is public-facing yet, so changing this is not trivial.
 ***
-:heavy_plus_sign: Enable by adding `"table-of-contents"` to the `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"table-of-contents"` to the `plugins` array.
 ```javascript
-// pass to pluginsConfig
+// pass to options
 docContent: /*adjust to include `table_of_contents?` as an accepted node*/ ,
 tableOfContents: [
   {
@@ -465,9 +467,9 @@ A variable can be inserted with the card shown in the right sidebar.
 - *address*: when inserted, the user can click this to get a modal for searching addresses from the Belgium address register. This can be used to insert existing addresses.  
   **note**: when searching for submunicipalities, only the main municipality will show up in the search. However, when searching for a street, the correct zip-code will be used.
 ***
-:heavy_plus_sign: Enable by adding `"variable"` to the `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"variable"` to the `plugins` array.
 ```javascript
-// pass to pluginsConfig
+// pass to options
 variable: {
   insert: {
       enable: true,
@@ -533,7 +535,7 @@ This will add a button *Toon opmaakmarkeringen* in the top toolbar. This toggles
 ![document with formatting annotations](https://github.com/lblod/frontend-embeddable-notule-editor/assets/126079676/bfc7ff1e-b8e3-4220-b80c-b5456d58208e)
 
 ***
-:heavy_plus_sign: Enable by adding `"formatting-toggle"` to the `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"formatting-toggle"` to the `plugins` array.
 No configuration is needed.
 
 #### rdfa-awareness
@@ -545,7 +547,7 @@ This will add a button *Toon annotaties* in the top toolbar. This toggles the vi
 
 ![document with rdfa blocks visible](https://github.com/lblod/frontend-embeddable-notule-editor/assets/126079676/279900d3-7798-43e5-a560-298d15cf937c)
 ***
-:heavy_plus_sign: Enable by adding `"rdfa-blocks-toggle"` to the `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"rdfa-blocks-toggle"` to the `plugins` array.
 No configuration is needed.
 
 #### rdfa-awareness
@@ -557,7 +559,7 @@ Adds buttons to the right sidebar for insertion, moving and removing of comment 
 
 It has a special RDFa type `ext:TemplateComment` with `ext` the prefix for `http://mu.semte.ch/vocabularies/ext/`, so this can be filtered out when a document is finished.
 ***
-:heavy_plus_sign: Enable by adding `"template-comments"` to the `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"template-comments"` to the `plugins` array.
 No configuration is needed.
 
 #### rdfa-awareness
@@ -568,7 +570,7 @@ The serialization format of the comment blocks uses rdfa.
 
 Adds a toolbar button to redact content. This simply adds an RDFa annotation with particular styling applied to it. It is up to any processor handling the document to properly redact the content.
 ***
-:heavy_plus_sign: Enable by adding `"confidentiality"` to the `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"confidentiality"` to the `plugins` array.
 No configuration is needed.
 
 #### rdfa-awareness
