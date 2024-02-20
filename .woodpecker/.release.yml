@@ -9,6 +9,7 @@ steps:
       token:
         from_secret: npm_access_token
       access: public
+      folder: embeddable-say-editor
       tag: next
     when:
       ref:
@@ -19,6 +20,7 @@ steps:
       token:
         from_secret: npm_access_token
       access: public
+      folder: embeddable-say-editor
     when:
       ref:
         exclude: refs/tags/*-next.*
