@@ -5,5 +5,27 @@
     "@lblod/embeddable-say-editor": "3.4.0",
     "test-app": "3.4.0"
   },
-  "changesets": []
+  "changesets": [
+    "2024-01-11T14:04:19+00:00",
+    "2024-01-11T14:04:45+00:00",
+    "2024-01-11T14:04:57+00:00",
+    "2024-01-11T14:05:08+00:00",
+    "2024-01-11T14:05:32+00:00",
+    "2024-01-11T14:05:45+00:00",
+    "2024-01-11T14:05:56+00:00",
+    "2024-01-11T14:06:08+00:00",
+    "2024-01-12T17:10:01+00:00",
+    "2024-01-12T17:10:22+00:00",
+    "2024-01-12T17:10:38+00:00",
+    "2024-01-12T17:10:50+00:00",
+    "beige-berries-sell",
+    "fair-planets-turn",
+    "old-mugs-kneel",
+    "perfect-kids-help",
+    "rich-boxes-explain",
+    "seven-weeks-enjoy",
+    "sixty-keys-appear",
+    "tender-actors-jog",
+    "tender-socks-speak"
+  ]
 }

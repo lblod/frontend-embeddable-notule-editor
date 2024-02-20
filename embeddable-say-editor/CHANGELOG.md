@@ -1,5 +1,56 @@
 # frontend-embeddable-notule-editor
 
+## 3.5.0-next.0
+
+### Minor Changes
+
+- [`938cf6b`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/938cf6b05d2ff1f8525067bfd48c102156cba29c) Thanks [@elpoelma](https://github.com/elpoelma)! - Add LICENSE file
+
+- [#223](https://github.com/lblod/frontend-embeddable-notule-editor/pull/223) [`df88570`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/df885707eee1d197e955ad0995c5edae0f1c20c5) Thanks [@elpoelma](https://github.com/elpoelma)! - Reconfigure repository structure to allow for an effective QA strategy before releasing to npm.
+
+- [#222](https://github.com/lblod/frontend-embeddable-notule-editor/pull/222) [`cb62755`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/cb62755c8b9d6104f280f85ee7166a98c7d61f24) Thanks [@dkozickis](https://github.com/dkozickis)! - Introduce `growEditor` option
+
+  `growEditor` is a boolean option that allows the editor to grow in height as the content grows, instead of
+  having a fixed height and a scrollbar.
+
+### Patch Changes
+
+- [#203](https://github.com/lblod/frontend-embeddable-notule-editor/pull/203) [`b06c5bb`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/b06c5bbb6198343eedc45cc401021b9f3ea1a4b4) Thanks [@redpencil-renovate-bot](https://github.com/apps/redpencil-renovate-bot)! - Bump changesets-release-it-plugin from 0.1.1 to 0.1.2
+
+- [#205](https://github.com/lblod/frontend-embeddable-notule-editor/pull/205) [`17676d1`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/17676d1d0da0314dac20b06aafa96eae9f715648) Thanks [@redpencil-renovate-bot](https://github.com/apps/redpencil-renovate-bot)! - Bump ember-cli-dependency-checker from 3.3.1 to 3.3.2
+
+- [#206](https://github.com/lblod/frontend-embeddable-notule-editor/pull/206) [`eb59d2d`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/eb59d2d699aba331487b929320eb98d7c29e3321) Thanks [@redpencil-renovate-bot](https://github.com/apps/redpencil-renovate-bot)! - Bump ember-svg-jar from 2.4.6 to 2.4.7
+
+- [#209](https://github.com/lblod/frontend-embeddable-notule-editor/pull/209) [`31951d4`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/31951d4baf6383701c4e1fb57f43bd2c4518f122) Thanks [@redpencil-renovate-bot](https://github.com/apps/redpencil-renovate-bot)! - Bump @changesets/changelog-github from 0.4.8 to 0.5.0
+
+- [#211](https://github.com/lblod/frontend-embeddable-notule-editor/pull/211) [`8a5ee56`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/8a5ee56cfa2e58adfb54a7d66765589a1006619e) Thanks [@redpencil-renovate-bot](https://github.com/apps/redpencil-renovate-bot)! - Bump @csstools/postcss-sass from 5.0.1 to 5.1.1
+
+- [#212](https://github.com/lblod/frontend-embeddable-notule-editor/pull/212) [`3e14417`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/3e14417a9e2e0b571492bdd6427e2043e2b6b118) Thanks [@redpencil-renovate-bot](https://github.com/apps/redpencil-renovate-bot)! - Bump @ember/render-modifiers from 2.0.5 to 2.1.0
+
+- [#213](https://github.com/lblod/frontend-embeddable-notule-editor/pull/213) [`81401ed`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/81401ed3cad8176648deee9ec49bcaa8e67d4eaa) Thanks [@redpencil-renovate-bot](https://github.com/apps/redpencil-renovate-bot)! - Bump @lblod/ember-environment-banner from 0.2.0 to 0.4.0
+
+- [#214](https://github.com/lblod/frontend-embeddable-notule-editor/pull/214) [`37fc99d`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/37fc99d0596b28006e1dd62ec446934a9edeed0b) Thanks [@redpencil-renovate-bot](https://github.com/apps/redpencil-renovate-bot)! - Bump ember-auto-import from 2.6.3 to 2.7.2
+
+- [#204](https://github.com/lblod/frontend-embeddable-notule-editor/pull/204) [`967bf08`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/967bf0880f2b2aa9b3f2ddbabb73c16119f247c8) Thanks [@redpencil-renovate-bot](https://github.com/apps/redpencil-renovate-bot)! - Bump cypress from 13.6.1 to 13.6.2
+
+- [#210](https://github.com/lblod/frontend-embeddable-notule-editor/pull/210) [`04aadac`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/04aadac0f5b436897b92832ffa3d971e2a6b9883) Thanks [@redpencil-renovate-bot](https://github.com/apps/redpencil-renovate-bot)! - Bump @changesets/cli from 2.26.2 to 2.27.1
+
+- [#217](https://github.com/lblod/frontend-embeddable-notule-editor/pull/217) [`a98bae3`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/a98bae3589c9d51e2a5f67ca889ead8b7781bc52) Thanks [@redpencil-renovate-bot](https://github.com/apps/redpencil-renovate-bot)! - Bump ember-template-lint from 5.11.2 to 5.13.0
+
+- [#218](https://github.com/lblod/frontend-embeddable-notule-editor/pull/218) [`6711cfa`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/6711cfa16130221d8a60ac30792684b1a209e346) Thanks [@redpencil-renovate-bot](https://github.com/apps/redpencil-renovate-bot)! - Bump qunit from 2.19.4 to 2.20.0
+
+- [#220](https://github.com/lblod/frontend-embeddable-notule-editor/pull/220) [`96d59ab`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/96d59ab2e8f92b65d87ecd45e0252744c6e419a2) Thanks [@elpoelma](https://github.com/elpoelma)! - Update `@lblod/ember-rdfa-editor-lblod-plugins` to 16.0.0
+
+- [#224](https://github.com/lblod/frontend-embeddable-notule-editor/pull/224) [`37888a3`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/37888a310f4aece5a00740f31cd37ee01d4c91d1) Thanks [@dkozickis](https://github.com/dkozickis)! - GN-4713: Include mention of paragraph markers in README to make it more discoverable
+
+- [#220](https://github.com/lblod/frontend-embeddable-notule-editor/pull/220) [`96d59ab`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/96d59ab2e8f92b65d87ecd45e0252744c6e419a2) Thanks [@elpoelma](https://github.com/elpoelma)! - Update `ember-intl` to 6.1.0
+
+- [#221](https://github.com/lblod/frontend-embeddable-notule-editor/pull/221) [`4dbc63c`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/4dbc63cce876a096786b011d9c7f6ecc6ff8366c) Thanks [@dkozickis](https://github.com/dkozickis)! - GN-4670: Fix column resize handles
+
+- [#219](https://github.com/lblod/frontend-embeddable-notule-editor/pull/219) [`e45414e`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/e45414e704cfea1083321afa6a8ec6d1d1fd3b66) Thanks [@piemonkey](https://github.com/piemonkey)! - Add test environment to more closely mimic real installations
+
+- [#220](https://github.com/lblod/frontend-embeddable-notule-editor/pull/220) [`96d59ab`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/96d59ab2e8f92b65d87ecd45e0252744c6e419a2) Thanks [@elpoelma](https://github.com/elpoelma)! - Update `@lblod/ember-rdfa-editor` package to 9.0.0
+
 ## 3.4.0
 
 ### Minor Changes
