@@ -9,6 +9,8 @@ The readme is structured as follows:
 - [Code Example](#basic-example-the-editor-in-an-html-file): An example which gives a basic showcase on how to initialize and use the editor.
 - [Editor API](#editor-api): list of methods and properties to customize the editor and interact with it through code.
 - [Configuring The Editor](#configuring-the-editor): ways to configure the editor during loading. The editor includes a list of plugins that can be enabled and configured as explained in [Managing Plugins](#managing-plugins). 
+- [Important Concepts](#important-concepts): Important concepts that help to understand the editor.
+- [Development](#development-of-lblodembeddable-say-editor): Set-up details if you want to contribute to development of the embeddable editor.
 
 ## Live Demo
 A [live demo](https://embeddable.gelinkt-notuleren.lblod.info) is available for easy testing. 
@@ -115,10 +117,9 @@ window.addEventListener('load', async function() {
     width: '500px', // width attribute of the iframe
     growEditor: true, // optional, if true the editor will grow to fit the content, this will disregard the height attribute
     height: '300px', // height attribute of the iframe
-    plugins: [], // array of plugin names (see below)
-    options: {}, // configuration object (see below)
+    plugins: arrayOfPluginNames, // array of plugin names (see below)
+    options: configurationOptions, // configuration object (see below)
   })
-  await editorElement.initEditor(arrayOfPluginNames, userConfigObject);
 })
 ```
 
@@ -132,7 +133,7 @@ This controller is an instance of the [SayController](https://github.com/lblod/e
 
 #### editorElement API
 These are functions available from the editor element, which is the HTML element with the class `notule-editor`. 
-- `async initEditor(arrayOfPluginNames: string[], userConfigObject)`: Initialize the editor by passing an array of plugin names that should be activated and an object that contains the configuration for the editor and its plugins. See [Managing Plugins](managing-plugins) for more info.  
+- `async initEditor(arrayOfPluginNames: string[], configurationOptions)`: Initialize the editor by passing an array of plugin names that should be activated and an object that contains the configuration for the editor and its plugins. See [Managing Plugins](managing-plugins) for more info.
   :warning: **`initEditor` has to be called before accessing any other methods**.
 - `enableEnvironmentBanner()`: enable the banner that shows the environment and versions of plugins used.
 - `disableEnvironmentBanner()`: disable the banner.
@@ -164,11 +165,21 @@ Do note that more advanced commands will need knowledge about the used schema an
 # Configuring The Editor
 
 The editor can be customized to best fit your application. 
+* [General Config Options](#general-config-options): Options that do not relate to plugins
 * [Plugin System](#plugin-system): An overview of some of the general concepts behind our plugins.
 * [Managing Plugins](#managing-plugins): A list of plugins you can enable, including explanation of how to use them
 * [Environment banner](#enablingdisabling-the-environment-banner): how to enable/disable this banner
 * [Localization](#localization): language options in the editor
 * [Styling](#styling)
+
+## General Config options
+
+There are some options you can pass to `options` in `renderEditor` that are not connected to a plugin.
+- `docContent: 'block+'`: The property docContent specifies which nodes are allowed in the document. By default we allow one or more nodes of the group block, which includes most content. A group can be seen as a supertype that includes multiple types. For more info about this check the [Prosemirror docs](https://prosemirror.net/docs/guide/#schema.content_expressions).
+  See `public/test.html` where `docContent` is specified to allow a [table of contents](#table-of-contents) and [article-structure](#article-structure) nodes in a specific order.
+- `ui: { expandInsertMenu: false }`: Whether to automatically open the "insert" sidebar menu upon load.
+- `table: { inlineBorderStyle: { width: '1px', style: 'solid', color: '#000' }`: Styles to be applied to table borders in the editor and when exporting HTML (e.g. by copying to the clipboard). If not specified, a thin border is shown in the editor but not exported.
+
 ## Plugin system
 
 The Say-editor is conceptualized as a core component which can be extended through a powerful plugin system.
@@ -179,63 +190,14 @@ Currently, due to portability concerns, this system is not directly exposed to t
 Instead, embeddable ships with a few pre-defined plugins which can be turned on or off, and have 
 some of their configuration exposed. 
 
-However, for using and configuring embeddable, it is still useful to understand some of the concepts 
+However, for using and configuring embeddable, it is still useful to [understand some of the concepts](#important-concepts)
 that plugins use to create a smart editor.
-
-### RDFA
-The [rdfa](https://rdfa.info/) standard is a way to add data annotations to xml (and in particular, html) documents.
-It uses linked data as its data modelling method. 
-RDFA-annotated html is the one and only document format of the say-editor. Because it is a strict superset of html, 
-this also means that the editor can be used as a plain WYSIWYG html editor. But the addition of rdfa-aware
-tools and features is the editor's unique strength, and the reason for its existence.
-
-Throughout the editor and its plugins, the rdfa-annotated html document is the single format which contains all information.
-This means that any document metadata is also stored in this standard way, allowing easy interop with other
-linked-data tools.
-
-In fact, it can be interesting to paste the output of `getHtmlContent()` in the [reference rdfa parser](https://rdfa.info/play/) 
-to see what data the parser can extract from the document.
-
-(Note: it's important to use the `getHtmlContent()` method as opposed to copying the html from the browser inspector. We do not guarantee 
-compliance with the standard in the live, editable, html.)
-
-### RDFA-aware plugins
-
-Most plugins use RDFA in some way to provide their features. 
-
-In some cases, they simply use it as a way to store information they need to operate. 
-For example: the [variable plugin](#rdfa-variables) will insert 
-nodes in the document that are rdfa-annotated with certain properties 
-that the plugin interacts with.
-When loading a document from html, this is what the plugin will use to determine whether to render 
-its special interactive "pills" for a particular node. 
-
-In other cases, plugins use rdfa to determine whether they should be "active" (show their UI) or not.
-This is usually done based on the idea of "context". 
-
-Because html, and also the internal prosemirror datastructure, is a tree, there is an inherent hierarchy to the document. 
-At the top there's a root element, usually a `div`, which we also call the `doc` node, which contains the entire document.
-It also contains the selection, the blinking text cursor or blue region that you are surely familiar with.
-This idea of the selection being "inside" a certain node is what drives the context-aware plugins.
-Essentially, all they do is walk up the tree structure from the point of the cursor, and see if they encounter 
-any nodes they're interested in.
-
-This means we can have different plugins active depending on where you are in the document!
-
-A third way a plugin might use rdfa, is by searching the document for the existence of a particular rdfa-annotated node,
-and interacting with it (by adding content in that node, for example).
-
-_Technical note: rather than interacting with html/rdfa directly, plugins interact with prosemirror's internal datastructure. 
-This is why adjusting the page html in the inspector or with javascript will not give any meaningful results. The provided interfaces are the only supported ways to interact with the 
-editor. In fact, the plugins each get their own controller, which is identical to the 
-controller we expose on the embeddable element._
-
 
 ## Managing Plugins
 Embeddable ships with the following plugins available. 
 This Readme contains all the important info and configuration for the plugins. For more technical and Ember-specific explanations of every plugin, you can check out the Readme of [lblod/ember-rdfa-editor-lblod-plugins](https://github.com/lblod/ember-rdfa-editor-lblod-plugins).
 
-Every plugin can be enabled by passing its name to the `arrayOfPluginNames` array and optionally its configuration to `userConfigObject` with the initialization function `initEditor(arrayOfPluginNames, userConfigObject)`.  
+Every plugin can be enabled by passing its name to the `plugins` array and optionally its configuration in the `options` object with the `renderEditor` helper or in the initialization function `initEditor(arrayOfPluginNames, configurationOptions)`.
 Any configuration value not provided will use the default value, which are shown in the example configs of the plugins.
 
 * [article-structure](#article-structure): Provides structures like titles, chapters, articles and paragraphs, which can be used to better manage official documents like regulatory statements. It allows you to insert, move and delete them.
@@ -249,12 +211,6 @@ Any configuration value not provided will use the default value, which are shown
 * [template-comments](#template-comments): Allows insertion and editing of comment blocks to provide extra information to a user filling in a document. These are visually distinct units with a special RDFa type, which allows them to be filtered out during postprocessing.
 * [Confidential Content](#confidential-content): Allows annotation of parts of the text to be redacted
 
-##### General Config options
-There are some options you can pass to `pluginsConfig` in `initEditor` that are not connected to a plugin.
-- `docContent: 'block+'`: The property docContent specifies which nodes are allowed in the document. By default we allow one or more nodes of the group block, which includes most content. A group can be seen as a supertype that includes multiple types. For more info about this check the [Prosemirror docs](https://prosemirror.net/docs/guide/#schema.content_expressions).  
-  See `public/test.html` where `docContent` is specified to allow a [table of contents](#table-of-contents) and [article-structure](#article-structure) nodes in a specific order.
-- `ui: { expandInsertMenu: false }`: wether to automatically open the "insert" sidebar menu upon load.
-
 ### Article Structure
 This plugin is in charge of inserting and manipulating structures. There are several insertion buttons in the right sidebar under *Document Structuren*.
 
@@ -265,11 +221,11 @@ Anything part of the `block` group (almost everything) is allowed under these st
 ![article structure card and insert buttons example](https://github.com/lblod/frontend-embeddable-notule-editor/assets/126079676/9920df02-3e9c-43c2-bf7e-fdce182439b9)
 
 ***
-:heavy_plus_sign: Enable by adding `"article-structure"` to the `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"article-structure"` to the `plugins` array.
 
 These structures are not part of the `block` group. You will need to edit `docContent` to accept one of these structures as a base. The following config will allow a title, chapter or article to be added as the first node, or any general block. See [general config options](general-config-options) for more info.
 ```
-// pass to pluginsConfig
+// pass to options
 docContent: '((title|block)+|(chapter|block)+|(article|block)+)'
 ```
 
@@ -280,7 +236,7 @@ is as of yet undocumented. For more information please contact the team.
 
 ### Besluit 
 
-:heavy_plus_sign: Enable by adding `"besluit"` to the `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"besluit"` to the `plugins` array.
 
 No configuration is needed.
 
@@ -335,10 +291,10 @@ After typing this trigger phrase, a card will appear in the right sidebar with t
 ![citation plugin examples](https://github.com/lblod/frontend-embeddable-notule-editor/assets/126079676/d3b1e511-412a-4cab-95ba-e3f92371f261)
 
 ***
-:heavy_plus_sign: Enable by adding `"citation"` to the `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"citation"` to the `plugins` array.
 
 ```javascript
-// pass to pluginsConfig
+// pass to options
 
 // activate everywhere using type 'ranges'
 citation: {
@@ -377,10 +333,10 @@ Add annnotated *mobiliteitsmaatregelen* from a specified registry, which will mo
 
 
 ***
-:heavy_plus_sign: Enable by adding `"roadsign-regulation"` to the `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"roadsign-regulation"` to the `plugins` array.
 ```javascript
 
-// pass to pluginsConfig
+// pass to options
 roadsignRegulation: {
   endpoint: 'https://dev.roadsigns.lblod.info/sparql',
   imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
@@ -421,9 +377,9 @@ At this time it will only work well together with [article-structure plugin](#ar
 
 :warning: For use in different situations, open an issue on this repo with the usecase, so we can help. The [Prosemirror schema](https://prosemirror.net/docs/guide/#schema) that is used in the config is public-facing yet, so changing this is not trivial.
 ***
-:heavy_plus_sign: Enable by adding `"table-of-contents"` to the `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"table-of-contents"` to the `plugins` array.
 ```javascript
-// pass to pluginsConfig
+// pass to options
 docContent: /*adjust to include `table_of_contents?` as an accepted node*/ ,
 tableOfContents: [
   {
@@ -465,9 +421,9 @@ A variable can be inserted with the card shown in the right sidebar.
 - *address*: when inserted, the user can click this to get a modal for searching addresses from the Belgium address register. This can be used to insert existing addresses.  
   **note**: when searching for submunicipalities, only the main municipality will show up in the search. However, when searching for a street, the correct zip-code will be used.
 ***
-:heavy_plus_sign: Enable by adding `"variable"` to the `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"variable"` to the `plugins` array.
 ```javascript
-// pass to pluginsConfig
+// pass to options
 variable: {
   insert: {
       enable: true,
@@ -533,7 +489,7 @@ This will add a button *Toon opmaakmarkeringen* in the top toolbar. This toggles
 ![document with formatting annotations](https://github.com/lblod/frontend-embeddable-notule-editor/assets/126079676/bfc7ff1e-b8e3-4220-b80c-b5456d58208e)
 
 ***
-:heavy_plus_sign: Enable by adding `"formatting-toggle"` to the `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"formatting-toggle"` to the `plugins` array.
 No configuration is needed.
 
 #### rdfa-awareness
@@ -545,7 +501,7 @@ This will add a button *Toon annotaties* in the top toolbar. This toggles the vi
 
 ![document with rdfa blocks visible](https://github.com/lblod/frontend-embeddable-notule-editor/assets/126079676/279900d3-7798-43e5-a560-298d15cf937c)
 ***
-:heavy_plus_sign: Enable by adding `"rdfa-blocks-toggle"` to the `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"rdfa-blocks-toggle"` to the `plugins` array.
 No configuration is needed.
 
 #### rdfa-awareness
@@ -557,7 +513,7 @@ Adds buttons to the right sidebar for insertion, moving and removing of comment 
 
 It has a special RDFa type `ext:TemplateComment` with `ext` the prefix for `http://mu.semte.ch/vocabularies/ext/`, so this can be filtered out when a document is finished.
 ***
-:heavy_plus_sign: Enable by adding `"template-comments"` to the `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"template-comments"` to the `plugins` array.
 No configuration is needed.
 
 #### rdfa-awareness
@@ -568,7 +524,7 @@ The serialization format of the comment blocks uses rdfa.
 
 Adds a toolbar button to redact content. This simply adds an RDFa annotation with particular styling applied to it. It is up to any processor handling the document to properly redact the content.
 ***
-:heavy_plus_sign: Enable by adding `"confidentiality"` to the `arrayOfPluginNames` array.
+:heavy_plus_sign: Enable by adding `"confidentiality"` to the `plugins` array.
 No configuration is needed.
 
 #### rdfa-awareness
@@ -654,6 +610,56 @@ Below example expects that the editor was attached to an element with id `my-edi
 
 * `--say-paragraph-spacing`: spacing between paragraphs, default is 12px.
 * `--say-editor-line-height`: line height of the editor, default is 1.5.
+
+## Important Concepts
+
+### RDFA
+The [rdfa](https://rdfa.info/) standard is a way to add data annotations to xml (and in particular, html) documents.
+It uses linked data as its data modelling method.
+RDFA-annotated html is the one and only document format of the say-editor. Because it is a strict superset of html,
+this also means that the editor can be used as a plain WYSIWYG html editor. But the addition of rdfa-aware
+tools and features is the editor's unique strength, and the reason for its existence.
+
+Throughout the editor and its plugins, the rdfa-annotated html document is the single format which contains all information.
+This means that any document metadata is also stored in this standard way, allowing easy interop with other
+linked-data tools.
+
+In fact, it can be interesting to paste the output of `getHtmlContent()` in the [reference rdfa parser](https://rdfa.info/play/)
+to see what data the parser can extract from the document.
+
+(Note: it's important to use the `getHtmlContent()` method as opposed to copying the html from the browser inspector. We do not guarantee
+compliance with the standard in the live, editable, html.)
+
+### RDFA-aware plugins
+
+Most plugins use RDFA in some way to provide their features.
+
+In some cases, they simply use it as a way to store information they need to operate.
+For example: the [variable plugin](#rdfa-variables) will insert
+nodes in the document that are rdfa-annotated with certain properties
+that the plugin interacts with.
+When loading a document from html, this is what the plugin will use to determine whether to render
+its special interactive "pills" for a particular node.
+
+In other cases, plugins use rdfa to determine whether they should be "active" (show their UI) or not.
+This is usually done based on the idea of "context".
+
+Because html, and also the internal prosemirror datastructure, is a tree, there is an inherent hierarchy to the document.
+At the top there's a root element, usually a `div`, which we also call the `doc` node, which contains the entire document.
+It also contains the selection, the blinking text cursor or blue region that you are surely familiar with.
+This idea of the selection being "inside" a certain node is what drives the context-aware plugins.
+Essentially, all they do is walk up the tree structure from the point of the cursor, and see if they encounter
+any nodes they're interested in.
+
+This means we can have different plugins active depending on where you are in the document!
+
+A third way a plugin might use rdfa, is by searching the document for the existence of a particular rdfa-annotated node,
+and interacting with it (by adding content in that node, for example).
+
+_Technical note: rather than interacting with html/rdfa directly, plugins interact with prosemirror's internal datastructure.
+This is why adjusting the page html in the inspector or with javascript will not give any meaningful results. The provided interfaces are the only supported ways to interact with the
+editor. In fact, the plugins each get their own controller, which is identical to the
+controller we expose on the embeddable element._
 
 # Development of @lblod/embeddable-say-editor
 

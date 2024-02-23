@@ -233,6 +233,14 @@ export default class SimpleEditorComponent extends Component {
         interactive: true,
       },
     };
+    const defaultTableConfig = {
+      tableGroup: 'block',
+      cellContent: 'block+',
+      inlineBorderStyle: { width: '0.5px', color: '#CCD1D9' },
+    };
+    const userTableConfig = userConfig.table && {
+      inlineBorderStyle: userConfig.table.inlineBorderStyle,
+    };
     let nodes = {
       doc: docWithConfig({
         content: userConfig.docContent ?? 'block+',
@@ -249,7 +257,7 @@ export default class SimpleEditorComponent extends Component {
       text,
       image,
       hard_break,
-      ...tableNodes({ tableGroup: 'block', cellContent: 'block+' }),
+      ...tableNodes(mergeConfigs(defaultTableConfig, userTableConfig)),
       link: link(config.link),
     };
     const marks = {
