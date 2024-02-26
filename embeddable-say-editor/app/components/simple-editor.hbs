@@ -108,6 +108,9 @@
           @nodeViews={{this.nodeViews}}
           @rdfaEditorInit={{this.handleRdfaEditorInit}}
         />
+        {{#if this.controller}}
+          <Plugins::Table::TableTooltip @controller={{this.controller}} />
+        {{/if}}
       </:default>
       <:aside>
         {{#if this.controller}}
