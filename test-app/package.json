@@ -1,7 +1,7 @@
 {
   "name": "test-app",
   "private": true,
-  "version": "3.5.0",
+  "version": "3.6.0-next.0",
   "license": "MIT",
   "scripts": {
     "start": "webpack serve --env development",
@@ -26,6 +26,6 @@
     "webpack-dev-server": "4.15.1"
   },
   "dependencies": {
-    "@lblod/embeddable-say-editor": "^3.5.0"
+    "@lblod/embeddable-say-editor": "^3.6.0-next.0"
   }
 }

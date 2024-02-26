@@ -1,5 +1,38 @@
 # frontend-embeddable-notule-editor
 
+## 3.6.0-next.0
+
+### Minor Changes
+
+- [#232](https://github.com/lblod/frontend-embeddable-notule-editor/pull/232) [`33278fc`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/33278fc4972e15a4a844680f3c97890fe339b449) Thanks [@elpoelma](https://github.com/elpoelma)! - Add floating table menu which provides users quick access to table editing tools
+  This floating menu is implemented to be as non-intrusive as possible: it only displays when clicking; and disappears when typing.
+  The menu contains the following actions:
+
+  - Add row after
+  - Add row before
+  - Add column after
+  - Add column before
+  - Toggle row header
+  - Toggle column header
+  - Delete row
+  - Delete column
+  - Delete table
+
+- [#229](https://github.com/lblod/frontend-embeddable-notule-editor/pull/229) [`73d656f`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/73d656fdaf01ade77aa9ccda8926de1eb3613c20) Thanks [@elpoelma](https://github.com/elpoelma)! - Update `@lblod/ember-rdfa-editor-lblod-plugins` to version [16.1.0](https://github.com/lblod/ember-rdfa-editor-lblod-plugins/releases/tag/v16.1.0)
+
+- [#229](https://github.com/lblod/frontend-embeddable-notule-editor/pull/229) [`4459eb3`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/4459eb3794331949288ec67dbd2fc23a12146eaa) Thanks [@elpoelma](https://github.com/elpoelma)! - Add option to pass styles to table borders. These are shown in the editor as well as exported in HTML or clipboard contents.
+
+- [#229](https://github.com/lblod/frontend-embeddable-notule-editor/pull/229) [`73d656f`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/73d656fdaf01ade77aa9ccda8926de1eb3613c20) Thanks [@elpoelma](https://github.com/elpoelma)! - Update `@lblod/ember-rdfa-editor` to version [9.3.0](https://github.com/lblod/ember-rdfa-editor/releases/tag/v9.3.0)
+
+  This release includes the following (improved) features:
+
+  - Better support for copying lists
+  - When resizing tables, percentages are used instead of absolute pixels
+
+### Patch Changes
+
+- [#230](https://github.com/lblod/frontend-embeddable-notule-editor/pull/230) [`d0b6e17`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/d0b6e17d93bf8ed75f216f41151e963dbb499da3) Thanks [@elpoelma](https://github.com/elpoelma)! - Downgrade `@appuniversum/ember-appuniversum` to 2.15.0
+
 ## 3.5.0
 
 ### Minor Changes

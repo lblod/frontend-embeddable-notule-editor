@@ -1,5 +1,16 @@
 # test-app
 
+## 3.6.0-next.0
+
+### Minor Changes
+
+- [#225](https://github.com/lblod/frontend-embeddable-notule-editor/pull/225) [`bd88fd3`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/bd88fd32cd198ff88ccba04e5ebaf6d1c6e1da8f) Thanks [@elpoelma](https://github.com/elpoelma)! - Move test for growing editor instances to `test-app` workspace
+
+### Patch Changes
+
+- Updated dependencies [[`d0b6e17`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/d0b6e17d93bf8ed75f216f41151e963dbb499da3), [`33278fc`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/33278fc4972e15a4a844680f3c97890fe339b449), [`73d656f`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/73d656fdaf01ade77aa9ccda8926de1eb3613c20), [`4459eb3`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/4459eb3794331949288ec67dbd2fc23a12146eaa), [`73d656f`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/73d656fdaf01ade77aa9ccda8926de1eb3613c20)]:
+  - @lblod/embeddable-say-editor@3.6.0-next.0
+
 ## 3.5.0
 
 ### Minor Changes
