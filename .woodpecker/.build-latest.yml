@@ -1,0 +1,11 @@
+steps:
+  push-latest:
+    image: plugins/docker
+    settings:
+      repo: lblod/frontend-embeddable-notule-editor
+      dockerfile: test-app/Dockerfile
+      tags: latest
+    secrets: [ docker_username, docker_password ]
+when:
+  branch: master
+  event: push
