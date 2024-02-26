@@ -24,6 +24,14 @@ steps:
     when:
       ref:
         exclude: refs/tags/*-next.*
+  push-tagged-build:
+    image: plugins/docker
+    settings:
+      repo: lblod/frontend-embeddable-notule-editor
+      dockerfile: test-app/Dockerfile
+      tags: "${CI_COMMIT_TAG##v}"
+      purge: true
+    secrets: [ docker_username, docker_password ]
 when:
   event: tag
   ref: refs/tags/v*
