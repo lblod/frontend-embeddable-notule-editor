@@ -6,6 +6,7 @@
 # compiled output
 /ember-build/
 /dist/
+/types/
 
 # misc
 /.env*

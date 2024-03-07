@@ -23,6 +23,20 @@ const srcDoc = `
 const EDITOR_CONTAINER_ID = 'my-editor';
 
 /**
+ * @typedef {Object} EditorElement - A HTML element with the class `notule-editor`. These are functions available from the editor element. :warning: **`initEditor` has to be called before accessing any other methods**.
+ * @property {import("@lblod/ember-rdfa-editor/core/say-controller").default} controller - provides direct access to a [SayController](https://github.com/lblod/ember-rdfa-editor/blob/master/addon/core/say-controller.ts) object. See [controller API](controller-api).
+ * @property {(arrayOfPluginNames: string[], options: Record<string, any>) => Promise<>} initEditor - Initialize the editor by passing an array of plugin names that should be activated and an object that contains the configuration for the editor and its plugins. See {@link file://./README.md#managing-plugins} for more info.
+ * @property {() => void} enableEnvironmentBanner - enable the banner that shows the environment and versions of plugins used.
+ * @property {() => void} disableEnvironmentBanner - disable the banner.
+ * @property {(content: string) => void} setHtmlContent - set the HTML content inside the editor, overwriting all previous content.
+ * @property {() => string} getHtmlContent - Get the HTML content of the editor. This might be different than custom content set via `setHtmlContent`, because of HTML parsing logic.
+ * @property {() => void} setLocaleToDutch - Set the locale (language used) of the editor to Dutch.
+ * @property {() => void} setLocaleToEnglish - Set the locale (language used) of the editor to English.
+ * @property {() => string} getLocale - returns the current locale of the editor. This will be the user's browser locale, the set local with `setLocale`, or `nl-BE`/`en-US`, the supported languages. See more at [Localization](localization).
+ * @property {(locale: string) => void} setLocale - set the current locale of the editor. Any locale is accepted, but will fallback to `nl-BE` if it is not `nl-BE` or `en-US` (the supported languages).
+ */
+
+/**
  * Renders the editor in an iframe and initializes it with the passed in plugins
  * and options. It waits for everything to initialize and returns the fully initialized
  * editor element, which has access to a controller and other methods (see docs)
@@ -36,7 +50,7 @@ const EDITOR_CONTAINER_ID = 'my-editor';
  * @param {Record<string, any>} [options.options={}] - The options to initialize the editor with.
  * @param {Object.<string, string>} [options.cssVariables={}] - Record of CSS Variables and their values to be applied to the editor.
  * @param {boolean} [options.growEditor=false] - Whether the editor should grow to fit its content.
- * @returns {Promise<HTMLElement>} - Returns a promise that resolves to the fully initialized editor element.
+ * @returns {Promise<EditorElement>} - Returns a promise that resolves to the fully initialized editor element.
  */
 export async function renderEditor({
   element,

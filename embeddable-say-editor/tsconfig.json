@@ -1,0 +1,16 @@
+{
+  "files": ["main.js"],
+  "compilerOptions": {
+    // Tell TypeScript to read JS files
+    "allowJs": true,
+    // Don't check the imports of main.js
+    "skipLibCheck": true,
+    // Generate d.ts files
+    "declaration": true,
+    // Only output types, not JS
+    "emitDeclarationOnly": true,
+    "outDir": "types",
+    // Maps type lookups to JS file instead of .d.ts file
+    "declarationMap": true
+  }
+}
