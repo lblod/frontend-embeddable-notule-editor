@@ -1,5 +1,21 @@
 # frontend-embeddable-notule-editor
 
+## 3.6.0-next.1
+
+### Minor Changes
+
+- [#233](https://github.com/lblod/frontend-embeddable-notule-editor/pull/233) [`67a660a`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/67a660a049838cdae11a90bba9b6e35442b7df20) Thanks [@dkozickis](https://github.com/dkozickis)! - Update `@lblod/ember-rdfa-editor` to version [9.4.0](https://github.com/lblod/ember-rdfa-editor/releases/tag/v9.4.0)
+
+  This release includes the following (improved) features:
+
+  - Better support for copying lists
+  - When resizing tables, percentages are used instead of absolute pixels
+  - Merge/Split table cells
+
+### Patch Changes
+
+- [#234](https://github.com/lblod/frontend-embeddable-notule-editor/pull/234) [`30293f8`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/30293f801f1f5100787a8fae8b86ef0451a2ebb3) Thanks [@piemonkey](https://github.com/piemonkey)! - Add Typescript types generated from mostly existing JSDOCs
+
 ## 3.6.0-next.0
 
 ### Minor Changes

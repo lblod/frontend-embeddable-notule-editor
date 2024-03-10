@@ -1,6 +1,6 @@
 {
   "name": "@lblod/embeddable-say-editor",
-  "version": "3.6.0-next.0",
+  "version": "3.6.0-next.1",
   "description": "Notule editor which may be embedded in another application.",
   "repository": {
     "type": "git",
