@@ -14,39 +14,18 @@ const editors = [
 ];
 container.append(...editors);
 
-renderEditor({
-  element: editors[0],
-  width: '500px',
-  height: '500px',
-  growEditor: true,
-  plugins: [],
-  options: {},
-})
-  .then((editor) => {
-    editor.setHtmlContent('Editor 1');
+editors.forEach((element, i) => {
+  renderEditor({
+    element,
+    width: '500px',
+    height: '500px',
+    growEditor: true,
+    plugins: [],
+    options: {},
   })
-  .catch(console.error);
-renderEditor({
-  element: editors[1],
-  width: '500px',
-  height: '500px',
-  growEditor: true,
-  plugins: [],
-  options: {},
-})
-  .then((editor) => {
-    editor.setHtmlContent('Editor 2');
-  })
-  .catch(console.error);
-renderEditor({
-  element: editors[2],
-  width: '500px',
-  height: '500px',
-  growEditor: true,
-  plugins: [],
-  options: {},
-})
-  .then((editor) => {
-    editor.setHtmlContent('Editor 3');
-  })
-  .catch(console.error);
+    .then((editor) => {
+      editor.setHtmlContent(`Editor ${i}`);
+      window[`editor${i}`] = editor;
+    })
+    .catch(console.error);
+});
