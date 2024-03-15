@@ -15,3 +15,6 @@ const editor = await renderEditor({
 
 // the editor is now initialized and can be used
 editor.setHtmlContent('hello world');
+
+// Facilitate development by making editor globally available
+window.editor = editor;
