@@ -341,7 +341,7 @@ export default class SimpleEditorComponent extends Component {
       (resolve) => (this.resolveEditorPromise = resolve)
     );
     this.initCompleted = true;
-    await editorPromise;
+    return editorPromise;
   }
 
   setupCitationPlugin({ userConfig, config, plugins, uiConfig }) {

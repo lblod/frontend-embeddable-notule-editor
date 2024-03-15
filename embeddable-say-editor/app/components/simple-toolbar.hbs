@@ -55,6 +55,16 @@
     <Tb.Group>
       <Plugins::Alignment::AlignmentMenu @controller={{@controller}}/>
     </Tb.Group>
+    {{#if (array-includes @activePlugins 'html-edit' 'html-preview')}}
+      <Tb.Group>
+        {{#if (array-includes @activePlugins 'html-edit')}}
+          <Plugins::HtmlEditor::Menu @controller={{@controller}} />
+        {{/if}}
+        {{#if (array-includes @activePlugins 'html-preview')}}
+          <HtmlPreview::Menu @controller={{@controller}} />
+        {{/if}}
+      </Tb.Group>
+    {{/if}}
   </:main>
   <:side as |Tb|>
     <Tb.Group>

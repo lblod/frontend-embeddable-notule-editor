@@ -17,6 +17,8 @@ const editor = await renderEditor({
     'formatting-toggle',
     'template-comments',
     'confidentiality',
+    'html-edit',
+    'html-preview',
   ],
   options: {
     docContent:
