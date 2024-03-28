@@ -1,5 +1,24 @@
 # frontend-embeddable-notule-editor
 
+## 3.6.0-next.2
+
+### Minor Changes
+
+- [#245](https://github.com/lblod/frontend-embeddable-notule-editor/pull/245) [`b53d4ab`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/b53d4ab846a0684973c8def7d281ebca2b7ad4ac) Thanks [@elpoelma](https://github.com/elpoelma)! - Enable support for customizable, alternating row backgrounds
+
+- [#245](https://github.com/lblod/frontend-embeddable-notule-editor/pull/245) [`f669800`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/f669800b4771f825a96f5245ad9531b624e85fd6) Thanks [@elpoelma](https://github.com/elpoelma)! - - Update `@lblod/ember-rdfa-editor` to version 9.5.1
+
+  - Update `@lblod/ember-rdfa-editor-lblod-plugins` to 16.2.0
+
+  These releases contain support for the following features:
+
+  - Table cell backgrounds
+
+  These release also contain the following fixes/improvements:
+
+  - Addition of title attributes to toolbar buttons
+  - Improvements in translations of toolbar buttons
+
 ## 3.6.0-next.1
 
 ### Minor Changes
