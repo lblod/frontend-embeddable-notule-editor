@@ -10,7 +10,13 @@ const editor = await renderEditor({
   width: '100%', // width attribute of the iframe
   height: '500px', // height attribute of the iframe
   plugins: [], // array of plugin names (see below)
-  options: {}, // configuration object (see below)
+  options: {
+    table: {
+      rowBackground: {
+        odd: 'whitesmoke',
+      },
+    },
+  }, // configuration object (see below)
 });
 
 // the editor is now initialized and can be used
