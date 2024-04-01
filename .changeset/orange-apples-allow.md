@@ -2,4 +2,4 @@
 "@lblod/embeddable-say-editor": minor
 ---
 
-Update to v10 of ember-rdfa-editor
+Update to version `9.6.0` of ember-rdfa-editor
