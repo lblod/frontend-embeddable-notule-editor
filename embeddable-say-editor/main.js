@@ -7,7 +7,7 @@ import vendorCss from './ember-build/assets/vendor.css';
 
 const srcDoc = `
 <!DOCTYPE html>
-<html>
+<html style="overflow: hidden;">
   <head>
     <meta charset="utf-8" />
     <!-- Requirements for the style -->
@@ -153,6 +153,11 @@ export async function renderEditor({
     });
 
     resizeObserver.observe(frameDoc);
+  } else {
+    const mainContainer = editorContainer.getElementsByClassName(
+      'say-container__main'
+    )[0];
+    mainContainer.style.height = 'calc(100vh - 44px)';
   }
 
   return editorElement;
