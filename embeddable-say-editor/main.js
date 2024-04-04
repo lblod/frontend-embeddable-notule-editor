@@ -21,6 +21,9 @@ const srcDoc = `
 `;
 
 const EDITOR_CONTAINER_ID = 'my-editor';
+// adjusting this won't actually change the toolbar height, this is just the constant
+// value of the height as given by the editor css
+const TOOLBAR_HEIGHT = '44px';
 
 /**
  * @typedef {Object} EditorElement - A HTML element with the class `notule-editor`. These are functions available from the editor element. :warning: **`initEditor` has to be called before accessing any other methods**.
@@ -157,7 +160,7 @@ export async function renderEditor({
     const mainContainer = editorContainer.getElementsByClassName(
       'say-container__main'
     )[0];
-    mainContainer.style.height = 'calc(100vh - 44px)';
+    mainContainer.style.height = `calc(100vh - ${TOOLBAR_HEIGHT})`;
   }
 
   return editorElement;
