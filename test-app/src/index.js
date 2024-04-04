@@ -4,7 +4,7 @@ import { router } from './router';
 const container = document.createElement('div');
 document.body.appendChild(router);
 document.body.appendChild(container);
-container.style.height = '90vh'
+container.style.height = '90vh';
 const editor = await renderEditor({
   element: container,
   title: 'my editor', // optional, this will set the "title" attribute of the iframe
