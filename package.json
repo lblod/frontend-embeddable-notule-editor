@@ -2,7 +2,7 @@
   "name": "frontend-embeddable-notule-editor",
   "private": "true",
   "author": "redpencil.io",
-  "version": "3.6.0-next.2",
+  "version": "3.6.0",
   "license": "MIT",
   "workspaces": [
     "embeddable-say-editor",
