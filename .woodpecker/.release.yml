@@ -1,8 +1,9 @@
 steps:
   install:
-    image: danlynn/ember-cli:4.12.1
+    image: node:20-slim
     commands:
-      - npm ci --ignore-scripts
+      - corepack enable
+      - pnpm i --frozen-lockfile --ignore-scripts
   publish-pre-release:
     image: plugins/npm
     settings:

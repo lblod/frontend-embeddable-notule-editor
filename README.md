@@ -668,7 +668,8 @@ controller we expose on the embeddable element._
 You will need the following things properly installed on your computer.
 
 * [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with npm)
+* [Node.js](https://nodejs.org/)
+* [pnpm](https://pnpm.io/)
 * [Ember CLI](https://cli.emberjs.com/release/)
 * [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/) or [Google Chrome](https://google.com/chrome/)
 
@@ -676,15 +677,14 @@ You will need the following things properly installed on your computer.
 
 * `git clone https://github.com/lblod/frontend-embeddable-notule-editor.git` this repository
 * `cd frontend-embeddable-notule-editor`
-* `npm install`
+* `pnpm install`
 
 ## Running
 * `ember serve`
 * Visit an example of the embeddable at [http://localhost:4200/test.html](http://localhost:4200/test.html).
 ### Linting
-* `npm run lint:hbs`
-* `npm run lint:js`
-* `npm run lint:js -- --fix`
+* `pnpm lint`
+* `pnpm lint:fix`
 
 ### Building
 * `ember build` (development)
