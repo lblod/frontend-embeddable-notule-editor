@@ -1,0 +1,88 @@
+<ResponsiveToolbar>
+  <:main as |Tb|>
+    <Tb.Group>
+      <Plugins::History::Undo @controller={{@controller}} />
+      <Plugins::History::Redo @controller={{@controller}} />
+    </Tb.Group>
+    <Tb.Group>
+      <Plugins::TextStyle::Bold @controller={{@controller}} />
+      <Plugins::TextStyle::Italic @controller={{@controller}} />
+      <Plugins::TextStyle::Strikethrough
+        @controller={{@controller}}
+      />
+      <Plugins::TextStyle::Underline
+        @controller={{@controller}}
+      />
+      <Plugins::TextStyle::Subscript
+        @controller={{@controller}}
+      />
+      <Plugins::TextStyle::Superscript
+        @controller={{@controller}}
+      />
+      <Plugins::TextStyle::Highlight
+        @controller={{@controller}}
+        @defaultColor='#FFEA00'
+      />
+      <Plugins::TextStyle::Color
+        @controller={{@controller}}
+        @defaultColor='#000000'
+      />
+    </Tb.Group>
+    {{#if (array-includes @activePlugins 'confidentiality')}}
+      <Tb.Group>
+        <ConfidentialityPlugin::Toolbar @controller={{@controller}} />
+      </Tb.Group>
+    {{/if}}
+    <Tb.Group>
+      <Plugins::List::Unordered @controller={{@controller}} />
+      <Plugins::List::Ordered @controller={{@controller}} />
+      <Plugins::Indentation::IndentationMenu
+        @controller={{@controller}}
+      />
+    </Tb.Group>
+    <Tb.Group>
+      <Plugins::Link::LinkMenu @controller={{@controller}} />
+      <Plugins::Image::InsertMenu @controller={{@controller}} />
+    </Tb.Group>
+    <Tb.Group>
+      <Plugins::Table::TableMenu @controller={{@controller}} />
+    </Tb.Group>
+    <Tb.Group>
+      <Plugins::Heading::HeadingMenu
+        @controller={{@controller}}
+      />
+    </Tb.Group>
+    <Tb.Group>
+      <Plugins::Alignment::AlignmentMenu @controller={{@controller}}/>
+    </Tb.Group>
+    {{#if (array-includes @activePlugins 'html-edit' 'html-preview')}}
+      <Tb.Group>
+        {{#if (array-includes @activePlugins 'html-edit')}}
+          <Plugins::HtmlEditor::Menu @controller={{@controller}} />
+        {{/if}}
+        {{#if (array-includes @activePlugins 'html-preview')}}
+          <HtmlPreview::Menu @controller={{@controller}} />
+        {{/if}}
+      </Tb.Group>
+    {{/if}}
+  </:main>
+  <:side as |Tb|>
+    <Tb.Group>
+      {{#if (array-includes @activePlugins 'table-of-contents')}}
+        <TableOfContentsPlugin::ToolbarButton
+          @controller={{@controller}}
+        />
+      {{/if}}
+      {{#if (array-includes @activePlugins 'formatting-toggle')}}
+        <Plugins::Formatting::FormattingToggle
+          @controller={{@controller}}
+        />
+      {{/if}}
+      {{#if (array-includes @activePlugins 'rdfa-blocks-toggle')}}
+        <Plugins::RdfaBlockRender::RdfaBlocksToggle
+          @controller={{@controller}}
+        />
+      {{/if}}
+    </Tb.Group>
+  </:side>
+</ResponsiveToolbar>

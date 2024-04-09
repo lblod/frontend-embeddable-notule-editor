@@ -210,7 +210,8 @@ Any configuration value not provided will use the default value, which are shown
 * [formatting-toggle](#formatting-toggle): Allows to toggle the formatting marks with a button.
 * [rdfa-blocks-toggle](#rdfa-blocks-toggle): Allows to toggle the visual indications of the rdfa blocks with a button.
 * [template-comments](#template-comments): Allows insertion and editing of comment blocks to provide extra information to a user filling in a document. These are visually distinct units with a special RDFa type, which allows them to be filtered out during postprocessing.
-* [Confidential Content](#confidential-content): Allows annotation of parts of the text to be redacted
+* [confidential-content](#confidential-content): Allows annotation of parts of the text to be redacted
+* [html-edit & html-preview]((#html-edit-html-preview}: Provides toolbar options to directly edit or preview the html the editor is producing
 
 ### Article Structure
 This plugin is in charge of inserting and manipulating structures. There are several insertion buttons in the right sidebar under *Document Structuren*.
@@ -531,6 +532,22 @@ No configuration is needed.
 #### rdfa-awareness
 
 Adds the RDFa annotation `property` set to `ext:redacted` for the redacted text.
+
+### HTML Edit & HTML Preview
+
+Adds toolbar buttons to interact with the HTML produced by the editor. Either plugin can be used independently or they can be used together.
+
+`"html-edit"` enables a modal which displays the HTML representation of the current editor contents and allows them to be modified.
+
+`"html-preview"` enables a modal which renders a preview of the editor contents if they were exported as HTML and put into an otherwise blank HTML document.
+***
+:heavy_plus_sign: Enable the HTML Editor by adding `"html-edit"` to the `plugins` array. Enable the HTML Export Preview by adding `"html-preview"` to the `plugins` array.
+No configuration is needed.
+
+#### rdfa-awareness
+
+While there are no specific RDFa aware features of these plugins, when the RDFa Aware mode of the editor is activated, this will significantly influence the markup that the editor produces, as it will now contain hidden elements to contain the annotations.
+This also limits the HTML that can be entered as it will be processed so that it continues to be valid before it is applied to the editor.
 
 ## Enabling/disabling the environment banner
 The environment banner is a visual indication of the environment you are currently using and which versions of Embeddable, the editor and editor-plugins are in use.

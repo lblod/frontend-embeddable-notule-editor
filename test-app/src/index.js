@@ -10,7 +10,7 @@ const editor = await renderEditor({
   title: 'my editor', // optional, this will set the "title" attribute of the iframe
   width: '100%', // width attribute of the iframe
   height: '100%', // height attribute of the iframe
-  plugins: [], // array of plugin names (see below)
+  plugins: ['html-edit'], // array of plugin names (see below)
   options: {
     table: {
       rowBackground: {
@@ -22,3 +22,6 @@ const editor = await renderEditor({
 
 // the editor is now initialized and can be used
 editor.setHtmlContent('hello world');
+
+// Facilitate development by making editor globally available
+window.editor = editor;
