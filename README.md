@@ -179,6 +179,7 @@ There are some options you can pass to `options` in `renderEditor` that are not 
   See `public/test.html` where `docContent` is specified to allow a [table of contents](#table-of-contents) and [article-structure](#article-structure) nodes in a specific order.
 - `ui: { expandInsertMenu: false }`: Whether to automatically open the "insert" sidebar menu upon load.
 - `table: { inlineBorderStyle: { width: '1px', style: 'solid', color: '#000' }`: Styles to be applied to table borders in the editor and when exporting HTML (e.g. by copying to the clipboard). If not specified, a thin border is shown in the editor but not exported.
+- `table: { rowBackgrounds: { even: 'white', odd: 'whitesmoke' } }`: Configuration of row background colors. Allows for specifying alternating row colors. Rows use 1-based indexing.
 
 ## Plugin system
 

@@ -1,5 +1,23 @@
 # test-app
 
+## 3.6.0
+
+### Minor Changes
+
+- [#225](https://github.com/lblod/frontend-embeddable-notule-editor/pull/225) [`bd88fd3`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/bd88fd32cd198ff88ccba04e5ebaf6d1c6e1da8f) Thanks [@elpoelma](https://github.com/elpoelma)! - Move test for growing editor instances to `test-app` workspace
+
+### Patch Changes
+
+- Updated dependencies [[`d0b6e17`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/d0b6e17d93bf8ed75f216f41151e963dbb499da3), [`33278fc`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/33278fc4972e15a4a844680f3c97890fe339b449), [`b53d4ab`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/b53d4ab846a0684973c8def7d281ebca2b7ad4ac), [`30293f8`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/30293f801f1f5100787a8fae8b86ef0451a2ebb3), [`f669800`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/f669800b4771f825a96f5245ad9531b624e85fd6), [`73d656f`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/73d656fdaf01ade77aa9ccda8926de1eb3613c20), [`4459eb3`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/4459eb3794331949288ec67dbd2fc23a12146eaa), [`9f2a99a`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/9f2a99afe9aeccaceed40771652b074242a1ce43), [`67a660a`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/67a660a049838cdae11a90bba9b6e35442b7df20)]:
+  - @lblod/embeddable-say-editor@3.6.0
+
+## 3.6.0-next.2
+
+### Patch Changes
+
+- Updated dependencies [[`b53d4ab`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/b53d4ab846a0684973c8def7d281ebca2b7ad4ac), [`f669800`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/f669800b4771f825a96f5245ad9531b624e85fd6)]:
+  - @lblod/embeddable-say-editor@3.6.0-next.2
+
 ## 3.6.0-next.1
 
 ### Patch Changes

@@ -240,6 +240,7 @@ export default class SimpleEditorComponent extends Component {
     };
     const userTableConfig = userConfig.table && {
       inlineBorderStyle: userConfig.table.inlineBorderStyle,
+      rowBackground: userConfig.table.rowBackground,
     };
     let nodes = {
       doc: docWithConfig({

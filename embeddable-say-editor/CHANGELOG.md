@@ -1,5 +1,79 @@
 # frontend-embeddable-notule-editor
 
+## 3.6.0
+
+### Minor Changes
+
+- [#232](https://github.com/lblod/frontend-embeddable-notule-editor/pull/232) [`33278fc`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/33278fc4972e15a4a844680f3c97890fe339b449) Thanks [@elpoelma](https://github.com/elpoelma)! - Add floating table menu which provides users quick access to table editing tools
+  This floating menu is implemented to be as non-intrusive as possible: it only displays when clicking; and disappears when typing.
+  The menu contains the following actions:
+
+  - Add row after
+  - Add row before
+  - Add column after
+  - Add column before
+  - Toggle row header
+  - Toggle column header
+  - Delete row
+  - Delete column
+  - Delete table
+
+- [#245](https://github.com/lblod/frontend-embeddable-notule-editor/pull/245) [`b53d4ab`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/b53d4ab846a0684973c8def7d281ebca2b7ad4ac) Thanks [@elpoelma](https://github.com/elpoelma)! - Enable support for customizable, alternating row backgrounds
+
+- [#245](https://github.com/lblod/frontend-embeddable-notule-editor/pull/245) [`f669800`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/f669800b4771f825a96f5245ad9531b624e85fd6) Thanks [@elpoelma](https://github.com/elpoelma)! - - Update `@lblod/ember-rdfa-editor` to version 9.5.1
+
+  - Update `@lblod/ember-rdfa-editor-lblod-plugins` to 16.2.0
+
+  These releases contain support for the following features:
+
+  - Table cell backgrounds
+
+  These release also contain the following fixes/improvements:
+
+  - Addition of title attributes to toolbar buttons
+  - Improvements in translations of toolbar buttons
+
+- [#229](https://github.com/lblod/frontend-embeddable-notule-editor/pull/229) [`73d656f`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/73d656fdaf01ade77aa9ccda8926de1eb3613c20) Thanks [@elpoelma](https://github.com/elpoelma)! - Update `@lblod/ember-rdfa-editor-lblod-plugins` to version [16.1.0](https://github.com/lblod/ember-rdfa-editor-lblod-plugins/releases/tag/v16.1.0)
+
+- [#229](https://github.com/lblod/frontend-embeddable-notule-editor/pull/229) [`4459eb3`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/4459eb3794331949288ec67dbd2fc23a12146eaa) Thanks [@elpoelma](https://github.com/elpoelma)! - Add option to pass styles to table borders. These are shown in the editor as well as exported in HTML or clipboard contents.
+
+- [#233](https://github.com/lblod/frontend-embeddable-notule-editor/pull/233) [`67a660a`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/67a660a049838cdae11a90bba9b6e35442b7df20) Thanks [@dkozickis](https://github.com/dkozickis)! - Update `@lblod/ember-rdfa-editor` to version [9.4.0](https://github.com/lblod/ember-rdfa-editor/releases/tag/v9.4.0)
+
+  This release includes the following (improved) features:
+
+  - Better support for copying lists
+  - When resizing tables, percentages are used instead of absolute pixels
+  - Merge/Split table cells
+
+### Patch Changes
+
+- [#230](https://github.com/lblod/frontend-embeddable-notule-editor/pull/230) [`d0b6e17`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/d0b6e17d93bf8ed75f216f41151e963dbb499da3) Thanks [@elpoelma](https://github.com/elpoelma)! - Downgrade `@appuniversum/ember-appuniversum` to 2.15.0
+
+- [#234](https://github.com/lblod/frontend-embeddable-notule-editor/pull/234) [`30293f8`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/30293f801f1f5100787a8fae8b86ef0451a2ebb3) Thanks [@piemonkey](https://github.com/piemonkey)! - Add Typescript types generated from mostly existing JSDOCs
+
+- [#248](https://github.com/lblod/frontend-embeddable-notule-editor/pull/248) [`9f2a99a`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/9f2a99afe9aeccaceed40771652b074242a1ce43) Thanks [@abeforgit](https://github.com/abeforgit)! - Fix toolbar scrolling in all instances
+
+  If you were using an explicit height set with the (undocumented) `cssVariables` argument to `renderEditor`, you can likely remove it now, the editor should now correctly scroll in any scenario.
+
+## 3.6.0-next.2
+
+### Minor Changes
+
+- [#245](https://github.com/lblod/frontend-embeddable-notule-editor/pull/245) [`b53d4ab`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/b53d4ab846a0684973c8def7d281ebca2b7ad4ac) Thanks [@elpoelma](https://github.com/elpoelma)! - Enable support for customizable, alternating row backgrounds
+
+- [#245](https://github.com/lblod/frontend-embeddable-notule-editor/pull/245) [`f669800`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/f669800b4771f825a96f5245ad9531b624e85fd6) Thanks [@elpoelma](https://github.com/elpoelma)! - - Update `@lblod/ember-rdfa-editor` to version 9.5.1
+
+  - Update `@lblod/ember-rdfa-editor-lblod-plugins` to 16.2.0
+
+  These releases contain support for the following features:
+
+  - Table cell backgrounds
+
+  These release also contain the following fixes/improvements:
+
+  - Addition of title attributes to toolbar buttons
+  - Improvements in translations of toolbar buttons
+
 ## 3.6.0-next.1
 
 ### Minor Changes
