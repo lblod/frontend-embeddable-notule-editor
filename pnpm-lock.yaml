@@ -17,9 +17,6 @@ importers:
       changesets-release-it-plugin:
         specifier: git://git@github.com/piemonkey/changesets-release-it-plugin.git#38b58fc7bf3d3bc2270e5e68208e11a56cef650d
         version: github.com/piemonkey/changesets-release-it-plugin/38b58fc7bf3d3bc2270e5e68208e11a56cef650d(@changesets/cli@2.27.1)(release-it@17.1.1)
-      concurrently:
-        specifier: ^8.2.2
-        version: 8.2.2
       prettier:
         specifier: ^2.8.7
         version: 2.8.8
