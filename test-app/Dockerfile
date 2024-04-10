@@ -3,23 +3,24 @@ FROM node:lts-iron as builder
 
 LABEL maintainer="info@redpencil.io"
 
-# Do npm installs first to allow for caching
+# Do pnpm installs first to allow for caching
 WORKDIR /app
-COPY package.json package-lock.json ./
-COPY embeddable-say-editor/package.json embeddable-say-editor/package-lock.json embeddable-say-editor/
+RUN corepack enable
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY embeddable-say-editor/package.json embeddable-say-editor/
 COPY test-app/package.json test-app/
-RUN npm ci
+RUN pnpm i --frozen-lockfile
 COPY . .
 
 # Pack module
 WORKDIR /app/embeddable-say-editor
-RUN npm pack
+RUN pnpm pack
 RUN mv lblod-embeddable-say-editor-*.tgz lblod-embeddable-say-editor.tgz
 
 # Build test app
 WORKDIR /app/test-app
-RUN npm install /app/embeddable-say-editor/lblod-embeddable-say-editor.tgz
-RUN npm run build
+RUN pnpm install /app/embeddable-say-editor/lblod-embeddable-say-editor.tgz
+RUN pnpm run build
 
 FROM semtech/static-file-service:0.2.0
 COPY --from=builder /app/test-app/dist /data
