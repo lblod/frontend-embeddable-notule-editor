@@ -9,29 +9,8 @@ module.exports = function (defaults) {
     fingerprint: {
       enabled: false,
     },
-    postcssOptions: {
-      compile: {
-        enabled: true,
-        extension: 'scss',
-        parser: require('postcss-scss'),
-        plugins: [
-          {
-            module: require('@csstools/postcss-sass'),
-          },
-          {
-            module: require('postcss-rem-to-pixel'),
-            options: {
-              rootValue: 10,
-              unitPrecision: 5,
-              propList: ['*'],
-              selectorBlackList: [],
-              replace: true,
-              mediaQuery: false,
-              minRemValue: 0,
-            },
-          },
-        ],
-      },
+    sassOptions: {
+      includePaths: 'node_modules/@appuniversum/ember-appuniversum/styles',
     },
     autoImport: {
       webpack: {
@@ -56,11 +35,6 @@ module.exports = function (defaults) {
     },
     '@appuniversum/ember-appuniversum': {
       disableWormholeElement: true,
-    },
-    svgJar: {
-      sourceDirs: [
-        'node_modules/@appuniversum/ember-appuniversum/public/icons',
-      ],
     },
   });
 
