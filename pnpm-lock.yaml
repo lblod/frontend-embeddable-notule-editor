@@ -70,8 +70,8 @@ importers:
         specifier: ^1.1.2
         version: 1.1.2
       '@lblod/ember-environment-banner':
-        specifier: ^0.4.0
-        version: 0.4.0(@appuniversum/ember-appuniversum@3.4.1)(ember-source@4.12.4)
+        specifier: ^0.5.0
+        version: 0.5.0(@appuniversum/ember-appuniversum@3.4.1)(@glint/template@1.4.0)(ember-source@4.12.4)
       '@lblod/ember-rdfa-editor':
         specifier: 9.6.1
         version: 9.6.1(@appuniversum/ember-appuniversum@3.4.1)(@glint/template@1.4.0)(@lezer/common@1.2.1)(ember-changeset@4.1.2)(ember-cli-sass@11.0.1)(ember-intl@5.7.2)(ember-modifier@3.2.7)(ember-source@4.12.4)(webpack@5.91.0)
@@ -2442,19 +2442,21 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  /@lblod/ember-environment-banner@0.4.0(@appuniversum/ember-appuniversum@3.4.1)(ember-source@4.12.4):
-    resolution: {integrity: sha512-+MUAGLmPJXoqpwGO9Za1zaT4V4QINcyTRYYyfp2mTLDVKZOWCFt5jD8Aju2K9vjX9j2afpcQjc/tDsbgRruo8w==}
+  /@lblod/ember-environment-banner@0.5.0(@appuniversum/ember-appuniversum@3.4.1)(@glint/template@1.4.0)(ember-source@4.12.4):
+    resolution: {integrity: sha512-1IqxDS2kPbkH32eZC2YvsIbNWrSAyV5NJWaEC+js1+PZ6q9gbURa8lsXWYYhNbajrOTky4q01QGk76G3D6QzJw==}
     engines: {node: 14.* || 16.* || >= 18}
     peerDependencies:
-      '@appuniversum/ember-appuniversum': ^2.0.0
+      '@appuniversum/ember-appuniversum': ^2.0.0 || ^3.0.0
       ember-source: ^4.0.0
     dependencies:
       '@appuniversum/ember-appuniversum': 3.4.1(@ember/string@3.1.1)(@ember/test-helpers@2.9.4)(@glint/template@1.4.0)(ember-source@4.12.4)(tracked-built-ins@3.3.0)(webpack-cli@5.1.4)(webpack@5.91.0)
+      '@embroider/macros': 1.15.0(@glint/template@1.4.0)
       ember-cli-babel: 7.26.11
       ember-cli-dependency-lint: 2.0.1
       ember-cli-htmlbars: 6.3.0
       ember-source: 4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2)(@glint/template@1.4.0)(webpack@5.91.0)
     transitivePeerDependencies:
+      - '@glint/template'
       - supports-color
     dev: true
 
