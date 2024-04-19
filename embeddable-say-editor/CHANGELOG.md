@@ -1,5 +1,11 @@
 # frontend-embeddable-notule-editor
 
+## 3.7.2-next.3
+
+### Patch Changes
+
+- [`71b3249`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/71b3249ef75c02ab361f2bfd2fabee7c4a4f5272) Thanks [@abeforgit](https://github.com/abeforgit)! - attempt to fix ci tag parsing again
+
 ## 3.7.2-next.2
 
 ### Patch Changes
