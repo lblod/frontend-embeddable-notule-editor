@@ -5,5 +5,7 @@
     "@lblod/embeddable-say-editor": "3.7.1",
     "test-app": "3.7.1"
   },
-  "changesets": []
+  "changesets": [
+    "short-bikes-sleep"
+  ]
 }

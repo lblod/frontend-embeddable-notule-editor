@@ -1,5 +1,12 @@
 # test-app
 
+## 3.7.2-next.0
+
+### Patch Changes
+
+- Updated dependencies [[`bd5d421`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/bd5d421b2ad99f71a8b52f63b77fe0c510cacc15)]:
+  - @lblod/embeddable-say-editor@3.7.2-next.0
+
 ## 3.7.1
 
 ### Patch Changes
