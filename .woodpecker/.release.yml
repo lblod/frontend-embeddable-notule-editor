@@ -5,13 +5,12 @@ steps:
       - corepack enable
       - pnpm i --frozen-lockfile --ignore-scripts
   publish-pre-release:
-    image: plugins/npm
+    image: codeberg.org/woodpecker-plugins/node-pm
     settings:
-      token:
-        from_secret: npm_access_token
-      access: public
-      folder: embeddable-say-editor
-      tag: next
+      run: publish embeddable-say-editor --otp $NPM_ACCESS_TOKEN --tag next --no-git-checks --access public
+      frozen_lockfile: true
+      ignore_node_modules: true
+      secrets: [npm_access_token]
     when:
       ref:
         include: refs/tags/*-next.*
