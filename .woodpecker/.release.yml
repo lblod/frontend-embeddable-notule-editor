@@ -2,12 +2,11 @@ steps:
   publish-pre-release:
     image: node:20-slim
     commands:
+      - export NPM_TOKEN=$NPM_ACCESS_TOKEN
       - corepack enable
       - pnpm i --frozen-lockfile --ignore-scripts
       - pnpm publish embeddable-say-editor --tag next --no-git-checks --access public
-    environment:
-      NPM_TOKEN:
-        from_secret: npm_access_token
+    secrets: [npm_access_token]
     when:
       ref:
         include: refs/tags/@lblod/*-next.*
