@@ -1,5 +1,12 @@
 # frontend-embeddable-notule-editor
 
+## 3.7.1
+
+### Patch Changes
+
+- [`f50055c`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/f50055cb2c36ad459dabe5911ef5219e86c1de09) Thanks [@piemonkey](https://github.com/piemonkey)! - Fix release process to correctly bump the version of embeddable used in the test-app.
+  NOTE: This is identical to v3.7.0 because the only changes are in the build process of the test app
+
 ## 3.7.0
 
 NOTE: While this version technically works, and is identical to 3.7.1, due to a misconfigured build, it was not pushed to npm.
