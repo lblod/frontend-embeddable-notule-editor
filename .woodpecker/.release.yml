@@ -1,11 +1,4 @@
 steps:
-  install:
-    image: node:20-slim
-    commands:
-      - corepack enable
-      - pnpm i --frozen-lockfile --ignore-scripts
-      - publish embeddable-say-editor --otp $NPM_ACCESS_TOKEN --tag next --no-git-checks --access public
-
   publish-pre-release:
     image: node:20-slim
     commands:
