@@ -1,5 +1,14 @@
 # test-app
 
+## 3.7.2-next.7
+
+### Patch Changes
+
+- [`08a5ce8`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/08a5ce88928b3be89866e48decb5754b2eb7781d) Thanks [@abeforgit](https://github.com/abeforgit)! - set env var in the old way
+
+- Updated dependencies [[`08a5ce8`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/08a5ce88928b3be89866e48decb5754b2eb7781d)]:
+  - @lblod/embeddable-say-editor@3.7.2-next.7
+
 ## 3.7.2-next.6
 
 ### Patch Changes

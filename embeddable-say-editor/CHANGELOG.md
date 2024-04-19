@@ -1,5 +1,11 @@
 # frontend-embeddable-notule-editor
 
+## 3.7.2-next.7
+
+### Patch Changes
+
+- [`08a5ce8`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/08a5ce88928b3be89866e48decb5754b2eb7781d) Thanks [@abeforgit](https://github.com/abeforgit)! - set env var in the old way
+
 ## 3.7.2-next.6
 
 ### Patch Changes
