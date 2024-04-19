@@ -1,5 +1,11 @@
 # frontend-embeddable-notule-editor
 
+## 3.7.2-next.0
+
+### Patch Changes
+
+- [`f83685d`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/f83685d3764686d8dc45e084792c00118a2d49c4) Thanks [@abeforgit](https://github.com/abeforgit)! - use woodpecker node plugin in ci
+
 ## 3.7.1
 
 ### Patch Changes
