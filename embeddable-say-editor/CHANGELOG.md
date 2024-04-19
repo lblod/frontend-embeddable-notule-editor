@@ -1,5 +1,21 @@
 # frontend-embeddable-notule-editor
 
+## 3.7.0
+
+### Minor Changes
+
+- [#251](https://github.com/lblod/frontend-embeddable-notule-editor/pull/251) [`a9feddf`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/a9feddf207fe4e00d899ca7cfbea6f6e1f282b2d) Thanks [@piemonkey](https://github.com/piemonkey)! - Update to latest editor and plugins, including the latest ember-appuniversum using inline SVG icons
+
+- [#239](https://github.com/lblod/frontend-embeddable-notule-editor/pull/239) [`2f4fd4f`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/2f4fd4fdbef3ca1f157db455673b4c70bbe99d7b) Thanks [@piemonkey](https://github.com/piemonkey)! - Update to version `9.6.0` of ember-rdfa-editor
+
+- [#239](https://github.com/lblod/frontend-embeddable-notule-editor/pull/239) [`8dbec82`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/8dbec826e78d9e6cfeb49d94e7fcbe3a705cc948) Thanks [@piemonkey](https://github.com/piemonkey)! - Add plugins to allow html editing and html export preview
+
+### Patch Changes
+
+- [#252](https://github.com/lblod/frontend-embeddable-notule-editor/pull/252) [`21a23c5`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/21a23c50fe5518cec0f316935fd1b09dda63df81) Thanks [@elpoelma](https://github.com/elpoelma)! - Update `@lblod/ember-environment-banner` to version [0.5.0](https://github.com/lblod/ember-environment-banner/releases/tag/v0.5.0)
+
+- [#250](https://github.com/lblod/frontend-embeddable-notule-editor/pull/250) [`8963773`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/8963773c65e8e335f2f2b14b50c838add5890d55) Thanks [@piemonkey](https://github.com/piemonkey)! - Move to pnpm for package management internally
+
 ## 3.6.0
 
 ### Minor Changes

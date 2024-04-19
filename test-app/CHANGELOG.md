@@ -1,5 +1,18 @@
 # test-app
 
+## 3.7.0
+
+### Minor Changes
+
+- [#239](https://github.com/lblod/frontend-embeddable-notule-editor/pull/239) [`8dbec82`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/8dbec826e78d9e6cfeb49d94e7fcbe3a705cc948) Thanks [@piemonkey](https://github.com/piemonkey)! - Add plugins to allow html editing and html export preview
+
+### Patch Changes
+
+- [#250](https://github.com/lblod/frontend-embeddable-notule-editor/pull/250) [`8963773`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/8963773c65e8e335f2f2b14b50c838add5890d55) Thanks [@piemonkey](https://github.com/piemonkey)! - Move to pnpm for package management internally
+
+- Updated dependencies [[`a9feddf`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/a9feddf207fe4e00d899ca7cfbea6f6e1f282b2d), [`21a23c5`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/21a23c50fe5518cec0f316935fd1b09dda63df81), [`2f4fd4f`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/2f4fd4fdbef3ca1f157db455673b4c70bbe99d7b), [`8963773`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/8963773c65e8e335f2f2b14b50c838add5890d55), [`8dbec82`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/8dbec826e78d9e6cfeb49d94e7fcbe3a705cc948)]:
+  - @lblod/embeddable-say-editor@3.7.0
+
 ## 3.6.0
 
 ### Minor Changes
