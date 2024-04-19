@@ -1,5 +1,14 @@
 # test-app
 
+## 3.7.2-next.4
+
+### Patch Changes
+
+- [`775a1b6`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/775a1b6777659697482107aeadb4899ca62340b8) Thanks [@abeforgit](https://github.com/abeforgit)! - use plain node image instead of plugins
+
+- Updated dependencies [[`775a1b6`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/775a1b6777659697482107aeadb4899ca62340b8)]:
+  - @lblod/embeddable-say-editor@3.7.2-next.4
+
 ## 3.7.2-next.3
 
 ### Patch Changes
