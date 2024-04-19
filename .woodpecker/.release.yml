@@ -4,13 +4,15 @@ steps:
     commands:
       - corepack enable
       - pnpm i --frozen-lockfile --ignore-scripts
+      - publish embeddable-say-editor --otp $NPM_ACCESS_TOKEN --tag next --no-git-checks --access public
+
   publish-pre-release:
-    image: codeberg.org/woodpecker-plugins/node-pm
-    settings:
-      run: publish embeddable-say-editor --otp $NPM_ACCESS_TOKEN --tag next --no-git-checks --access public
-      frozen_lockfile: true
-      ignore_node_modules: true
-      secrets: [npm_access_token]
+    image: node:20-slim
+    commands:
+      - corepack enable
+      - pnpm i --frozen-lockfile --ignore-scripts
+      - pnpm publish embeddable-say-editor --otp $NPM_ACCESS_TOKEN --tag next --no-git-checks --access public
+    secrets: [npm_access_token]
     when:
       ref:
         include: refs/tags/@lblod/*-next.*
