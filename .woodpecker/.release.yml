@@ -13,7 +13,7 @@ steps:
       secrets: [npm_access_token]
     when:
       ref:
-        include: refs/tags/*-next.*
+        include: refs/tags/**-next.*
   publish:
     image: plugins/npm
     settings:
@@ -23,7 +23,7 @@ steps:
       folder: embeddable-say-editor
     when:
       ref:
-        exclude: refs/tags/*-next.*
+        exclude: refs/tags/**-next.*
   push-tagged-build:
     image: plugins/docker
     settings:
