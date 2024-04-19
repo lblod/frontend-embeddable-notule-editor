@@ -1,5 +1,14 @@
 # test-app
 
+## 3.7.2-next.6
+
+### Patch Changes
+
+- [`d8580e3`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/d8580e3050679f1bcd86092da23d1bd047eedcb3) Thanks [@abeforgit](https://github.com/abeforgit)! - add correct npm token setup
+
+- Updated dependencies [[`d8580e3`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/d8580e3050679f1bcd86092da23d1bd047eedcb3)]:
+  - @lblod/embeddable-say-editor@3.7.2-next.6
+
 ## 3.7.2-next.5
 
 ### Patch Changes
