@@ -1,5 +1,14 @@
 # test-app
 
+## 3.7.2-next.5
+
+### Patch Changes
+
+- [`8bd37d4`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/8bd37d4b702b23cf4cb115bce7348bbda0e9f212) Thanks [@abeforgit](https://github.com/abeforgit)! - remove unnecessary install step
+
+- Updated dependencies [[`8bd37d4`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/8bd37d4b702b23cf4cb115bce7348bbda0e9f212)]:
+  - @lblod/embeddable-say-editor@3.7.2-next.5
+
 ## 3.7.2-next.4
 
 ### Patch Changes
