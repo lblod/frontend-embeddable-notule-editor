@@ -1,5 +1,11 @@
 # frontend-embeddable-notule-editor
 
+## 3.7.2-next.1
+
+### Patch Changes
+
+- [`feb4d10`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/feb4d106c17c0d10dfb3c4cbd7fb1ea6446b66b8) Thanks [@abeforgit](https://github.com/abeforgit)! - empty bump for CI configuration
+
 ## 3.7.2-next.0
 
 ### Patch Changes

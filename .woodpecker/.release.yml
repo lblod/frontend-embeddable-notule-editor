@@ -29,9 +29,9 @@ steps:
     settings:
       repo: lblod/frontend-embeddable-notule-editor
       dockerfile: test-app/Dockerfile
-      tags: "${CI_COMMIT_TAG##v}"
+      tags: ${CI_COMMIT_TAG##\@lblod/embeddable-say-editor\@}
       purge: true
     secrets: [ docker_username, docker_password ]
 when:
   event: tag
-  ref: refs/tags/v*
+  ref: refs/tags/@lblod/embeddable-say-editor@*

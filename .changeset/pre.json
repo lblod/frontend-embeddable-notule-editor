@@ -6,6 +6,7 @@
     "test-app": "3.7.1"
   },
   "changesets": [
+    "fuzzy-knives-impress",
     "spicy-pans-destroy"
   ]
 }
