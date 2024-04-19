@@ -1,5 +1,14 @@
 # test-app
 
+## 3.7.2
+
+### Patch Changes
+
+- [`e09b980`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/e09b9807c3179ae35ed641b4221e1ac292a5ebdf) Thanks [@abeforgit](https://github.com/abeforgit)! - rework CI pipeline to fix npm publishing with pnpm
+
+- Updated dependencies [[`e09b980`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/e09b9807c3179ae35ed641b4221e1ac292a5ebdf), [`feb4d10`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/feb4d106c17c0d10dfb3c4cbd7fb1ea6446b66b8), [`d8580e3`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/d8580e3050679f1bcd86092da23d1bd047eedcb3), [`775a1b6`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/775a1b6777659697482107aeadb4899ca62340b8), [`8bd37d4`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/8bd37d4b702b23cf4cb115bce7348bbda0e9f212), [`71b3249`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/71b3249ef75c02ab361f2bfd2fabee7c4a4f5272), [`f83685d`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/f83685d3764686d8dc45e084792c00118a2d49c4), [`ecbe6f1`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/ecbe6f1eaf12d1222a0278c03dc56029a74a9844), [`08a5ce8`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/08a5ce88928b3be89866e48decb5754b2eb7781d)]:
+  - @lblod/embeddable-say-editor@3.7.2
+
 ## 3.7.2-next.7
 
 ### Patch Changes

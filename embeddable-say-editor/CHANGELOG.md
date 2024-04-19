@@ -1,5 +1,11 @@
 # frontend-embeddable-notule-editor
 
+## 3.7.2
+
+### Patch Changes
+
+- [`e09b980`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/e09b9807c3179ae35ed641b4221e1ac292a5ebdf) Thanks [@abeforgit](https://github.com/abeforgit)! - rework CI pipeline to fix npm publishing with pnpm
+
 ## 3.7.2-next.7
 
 ### Patch Changes
