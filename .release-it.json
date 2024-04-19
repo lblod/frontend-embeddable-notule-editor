@@ -11,5 +11,8 @@
     "publish": false,
     "ignoreVersion": true,
     "allowSameVersion": true
+  },
+  "hooks": {
+    "after:bump": "pnpm i --lockfile-only"
   }
 }

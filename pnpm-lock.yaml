@@ -208,7 +208,7 @@ importers:
   test-app:
     dependencies:
       '@lblod/embeddable-say-editor':
-        specifier: ^3.6.0
+        specifier: ^3.7.0
         version: link:../embeddable-say-editor
     devDependencies:
       copy-webpack-plugin:

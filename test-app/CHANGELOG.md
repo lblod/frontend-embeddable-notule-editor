@@ -2,6 +2,8 @@
 
 ## 3.7.0
 
+NOTE: While this version technically works, and is identical to 3.7.1, due to a misconfigured build, it was not pushed to npm.
+
 ### Minor Changes
 
 - [#239](https://github.com/lblod/frontend-embeddable-notule-editor/pull/239) [`8dbec82`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/8dbec826e78d9e6cfeb49d94e7fcbe3a705cc948) Thanks [@piemonkey](https://github.com/piemonkey)! - Add plugins to allow html editing and html export preview

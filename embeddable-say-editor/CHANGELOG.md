@@ -2,6 +2,8 @@
 
 ## 3.7.0
 
+NOTE: While this version technically works, and is identical to 3.7.1, due to a misconfigured build, it was not pushed to npm.
+
 ### Minor Changes
 
 - [#251](https://github.com/lblod/frontend-embeddable-notule-editor/pull/251) [`a9feddf`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/a9feddf207fe4e00d899ca7cfbea6f6e1f282b2d) Thanks [@piemonkey](https://github.com/piemonkey)! - Update to latest editor and plugins, including the latest ember-appuniversum using inline SVG icons
