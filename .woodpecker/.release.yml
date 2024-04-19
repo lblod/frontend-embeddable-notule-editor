@@ -16,7 +16,7 @@ steps:
       - export NPM_TOKEN=$NPM_ACCESS_TOKEN
       - corepack enable
       - pnpm i --frozen-lockfile --ignore-scripts
-      - pnpm publish embeddable-say-editor --tag next --no-git-checks --access public
+      - pnpm publish embeddable-say-editor --tag latest --no-git-checks --access public
     secrets: [npm_access_token]
     when:
       ref:
