@@ -11,6 +11,10 @@ import {
   linkView,
 } from '@lblod/ember-rdfa-editor/plugins/link';
 import {
+  inlineRdfaWithConfig,
+  inlineRdfaWithConfigView,
+} from '@lblod/ember-rdfa-editor/nodes/inline-rdfa';
+import {
   table_of_contents,
   tableOfContentsView,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/table-of-contents-plugin/nodes';
@@ -26,14 +30,14 @@ import {
   underline,
 } from '@lblod/ember-rdfa-editor/plugins/text-style';
 import {
-  block_rdfa,
   docWithConfig,
+  paragraph,
+  text,
   hard_break,
   horizontal_rule,
-  invisible_rdfa,
-  paragraph,
-  repaired_block,
-  text,
+  blockRdfaWithConfig,
+  invisibleRdfaWithConfig,
+  repairedBlockWithConfig,
 } from '@lblod/ember-rdfa-editor/nodes';
 import {
   tableKeymap,
@@ -44,17 +48,10 @@ import {
   STRUCTURE_NODES,
   STRUCTURE_SPECS,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/article-structure-plugin/structures';
-import {
-  bullet_list,
-  list_item,
-  ordered_list,
-} from '@lblod/ember-rdfa-editor/plugins/list';
 import { placeholder } from '@lblod/ember-rdfa-editor/plugins/placeholder';
-import { heading } from '@lblod/ember-rdfa-editor/plugins/heading';
 import { blockquote } from '@lblod/ember-rdfa-editor/plugins/blockquote';
 import { code_block } from '@lblod/ember-rdfa-editor/plugins/code';
 import { image, imageView } from '@lblod/ember-rdfa-editor/plugins/image';
-import { inline_rdfa } from '@lblod/ember-rdfa-editor/marks';
 
 import {
   createInvisiblesPlugin,
@@ -108,6 +105,12 @@ import {
   defaultTableOfContentsPluginConfig,
   mergeConfigs,
 } from '../config/defaults';
+import {
+  bulletListWithConfig,
+  listItemWithConfig,
+  orderedListWithConfig,
+} from '@lblod/ember-rdfa-editor/plugins/list';
+import { headingWithConfig } from '@lblod/ember-rdfa-editor/plugins/heading';
 
 export default class SimpleEditorComponent extends Component {
   @tracked controller;
@@ -231,6 +234,7 @@ export default class SimpleEditorComponent extends Component {
     const config = {
       link: {
         interactive: true,
+        rdfaAware: true,
       },
     };
     const defaultTableConfig = {
@@ -245,12 +249,13 @@ export default class SimpleEditorComponent extends Component {
     let nodes = {
       doc: docWithConfig({
         content: userConfig.docContent ?? 'block+',
+        rdfaAware: true,
       }),
       paragraph,
-      repaired_block,
-      list_item,
-      ordered_list,
-      bullet_list,
+      repaired_block: repairedBlockWithConfig({ rdfaAware: true }),
+      list_item: listItemWithConfig({ rdfaAware: true }),
+      ordered_list: orderedListWithConfig({ rdfaAware: true }),
+      bullet_list: bulletListWithConfig({ rdfaAware: true }),
       placeholder,
       blockquote,
       horizontal_rule,
@@ -262,7 +267,6 @@ export default class SimpleEditorComponent extends Component {
       link: link(config.link),
     };
     const marks = {
-      inline_rdfa,
       em,
       strong,
       underline,
@@ -323,10 +327,15 @@ export default class SimpleEditorComponent extends Component {
     this.config = setup.config;
     this.uiConfig = setup.uiConfig;
     this.uiConfig.expandInsertMenu = userConfig.ui?.expandInsertMenu ?? false;
-    setup.nodes = { ...setup.nodes, heading, invisible_rdfa, block_rdfa };
+    setup.nodes = {
+      ...setup.nodes,
+      heading: headingWithConfig({ rdfaAware: true }),
+      block_rdfa: blockRdfaWithConfig({ rdfaAware: true }),
+      inline_rdfa: inlineRdfaWithConfig({ rdfaAware: true }),
+      invisible_rdfa: invisibleRdfaWithConfig({ rdfaAware: true }),
+    };
     this.schema = new Schema({ nodes: setup.nodes, marks: setup.marks });
 
-    this.plugins = setup.plugins;
     this.nodeViews = (controller) => {
       const views = {
         link: linkView(setup.config.link)(controller),
@@ -469,6 +478,8 @@ export default class SimpleEditorComponent extends Component {
     nodeViews.codelist = (controller) => codelistView(controller);
     nodeViews.date = (controller) =>
       dateView(config.variable.edit.date)(controller);
+    nodeViews.inline_rdfa = (controller) =>
+      inlineRdfaWithConfigView({ rdfaAware: true })(controller);
 
     setup.uiConfig.sidebar = true;
   }

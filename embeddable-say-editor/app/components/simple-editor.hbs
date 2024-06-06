@@ -10,10 +10,11 @@
   {{#if this.initCompleted}}
     <EditorContainer
       @editorOptions={{hash
-        showRdfa='true'
-        showRdfaHighlight='true'
-        showRdfaHover='true'
-        showPaper='true'
+        showRdfa=false
+        editRdfa=false
+        showRdfaHighlight=true
+        showRdfaHover=true
+        showPaper=true
         showToolbarBottom=null
       }}
       @showRdfaBlocks={{this.controller.showRdfaBlocks}}
