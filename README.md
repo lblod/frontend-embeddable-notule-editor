@@ -236,7 +236,7 @@ docContent: '((title|block)+|(chapter|block)+|(article|block)+)'
 The structures the plugin inserts are rdfa-annotated according to a custom model. This model
 is as of yet undocumented. For more information please contact the team.
 
-### Besluit 
+### Besluit
 
 :heavy_plus_sign: Enable by adding `"besluit"` to the `plugins` array.
 
@@ -264,6 +264,23 @@ a minimal besluit template which activates all of this plugin's features looks s
 </div>
 ```
 But in practice a much more elaborate template is typically used, [see here] (https://github.com/lblod/frontend-embeddable-notule-editor/blob/ab5a9619385f4b795a44a675fdc30b658bdcb344/public/test.html#L91) for an example.
+
+#### `BesluitTopic` plugin
+
+`BesluitTopic` plugin is a dependent on `besluit` plugin. It allows to insert and edit topics of a besluit. By default available topics are fetched from the https://data.vlaanderen.be/sparql endpoint, but this can be configured via the options.
+
+```js
+const options = {
+  besluitTopic: {
+    endpoint: 'https://data.vlaanderen.be/sparql',
+  }
+}
+```
+
+It is then possible to manage topics from the toolbar. The cursor should be inside a `besluit` node to see the button.
+
+![besluit topics](docs/besluit-topic.png)
+
 
 ### Citation
 Add the possibility to add references to specific legal documents. There are two ways to use this plugin
