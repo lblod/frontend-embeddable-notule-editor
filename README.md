@@ -281,6 +281,24 @@ It is then possible to manage topics from the toolbar. The cursor should be insi
 
 ![besluit topics](docs/besluit-topic.png)
 
+#### LPDC plugin
+
+`LPDC` plugin is a dependent on `besluit` plugin. It allows to insert [LPDC](https://github.com/Informatievlaanderen/OSLOthema-slimmeRaadpleegOmgeving?tab=readme-ov-file#lpdc-codes) codes.  
+There is no public endpoint available for LPDC codes, so you will need to provide your own. See [here](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/lokale-producten-en-dienstencatalogus) for more information.
+
+Once you have an endpoint, you can configure it like this:
+
+```js
+const options = {
+  lpdc: {
+    endpoint: 'https://some.endpoint.be/lpdc',
+  }
+}
+```
+
+It is then possible to insert LPDC code nodes in the body of a `besluit` node. The cursor should be inside a `besluit` node for the button to be active.
+
+![lpdc plugin](docs/lpdc.png)
 
 ### Citation
 Add the possibility to add references to specific legal documents. There are two ways to use this plugin

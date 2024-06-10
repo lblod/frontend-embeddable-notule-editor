@@ -13,6 +13,7 @@ const editor = await renderEditor({
     'citation',
     'besluit',
     'besluit-topic',
+    'lpdc',
     'article-structure',
     'variable',
     'table-of-contents',

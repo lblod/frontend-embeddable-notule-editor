@@ -312,6 +312,9 @@ export default class SimpleEditorComponent extends Component {
     if (activePlugins.includes('besluit-topic')) {
       this.setupBesluitTopicPlugin(setup);
     }
+    if (activePlugins.includes('lpdc')) {
+      this.setupLpdcPlugin(setup);
+    }
     if (activePlugins.includes('roadsign-regulation')) {
       this.setupRoadsignPlugin(setup);
     }
@@ -397,6 +400,12 @@ export default class SimpleEditorComponent extends Component {
       },
       userConfig.besluitTopic
     );
+  }
+
+  setupLpdcPlugin(setup) {
+    const { config, userConfig } = setup;
+
+    config.lpdc = userConfig.lpdc;
   }
 
   setupRoadsignPlugin(setup) {
