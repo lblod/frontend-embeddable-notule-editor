@@ -53,6 +53,12 @@
                     @controller={{this.controller}}
                     @options={{this.config.besluit.structures}}
                   />
+                  {{#if (array-includes this.activePlugins 'lpdc')}}
+                    <LpdcPlugin::LpdcInsert
+                      @controller={{this.controller}}
+                      @config={{this.config.lpdc}}
+                    />
+                  {{/if}}
                 {{/if}}
                 {{#if (array-includes this.activePlugins 'article-structure')}}
                   <div class="au-u-medium">{{t 'editor.article-structure.title'}}</div>
