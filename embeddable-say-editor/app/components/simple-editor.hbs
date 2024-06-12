@@ -22,7 +22,11 @@
     >
       <:top>
         {{#if this.controller}}
-          <SimpleToolbar @controller={{this.controller}} @activePlugins={{this.activePlugins}} />
+          <SimpleToolbar
+            @controller={{this.controller}}
+            @activePlugins={{this.activePlugins}}
+            @config={{this.config}}
+          />
         {{/if}}
       </:top>
       <:default>

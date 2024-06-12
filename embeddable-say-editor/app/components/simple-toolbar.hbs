@@ -78,6 +78,12 @@
           @controller={{@controller}}
         />
       {{/if}}
+      {{#if (array-includes @activePlugins 'besluit-topic')}}
+        <BesluitTopicPlugin::BesluitTopicToolbarDropdown
+          @controller={{@controller}}
+          @options={{@config.besluitTopic}}
+        />
+      {{/if}}
       {{#if (array-includes @activePlugins 'rdfa-blocks-toggle')}}
         <Plugins::RdfaBlockRender::RdfaBlocksToggle
           @controller={{@controller}}

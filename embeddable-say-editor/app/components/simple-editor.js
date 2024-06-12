@@ -309,6 +309,9 @@ export default class SimpleEditorComponent extends Component {
     if (activePlugins.includes('besluit')) {
       this.setupBesluitPlugin(setup);
     }
+    if (activePlugins.includes('besluit-topic')) {
+      this.setupBesluitTopicPlugin(setup);
+    }
     if (activePlugins.includes('roadsign-regulation')) {
       this.setupRoadsignPlugin(setup);
     }
@@ -383,6 +386,17 @@ export default class SimpleEditorComponent extends Component {
     setup.nodes = { ...setup.nodes, ...besluitNodes };
     setup.uiConfig.insertMenu = true;
     setup.uiConfig.sidebar = true;
+  }
+
+  setupBesluitTopicPlugin(setup) {
+    const { config, userConfig } = setup;
+
+    config.besluitTopic = mergeConfigs(
+      {
+        endpoint: 'https://data.vlaanderen.be/sparql',
+      },
+      userConfig.besluitTopic
+    );
   }
 
   setupRoadsignPlugin(setup) {

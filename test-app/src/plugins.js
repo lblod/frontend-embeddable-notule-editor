@@ -12,6 +12,7 @@ const editor = await renderEditor({
   plugins: [
     'citation',
     'besluit',
+    'besluit-topic',
     'article-structure',
     'variable',
     'table-of-contents',
@@ -28,6 +29,9 @@ const editor = await renderEditor({
     citation: {
       type: 'ranges',
       activeInRanges: (state) => [[0, state.doc.content.size]],
+    },
+    besluitTopic: {
+      endpoint: 'https://data.vlaanderen.be/sparql',
     },
   },
 });
