@@ -73,11 +73,11 @@ importers:
         specifier: ^0.5.0
         version: 0.5.0(@appuniversum/ember-appuniversum@3.4.1)(@glint/template@1.4.0)(ember-source@4.12.4)
       '@lblod/ember-rdfa-editor':
-        specifier: 9.6.1
-        version: 9.6.1(@appuniversum/ember-appuniversum@3.4.1)(@glint/template@1.4.0)(@lezer/common@1.2.1)(ember-changeset@4.1.2)(ember-cli-sass@11.0.1)(ember-intl@5.7.2)(ember-modifier@3.2.7)(ember-source@4.12.4)(webpack@5.91.0)
+        specifier: ^9.10.0
+        version: 9.10.0(@appuniversum/ember-appuniversum@3.4.1)(@glint/template@1.4.0)(@lezer/common@1.2.1)(ember-changeset@4.1.2)(ember-cli-sass@11.0.1)(ember-intl@5.7.2)(ember-modifier@3.2.7)(ember-source@4.12.4)(webpack@5.91.0)
       '@lblod/ember-rdfa-editor-lblod-plugins':
-        specifier: ^17.0.0
-        version: 17.0.0(@appuniversum/ember-appuniversum@3.4.1)(@babel/core@7.24.4)(@ember/string@3.1.1)(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(@lblod/ember-rdfa-editor@9.6.1)(@lezer/common@1.2.1)(ember-concurrency@2.3.7)(ember-intl@5.7.2)(ember-modifier@3.2.7)(ember-power-select@6.0.2)(ember-source@4.12.4)(prosemirror-model@1.20.0)(prosemirror-state@1.4.3)(webpack@5.91.0)
+        specifier: ^19.2.0
+        version: 19.2.0(@appuniversum/ember-appuniversum@3.4.1)(@babel/core@7.24.4)(@ember/string@3.1.1)(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(@lblod/ember-rdfa-editor@9.10.0)(@lezer/common@1.2.1)(ember-concurrency@2.3.7)(ember-intl@5.7.2)(ember-modifier@3.2.7)(ember-power-select@6.0.2)(ember-source@4.12.4)(prosemirror-model@1.20.0)(prosemirror-state@1.4.3)(webpack@5.91.0)
       babel-loader:
         specifier: ^8.3.0
         version: 8.3.0(@babel/core@7.24.4)(webpack@5.91.0)
@@ -2460,14 +2460,14 @@ packages:
       - supports-color
     dev: true
 
-  /@lblod/ember-rdfa-editor-lblod-plugins@17.0.0(@appuniversum/ember-appuniversum@3.4.1)(@babel/core@7.24.4)(@ember/string@3.1.1)(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(@lblod/ember-rdfa-editor@9.6.1)(@lezer/common@1.2.1)(ember-concurrency@2.3.7)(ember-intl@5.7.2)(ember-modifier@3.2.7)(ember-power-select@6.0.2)(ember-source@4.12.4)(prosemirror-model@1.20.0)(prosemirror-state@1.4.3)(webpack@5.91.0):
-    resolution: {integrity: sha512-ZU+VmRR1i75KGClWqZWlTffkf3FcquwqBWjxxE86Kvfprp+pZcpQR4FaL54OR0Gb/A2+gzB69zv1HszWDQhJzw==}
+  /@lblod/ember-rdfa-editor-lblod-plugins@19.2.0(@appuniversum/ember-appuniversum@3.4.1)(@babel/core@7.24.4)(@ember/string@3.1.1)(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(@lblod/ember-rdfa-editor@9.10.0)(@lezer/common@1.2.1)(ember-concurrency@2.3.7)(ember-intl@5.7.2)(ember-modifier@3.2.7)(ember-power-select@6.0.2)(ember-source@4.12.4)(prosemirror-model@1.20.0)(prosemirror-state@1.4.3)(webpack@5.91.0):
+    resolution: {integrity: sha512-hCocGpGoB0yJlS1KtBQNPsdWJ0kssNaJStPL+5LuRTAUEexsesWeluf0uOb9upitYbMI18rvkJf3nouEbDODrQ==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@appuniversum/ember-appuniversum': ^3.4.1
       '@ember/string': 3.x
       '@glint/template': ^1.1.0
-      '@lblod/ember-rdfa-editor': ^9.6.0
+      '@lblod/ember-rdfa-editor': ^9.8.0
       ember-concurrency: ^2.3.7 || ^3.1.0
       ember-intl: ^5.7.2 || ^6.1.0
       ember-modifier: ^3.2.7
@@ -2481,7 +2481,7 @@ packages:
       '@curvenote/prosemirror-utils': 1.0.5(prosemirror-model@1.20.0)(prosemirror-state@1.4.3)
       '@ember/string': 3.1.1
       '@glint/template': 1.4.0
-      '@lblod/ember-rdfa-editor': 9.6.1(@appuniversum/ember-appuniversum@3.4.1)(@glint/template@1.4.0)(@lezer/common@1.2.1)(ember-changeset@4.1.2)(ember-cli-sass@11.0.1)(ember-intl@5.7.2)(ember-modifier@3.2.7)(ember-source@4.12.4)(webpack@5.91.0)
+      '@lblod/ember-rdfa-editor': 9.10.0(@appuniversum/ember-appuniversum@3.4.1)(@glint/template@1.4.0)(@lezer/common@1.2.1)(ember-changeset@4.1.2)(ember-cli-sass@11.0.1)(ember-intl@5.7.2)(ember-modifier@3.2.7)(ember-source@4.12.4)(webpack@5.91.0)
       '@lblod/marawa': 0.8.0-beta.6
       '@rdfjs/data-model': 2.0.2
       '@rdfjs/dataset': 2.0.2
@@ -2503,6 +2503,7 @@ packages:
       ember-resources: 6.5.1(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(ember-concurrency@2.3.7)(ember-source@4.12.4)
       ember-source: 4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2)(@glint/template@1.4.0)(webpack@5.91.0)
       ember-template-imports: 3.4.2
+      ember-truth-helpers: 3.1.1
       ember-velcro: 2.1.3(ember-modifier@3.2.7)(ember-source@4.12.4)
       fetch-sparql-endpoint: 3.3.3
       n2words: 1.19.1
@@ -2527,8 +2528,8 @@ packages:
       - webpack
     dev: true
 
-  /@lblod/ember-rdfa-editor@9.6.1(@appuniversum/ember-appuniversum@3.4.1)(@glint/template@1.4.0)(@lezer/common@1.2.1)(ember-changeset@4.1.2)(ember-cli-sass@11.0.1)(ember-intl@5.7.2)(ember-modifier@3.2.7)(ember-source@4.12.4)(webpack@5.91.0):
-    resolution: {integrity: sha512-XDWCJMG92RnTzs/EdcJlbdblYLZ/RJVG6oNrlLmKqQxIeGsbDdUcvI8TMIpa0o47GePEFeBEpVvaizgQDQq0ag==}
+  /@lblod/ember-rdfa-editor@9.10.0(@appuniversum/ember-appuniversum@3.4.1)(@glint/template@1.4.0)(@lezer/common@1.2.1)(ember-changeset@4.1.2)(ember-cli-sass@11.0.1)(ember-intl@5.7.2)(ember-modifier@3.2.7)(ember-source@4.12.4)(webpack@5.91.0):
+    resolution: {integrity: sha512-XgL9ZCmBGswpwG0o/0RGmFKJo/JkiYBZezyI5iMNJikIUNIiZQt1837pb9WHFlJjwok0e65ObZn4FeJa0HKy6w==}
     engines: {node: 16.* || 18.* || >= 20}
     peerDependencies:
       '@appuniversum/ember-appuniversum': ^2.15.0 || ^3.0.0
@@ -2567,7 +2568,7 @@ packages:
       ember-cli-babel: 8.2.0(@babel/core@7.24.4)
       ember-cli-htmlbars: 6.3.0
       ember-cli-sass: 11.0.1
-      ember-focus-trap: 1.0.2
+      ember-focus-trap: 1.1.0(ember-source@4.12.4)
       ember-intl: 5.7.2(typescript@5.3.3)(webpack-cli@5.1.4)
       ember-modifier: 3.2.7(@babel/core@7.24.4)
       ember-source: 4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2)(@glint/template@1.4.0)(webpack@5.91.0)
@@ -8127,16 +8128,6 @@ packages:
       - '@glint/template'
       - supports-color
       - webpack
-    dev: true
-
-  /ember-focus-trap@1.0.2:
-    resolution: {integrity: sha512-/8Cx9KI7uqoMaNN4Iyxc24P2JIvAcCL3cI1tYdZRHTwTd1sG6esEZWOnpxZOSE7m4xHww8HVUSiXzgyqD8YIhA==}
-    engines: {node: 12.* || >= 14}
-    dependencies:
-      '@embroider/addon-shim': 1.8.7
-      focus-trap: 6.9.4
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /ember-focus-trap@1.1.0(ember-source@4.12.4):
