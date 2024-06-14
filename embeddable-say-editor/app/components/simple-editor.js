@@ -20,6 +20,7 @@ import {
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/table-of-contents-plugin/nodes';
 import { firefoxCursorFix } from '@lblod/ember-rdfa-editor/plugins/firefox-cursor-fix';
 import { lastKeyPressedPlugin } from '@lblod/ember-rdfa-editor/plugins/last-key-pressed';
+import recreateUuidsOnPaste from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/variable-plugin/recreateUuidsOnPaste';
 
 import {
   em,
@@ -120,6 +121,7 @@ export default class SimpleEditorComponent extends Component {
   @tracked showEnvironmentBanner = false;
   @tracked initCompleted = false;
   @tracked schema;
+  @tracked plugins;
   @tracked config;
   @tracked uiConfig;
   @tracked nodeViews;
@@ -282,6 +284,7 @@ export default class SimpleEditorComponent extends Component {
       linkPasteHandler(nodes.link),
       firefoxCursorFix(),
       lastKeyPressedPlugin,
+      recreateUuidsOnPaste,
       createInvisiblesPlugin(
         [hardBreak, paragraphInvisible, headingInvisible],
         {
@@ -332,6 +335,7 @@ export default class SimpleEditorComponent extends Component {
     }
     this.config = setup.config;
     this.uiConfig = setup.uiConfig;
+    this.plugins = setup.plugins;
     this.uiConfig.expandInsertMenu = userConfig.ui?.expandInsertMenu ?? false;
     setup.nodes = {
       ...setup.nodes,
