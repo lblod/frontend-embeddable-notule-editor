@@ -14,6 +14,7 @@ Object.entries(pages).forEach(([name, page]) => {
   );
   entries[name] = page.source;
 });
+
 console.log(entries);
 console.log(htmlPlugins);
 

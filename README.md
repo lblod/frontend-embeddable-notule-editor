@@ -545,6 +545,13 @@ No configuration is needed.
 
 Visualizes rdfa.
 
+### (Experimental) RDFA edit and debug tools plugin
+
+Enables (experimental) RDFA edit and debug tools plugin. This plugin is visible in the side panel.  
+Please see [here](https://github.com/lblod/ember-rdfa-editor#experimental-a-new-approach-to-handle-rdfa-in-documents) for more information.
+
+![img.png](docs/rdfa-editor.png)
+
 ### Template Comments
 Adds buttons to the right sidebar for insertion, moving and removing of comment blocks, also called *toelichtings- of voorbeeldbepaling*. These blocks are meant to provide extra info to users filling in a document that do not need to be published when the document is complete.
 

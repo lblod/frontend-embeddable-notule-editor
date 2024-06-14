@@ -16,4 +16,8 @@ module.exports = {
     title: 'Plugins',
     source: './src/plugins.js',
   },
+  'plugins-rdfa': {
+    title: 'Plugins with RDFa editor',
+    source: './src/plugins-with-rdfa-editor.js',
+  },
 };
