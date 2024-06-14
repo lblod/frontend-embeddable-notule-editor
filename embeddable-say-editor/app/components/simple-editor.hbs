@@ -10,8 +10,8 @@
   {{#if this.initCompleted}}
     <EditorContainer
       @editorOptions={{hash
-        showRdfa=false
-        editRdfa=false
+        showRdfa=(if (array-includes this.activePlugins 'rdfa-editor') false true)
+        editRdfa=(if (array-includes this.activePlugins 'rdfa-editor') true false)
         showRdfaHighlight=true
         showRdfaHover=true
         showPaper=true
@@ -136,6 +136,20 @@
                 @plugin={{this.citationPlugin}}
                 @config={{this.config.citation}}
               />
+            {{/if}}
+            {{#if (array-includes this.activePlugins 'rdfa-editor')}}
+              <div class="au-u-margin-bottom"/>
+              <this.RdfaEditor
+                @node={{this.activeNode}}
+                @controller={{this.controller}}
+              />
+              {{#if this.activeNode}}
+                <this.AttributeEditor
+                  @node={{this.activeNode}}
+                  @controller={{this.controller}}
+                />
+                <this.DebugInfo @node={{this.activeNode}} />
+              {{/if}}
             {{/if}}
           </Sidebar>
         {{/if}}

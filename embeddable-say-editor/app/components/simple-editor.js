@@ -55,6 +55,15 @@ import { code_block } from '@lblod/ember-rdfa-editor/plugins/code';
 import { image, imageView } from '@lblod/ember-rdfa-editor/plugins/image';
 
 import {
+  editableNodePlugin,
+  getActiveEditableNode,
+} from '@lblod/ember-rdfa-editor/plugins/_private/editable-node';
+
+import AttributeEditor from '@lblod/ember-rdfa-editor/components/_private/attribute-editor';
+import RdfaEditor from '@lblod/ember-rdfa-editor/components/_private/rdfa-editor';
+import DebugInfo from '@lblod/ember-rdfa-editor/components/_private/debug-info';
+
+import {
   createInvisiblesPlugin,
   hardBreak,
   heading as headingInvisible,
@@ -129,6 +138,10 @@ export default class SimpleEditorComponent extends Component {
   @tracked citationPlugin;
   @tracked hasSidebarPlugins;
   @service intl;
+
+  AttributeEditor = AttributeEditor;
+  RdfaEditor = RdfaEditor;
+  DebugInfo = DebugInfo;
 
   get vocabString() {
     return this.args.model.context.vocab;
@@ -333,6 +346,9 @@ export default class SimpleEditorComponent extends Component {
     if (activePlugins.includes('confidentiality')) {
       this.setupConfidentialityPlugin(setup);
     }
+    if (activePlugins.includes('rdfa-editor')) {
+      this.setupRdfaEditor(setup);
+    }
     this.config = setup.config;
     this.uiConfig = setup.uiConfig;
     this.plugins = setup.plugins;
@@ -536,5 +552,20 @@ export default class SimpleEditorComponent extends Component {
   setupConfidentialityPlugin(setup) {
     const { marks } = setup;
     marks.redacted = redacted;
+  }
+
+  setupRdfaEditor(setup) {
+    const { plugins } = setup;
+
+    plugins.push(editableNodePlugin());
+    setup.uiConfig.sidebar = true;
+  }
+
+  get activeNode() {
+    if (this.controller) {
+      return getActiveEditableNode(this.controller.activeEditorState);
+    }
+
+    return null;
   }
 }
