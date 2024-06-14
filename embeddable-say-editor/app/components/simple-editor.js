@@ -558,6 +558,7 @@ export default class SimpleEditorComponent extends Component {
     const { plugins } = setup;
 
     plugins.push(editableNodePlugin());
+    setup.uiConfig.sidebar = true;
   }
 
   get activeNode() {
