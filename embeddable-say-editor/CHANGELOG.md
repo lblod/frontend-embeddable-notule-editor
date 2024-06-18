@@ -1,5 +1,32 @@
 # frontend-embeddable-notule-editor
 
+## 4.0.0
+
+### Major Changes
+
+- [#253](https://github.com/lblod/frontend-embeddable-notule-editor/pull/253) [`a77c2ab`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/a77c2ab20343dd47533a48b9db9fbb18ceb27b12) Thanks [@dkozickis](https://github.com/dkozickis)! - Bump editor and plugins to:
+
+  ```json
+  {
+    "@lblod/ember-rdfa-editor": "^9.10.0",
+    "@lblod/ember-rdfa-editor-lblod-plugins": "^19.2.0"
+  }
+  ```
+
+  This release adapts embedded to [RDFa (RDF in Attributes)](https://github.com/lblod/ember-rdfa-editor/blob/9c32a9dea0da13df4092c39d9a092ba0803a3f42/README.md#experimental-a-new-approach-to-handle-rdfa-in-documents) aware editing, based on the changes in `ember-rdfa-editor` version [9.6.0](https://github.com/lblod/ember-rdfa-editor/releases/tag/v9.6.0)
+
+### Minor Changes
+
+- [#255](https://github.com/lblod/frontend-embeddable-notule-editor/pull/255) [`7a88a38`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/7a88a3815cbfde8e3c73a12529f5a09abe19dc2a) Thanks [@dkozickis](https://github.com/dkozickis)! - GN-4693: LPDC plugin
+
+- [#254](https://github.com/lblod/frontend-embeddable-notule-editor/pull/254) [`2ef4e63`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/2ef4e6354d46253e86a8fa6931c0dfec5991dace) Thanks [@dkozickis](https://github.com/dkozickis)! - GN-4629: Decision topic plugin
+
+### Patch Changes
+
+- [#256](https://github.com/lblod/frontend-embeddable-notule-editor/pull/256) [`54c6b4f`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/54c6b4fa7cde19d0ecdad22f3d10a56b1b248aa3) Thanks [@dkozickis](https://github.com/dkozickis)! - GN-4820: Bump editor and enable copy/pasting variable nodes correctly #678
+
+- [#257](https://github.com/lblod/frontend-embeddable-notule-editor/pull/257) [`35e4847`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/35e484753625bd1a2c6eaa8562dc36b14430ad38) Thanks [@dkozickis](https://github.com/dkozickis)! - RDFA Edit and Debug tools
+
 ## 3.7.2
 
 ### Patch Changes
