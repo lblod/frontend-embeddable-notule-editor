@@ -1,5 +1,11 @@
 # frontend-embeddable-notule-editor
 
+## 4.0.1
+
+### Patch Changes
+
+- [`fe1d83b`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/fe1d83bd8d14601f0240ac7a00da3b58d4c4774b) Thanks [@abeforgit](https://github.com/abeforgit)! - Add missing peerdep on ember-element-helper
+
 ## 4.0.0
 
 ### Major Changes
