@@ -32,10 +32,10 @@
     "lint:js:fix": "eslint . --fix"
   },
   "dependencies": {
-    "ember-intl": "^5.7.2"
+    "ember-intl": "^7.0.2"
   },
   "devDependencies": {
-    "@appuniversum/ember-appuniversum": "^3.4.1",
+    "@appuniversum/ember-appuniversum": "^3.4.2",
     "@babel/core": "^7.23.9",
     "@babel/eslint-parser": "^7.23.10",
     "@babel/plugin-syntax-decorators": "^7.23.3",
@@ -48,8 +48,8 @@
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "@lblod/ember-environment-banner": "^0.5.0",
-    "@lblod/ember-rdfa-editor": "^9.12.0",
-    "@lblod/ember-rdfa-editor-lblod-plugins": "^19.3.1",
+    "@lblod/ember-rdfa-editor": "^10.0.0",
+    "@lblod/ember-rdfa-editor-lblod-plugins": "^22.0.1",
     "babel-loader": "^8.3.0",
     "broccoli-asset-rev": "^3.0.0",
     "concurrently": "^8.2.2",
@@ -66,14 +66,14 @@
     "ember-cli-sass": "11.0.1",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.2",
-    "ember-concurrency": "^2.1.2",
+    "ember-concurrency": "^3.1.0",
     "ember-concurrency-decorators": "^2.0.3",
     "ember-element-helper": "^0.8.6",
     "ember-fetch": "^8.1.2",
     "ember-load-initializers": "^2.1.2",
-    "ember-modifier": "^3.2.7",
+    "ember-modifier": "^4.1.0",
     "ember-page-title": "^7.0.0",
-    "ember-power-select": "^6.0.1",
+    "ember-power-select": "^7.1.0",
     "ember-qunit": "^6.2.0",
     "ember-resolver": "^10.0.0",
     "ember-source": "~4.12.0",
