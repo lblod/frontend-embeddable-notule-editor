@@ -365,7 +365,6 @@ export default class SimpleEditorComponent extends Component {
       invisible_rdfa: invisibleRdfaWithConfig({ rdfaAware: true }),
     };
     this.schema = new Schema({ nodes: setup.nodes, marks: setup.marks });
-    console.log(this.schema);
     this.nodeViews = (controller) => {
       const views = {
         link: linkView(setup.config.link)(controller),
