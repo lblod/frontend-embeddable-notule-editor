@@ -113,6 +113,7 @@ import {
   defaultRdfaDatePluginConfig,
   defaultRoadsignRegulationPluginConfig,
   defaultTableOfContentsPluginConfig,
+  defaultLocationPluginConfig,
   mergeConfigs,
 } from '../config/defaults';
 import {
@@ -121,6 +122,10 @@ import {
   orderedListWithConfig,
 } from '@lblod/ember-rdfa-editor/plugins/list';
 import { headingWithConfig } from '@lblod/ember-rdfa-editor/plugins/heading';
+import {
+  osloLocation,
+  osloLocationView,
+} from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/location-plugin/node';
 
 export default class SimpleEditorComponent extends Component {
   @tracked controller;
@@ -346,6 +351,9 @@ export default class SimpleEditorComponent extends Component {
     if (activePlugins.includes('confidentiality')) {
       this.setupConfidentialityPlugin(setup);
     }
+    if (activePlugins.includes('location')) {
+      this.setupLocationPlugin(setup);
+    }
     if (activePlugins.includes('rdfa-editor')) {
       this.setupRdfaEditor(setup);
     }
@@ -426,6 +434,16 @@ export default class SimpleEditorComponent extends Component {
     const { config, userConfig } = setup;
 
     config.lpdc = userConfig.lpdc;
+  }
+  setupLocationPlugin(setup) {
+    const { nodes, nodeViews, config, userConfig } = setup;
+    config.location = mergeConfigs(
+      defaultLocationPluginConfig,
+      userConfig.location
+    );
+    nodes['oslo_location'] = osloLocation(config.location);
+    nodeViews['oslo_location'] = (controller) =>
+      osloLocationView(config.location)(controller);
   }
 
   setupRoadsignPlugin(setup) {

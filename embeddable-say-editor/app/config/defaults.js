@@ -60,6 +60,14 @@ export const defaultTableOfContentsPluginConfig = [
     ],
   },
 ];
+/**
+ * @type {import("@lblod/ember-rdfa-editor-lblod-plugins/plugins/location-plugin/node").LocationPluginConfig}
+ */
+export const defaultLocationPluginConfig = {
+  defaultPointUriRoot: 'https://example.net/id/geometrie/',
+  defaultPlaceUriRoot: 'https://example.net/id/plaats/',
+  defaultAddressUriRoot: 'https://example.net/id/adres/',
+};
 
 const mergeCustomizer = (objValue, srcValue) => {
   // if the src provides an array, overwrite instead of merging

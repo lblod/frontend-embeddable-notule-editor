@@ -26,6 +26,11 @@ module.exports = (environment) => ({
           from: path.resolve(__dirname, '../LICENSE.md'),
           to: path.resolve(__dirname),
         },
+        {
+          from: 'assets/images/**/*',
+          context: path.resolve(__dirname, 'ember-build'),
+          to: path.resolve(__dirname, 'dist'),
+        },
       ],
     }),
   ],
@@ -53,6 +58,11 @@ module.exports = (environment) => ({
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
+
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(png|jpg)$/i,
 
         type: 'asset/resource',
       },
