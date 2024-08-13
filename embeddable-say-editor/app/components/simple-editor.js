@@ -70,17 +70,18 @@ import {
   paragraph as paragraphInvisible,
 } from '@lblod/ember-rdfa-editor/plugins/invisibles';
 
-import {
-  besluitNodes,
-  structureSpecs as besluitStructure,
-} from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/standard-template-plugin';
-
 import { citationPlugin } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/citation-plugin';
 
 import { roadsign_regulation } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/roadsign-regulation-plugin/nodes';
 import { highlight } from '@lblod/ember-rdfa-editor/plugins/highlight/marks/highlight';
 import { color } from '@lblod/ember-rdfa-editor/plugins/color/marks/color';
 
+import {
+  structure,
+  structureView,
+} from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/structure-plugin/node';
+import StructureControlCardComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/structure-plugin/_private/control-card';
+import InsertArticleComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/decision-plugin/insert-article';
 import {
   templateComment,
   templateCommentView,
@@ -142,6 +143,8 @@ export default class SimpleEditorComponent extends Component {
   AttributeEditor = AttributeEditor;
   RdfaEditor = RdfaEditor;
   DebugInfo = DebugInfo;
+  StructureControlCard = StructureControlCardComponent;
+  InsertArticle = InsertArticleComponent;
 
   get vocabString() {
     return this.args.model.context.vocab;
@@ -268,6 +271,7 @@ export default class SimpleEditorComponent extends Component {
       }),
       paragraph,
       repaired_block: repairedBlockWithConfig({ rdfaAware: true }),
+      structure,
       list_item: listItemWithConfig({ rdfaAware: true }),
       ordered_list: orderedListWithConfig({ rdfaAware: true }),
       bullet_list: bulletListWithConfig({ rdfaAware: true }),
@@ -361,11 +365,11 @@ export default class SimpleEditorComponent extends Component {
       invisible_rdfa: invisibleRdfaWithConfig({ rdfaAware: true }),
     };
     this.schema = new Schema({ nodes: setup.nodes, marks: setup.marks });
-
     this.nodeViews = (controller) => {
       const views = {
         link: linkView(setup.config.link)(controller),
         image: imageView(controller),
+        structure: structureView(controller),
       };
       for (const [key, value] of Object.entries(setup.nodeViews)) {
         views[key] = value(controller);
@@ -403,10 +407,6 @@ export default class SimpleEditorComponent extends Component {
   }
 
   setupBesluitPlugin(setup) {
-    const { config } = setup;
-    config.besluit = {};
-    config.besluit.structures = besluitStructure;
-    setup.nodes = { ...setup.nodes, ...besluitNodes };
     setup.uiConfig.insertMenu = true;
     setup.uiConfig.sidebar = true;
   }

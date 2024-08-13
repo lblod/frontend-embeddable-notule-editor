@@ -49,10 +49,7 @@
                 @expandedInitially={{this.uiConfig.expandInsertMenu}}>
                 {{#if (array-includes this.activePlugins 'besluit')}}
                   <div class="au-u-medium">{{t 'editor.besluit.title'}}</div>
-                  <ArticleStructurePlugin::ArticleStructureCard
-                    @controller={{this.controller}}
-                    @options={{this.config.besluit.structures}}
-                  />
+                  <this.InsertArticle @controller={{this.controller}} />
                   {{#if (array-includes this.activePlugins 'lpdc')}}
                     <LpdcPlugin::LpdcInsert
                       @controller={{this.controller}}
@@ -94,10 +91,7 @@
               />
             {{/if}}
             {{#if (array-includes this.activePlugins 'besluit')}}
-              <ArticleStructurePlugin::StructureCard
-                @controller={{this.controller}}
-                @options={{this.config.besluit.structures}}
-              />
+              <this.StructureControlCard @controller={{this.controller}} />
             {{/if}}
             {{#if (array-includes this.activePlugins 'variable')}}
               {{#if this.config.variable.insert.enable}}
