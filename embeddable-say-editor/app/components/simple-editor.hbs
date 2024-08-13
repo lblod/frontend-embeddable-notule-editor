@@ -50,15 +50,11 @@
             {{#if this.uiConfig.insertMenu}}
               <Sidebar.Collapsible
                 @title={{t "editor.insert"}}
-                @expandedInitially={{this.uiConfig.expandInsertMenu}}
-              >
-                {{#if (array-includes this.activePlugins "besluit")}}
-                  <div class="au-u-medium">{{t "editor.besluit.title"}}</div>
-                  <ArticleStructurePlugin::ArticleStructureCard
-                    @controller={{this.controller}}
-                    @options={{this.config.besluit.structures}}
-                  />
-                  {{#if (array-includes this.activePlugins "lpdc")}}
+                @expandedInitially={{this.uiConfig.expandInsertMenu}}>
+                {{#if (array-includes this.activePlugins 'besluit')}}
+                  <div class="au-u-medium">{{t 'editor.besluit.title'}}</div>
+                  <this.InsertArticle @controller={{this.controller}} />
+                  {{#if (array-includes this.activePlugins 'lpdc')}}
                     <LpdcPlugin::LpdcInsert
                       @controller={{this.controller}}
                       @config={{this.config.lpdc}}
@@ -109,11 +105,8 @@
                 @options={{this.config.articleStructure.structures}}
               />
             {{/if}}
-            {{#if (array-includes this.activePlugins "besluit")}}
-              <ArticleStructurePlugin::StructureCard
-                @controller={{this.controller}}
-                @options={{this.config.besluit.structures}}
-              />
+            {{#if (array-includes this.activePlugins 'besluit')}}
+              <this.StructureControlCard @controller={{this.controller}} />
             {{/if}}
             {{#if (array-includes this.activePlugins "variable")}}
               {{#if this.config.variable.insert.enable}}
