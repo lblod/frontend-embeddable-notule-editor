@@ -89,7 +89,7 @@
                   <LocationPlugin::Insert
                     @controller={{this.controller}}
                     @config={{this.config.location}}
-                    @defaultMunicipality="Gent"
+                    @defaultMunicipality={{this.config.location.defaultMunicipality}}
                   />
                 {{/if}}
                 {{#if (array-includes this.activePlugins "template-comments")}}

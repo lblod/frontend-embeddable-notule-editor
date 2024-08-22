@@ -603,7 +603,8 @@ and has to be adjusted. :warning:
 
 The only configuration this plugin needs is the base URI for annotating the
 locations. Unfortunately we cannot provide a reasonable default for this,
-because it is up to the application to manage its URI namespace. 
+because it is up to the application to manage its URI namespace. You can also
+give the default value for the 'municipality' search field.
 
 If you are unsure which base to choose here, we might be able to help you figure
 it out.
@@ -615,6 +616,7 @@ it out.
     defaultPointUriRoot: 'https://example.net/id/geometrie/',
     defaultPlaceUriRoot: 'https://example.net/id/plaats/',
     defaultAddressUriRoot: 'https://example.net/id/adres/',
+    defaultMunicipality: 'Gent',
   }
 }
 ```
