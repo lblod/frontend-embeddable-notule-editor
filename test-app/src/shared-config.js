@@ -1,7 +1,7 @@
 export const pluginDemoConfig = {
   title: 'my editor',
   width: '100%',
-  height: '500px',
+  height: '800px',
   plugins: [
     'citation',
     'besluit',
@@ -16,6 +16,7 @@ export const pluginDemoConfig = {
     'confidentiality',
     'html-edit',
     'html-preview',
+    'location',
   ],
   options: {
     docContent:
@@ -26,6 +27,9 @@ export const pluginDemoConfig = {
     },
     besluitTopic: {
       endpoint: 'https://data.vlaanderen.be/sparql',
+    },
+    lpdc: {
+      endpoint: 'http://localhost/lpdc-service',
     },
   },
 };

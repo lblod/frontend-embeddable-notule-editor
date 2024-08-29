@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const pages = require('./pages');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const htmlPlugins = [];
 const entries = {};
@@ -26,9 +27,11 @@ module.exports = (environment) => {
     mode: environment.development ? 'development' : 'production',
     entry: entries,
     devServer: {
-      static: {
-        directory: path.resolve(__dirname, 'dist'),
-      },
+      static: [
+        {
+          directory: path.resolve(__dirname, 'dist'),
+        },
+      ],
       client: {
         overlay: false,
       },
@@ -37,6 +40,20 @@ module.exports = (environment) => {
       filename: '[name].js',
       path: path.resolve(__dirname, 'dist'),
     },
-    plugins: [...htmlPlugins],
+    plugins: [
+      ...htmlPlugins,
+      new CopyPlugin({
+        patterns: [
+          {
+            from: 'assets/images/**/*',
+            context: path.resolve(
+              __dirname,
+              'node_modules/@lblod/embeddable-say-editor/dist'
+            ),
+            to: path.resolve(__dirname, 'dist'),
+          },
+        ],
+      }),
+    ],
   };
 };

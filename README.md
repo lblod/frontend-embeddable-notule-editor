@@ -211,7 +211,8 @@ Any configuration value not provided will use the default value, which are shown
 * [rdfa-blocks-toggle](#rdfa-blocks-toggle): Allows to toggle the visual indications of the rdfa blocks with a button.
 * [template-comments](#template-comments): Allows insertion and editing of comment blocks to provide extra information to a user filling in a document. These are visually distinct units with a special RDFa type, which allows them to be filtered out during postprocessing.
 * [confidential-content](#confidential-content): Allows annotation of parts of the text to be redacted
-* [html-edit & html-preview]((#html-edit-html-preview}: Provides toolbar options to directly edit or preview the html the editor is producing
+* [html-edit & html-preview](#html-edit-html-preview): Provides toolbar options to directly edit or preview the html the editor is producing
+* [location](#location): Provides ways to insert annotated addresses
 
 ### Article Structure
 This plugin is in charge of inserting and manipulating structures. There are several insertion buttons in the right sidebar under *Document Structuren*.
@@ -590,6 +591,97 @@ No configuration is needed.
 
 While there are no specific RDFa aware features of these plugins, when the RDFa Aware mode of the editor is activated, this will significantly influence the markup that the editor produces, as it will now contain hidden elements to contain the annotations.
 This also limits the HTML that can be entered as it will be processed so that it continues to be valid before it is applied to the editor.
+
+### Location
+
+Adds a button in the right sidebar to allow the user to insert a location **in
+flanders**.
+#### Configuration
+
+:warning: Unlike most plugins, the default configuration is not production ready
+and has to be adjusted. :warning:
+
+The only configuration this plugin needs is the base URI for annotating the
+locations. Unfortunately we cannot provide a reasonable default for this,
+because it is up to the application to manage its URI namespace. You can also
+give the default value for the 'municipality' search field.
+
+If you are unsure which base to choose here, we might be able to help you figure
+it out.
+
+
+```javascript
+{
+  location: {
+    defaultPointUriRoot: 'https://example.net/id/geometrie/',
+    defaultPlaceUriRoot: 'https://example.net/id/plaats/',
+    defaultAddressUriRoot: 'https://example.net/id/adres/',
+    defaultMunicipality: 'Gent',
+  }
+}
+```
+
+:heavy_plus_sign: Enable the Location plugin by adding `"location"` to the `plugins` array.
+
+#### Usage
+There are currently 3 ways to define a location:
+
+##### Address
+This is the default mode. Address lookups target the [flemish location services](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/gebouwen-en-adressenregister)
+
+<details>
+<summary>Show image</summary>
+
+![img.png](docs/location-plugin-address-mode.png)
+
+</details>
+
+
+When searching for the address, the map will update and show the selected
+location:
+
+<details>
+<summary>Show image</summary>
+
+![img.png](docs/location-plugin-address-mode-filled.png)
+</details>
+
+##### Point location
+
+This is the second mode, accessible by selecting the corresponding tab in the
+modal. It is meant for referring to locations which don't really have a sensible
+address, such as playgrounds, parks, statues, etc.
+
+The user is required to provide a name for the location, which will appear in
+the text. The location will be annotated with its geographical coordinates.
+
+<details>
+<summary>Show image</summary>
+
+![img.png](docs/location-plugin-point-mode.png)
+</details>
+
+In this mode, the search feature only centers the map. The user can then click
+on the map to choose a specific location. 
+
+##### Area location
+
+In this mode, the user can draw an arbitrary shape on the map. This can be used
+to specify zones such as neighbourhoods, hospital campusses, or even entire
+municipalities. The given name for the area will be inserted into the text,
+which will be annotated with the coordinates of the shape's points.
+
+<details>
+<summary>Show image</summary>
+
+![img.png](docs/location-plugin-area-mode.png)
+</details>
+
+Click on the map to create a shape. Each subsequent point will connect in
+a straight line to the previous point. To complete the shape, click on the first
+point again. To delete the last point you added, click on it again.
+To change an existing shape, simply start drawing a new one. When it is
+completed, it will replace the old shape.
 
 ## Enabling/disabling the environment banner
 The environment banner is a visual indication of the environment you are currently using and which versions of Embeddable, the editor and editor-plugins are in use.
