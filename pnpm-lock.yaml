@@ -73,11 +73,11 @@ importers:
         specifier: ^0.5.0
         version: 0.5.0(@appuniversum/ember-appuniversum@3.4.2(@ember/test-helpers@2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4))))(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4)))(tracked-built-ins@3.3.0)(webpack-cli@5.1.4(webpack@5.91.0))(webpack@5.91.0(webpack-cli@5.1.4)))(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4)))
       '@lblod/ember-rdfa-editor':
-        specifier: ^10.0.1
-        version: 10.0.1(yqegm32g33rx6lj5pi5ybwgv6u)
+        specifier: ^10.3.0
+        version: 10.3.0(yqegm32g33rx6lj5pi5ybwgv6u)
       '@lblod/ember-rdfa-editor-lblod-plugins':
-        specifier: ^22.0.2
-        version: 22.0.2(z22hdtgkpunryecdbyfsdukzku)
+        specifier: ^22.4.0
+        version: 22.4.0(tmdtzcpsxuqpgl5gdkemhngndy)
       babel-loader:
         specifier: ^8.3.0
         version: 8.3.0(@babel/core@7.24.4)(webpack@5.91.0(webpack-cli@5.1.4))
@@ -1442,8 +1442,8 @@ packages:
       '@appuniversum/ember-appuniversum': ^2.0.0 || ^3.0.0
       ember-source: ^4.0.0
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@22.0.2':
-    resolution: {integrity: sha512-UsA+GTEU6zl5cRNFaxEcuG0ESw/vt7WhbNYPx7i0TQ1/B1tBjR7jdqbUXDiMWVZI3xLl1i2fjFNws3XhQB+C1w==}
+  '@lblod/ember-rdfa-editor-lblod-plugins@22.4.0':
+    resolution: {integrity: sha512-HEA31h0o7VdZQYn5a2gazpXxDuVRXHXCBhu4G/g2M0PPTjIrYRmnDuTF7ViE8IqRehJqP4A25Caf7UvoNw1qlw==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@appuniversum/ember-appuniversum': ^3.4.1
@@ -1466,8 +1466,8 @@ packages:
       ember-template-imports:
         optional: true
 
-  '@lblod/ember-rdfa-editor@10.0.1':
-    resolution: {integrity: sha512-wYI3LIPQIMrulE1E1PzCrOhOpVgMEiEmGmMdThTYTljnZpzTJggGNqrJJCpVJ6wvaM4KFPZq3PtuRYeTfZlfeQ==}
+  '@lblod/ember-rdfa-editor@10.3.0':
+    resolution: {integrity: sha512-ip8e7q5inZyz6MQXBmx9MyzHRVrLkyHlntVrBmMx0z11RKfijCA+8G+LTTLo95udR/L5VNFVF+CPgkE3FEmwNA==}
     engines: {node: 16.* || 18.* || >= 20}
     peerDependencies:
       '@appuniversum/ember-appuniversum': ^3.4.2
@@ -11707,7 +11707,7 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@22.0.2(z22hdtgkpunryecdbyfsdukzku)':
+  '@lblod/ember-rdfa-editor-lblod-plugins@22.4.0(tmdtzcpsxuqpgl5gdkemhngndy)':
     dependencies:
       '@appuniversum/ember-appuniversum': 3.4.2(@ember/test-helpers@2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4))))(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4)))(tracked-built-ins@3.3.0)(webpack-cli@5.1.4(webpack@5.91.0))(webpack@5.91.0(webpack-cli@5.1.4))
       '@codemirror/lang-html': 6.4.9
@@ -11715,7 +11715,7 @@ snapshots:
       '@codemirror/view': 6.28.4
       '@curvenote/prosemirror-utils': 1.0.5(prosemirror-model@1.22.1)(prosemirror-state@1.4.3)
       '@ember/string': 3.1.1
-      '@lblod/ember-rdfa-editor': 10.0.1(yqegm32g33rx6lj5pi5ybwgv6u)
+      '@lblod/ember-rdfa-editor': 10.3.0(yqegm32g33rx6lj5pi5ybwgv6u)
       '@lblod/marawa': 0.8.0-beta.6
       '@rdfjs/data-model': 2.0.2
       '@rdfjs/dataset': 2.0.2
@@ -11767,7 +11767,7 @@ snapshots:
       - web-streams-polyfill
       - webpack
 
-  '@lblod/ember-rdfa-editor@10.0.1(yqegm32g33rx6lj5pi5ybwgv6u)':
+  '@lblod/ember-rdfa-editor@10.3.0(yqegm32g33rx6lj5pi5ybwgv6u)':
     dependencies:
       '@appuniversum/ember-appuniversum': 3.4.2(@ember/test-helpers@2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4))))(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4)))(tracked-built-ins@3.3.0)(webpack-cli@5.1.4(webpack@5.91.0))(webpack@5.91.0(webpack-cli@5.1.4))
       '@babel/core': 7.24.9
@@ -11827,6 +11827,7 @@ snapshots:
       tracked-built-ins: 3.3.0
       tracked-toolbox: 2.0.0(@babel/core@7.24.9)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4)))
       uuid: 9.0.1
+      vm-browserify: 1.1.2
       yup: 1.4.0
     optionalDependencies:
       '@floating-ui/dom': 1.6.3
