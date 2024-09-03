@@ -1,5 +1,18 @@
 # frontend-embeddable-notule-editor
 
+## 5.0.0
+
+### Major Changes
+
+- [#258](https://github.com/lblod/frontend-embeddable-notule-editor/pull/258) [`9024946`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/9024946ed6baace1bfde26318986af632dc4ba6a) Thanks [@elpoelma](https://github.com/elpoelma)! - - Update `@lblod/ember-rdfa-editor` to version 10.3.0. Note: this dependency update also includes dependency updates of other required packages.
+  - Update `@lblod/ember-rdfa-editor-lblod-plugins` to version 22.4.0
+    - Version 21.0.0 introduces a new, more intuitive UI and UX for decision articles.
+    - Removal of the classic `decision` prosemirror-nodes. These were no longer required and are now replaced by more generic RDFa nodes. See [the plugins changelog](https://github.com/lblod/ember-rdfa-editor-lblod-plugins/blob/master/CHANGELOG.md#2100) for details. This is a breaking change as it changes the HTML output of these structures.
+
+### Minor Changes
+
+- [#260](https://github.com/lblod/frontend-embeddable-notule-editor/pull/260) [`a4db736`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/a4db73608afe75dc12b57ccbc48231cdca580949) Thanks [@abeforgit](https://github.com/abeforgit)! - Add oslo-location plugin
+
 ## 4.0.1
 
 ### Patch Changes
