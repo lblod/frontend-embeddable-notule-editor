@@ -73,11 +73,11 @@ importers:
         specifier: ^0.5.0
         version: 0.5.0(@appuniversum/ember-appuniversum@3.4.2(@ember/test-helpers@2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4))))(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4)))(tracked-built-ins@3.3.0)(webpack-cli@5.1.4(webpack@5.91.0))(webpack@5.91.0(webpack-cli@5.1.4)))(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4)))
       '@lblod/ember-rdfa-editor':
-        specifier: ^10.3.0
-        version: 10.3.0(yqegm32g33rx6lj5pi5ybwgv6u)
+        specifier: ^10.4.0
+        version: 10.4.0(yqegm32g33rx6lj5pi5ybwgv6u)
       '@lblod/ember-rdfa-editor-lblod-plugins':
         specifier: ^22.4.0
-        version: 22.4.0(tmdtzcpsxuqpgl5gdkemhngndy)
+        version: 22.4.0(icvqcbhbmq3kpkxdypjzjfbchu)
       babel-loader:
         specifier: ^8.3.0
         version: 8.3.0(@babel/core@7.24.4)(webpack@5.91.0(webpack-cli@5.1.4))
@@ -1466,8 +1466,8 @@ packages:
       ember-template-imports:
         optional: true
 
-  '@lblod/ember-rdfa-editor@10.3.0':
-    resolution: {integrity: sha512-ip8e7q5inZyz6MQXBmx9MyzHRVrLkyHlntVrBmMx0z11RKfijCA+8G+LTTLo95udR/L5VNFVF+CPgkE3FEmwNA==}
+  '@lblod/ember-rdfa-editor@10.4.0':
+    resolution: {integrity: sha512-rmSMmJj6Xbxg2v1xHo3wtJbfpwzrzm1mmKRc2vTsG3ho64V4QQE7IWD2PdnutEMYVYEQKet0W653tHAT8Em/1w==}
     engines: {node: 16.* || 18.* || >= 20}
     peerDependencies:
       '@appuniversum/ember-appuniversum': ^3.4.2
@@ -9413,7 +9413,7 @@ snapshots:
       '@babel/traverse': 7.24.8
       '@babel/types': 7.24.9
       convert-source-map: 2.0.0
-      debug: 4.3.5
+      debug: 4.3.5(supports-color@8.1.1)
       gensync: 1.0.0-beta.2
       json5: 2.2.3
       semver: 6.3.1
@@ -9519,7 +9519,7 @@ snapshots:
       '@babel/core': 7.24.4
       '@babel/helper-compilation-targets': 7.23.6
       '@babel/helper-plugin-utils': 7.24.0
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       lodash.debounce: 4.0.8
       resolve: 1.22.8
     transitivePeerDependencies:
@@ -9530,7 +9530,7 @@ snapshots:
       '@babel/core': 7.24.9
       '@babel/helper-compilation-targets': 7.23.6
       '@babel/helper-plugin-utils': 7.24.0
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       lodash.debounce: 4.0.8
       resolve: 1.22.8
     transitivePeerDependencies:
@@ -10928,7 +10928,7 @@ snapshots:
       '@babel/helper-split-export-declaration': 7.24.7
       '@babel/parser': 7.24.8
       '@babel/types': 7.24.9
-      debug: 4.3.5
+      debug: 4.3.5(supports-color@8.1.1)
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
@@ -11339,7 +11339,7 @@ snapshots:
 
   '@embroider/addon-shim@1.8.7':
     dependencies:
-      '@embroider/shared-internals': 2.5.2
+      '@embroider/shared-internals': 2.6.2
       broccoli-funnel: 3.0.8
       semver: 7.6.0
     transitivePeerDependencies:
@@ -11347,11 +11347,11 @@ snapshots:
 
   '@embroider/macros@1.15.0(@glint/template@1.4.0)':
     dependencies:
-      '@babel/core': 7.24.4
+      '@babel/core': 7.24.9
       '@embroider/shared-internals': 2.5.2
       assert-never: 1.2.1
       babel-import-util: 2.0.1
-      ember-cli-babel: 8.2.0(@babel/core@7.24.4)
+      ember-cli-babel: 8.2.0(@babel/core@7.24.9)
       find-up: 5.0.0
       lodash: 4.17.21
       resolve: 1.22.8
@@ -11390,7 +11390,7 @@ snapshots:
   '@embroider/shared-internals@2.5.2':
     dependencies:
       babel-import-util: 2.0.1
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       ember-rfc176-data: 0.3.18
       fs-extra: 9.1.0
       js-string-escape: 1.0.1
@@ -11404,7 +11404,7 @@ snapshots:
   '@embroider/shared-internals@2.6.2':
     dependencies:
       babel-import-util: 2.0.1
-      debug: 4.3.5
+      debug: 4.3.5(supports-color@8.1.1)
       ember-rfc176-data: 0.3.18
       fs-extra: 9.1.0
       js-string-escape: 1.0.1
@@ -11418,10 +11418,10 @@ snapshots:
 
   '@embroider/util@1.13.0(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4)))':
     dependencies:
-      '@babel/core': 7.24.4
-      '@embroider/macros': 1.15.0(@glint/template@1.4.0)
+      '@babel/core': 7.24.9
+      '@embroider/macros': 1.16.5(@glint/template@1.4.0)
       broccoli-funnel: 3.0.8
-      ember-cli-babel: 8.2.0(@babel/core@7.24.4)
+      ember-cli-babel: 8.2.0(@babel/core@7.24.9)
       ember-source: 4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4))
     optionalDependencies:
       '@glint/template': 1.4.0
@@ -11438,7 +11438,7 @@ snapshots:
   '@eslint/eslintrc@2.1.4':
     dependencies:
       ajv: 6.12.6
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       espree: 9.6.1
       globals: 13.24.0
       ignore: 5.3.1
@@ -11653,7 +11653,7 @@ snapshots:
   '@humanwhocodes/config-array@0.11.14':
     dependencies:
       '@humanwhocodes/object-schema': 2.0.3
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       minimatch: 3.1.2
     transitivePeerDependencies:
       - supports-color
@@ -11707,7 +11707,7 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@22.4.0(tmdtzcpsxuqpgl5gdkemhngndy)':
+  '@lblod/ember-rdfa-editor-lblod-plugins@22.4.0(icvqcbhbmq3kpkxdypjzjfbchu)':
     dependencies:
       '@appuniversum/ember-appuniversum': 3.4.2(@ember/test-helpers@2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4))))(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4)))(tracked-built-ins@3.3.0)(webpack-cli@5.1.4(webpack@5.91.0))(webpack@5.91.0(webpack-cli@5.1.4))
       '@codemirror/lang-html': 6.4.9
@@ -11715,7 +11715,7 @@ snapshots:
       '@codemirror/view': 6.28.4
       '@curvenote/prosemirror-utils': 1.0.5(prosemirror-model@1.22.1)(prosemirror-state@1.4.3)
       '@ember/string': 3.1.1
-      '@lblod/ember-rdfa-editor': 10.3.0(yqegm32g33rx6lj5pi5ybwgv6u)
+      '@lblod/ember-rdfa-editor': 10.4.0(yqegm32g33rx6lj5pi5ybwgv6u)
       '@lblod/marawa': 0.8.0-beta.6
       '@rdfjs/data-model': 2.0.2
       '@rdfjs/dataset': 2.0.2
@@ -11767,7 +11767,7 @@ snapshots:
       - web-streams-polyfill
       - webpack
 
-  '@lblod/ember-rdfa-editor@10.3.0(yqegm32g33rx6lj5pi5ybwgv6u)':
+  '@lblod/ember-rdfa-editor@10.4.0(yqegm32g33rx6lj5pi5ybwgv6u)':
     dependencies:
       '@appuniversum/ember-appuniversum': 3.4.2(@ember/test-helpers@2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4))))(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4)))(tracked-built-ins@3.3.0)(webpack-cli@5.1.4(webpack@5.91.0))(webpack@5.91.0(webpack-cli@5.1.4))
       '@babel/core': 7.24.9
@@ -11789,7 +11789,7 @@ snapshots:
       codemirror: 6.0.1(@lezer/common@1.2.1)
       common-tags: 1.8.2
       crypto-browserify: 3.12.0
-      debug: 4.3.5
+      debug: 4.3.5(supports-color@8.1.1)
       dompurify: 3.1.6
       ember-auto-import: 2.7.4(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4))
       ember-changeset: 4.1.2(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4))
@@ -11827,7 +11827,6 @@ snapshots:
       tracked-built-ins: 3.3.0
       tracked-toolbox: 2.0.0(@babel/core@7.24.9)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4)))
       uuid: 9.0.1
-      vm-browserify: 1.1.2
       yup: 1.4.0
     optionalDependencies:
       '@floating-ui/dom': 1.6.3
@@ -12679,7 +12678,7 @@ snapshots:
 
   agent-base@7.1.1:
     dependencies:
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -12902,7 +12901,7 @@ snapshots:
 
   async-disk-cache@2.1.0:
     dependencies:
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       heimdalljs: 0.2.6
       istextorbinary: 2.6.0
       mkdirp: 0.5.6
@@ -13012,15 +13011,6 @@ snapshots:
 
   babel-import-util@3.0.0: {}
 
-  babel-loader@8.3.0(@babel/core@7.24.4)(webpack@4.47.0(webpack-cli@5.1.4(webpack@5.91.0))):
-    dependencies:
-      '@babel/core': 7.24.4
-      find-cache-dir: 3.3.2
-      loader-utils: 2.0.4
-      make-dir: 3.1.0
-      schema-utils: 2.7.1
-      webpack: 4.47.0(webpack-cli@5.1.4(webpack@5.91.0))
-
   babel-loader@8.3.0(@babel/core@7.24.4)(webpack@5.91.0(webpack-cli@5.1.4)):
     dependencies:
       '@babel/core': 7.24.4
@@ -13029,6 +13019,15 @@ snapshots:
       make-dir: 3.1.0
       schema-utils: 2.7.1
       webpack: 5.91.0(webpack-cli@5.1.4)
+
+  babel-loader@8.3.0(@babel/core@7.24.9)(webpack@4.47.0(webpack-cli@5.1.4(webpack@5.91.0))):
+    dependencies:
+      '@babel/core': 7.24.9
+      find-cache-dir: 3.3.2
+      loader-utils: 2.0.4
+      make-dir: 3.1.0
+      schema-utils: 2.7.1
+      webpack: 4.47.0(webpack-cli@5.1.4(webpack@5.91.0))
 
   babel-loader@8.3.0(@babel/core@7.24.9)(webpack@5.91.0(webpack-cli@5.1.4)):
     dependencies:
@@ -13394,7 +13393,7 @@ snapshots:
 
   broccoli-babel-transpiler@7.8.1:
     dependencies:
-      '@babel/core': 7.24.4
+      '@babel/core': 7.24.9
       '@babel/polyfill': 7.12.1
       broccoli-funnel: 2.0.2
       broccoli-merge-trees: 3.0.2
@@ -13583,7 +13582,7 @@ snapshots:
     dependencies:
       array-equal: 1.0.2
       broccoli-plugin: 4.0.7
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       fs-tree-diff: 2.0.1
       heimdalljs: 0.2.6
       minimatch: 3.1.2
@@ -13818,7 +13817,7 @@ snapshots:
       broccoli-persistent-filter: 2.3.1
       broccoli-plugin: 2.1.0
       chalk: 2.4.2
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       ensure-posix-path: 1.1.1
       fs-extra: 8.1.0
       minimatch: 3.1.2
@@ -13844,7 +13843,7 @@ snapshots:
       async-promise-queue: 1.0.5
       broccoli-plugin: 4.0.7
       convert-source-map: 2.0.0
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       lodash.defaultsdeep: 4.6.1
       matcher-collection: 2.0.1
       symlink-or-copy: 1.3.1
@@ -14714,9 +14713,11 @@ snapshots:
     optionalDependencies:
       supports-color: 8.1.1
 
-  debug@4.3.5:
+  debug@4.3.5(supports-color@8.1.1):
     dependencies:
       ms: 2.1.2
+    optionalDependencies:
+      supports-color: 8.1.1
 
   decamelize-keys@1.1.1:
     dependencies:
@@ -14952,13 +14953,13 @@ snapshots:
 
   ember-auto-import@1.12.2(webpack-cli@5.1.4(webpack@5.91.0)):
     dependencies:
-      '@babel/core': 7.24.4
-      '@babel/preset-env': 7.24.4(@babel/core@7.24.4)
+      '@babel/core': 7.24.9
+      '@babel/preset-env': 7.24.4(@babel/core@7.24.9)
       '@babel/traverse': 7.24.1
       '@babel/types': 7.24.0
       '@embroider/shared-internals': 1.8.3
       babel-core: 6.26.3
-      babel-loader: 8.3.0(@babel/core@7.24.4)(webpack@4.47.0(webpack-cli@5.1.4(webpack@5.91.0)))
+      babel-loader: 8.3.0(@babel/core@7.24.9)(webpack@4.47.0(webpack-cli@5.1.4(webpack@5.91.0)))
       babel-plugin-syntax-dynamic-import: 6.18.0
       babylon: 6.18.0
       broccoli-debug: 0.6.5
@@ -15005,7 +15006,7 @@ snapshots:
       broccoli-plugin: 4.0.7
       broccoli-source: 3.0.1
       css-loader: 5.2.7(webpack@5.91.0(webpack-cli@5.1.4))
-      debug: 4.3.5
+      debug: 4.3.5(supports-color@8.1.1)
       fs-extra: 10.1.0
       fs-tree-diff: 2.0.1
       handlebars: 4.7.8
@@ -15086,7 +15087,7 @@ snapshots:
       broccoli-plugin: 4.0.7
       broccoli-source: 3.0.1
       css-loader: 5.2.7(webpack@5.91.0(webpack-cli@5.1.4))
-      debug: 4.3.5
+      debug: 4.3.5(supports-color@8.1.1)
       fs-extra: 10.1.0
       fs-tree-diff: 2.0.1
       handlebars: 4.7.8
@@ -15446,7 +15447,7 @@ snapshots:
       '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.24.4)
       '@babel/plugin-transform-typescript': 7.4.5(@babel/core@7.24.4)
       ansi-to-html: 0.6.15
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       ember-cli-babel-plugin-helpers: 1.1.1
       execa: 1.0.0
       fs-extra: 7.0.1
@@ -15463,7 +15464,7 @@ snapshots:
     dependencies:
       '@babel/plugin-transform-typescript': 7.5.5(@babel/core@7.24.4)
       ansi-to-html: 0.6.15
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       ember-cli-babel-plugin-helpers: 1.1.1
       execa: 2.1.0
       fs-extra: 8.1.0
@@ -15480,7 +15481,7 @@ snapshots:
     dependencies:
       '@babel/plugin-transform-typescript': 7.5.5(@babel/core@7.24.9)
       ansi-to-html: 0.6.15
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       ember-cli-babel-plugin-helpers: 1.1.1
       execa: 2.1.0
       fs-extra: 8.1.0
@@ -15500,7 +15501,7 @@ snapshots:
       '@babel/plugin-transform-typescript': 7.8.7(@babel/core@7.24.4)
       ansi-to-html: 0.6.15
       broccoli-stew: 3.0.0
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       ember-cli-babel-plugin-helpers: 1.1.1
       execa: 3.4.0
       fs-extra: 8.1.0
@@ -15517,7 +15518,7 @@ snapshots:
     dependencies:
       ansi-to-html: 0.6.15
       broccoli-stew: 3.0.0
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       execa: 4.1.0
       fs-extra: 9.1.0
       resolve: 1.22.8
@@ -15532,7 +15533,7 @@ snapshots:
     dependencies:
       ansi-to-html: 0.6.15
       broccoli-stew: 3.0.0
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       execa: 4.1.0
       fs-extra: 9.1.0
       resolve: 1.22.8
@@ -15915,7 +15916,7 @@ snapshots:
 
   ember-in-element-polyfill@1.0.1:
     dependencies:
-      debug: 4.3.5
+      debug: 4.3.5(supports-color@8.1.1)
       ember-cli-babel: 7.26.11
       ember-cli-htmlbars: 5.7.2
       ember-cli-version-checker: 5.1.2
@@ -16325,7 +16326,7 @@ snapshots:
       base64id: 2.0.0
       cookie: 0.4.2
       cors: 2.8.5
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       engine.io-parser: 5.2.2
       ws: 8.11.0
     transitivePeerDependencies:
@@ -16835,7 +16836,7 @@ snapshots:
 
   extract-zip@2.0.1(supports-color@8.1.1):
     dependencies:
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       get-stream: 5.2.0
       yauzl: 2.10.0
     optionalDependencies:
@@ -17346,7 +17347,7 @@ snapshots:
     dependencies:
       basic-ftp: 5.0.5
       data-uri-to-buffer: 6.0.2
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       fs-extra: 11.2.0
     transitivePeerDependencies:
       - supports-color
@@ -17752,7 +17753,7 @@ snapshots:
   http-proxy-agent@7.0.2:
     dependencies:
       agent-base: 7.1.1
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -17792,7 +17793,7 @@ snapshots:
   https-proxy-agent@7.0.4:
     dependencies:
       agent-base: 7.1.1
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -18986,7 +18987,7 @@ snapshots:
   micromark@3.2.0:
     dependencies:
       '@types/debug': 4.1.12
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       decode-named-character-reference: 1.0.2
       micromark-core-commonmark: 1.1.0
       micromark-factory-space: 1.1.0
@@ -19553,7 +19554,7 @@ snapshots:
     dependencies:
       '@tootallnate/quickjs-emscripten': 0.23.0
       agent-base: 7.1.1
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       get-uri: 6.0.3
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.4
@@ -19915,7 +19916,7 @@ snapshots:
   proxy-agent@6.4.0:
     dependencies:
       agent-base: 7.1.1
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.4
       lru-cache: 7.18.3
@@ -20099,7 +20100,7 @@ snapshots:
       '@rdfjs/namespace': 1.1.0
       '@rdfjs/term-set': 1.1.0
       clownface: 1.5.1
-      debug: 4.3.5
+      debug: 4.3.5(supports-color@8.1.1)
       rdf-literal: 1.3.2
       rdf-validate-datatype: 0.1.5
     transitivePeerDependencies:
@@ -20314,9 +20315,9 @@ snapshots:
 
   remove-types@1.0.0:
     dependencies:
-      '@babel/core': 7.24.4
-      '@babel/plugin-syntax-decorators': 7.24.1(@babel/core@7.24.4)
-      '@babel/plugin-transform-typescript': 7.24.4(@babel/core@7.24.4)
+      '@babel/core': 7.24.9
+      '@babel/plugin-syntax-decorators': 7.24.1(@babel/core@7.24.9)
+      '@babel/plugin-transform-typescript': 7.24.4(@babel/core@7.24.9)
       prettier: 2.8.8
     transitivePeerDependencies:
       - supports-color
@@ -20796,7 +20797,7 @@ snapshots:
 
   socket.io-adapter@2.5.4:
     dependencies:
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       ws: 8.11.0
     transitivePeerDependencies:
       - bufferutil
@@ -20806,7 +20807,7 @@ snapshots:
   socket.io-parser@4.2.4:
     dependencies:
       '@socket.io/component-emitter': 3.1.0
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -20815,7 +20816,7 @@ snapshots:
       accepts: 1.3.8
       base64id: 2.0.0
       cors: 2.8.5
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       engine.io: 6.5.4
       socket.io-adapter: 2.5.4
       socket.io-parser: 4.2.4
@@ -20833,7 +20834,7 @@ snapshots:
   socks-proxy-agent@8.0.3:
     dependencies:
       agent-base: 7.1.1
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       socks: 2.8.1
     transitivePeerDependencies:
       - supports-color
@@ -20937,7 +20938,7 @@ snapshots:
 
   spdy-transport@3.0.0:
     dependencies:
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       detect-node: 2.1.0
       hpack.js: 2.1.6
       obuf: 1.1.2
@@ -20948,7 +20949,7 @@ snapshots:
 
   spdy@4.0.2:
     dependencies:
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       handle-thing: 2.0.1
       http-deceiver: 1.2.7
       select-hose: 2.0.0
@@ -20988,7 +20989,7 @@ snapshots:
 
   stagehand@1.0.1:
     dependencies:
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -21213,7 +21214,7 @@ snapshots:
 
   sync-disk-cache@2.1.0:
     dependencies:
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       heimdalljs: 0.2.6
       mkdirp: 0.5.6
       rimraf: 3.0.2
@@ -21505,7 +21506,7 @@ snapshots:
 
   tree-sync@2.1.0:
     dependencies:
-      debug: 4.3.4(supports-color@8.1.1)
+      debug: 4.3.5(supports-color@8.1.1)
       fs-tree-diff: 2.0.1
       mkdirp: 0.5.6
       quick-temp: 0.1.8
@@ -22199,7 +22200,7 @@ snapshots:
 
   workerpool@3.1.2:
     dependencies:
-      '@babel/core': 7.24.4
+      '@babel/core': 7.24.9
       object-assign: 4.1.1
       rsvp: 4.8.5
     transitivePeerDependencies:
