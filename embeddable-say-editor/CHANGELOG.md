@@ -1,5 +1,11 @@
 # frontend-embeddable-notule-editor
 
+## 5.0.1
+
+### Patch Changes
+
+- [#262](https://github.com/lblod/frontend-embeddable-notule-editor/pull/262) [`5d47c16`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/5d47c16ec847cb1b73bc1c53d666b6e0720cc731) Thanks [@piemonkey](https://github.com/piemonkey)! - Use editor with stubbed vm-browserify as attempting to include it breaks the build process
+
 ## 5.0.0
 
 ### Major Changes
