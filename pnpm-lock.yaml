@@ -78,6 +78,9 @@ importers:
       '@lblod/ember-rdfa-editor-lblod-plugins':
         specifier: ^22.4.0
         version: 22.4.0(icvqcbhbmq3kpkxdypjzjfbchu)
+      '@types/ember__owner':
+        specifier: ~4.0.9
+        version: 4.0.9
       babel-loader:
         specifier: ^8.3.0
         version: 8.3.0(@babel/core@7.24.4)(webpack@5.91.0(webpack-cli@5.1.4))
@@ -1807,6 +1810,9 @@ packages:
 
   '@types/debug@4.1.12':
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
+
+  '@types/ember__owner@4.0.9':
+    resolution: {integrity: sha512-iyBda4aUIjBmeiKTKmPow/EJO7xWn8m85CnQTOCqQzTWJyJpgfObbXSHahOHXOfMm279Oa5NlbmS/EontB+XiQ==}
 
   '@types/eslint-scope@3.7.7':
     resolution: {integrity: sha512-MzMFlSLBqNF2gcHWO0G1vP/YQyfvrxZ0bF+u7mzUdZ1/xK4A4sru+nraZz5i3iEIk1l1uyicaDVTB4QbbEkAYg==}
@@ -4992,7 +4998,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
-    deprecated: The v1 package contains DANGEROUS / INSECURE binaries. Upgrade to safe fsevents v2
+    deprecated: Upgrade to fsevents v2 to mitigate potential security issues
 
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
@@ -9342,7 +9348,7 @@ snapshots:
       ember-cli-htmlbars: 6.3.0
       ember-concurrency: 3.1.1(@babel/core@7.24.9)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4)))
       ember-data-table: 2.1.0(webpack-cli@5.1.4(webpack@5.91.0))
-      ember-file-upload: 8.4.1(@ember/test-helpers@2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4))))(@glimmer/component@1.1.2(@babel/core@7.24.9))(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(ember-modifier@4.1.0(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4))))(tracked-built-ins@3.3.0)(webpack@5.91.0(webpack-cli@5.1.4))
+      ember-file-upload: 8.4.1(@ember/test-helpers@2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4))))(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(ember-modifier@4.1.0(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4))))(tracked-built-ins@3.3.0)(webpack@5.91.0(webpack-cli@5.1.4))
       ember-focus-trap: 1.1.0(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4)))
       ember-modifier: 4.1.0(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4)))
       ember-source: 4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4))
@@ -12260,6 +12266,8 @@ snapshots:
   '@types/debug@4.1.12':
     dependencies:
       '@types/ms': 0.7.34
+
+  '@types/ember__owner@4.0.9': {}
 
   '@types/eslint-scope@3.7.7':
     dependencies:
@@ -15873,13 +15881,13 @@ snapshots:
       - encoding
       - supports-color
 
-  ember-file-upload@8.4.1(@ember/test-helpers@2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4))))(@glimmer/component@1.1.2(@babel/core@7.24.9))(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(ember-modifier@4.1.0(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4))))(tracked-built-ins@3.3.0)(webpack@5.91.0(webpack-cli@5.1.4)):
+  ember-file-upload@8.4.1(@ember/test-helpers@2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4))))(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(ember-modifier@4.1.0(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4))))(tracked-built-ins@3.3.0)(webpack@5.91.0(webpack-cli@5.1.4)):
     dependencies:
       '@ember/test-helpers': 2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4)))
       '@ember/test-waiters': 3.1.0
       '@embroider/addon-shim': 1.8.7
       '@embroider/macros': 1.16.5(@glint/template@1.4.0)
-      '@glimmer/component': 1.1.2(@babel/core@7.24.9)
+      '@glimmer/component': 1.1.2(@babel/core@7.24.4)
       '@glimmer/tracking': 1.1.2
       ember-auto-import: 2.7.4(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4))
       ember-modifier: 4.1.0(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0(webpack-cli@5.1.4)))
