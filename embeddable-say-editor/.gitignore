@@ -7,7 +7,6 @@
 /ember-build/
 /dist/
 /types/
-/typeImports/
 
 # misc
 /.env*

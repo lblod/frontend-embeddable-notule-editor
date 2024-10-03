@@ -6,7 +6,6 @@
   "license": "MIT",
   "workspaces": [
     "embeddable-say-editor",
-    "test-angular",
     "test-app"
   ],
   "scripts": {
