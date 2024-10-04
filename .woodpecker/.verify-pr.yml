@@ -31,7 +31,7 @@ steps:
     when:
       path:
         include: [ 'test-angular/*', 'embeddable-say-editor/types/*', 'embeddable-say-editor/typeImports/*', 'embeddable-say-editor/package.json']
-        ignore_message: "[NO-ANGULAR]"
+        ignore_message: "[ALL]"
 
 when:
   event:
