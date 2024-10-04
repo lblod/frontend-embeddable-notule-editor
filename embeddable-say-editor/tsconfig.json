@@ -1,5 +1,6 @@
 {
   "files": ["main.js"],
+  "include": ["typeImports/**/*"],
   "compilerOptions": {
     // Tell TypeScript to read JS files
     "allowJs": true,

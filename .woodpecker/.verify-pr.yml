@@ -22,6 +22,17 @@ steps:
     commands:
       - corepack enable
       - pnpm lint:dependencies
+  test-angular:
+    image: plugins/docker
+    settings:
+      repo: lblod/frontend-embeddable-notule-editor
+      dockerfile: test-angular/Dockerfile
+      dry_run: true
+    when:
+      path:
+        include: [ 'test-angular/*', 'embeddable-say-editor/types/*', 'embeddable-say-editor/typeImports/*', 'embeddable-say-editor/package.json']
+        ignore_message: "[ALL]"
+
 when:
   event:
     - pull_request
