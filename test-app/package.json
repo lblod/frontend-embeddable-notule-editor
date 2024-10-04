@@ -1,7 +1,7 @@
 {
   "name": "test-app",
   "private": true,
-  "version": "5.0.1",
+  "version": "5.1.0",
   "license": "MIT",
   "scripts": {
     "start": "webpack serve --env development",

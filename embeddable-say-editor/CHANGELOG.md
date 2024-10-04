@@ -1,5 +1,15 @@
 # frontend-embeddable-notule-editor
 
+## 5.1.0
+
+### Minor Changes
+
+- [#263](https://github.com/lblod/frontend-embeddable-notule-editor/pull/263) [`d6e293f`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/d6e293f3748a740c9a033688c2e7a79f595bb6c3) Thanks [@piemonkey](https://github.com/piemonkey)! - Update to v10.6.0 of editor and v23.1.0 of plugins
+
+### Patch Changes
+
+- [#263](https://github.com/lblod/frontend-embeddable-notule-editor/pull/263) [`69796ae`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/69796ae7f24d51c60e49ac4227fcfb6d442c96bd) Thanks [@piemonkey](https://github.com/piemonkey)! - Include @lblod/ember-rdfa-editor types into bundled app
+
 ## 5.0.1
 
 ### Patch Changes
