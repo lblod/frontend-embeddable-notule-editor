@@ -28,6 +28,11 @@ steps:
       repo: lblod/frontend-embeddable-notule-editor
       dockerfile: test-angular/Dockerfile
       dry_run: true
+    when:
+      path:
+        include: [ 'test-angular/*', 'embeddable-say-editor/types/*', 'embeddable-say-editor/typeImports/*', 'embeddable-say-editor/package.json']
+        ignore_message: "[NO-ANGULAR]"
+
 when:
   event:
     - pull_request
