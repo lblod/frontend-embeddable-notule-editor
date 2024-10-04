@@ -10,6 +10,8 @@
 /node_modules
 npm-debug.log
 yarn-error.log
+# Also pnpm-lock as we can't run it locally due to the workspace
+pnpm-lock.yaml
 
 # IDEs and editors
 .idea/

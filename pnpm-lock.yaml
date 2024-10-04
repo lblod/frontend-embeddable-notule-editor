@@ -78,9 +78,6 @@ importers:
       '@lblod/ember-rdfa-editor-lblod-plugins':
         specifier: ^23.1.0
         version: 23.1.0(2xngftajwawae4enzddggqwrne)
-      '@types/ember__owner':
-        specifier: ~4.0.9
-        version: 4.0.9
       babel-loader:
         specifier: ^8.3.0
         version: 8.3.0(@babel/core@7.24.4)(webpack@5.91.0(webpack-cli@5.1.4))
@@ -1865,9 +1862,6 @@ packages:
 
   '@types/debug@4.1.12':
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
-
-  '@types/ember__owner@4.0.9':
-    resolution: {integrity: sha512-iyBda4aUIjBmeiKTKmPow/EJO7xWn8m85CnQTOCqQzTWJyJpgfObbXSHahOHXOfMm279Oa5NlbmS/EontB+XiQ==}
 
   '@types/eslint-scope@3.7.7':
     resolution: {integrity: sha512-MzMFlSLBqNF2gcHWO0G1vP/YQyfvrxZ0bF+u7mzUdZ1/xK4A4sru+nraZz5i3iEIk1l1uyicaDVTB4QbbEkAYg==}
@@ -13128,8 +13122,6 @@ snapshots:
   '@types/debug@4.1.12':
     dependencies:
       '@types/ms': 0.7.34
-
-  '@types/ember__owner@4.0.9': {}
 
   '@types/eslint-scope@3.7.7':
     dependencies:
