@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 mkdir -p types/node_modules/@lblod/ember-rdfa-editor/core
 # Copy say-controller types from editor repo in node_modules
