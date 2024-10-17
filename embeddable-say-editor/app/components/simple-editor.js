@@ -414,9 +414,10 @@ export default class SimpleEditorComponent extends Component {
     setup.uiConfig.sidebar = true;
   }
 
-  setupBesluitPlugin(setup) {
-    setup.uiConfig.insertMenu = true;
-    setup.uiConfig.sidebar = true;
+  setupBesluitPlugin({ config, userConfig, uiConfig }) {
+    config.besluit = userConfig.besluit;
+    uiConfig.insertMenu = true;
+    uiConfig.sidebar = true;
   }
 
   setupBesluitTopicPlugin(setup) {
@@ -444,6 +445,8 @@ export default class SimpleEditorComponent extends Component {
     nodes['oslo_location'] = osloLocation(config.location);
     nodeViews['oslo_location'] = (controller) =>
       osloLocationView(config.location)(controller);
+    setup.uiConfig.insertMenu = true;
+    setup.uiConfig.sidebar = true;
   }
 
   setupRoadsignPlugin(setup) {
