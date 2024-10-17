@@ -26,9 +26,13 @@ const EDITOR_CONTAINER_ID = 'my-editor';
 const TOOLBAR_HEIGHT = '44px';
 
 /**
+ * @typedef { 'citation' | 'article-structure' | 'besluit' | 'besluit-topic' | 'lpdc' | 'roadsign-regulation' | 'variable' | 'table-of-contents' | 'template-comments' | 'confidentiality' | 'location' | 'rdfa-editor' } PluginName
+ */
+
+/**
  * @typedef {Object} EditorElement - A HTML element with the class `notule-editor`. These are functions available from the editor element. :warning: **`initEditor` has to be called before accessing any other methods**.
  * @property {import("@lblod/ember-rdfa-editor/core/say-controller").default} controller - provides direct access to a [SayController](https://github.com/lblod/ember-rdfa-editor/blob/master/addon/core/say-controller.ts) object. See [controller API](controller-api).
- * @property {(arrayOfPluginNames: string[], options: Record<string, any>) => Promise<>} initEditor - Initialize the editor by passing an array of plugin names that should be activated and an object that contains the configuration for the editor and its plugins. See {@link file://./README.md#managing-plugins} for more info.
+ * @property {(arrayOfPluginNames: PluginName[], options: Record<string, any>) => Promise<>} initEditor - Initialize the editor by passing an array of plugin names that should be activated and an object that contains the configuration for the editor and its plugins. See {@link file://./README.md#managing-plugins} for more info.
  * @property {() => void} enableEnvironmentBanner - enable the banner that shows the environment and versions of plugins used.
  * @property {() => void} disableEnvironmentBanner - disable the banner.
  * @property {(content: string) => void} setHtmlContent - set the HTML content inside the editor, overwriting all previous content.
@@ -49,7 +53,7 @@ const TOOLBAR_HEIGHT = '44px';
  * @param {string} [options.title] - The title for the editor.
  * @param {string} options.width - The width of the editor.
  * @param {string} options.height - The height of the editor.
- * @param {string[]} [options.plugins=[]] - The plugins to initialize the editor with.
+ * @param {PluginName[]} [options.plugins=[]] - The plugins to initialize the editor with.
  * @param {Record<string, any>} [options.options={}] - The options to initialize the editor with.
  * @param {Object.<string, string>} [options.cssVariables={}] - Record of CSS Variables and their values to be applied to the editor.
  * @param {boolean} [options.growEditor=false] - Whether the editor should grow to fit its content.
