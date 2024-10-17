@@ -151,11 +151,18 @@ export async function renderEditor({
     const editorPaperElement = editorPaper[0];
     editorPaperElement.classList.add('min-content');
 
+    // Set min heights to those passed
+    editorFrame.style.minHeight = height;
+    const sayEditorElement =
+      editorContainer.getElementsByClassName('say-editor')[0];
+    sayEditorElement.style.minHeight = `calc(${height} - ${TOOLBAR_HEIGHT})`;
+
+    // Resize to fit content
     const resizeObserver = new ResizeObserver((entries) => {
       for (let entry of entries) {
-        const { height } = entry.contentRect;
+        const { height: contentHeight } = entry.contentRect;
 
-        editorFrame.style.height = `${height}px`;
+        editorFrame.style.height = `${contentHeight}px`;
       }
     });
 
