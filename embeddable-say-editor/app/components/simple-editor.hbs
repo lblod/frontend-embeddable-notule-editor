@@ -53,7 +53,10 @@
                 @expandedInitially={{this.uiConfig.expandInsertMenu}}>
                 {{#if (array-includes this.activePlugins 'besluit')}}
                   <div class="au-u-medium">{{t 'editor.besluit.title'}}</div>
-                  <this.InsertArticle @controller={{this.controller}} />
+                  <this.InsertArticle
+                    @controller={{this.controller}}
+                    @options={{this.config.besluit}}
+                  />
                   {{#if (array-includes this.activePlugins 'lpdc')}}
                     <LpdcPlugin::LpdcInsert
                       @controller={{this.controller}}
