@@ -1,5 +1,11 @@
 # frontend-embeddable-notule-editor
 
+## 5.2.0
+
+### Minor Changes
+
+- [#264](https://github.com/lblod/frontend-embeddable-notule-editor/pull/264) [`398c7aa`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/398c7aa2946249d2b0dc82b536ea28d811e171d2) Thanks [@piemonkey](https://github.com/piemonkey)! - Modify 'growEditors' option so that the height setting is used as a minimum height rather than always fitting to the content size
+
 ## 5.1.0
 
 ### Minor Changes
