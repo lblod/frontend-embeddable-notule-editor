@@ -47,7 +47,9 @@ const editor = await renderEditor({
   title: 'my editor', // optional, this will set the "title" attribute of the iframe
   width: '500px', // width attribute of the iframe
   height: '300px', // height attribute of the iframe
-  growEditor: true, // optional, if true the editor will grow to fit the content, this will disregard the height attribute
+  // optional, if true the editor will grow to fit the content. 
+  // When this is true, the height option will determine the minimum height at which the editor starts
+  growEditor: true, 
   plugins: [], // array of plugin names (see below)
   options: {} // configuration object (see below)
   })
