@@ -241,11 +241,10 @@ is as of yet undocumented. For more information please contact the team.
 
 :heavy_plus_sign: Enable by adding `"besluit"` to the `plugins` array.
 
-No configuration is needed.
 
-#### rdfa-awareness
+#### Contextual mode
 
-This is a context-sensitive plugin which scans for the existence of a `div` with 
+By default, this plugin scans for the existence of a `div` with 
 a `typeof` attribute with a value containing the [Besluit](https://data.vlaanderen.be/ns/besluit/#Besluit) type. 
 It also needs a  BesluitType, a `prov:generated` property, and a uri (which should be unique for each besluit).
 If the selection is inside such a node, the plugin will provide some controls to work with 
@@ -265,6 +264,23 @@ a minimal besluit template which activates all of this plugin's features looks s
 </div>
 ```
 But in practice a much more elaborate template is typically used, [see here] (https://github.com/lblod/frontend-embeddable-notule-editor/blob/ab5a9619385f4b795a44a675fdc30b658bdcb344/public/test.html#L91) for an example.
+#### Direct mode
+
+Alternatively, you can directly configure the URI of the `besluit`. This is
+useful in case you want to use multiple editors to edit the constituent parts of
+a single decision, in which case you can't provide the required context inside
+the document.
+
+```javascript
+const options = {
+  besluit: {
+    decisionUri: 'http://my-endpoint.be/id/besluiten/1234'
+  }
+}
+```
+In this mode, the plugin will not search in the way described above, and will
+instead allow you to insert articles anywhere in the document, linking them to
+the provided URI.
 
 #### `BesluitTopic` plugin
 
@@ -297,7 +313,18 @@ const options = {
 }
 ```
 
-It is then possible to insert LPDC code nodes in the body of a `besluit` node. The cursor should be inside a `besluit` node for the button to be active.
+It is then possible to insert LPDC code nodes in the body of a `besluit` node.
+If you aren't able to provide a `besluit` node, you can instead configure the
+URI of the decision directly, like so:
+```javascript
+const options = {
+  lpdc: {
+    endpoint: 'https://some.endpoint.be/lpdc',
+    decisionUri: 'http://my-domain.be/id/besluiten/1234'
+  }
+}
+```
+
 
 ![lpdc plugin](docs/lpdc.png)
 
@@ -378,15 +405,25 @@ Add annnotated *mobiliteitsmaatregelen* from a specified registry, which will mo
 roadsignRegulation: {
   endpoint: 'https://dev.roadsigns.lblod.info/sparql',
   imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
+  // optional
+  decisionUri: 'http://my-endpoint.be/id/besluiten/1234',
+  // optional
+  // see below for valid decisiontypes in which the plugin will activate
+  decisionType:'https://data.vlaanderen.be/id/concept/BesluitType/4d8f678a-6fa4-4d5f-a2a1-80974e43bf34'
 }
 ```
 - `endpoint`: The sparql endpoint to fetch roadsigns. By default the development endpoint is used, so make sure to change this in production to your own registry or `https://register.mobiliteit.vlaanderen.be/sparql`.
 - `imageBaseUrl`: In production, some old roadsigns of MOW miss a base URL for images, which will be prepend with this URL. If you provide your own registry with correct data, this will not be used.
-
+- `decisionUri`: if you pass this, along with the type, the plugin will not scan
+  for a `besluit` context and allow you to insert a traffic regulation article
+anywhere in your document
+- `decisionType`: along with the above `decisionUri`, allows you to explicitly
+pass in the required decision information for the plugin to operate, which makes
+it possible to use the plugin outside of the `besluit` context
 
 #### rdfa-awareness 
 
-:warning: This plugin will only activate in *besluiten* with a certain rdf type. You will also need to activate the [Besluit](#besluit) plugin to be able to create *besluiten*.
+:warning: Unless you pass the above `decisionUri` and `decisionType` options, this plugin will only activate in *besluiten* with a certain rdf type. You will also need to activate the [Besluit](#besluit) plugin to be able to create *besluiten*.
 <details><summary>Exhaustive list of decision types in which this plugin will activate</summary>
 
 https://data.vlaanderen.be/id/concept/BesluitType/4d8f678a-6fa4-4d5f-a2a1-80974e43bf34
