@@ -29,7 +29,7 @@ export const pluginDemoConfig = {
       endpoint: 'https://data.vlaanderen.be/sparql',
     },
     lpdc: {
-      endpoint: 'http://localhost/lpdc-service',
+      endpoint: 'http://embeddable.dev.gelinkt-notuleren.lblod.info:7070',
     },
   },
 };

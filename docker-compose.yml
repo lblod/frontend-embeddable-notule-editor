@@ -1,0 +1,35 @@
+x-logging: &default-logging
+  driver: "json-file"
+  options:
+    max-size: "10m"
+    max-file: "3"
+
+services:
+  frontend:
+    image: lblod/frontend-embeddable-notule-editor:5.2.0
+    restart: always
+    logging: *default-logging
+    environment:
+      VIRTUAL_HOST: "embeddable.dev.gelinkt-notuleren.lblod.info"
+      LETSENCRYPT_HOST: "embeddable.dev.gelinkt-notuleren.lblod.info"
+      LETSENCRYPT_EMAIL: "info@redpencil.io"
+    expose:
+      - 80
+    networks:
+      - proxy
+      - default
+  lpdc-service:
+    image: lblod/api-proxy-service:1.0.1
+    restart: always
+    logging: *default-logging
+    ports:
+      - "7070:80"
+    environment:
+      ALLOWED_ORIGIN: "*"
+      API_URL: "https://api.ipdc.tni-vlaanderen.be"
+      API_KEY: "VERY_SECRET_KEY_REPLACE_ME"
+
+networks:
+  proxy:
+    name: letsencrypt_default
+    external: true
