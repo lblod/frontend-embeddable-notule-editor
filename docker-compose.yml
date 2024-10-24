@@ -11,6 +11,7 @@ services:
     logging: *default-logging
     environment:
       VIRTUAL_HOST: "embeddable.dev.gelinkt-notuleren.lblod.info"
+      VIRTUAL_PATH: "/"
       LETSENCRYPT_HOST: "embeddable.dev.gelinkt-notuleren.lblod.info"
       LETSENCRYPT_EMAIL: "info@redpencil.io"
     expose:
@@ -22,12 +23,18 @@ services:
     image: lblod/api-proxy-service:1.0.1
     restart: always
     logging: *default-logging
-    ports:
-      - "7070:80"
+    expose:
+      - 80
     environment:
       ALLOWED_ORIGIN: "*"
+      VIRTUAL_HOST: "embeddable.dev.gelinkt-notuleren.lblod.info"
+      VIRTUAL_PATH: "/lpdc-service"
+      VIRTUAL_DEST: "/"
       API_URL: "https://api.ipdc.tni-vlaanderen.be"
       API_KEY: "VERY_SECRET_KEY_REPLACE_ME"
+    networks:
+      - proxy
+      - default
 
 networks:
   proxy:
