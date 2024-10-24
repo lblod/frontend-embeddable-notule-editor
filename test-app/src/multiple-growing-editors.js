@@ -7,7 +7,10 @@ const decisionType =
   'https://data.vlaanderen.be/id/concept/BesluitType/0d1278af-b69e-4152-a418-ec5cfd1c7d0b';
 const options = {
   besluit: { decisionUri },
-  lpdc: { endpoint: 'http://localhost/lpdc-service', decisionUri },
+  lpdc: {
+    endpoint: 'http://embeddable.dev.gelinkt-notuleren.lblod.info:7070',
+    decisionUri,
+  },
   roadsignRegulation: { decisionContext: { decisionUri, decisionType } },
 };
 

@@ -1,0 +1,7 @@
+services:
+  frontend:
+    restart: no
+    networks: !reset null
+  lpdc-service:
+    restart: no
+    networks: !reset null
