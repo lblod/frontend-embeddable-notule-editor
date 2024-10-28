@@ -20,7 +20,7 @@ services:
       - proxy
       - default
   lpdc-service:
-    image: lblod/api-proxy-service:1.0.1
+    image: lblod/api-proxy-service:1.0.2
     restart: always
     logging: *default-logging
     expose:
