@@ -4,12 +4,12 @@ This application allows you to embed the [RDFa editor](https://github.com/lblod/
 
 
 ##### Live Demo
-A [live demo](https://embeddable.gelinkt-notuleren.lblod.info) is available for easy testing. 
+A [live demo](https://dev.embeddable.gelinkt-notuleren.lblod.info) is available for easy testing. 
 This environment is NOT suited for any production use, as it might change without notice and might be an outdated version. 
 Any content entered here will not be saved.
 ## Docs
 
-You can find the docs in **[the docs folder](docs/index.md)** or keep reading
+You can find the docs in **[the docs folder](docs/index.md)**, or keep reading
 for a quickstart guide.
 
 ## Quickstart
