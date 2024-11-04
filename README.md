@@ -27,7 +27,7 @@ iframe element. A WebComponent version is also in the works.
 import { renderEditor } from '@lblod/embeddable-say-editor';
 
 
-// make a container element for the editor to render in in your html
+// make a container element for the editor to render into
 // the id is not required, you just need to be able to get hold of this element 
 // in whatever way you like
 
