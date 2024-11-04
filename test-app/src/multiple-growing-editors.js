@@ -8,7 +8,8 @@ const decisionType =
 const options = {
   besluit: { decisionUri },
   lpdc: {
-    endpoint: 'http://embeddable.dev.gelinkt-notuleren.lblod.info:7070',
+    endpoint:
+      'https://embeddable.dev.gelinkt-notuleren.lblod.info/lpdc-service',
     decisionUri,
   },
   roadsignRegulation: { decisionContext: { decisionUri, decisionType } },
