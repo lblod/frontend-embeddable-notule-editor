@@ -10,19 +10,15 @@
   {{#if this.initCompleted}}
     <EditorContainer
       @editorOptions={{hash
-        showRdfa=(if
-          (array-includes this.activePlugins "rdfa-editor") false true
-        )
-        editRdfa=(if
-          (array-includes this.activePlugins "rdfa-editor") true false
-        )
+        showRdfa=(not (should-show "rdfa-editor" active=this.activePlugins))
+        editRdfa=(should-show "rdfa-editor" active=this.activePlugins)
         showRdfaHighlight=true
         showRdfaHover=true
         showPaper=true
         showToolbarBottom=null
       }}
       @showRdfaBlocks={{this.controller.showRdfaBlocks}}
-      @hideSidebar={{(not this.uiConfig.sidebar)}}
+      @hideSidebar={{(not (should-show section="sidebar" active=this.activePlugins))}}
     >
       <:top>
         {{#if this.controller}}
@@ -47,24 +43,24 @@
       <:aside>
         {{#if this.controller}}
           <Sidebar as |Sidebar|>
-            {{#if this.uiConfig.insertMenu}}
+            {{#if (should-show section="insert" active=this.activePlugins)}}
               <Sidebar.Collapsible
                 @title={{t "editor.insert"}}
-                @expandedInitially={{this.uiConfig.expandInsertMenu}}>
-                {{#if (array-includes this.activePlugins 'besluit')}}
+                @expandedInitially={{this.expandInsertMenu}}>
+                {{#if (should-show 'besluit' active=this.activePlugins)}}
                   <div class="au-u-medium">{{t 'editor.besluit.title'}}</div>
                   <this.InsertArticle
                     @controller={{this.controller}}
                     @options={{this.config.besluit}}
                   />
-                  {{#if (array-includes this.activePlugins 'lpdc')}}
+                  {{#if (should-show "lpdc" active=this.activePlugins)}}
                     <LpdcPlugin::LpdcInsert
                       @controller={{this.controller}}
                       @config={{this.config.lpdc}}
                     />
                   {{/if}}
                 {{/if}}
-                {{#if (array-includes this.activePlugins "article-structure")}}
+                {{#if (should-show "article-structure" active=this.activePlugins)}}
                   <div class="au-u-medium">{{t
                       "editor.article-structure.title"
                     }}</div>
@@ -74,44 +70,44 @@
                   />
                 {{/if}}
                 <div class="au-u-medium">{{t "editor.others.title"}}</div>
-                {{#if (array-includes this.activePlugins "citation")}}
+                {{#if (should-show "citation" active=this.activePlugins)}}
                   <CitationPlugin::CitationInsert
                     @controller={{this.controller}}
                     @config={{this.config.citation}}
                   />
                 {{/if}}
                 {{#if
-                  (array-includes this.activePlugins "roadsign-regulation")
+                  (should-show "roadsign-regulation" active=this.activePlugins)
                 }}
                   <RoadsignRegulationPlugin::RoadsignRegulationCard
                     @controller={{this.controller}}
                     @options={{this.config.roadsignRegulation}}
                   />
                 {{/if}}
-                {{#if (array-includes this.activePlugins "location")}}
+                {{#if (should-show "location" active=this.activePlugins)}}
                   <LocationPlugin::Insert
                     @controller={{this.controller}}
                     @config={{this.config.location}}
                     @defaultMunicipality={{this.config.location.defaultMunicipality}}
                   />
                 {{/if}}
-                {{#if (array-includes this.activePlugins "template-comments")}}
+                {{#if (should-show "template-comments" active=this.activePlugins)}}
                   <TemplateCommentsPlugin::Insert
                     @controller={{this.controller}}
                   />
                 {{/if}}
               </Sidebar.Collapsible>
             {{/if}}
-            {{#if (array-includes this.activePlugins "article-structure")}}
+            {{#if (should-show "article-structure" active=this.activePlugins)}}
               <ArticleStructurePlugin::StructureCard
                 @controller={{this.controller}}
                 @options={{this.config.articleStructure.structures}}
               />
             {{/if}}
-            {{#if (array-includes this.activePlugins 'besluit')}}
+            {{#if (should-show "besluit" active=this.activePlugins)}}
               <this.StructureControlCard @controller={{this.controller}} />
             {{/if}}
-            {{#if (array-includes this.activePlugins "variable")}}
+            {{#if (should-show "variable" active=this.activePlugins)}}
               {{#if this.config.variable.insert.enable}}
                 <VariablePlugin::InsertVariableCard
                   @controller={{this.controller}}
@@ -137,19 +133,19 @@
                 />
               {{/if}}
             {{/if}}
-            {{#if (array-includes this.activePlugins "template-comments")}}
+            {{#if (should-show "template-comments" active=this.activePlugins)}}
               <TemplateCommentsPlugin::EditCard
                 @controller={{this.controller}}
               />
             {{/if}}
-            {{#if (array-includes this.activePlugins "citation")}}
+            {{#if (should-show "citation" active=this.activePlugins)}}
               <CitationPlugin::CitationCard
                 @controller={{this.controller}}
                 @plugin={{this.citationPlugin}}
                 @config={{this.config.citation}}
               />
             {{/if}}
-            {{#if (array-includes this.activePlugins "rdfa-editor")}}
+            {{#if (should-show "rdfa-editor" active=this.activePlugins)}}
               <div class="au-u-margin-bottom" />
               <this.RdfaEditor
                 @node={{this.activeNode}}
