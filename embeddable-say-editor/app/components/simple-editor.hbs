@@ -43,33 +43,41 @@
       <:aside>
         {{#if this.controller}}
           <Sidebar as |Sidebar|>
-            {{#if (should-show section="insert" active=this.activePlugins)}}
+            {{#if (should-show section="decision" active=this.activePlugins)}}
               <Sidebar.Collapsible
-                @title={{t "editor.insert"}}
-                @expandedInitially={{this.expandInsertMenu}}>
-                {{#if (should-show 'besluit' active=this.activePlugins)}}
-                  <div class="au-u-medium">{{t 'editor.besluit.title'}}</div>
+                @title={{t "editor.insert" type=(t "editor.besluit.title")}}
+                @expandedInitially={{this.expandInsertMenu}}
+              >
+                {{#if (should-show "besluit" active=this.activePlugins)}}
                   <this.InsertArticle
                     @controller={{this.controller}}
                     @options={{this.config.besluit}}
                   />
-                  {{#if (should-show "lpdc" active=this.activePlugins)}}
-                    <LpdcPlugin::LpdcInsert
-                      @controller={{this.controller}}
-                      @config={{this.config.lpdc}}
-                    />
-                  {{/if}}
                 {{/if}}
-                {{#if (should-show "article-structure" active=this.activePlugins)}}
-                  <div class="au-u-medium">{{t
-                      "editor.article-structure.title"
-                    }}</div>
-                  <ArticleStructurePlugin::ArticleStructureCard
+                {{#if (should-show "lpdc" active=this.activePlugins)}}
+                  <LpdcPlugin::LpdcInsert
                     @controller={{this.controller}}
-                    @options={{this.config.articleStructure.structures}}
+                    @config={{this.config.lpdc}}
                   />
                 {{/if}}
-                <div class="au-u-medium">{{t "editor.others.title"}}</div>
+              </Sidebar.Collapsible>
+            {{/if}}
+            {{#if (should-show "article-structure" active=this.activePlugins)}}
+              <Sidebar.Collapsible
+                @title={{t "editor.insert" type=(t "editor.article-structure.title")}}
+                @expandedInitially={{this.expandInsertMenu}}
+              >
+                <ArticleStructurePlugin::ArticleStructureCard
+                  @controller={{this.controller}}
+                  @options={{this.config.articleStructure.structures}}
+                />
+              </Sidebar.Collapsible>
+            {{/if}}
+            {{#if (should-show section="insert" active=this.activePlugins)}}
+              <Sidebar.Collapsible
+                @title={{t "editor.insert" type=(t "editor.others.title")}}
+                @expandedInitially={{this.expandInsertMenu}}
+              >
                 {{#if (should-show "citation" active=this.activePlugins)}}
                   <CitationPlugin::CitationInsert
                     @controller={{this.controller}}

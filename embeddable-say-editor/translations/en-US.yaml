@@ -6,7 +6,7 @@ editor:
     location: location
     date: date
     codelist: codelist
-  insert: Insert
+  insert: Insert {type}
   besluit:
     title: Decision
   article-structure:

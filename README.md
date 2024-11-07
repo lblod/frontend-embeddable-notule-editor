@@ -302,7 +302,10 @@ It is then possible to manage topics from the toolbar. The cursor should be insi
 
 #### LPDC plugin
 
-`LPDC` plugin is a dependent on `besluit` plugin. It allows to insert [LPDC](https://github.com/Informatievlaanderen/OSLOthema-slimmeRaadpleegOmgeving?tab=readme-ov-file#lpdc-codes) codes.  
+`LPDC` plugin is dependent on having a decisionUri available.
+This can be in the document, e.g. provided by the `besluit` plugin, or by passing the `decisionUri` option.
+If no decisionUri can be found, the plugin will be inactive.
+It allows to insert [LPDC](https://github.com/Informatievlaanderen/OSLOthema-slimmeRaadpleegOmgeving?tab=readme-ov-file#lpdc-codes) codes.  
 There is no public endpoint available for LPDC codes, so you will need to provide your own. See [here](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/lokale-producten-en-dienstencatalogus) for more information.
 
 Once you have an endpoint, you can configure it like this:
@@ -326,7 +329,6 @@ const options = {
   }
 }
 ```
-
 
 ![lpdc plugin](docs/lpdc.png)
 

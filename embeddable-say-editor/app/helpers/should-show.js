@@ -2,17 +2,21 @@ import { helper } from '@ember/component/helper';
 
 const INSERT_SECTION_PLUGINS = [
   'citation',
-  'article-structure',
-  'besluit',
-  'lpdc',
   'roadsign-regulation',
   'template-comments',
   'location',
 ];
+const DECISION_SECTION_PLUGINS = ['besluit', 'lpdc'];
 const PLUGIN_SECTIONS = {
-  sidebar: [...INSERT_SECTION_PLUGINS, 'variable', 'rdfa-editor'],
+  sidebar: [
+    ...INSERT_SECTION_PLUGINS,
+    ...DECISION_SECTION_PLUGINS,
+    'variable',
+    'rdfa-editor',
+    'article-structure',
+  ],
   insert: INSERT_SECTION_PLUGINS,
-  decision: ['besluit', 'lpdc'],
+  decision: DECISION_SECTION_PLUGINS,
   html: ['html-edit', 'html-preview'],
 };
 

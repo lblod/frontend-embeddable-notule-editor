@@ -530,7 +530,6 @@ export default class SimpleEditorComponent extends Component {
       dateView(config.variable.edit.date)(controller);
     nodeViews.inline_rdfa = (controller) =>
       inlineRdfaWithConfigView({ rdfaAware: true })(controller);
-
   }
 
   setupTOCPlugin(setup) {
