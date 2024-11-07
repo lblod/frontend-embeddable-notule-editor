@@ -1,10 +1,10 @@
+import { v4 as uuidv4 } from 'uuid';
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
 import { Schema } from '@lblod/ember-rdfa-editor';
-
 import {
   link,
   linkPasteHandler,
@@ -21,7 +21,6 @@ import {
 import { firefoxCursorFix } from '@lblod/ember-rdfa-editor/plugins/firefox-cursor-fix';
 import { lastKeyPressedPlugin } from '@lblod/ember-rdfa-editor/plugins/last-key-pressed';
 import recreateUuidsOnPaste from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/variable-plugin/recreateUuidsOnPaste';
-
 import {
   em,
   strikethrough,
@@ -53,29 +52,23 @@ import { placeholder } from '@lblod/ember-rdfa-editor/plugins/placeholder';
 import { blockquote } from '@lblod/ember-rdfa-editor/plugins/blockquote';
 import { code_block } from '@lblod/ember-rdfa-editor/plugins/code';
 import { image, imageView } from '@lblod/ember-rdfa-editor/plugins/image';
-
 import {
   editableNodePlugin,
   getActiveEditableNode,
 } from '@lblod/ember-rdfa-editor/plugins/_private/editable-node';
-
 import AttributeEditor from '@lblod/ember-rdfa-editor/components/_private/attribute-editor';
 import RdfaEditor from '@lblod/ember-rdfa-editor/components/_private/rdfa-editor';
 import DebugInfo from '@lblod/ember-rdfa-editor/components/_private/debug-info';
-
 import {
   createInvisiblesPlugin,
   hardBreak,
   heading as headingInvisible,
   paragraph as paragraphInvisible,
 } from '@lblod/ember-rdfa-editor/plugins/invisibles';
-
 import { citationPlugin } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/citation-plugin';
-
 import { roadsign_regulation } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/roadsign-regulation-plugin/nodes';
 import { highlight } from '@lblod/ember-rdfa-editor/plugins/highlight/marks/highlight';
 import { color } from '@lblod/ember-rdfa-editor/plugins/color/marks/color';
-
 import {
   structure,
   structureView,
@@ -107,7 +100,6 @@ import LocationInsertComponent from '@lblod/ember-rdfa-editor-lblod-plugins/comp
 import CodelistInsertComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/codelist/insert';
 import VariablePluginAddressInsertVariableComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/address/insert-variable';
 import { redacted } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/confidentiality-plugin/marks/redacted';
-
 import {
   defaultCitationPluginConfig,
   defaultLocationVariablePluginConfig,
@@ -415,7 +407,12 @@ export default class SimpleEditorComponent extends Component {
   }
 
   setupBesluitPlugin({ config, userConfig, uiConfig }) {
-    config.besluit = userConfig.besluit;
+    config.besluit = {
+      ...userConfig.besluit,
+      uriGenerator:
+        userConfig.besluit?.uriGenerator ??
+        (() => `http://data.lblod.info/artikels/${uuidv4()}`),
+    };
     uiConfig.insertMenu = true;
     uiConfig.sidebar = true;
   }

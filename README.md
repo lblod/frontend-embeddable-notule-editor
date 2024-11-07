@@ -284,6 +284,19 @@ In this mode, the plugin will not search in the way described above, and will
 instead allow you to insert articles anywhere in the document, linking them to
 the provided URI.
 
+#### RDFa generated
+
+Both modes of the plugin produce an article with a URI of the form `http://data.lblod.info/artikels/abcdef-12345-etc` by default.
+This can be overridden by providing a custom generator function for URIs.
+
+```javascript
+const options = {
+  besluit: {
+    uriGenerator: () => `http://example.org/some/uri/${someUniqueIdGenerator()}`
+  }
+}
+```
+
 #### `BesluitTopic` plugin
 
 `BesluitTopic` plugin is a dependent on `besluit` plugin. It allows to insert and edit topics of a besluit. By default available topics are fetched from the https://data.vlaanderen.be/sparql endpoint, but this can be configured via the options.
