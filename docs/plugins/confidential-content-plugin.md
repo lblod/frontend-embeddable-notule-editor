@@ -14,4 +14,4 @@ Adds a toolbar button to redact content. This simply adds an RDFa annotation wit
 
 #### rdfa-awareness
 
-Adds the RDFa annotation `property` set to `ext:redacted` for the redacted text.
+Adds the RDFa annotation `property` set to `http://mu.semte.ch/vocabularies/ext/redacted` for the redacted text.

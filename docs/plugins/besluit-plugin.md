@@ -17,7 +17,7 @@ const editor = await renderEditor({
 
 By default, this plugin scans for the existence of a `div` with 
 a `typeof` attribute with a value containing the [Besluit](https://data.vlaanderen.be/ns/besluit/#Besluit) type. 
-It also needs a  BesluitType, a `prov:generated` property, and a uri (which should be unique for each besluit).
+It also needs a  BesluitType, a `http://www.w3.org/ns/prov#generated` property, and a uri (which should be unique for each besluit).
 If the selection is inside such a node, the plugin will provide some controls to work with 
 [articles](https://data.vlaanderen.be/ns/besluit/#Artikel) inside a besluit.
 
@@ -27,7 +27,7 @@ a minimal besluit template which activates all of this plugin's features looks s
 
 ``` html
 <div typeof="http://data.vlaanderen.be/ns/besluit#Besluit https://data.vlaanderen.be/id/concept/BesluitType/4d8f678a-6fa4-4d5f-a2a1-80974e43bf34"
-     property="prov:generated"
+     property="http://www.w3.org/ns/prov#generated"
      resource="http://data.lblod.info/id/besluiten/1">
   <h5>Beslissing</h5>
   <div property="prov:value" datatype="xsd:string">
