@@ -1,6 +1,6 @@
 # Roadsign Regulation
 
-Add annnotated *mobiliteitsmaatregelen* from a specified registry, which will most likely be using the [public facing sparql endpoint](https://register.mobiliteit.vlaanderen.be/sparql) of [the roadsign registry](https://register.mobiliteit.vlaanderen.be). This data is maintained by experts at [MOW Vlaanderen](https://www.vlaanderen.be/departement-mobiliteit-en-openbare-werken).
+Add annotated *mobiliteitsmaatregelen* from a specified registry, which will most likely be using the [public facing sparql endpoint](https://register.mobiliteit.vlaanderen.be/sparql) of [the roadsign registry](https://register.mobiliteit.vlaanderen.be). This data is maintained by experts at [MOW Vlaanderen](https://www.vlaanderen.be/departement-mobiliteit-en-openbare-werken).
 
 ## Setup
 
