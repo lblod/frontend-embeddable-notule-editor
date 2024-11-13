@@ -1,0 +1,41 @@
+# LPDC plugin
+
+## Setup
+```javascript
+const editor = await renderEditor({
+  plugins: [/*...*/, "lpdc"], 
+  options: {
+    lpdc: {
+      endpoint: 'https://some.endpoint.be/lpdc',
+      decisionUri: 'http://my-domain.be/id/besluiten/1234'
+    }
+  }
+  /*...*/
+})
+
+```
+#### `endpoint`
+
+There is no public endpoint available for LPDC codes, so you will need to provide your own. See [here](https://vlaamseoverheid.atlassian.net/wiki/external/6317081715/ZGU4MGNlODM2N2U1NDU5MGFlY2NlYzcxYmQyYWUwMTc) for more information.
+
+#### `decisionUri`
+If you aren't able to provide a `besluit` node, you can instead configure the
+URI of the decision directly (see [usage section](#usage)) 
+
+## Usage
+
+This plugin allows inserting [LPDC](https://github.com/Informatievlaanderen/OSLOthema-slimmeRaadpleegOmgeving?tab=readme-ov-file#lpdc-codes) codes.  
+![lpdc plugin](/docs/images/lpdc.png)
+
+### Contextual mode
+
+By default, the plugin looks for a surrounding `besluit` node (see
+[besluit plugin](/docs/plugins/besluit.md)). The inserted LPDC instance will be
+connected to the node via rdfa.
+
+### Direct mode
+If you aren't able to provide a `besluit` node, you can instead configure the
+URI of the decision directly (see [setup](#setup)). The inserted instance will
+be linked to that URI.
+
+
