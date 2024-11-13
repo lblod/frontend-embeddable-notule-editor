@@ -8,16 +8,16 @@ Currently, due to portability concerns, this system is not directly exposed to t
 Instead, embeddable ships with a few pre-defined plugins which can be turned on or off, and have 
 some of their configuration exposed. 
 
-However, for using and configuring embeddable, it is still useful to [understand some of the concepts](#important-concepts)
+However, for using and configuring embeddable, it is still useful to [understand some of the concepts](/docs/rdfa.md)
 that plugins use to create a smart editor.
 
 
 ## RDFA-aware plugins
 
-Most plugins use [RDFA](docs/rdfa.md) in some way to provide their features.
+Most plugins use [RDFA](/docs/rdfa.md) in some way to provide their features.
 
 In some cases, they simply use it as a way to store information they need to operate.
-For example: the [variable plugin](docs/plugins/variable-plugin.md) will insert
+For example: the [variable plugin](/docs/plugins/variable-plugin.md) will insert
 nodes in the document that are rdfa-annotated with certain properties
 that the plugin interacts with.
 When loading a document from html, this is what the plugin will use to determine whether to render
