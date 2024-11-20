@@ -26,7 +26,7 @@ const EDITOR_CONTAINER_ID = 'my-editor';
 const TOOLBAR_HEIGHT = '44px';
 
 /**
- * @typedef { 'citation' | 'article-structure' | 'besluit' | 'besluit-topic' | 'lpdc' | 'roadsign-regulation' | 'variable' | 'table-of-contents' | 'template-comments' | 'confidentiality' | 'location' | 'rdfa-editor' } PluginName
+ * @typedef { 'citation' | 'article-structure' | 'besluit' | 'besluit-topic' | 'lpdc' | 'roadsign-regulation' | 'variable' | 'table-of-contents' | 'template-comments' | 'confidentiality' | 'location' | 'rdfa-editor' | 'formatting-toggle' | 'html-edit' | 'html-preview' | 'rdfa-blocks-toggle' } PluginName
  */
 
 /**

@@ -28,7 +28,7 @@
         @defaultColor='#000000'
       />
     </Tb.Group>
-    {{#if (array-includes @activePlugins 'confidentiality')}}
+    {{#if (should-show 'confidentiality' active=@activePlugins)}}
       <Tb.Group>
         <ConfidentialityPlugin::Toolbar @controller={{@controller}} />
       </Tb.Group>
@@ -55,12 +55,12 @@
     <Tb.Group>
       <Plugins::Alignment::AlignmentMenu @controller={{@controller}}/>
     </Tb.Group>
-    {{#if (array-includes @activePlugins 'html-edit' 'html-preview')}}
+    {{#if (should-show section='html' active=@activePlugins)}}
       <Tb.Group>
-        {{#if (array-includes @activePlugins 'html-edit')}}
+        {{#if (should-show 'html-edit' active=@activePlugins)}}
           <Plugins::HtmlEditor::Menu @controller={{@controller}} />
         {{/if}}
-        {{#if (array-includes @activePlugins 'html-preview')}}
+        {{#if (should-show 'html-preview' active=@activePlugins)}}
           <HtmlPreview::Menu @controller={{@controller}} />
         {{/if}}
       </Tb.Group>
@@ -68,23 +68,23 @@
   </:main>
   <:side as |Tb|>
     <Tb.Group>
-      {{#if (array-includes @activePlugins 'table-of-contents')}}
+      {{#if (should-show 'table-of-contents' active=@activePlugins)}}
         <TableOfContentsPlugin::ToolbarButton
           @controller={{@controller}}
         />
       {{/if}}
-      {{#if (array-includes @activePlugins 'formatting-toggle')}}
+      {{#if (should-show 'formatting-toggle' active=@activePlugins)}}
         <Plugins::Formatting::FormattingToggle
           @controller={{@controller}}
         />
       {{/if}}
-      {{#if (array-includes @activePlugins 'besluit-topic')}}
+      {{#if (should-show 'besluit-topic' active=@activePlugins)}}
         <BesluitTopicPlugin::BesluitTopicToolbarDropdown
           @controller={{@controller}}
           @options={{@config.besluitTopic}}
         />
       {{/if}}
-      {{#if (array-includes @activePlugins 'rdfa-blocks-toggle')}}
+      {{#if (should-show 'rdfa-blocks-toggle' active=@activePlugins)}}
         <Plugins::RdfaBlockRender::RdfaBlocksToggle
           @controller={{@controller}}
         />
