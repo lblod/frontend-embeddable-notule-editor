@@ -1,5 +1,20 @@
 # test-app
 
+## 5.3.0-next.0
+
+### Minor Changes
+
+- [#267](https://github.com/lblod/frontend-embeddable-notule-editor/pull/267) [`8beedfe`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/8beedfe54efa480832dc224627c0bc64e6b517a4) Thanks [@piemonkey](https://github.com/piemonkey)! - Re-organise sidebar insert buttons into sections which are only shown when needed
+
+- [#269](https://github.com/lblod/frontend-embeddable-notule-editor/pull/269) [`e575c18`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/e575c185931c3a4d0039fbc713ee5f85a4bae124) Thanks [@abeforgit](https://github.com/abeforgit)! - Allow decision-topic plugin to be used outside of decisions
+
+### Patch Changes
+
+- [#265](https://github.com/lblod/frontend-embeddable-notule-editor/pull/265) [`2d31e97`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/2d31e97804db8ddb2bf56514f7cdd8602cc06adf) Thanks [@piemonkey](https://github.com/piemonkey)! - Add docker-compose configuration for running alongside a test lpdc service in dev
+
+- Updated dependencies [[`8beedfe`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/8beedfe54efa480832dc224627c0bc64e6b517a4), [`e575c18`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/e575c185931c3a4d0039fbc713ee5f85a4bae124)]:
+  - @lblod/embeddable-say-editor@5.3.0-next.0
+
 ## 5.2.0
 
 ### Patch Changes
