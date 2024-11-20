@@ -8,7 +8,7 @@ and has to be adjusted.
 
 ```javascript
 const editor = await renderEditor({
-  plugins: [/*...*/,"formatting-toggle"], 
+  plugins: [/*...*/,"location"], 
   options: {
     location: {
       defaultPointUriRoot: 'https://example.net/id/geometrie/',
