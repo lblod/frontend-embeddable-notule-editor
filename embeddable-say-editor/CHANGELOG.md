@@ -1,5 +1,13 @@
 # frontend-embeddable-notule-editor
 
+## 5.3.0-next.0
+
+### Minor Changes
+
+- [#267](https://github.com/lblod/frontend-embeddable-notule-editor/pull/267) [`8beedfe`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/8beedfe54efa480832dc224627c0bc64e6b517a4) Thanks [@piemonkey](https://github.com/piemonkey)! - Re-organise sidebar insert buttons into sections which are only shown when needed
+
+- [#269](https://github.com/lblod/frontend-embeddable-notule-editor/pull/269) [`e575c18`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/e575c185931c3a4d0039fbc713ee5f85a4bae124) Thanks [@abeforgit](https://github.com/abeforgit)! - Allow decision-topic plugin to be used outside of decisions
+
 ## 5.2.0
 
 ### Minor Changes
@@ -7,6 +15,7 @@
 - [#264](https://github.com/lblod/frontend-embeddable-notule-editor/pull/264) [`398c7aa`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/398c7aa2946249d2b0dc82b536ea28d811e171d2) Thanks [@piemonkey](https://github.com/piemonkey)! - Modify 'growEditors' option so that the height setting is used as a minimum height rather than always fitting to the content size
 - [#264](https://github.com/lblod/frontend-embeddable-notule-editor/pull/264) [`398c7aa`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/398c7aa2946249d2b0dc82b536ea28d811e171d2) Thanks [@piemonkey](https://github.com/piemonkey)! - Add a 'decisionUri' option to various plugins to allow for their operation without a `besluit` context
 - [#264](https://github.com/lblod/frontend-embeddable-notule-editor/pull/264) [`398c7aa`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/398c7aa2946249d2b0dc82b536ea28d811e171d2) Thanks [@piemonkey](https://github.com/piemonkey)! - Make the 'height' option behave like minimum height when 'growEditor' is enabled
+
 ## 5.1.0
 
 ### Minor Changes
