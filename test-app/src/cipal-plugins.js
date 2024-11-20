@@ -3,8 +3,6 @@ import { router } from './router';
 
 const plugins = ['besluit-topic', 'lpdc', 'location'];
 const decisionUri = 'http://example.org/besluit/12345';
-const decisionType =
-  'https://data.vlaanderen.be/id/concept/BesluitType/0d1278af-b69e-4152-a418-ec5cfd1c7d0b';
 const options = {
   lpdc: {
     endpoint:
