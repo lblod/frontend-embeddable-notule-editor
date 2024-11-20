@@ -48,8 +48,8 @@
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "@lblod/ember-environment-banner": "^0.5.0",
-    "@lblod/ember-rdfa-editor": "^10.6.0",
-    "@lblod/ember-rdfa-editor-lblod-plugins": "24.2.0",
+    "@lblod/ember-rdfa-editor": "^10.7.0",
+    "@lblod/ember-rdfa-editor-lblod-plugins": "24.3.2",
     "babel-loader": "^8.3.0",
     "broccoli-asset-rev": "^3.0.0",
     "concurrently": "^8.2.2",
@@ -92,6 +92,7 @@
     "sass": "^1.55.0",
     "tracked-built-ins": "^3.1.1",
     "typescript": "~5.3.0",
+    "uuid": "^9.0.1",
     "webpack": "^5.78.0",
     "webpack-cli": "^5.1.4"
   },
