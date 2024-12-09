@@ -35,6 +35,7 @@ a minimal besluit template which activates all of this plugin's features looks s
 </div>
 ```
 But in practice a much more elaborate template is typically used, [see here](https://github.com/lblod/frontend-embeddable-notule-editor/blob/ab5a9619385f4b795a44a675fdc30b658bdcb344/public/test.html#L91) for an example.
+
 #### Direct mode
 
 Alternatively, you can directly configure the URI of the `besluit`. This is
@@ -52,3 +53,16 @@ const options = {
 In this mode, the plugin will not search in the way described above, and will
 instead allow you to insert articles anywhere in the document, linking them to
 the provided URI.
+
+#### RDFa generated
+
+Both modes of the plugin produce an article with a URI of the form `http://data.lblod.info/artikels/abcdef-12345-etc` by default.
+This can be overridden by providing a custom generator function for URIs.
+
+```javascript
+const options = {
+  besluit: {
+    uriGenerator: () => `http://example.org/some/uri/${someUniqueIdGenerator()}`
+  }
+}
+```
