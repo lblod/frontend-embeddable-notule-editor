@@ -399,15 +399,13 @@ export default class SimpleEditorComponent extends Component {
     setup.nodes = { ...setup.nodes, ...STRUCTURE_NODES };
   }
 
-  setupBesluitPlugin({ config, userConfig, uiConfig }) {
+  setupBesluitPlugin({ config, userConfig }) {
     config.besluit = {
       ...userConfig.besluit,
       uriGenerator:
         userConfig.besluit?.uriGenerator ??
         (() => `http://data.lblod.info/artikels/${uuidv4()}`),
     };
-    uiConfig.insertMenu = true;
-    uiConfig.sidebar = true;
   }
 
   setupBesluitTopicPlugin(setup) {
