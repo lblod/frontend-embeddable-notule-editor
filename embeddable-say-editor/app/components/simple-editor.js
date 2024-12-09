@@ -138,7 +138,6 @@ export default class SimpleEditorComponent extends Component {
   @tracked schema;
   @tracked plugins;
   @tracked config;
-  @tracked uiConfig;
   @tracked nodeViews;
   @tracked activePlugins;
   @tracked citationPlugin;
@@ -322,8 +321,6 @@ export default class SimpleEditorComponent extends Component {
       nodeViews,
       userConfig,
       config,
-      // Control whether UI aspects are needed
-      uiConfig: { insertMenu: false, sidebar: false },
     };
     if (activePlugins.includes('citation')) {
       this.setupCitationPlugin(setup);
@@ -362,9 +359,8 @@ export default class SimpleEditorComponent extends Component {
       this.setupRdfaEditor(setup);
     }
     this.config = setup.config;
-    this.uiConfig = setup.uiConfig;
     this.plugins = setup.plugins;
-    this.uiConfig.expandInsertMenu = userConfig.ui?.expandInsertMenu ?? false;
+    this.expandInsertMenu = userConfig.ui?.expandInsertMenu ?? false;
     setup.nodes = {
       ...setup.nodes,
       heading: headingWithConfig({ rdfaAware: true }),
@@ -392,7 +388,7 @@ export default class SimpleEditorComponent extends Component {
     return editorPromise;
   }
 
-  setupCitationPlugin({ userConfig, config, plugins, uiConfig }) {
+  setupCitationPlugin({ userConfig, config, plugins }) {
     config.citation = mergeConfigs(
       defaultCitationPluginConfig,
       userConfig.citation
@@ -401,8 +397,6 @@ export default class SimpleEditorComponent extends Component {
     const citationPluginVariable = citationPlugin(config.citation);
     this.citationPlugin = citationPluginVariable;
     plugins.push(citationPluginVariable);
-    uiConfig.insertMenu = true;
-    uiConfig.sidebar = true;
   }
 
   setupArticleStructurePlugin(setup) {
@@ -410,14 +404,10 @@ export default class SimpleEditorComponent extends Component {
     config.articleStructure = {};
     config.articleStructure.structures = STRUCTURE_SPECS;
     setup.nodes = { ...setup.nodes, ...STRUCTURE_NODES };
-    setup.uiConfig.insertMenu = true;
-    setup.uiConfig.sidebar = true;
   }
 
-  setupBesluitPlugin({ config, userConfig, uiConfig }) {
+  setupBesluitPlugin({ config, userConfig }) {
     config.besluit = userConfig.besluit;
-    uiConfig.insertMenu = true;
-    uiConfig.sidebar = true;
   }
 
   setupBesluitTopicPlugin(setup) {
@@ -445,8 +435,6 @@ export default class SimpleEditorComponent extends Component {
     nodes['oslo_location'] = osloLocation(config.location);
     nodeViews['oslo_location'] = (controller) =>
       osloLocationView(config.location)(controller);
-    setup.uiConfig.insertMenu = true;
-    setup.uiConfig.sidebar = true;
   }
 
   setupRoadsignPlugin(setup) {
@@ -458,8 +446,6 @@ export default class SimpleEditorComponent extends Component {
       defaultRoadsignRegulationPluginConfig,
       userConfig.roadsignRegulation
     );
-    setup.uiConfig.insertMenu = true;
-    setup.uiConfig.sidebar = true;
   }
 
   setupVariablePlugin(setup) {
@@ -544,8 +530,6 @@ export default class SimpleEditorComponent extends Component {
       dateView(config.variable.edit.date)(controller);
     nodeViews.inline_rdfa = (controller) =>
       inlineRdfaWithConfigView({ rdfaAware: true })(controller);
-
-    setup.uiConfig.sidebar = true;
   }
 
   setupTOCPlugin(setup) {
@@ -566,8 +550,6 @@ export default class SimpleEditorComponent extends Component {
     const { nodes, nodeViews } = setup;
     nodes.templateComment = templateComment;
     nodeViews.templateComment = (controller) => templateCommentView(controller);
-    setup.uiConfig.insertMenu = true;
-    setup.uiConfig.sidebar = true;
   }
 
   setupConfidentialityPlugin(setup) {
@@ -579,7 +561,6 @@ export default class SimpleEditorComponent extends Component {
     const { plugins } = setup;
 
     plugins.push(editableNodePlugin());
-    setup.uiConfig.sidebar = true;
   }
 
   get activeNode() {
