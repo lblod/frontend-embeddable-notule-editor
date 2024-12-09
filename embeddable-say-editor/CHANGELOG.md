@@ -1,5 +1,19 @@
 # frontend-embeddable-notule-editor
 
+## 5.3.0
+
+### Minor Changes
+
+- [#267](https://github.com/lblod/frontend-embeddable-notule-editor/pull/267) [`8beedfe`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/8beedfe54efa480832dc224627c0bc64e6b517a4) Thanks [@piemonkey](https://github.com/piemonkey)! - Re-organise sidebar insert buttons into sections which are only shown when needed
+
+- [#269](https://github.com/lblod/frontend-embeddable-notule-editor/pull/269) [`e575c18`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/e575c185931c3a4d0039fbc713ee5f85a4bae124) Thanks [@abeforgit](https://github.com/abeforgit)! - Allow decision-topic plugin to be used outside of decisions
+
+### Patch Changes
+
+- [#268](https://github.com/lblod/frontend-embeddable-notule-editor/pull/268) [`f3dcaa4`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/f3dcaa4b4f6f5995225ffa8ee57e1e4333d7d4a1) Thanks [@piemonkey](https://github.com/piemonkey)! - Update ember-rdfa-editor to v10.7.0 and ember-rdfa-editor-lblod-plugins to v24.3.2
+
+- [#268](https://github.com/lblod/frontend-embeddable-notule-editor/pull/268) [`f3dcaa4`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/f3dcaa4b4f6f5995225ffa8ee57e1e4333d7d4a1) Thanks [@piemonkey](https://github.com/piemonkey)! - Fix default URI generation for decision articles and document how to override it
+
 ## 5.3.0-next.0
 
 ### Minor Changes
