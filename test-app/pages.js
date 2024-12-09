@@ -20,4 +20,8 @@ module.exports = {
     title: 'Plugins with RDFa editor',
     source: './src/plugins-with-rdfa-editor.js',
   },
+  'cipal-plugins': {
+    title: 'cipal-plugins',
+    source: './src/cipal-plugins.js',
+  },
 };
