@@ -7,6 +7,8 @@ const editor = await renderEditor({
   options: {
     besluitTopic: {
       endpoint: 'https://data.vlaanderen.be/sparql',
+      //direct mode, see below
+      decisionUri: 'https://example.org/decisions/1'
     }
   }
   /*...*/
@@ -16,8 +18,16 @@ const editor = await renderEditor({
 
 ## Usage
 
-The `BesluitTopic` plugin depends on the [`besluit` plugin](/docs/plugins/besluit-plugin.md). It allows for inserting and editing topics of a besluit. By default, the available topics are fetched from the `https://data.vlaanderen.be/sparql` endpoint, but this can be configured via the options.
+### Contextual mode
 
+By default, the plugin looks for a surrounding `besluit` node (see [besluit plugin](/docs/plugins/besluit.md)). 
+The topic information will be attached to this node.
+
+### Direct mode
+If you aren't able to provide a `besluit` node, you can instead configure the
+URI of the decision directly (see [setup](#setup)). RDFa triples will be
+inserted in a hidden span in the output html, directly referring to the decision
+URI you provided.
 
 It is then possible to manage topics from the toolbar. The cursor should be inside a `besluit` node to see the button.
 

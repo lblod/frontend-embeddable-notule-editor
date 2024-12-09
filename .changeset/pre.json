@@ -1,0 +1,13 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@lblod/embeddable-say-editor": "5.2.0",
+    "test-app": "5.2.0"
+  },
+  "changesets": [
+    "cool-cobras-watch",
+    "hip-waves-return",
+    "rude-cooks-compare"
+  ]
+}

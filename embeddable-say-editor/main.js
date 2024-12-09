@@ -26,7 +26,7 @@ const EDITOR_CONTAINER_ID = 'my-editor';
 const TOOLBAR_HEIGHT = '44px';
 
 /**
- * @typedef { 'citation' | 'article-structure' | 'besluit' | 'besluit-topic' | 'lpdc' | 'roadsign-regulation' | 'variable' | 'table-of-contents' | 'template-comments' | 'confidentiality' | 'location' | 'rdfa-editor' } PluginName
+ * @typedef { 'citation' | 'article-structure' | 'besluit' | 'besluit-topic' | 'lpdc' | 'roadsign-regulation' | 'variable' | 'table-of-contents' | 'template-comments' | 'confidentiality' | 'location' | 'rdfa-editor' | 'formatting-toggle' | 'html-edit' | 'html-preview' | 'rdfa-blocks-toggle' } PluginName
  */
 
 /**
@@ -144,11 +144,19 @@ export async function renderEditor({
     });
   }
 
-  if (growEditor) {
-    const editorPaper =
-      editorContainer.getElementsByClassName('say-editor__paper');
+  const editorPaper =
+    editorContainer.getElementsByClassName('say-editor__paper');
 
-    const editorPaperElement = editorPaper[0];
+  const editorPaperElement = editorPaper[0];
+  //make the editor focus if you click anywhere on the paper
+
+  if (editorPaperElement) {
+    editorPaperElement.addEventListener('click', () => {
+      editorElement.controller.focus();
+    });
+  }
+
+  if (growEditor) {
     editorPaperElement.classList.add('min-content');
 
     // Set min heights to those passed
@@ -163,6 +171,9 @@ export async function renderEditor({
         const { height: contentHeight } = entry.contentRect;
 
         editorFrame.style.height = `${contentHeight}px`;
+        //tried a bunch of values, 100px worked the best, no idea why
+        const MAGIC_OFFSET = '100px';
+        editorPaperElement.style.minHeight = `calc(${contentHeight}px - ${MAGIC_OFFSET})`;
       }
     });
 
