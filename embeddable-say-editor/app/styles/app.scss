@@ -88,15 +88,6 @@ div.table-of-contents {
     }
   }
 
-  .say-editor__paper {
-    &.min-content {
-      min-height: min-content;
-
-      .say-content {
-        min-height: min-content;
-      }
-    }
-  }
   .say-toolbar .say-toolbar__side-dropdown .au-c-pill{
     width: max-content;
   }

@@ -75,6 +75,8 @@ export async function renderEditor({
   editorFrame.setAttribute('width', width);
   editorFrame.setAttribute('height', height);
   editorFrame.setAttribute('title', title ?? 'say-editor');
+  editorFrame.style.overflow = 'auto';
+
   element.replaceChildren(editorFrame);
 
   // wait for the iframe to render
@@ -146,34 +148,38 @@ export async function renderEditor({
 
   const editorPaper =
     editorContainer.getElementsByClassName('say-editor__paper');
+  const sayContainer = editorContainer.getElementsByClassName(
+    'say-container__main'
+  )[0];
+  sayContainer.style.overflow = 'auto';
 
   const editorPaperElement = editorPaper[0];
-  //make the editor focus if you click anywhere on the paper
-
-  if (editorPaperElement) {
-    editorPaperElement.addEventListener('click', () => {
-      editorElement.controller.focus();
-    });
-  }
 
   if (growEditor) {
-    editorPaperElement.classList.add('min-content');
-
     // Set min heights to those passed
-    editorFrame.style.minHeight = height;
     const sayEditorElement =
       editorContainer.getElementsByClassName('say-editor')[0];
-    sayEditorElement.style.minHeight = `calc(${height} - ${TOOLBAR_HEIGHT})`;
+    let topPadding, bottomPadding;
+    if (sayEditorElement.computedStyleMap) {
+      const stylemap = sayEditorElement.computedStyleMap();
+      topPadding = stylemap.get('padding-top');
+      bottomPadding = stylemap.get('padding-bottom');
+    } else {
+      // firefox doesn't support the computedStyleMap yet, so we hardcode it
+      topPadding = '24px';
+      bottomPadding = '24px';
+    }
+
+    editorPaperElement.style.minHeight = `calc(${height} - ${TOOLBAR_HEIGHT} - ${topPadding} - ${bottomPadding})`;
+    const sayContentElement =
+      editorPaperElement.getElementsByClassName('say-content')[0];
+    sayContentElement.style.minHeight = `calc(${height} - ${TOOLBAR_HEIGHT} - ${topPadding} - ${bottomPadding})`;
 
     // Resize to fit content
     const resizeObserver = new ResizeObserver((entries) => {
       for (let entry of entries) {
         const { height: contentHeight } = entry.contentRect;
-
         editorFrame.style.height = `${contentHeight}px`;
-        //tried a bunch of values, 100px worked the best, no idea why
-        const MAGIC_OFFSET = '100px';
-        editorPaperElement.style.minHeight = `calc(${contentHeight}px - ${MAGIC_OFFSET})`;
       }
     });
 
