@@ -1,5 +1,11 @@
 # frontend-embeddable-notule-editor
 
+## 5.3.1
+
+### Patch Changes
+
+- [`9af1d7c`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/9af1d7c41dcfc729ed1f28fd5694b1fee2fcb9d2) Thanks [@abeforgit](https://github.com/abeforgit)! - Fix resizing calculations on chrome
+
 ## 5.3.0
 
 ### Minor Changes
