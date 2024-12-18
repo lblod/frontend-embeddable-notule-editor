@@ -3,3 +3,5 @@ dist
 
 .eslintcache
 .vscode
+
+docker-compose.override.yml
