@@ -9,7 +9,7 @@ LABEL maintainer="info@redpencil.io"
 
 # Do pnpm installs first to allow for caching
 WORKDIR /app
-RUN corepack enable
+RUN npm i -g corepack@0.31
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY embeddable-say-editor/package.json embeddable-say-editor/
 COPY test-app/package.json test-app/
@@ -24,7 +24,7 @@ RUN mv lblod-embeddable-say-editor-*.tgz lblod-embeddable-say-editor.tgz
 # Test the types in the angular app
 FROM node:lts-iron AS types
 WORKDIR /app
-RUN corepack enable
+RUN npm i -g corepack@0.31
 # put angular app into /app and ignore the rest of the repo to avoid false positives
 COPY test-angular/package.json ./
 RUN pnpm install
