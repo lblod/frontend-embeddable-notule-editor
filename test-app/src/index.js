@@ -17,6 +17,11 @@ const editor = await renderEditor({
         odd: 'whitesmoke',
       },
     },
+    image: {
+      allowBase64Images: true,
+      pasteLimit: 2000000,
+      onLimitReached: () => console.error('You can only paste up to 2 MB'),
+    },
   }, // configuration object (see below)
 });
 
