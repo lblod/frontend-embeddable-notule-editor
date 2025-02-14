@@ -52,7 +52,12 @@ import {
 import { placeholder } from '@lblod/ember-rdfa-editor/plugins/placeholder';
 import { blockquote } from '@lblod/ember-rdfa-editor/plugins/blockquote';
 import { code_block } from '@lblod/ember-rdfa-editor/plugins/code';
-import { image, imageView } from '@lblod/ember-rdfa-editor/plugins/image';
+import {
+  imageWithConfig,
+  imageView,
+  checkPasteSize,
+} from '@lblod/ember-rdfa-editor/plugins/image';
+
 import {
   editableNodePlugin,
   getActiveEditableNode,
@@ -277,7 +282,9 @@ export default class SimpleEditorComponent extends Component {
       horizontal_rule,
       code_block,
       text,
-      image,
+      image: imageWithConfig({
+        allowBase64Images: userConfig.image?.allowBase64Images,
+      }),
       hard_break,
       ...tableNodes(mergeConfigs(defaultTableConfig, userTableConfig)),
       link: link(config.link),
@@ -306,6 +313,14 @@ export default class SimpleEditorComponent extends Component {
         }
       ),
     ];
+    if (userConfig.image?.allowBase64Images) {
+      plugins.push(
+        checkPasteSize({
+          pasteLimit: userConfig.image.pasteLimit,
+          onLimitReached: userConfig.image.onLimitReached,
+        })
+      );
+    }
     const nodeViews = {};
     const setup = {
       nodes,
