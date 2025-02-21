@@ -1,12 +1,11 @@
 // Appuniversum theme
 @import "ember-power-select";
 @import "@appuniversum/ember-appuniversum/styles";
-@import "ember-rdfa-editor";
+@import "@lblod/ember-rdfa-editor";
 @import "citaten-plugin";
 @import "date-plugin";
 @import "variable-plugin";
 @import "besluit-plugin";
-@import 'article-structure-plugin';
 @import 'template-comments-plugin';
 @import 'confidentiality-plugin';
 @import 'location-plugin';

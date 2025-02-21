@@ -58,17 +58,6 @@
                 {{/if}}
               </Sidebar.Collapsible>
             {{/if}}
-            {{#if (should-show "article-structure" active=this.activePlugins)}}
-              <Sidebar.Collapsible
-                @title={{t "editor.insert" type=(t "editor.article-structure.title")}}
-                @expandedInitially={{this.expandInsertMenu}}
-              >
-                <ArticleStructurePlugin::ArticleStructureCard
-                  @controller={{this.controller}}
-                  @options={{this.config.articleStructure.structures}}
-                />
-              </Sidebar.Collapsible>
-            {{/if}}
             {{#if (should-show section="insert" active=this.activePlugins)}}
               <Sidebar.Collapsible
                 @title={{t "editor.insert" type=(t "editor.others.title")}}
@@ -101,12 +90,6 @@
                   />
                 {{/if}}
               </Sidebar.Collapsible>
-            {{/if}}
-            {{#if (should-show "article-structure" active=this.activePlugins)}}
-              <ArticleStructurePlugin::StructureCard
-                @controller={{this.controller}}
-                @options={{this.config.articleStructure.structures}}
-              />
             {{/if}}
             {{#if (should-show "besluit" active=this.activePlugins)}}
               <this.StructureControlCard @controller={{this.controller}} />

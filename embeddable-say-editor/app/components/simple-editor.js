@@ -76,10 +76,10 @@ import { roadsign_regulation } from '@lblod/ember-rdfa-editor-lblod-plugins/plug
 import { highlight } from '@lblod/ember-rdfa-editor/plugins/highlight/marks/highlight';
 import { color } from '@lblod/ember-rdfa-editor/plugins/color/marks/color';
 import {
-  structure,
-  structureView,
+  structureWithConfig,
+  structureViewWithConfig,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/structure-plugin/node';
-import StructureControlCardComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/structure-plugin/_private/control-card';
+import StructureControlCardComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/structure-plugin/control-card';
 import InsertArticleComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/decision-plugin/insert-article';
 import {
   templateComment,
@@ -256,6 +256,10 @@ export default class SimpleEditorComponent extends Component {
         interactive: true,
         rdfaAware: true,
       },
+      structures: {
+        fullLengthArticles: true,
+        onlyArticleSpecialName: false,
+      },
     };
     const defaultTableConfig = {
       tableGroup: 'block',
@@ -273,7 +277,7 @@ export default class SimpleEditorComponent extends Component {
       }),
       paragraph,
       repaired_block: repairedBlockWithConfig({ rdfaAware: true }),
-      structure,
+      structure: structureWithConfig(config.structures),
       list_item: listItemWithConfig({ rdfaAware: true }),
       ordered_list: orderedListWithConfig({ rdfaAware: true }),
       bullet_list: bulletListWithConfig({ rdfaAware: true }),
@@ -333,9 +337,6 @@ export default class SimpleEditorComponent extends Component {
     if (activePlugins.includes('citation')) {
       this.setupCitationPlugin(setup);
     }
-    if (activePlugins.includes('article-structure')) {
-      this.setupArticleStructurePlugin(setup);
-    }
     if (activePlugins.includes('besluit')) {
       this.setupBesluitPlugin(setup);
     }
@@ -381,7 +382,7 @@ export default class SimpleEditorComponent extends Component {
       const views = {
         link: linkView(setup.config.link)(controller),
         image: imageView(controller),
-        structure: structureView(controller),
+        structure: structureViewWithConfig(setup.config.structures)(controller),
       };
       for (const [key, value] of Object.entries(setup.nodeViews)) {
         views[key] = value(controller);
@@ -405,13 +406,6 @@ export default class SimpleEditorComponent extends Component {
     const citationPluginVariable = citationPlugin(config.citation);
     this.citationPlugin = citationPluginVariable;
     plugins.push(citationPluginVariable);
-  }
-
-  setupArticleStructurePlugin(setup) {
-    const { config } = setup;
-    config.articleStructure = {};
-    config.articleStructure.structures = STRUCTURE_SPECS;
-    setup.nodes = { ...setup.nodes, ...STRUCTURE_NODES };
   }
 
   setupBesluitPlugin({ config, userConfig }) {

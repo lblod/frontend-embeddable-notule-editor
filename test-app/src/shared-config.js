@@ -19,8 +19,7 @@ export const pluginDemoConfig = {
     'location',
   ],
   options: {
-    docContent:
-      'table_of_contents? ((block|chapter)+|(block|title)+|(block|article)+)',
+    docContent: 'table_of_contents? block+',
     citation: {
       type: 'ranges',
       activeInRanges: (state) => [[0, state.doc.content.size]],
