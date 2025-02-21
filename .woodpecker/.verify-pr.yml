@@ -2,25 +2,25 @@ steps:
   install:
     image: node:20-slim
     commands:
-      - corepack enable
+      - npm i -g corepack@0.31
       - pnpm i --frozen-lockfile
   lint-js:
     image: node:20-slim
     group: lint
     commands:
-      - corepack enable
+      - npm i -g corepack@0.31
       - pnpm lint:js
   lint-hbs:
     image: node:20-slim
     group: lint
     commands:
-      - corepack enable
+      - npm i -g corepack@0.31
       - pnpm lint:hbs
   dependency-lint:
     image: node:20-slim
     group: lint
     commands:
-      - corepack enable
+      - npm i -g corepack@0.31
       - pnpm lint:dependencies
   test-angular:
     image: plugins/docker
@@ -30,7 +30,13 @@ steps:
       dry_run: true
     when:
       path:
-        include: [ 'test-angular/*', 'embeddable-say-editor/types/*', 'embeddable-say-editor/typeImports/*', 'embeddable-say-editor/package.json']
+        include:
+          [
+            "test-angular/*",
+            "embeddable-say-editor/types/*",
+            "embeddable-say-editor/typeImports/*",
+            "embeddable-say-editor/package.json",
+          ]
         ignore_message: "[ALL]"
 
 when:

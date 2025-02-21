@@ -5,7 +5,7 @@ LABEL maintainer="info@redpencil.io"
 
 # Do pnpm installs first to allow for caching
 WORKDIR /app
-RUN corepack enable
+RUN npm i -g corepack@0.31
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY embeddable-say-editor/package.json embeddable-say-editor/
 COPY test-app/package.json test-app/
