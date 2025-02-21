@@ -45,10 +45,6 @@ import {
   tableNodes,
   tablePlugins,
 } from '@lblod/ember-rdfa-editor/plugins/table';
-import {
-  STRUCTURE_NODES,
-  STRUCTURE_SPECS,
-} from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/article-structure-plugin/structures';
 import { placeholder } from '@lblod/ember-rdfa-editor/plugins/placeholder';
 import { blockquote } from '@lblod/ember-rdfa-editor/plugins/blockquote';
 import { code_block } from '@lblod/ember-rdfa-editor/plugins/code';
@@ -76,10 +72,10 @@ import { roadsign_regulation } from '@lblod/ember-rdfa-editor-lblod-plugins/plug
 import { highlight } from '@lblod/ember-rdfa-editor/plugins/highlight/marks/highlight';
 import { color } from '@lblod/ember-rdfa-editor/plugins/color/marks/color';
 import {
-  structure,
-  structureView,
+  structureWithConfig,
+  structureViewWithConfig,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/structure-plugin/node';
-import StructureControlCardComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/structure-plugin/_private/control-card';
+import StructureControlCardComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/structure-plugin/control-card';
 import InsertArticleComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/decision-plugin/insert-article';
 import {
   templateComment,
@@ -273,7 +269,6 @@ export default class SimpleEditorComponent extends Component {
       }),
       paragraph,
       repaired_block: repairedBlockWithConfig({ rdfaAware: true }),
-      structure,
       list_item: listItemWithConfig({ rdfaAware: true }),
       ordered_list: orderedListWithConfig({ rdfaAware: true }),
       bullet_list: bulletListWithConfig({ rdfaAware: true }),
@@ -333,9 +328,6 @@ export default class SimpleEditorComponent extends Component {
     if (activePlugins.includes('citation')) {
       this.setupCitationPlugin(setup);
     }
-    if (activePlugins.includes('article-structure')) {
-      this.setupArticleStructurePlugin(setup);
-    }
     if (activePlugins.includes('besluit')) {
       this.setupBesluitPlugin(setup);
     }
@@ -381,7 +373,6 @@ export default class SimpleEditorComponent extends Component {
       const views = {
         link: linkView(setup.config.link)(controller),
         image: imageView(controller),
-        structure: structureView(controller),
       };
       for (const [key, value] of Object.entries(setup.nodeViews)) {
         views[key] = value(controller);
@@ -407,19 +398,26 @@ export default class SimpleEditorComponent extends Component {
     plugins.push(citationPluginVariable);
   }
 
-  setupArticleStructurePlugin(setup) {
-    const { config } = setup;
-    config.articleStructure = {};
-    config.articleStructure.structures = STRUCTURE_SPECS;
-    setup.nodes = { ...setup.nodes, ...STRUCTURE_NODES };
-  }
-
-  setupBesluitPlugin({ config, userConfig }) {
+  setupBesluitPlugin(setup) {
+    const { config, userConfig } = setup;
     config.besluit = {
       ...userConfig.besluit,
       uriGenerator:
         userConfig.besluit?.uriGenerator ??
         (() => `http://data.lblod.info/artikels/${uuidv4()}`),
+    };
+    config.structures = {
+      fullLengthArticles: userConfig.besluit?.fullLengthArticles ?? true,
+      onlyArticleSpecialName:
+        userConfig.besluit?.onlyArticleSpecialName ?? false,
+    };
+    setup.nodes = {
+      ...setup.nodes,
+      structure: structureWithConfig(config.structures),
+    };
+    setup.nodeViews = {
+      ...setup.nodeViews,
+      structure: structureViewWithConfig(config.structures),
     };
   }
 

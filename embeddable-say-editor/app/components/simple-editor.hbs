@@ -10,14 +10,10 @@
   {{#if this.initCompleted}}
     <EditorContainer
       @editorOptions={{hash
-        showRdfa=(not (should-show "rdfa-editor" active=this.activePlugins))
         editRdfa=(should-show "rdfa-editor" active=this.activePlugins)
-        showRdfaHighlight=true
-        showRdfaHover=true
         showPaper=true
         showToolbarBottom=null
       }}
-      @showRdfaBlocks={{this.controller.showRdfaBlocks}}
       @hideSidebar={{(not (should-show section="sidebar" active=this.activePlugins))}}
     >
       <:top>
@@ -62,17 +58,6 @@
                 {{/if}}
               </Sidebar.Collapsible>
             {{/if}}
-            {{#if (should-show "article-structure" active=this.activePlugins)}}
-              <Sidebar.Collapsible
-                @title={{t "editor.insert" type=(t "editor.article-structure.title")}}
-                @expandedInitially={{this.expandInsertMenu}}
-              >
-                <ArticleStructurePlugin::ArticleStructureCard
-                  @controller={{this.controller}}
-                  @options={{this.config.articleStructure.structures}}
-                />
-              </Sidebar.Collapsible>
-            {{/if}}
             {{#if (should-show section="insert" active=this.activePlugins)}}
               <Sidebar.Collapsible
                 @title={{t "editor.insert" type=(t "editor.others.title")}}
@@ -105,12 +90,6 @@
                   />
                 {{/if}}
               </Sidebar.Collapsible>
-            {{/if}}
-            {{#if (should-show "article-structure" active=this.activePlugins)}}
-              <ArticleStructurePlugin::StructureCard
-                @controller={{this.controller}}
-                @options={{this.config.articleStructure.structures}}
-              />
             {{/if}}
             {{#if (should-show "besluit" active=this.activePlugins)}}
               <this.StructureControlCard @controller={{this.controller}} />

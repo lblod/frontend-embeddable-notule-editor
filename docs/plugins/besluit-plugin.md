@@ -66,3 +66,19 @@ const options = {
   }
 }
 ```
+
+#### Article options
+
+You can customize the way the articles are shown with the following options
+
+```javascript
+const options = {
+  besluit: {
+    fullLengthArticles: false,
+    onlyArticleSpecialName: true,
+  },
+};
+```
+
+- Full length articles: if set to false, all the articles after the first one will be shortened to the Art. x form
+- Only article special name: when you set this to true if you only have an article in the document, the title of that article will be "Enig Artikel" instead of the usual Artikel 1

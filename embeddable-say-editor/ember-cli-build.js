@@ -12,6 +12,12 @@ module.exports = function (defaults) {
     sassOptions: {
       includePaths: 'node_modules/@appuniversum/ember-appuniversum/styles',
     },
+    babel: {
+      sourceMaps: 'inline',
+      plugins: [
+        require.resolve('ember-concurrency/async-arrow-task-transform'),
+      ],
+    },
     autoImport: {
       webpack: {
         output: {
