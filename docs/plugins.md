@@ -52,7 +52,7 @@ Every plugin can be enabled by passing its name to the `plugins` array and optio
 
 Any configuration value not provided will use the default value, which are shown in the example configs of the plugins.
 
-* [article-structure](/docs/plugins/article-structure-plugin.md): Provides structures like titles, chapters, articles and paragraphs, which can be used to better manage official documents like regulatory statements. It allows you to insert, move and delete them.
+- [besluit](/docs/plugins/besluit-plugin.md): Provides the correct rdfa-structure for constructing a decision (besluit) with ways to move and delete them.
 * [besluit](/docs/plugins/besluit-plugin.md): Provides the correct rdfa-structure for constructing a decision (besluit) with ways to move and delete them.
 * [besluit-topic](/docs/plugins/besluit-topic-plugin.md): provides a dropdown to
 select the topic of a `besluit` node
