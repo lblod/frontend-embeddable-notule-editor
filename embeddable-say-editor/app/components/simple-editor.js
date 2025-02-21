@@ -45,10 +45,6 @@ import {
   tableNodes,
   tablePlugins,
 } from '@lblod/ember-rdfa-editor/plugins/table';
-import {
-  STRUCTURE_NODES,
-  STRUCTURE_SPECS,
-} from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/article-structure-plugin/structures';
 import { placeholder } from '@lblod/ember-rdfa-editor/plugins/placeholder';
 import { blockquote } from '@lblod/ember-rdfa-editor/plugins/blockquote';
 import { code_block } from '@lblod/ember-rdfa-editor/plugins/code';
