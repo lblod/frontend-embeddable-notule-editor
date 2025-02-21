@@ -8,4 +8,5 @@
 * [Styling](/docs/styling.md)
 * [RDFA](/docs/rdfa.md)
 * [Development](/docs/development.md)
+* [HTML Output](/docs/html-output.md)
 
