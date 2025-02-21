@@ -256,10 +256,6 @@ export default class SimpleEditorComponent extends Component {
         interactive: true,
         rdfaAware: true,
       },
-      structures: {
-        fullLengthArticles: true,
-        onlyArticleSpecialName: false,
-      },
     };
     const defaultTableConfig = {
       tableGroup: 'block',
@@ -277,7 +273,6 @@ export default class SimpleEditorComponent extends Component {
       }),
       paragraph,
       repaired_block: repairedBlockWithConfig({ rdfaAware: true }),
-      structure: structureWithConfig(config.structures),
       list_item: listItemWithConfig({ rdfaAware: true }),
       ordered_list: orderedListWithConfig({ rdfaAware: true }),
       bullet_list: bulletListWithConfig({ rdfaAware: true }),
@@ -382,7 +377,6 @@ export default class SimpleEditorComponent extends Component {
       const views = {
         link: linkView(setup.config.link)(controller),
         image: imageView(controller),
-        structure: structureViewWithConfig(setup.config.structures)(controller),
       };
       for (const [key, value] of Object.entries(setup.nodeViews)) {
         views[key] = value(controller);
@@ -408,12 +402,26 @@ export default class SimpleEditorComponent extends Component {
     plugins.push(citationPluginVariable);
   }
 
-  setupBesluitPlugin({ config, userConfig }) {
+  setupBesluitPlugin(setup) {
+    const { config, userConfig } = setup;
     config.besluit = {
       ...userConfig.besluit,
       uriGenerator:
         userConfig.besluit?.uriGenerator ??
         (() => `http://data.lblod.info/artikels/${uuidv4()}`),
+    };
+    config.structures = {
+      fullLengthArticles: userConfig.besluit?.fullLengthArticles ?? true,
+      onlyArticleSpecialName:
+        userConfig.besluit?.onlyArticleSpecialName ?? false,
+    };
+    setup.nodes = {
+      ...setup.nodes,
+      structure: structureWithConfig(config.structures),
+    };
+    setup.nodeViews = {
+      ...setup.nodeViews,
+      structure: structureViewWithConfig(config.structures),
     };
   }
 

@@ -31,5 +31,9 @@ export const pluginDemoConfig = {
       endpoint:
         'https://embeddable.dev.gelinkt-notuleren.lblod.info/lpdc-service',
     },
+    besluit: {
+      fullLengthArticles: false,
+      onlyArticleSpecialName: true,
+    },
   },
 };
