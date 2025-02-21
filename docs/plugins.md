@@ -63,7 +63,6 @@ insert lpdc services
 * [table-of-contents](/docs/plugins/table-of-contents-plugin.md): Show a table of contents with clickable sections defined by [article-structure](./docs/plugins/article-structure-plugin.md).
 * [variable](/docs/plugins/variable-plugin.md): Allows insertion and filling in of custom rdfa variables.
 * [formatting-toggle](/docs/plugins/formatting-toggle-plugin.md): Allows to toggle the formatting marks with a button.
-* [rdfa-blocks-toggle](/docs/plugins/rdfa-blocks-toggle-plugin.md): Allows to toggle the visual indications of the rdfa blocks with a button.
 * [rdfa-editing](/docs/plugins/rdfa-editing-plugin.md): Allows powerusers to
 directly manipulate the rdfa information in the document
 * [template-comments](/docs/plugins/template-comments-plugin.md): Allows insertion and editing of comment blocks to provide extra information to a user filling in a document. These are visually distinct units with a special RDFa type, which allows them to be filtered out during postprocessing.

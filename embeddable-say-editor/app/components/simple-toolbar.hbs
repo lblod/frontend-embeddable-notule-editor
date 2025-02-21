@@ -84,11 +84,6 @@
           @options={{@config.besluitTopic}}
         />
       {{/if}}
-      {{#if (should-show 'rdfa-blocks-toggle' active=@activePlugins)}}
-        <Plugins::RdfaBlockRender::RdfaBlocksToggle
-          @controller={{@controller}}
-        />
-      {{/if}}
     </Tb.Group>
   </:side>
 </ResponsiveToolbar>
