@@ -35,5 +35,8 @@ export const pluginDemoConfig = {
       fullLengthArticles: false,
       onlyArticleSpecialName: true,
     },
+    location: {
+      locationTypes: ['address', 'place'],
+    },
   },
 };

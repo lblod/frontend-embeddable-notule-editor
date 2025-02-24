@@ -15,16 +15,24 @@ const editor = await renderEditor({
       defaultPlaceUriRoot: 'https://example.net/id/plaats/',
       defaultAddressUriRoot: 'https://example.net/id/adres/',
       defaultMunicipality: 'Gent',
+      locationOptions: ['address', 'place', 'area'],
     }
   }
   /*...*/
 })
 
 ```
-The only configuration this plugin needs is the base URI for annotating the
+
+The plugin expects the following configuration options:
+- `defaultPointUriRoot` (default: 'https://example.net/id/geometrie/')
+- `defaultPlaceUriRoot` (default: 'https://example.net/id/plaats/)
+- `defaultAddressUriRoot` (default: 'https://example.net/id/adres/')
+- `defaultMunicipality` (default: none)
+- `locationTypes` (default: `['address', 'place', 'area']`)
+
+This plugin needs the base URI options for annotating the
 locations. Unfortunately we cannot provide a reasonable default for this,
-because it is up to the application to manage its URI namespace. You can also
-give the default value for the 'municipality' search field.
+because it is up to the application to manage its URI namespace.
 
 If you are unsure which base to choose here, we might be able to help you figure
 it out.
@@ -56,6 +64,8 @@ location:
 ![img.png](/docs/images/location-plugin-address-mode-filled.png)
 </details>
 
+To enable this mode, add the `address` locationOption to the `locationTypes` array.
+
 ### Point location
 
 This is the second mode, accessible by selecting the corresponding tab in the
@@ -73,6 +83,8 @@ the text. The location will be annotated with its geographical coordinates.
 
 In this mode, the search feature only centers the map. The user can then click
 on the map to choose a specific location. 
+
+To enable this mode, add the `place` locationOption to the `locationTypes` array.
 
 ### Area location
 
@@ -92,3 +104,5 @@ a straight line to the previous point. To complete the shape, click on the first
 point again. To delete the last point you added, click on it again.
 To change an existing shape, simply start drawing a new one. When it is
 completed, it will replace the old shape.
+
+To enable this mode, add the `area` locationOption to the `locationTypes` array.
