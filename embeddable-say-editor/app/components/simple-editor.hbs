@@ -10,11 +10,9 @@
   {{#if this.initCompleted}}
     <EditorContainer
       @editorOptions={{hash
-        editRdfa=(should-show "rdfa-editor" active=this.activePlugins)
         showPaper=true
         showToolbarBottom=null
       }}
-      @hideSidebar={{(not (should-show section="sidebar" active=this.activePlugins))}}
     >
       <:top>
         {{#if this.controller}}
