@@ -22,7 +22,7 @@
     "ember:build": "ember build --environment=production",
     "webpack:watch": "webpack --watch --env development",
     "webpack:build": "webpack",
-    "types:build": "scripts/copy-type-declarations.sh && tsc",
+    "types:build": "node scripts/copy-editor-type-declarations.mjs && tsc",
     "prepack": "pnpm run build",
     "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
     "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\"",
