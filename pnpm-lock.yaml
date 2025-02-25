@@ -76,8 +76,8 @@ importers:
         specifier: 11.0.0
         version: 11.0.0(6bwxvvghkjcs6ctwccwtuc2fwy)
       '@lblod/ember-rdfa-editor-lblod-plugins':
-        specifier: 27.0.2-dev.751f44226897d2ee405ea11d48bec0779acfa8ed
-        version: 27.0.2-dev.751f44226897d2ee405ea11d48bec0779acfa8ed(s4slq2kr7ij2ietjkoyrp7g3ay)
+        specifier: 27.1.0
+        version: 27.1.0(s4slq2kr7ij2ietjkoyrp7g3ay)
       babel-loader:
         specifier: ^8.3.0
         version: 8.3.0(@babel/core@7.24.4)(webpack@5.91.0)
@@ -1539,8 +1539,8 @@ packages:
       '@appuniversum/ember-appuniversum': ^2.0.0 || ^3.0.0
       ember-source: ^4.0.0
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@27.0.2-dev.751f44226897d2ee405ea11d48bec0779acfa8ed':
-    resolution: {integrity: sha512-/4SuD8Y9JWu6cQi9MNsjfDIhrmDYN8L8G2iwHyZ3JBMO3fS3odxRYZzDPHKgUuJl6dEtBUeCVOP3TIMCglMKsQ==}
+  '@lblod/ember-rdfa-editor-lblod-plugins@27.1.0':
+    resolution: {integrity: sha512-9OO76m3J20IOmJpbIyGu+bgFQeLUQt077iJrw1htQaHuwSqx5ngdqoctVA745v4GMJEPENpdn3UTe+U2y58zzw==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@appuniversum/ember-appuniversum': ^3.4.1
@@ -12735,7 +12735,7 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@27.0.2-dev.751f44226897d2ee405ea11d48bec0779acfa8ed(s4slq2kr7ij2ietjkoyrp7g3ay)':
+  '@lblod/ember-rdfa-editor-lblod-plugins@27.1.0(s4slq2kr7ij2ietjkoyrp7g3ay)':
     dependencies:
       '@appuniversum/ember-appuniversum': 3.4.2(@ember/test-helpers@2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0)))(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0))(tracked-built-ins@3.3.0)(webpack-cli@5.1.4)(webpack@5.91.0)
       '@babel/core': 7.25.2

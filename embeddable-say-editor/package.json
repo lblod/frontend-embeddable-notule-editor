@@ -49,7 +49,7 @@
     "@glimmer/tracking": "^1.1.2",
     "@lblod/ember-environment-banner": "^0.5.0",
     "@lblod/ember-rdfa-editor": "11.0.0",
-    "@lblod/ember-rdfa-editor-lblod-plugins": "27.0.2-dev.751f44226897d2ee405ea11d48bec0779acfa8ed",
+    "@lblod/ember-rdfa-editor-lblod-plugins": "27.1.0",
     "babel-loader": "^8.3.0",
     "broccoli-asset-rev": "^3.0.0",
     "concurrently": "^8.2.2",
