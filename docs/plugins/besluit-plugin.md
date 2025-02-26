@@ -29,7 +29,7 @@ const editor = await renderEditor({
 #### Options
 
 
-- `decisionUri`: see [direct mode](#direct_mode) below
+- `decisionUri`: see [direct mode](#direct-mode) below
 - `uriGenerator`: When the plugin generates an article, it needs to generate a URI. To do this, it will use this `uriGenerator` function.
 As you can see above, the default generator will generate a URI with a base
 namespace of `http://data.lblod.info/artikels/`.
