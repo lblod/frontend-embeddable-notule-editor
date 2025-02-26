@@ -9,10 +9,7 @@
   <div id="ember-basic-dropdown-wormhole"></div>
   {{#if this.initCompleted}}
     <EditorContainer
-      @editorOptions={{hash
-        showPaper=true
-        showToolbarBottom=null
-      }}
+      @editorOptions={{hash showPaper=true showToolbarBottom=null}}
     >
       <:top>
         {{#if this.controller}}
@@ -56,6 +53,21 @@
                 {{/if}}
               </Sidebar.Collapsible>
             {{/if}}
+            {{#if (should-show "article-structure" active=this.activePlugins)}}
+              <Sidebar.Collapsible
+                @title={{t
+                  "editor.insert"
+                  type=(t "editor.article-structure.title")
+                }}
+                @expandedInitially={{this.expandInsertMenu}}
+              >
+                <ArticleStructurePlugin::ArticleStructureCard
+                  @controller={{this.controller}}
+                  @options={{this.config.structures}}
+                />
+              </Sidebar.Collapsible>
+            {{/if}}
+
             {{#if (should-show section="insert" active=this.activePlugins)}}
               <Sidebar.Collapsible
                 @title={{t "editor.insert" type=(t "editor.others.title")}}
@@ -83,14 +95,21 @@
                     @locationTypes={{this.config.location.locationTypes}}
                   />
                 {{/if}}
-                {{#if (should-show "template-comments" active=this.activePlugins)}}
+                {{#if
+                  (should-show "template-comments" active=this.activePlugins)
+                }}
                   <TemplateCommentsPlugin::Insert
                     @controller={{this.controller}}
                   />
                 {{/if}}
               </Sidebar.Collapsible>
             {{/if}}
-            {{#if (should-show "besluit" active=this.activePlugins)}}
+            {{#if
+              (or
+                (should-show "besluit" active=this.activePlugins)
+                (should-show "article-structure" active=this.activePlugins)
+              )
+            }}
               <this.StructureControlCard @controller={{this.controller}} />
             {{/if}}
             {{#if (should-show "variable" active=this.activePlugins)}}

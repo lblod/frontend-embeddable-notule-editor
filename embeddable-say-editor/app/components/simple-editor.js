@@ -121,6 +121,7 @@ import {
   osloLocation,
   osloLocationView,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/location-plugin/node';
+import { STRUCTURE_HIERARCHY } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/structure-plugin/structure-types';
 
 export default class SimpleEditorComponent extends Component {
   @tracked controller;
@@ -324,9 +325,13 @@ export default class SimpleEditorComponent extends Component {
       nodeViews,
       userConfig,
       config,
+      activePlugins,
     };
     if (activePlugins.includes('citation')) {
       this.setupCitationPlugin(setup);
+    }
+    if (activePlugins.includes('article-structure')) {
+      this.setupArticleStructurePlugin(setup);
     }
     if (activePlugins.includes('besluit')) {
       this.setupBesluitPlugin(setup);
@@ -397,8 +402,43 @@ export default class SimpleEditorComponent extends Component {
     this.citationPlugin = citationPluginVariable;
     plugins.push(citationPluginVariable);
   }
+  setupArticleStructurePlugin(setup) {
+    const { config, userConfig } = setup;
+
+    if (setup.activePlugins.includes('besluit')) {
+      throw new Error(`The besluit and article-structure plugins can not be active at the same time.
+        They configure the editor to handle two different kinds of documents: 'besluiten' or 'reglementen'
+        (The plugin name of 'article-structure', instead of 'reglement' is due to historical reasons)
+        `);
+    }
+    if (userConfig.articleStructure) {
+      console.warn(`The article structure plugin no longer requires any configuration.
+        The config you passed in will be ignored.`);
+    }
+    config.articleStructure = {};
+
+    config.structures = {
+      uriGenerator: 'template-uuid4',
+      fullLengthArticles: true,
+      onlyArticleSpecialName: false,
+    };
+    setup.nodes = {
+      ...setup.nodes,
+      structure: structureWithConfig(config.structures),
+    };
+    setup.nodeViews = {
+      ...setup.nodeViews,
+      structure: structureViewWithConfig(config.structures),
+    };
+  }
 
   setupBesluitPlugin(setup) {
+    if (setup.activePlugins.includes('article-structure')) {
+      throw new Error(`The besluit and article-structure plugins can not be active at the same time.
+        They configure the editor to handle two different kinds of documents: 'besluiten' or 'reglementen'
+        (The plugin name of 'article-structure', instead of 'reglement', is due to historical reasons)
+        `);
+    }
     const { config, userConfig } = setup;
     config.besluit = {
       ...userConfig.besluit,
@@ -544,12 +584,34 @@ export default class SimpleEditorComponent extends Component {
   }
 
   setupTOCPlugin(setup) {
+    if (
+      !(
+        setup.activePlugins.includes('article-structure') ||
+        setup.activePlugins.includes('besluit')
+      )
+    ) {
+      console.warn(
+        `The table of contents plugin will not show any contents unless either the 'besluit' or 'article-structure' plugins are active,
+        as they set up the nodes which the ToC builds its contents from (articles, chapters, etc)`
+      );
+    }
     const { config, userConfig, nodes, nodeViews } = setup;
+    let tocConfig = null;
+    if (Array.isArray(userConfig.tableOfContents)) {
+      console.warn(
+        `The array configuration of the ToC plugin is deprecated and will be ignored.
+        This plugin no longer needs a manual configuration, it will automatically pick up on relevant
+        nodes based on the "besluit" and "article-structure" plugins.
 
-    config.tableOfContents = mergeConfigs(
-      defaultTableOfContentsPluginConfig,
-      userConfig.tableOfContents
-    );
+        If you would still like to pass in the scrollContainer, just pass in as a single object instead:
+        { scrollContainer: () => Element }
+        `
+      );
+    } else if (userConfig.tableOfContents) {
+      tocConfig = userConfig.tableOfContents;
+    }
+
+    config.tableOfContents = tocConfig;
 
     nodes.table_of_contents = table_of_contents(config.tableOfContents);
 
