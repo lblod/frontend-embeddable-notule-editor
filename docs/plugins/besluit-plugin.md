@@ -93,6 +93,3 @@ In this mode, the plugin will not search in the way described above, and will
 instead allow you to insert articles anywhere in the document, linking them to
 the provided URI.
 
-#### RDFa generated
-
-
