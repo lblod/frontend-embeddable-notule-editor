@@ -107,7 +107,6 @@ import {
   defaultLocationVariablePluginConfig,
   defaultRdfaDatePluginConfig,
   defaultRoadsignRegulationPluginConfig,
-  defaultTableOfContentsPluginConfig,
   defaultLocationPluginConfig,
   mergeConfigs,
 } from '../config/defaults';
@@ -121,7 +120,6 @@ import {
   osloLocation,
   osloLocationView,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/location-plugin/node';
-import { STRUCTURE_HIERARCHY } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/structure-plugin/structure-types';
 
 export default class SimpleEditorComponent extends Component {
   @tracked controller;
