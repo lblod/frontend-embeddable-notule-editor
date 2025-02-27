@@ -1,9 +1,16 @@
+// @ts-expect-error
 import vendor from './ember-build/assets/vendor.js';
+// @ts-expect-error
 import vendorBundle from './ember-build/assets/@lblod/embeddable-say-editor-vendor-bundle.js';
+// @ts-expect-error
 import app from './ember-build/assets/@lblod/embeddable-say-editor-app.js';
+// @ts-expect-error
 import embeddable from './ember-build/assets/@lblod/embeddable-say-editor.js';
+// @ts-expect-error
 import editorCss from './ember-build/assets/@lblod/embeddable-say-editor.css';
+// @ts-expect-error
 import vendorCss from './ember-build/assets/vendor.css';
+import type SayController from '@lblod/ember-rdfa-editor/core/say-controller';
 
 const srcDoc = `
 <!DOCTYPE html>
@@ -25,40 +32,50 @@ const EDITOR_CONTAINER_ID = 'my-editor';
 // value of the height as given by the editor css
 const TOOLBAR_HEIGHT = '44px';
 
-/**
- * @typedef { 'citation' | 'article-structure' | 'besluit' | 'besluit-topic' | 'lpdc' | 'roadsign-regulation' | 'variable' | 'table-of-contents' | 'template-comments' | 'confidentiality' | 'location' | 'rdfa-editor' | 'formatting-toggle' | 'html-edit' | 'html-preview' } PluginName
- */
+type PluginName =
+  | 'citation'
+  | 'article-structure'
+  | 'besluit'
+  | 'besluit-topic'
+  | 'lpdc'
+  | 'roadsign-regulation'
+  | 'variable'
+  | 'table-of-contents'
+  | 'template-comments'
+  | 'confidentiality'
+  | 'location'
+  | 'rdfa-editor'
+  | 'formatting-toggle'
+  | 'html-edit'
+  | 'html-preview';
 
-/**
- * @typedef {Object} EditorElement - A HTML element with the class `notule-editor`. These are functions available from the editor element. :warning: **`initEditor` has to be called before accessing any other methods**.
- * @property {import("@lblod/ember-rdfa-editor/core/say-controller").default} controller - provides direct access to a [SayController](https://github.com/lblod/ember-rdfa-editor/blob/master/addon/core/say-controller.ts) object. See [controller API](controller-api).
- * @property {(arrayOfPluginNames: PluginName[], options: Record<string, any>) => Promise<>} initEditor - Initialize the editor by passing an array of plugin names that should be activated and an object that contains the configuration for the editor and its plugins. See {@link file://./README.md#managing-plugins} for more info.
- * @property {() => void} enableEnvironmentBanner - enable the banner that shows the environment and versions of plugins used.
- * @property {() => void} disableEnvironmentBanner - disable the banner.
- * @property {(content: string) => void} setHtmlContent - set the HTML content inside the editor, overwriting all previous content.
- * @property {() => string} getHtmlContent - Get the HTML content of the editor. This might be different than custom content set via `setHtmlContent`, because of HTML parsing logic.
- * @property {() => void} setLocaleToDutch - Set the locale (language used) of the editor to Dutch.
- * @property {() => void} setLocaleToEnglish - Set the locale (language used) of the editor to English.
- * @property {() => string} getLocale - returns the current locale of the editor. This will be the user's browser locale, the set local with `setLocale`, or `nl-BE`/`en-US`, the supported languages. See more at [Localization](localization).
- * @property {(locale: string) => void} setLocale - set the current locale of the editor. Any locale is accepted, but will fallback to `nl-BE` if it is not `nl-BE` or `en-US` (the supported languages).
- */
+export type EditorElement = HTMLElement & {
+  controller: SayController;
+  initEditor: (
+    arrayOfPluginNames: PluginName[],
+    options: Record<string, any>
+  ) => Promise<void>;
+  enableEnvironmentBanner: () => void;
+  disableEnvironmentBanner: () => void;
+  setHtmlContent: (content: string) => void;
+  getHtmlContent: () => string;
+  setLocale: (locale: string) => void;
+  getLocale: () => string;
+  setLocaleToDutch: () => void;
+  setLocaleToEnglish: () => void;
+};
 
-/**
- * Renders the editor in an iframe and initializes it with the passed in plugins
- * and options. It waits for everything to initialize and returns the fully initialized
- * editor element, which has access to a controller and other methods (see docs)
- *
- * @param {Object} options - The options for rendering the editor.
- * @param {HTMLElement} options.element - The HTML element to render the editor in.
- * @param {string} [options.title] - The title for the editor.
- * @param {string} options.width - The width of the editor.
- * @param {string} options.height - The height of the editor.
- * @param {PluginName[]} [options.plugins=[]] - The plugins to initialize the editor with.
- * @param {Record<string, any>} [options.options={}] - The options to initialize the editor with.
- * @param {Object.<string, string>} [options.cssVariables={}] - Record of CSS Variables and their values to be applied to the editor.
- * @param {boolean} [options.growEditor=false] - Whether the editor should grow to fit its content.
- * @returns {Promise<EditorElement>} - Returns a promise that resolves to the fully initialized editor element.
- */
+export type EditorOptions = {
+  element: HTMLElement;
+  title?: string;
+  width: string;
+  height: string;
+  plugins?: PluginName[];
+  options?: Record<string, unknown>;
+  cssVariables?: Record<string, string>;
+  growEditor?: boolean;
+};
+
 export async function renderEditor({
   element,
   title,
@@ -68,7 +85,7 @@ export async function renderEditor({
   options = {},
   cssVariables = {},
   growEditor = false,
-}) {
+}: EditorOptions): Promise<EditorElement> {
   // build the iframe
   const editorFrame = document.createElement('iframe');
   editorFrame.setAttribute('srcdoc', srcDoc);
@@ -83,7 +100,7 @@ export async function renderEditor({
   await new Promise((resolve) =>
     editorFrame.addEventListener('load', resolve, { once: true })
   );
-  const frameDoc = editorFrame.contentDocument.body;
+  const frameDoc = editorFrame.contentDocument!.body;
 
   // append styles
   const vendorStyle = document.createElement('style');
@@ -102,11 +119,11 @@ export async function renderEditor({
   frameDoc.appendChild(vendorBundleScript);
 
   const appScript = document.createElement('script');
-  appScript.text = app;
+  appScript.text = app as string;
   frameDoc.appendChild(appScript);
 
   const embeddableScript = document.createElement('script');
-  embeddableScript.text = embeddable;
+  embeddableScript.text = embeddable as string;
   frameDoc.appendChild(embeddableScript);
 
   // append container
@@ -121,7 +138,9 @@ export async function renderEditor({
   frameDoc.appendChild(editorContainer);
 
   // important here to use window.require so that webpack doesn't interfere
-  const App = editorFrame.contentWindow
+
+  const App = editorFrame.contentWindow!
+    // @ts-expect-error
     .require('@lblod/embeddable-say-editor/app')
     .default.create({
       autoboot: false,
@@ -130,8 +149,9 @@ export async function renderEditor({
   // Launch the editor
   await App.visit('/', { rootElement: `#${EDITOR_CONTAINER_ID}` });
   // get the element
-  const editorElement =
-    editorContainer.getElementsByClassName('notule-editor')[0];
+  const editorElement = editorContainer.getElementsByClassName(
+    'notule-editor'
+  )[0] as unknown as EditorElement;
   // remove the now unnecessary javascript to avoid overloading the dom
   frameDoc.removeChild(vendorScript);
   frameDoc.removeChild(vendorBundleScript);
@@ -150,15 +170,15 @@ export async function renderEditor({
     editorContainer.getElementsByClassName('say-editor__paper');
   const sayContainer = editorContainer.getElementsByClassName(
     'say-container__main'
-  )[0];
+  )[0] as HTMLElement;
   sayContainer.style.overflow = 'auto';
 
-  const editorPaperElement = editorPaper[0];
+  const editorPaperElement = editorPaper[0] as HTMLElement;
 
   if (growEditor) {
     // Set min heights to those passed
     const sayEditorElement =
-      editorContainer.getElementsByClassName('say-editor')[0];
+      editorContainer.getElementsByClassName('say-editor')[0] as HTMLElement;
     let topPadding, bottomPadding;
     if (sayEditorElement.computedStyleMap) {
       const stylemap = sayEditorElement.computedStyleMap();
@@ -172,7 +192,7 @@ export async function renderEditor({
 
     editorPaperElement.style.minHeight = `calc(${height} - ${TOOLBAR_HEIGHT} - ${topPadding} - ${bottomPadding})`;
     const sayContentElement =
-      editorPaperElement.getElementsByClassName('say-content')[0];
+      editorPaperElement.getElementsByClassName('say-content')[0] as HTMLElement;
     sayContentElement.style.minHeight = `calc(${height} - ${TOOLBAR_HEIGHT} - ${topPadding} - ${bottomPadding})`;
 
     // Resize to fit content
@@ -187,7 +207,7 @@ export async function renderEditor({
   } else {
     const mainContainer = editorContainer.getElementsByClassName(
       'say-container__main'
-    )[0];
+    )[0] as HTMLElement;
     mainContainer.style.height = `calc(100vh - ${TOOLBAR_HEIGHT})`;
   }
 
@@ -375,6 +395,7 @@ const extraStyles = `
  * and awaiting the `initEditor` method.
  */
 export class SayWebComponent extends HTMLElement {
+  declare editorPromise: Promise<EditorElement>;
   constructor() {
     super();
   }
@@ -397,11 +418,11 @@ export class SayWebComponent extends HTMLElement {
     shadow.appendChild(vendorScript);
 
     const appScript = document.createElement('script');
-    appScript.text = app;
+    appScript.text = app as string;
     shadow.appendChild(appScript);
 
     const embeddableScript = document.createElement('script');
-    embeddableScript.text = embeddable;
+    embeddableScript.text = embeddable as string;
     shadow.appendChild(embeddableScript);
 
     const editorContainer = document.createElement('div');
