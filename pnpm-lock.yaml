@@ -16,13 +16,13 @@ importers:
         version: 2.27.1
       changesets-release-it-plugin:
         specifier: git://git@github.com/piemonkey/changesets-release-it-plugin.git#38b58fc7bf3d3bc2270e5e68208e11a56cef650d
-        version: https://codeload.github.com/piemonkey/changesets-release-it-plugin/tar.gz/38b58fc7bf3d3bc2270e5e68208e11a56cef650d(@changesets/cli@2.27.1)(release-it@17.1.1(typescript@5.5.4))
+        version: https://codeload.github.com/piemonkey/changesets-release-it-plugin/tar.gz/38b58fc7bf3d3bc2270e5e68208e11a56cef650d(@changesets/cli@2.27.1)(release-it@17.1.1(typescript@5.7.3))
       prettier:
         specifier: ^2.8.7
         version: 2.8.8
       release-it:
         specifier: ^17.0.3
-        version: 17.1.1(typescript@5.5.4)
+        version: 17.1.1(typescript@5.7.3)
       start-server-and-test:
         specifier: ^2.0.3
         version: 2.0.3
@@ -31,7 +31,7 @@ importers:
     dependencies:
       ember-intl:
         specifier: ^7.0.2
-        version: 7.0.4(@glint/template@1.4.0)(typescript@5.3.3)(webpack@5.91.0)
+        version: 7.0.4(@glint/template@1.4.0)(typescript@5.7.3)(webpack@5.91.0)
     devDependencies:
       '@appuniversum/ember-appuniversum':
         specifier: ^3.4.2
@@ -80,10 +80,13 @@ importers:
         version: 0.5.0(@appuniversum/ember-appuniversum@3.4.2(@ember/test-helpers@2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0)))(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0))(tracked-built-ins@3.3.0)(webpack-cli@5.1.4)(webpack@5.91.0))(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0))
       '@lblod/ember-rdfa-editor':
         specifier: 10.11.3-dev.e66e254e328e3e87f0f47f63ff92d552624491aa
-        version: 10.11.3-dev.e66e254e328e3e87f0f47f63ff92d552624491aa(ntfopaa2ae7toromhv624dvpwm)
+        version: 10.11.3-dev.e66e254e328e3e87f0f47f63ff92d552624491aa(wj3tackx5zbuinf6t5zps7vwre)
       '@lblod/ember-rdfa-editor-lblod-plugins':
         specifier: 26.1.0
-        version: 26.1.0(miq2ziwn6nexmory3m6am3vn6q)
+        version: 26.1.0(vlwki6yb6oep2z3qqgzs7zo6pm)
+      '@tsconfig/ember':
+        specifier: ^3.0.9
+        version: 3.0.9
       babel-loader:
         specifier: ^8.3.0
         version: 8.3.0(@babel/core@7.24.4)(webpack@5.91.0)
@@ -208,8 +211,8 @@ importers:
         specifier: ^3.1.1
         version: 3.3.0
       typescript:
-        specifier: ~5.3.0
-        version: 5.3.3
+        specifier: ~5.7.0
+        version: 5.7.3
       uuid:
         specifier: ^9.0.1
         version: 9.0.1
@@ -1945,6 +1948,9 @@ packages:
 
   '@tootallnate/quickjs-emscripten@0.23.0':
     resolution: {integrity: sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA==}
+
+  '@tsconfig/ember@3.0.9':
+    resolution: {integrity: sha512-0B44GyEafxJLAZSixH9VBnm9kDFCpaLXu86httaJSDEm1nfl3WWI/XfY4diPsOyOg+pc9N1/YfqH7uKM2dF0lA==}
 
   '@types/acorn@4.0.6':
     resolution: {integrity: sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==}
@@ -9036,13 +9042,8 @@ packages:
   typescript-memoize@1.1.1:
     resolution: {integrity: sha512-GQ90TcKpIH4XxYTI2F98yEQYZgjNMOGPpOgdjIBhaLaWji5HPWlRnZ4AeA1hfBxtY7bCGDJsqDDHk/KaHOl5bA==}
 
-  typescript@5.3.3:
-    resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-
-  typescript@5.5.4:
-    resolution: {integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==}
+  typescript@5.7.3:
+    resolution: {integrity: sha512-84MVSjMEHP+FQRPy3pX9sTVV/INIex71s9TL2Gm5FG/WG1SqXeKyZ0k7/blY/4FdOzI12CBy1vGc4og/eus0fw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -12714,7 +12715,7 @@ snapshots:
     dependencies:
       tslib: 2.6.2
 
-  '@formatjs/intl@2.10.4(typescript@5.3.3)':
+  '@formatjs/intl@2.10.4(typescript@5.7.3)':
     dependencies:
       '@formatjs/ecma402-abstract': 2.0.0
       '@formatjs/fast-memoize': 2.2.0
@@ -12724,7 +12725,7 @@ snapshots:
       intl-messageformat: 10.5.14
       tslib: 2.6.2
     optionalDependencies:
-      typescript: 5.3.3
+      typescript: 5.7.3
 
   '@glimmer/component@1.1.2(@babel/core@7.24.4)':
     dependencies:
@@ -12921,7 +12922,7 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@26.1.0(miq2ziwn6nexmory3m6am3vn6q)':
+  '@lblod/ember-rdfa-editor-lblod-plugins@26.1.0(vlwki6yb6oep2z3qqgzs7zo6pm)':
     dependencies:
       '@appuniversum/ember-appuniversum': 3.4.2(@ember/test-helpers@2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0)))(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0))(tracked-built-ins@3.3.0)(webpack-cli@5.1.4)(webpack@5.91.0)
       '@codemirror/lang-html': 6.4.9
@@ -12930,7 +12931,7 @@ snapshots:
       '@curvenote/prosemirror-utils': 1.0.5(prosemirror-model@1.22.1)(prosemirror-state@1.4.3)
       '@ember/string': 3.1.1
       '@embroider/macros': 1.16.5(@glint/template@1.4.0)
-      '@lblod/ember-rdfa-editor': 10.11.3-dev.e66e254e328e3e87f0f47f63ff92d552624491aa(ntfopaa2ae7toromhv624dvpwm)
+      '@lblod/ember-rdfa-editor': 10.11.3-dev.e66e254e328e3e87f0f47f63ff92d552624491aa(wj3tackx5zbuinf6t5zps7vwre)
       '@lblod/marawa': 0.8.0-beta.6
       '@lblod/template-uuid-instantiator': 1.0.3
       '@rdfjs/data-model': 2.0.2
@@ -12947,7 +12948,7 @@ snapshots:
       ember-cli-htmlbars: 6.3.0
       ember-concurrency: 3.1.1(@babel/core@7.24.4)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0))
       ember-element-helper: 0.8.6(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0))
-      ember-intl: 7.0.4(@glint/template@1.4.0)(typescript@5.3.3)(webpack@5.91.0)
+      ember-intl: 7.0.4(@glint/template@1.4.0)(typescript@5.7.3)(webpack@5.91.0)
       ember-leaflet: 5.1.3(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0))(leaflet@1.9.4)(webpack@5.91.0)
       ember-modifier: 4.1.0(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0))
       ember-mu-transform-helpers: 2.1.2
@@ -12984,7 +12985,7 @@ snapshots:
       - web-streams-polyfill
       - webpack
 
-  '@lblod/ember-rdfa-editor@10.11.3-dev.e66e254e328e3e87f0f47f63ff92d552624491aa(ntfopaa2ae7toromhv624dvpwm)':
+  '@lblod/ember-rdfa-editor@10.11.3-dev.e66e254e328e3e87f0f47f63ff92d552624491aa(wj3tackx5zbuinf6t5zps7vwre)':
     dependencies:
       '@appuniversum/ember-appuniversum': 3.4.2(@ember/test-helpers@2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0)))(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0))(tracked-built-ins@3.3.0)(webpack-cli@5.1.4)(webpack@5.91.0)
       '@babel/core': 7.25.2
@@ -13013,7 +13014,7 @@ snapshots:
       ember-cli-htmlbars: 6.3.0
       ember-cli-sass: 11.0.1
       ember-focus-trap: 1.1.0(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0))
-      ember-intl: 7.0.4(@glint/template@1.4.0)(typescript@5.3.3)(webpack@5.91.0)
+      ember-intl: 7.0.4(@glint/template@1.4.0)(typescript@5.7.3)(webpack@5.91.0)
       ember-modifier: 4.1.0(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0))
       ember-power-select: 7.2.0(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0))(webpack@5.91.0)
       ember-source: 4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0)
@@ -13437,6 +13438,8 @@ snapshots:
       defer-to-connect: 2.0.1
 
   '@tootallnate/quickjs-emscripten@0.23.0': {}
+
+  '@tsconfig/ember@3.0.9': {}
 
   '@types/acorn@4.0.6':
     dependencies:
@@ -15421,12 +15424,12 @@ snapshots:
 
   chalk@5.3.0: {}
 
-  changesets-release-it-plugin@https://codeload.github.com/piemonkey/changesets-release-it-plugin/tar.gz/38b58fc7bf3d3bc2270e5e68208e11a56cef650d(@changesets/cli@2.27.1)(release-it@17.1.1(typescript@5.5.4)):
+  changesets-release-it-plugin@https://codeload.github.com/piemonkey/changesets-release-it-plugin/tar.gz/38b58fc7bf3d3bc2270e5e68208e11a56cef650d(@changesets/cli@2.27.1)(release-it@17.1.1(typescript@5.7.3)):
     dependencies:
       '@changesets/cli': 2.27.1
       '@manypkg/get-packages': 2.2.1
       mdast-util-to-string: 4.0.0
-      release-it: 17.1.1(typescript@5.5.4)
+      release-it: 17.1.1(typescript@5.7.3)
       remark-parse: 10.0.2
       remark-stringify: 10.0.3
       unified: 11.0.4
@@ -15804,14 +15807,14 @@ snapshots:
       object-assign: 4.1.1
       vary: 1.1.2
 
-  cosmiconfig@9.0.0(typescript@5.5.4):
+  cosmiconfig@9.0.0(typescript@5.7.3):
     dependencies:
       env-paths: 2.2.1
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       parse-json: 5.2.0
     optionalDependencies:
-      typescript: 5.5.4
+      typescript: 5.7.3
 
   create-ecdh@4.0.4:
     dependencies:
@@ -17324,11 +17327,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-intl@7.0.4(@glint/template@1.4.0)(typescript@5.3.3)(webpack@5.91.0):
+  ember-intl@7.0.4(@glint/template@1.4.0)(typescript@5.7.3)(webpack@5.91.0):
     dependencies:
       '@babel/core': 7.24.9
       '@formatjs/icu-messageformat-parser': 2.7.8
-      '@formatjs/intl': 2.10.4(typescript@5.3.3)
+      '@formatjs/intl': 2.10.4(typescript@5.7.3)
       broccoli-caching-writer: 3.0.3
       broccoli-funnel: 3.0.8
       broccoli-merge-trees: 4.2.0
@@ -17344,7 +17347,7 @@ snapshots:
       js-yaml: 4.1.0
       json-stable-stringify: 1.1.1
     optionalDependencies:
-      typescript: 5.3.3
+      typescript: 5.7.3
     transitivePeerDependencies:
       - '@glint/template'
       - supports-color
@@ -21730,13 +21733,13 @@ snapshots:
 
   relative-to-absolute-iri@1.0.7: {}
 
-  release-it@17.1.1(typescript@5.5.4):
+  release-it@17.1.1(typescript@5.7.3):
     dependencies:
       '@iarna/toml': 2.2.5
       '@octokit/rest': 20.0.2
       async-retry: 1.3.3
       chalk: 5.3.0
-      cosmiconfig: 9.0.0(typescript@5.5.4)
+      cosmiconfig: 9.0.0(typescript@5.7.3)
       execa: 8.0.1
       git-url-parse: 14.0.0
       globby: 14.0.1
@@ -23087,10 +23090,7 @@ snapshots:
 
   typescript-memoize@1.1.1: {}
 
-  typescript@5.3.3: {}
-
-  typescript@5.5.4:
-    optional: true
+  typescript@5.7.3: {}
 
   uc.micro@1.0.6: {}
 

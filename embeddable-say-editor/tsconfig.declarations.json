@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["main.ts", "typeImports/**/*"],
+  "compilerOptions": {
+    "rootDir": ".",
+    // Generate d.ts files
+    "noEmit": false,
+    "declaration": true,
+    // Only output types, not JS
+    "emitDeclarationOnly": true,
+    "outDir": "types",
+    // Maps type lookups to JS file instead of .d.ts file
+    "declarationMap": true
+  }
+}
