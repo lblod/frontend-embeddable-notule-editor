@@ -1,10 +1,7 @@
-// @ts-expect-error
 import vendor from './ember-build/assets/vendor.js';
 // @ts-expect-error
 import vendorBundle from './ember-build/assets/@lblod/embeddable-say-editor-vendor-bundle.js';
-// @ts-expect-error
 import app from './ember-build/assets/@lblod/embeddable-say-editor-app.js';
-// @ts-expect-error
 import embeddable from './ember-build/assets/@lblod/embeddable-say-editor.js';
 // @ts-expect-error
 import editorCss from './ember-build/assets/@lblod/embeddable-say-editor.css';

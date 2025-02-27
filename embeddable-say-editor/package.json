@@ -22,7 +22,7 @@
     "ember:build": "ember build --environment=production",
     "webpack:watch": "webpack --watch --env development",
     "webpack:build": "webpack",
-    "types:build": "node scripts/copy-editor-type-declarations.mjs && tsc",
+    "types:build": "node scripts/copy-editor-type-declarations.mjs && tsc --project tsconfig.declarations.json",
     "prepack": "pnpm run build",
     "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
     "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\"",
@@ -94,7 +94,7 @@
     "qunit-dom": "^2.0.0",
     "sass": "^1.55.0",
     "tracked-built-ins": "^3.1.1",
-    "typescript": "~5.3.0",
+    "typescript": "~5.7.0",
     "uuid": "^9.0.1",
     "webpack": "^5.78.0",
     "webpack-cli": "^5.1.4"
