@@ -10,6 +10,7 @@ import editorCss from './ember-build/assets/@lblod/embeddable-say-editor.css';
 // @ts-ignore disable type-checking
 import vendorCss from './ember-build/assets/vendor.css';
 import type SayController from '@lblod/ember-rdfa-editor/core/say-controller';
+import type { PluginName } from './shared-types';
 
 const srcDoc = `
 <!DOCTYPE html>
@@ -30,24 +31,6 @@ const EDITOR_CONTAINER_ID = 'my-editor';
 // adjusting this won't actually change the toolbar height, this is just the constant
 // value of the height as given by the editor css
 const TOOLBAR_HEIGHT = '44px';
-
-type PluginName =
-  | 'citation'
-  | 'article-structure'
-  | 'besluit'
-  | 'besluit-topic'
-  | 'lpdc'
-  | 'roadsign-regulation'
-  | 'variable'
-  | 'table-of-contents'
-  | 'template-comments'
-  | 'confidentiality'
-  | 'location'
-  | 'rdfa-editor'
-  | 'formatting-toggle'
-  | 'html-edit'
-  | 'html-preview'
-  | 'rdfa-blocks-toggle';
 
 /**
  * An HTML element with the class `notule-editor`.
