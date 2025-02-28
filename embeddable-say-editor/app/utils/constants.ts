@@ -1,8 +1,4 @@
-import Route from '@ember/routing/route';
-import EmberObject from '@ember/object';
-import { inject as service } from '@ember/service';
-
-const defaultContext = {
+export const DEFAULT_CONTEXT = {
   vocab: 'http://data.vlaanderen.be/ns/besluit#',
   prefix: {
     eli: 'http://data.europa.eu/eli/ontology#',
@@ -19,19 +15,3 @@ const defaultContext = {
     lblodmow: 'http://data.lblod.info/vocabularies/mobiliteit/',
   },
 };
-
-export default class ApplicationRoute extends Route {
-  @service intl;
-  model() {
-    return EmberObject.create({
-      title: 'new document',
-      content: '',
-      context: defaultContext,
-    });
-  }
-  beforeModel(transition) {
-    const userLocale = navigator.language || navigator.languages[0];
-    this.intl.setLocale([userLocale, 'nl-BE']);
-    return super.beforeModel(transition);
-  }
-}

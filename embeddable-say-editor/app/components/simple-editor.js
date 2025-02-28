@@ -120,6 +120,7 @@ import {
   osloLocation,
   osloLocationView,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/location-plugin/node';
+import { DEFAULT_CONTEXT } from '../utils/constants';
 
 export default class SimpleEditorComponent extends Component {
   @tracked controller;
@@ -143,11 +144,11 @@ export default class SimpleEditorComponent extends Component {
   InsertArticle = InsertArticleComponent;
 
   get vocabString() {
-    return this.args.model.context.vocab;
+    return DEFAULT_CONTEXT.vocab;
   }
 
   get prefixString() {
-    const ctx = this.args.model.context;
+    const ctx = DEFAULT_CONTEXT;
     return Object.keys(ctx.prefix)
       .map((key) => `${key}: ${ctx.prefix[key]}`)
       .join(' ');
