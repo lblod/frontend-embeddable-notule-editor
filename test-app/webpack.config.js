@@ -11,7 +11,7 @@ Object.entries(pages).forEach(([name, page]) => {
       filename: `${name}.html`,
       chunks: [name],
       title: page.title,
-    })
+    }),
   );
   entries[name] = page.source;
 });
@@ -48,7 +48,7 @@ module.exports = (environment) => {
             from: 'assets/images/**/*',
             context: path.resolve(
               __dirname,
-              'node_modules/@lblod/embeddable-say-editor/dist'
+              'node_modules/@lblod/embeddable-say-editor/dist',
             ),
             to: path.resolve(__dirname, 'dist'),
           },

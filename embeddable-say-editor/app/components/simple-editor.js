@@ -310,7 +310,7 @@ export default class SimpleEditorComponent extends Component {
         [hardBreak, paragraphInvisible, headingInvisible],
         {
           shouldShowInvisibles: false,
-        }
+        },
       ),
     ];
     if (userConfig.image?.allowBase64Images) {
@@ -318,7 +318,7 @@ export default class SimpleEditorComponent extends Component {
         checkPasteSize({
           pasteLimit: userConfig.image.pasteLimit,
           onLimitReached: userConfig.image.onLimitReached,
-        })
+        }),
       );
     }
     const nodeViews = {};
@@ -390,7 +390,7 @@ export default class SimpleEditorComponent extends Component {
     };
 
     const editorPromise = new Promise(
-      (resolve) => (this.resolveEditorPromise = resolve)
+      (resolve) => (this.resolveEditorPromise = resolve),
     );
     this.initCompleted = true;
     return editorPromise;
@@ -399,7 +399,7 @@ export default class SimpleEditorComponent extends Component {
   setupCitationPlugin({ userConfig, config, plugins }) {
     config.citation = mergeConfigs(
       defaultCitationPluginConfig,
-      userConfig.citation
+      userConfig.citation,
     );
 
     const citationPluginVariable = citationPlugin(config.citation);
@@ -430,7 +430,7 @@ export default class SimpleEditorComponent extends Component {
       {
         endpoint: 'https://data.vlaanderen.be/sparql',
       },
-      userConfig.besluitTopic
+      userConfig.besluitTopic,
     );
   }
 
@@ -443,7 +443,7 @@ export default class SimpleEditorComponent extends Component {
     const { nodes, nodeViews, config, userConfig } = setup;
     config.location = mergeConfigs(
       defaultLocationPluginConfig,
-      userConfig.location
+      userConfig.location,
     );
     nodes['oslo_location'] = osloLocation(config.location);
     nodeViews['oslo_location'] = (controller) =>
@@ -457,7 +457,7 @@ export default class SimpleEditorComponent extends Component {
 
     config.roadsignRegulation = mergeConfigs(
       defaultRoadsignRegulationPluginConfig,
-      userConfig.roadsignRegulation
+      userConfig.roadsignRegulation,
     );
   }
 
@@ -473,11 +473,11 @@ export default class SimpleEditorComponent extends Component {
     };
     config.variable.edit.date = mergeConfigs(
       defaultRdfaDatePluginConfig,
-      userConfig.variable?.edit?.date
+      userConfig.variable?.edit?.date,
     );
     config.variable.edit.location = mergeConfigs(
       defaultLocationVariablePluginConfig,
-      userConfig.variable?.edit?.location
+      userConfig.variable?.edit?.location,
     );
 
     config.variable.edit.codelist = {};
@@ -550,7 +550,7 @@ export default class SimpleEditorComponent extends Component {
 
     config.tableOfContents = mergeConfigs(
       defaultTableOfContentsPluginConfig,
-      userConfig.tableOfContents
+      userConfig.tableOfContents,
     );
 
     nodes.table_of_contents = table_of_contents(config.tableOfContents);

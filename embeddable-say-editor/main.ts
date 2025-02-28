@@ -1,11 +1,12 @@
 import vendor from './ember-build/assets/vendor.js';
-// @ts-expect-error
+// @ts-expect-error disable type-checking
 import vendorBundle from './ember-build/assets/@lblod/embeddable-say-editor-vendor-bundle.js';
 import app from './ember-build/assets/@lblod/embeddable-say-editor-app.js';
+// @ts-expect-error disable type-checking
 import embeddable from './ember-build/assets/@lblod/embeddable-say-editor.js';
-// @ts-expect-error
+// @ts-expect-error disable type-checking
 import editorCss from './ember-build/assets/@lblod/embeddable-say-editor.css';
-// @ts-expect-error
+// @ts-expect-error disable type-checking
 import vendorCss from './ember-build/assets/vendor.css';
 import type SayController from '@lblod/ember-rdfa-editor/core/say-controller';
 
@@ -63,7 +64,7 @@ export type EditorElement = HTMLElement & {
    */
   initEditor: (
     arrayOfPluginNames: PluginName[],
-    options: Record<string, any>
+    options: Record<string, unknown>,
   ) => Promise<void>;
   /**
    * enable the banner that shows the environment and versions of plugins used.
@@ -167,7 +168,7 @@ export async function renderEditor({
 
   // wait for the iframe to render
   await new Promise((resolve) =>
-    editorFrame.addEventListener('load', resolve, { once: true })
+    editorFrame.addEventListener('load', resolve, { once: true }),
   );
   const frameDoc = editorFrame.contentDocument!.body;
 
@@ -201,7 +202,7 @@ export async function renderEditor({
   editorContainer.classList.add('demo-content');
   editorContainer.setAttribute(
     'prefix',
-    'besluit: http://data.vlaanderen.be/ns/besluit#'
+    'besluit: http://data.vlaanderen.be/ns/besluit#',
   );
 
   frameDoc.appendChild(editorContainer);
@@ -209,7 +210,7 @@ export async function renderEditor({
   // important here to use window.require so that webpack doesn't interfere
 
   const App = editorFrame
-    .contentWindow! // @ts-expect-error
+    .contentWindow! // @ts-expect-error disable typechecking
     .require('@lblod/embeddable-say-editor/app')
     .default.create({
       autoboot: false,
@@ -219,7 +220,7 @@ export async function renderEditor({
   await App.visit('/', { rootElement: `#${EDITOR_CONTAINER_ID}` });
   // get the element
   const editorElement = editorContainer.getElementsByClassName(
-    'notule-editor'
+    'notule-editor',
   )[0] as unknown as EditorElement;
   // remove the now unnecessary javascript to avoid overloading the dom
   frameDoc.removeChild(vendorScript);
@@ -238,7 +239,7 @@ export async function renderEditor({
   const editorPaper =
     editorContainer.getElementsByClassName('say-editor__paper');
   const sayContainer = editorContainer.getElementsByClassName(
-    'say-container__main'
+    'say-container__main',
   )[0] as HTMLElement;
   sayContainer.style.overflow = 'auto';
 
@@ -247,7 +248,7 @@ export async function renderEditor({
   if (growEditor) {
     // Set min heights to those passed
     const sayEditorElement = editorContainer.getElementsByClassName(
-      'say-editor'
+      'say-editor',
     )[0] as HTMLElement;
     let topPadding, bottomPadding;
     if (sayEditorElement.computedStyleMap) {
@@ -262,13 +263,13 @@ export async function renderEditor({
 
     editorPaperElement.style.minHeight = `calc(${height} - ${TOOLBAR_HEIGHT} - ${topPadding} - ${bottomPadding})`;
     const sayContentElement = editorPaperElement.getElementsByClassName(
-      'say-content'
+      'say-content',
     )[0] as HTMLElement;
     sayContentElement.style.minHeight = `calc(${height} - ${TOOLBAR_HEIGHT} - ${topPadding} - ${bottomPadding})`;
 
     // Resize to fit content
     const resizeObserver = new ResizeObserver((entries) => {
-      for (let entry of entries) {
+      for (const entry of entries) {
         const { height: contentHeight } = entry.contentRect;
         editorFrame.style.height = `${contentHeight}px`;
       }
@@ -277,7 +278,7 @@ export async function renderEditor({
     resizeObserver.observe(frameDoc);
   } else {
     const mainContainer = editorContainer.getElementsByClassName(
-      'say-container__main'
+      'say-container__main',
     )[0] as HTMLElement;
     mainContainer.style.height = `calc(100vh - ${TOOLBAR_HEIGHT})`;
   }
@@ -501,7 +502,7 @@ export class SayWebComponent extends HTMLElement {
     editorContainer.classList.add('demo-content');
     editorContainer.setAttribute(
       'prefix',
-      'besluit: http://data.vlaanderen.be/ns/besluit#'
+      'besluit: http://data.vlaanderen.be/ns/besluit#',
     );
 
     shadow.appendChild(editorContainer);
@@ -516,7 +517,7 @@ export class SayWebComponent extends HTMLElement {
     this.editorPromise = App.visit('/', { rootElement: editorContainer }).then(
       () => {
         return editorContainer.getElementsByClassName('notule-editor')[0];
-      }
+      },
     );
     shadow.removeChild(vendorScript);
     shadow.removeChild(appScript);
