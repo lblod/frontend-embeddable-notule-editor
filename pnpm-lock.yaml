@@ -73,11 +73,11 @@ importers:
         specifier: ^0.5.0
         version: 0.5.0(h55jstrffdjtuxahluireml6qa)
       '@lblod/ember-rdfa-editor':
-        specifier: 11.0.0
-        version: 11.0.0(x4g2fsqoy6fyaytofd3p3wtcpi)
+        specifier: 11.2.0
+        version: 11.2.0(x4g2fsqoy6fyaytofd3p3wtcpi)
       '@lblod/ember-rdfa-editor-lblod-plugins':
         specifier: 28.0.0
-        version: 28.0.0(swnxrunizmsruaxcxgenz6wrmq)
+        version: 28.0.0(bidy7rdd6cime74d7wnanfe5sa)
       babel-loader:
         specifier: ^8.3.0
         version: 8.3.0(@babel/core@7.24.4)(webpack@5.91.0)
@@ -1556,8 +1556,8 @@ packages:
       ember-template-imports:
         optional: true
 
-  '@lblod/ember-rdfa-editor@11.0.0':
-    resolution: {integrity: sha512-hHuzfxtIGDAPj1FxofPeUWkKqY/koqrSnba4BKM1fWLRtAo0eozqGSsgYti0hPI5YBzjPB3wLo4RnYMsH8h4WQ==}
+  '@lblod/ember-rdfa-editor@11.2.0':
+    resolution: {integrity: sha512-ihXPcHabbZplzu4VfptE4Og0d524OBUXpkbacii30gvxw3z/2979lL6zovFE2L0mfKfWmuzw5Tpt+5PYz8npSw==}
     peerDependencies:
       '@appuniversum/ember-appuniversum': ^3.5.0
       '@ember/test-helpers': ^2.9.4 || ^3.2.1 || ^4.0.2 || ^5.0.0
@@ -7303,8 +7303,8 @@ packages:
   prosemirror-dropcursor@1.8.1:
     resolution: {integrity: sha512-M30WJdJZLyXHi3N8vxN6Zh5O8ZBbQCz0gURTfPmTIBNQ5pxrdU7A58QkNqfa98YEjSAL1HUyyU34f6Pm5xBSGw==}
 
-  prosemirror-history@1.4.0:
-    resolution: {integrity: sha512-UUiGzDVcqo1lovOPdi9YxxUps3oBFWAIYkXLu3Ot+JPv1qzVogRbcizxK3LhHmtaUxclohgiOVesRw5QSlMnbQ==}
+  prosemirror-history@1.4.1:
+    resolution: {integrity: sha512-2JZD8z2JviJrboD9cPuX/Sv/1ChFng+xh2tChQ2X4bB2HeK+rra/bmJ3xGntCcjhOqIzSDG6Id7e8RJ9QPXLEQ==}
 
   prosemirror-inputrules@1.4.0:
     resolution: {integrity: sha512-6ygpPRuTJ2lcOXs9JkefieMst63wVJBgHZGl5QOytN7oSZs3Co/BYbc3Yx9zm9H37Bxw8kVzCnDsihsVsL4yEg==}
@@ -12267,7 +12267,7 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@28.0.0(swnxrunizmsruaxcxgenz6wrmq)':
+  '@lblod/ember-rdfa-editor-lblod-plugins@28.0.0(bidy7rdd6cime74d7wnanfe5sa)':
     dependencies:
       '@appuniversum/ember-appuniversum': 3.8.0(@ember/test-helpers@2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0)))(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(ember-basic-dropdown@8.5.0(@babel/core@7.24.4)(@ember/string@3.1.1)(@ember/test-helpers@2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0)))(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0)))(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0))(tracked-built-ins@3.3.0)(webpack@5.91.0)
       '@babel/core': 7.25.2
@@ -12277,7 +12277,7 @@ snapshots:
       '@curvenote/prosemirror-utils': 1.0.5(prosemirror-model@1.22.1)(prosemirror-state@1.4.3)
       '@ember/string': 3.1.1
       '@embroider/macros': 1.16.11(@glint/template@1.4.0)
-      '@lblod/ember-rdfa-editor': 11.0.0(x4g2fsqoy6fyaytofd3p3wtcpi)
+      '@lblod/ember-rdfa-editor': 11.2.0(x4g2fsqoy6fyaytofd3p3wtcpi)
       '@lblod/marawa': 0.8.0-beta.6
       '@lblod/template-uuid-instantiator': 1.0.3
       '@rdfjs/data-model': 2.0.2
@@ -12332,7 +12332,7 @@ snapshots:
       - web-streams-polyfill
       - webpack
 
-  '@lblod/ember-rdfa-editor@11.0.0(x4g2fsqoy6fyaytofd3p3wtcpi)':
+  '@lblod/ember-rdfa-editor@11.2.0(x4g2fsqoy6fyaytofd3p3wtcpi)':
     dependencies:
       '@appuniversum/ember-appuniversum': 3.8.0(@ember/test-helpers@2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0)))(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(ember-basic-dropdown@8.5.0(@babel/core@7.24.4)(@ember/string@3.1.1)(@ember/test-helpers@2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0)))(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0)))(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0))(tracked-built-ins@3.3.0)(webpack@5.91.0)
       '@codemirror/commands': 6.6.0
@@ -12345,7 +12345,7 @@ snapshots:
       '@ember/render-modifiers': 2.1.0(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0))
       '@ember/test-helpers': 2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0))
       '@embroider/addon-shim': 1.9.0
-      '@embroider/macros': 1.16.5(@glint/template@1.4.0)
+      '@embroider/macros': 1.16.11(@glint/template@1.4.0)
       '@floating-ui/dom': 1.6.13
       '@glimmer/component': 1.1.2(@babel/core@7.24.4)
       '@glimmer/tracking': 1.1.2
@@ -12380,7 +12380,7 @@ snapshots:
       process: 0.11.10
       prosemirror-commands: 1.5.2
       prosemirror-dropcursor: 1.8.1
-      prosemirror-history: 1.4.0
+      prosemirror-history: 1.4.1
       prosemirror-inputrules: 1.4.0
       prosemirror-keymap: 1.2.2
       prosemirror-model: 1.22.1
@@ -20111,7 +20111,7 @@ snapshots:
       prosemirror-transform: 1.9.0
       prosemirror-view: 1.33.8
 
-  prosemirror-history@1.4.0:
+  prosemirror-history@1.4.1:
     dependencies:
       prosemirror-state: 1.4.3
       prosemirror-transform: 1.9.0
