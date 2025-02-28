@@ -76,8 +76,8 @@ importers:
         specifier: 11.0.0
         version: 11.0.0(x4g2fsqoy6fyaytofd3p3wtcpi)
       '@lblod/ember-rdfa-editor-lblod-plugins':
-        specifier: 27.1.0-dev.8dc7f0f3f57755ae2807e38c7f75a6b6fbff6248
-        version: 27.1.0-dev.8dc7f0f3f57755ae2807e38c7f75a6b6fbff6248(swnxrunizmsruaxcxgenz6wrmq)
+        specifier: 28.0.0
+        version: 28.0.0(swnxrunizmsruaxcxgenz6wrmq)
       babel-loader:
         specifier: ^8.3.0
         version: 8.3.0(@babel/core@7.24.4)(webpack@5.91.0)
@@ -1532,8 +1532,8 @@ packages:
       '@appuniversum/ember-appuniversum': ^2.0.0 || ^3.0.0
       ember-source: ^4.0.0
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@27.1.0-dev.8dc7f0f3f57755ae2807e38c7f75a6b6fbff6248':
-    resolution: {integrity: sha512-9vxg2GwZR5KsfkfqA7t3aGZjN6nkNZ4ZYN0vlbDvZeRHS9shBfUmoWyIFYq3zMOmLRmpEFDD0CblALkadjvGjg==}
+  '@lblod/ember-rdfa-editor-lblod-plugins@28.0.0':
+    resolution: {integrity: sha512-gSBpTZJvi6/ektmnuiSPeWSOaIE99nEHKh21nQtkhtcupOsn+1cDxI0TQqrhSsTdEHivcEON9dihoUB8UtWVDg==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@appuniversum/ember-appuniversum': ^3.5.0
@@ -12267,7 +12267,7 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@27.1.0-dev.8dc7f0f3f57755ae2807e38c7f75a6b6fbff6248(swnxrunizmsruaxcxgenz6wrmq)':
+  '@lblod/ember-rdfa-editor-lblod-plugins@28.0.0(swnxrunizmsruaxcxgenz6wrmq)':
     dependencies:
       '@appuniversum/ember-appuniversum': 3.8.0(@ember/test-helpers@2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0)))(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(ember-basic-dropdown@8.5.0(@babel/core@7.24.4)(@ember/string@3.1.1)(@ember/test-helpers@2.9.4(@babel/core@7.24.4)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0)))(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0)))(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.4.0)(webpack@5.91.0))(tracked-built-ins@3.3.0)(webpack@5.91.0)
       '@babel/core': 7.25.2
