@@ -10,5 +10,12 @@
     "types": [
       "ember-source/types"
     ]
+  },
+  "glint": {
+    "environment": [
+      "ember-loose",
+      "ember-template-imports"
+    ],
+    "checkStandaloneTemplates": false
   }
 }
