@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import vendor from './ember-build/assets/vendor.js';
-// @ts-expect-error disable type-checking
+// @ts-ignore disable type-checking
 import vendorBundle from './ember-build/assets/@lblod/embeddable-say-editor-vendor-bundle.js';
 import app from './ember-build/assets/@lblod/embeddable-say-editor-app.js';
-// @ts-expect-error disable type-checking
+// @ts-ignore disable type-checking
 import embeddable from './ember-build/assets/@lblod/embeddable-say-editor.js';
-// @ts-expect-error disable type-checking
+// @ts-ignore disable type-checking
 import editorCss from './ember-build/assets/@lblod/embeddable-say-editor.css';
-// @ts-expect-error disable type-checking
+// @ts-ignore disable type-checking
 import vendorCss from './ember-build/assets/vendor.css';
 import type SayController from '@lblod/ember-rdfa-editor/core/say-controller';
 
