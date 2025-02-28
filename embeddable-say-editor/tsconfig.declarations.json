@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["main.ts", "typeImports/**/*"],
+  "include": ["main.ts", "type-imports/**/*"],
   "compilerOptions": {
     "rootDir": ".",
     // Generate d.ts files
