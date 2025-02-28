@@ -1,6 +1,6 @@
 {
   "extends": "@tsconfig/ember/tsconfig.json",
-  "include": ["main.ts", "type-imports/**/*", "app/**/*"],
+  "include": ["main.ts", "shared-types/**/*", "type-imports/**/*", "app/**/*"],
   "compilerOptions": {
     // Tell TypeScript to read JS files
     "allowJs": true,
