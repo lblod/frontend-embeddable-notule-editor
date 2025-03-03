@@ -5,7 +5,10 @@ import { tracked } from '@glimmer/tracking';
 import type { SayController } from '@lblod/ember-rdfa-editor';
 import { generatePageForExport } from '@lblod/ember-rdfa-editor/utils/export-utils';
 import ToolbarButton from '@lblod/ember-rdfa-editor/components/toolbar/button';
-import HTMLPreviewModal from './modal';
+import type { TOC } from '@ember/component/template-only';
+import AuModal from '@appuniversum/ember-appuniversum/components/au-modal';
+import AuButtonGroup from '@appuniversum/ember-appuniversum/components/au-button-group';
+import AuButton from '@appuniversum/ember-appuniversum/components/au-button';
 
 type Signature = {
   Args: {
@@ -38,10 +41,42 @@ export default class HTMLPreviewMenu extends Component<Signature> {
     >
       Preview Rendered HTML
     </ToolbarButton>
-    <HTMLPreviewModal
+    <Modal
       @open={{this.previewOpen}}
       @doc={{this.exportPreview}}
       @onClose={{this.closePreview}}
     />
   </template>
 }
+
+type ModalSignature = {
+  Args: {
+    onClose: () => void;
+    open?: boolean;
+    doc: string;
+  };
+};
+const Modal: TOC<ModalSignature> = <template>
+  {{! FIXME fix the copy-pasted things }}
+  <AuModal
+    class='say-html-editor-modal'
+    @title='HTML Editor'
+    @closable={{true}}
+    @closeModal={{@onClose}}
+    @modalOpen={{@open}}
+    @size='large'
+    @padding='none'
+  >
+    <:title>Preview</:title>
+    <:body>
+      <iframe title='preview' height='100%' width='100%' srcdoc={{@doc}} />
+    </:body>
+    <:footer>
+      <AuButtonGroup>
+        <AuButton @skin='secondary' {{on 'click' @onClose}}>
+          Close
+        </AuButton>
+      </AuButtonGroup>
+    </:footer>
+  </AuModal>
+</template>;
