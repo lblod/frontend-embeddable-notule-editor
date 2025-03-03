@@ -10,7 +10,10 @@ import editorCss from './ember-build/assets/@lblod/embeddable-say-editor.css';
 // @ts-ignore disable type-checking
 import vendorCss from './ember-build/assets/vendor.css';
 import type SayController from '@lblod/ember-rdfa-editor/core/say-controller';
-import type { PluginName } from './shared-types';
+import type {
+  RenderEditorOptions,
+  PluginName,
+} from './shared-types/editor-options';
 
 const srcDoc = `
 <!DOCTYPE html>
@@ -88,44 +91,6 @@ export type EditorElement = HTMLElement & {
 };
 
 /**
- * The options for rendering the editor.
- */
-export type EditorOptions = {
-  /**
-   * The HTML element to render the editor in.
-   */
-  element: HTMLElement;
-  /**
-   * The title for the editor.
-   */
-  title?: string;
-  /**
-   * The width of the editor.
-   */
-  width: string;
-  /**
-   * The height of the editor.
-   */
-  height: string;
-  /**
-   * The plugins to initialize the editor with.
-   */
-  plugins?: PluginName[];
-  /**
-   * The options to initialize the editor with.
-   */
-  options?: Record<string, unknown>;
-  /**
-   * Record of CSS Variables and their values to be applied to the editor.
-   */
-  cssVariables?: Record<string, string>;
-  /**
-   * Whether the editor should grow to fit its content.
-   */
-  growEditor?: boolean;
-};
-
-/**
  * Renders the editor in an iframe and initializes it with the passed in plugins
  * and options. It waits for everything to initialize and returns the fully initialized
  * editor element, which has access to a controller and other methods (see docs)
@@ -139,7 +104,7 @@ export async function renderEditor({
   options = {},
   cssVariables = {},
   growEditor = false,
-}: EditorOptions): Promise<EditorElement> {
+}: RenderEditorOptions): Promise<EditorElement> {
   // build the iframe
   const editorFrame = document.createElement('iframe');
   editorFrame.setAttribute('srcdoc', srcDoc);
