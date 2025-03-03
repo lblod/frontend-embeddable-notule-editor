@@ -49,7 +49,7 @@ editors.forEach((config) => {
   container.append(
     document
       .createElement('h4')
-      .appendChild(document.createTextNode(config.heading))
+      .appendChild(document.createTextNode(config.heading)),
   );
 
   const element = document.createElement('div');

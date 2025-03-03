@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = (environment) => ({
-  entry: ['./main.js'],
+  entry: ['./main.ts'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
@@ -46,10 +46,16 @@ module.exports = (environment) => ({
         // }
       },
       {
-        test: /.js$/,
+        test: /\.(js|ts)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+              ['@babel/preset-typescript', { allowDeclareFields: true }],
+            ],
+          },
         },
       },
       {

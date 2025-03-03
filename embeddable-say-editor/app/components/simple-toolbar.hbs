@@ -1,3 +1,4 @@
+{{!-- @glint-nocheck not typesafe yet --}}
 <ResponsiveToolbar>
   <:main as |Tb|>
     <Tb.Group>
@@ -61,7 +62,7 @@
           <Plugins::HtmlEditor::Menu @controller={{@controller}} />
         {{/if}}
         {{#if (should-show 'html-preview' active=@activePlugins)}}
-          <HtmlPreview::Menu @controller={{@controller}} />
+          <Widgets::HtmlPreviewMenu @controller={{@controller}} />
         {{/if}}
       </Tb.Group>
     {{/if}}

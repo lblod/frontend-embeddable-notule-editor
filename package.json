@@ -31,7 +31,8 @@
     "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.1",
     "changesets-release-it-plugin": "git://git@github.com/piemonkey/changesets-release-it-plugin.git#38b58fc7bf3d3bc2270e5e68208e11a56cef650d",
-    "prettier": "^2.8.7",
+    "prettier": "^3.5.2",
+    "prettier-plugin-ember-template-tag": "^2.0.4",
     "release-it": "^17.0.3",
     "start-server-and-test": "^2.0.3"
   },

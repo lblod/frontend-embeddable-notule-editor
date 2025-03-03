@@ -42,6 +42,7 @@ module.exports = function (defaults) {
     '@appuniversum/ember-appuniversum': {
       disableWormholeElement: true,
     },
+    'ember-cli-babel': { enableTypeScriptTransform: true },
   });
 
   return app.toTree();

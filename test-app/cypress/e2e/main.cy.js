@@ -11,7 +11,7 @@ describe('main', () => {
     cy.get('.say-editor__inner').type('Hello world!');
     cy.get('.say-editor__inner').should(
       'have.html',
-      '<p><strong>Hello world!</strong></p>'
+      '<p><strong>Hello world!</strong></p>',
     );
   });
 });

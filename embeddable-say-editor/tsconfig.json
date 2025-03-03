@@ -1,17 +1,21 @@
 {
-  "files": ["main.js"],
-  "include": ["typeImports/**/*"],
+  "extends": "@tsconfig/ember/tsconfig.json",
+  "include": ["main.ts", "shared-types/**/*", "type-imports/**/*", "app/**/*"],
   "compilerOptions": {
     // Tell TypeScript to read JS files
     "allowJs": true,
+    "checkJs": false,
     // Don't check the imports of main.js
     "skipLibCheck": true,
-    // Generate d.ts files
-    "declaration": true,
-    // Only output types, not JS
-    "emitDeclarationOnly": true,
-    "outDir": "types",
-    // Maps type lookups to JS file instead of .d.ts file
-    "declarationMap": true
+    "types": [
+      "ember-source/types"
+    ]
+  },
+  "glint": {
+    "environment": [
+      "ember-loose",
+      "ember-template-imports"
+    ],
+    "checkStandaloneTemplates": false
   }
 }

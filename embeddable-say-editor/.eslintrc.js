@@ -2,18 +2,11 @@
 
 module.exports = {
   root: true,
-  parser: '@babel/eslint-parser',
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module',
-    requireConfigFile: false,
-    babelOptions: {
-      plugins: [
-        ['@babel/plugin-syntax-decorators', { decoratorsBeforeExport: true }],
-      ],
-    },
   },
-  plugins: ['ember'],
+  plugins: ['ember', '@typescript-eslint'],
   extends: [
     'eslint:recommended',
     'plugin:ember/recommended',
@@ -22,11 +15,23 @@ module.exports = {
   env: {
     browser: true,
   },
+  rules: {},
   overrides: [
+    // ts files
+    {
+      files: ['**/*.ts'],
+      extends: [
+        'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:@typescript-eslint/recommended',
+      ],
+      rules: {},
+    },
     // node files
     {
       files: [
         './.eslintrc.js',
+        './.prettierrc.js',
+        './.stylelintrc.js',
         './.template-lintrc.js',
         './ember-cli-build.js',
         './testem.js',
@@ -36,14 +41,32 @@ module.exports = {
         './server/**/*.js',
         './webpack.config.js',
       ],
-      parserOptions: {
-        sourceType: 'script',
-      },
       env: {
         browser: false,
         node: true,
       },
       extends: ['plugin:n/recommended'],
+    },
+    {
+      files: ['**/*.gts'],
+      parser: 'ember-eslint-parser',
+      plugins: ['ember'],
+      extends: [
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:ember/recommended',
+        'plugin:ember/recommended-gts',
+      ],
+    },
+    {
+      files: ['**/*.gjs'],
+      parser: 'ember-eslint-parser',
+      plugins: ['ember'],
+      extends: [
+        'eslint:recommended',
+        'plugin:ember/recommended',
+        'plugin:ember/recommended-gjs',
+      ],
     },
   ],
 };

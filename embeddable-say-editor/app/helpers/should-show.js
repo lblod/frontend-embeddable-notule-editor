@@ -22,7 +22,7 @@ const PLUGIN_SECTIONS = {
 
 export default helper(function shouldShow(
   pluginNameArg,
-  { active = [], section }
+  { active = [], section },
 ) {
   if (section) {
     return PLUGIN_SECTIONS[section].some((plugin) => active.includes(plugin));

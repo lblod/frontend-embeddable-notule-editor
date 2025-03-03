@@ -16,6 +16,6 @@ await fs.writeFile(
   sayControllerDeclarations.replace(/#root/g, "@lblod/ember-rdfa-editor")
 );
 
-await fs.cp("typeImports/", "types/node_modules/", {
+await fs.cp("type-imports/", "types/node_modules/", {
   recursive: true,
 });

@@ -120,6 +120,7 @@ import {
   osloLocation,
   osloLocationView,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/location-plugin/node';
+import { DEFAULT_CONTEXT } from '../utils/constants';
 
 export default class SimpleEditorComponent extends Component {
   @tracked controller;
@@ -143,11 +144,11 @@ export default class SimpleEditorComponent extends Component {
   InsertArticle = InsertArticleComponent;
 
   get vocabString() {
-    return this.args.model.context.vocab;
+    return DEFAULT_CONTEXT.vocab;
   }
 
   get prefixString() {
-    const ctx = this.args.model.context;
+    const ctx = DEFAULT_CONTEXT;
     return Object.keys(ctx.prefix)
       .map((key) => `${key}: ${ctx.prefix[key]}`)
       .join(' ');
@@ -303,7 +304,7 @@ export default class SimpleEditorComponent extends Component {
         [hardBreak, paragraphInvisible, headingInvisible],
         {
           shouldShowInvisibles: false,
-        }
+        },
       ),
     ];
     if (userConfig.image?.allowBase64Images) {
@@ -311,7 +312,7 @@ export default class SimpleEditorComponent extends Component {
         checkPasteSize({
           pasteLimit: userConfig.image.pasteLimit,
           onLimitReached: userConfig.image.onLimitReached,
-        })
+        }),
       );
     }
     const nodeViews = {};
@@ -383,7 +384,7 @@ export default class SimpleEditorComponent extends Component {
     };
 
     const editorPromise = new Promise(
-      (resolve) => (this.resolveEditorPromise = resolve)
+      (resolve) => (this.resolveEditorPromise = resolve),
     );
     this.initCompleted = true;
     return editorPromise;
@@ -392,7 +393,7 @@ export default class SimpleEditorComponent extends Component {
   setupCitationPlugin({ userConfig, config, plugins }) {
     config.citation = mergeConfigs(
       defaultCitationPluginConfig,
-      userConfig.citation
+      userConfig.citation,
     );
     plugins.push(citationPlugin(config.citation));
   }
@@ -462,7 +463,7 @@ export default class SimpleEditorComponent extends Component {
       {
         endpoint: 'https://data.vlaanderen.be/sparql',
       },
-      userConfig.besluitTopic
+      userConfig.besluitTopic,
     );
   }
 
@@ -475,7 +476,7 @@ export default class SimpleEditorComponent extends Component {
     const { nodes, nodeViews, config, userConfig } = setup;
     config.location = mergeConfigs(
       defaultLocationPluginConfig,
-      userConfig.location
+      userConfig.location,
     );
     nodes['oslo_location'] = osloLocation(config.location);
     nodeViews['oslo_location'] = (controller) =>
@@ -489,7 +490,7 @@ export default class SimpleEditorComponent extends Component {
 
     config.roadsignRegulation = mergeConfigs(
       defaultRoadsignRegulationPluginConfig,
-      userConfig.roadsignRegulation
+      userConfig.roadsignRegulation,
     );
   }
 
@@ -505,11 +506,11 @@ export default class SimpleEditorComponent extends Component {
     };
     config.variable.edit.date = mergeConfigs(
       defaultRdfaDatePluginConfig,
-      userConfig.variable?.edit?.date
+      userConfig.variable?.edit?.date,
     );
     config.variable.edit.location = mergeConfigs(
       defaultLocationVariablePluginConfig,
-      userConfig.variable?.edit?.location
+      userConfig.variable?.edit?.location,
     );
 
     config.variable.edit.codelist = {};
@@ -586,7 +587,7 @@ export default class SimpleEditorComponent extends Component {
     ) {
       console.warn(
         `The table of contents plugin will not show any contents unless either the 'besluit' or 'article-structure' plugins are active,
-        as they set up the nodes which the ToC builds its contents from (articles, chapters, etc)`
+        as they set up the nodes which the ToC builds its contents from (articles, chapters, etc)`,
       );
     }
     const { config, userConfig, nodes, nodeViews } = setup;
@@ -599,7 +600,7 @@ export default class SimpleEditorComponent extends Component {
 
         If you would still like to pass in the scrollContainer, just pass in as a single object instead:
         { scrollContainer: () => Element }
-        `
+        `,
       );
     } else if (userConfig.tableOfContents) {
       tocConfig = userConfig.tableOfContents;

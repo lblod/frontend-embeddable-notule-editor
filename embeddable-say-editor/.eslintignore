@@ -6,6 +6,7 @@
 /dist/
 /tmp/
 /ember-build/
+/types/
 
 # dependencies
 /bower_components/
