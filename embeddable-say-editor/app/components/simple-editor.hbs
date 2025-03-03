@@ -1,4 +1,4 @@
-{{!-- @glint-nocheck not typesafe yet --}}
+{{! @glint-nocheck not typesafe yet }}
 <div id="ember-appuniversum-wormhole"></div>
 {{#if this.showEnvironmentBanner}}
   <EnvironmentBanner
@@ -15,9 +15,10 @@
       <:top>
         {{#if this.controller}}
           <Toolbar
+            @activeNode={{this.activeNode}}
             @toolbar={{this.defaultToolbarConfig}}
             @controller={{this.controller}}
-            @activePlugins={{this.activePlugins}}
+            @plugins={{this.activePlugins}}
             @config={{this.config}}
           />
         {{/if}}
@@ -35,137 +36,13 @@
       </:default>
       <:aside>
         {{#if this.controller}}
-          <Sidebar as |Sidebar|>
-            {{#if (should-show section="decision" active=this.activePlugins)}}
-              <Sidebar.Collapsible
-                @title={{t "editor.insert" type=(t "editor.besluit.title")}}
-                @expandedInitially={{this.expandInsertMenu}}
-              >
-                {{#if (should-show "besluit" active=this.activePlugins)}}
-                  <this.InsertArticle
-                    @controller={{this.controller}}
-                    @options={{this.config.besluit}}
-                  />
-                {{/if}}
-                {{#if (should-show "lpdc" active=this.activePlugins)}}
-                  <LpdcPlugin::LpdcInsert
-                    @controller={{this.controller}}
-                    @config={{this.config.lpdc}}
-                  />
-                {{/if}}
-              </Sidebar.Collapsible>
-            {{/if}}
-            {{#if (should-show "article-structure" active=this.activePlugins)}}
-              <Sidebar.Collapsible
-                @title={{t
-                  "editor.insert"
-                  type=(t "editor.article-structure.title")
-                }}
-                @expandedInitially={{this.expandInsertMenu}}
-              >
-                <ArticleStructurePlugin::ArticleStructureCard
-                  @controller={{this.controller}}
-                  @options={{this.config.structures}}
-                />
-              </Sidebar.Collapsible>
-            {{/if}}
-
-            {{#if (should-show section="insert" active=this.activePlugins)}}
-              <Sidebar.Collapsible
-                @title={{t "editor.insert" type=(t "editor.others.title")}}
-                @expandedInitially={{this.expandInsertMenu}}
-              >
-                {{#if (should-show "citation" active=this.activePlugins)}}
-                  <CitationPlugin::CitationInsert
-                    @controller={{this.controller}}
-                    @config={{this.config.citation}}
-                  />
-                {{/if}}
-                {{#if
-                  (should-show "roadsign-regulation" active=this.activePlugins)
-                }}
-                  <RoadsignRegulationPlugin::RoadsignRegulationCard
-                    @controller={{this.controller}}
-                    @options={{this.config.roadsignRegulation}}
-                  />
-                {{/if}}
-                {{#if (should-show "location" active=this.activePlugins)}}
-                  <LocationPlugin::Insert
-                    @controller={{this.controller}}
-                    @config={{this.config.location}}
-                    @defaultMunicipality={{this.config.location.defaultMunicipality}}
-                    @locationTypes={{this.config.location.locationTypes}}
-                  />
-                {{/if}}
-                {{#if
-                  (should-show "template-comments" active=this.activePlugins)
-                }}
-                  <TemplateCommentsPlugin::Insert
-                    @controller={{this.controller}}
-                  />
-                {{/if}}
-              </Sidebar.Collapsible>
-            {{/if}}
-            {{#if
-              (or
-                (should-show "besluit" active=this.activePlugins)
-                (should-show "article-structure" active=this.activePlugins)
-              )
-            }}
-              <this.StructureControlCard @controller={{this.controller}} />
-            {{/if}}
-            {{#if (should-show "variable" active=this.activePlugins)}}
-              {{#if this.config.variable.insert.enable}}
-                <VariablePlugin::InsertVariableCard
-                  @controller={{this.controller}}
-                  @variableTypes={{this.config.variable.insert.variableTypes}}
-                />
-              {{/if}}
-              {{#if this.config.variable.edit.enable}}
-                <VariablePlugin::Codelist::Edit
-                  @controller={{this.controller}}
-                  @options={{this.config.variable.edit.codelist}}
-                />
-                <VariablePlugin::Date::Edit
-                  @controller={{this.controller}}
-                  @options={{this.config.variable.edit.date}}
-                />
-                <VariablePlugin::Location::Edit
-                  @controller={{this.controller}}
-                  @options={{this.config.variable.edit.location}}
-                />
-                <VariablePlugin::Address::Edit
-                  @controller={{this.controller}}
-                  @defaultMunicipality={{this.config.variable.edit.address.defaultMunicipality}}
-                />
-              {{/if}}
-            {{/if}}
-            {{#if (should-show "template-comments" active=this.activePlugins)}}
-              <TemplateCommentsPlugin::EditCard
-                @controller={{this.controller}}
-              />
-            {{/if}}
-            {{#if (should-show "citation" active=this.activePlugins)}}
-              <CitationPlugin::CitationCard
-                @controller={{this.controller}}
-                @config={{this.config.citation}}
-              />
-            {{/if}}
-            {{#if (should-show "rdfa-editor" active=this.activePlugins)}}
-              <div class="au-u-margin-bottom" />
-              <this.RdfaEditor
-                @node={{this.activeNode}}
-                @controller={{this.controller}}
-              />
-              {{#if this.activeNode}}
-                <this.AttributeEditor
-                  @node={{this.activeNode}}
-                  @controller={{this.controller}}
-                />
-                <this.DebugInfo @node={{this.activeNode}} />
-              {{/if}}
-            {{/if}}
-          </Sidebar>
+          <Sidebar
+            @activeNode={{this.activeNode}}
+            @sidebar={{this.defaultSidebarConfig}}
+            @controller={{this.controller}}
+            @plugins={{this.activePlugins}}
+            @config={{this.config}}
+          />
         {{/if}}
       </:aside>
     </EditorContainer>

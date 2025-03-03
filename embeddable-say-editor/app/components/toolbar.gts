@@ -39,6 +39,7 @@ import type {
 
 import { get } from '@ember/helper';
 import type { TOC } from '@ember/component/template-only';
+import type { ResolvedPNode } from '@lblod/ember-rdfa-editor/utils/_private/types';
 
 type ToolbarWidgetComponent = ComponentLike<WidgetSignature>;
 
@@ -76,9 +77,10 @@ const TOOLBAR_WIDGET_MAP: Record<ToolbarWidget, ToolbarWidgetComponent> = {
       @options={{@config.besluitTopic}}
     />
   </template> as TOC<WidgetSignature>,
-} as const;
+};
 
 type ToolbarSignature = {
+  activeNode: ResolvedPNode;
   controller: SayController;
   toolbar: ToolbarConfig;
   config: EditorConfig;
@@ -92,6 +94,7 @@ const Toolbar: TOC<ToolbarSignature> = <template>
       {{#each @toolbar.main as |toolbarGroup|}}
         <Tb.Group>
           <ToolbarGroup
+            @activeNode={{@activeNode}}
             @controller={{@controller}}
             @config={{@config}}
             @toolbarGroup={{toolbarGroup}}
@@ -105,6 +108,7 @@ const Toolbar: TOC<ToolbarSignature> = <template>
       {{#each @toolbar.side as |toolbarGroup|}}
         <Tb.Group>
           <ToolbarGroup
+            @activeNode={{@activeNode}}
             @controller={{@controller}}
             @config={{@config}}
             @toolbarGroup={{toolbarGroup}}
@@ -119,6 +123,7 @@ const Toolbar: TOC<ToolbarSignature> = <template>
 export default Toolbar;
 
 type ToolbarGroupSignature = {
+  activeNode: ResolvedPNode;
   controller: SayController;
   toolbarGroup: ToolbarGroupConfig;
   config: EditorConfig;
@@ -136,6 +141,7 @@ class ToolbarGroup extends Component<ToolbarGroupSignature> {
     {{#each this.widgets as |widget|}}
       {{#let (get TOOLBAR_WIDGET_MAP widget) as |WidgetComponent|}}
         <WidgetComponent
+          @activeNode={{@activeNode}}
           @config={{@config}}
           @plugins={{@plugins}}
           @controller={{@controller}}

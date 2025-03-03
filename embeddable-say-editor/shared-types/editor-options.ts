@@ -13,8 +13,7 @@ export type PluginName =
   | 'rdfa-editor'
   | 'formatting-toggle'
   | 'html-edit'
-  | 'html-preview'
-  | 'rdfa-blocks-toggle';
+  | 'html-preview';
 
 export type EditorConfig = Record<string, unknown>;
 /**

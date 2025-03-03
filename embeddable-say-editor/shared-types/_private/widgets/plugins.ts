@@ -16,7 +16,7 @@ export type CitationEditWidget = 'citation:edit';
 
 export type RoadsignRegulationInsertWidget = 'roadsign-regulation:insert';
 
-export type LocationWidget = 'location:insert' | 'location:edit';
+export type LocationWidget = 'location:insert';
 
 export type TemplateCommentsInsertWidget = 'template-comments:insert';
 
