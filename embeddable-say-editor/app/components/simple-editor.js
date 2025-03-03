@@ -160,6 +160,59 @@ export default class SimpleEditorComponent extends Component {
       .join(' ');
   }
 
+  get defaultToolbarConfig() {
+    const plugins = this.activePlugins ?? [];
+    const mainSection = [];
+    mainSection.push(
+      ['undo', 'redo'],
+      [
+        'bold',
+        'italic',
+        'strikethrough',
+        'underline',
+        'subscript',
+        'superscript',
+        'highlight',
+        'color',
+      ],
+      ['list:bullet', 'list:numbered', 'indentation'],
+      ['hyperlink', 'image'],
+      ['table'],
+      ['heading'],
+      ['alignment'],
+    );
+    const HTMLWidgets = [];
+    if (plugins.includes('html-edit')) {
+      HTMLWidgets.push('html:edit');
+    }
+    if (plugins.includes('html-preview')) {
+      HTMLWidgets.push('html:preview');
+    }
+    if (HTMLWidgets.length) {
+      mainSection.push(HTMLWidgets);
+    }
+
+    const group = [];
+    if (plugins.includes('table-of-contents')) {
+      group.push('table-of-contents');
+    }
+    if (plugins.includes('formatting-toggle')) {
+      group.push('formatting');
+    }
+    if (plugins.includes('besluit-topic')) {
+      group.push('besluit:topic');
+    }
+    const sideSection = group.length ? [group] : undefined;
+    console.log({
+      main: mainSection,
+      side: sideSection,
+    });
+    return {
+      main: mainSection,
+      side: sideSection,
+    };
+  }
+
   @action
   handleRdfaEditorInit(controller) {
     // This, together with `insertedInDom` adds the public-facing logic available to the consumer.

@@ -23,7 +23,8 @@
     >
       <:top>
         {{#if this.controller}}
-          <SimpleToolbar
+          <Toolbar
+            @toolbar={{this.defaultToolbarConfig}}
             @controller={{this.controller}}
             @activePlugins={{this.activePlugins}}
             @config={{this.config}}
