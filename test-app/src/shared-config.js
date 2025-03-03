@@ -4,7 +4,7 @@ export const pluginDemoConfig = {
   height: '800px',
   plugins: [
     'citation',
-    'besluit',
+    // 'besluit',
     'besluit-topic',
     'lpdc',
     'article-structure',
@@ -19,8 +19,7 @@ export const pluginDemoConfig = {
     'location',
   ],
   options: {
-    docContent:
-      'table_of_contents? ((block|chapter)+|(block|title)+|(block|article)+)',
+    docContent: 'table_of_contents? block+',
     citation: {
       type: 'ranges',
       activeInRanges: (state) => [[0, state.doc.content.size]],
@@ -31,6 +30,13 @@ export const pluginDemoConfig = {
     lpdc: {
       endpoint:
         'https://embeddable.dev.gelinkt-notuleren.lblod.info/lpdc-service',
+    },
+    besluit: {
+      fullLengthArticles: false,
+      onlyArticleSpecialName: true,
+    },
+    location: {
+      locationTypes: ['address', 'place'],
     },
   },
 };

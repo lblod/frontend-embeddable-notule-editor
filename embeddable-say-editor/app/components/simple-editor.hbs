@@ -10,16 +10,7 @@
   <div id="ember-basic-dropdown-wormhole"></div>
   {{#if this.initCompleted}}
     <EditorContainer
-      @editorOptions={{hash
-        showRdfa=(not (should-show "rdfa-editor" active=this.activePlugins))
-        editRdfa=(should-show "rdfa-editor" active=this.activePlugins)
-        showRdfaHighlight=true
-        showRdfaHover=true
-        showPaper=true
-        showToolbarBottom=null
-      }}
-      @showRdfaBlocks={{this.controller.showRdfaBlocks}}
-      @hideSidebar={{(not (should-show section="sidebar" active=this.activePlugins))}}
+      @editorOptions={{hash showPaper=true showToolbarBottom=null}}
     >
       <:top>
         {{#if this.controller}}
@@ -66,15 +57,19 @@
             {{/if}}
             {{#if (should-show "article-structure" active=this.activePlugins)}}
               <Sidebar.Collapsible
-                @title={{t "editor.insert" type=(t "editor.article-structure.title")}}
+                @title={{t
+                  "editor.insert"
+                  type=(t "editor.article-structure.title")
+                }}
                 @expandedInitially={{this.expandInsertMenu}}
               >
                 <ArticleStructurePlugin::ArticleStructureCard
                   @controller={{this.controller}}
-                  @options={{this.config.articleStructure.structures}}
+                  @options={{this.config.structures}}
                 />
               </Sidebar.Collapsible>
             {{/if}}
+
             {{#if (should-show section="insert" active=this.activePlugins)}}
               <Sidebar.Collapsible
                 @title={{t "editor.insert" type=(t "editor.others.title")}}
@@ -99,22 +94,24 @@
                     @controller={{this.controller}}
                     @config={{this.config.location}}
                     @defaultMunicipality={{this.config.location.defaultMunicipality}}
+                    @locationTypes={{this.config.location.locationTypes}}
                   />
                 {{/if}}
-                {{#if (should-show "template-comments" active=this.activePlugins)}}
+                {{#if
+                  (should-show "template-comments" active=this.activePlugins)
+                }}
                   <TemplateCommentsPlugin::Insert
                     @controller={{this.controller}}
                   />
                 {{/if}}
               </Sidebar.Collapsible>
             {{/if}}
-            {{#if (should-show "article-structure" active=this.activePlugins)}}
-              <ArticleStructurePlugin::StructureCard
-                @controller={{this.controller}}
-                @options={{this.config.articleStructure.structures}}
-              />
-            {{/if}}
-            {{#if (should-show "besluit" active=this.activePlugins)}}
+            {{#if
+              (or
+                (should-show "besluit" active=this.activePlugins)
+                (should-show "article-structure" active=this.activePlugins)
+              )
+            }}
               <this.StructureControlCard @controller={{this.controller}} />
             {{/if}}
             {{#if (should-show "variable" active=this.activePlugins)}}
@@ -151,7 +148,6 @@
             {{#if (should-show "citation" active=this.activePlugins)}}
               <CitationPlugin::CitationCard
                 @controller={{this.controller}}
-                @plugin={{this.citationPlugin}}
                 @config={{this.config.citation}}
               />
             {{/if}}
