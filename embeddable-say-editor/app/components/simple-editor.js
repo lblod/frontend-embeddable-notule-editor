@@ -133,7 +133,6 @@ export default class SimpleEditorComponent extends Component {
   @tracked config;
   @tracked nodeViews;
   @tracked activePlugins;
-  @tracked citationPlugin;
   @tracked hasSidebarPlugins;
   @service intl;
 
@@ -395,10 +394,7 @@ export default class SimpleEditorComponent extends Component {
       defaultCitationPluginConfig,
       userConfig.citation
     );
-
-    const citationPluginVariable = citationPlugin(config.citation);
-    this.citationPlugin = citationPluginVariable;
-    plugins.push(citationPluginVariable);
+    plugins.push(citationPlugin(config.citation));
   }
   setupArticleStructurePlugin(setup) {
     const { config, userConfig } = setup;
