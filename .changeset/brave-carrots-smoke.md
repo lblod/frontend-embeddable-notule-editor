@@ -1,5 +1,5 @@
 ---
-"@lblod/embeddable-say-editor": major
+"@lblod/embeddable-say-editor": minor
 ---
 
 Remove support for `rdfa-blocks-toggle` plugin
