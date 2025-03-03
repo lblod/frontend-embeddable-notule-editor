@@ -1,5 +1,16 @@
 # test-app
 
+## 5.4.0
+
+### Minor Changes
+
+- [#271](https://github.com/lblod/frontend-embeddable-notule-editor/pull/271) [`4093549`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/4093549eb67423a5989a0fd106adfefe9bc0b17e) Thanks [@lagartoverde](https://github.com/lagartoverde)! - Allow embedabble users to use the new image options of the editor
+
+### Patch Changes
+
+- Updated dependencies [[`81c2af7`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/81c2af7ca091cb826dbe31662aec25e6c58f8a78), [`4093549`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/4093549eb67423a5989a0fd106adfefe9bc0b17e), [`5a318ee`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/5a318ee822ddb75e070000a47597dc17d18fed6f), [`954f8b0`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/954f8b0c00d4fcf3db9b38df65e0541f86391525), [`5247675`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/5247675592ac9b6ae5a3b30f46b73fbe51ee0ea4), [`59a21bb`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/59a21bb5ff413f83c53fdda541712a6668cc2ff1)]:
+  - @lblod/embeddable-say-editor@5.4.0
+
 ## 5.3.1
 
 ### Patch Changes
