@@ -8,7 +8,8 @@ const editor = await renderEditor({
     besluitTopic: {
       endpoint: 'https://data.vlaanderen.be/sparql',
       //direct mode, see below
-      decisionUri: 'https://example.org/decisions/1'
+      decisionUri: 'https://example.org/decisions/1',
+      widgetLocation: 'toolbar' // possible values: 'toolbar', 'sidebar' (default: 'toolbar')
     }
   }
   /*...*/

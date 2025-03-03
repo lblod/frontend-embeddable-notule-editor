@@ -193,7 +193,10 @@ export default class SimpleEditorComponent extends Component {
     if (plugins.includes('formatting-toggle')) {
       group.push('formatting');
     }
-    if (plugins.includes('besluit-topic')) {
+    if (
+      plugins.includes('besluit-topic') &&
+      this.config.besluitTopic.widgetLocation === 'toolbar'
+    ) {
       group.push('besluit:topic');
     }
     const sideSection = group.length ? [group] : undefined;
@@ -206,6 +209,12 @@ export default class SimpleEditorComponent extends Component {
   get defaultSidebarConfig() {
     const plugins = this.activePlugins ?? [];
     const sidebar = [];
+    if (
+      plugins.includes('besluit-topic') &&
+      this.config.besluitTopic.widgetLocation === 'sidebar'
+    ) {
+      sidebar.push('besluit:topic');
+    }
     const insertContainer = [];
     if (plugins.includes('besluit')) {
       insertContainer.push('besluit:article-insert');
@@ -561,6 +570,7 @@ export default class SimpleEditorComponent extends Component {
 
     config.besluitTopic = mergeConfigs(
       {
+        widgetLocation: 'toolbar',
         endpoint: 'https://data.vlaanderen.be/sparql',
       },
       userConfig.besluitTopic,
