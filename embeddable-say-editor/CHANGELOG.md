@@ -1,5 +1,23 @@
 # frontend-embeddable-notule-editor
 
+## 5.4.0
+
+### Minor Changes
+
+- [#273](https://github.com/lblod/frontend-embeddable-notule-editor/pull/273) [`81c2af7`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/81c2af7ca091cb826dbe31662aec25e6c58f8a78) Thanks [@lagartoverde](https://github.com/lagartoverde)! - Remove support for `rdfa-blocks-toggle` plugin
+
+- [#271](https://github.com/lblod/frontend-embeddable-notule-editor/pull/271) [`4093549`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/4093549eb67423a5989a0fd106adfefe9bc0b17e) Thanks [@lagartoverde](https://github.com/lagartoverde)! - Allow embedabble users to use the new image options of the editor
+
+- [#274](https://github.com/lblod/frontend-embeddable-notule-editor/pull/274) [`5a318ee`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/5a318ee822ddb75e070000a47597dc17d18fed6f) Thanks [@elpoelma](https://github.com/elpoelma)! - Update `@lblod/ember-rdfa-editor-lblod-plugins` to version [28.0.0](https://github.com/lblod/ember-rdfa-editor-lblod-plugins/releases/tag/v28.0.0)
+
+- [#274](https://github.com/lblod/frontend-embeddable-notule-editor/pull/274) [`954f8b0`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/954f8b0c00d4fcf3db9b38df65e0541f86391525) Thanks [@elpoelma](https://github.com/elpoelma)! - `location` plugin: add support for configurable `locationTypes` option. This option allows you to configure which location types are shown in the plugin
+
+- [#273](https://github.com/lblod/frontend-embeddable-notule-editor/pull/273) [`5247675`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/5247675592ac9b6ae5a3b30f46b73fbe51ee0ea4) Thanks [@lagartoverde](https://github.com/lagartoverde)! - Update `@lblod/ember-rdfa-editor` package to version [11.2.0](https://github.com/lblod/ember-rdfa-editor/releases/tag/v11.2.0)
+
+### Patch Changes
+
+- [#272](https://github.com/lblod/frontend-embeddable-notule-editor/pull/272) [`59a21bb`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/59a21bb5ff413f83c53fdda541712a6668cc2ff1) Thanks [@abeforgit](https://github.com/abeforgit)! - Add docs about stable html output
+
 ## 5.3.1
 
 ### Patch Changes
