@@ -124,11 +124,11 @@ importers:
         specifier: ^0.5.0
         version: 0.5.0(@appuniversum/ember-appuniversum@3.8.0(smjpcym6solncpes2bgwll3u6a))(@glint/template@1.5.2)(ember-source@4.12.4(@babel/core@7.24.4)(@glimmer/component@1.1.2(@babel/core@7.24.4))(@glint/template@1.5.2)(webpack@5.91.0))
       '@lblod/ember-rdfa-editor':
-        specifier: 11.2.0
-        version: 11.2.0(6zonndjbxwrvaluwxcycbqbemq)
+        specifier: 11.3.0
+        version: 11.3.0(6zonndjbxwrvaluwxcycbqbemq)
       '@lblod/ember-rdfa-editor-lblod-plugins':
-        specifier: 28.0.0
-        version: 28.0.0(ntalmagu55ip43mysoobtxlpha)
+        specifier: 28.1.0
+        version: 28.1.0(fnk4xsjsgnsjkwtrfhoazlnlxq)
       '@tsconfig/ember':
         specifier: ^3.0.9
         version: 3.0.9
@@ -1929,8 +1929,8 @@ packages:
       '@appuniversum/ember-appuniversum': ^2.0.0 || ^3.0.0
       ember-source: ^4.0.0
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@28.0.0':
-    resolution: {integrity: sha512-gSBpTZJvi6/ektmnuiSPeWSOaIE99nEHKh21nQtkhtcupOsn+1cDxI0TQqrhSsTdEHivcEON9dihoUB8UtWVDg==}
+  '@lblod/ember-rdfa-editor-lblod-plugins@28.1.0':
+    resolution: {integrity: sha512-iS3hrPCLlr7VAQy+Lt7E8KU4ihhitZLpXMeoE+OXsYh/EDWKJXz3Y32iZ5FbS7vOKZwe8s2b+LZVoY0NF213Kg==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@appuniversum/ember-appuniversum': ^3.5.0
@@ -1953,8 +1953,8 @@ packages:
       ember-template-imports:
         optional: true
 
-  '@lblod/ember-rdfa-editor@11.2.0':
-    resolution: {integrity: sha512-ihXPcHabbZplzu4VfptE4Og0d524OBUXpkbacii30gvxw3z/2979lL6zovFE2L0mfKfWmuzw5Tpt+5PYz8npSw==}
+  '@lblod/ember-rdfa-editor@11.3.0':
+    resolution: {integrity: sha512-16tJ+HHqdTuLTV1EzhyJS3u/oJ3JoyJ3YfQlHkyymU49JmeNkqEjAWOJ+VpVLgzKtwOaRdIq78KKbJpVGpOmeg==}
     peerDependencies:
       '@appuniversum/ember-appuniversum': ^3.5.0
       '@ember/test-helpers': ^2.9.4 || ^3.2.1 || ^4.0.2 || ^5.0.0
@@ -12766,7 +12766,7 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@28.0.0(ntalmagu55ip43mysoobtxlpha)':
+  '@lblod/ember-rdfa-editor-lblod-plugins@28.1.0(fnk4xsjsgnsjkwtrfhoazlnlxq)':
     dependencies:
       '@appuniversum/ember-appuniversum': 3.8.0(smjpcym6solncpes2bgwll3u6a)
       '@babel/core': 7.25.2
@@ -12776,7 +12776,7 @@ snapshots:
       '@curvenote/prosemirror-utils': 1.0.5(prosemirror-model@1.22.1)(prosemirror-state@1.4.3)
       '@ember/string': 3.1.1
       '@embroider/macros': 1.16.11(@glint/template@1.5.2)
-      '@lblod/ember-rdfa-editor': 11.2.0(6zonndjbxwrvaluwxcycbqbemq)
+      '@lblod/ember-rdfa-editor': 11.3.0(6zonndjbxwrvaluwxcycbqbemq)
       '@lblod/marawa': 0.8.0-beta.6
       '@lblod/template-uuid-instantiator': 1.0.3
       '@rdfjs/data-model': 2.0.2
@@ -12831,7 +12831,7 @@ snapshots:
       - web-streams-polyfill
       - webpack
 
-  '@lblod/ember-rdfa-editor@11.2.0(6zonndjbxwrvaluwxcycbqbemq)':
+  '@lblod/ember-rdfa-editor@11.3.0(6zonndjbxwrvaluwxcycbqbemq)':
     dependencies:
       '@appuniversum/ember-appuniversum': 3.8.0(smjpcym6solncpes2bgwll3u6a)
       '@codemirror/commands': 6.6.0
@@ -13306,7 +13306,7 @@ snapshots:
 
   '@rdfjs/types@1.1.2':
     dependencies:
-      '@types/node': 22.7.4
+      '@types/node': 22.13.10
 
   '@rubensworks/saxes@6.0.1':
     dependencies:
@@ -13445,7 +13445,7 @@ snapshots:
 
   '@types/http-link-header@1.0.5':
     dependencies:
-      '@types/node': 22.7.4
+      '@types/node': 22.13.10
 
   '@types/http-proxy@1.17.14':
     dependencies:
@@ -13499,12 +13499,12 @@ snapshots:
     dependencies:
       '@rdfjs/types': 1.1.2
       '@types/clownface': 2.0.7
-      '@types/node': 22.7.4
+      '@types/node': 22.13.10
 
   '@types/rdfjs__environment@1.0.0':
     dependencies:
       '@rdfjs/types': 1.1.2
-      '@types/node': 22.7.4
+      '@types/node': 22.13.10
 
   '@types/rdfjs__parser-n3@2.0.6':
     dependencies:
@@ -13512,7 +13512,7 @@ snapshots:
 
   '@types/readable-stream@2.3.15':
     dependencies:
-      '@types/node': 22.7.4
+      '@types/node': 22.13.10
       safe-buffer: 5.1.2
 
   '@types/retry@0.12.0': {}
@@ -18102,7 +18102,7 @@ snapshots:
 
   foreground-child@3.1.1:
     dependencies:
-      cross-spawn: 7.0.3
+      cross-spawn: 7.0.6
       signal-exit: 4.1.0
 
   forever-agent@0.6.1: {}
