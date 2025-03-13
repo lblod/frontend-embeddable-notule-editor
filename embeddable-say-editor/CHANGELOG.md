@@ -1,5 +1,11 @@
 # frontend-embeddable-notule-editor
 
+## 5.5.0
+
+### Minor Changes
+
+- [`89ae4f1`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/89ae4f1abff9fbd85ae2be291383f49dfe7bdd37) Thanks [@lagartoverde](https://github.com/lagartoverde)! - Update ember-rdfa-editor to 11.3.0 and ember-rdfa-editor-lblod-plugins to 28.1.0
+
 ## 5.4.0
 
 ### Minor Changes
