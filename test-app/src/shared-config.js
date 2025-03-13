@@ -26,6 +26,7 @@ export const pluginDemoConfig = {
     },
     besluitTopic: {
       endpoint: 'https://data.vlaanderen.be/sparql',
+      widgetLocation: 'sidebar',
     },
     lpdc: {
       endpoint:
