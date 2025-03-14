@@ -3,12 +3,10 @@ import {
   tableOfContentsView,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/table-of-contents-plugin/nodes';
 import type { PluginInitializer } from '../../shared-types/editor-options';
-export type TableOfContentsPluginConfig = Parameters<
-  typeof table_of_contents
->[0];
+import type { TableOfContentsConfig } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/table-of-contents-plugin';
 
 export const setupTableOfContentsPlugin: PluginInitializer<
-  TableOfContentsPluginConfig
+  TableOfContentsConfig
 > = (setup, config) => {
   if (
     !(

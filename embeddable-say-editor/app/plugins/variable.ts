@@ -11,6 +11,7 @@ import {
   numberView,
   text_variable,
   textVariableView,
+  type DateOptions,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/variable-plugin/variables';
 import type {
   PluginInitializer,
@@ -24,6 +25,7 @@ import VariablePluginAddressInsertVariableComponent from '@lblod/ember-rdfa-edit
 import LocationInsertComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/location/insert';
 import NumberInsertComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/number/insert';
 import TextVariableInsertComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/text/insert';
+import type { LocationEditOptions } from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/location/edit';
 
 export type VariablePluginConfig = {
   insert: {
@@ -32,7 +34,7 @@ export type VariablePluginConfig = {
     codelistEndpoint: string;
     codelistPublisher: string;
   };
-  edit: { date: Parameters<typeof date>[0] };
+  edit: { date: DateOptions; location: LocationEditOptions };
 };
 export const setupVariablePlugin: PluginInitializer<VariablePluginConfig> = (
   setup,

@@ -1,9 +1,9 @@
 import { roadsign_regulation } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/roadsign-regulation-plugin/nodes';
 import type { PluginInitializer } from '../../shared-types/editor-options';
+import type { RoadsignRegulationPluginOptions } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/roadsign-regulation-plugin';
 
-export type RoadsignRegulationPluginConfig = unknown;
 export const setupRoadsignRegulationPlugin: PluginInitializer<
-  RoadsignRegulationPluginConfig
+  RoadsignRegulationPluginOptions
 > = (_setup, config) => {
   return {
     name: 'roadsign-regulation',
