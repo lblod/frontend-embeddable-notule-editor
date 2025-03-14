@@ -9,6 +9,10 @@ import type {
 import type SayNodeSpec from '@lblod/ember-rdfa-editor/core/say-node-spec';
 import type IntlService from 'ember-intl/services/intl';
 
+/**
+ * "plugins" which are not exposed to the user config
+ */
+export type CorePluginName = 'core' | 'table' | 'image' | 'link';
 export type PluginName =
   | 'citation'
   | 'article-structure'
@@ -25,6 +29,7 @@ export type PluginName =
   | 'formatting-toggle'
   | 'html-edit'
   | 'html-preview';
+export type InternalPluginName = CorePluginName | PluginName;
 
 export type EditorConfig = Record<string, unknown>;
 /**
@@ -80,7 +85,7 @@ export interface PluginSetup {
   prosePlugins: ProsePlugin[];
 }
 export interface InitializedPluginSetup<C> {
-  name: PluginName;
+  name: InternalPluginName;
   nodes?: Record<string, SayNodeSpec>;
   marks?: Record<string, MarkSpec>;
   config: C;
