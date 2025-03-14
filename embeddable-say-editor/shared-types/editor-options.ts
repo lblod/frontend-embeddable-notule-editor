@@ -1,3 +1,14 @@
+import type {
+  NodeView,
+  ProsePlugin,
+  PNode,
+  SayController,
+  SayView,
+  MarkSpec,
+} from '@lblod/ember-rdfa-editor';
+import type SayNodeSpec from '@lblod/ember-rdfa-editor/core/say-node-spec';
+import type IntlService from 'ember-intl/services/intl';
+
 export type PluginName =
   | 'citation'
   | 'article-structure'
@@ -53,3 +64,33 @@ export type RenderEditorOptions = {
    */
   growEditor?: boolean;
 };
+export type SayNodeViewConstructor = (
+  node: PNode,
+  view: SayView,
+  getPos: () => number | undefined,
+) => NodeView;
+export interface PluginSetup {
+  intl: IntlService;
+  activePlugins: PluginName[];
+  nodes: Record<string, SayNodeSpec>;
+  nodeViews: Record<
+    string,
+    (controller: SayController) => SayNodeViewConstructor
+  >;
+  prosePlugins: ProsePlugin[];
+}
+export interface InitializedPluginSetup<C> {
+  name: PluginName;
+  nodes?: Record<string, SayNodeSpec>;
+  marks?: Record<string, MarkSpec>;
+  config: C;
+  nodeViews?: Record<
+    string,
+    (controller: SayController) => SayNodeViewConstructor
+  >;
+  prosePlugins?: ProsePlugin[];
+}
+export type PluginInitializer<C> = (
+  setup: PluginSetup,
+  config: C,
+) => InitializedPluginSetup<C>;
