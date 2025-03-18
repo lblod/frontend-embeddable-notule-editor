@@ -4,7 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import { service } from '@ember/service';
 import { modifier } from 'ember-modifier';
 
-import { SayController, Schema } from '@lblod/ember-rdfa-editor';
+import { SayController } from '@lblod/ember-rdfa-editor';
 
 import { getActiveEditableNode } from '@lblod/ember-rdfa-editor/plugins/_private/editable-node';
 import EditorContainer from '@lblod/ember-rdfa-editor/components/editor-container';
@@ -19,6 +19,8 @@ import Sidebar from './sidebar';
 import { hash } from '@ember/helper';
 import type { EditorElement } from '../../shared-types/editor-element';
 import { setupPlugins, type EditorSetup } from '../config/setup-plugins';
+import type { PluginOptions } from 'plugin-registry';
+import type { KebabPluginName } from '../../shared-types/embedded-plugin';
 
 interface Sig {
   Args: void;
@@ -30,11 +32,10 @@ export default class SimpleEditorComponent extends Component<Sig> {
   @tracked environment = '';
 
   @tracked showEnvironmentBanner = false;
-  @tracked initCompleted = false;
 
-  @tracked schema?: Schema;
+  @tracked setup?: EditorSetup;
 
-  resolveEditorPromise?: (value?: unknown) => void;
+  resolveEditorPromise?: () => void;
 
   declare editorElement: EditorElement;
 
@@ -97,12 +98,15 @@ export default class SimpleEditorComponent extends Component<Sig> {
 
   @action
   getHtmlContent() {
-    return this.controller?.htmlContent;
+    return this.controller?.htmlContent ?? '';
   }
 
   @action
   setHtmlContent(content: string) {
-    this.controller?.setHtmlContent(content);
+    if (!this.controller) {
+      throw new Error('Controller used before editor was initialized');
+    }
+    this.controller.setHtmlContent(content);
   }
 
   @action
@@ -117,7 +121,7 @@ export default class SimpleEditorComponent extends Component<Sig> {
 
   @action
   getLocale() {
-    return this.intl.primaryLocale;
+    return this.intl.primaryLocale ?? '';
   }
 
   @action
@@ -142,14 +146,16 @@ export default class SimpleEditorComponent extends Component<Sig> {
   }
 
   @action
-  async initEditor(plugins: InitializedPluginSetup[]) {
-    const setup = setupPlugins(plugins);
-    this.schema = new Schema({ nodes: setup.nodes, marks: setup.marks });
+  async initEditor(
+    plugins: KebabPluginName[],
+    options: PluginOptions,
+  ): Promise<void> {
+    const setup = setupPlugins({ plugins, options, intl: this.intl });
 
-    const editorPromise = new Promise(
-      (resolve) => (this.resolveEditorPromise = resolve),
-    );
-    this.initCompleted = true;
+    const editorPromise = new Promise<void>((resolve): void => {
+      this.resolveEditorPromise = resolve;
+    });
+    this.setup = setup;
     return editorPromise;
   }
 
@@ -170,44 +176,46 @@ export default class SimpleEditorComponent extends Component<Sig> {
     {{/if}}
     <div {{this.insertedInDom}} class='notule-editor'>
       <div id='ember-basic-dropdown-wormhole'></div>
-      {{#if this.initCompleted}}
-        <EditorContainer
-          @editorOptions={{hash showPaper=true showToolbarBottom=false}}
-        >
-          <:top>
-            {{#if this.controller}}
-              <Toolbar
-                @activeNode={{this.activeNode}}
-                @toolbar={{this.defaultToolbarConfig}}
-                @controller={{this.controller}}
-                @plugins={{this.activePlugins}}
-                @config={{this.config}}
+      {{#if this.setup}}
+        {{#let this.setup as |s|}}
+          <EditorContainer
+            @editorOptions={{hash showPaper=true showToolbarBottom=false}}
+          >
+            <:top>
+              {{#if this.controller}}
+                <Toolbar
+                  @activeNode={{this.activeNode}}
+                  @toolbar={{this.defaultToolbarConfig}}
+                  @controller={{this.controller}}
+                  @plugins={{this.activePlugins}}
+                  @config={{this.config}}
+                />
+              {{/if}}
+            </:top>
+            <:default>
+              <Editor
+                @plugins={{s.prosePlugins}}
+                @schema={{s.schema}}
+                @nodeViews={{s.nodeViews}}
+                @rdfaEditorInit={{this.handleRdfaEditorInit}}
               />
-            {{/if}}
-          </:top>
-          <:default>
-            <Editor
-              @plugins={{this.plugins}}
-              @schema={{this.schema}}
-              @nodeViews={{this.nodeViews}}
-              @rdfaEditorInit={{this.handleRdfaEditorInit}}
-            />
-            {{#if this.controller}}
-              <TableTooltip @controller={{this.controller}} />
-            {{/if}}
-          </:default>
-          <:aside>
-            {{#if this.controller}}
-              <Sidebar
-                @activeNode={{this.activeNode}}
-                @sidebar={{this.defaultSidebarConfig}}
-                @controller={{this.controller}}
-                @plugins={{this.activePlugins}}
-                @config={{this.config}}
-              />
-            {{/if}}
-          </:aside>
-        </EditorContainer>
+              {{#if this.controller}}
+                <TableTooltip @controller={{this.controller}} />
+              {{/if}}
+            </:default>
+            <:aside>
+              {{#if this.controller}}
+                <Sidebar
+                  @activeNode={{this.activeNode}}
+                  @sidebar={{this.defaultSidebarConfig}}
+                  @controller={{this.controller}}
+                  @plugins={{this.activePlugins}}
+                  @config={{this.config}}
+                />
+              {{/if}}
+            </:aside>
+          </EditorContainer>
+        {{/let}}
       {{/if}}
     </div>
     {{yield}}

@@ -43,7 +43,7 @@ import type { ProsePlugin } from '@lblod/ember-rdfa-editor';
 const name = 'core' as const;
 declare module 'plugin-registry' {
   export interface OtherOptions {
-    docContent: string;
+    docContent?: string;
   }
   export interface EmbeddedPlugins {
     [name]: typeof coreSetup;

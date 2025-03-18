@@ -9,8 +9,9 @@ import embeddable from './ember-build/assets/@lblod/embeddable-say-editor.js';
 import editorCss from './ember-build/assets/@lblod/embeddable-say-editor.css';
 // @ts-ignore disable type-checking
 import vendorCss from './ember-build/assets/vendor.css';
-import type { RenderEditorOptions } from './shared-types/editor-options';
-import type { EditorElement } from './shared-types/editor-element.js';
+import type { EditorElement } from './shared-types/editor-element';
+import type { RenderEditorOptions } from './shared-types/render-editor-options';
+import type { UserPluginOptions } from './shared-types/embedded-plugin.js';
 
 const srcDoc = `
 <!DOCTYPE html>
@@ -417,7 +418,7 @@ export class SayWebComponent extends HTMLElement {
   /**
    * Initialize the editor and return it
    */
-  async initEditor(plugins = [], options: EditorOptions = {}) {
+  async initEditor(plugins = [], options: UserPluginOptions = {}) {
     const editor = await this.editorPromise;
     await editor.initEditor(plugins, options);
     return editor;

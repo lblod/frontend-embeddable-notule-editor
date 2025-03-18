@@ -1,24 +1,21 @@
-import type { MarkSpec, SayController } from '@lblod/ember-rdfa-editor';
-import type { SayNodeViewConstructor } from '@lblod/ember-rdfa-editor/utils/ember-node';
+import type {
+  MarkSpec,
+  NodeViewConstructor,
+  ProsePlugin,
+  SayController,
+  Schema,
+} from '@lblod/ember-rdfa-editor';
 import type SayNodeSpec from '@lblod/ember-rdfa-editor/core/say-node-spec';
 import type { EmbeddedPlugins } from 'plugin-registry';
+import type { PluginInitArgs } from '../../shared-types/embedded-plugin';
 export type EditorSetup = {
   nodes: Record<string, SayNodeSpec>;
   marks: Record<string, MarkSpec>;
 
-  nodeViews: Record<
-    string,
-    (controller: SayController) => SayNodeViewConstructor
-  >;
+  nodeViews: (controller: SayController) => Record<string, NodeViewConstructor>;
   pluginSpecs: EmbeddedPlugins;
+  schema: Schema;
+  prosePlugins: ProsePlugin[];
 };
 
-export function setupPlugins<C>(
-  plugins: InitializedPluginSetup<
-    Array<
-      C extends InitializedPluginSetup<infer S>
-        ? InitializedPluginSetup<S>
-        : never
-    >
-  >,
-): EditorSetup {}
+export function setupPlugins(args: PluginInitArgs): EditorSetup {}

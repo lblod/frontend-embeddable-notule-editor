@@ -1,9 +1,4 @@
-import type { PluginOptions } from 'plugin-registry';
-import type { PluginName } from './embedded-plugin';
-import type { Kebab, KebabKeys } from './type-utils';
-import type { OtherOptions } from 'plugin-registry';
-
-export type KebabPluginName = Kebab<PluginName>;
+import type { EditorOptions } from './embedded-plugin';
 
 /**
  * The options for rendering the editor.
@@ -26,14 +21,6 @@ export type RenderEditorOptions = {
    */
   height: string;
   /**
-   * The plugins to initialize the editor with.
-   */
-  plugins?: KebabPluginName[];
-  /**
-   * The options to initialize the editor with.
-   */
-  options?: KebabKeys<PluginOptions> & OtherOptions;
-  /**
    * Record of CSS Variables and their values to be applied to the editor.
    */
   cssVariables?: Record<string, string>;
@@ -41,4 +28,4 @@ export type RenderEditorOptions = {
    * Whether the editor should grow to fit its content.
    */
   growEditor?: boolean;
-};
+} & EditorOptions;

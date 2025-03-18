@@ -1,6 +1,5 @@
 import type { SayController } from '@lblod/ember-rdfa-editor';
-import type { PluginName } from './embedded-plugin';
-import type { PluginOptions } from 'plugin-registry';
+import type { KebabPluginName, UserPluginOptions } from './embedded-plugin';
 
 /**
  * An HTML element with the class `notule-editor`.
@@ -17,8 +16,8 @@ export type EditorElement = HTMLElement & {
    * See {@link file://./README.md#managing-plugins} for more info.
    */
   initEditor: (
-    arrayOfPluginNames: PluginName[],
-    options: PluginOptions,
+    arrayOfPluginNames: KebabPluginName[],
+    options: UserPluginOptions,
   ) => Promise<void>;
   /**
    * enable the banner that shows the environment and versions of plugins used.
