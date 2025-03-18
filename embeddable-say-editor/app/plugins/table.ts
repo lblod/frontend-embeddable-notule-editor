@@ -3,7 +3,10 @@ import {
   tableNodes,
   tablePlugins,
 } from '@lblod/ember-rdfa-editor/plugins/table';
-import type { PluginInitializer } from '../../shared-types/editor-options';
+import type { PluginInitializer } from '../../shared-types/embedded-plugin';
+import { mergeConfigs } from '../config/defaults';
+
+const name = 'table' as const;
 
 export type TableConfig = {
   tableGroup: string;
@@ -12,16 +15,31 @@ export type TableConfig = {
   rowBackground?: { even?: string; odd?: string };
 };
 
+declare module 'plugin-registry' {
+  export interface PluginOptions {
+    [name]?: Partial<TableConfig>;
+  }
+  export interface EmbeddedPlugins {
+    [name]: typeof tableSetup;
+  }
+}
+
 const defaultTableConfig: TableConfig = {
   tableGroup: 'block',
   cellContent: 'block+',
   inlineBorderStyle: { width: '0.5px', color: '#CCD1D9' },
   rowBackground: undefined,
 };
-export const tableSetup: PluginInitializer<TableConfig> = (_setup, config) => {
+export const tableSetup = (({ options }) => {
+  const config = mergeConfigs(defaultTableConfig, options?.table);
   const nodes = {
     ...tableNodes(config),
   };
   const prosePlugins = [...tablePlugins, tableKeymap];
-  return { name: 'table', config, nodes, prosePlugins };
-};
+  return {
+    name,
+    config,
+    nodes,
+    prosePlugins,
+  };
+}) satisfies PluginInitializer;

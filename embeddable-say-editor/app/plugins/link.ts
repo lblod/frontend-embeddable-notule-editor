@@ -3,23 +3,26 @@ import {
   link,
   linkPasteHandler,
 } from '@lblod/ember-rdfa-editor/plugins/link';
-import type { PluginInitializer } from '../../shared-types/editor-options';
+import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 
-export type LinkPluginConfig = unknown;
-export const setupLinkPlugin: PluginInitializer<LinkPluginConfig> = (
-  _setup,
-  config,
-) => {
-  const linkConfig = { interactive: true, rdfaAware: true };
+const name = 'link' as const;
+
+declare module 'plugin-registry' {
+  export interface EmbeddedPlugins {
+    [name]: typeof setupLinkPlugin;
+  }
+}
+export const setupLinkPlugin = (() => {
+  const config = { interactive: true, rdfaAware: true };
 
   const nodes = {
-    link: link(linkConfig),
+    link: link(config),
   };
   return {
-    name: 'link',
+    name,
     config,
     nodes,
-    nodeViews: { link: linkView(linkConfig) },
+    nodeViews: { link: linkView(config) },
     prosePlugins: [linkPasteHandler(nodes.link)],
   };
-};
+}) satisfies PluginInitializer;

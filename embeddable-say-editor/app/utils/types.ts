@@ -1,15 +1,11 @@
 import type { SayController } from '@lblod/ember-rdfa-editor';
-import type {
-  EditorConfig,
-  PluginName,
-} from '../../shared-types/editor-options';
 import type { ResolvedPNode } from '@lblod/ember-rdfa-editor/utils/_private/types';
+import type { EditorSetup } from '../config/setup-plugins';
 
 export type WidgetSignature = {
   Args: {
-    activeNode: ResolvedPNode;
+    activeNode?: ResolvedPNode | null;
     controller: SayController;
-    plugins: PluginName[];
-    config: EditorConfig;
+    setup: EditorSetup;
   };
 };

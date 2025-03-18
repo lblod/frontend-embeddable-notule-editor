@@ -25,11 +25,6 @@ export const defaultRdfaDatePluginConfig: DateOptions = {
   allowCustomFormat: true,
 };
 
-export const defaultCitationPluginConfig: CitationPluginEmberComponentConfig = {
-  activeInRanges: (state: EditorState) => [[0, state.doc.content.size]],
-  endpoint: 'https://codex.opendata.api.vlaanderen.be:8888/sparql',
-};
-
 export const defaultRoadsignRegulationPluginConfig: RoadsignRegulationPluginOptions =
   {
     endpoint: 'https://dev.roadsigns.lblod.info/sparql',
@@ -59,8 +54,7 @@ export const defaultLocationPluginConfig: LocationPluginConfig = {
 };
 
 const mergeCustomizer = (
-  objValue: unknown,
-  srcValue: unknown,
+  {options}
 ): Array<unknown> | undefined => {
   // if the src provides an array, overwrite instead of merging
   if (Array.isArray(objValue) && Array.isArray(srcValue)) {
@@ -72,7 +66,10 @@ const mergeCustomizer = (
  * If the user config is present, merge it with the default config.
  * Otherwise return the default config.
  */
-export const mergeConfigs = (defaultConfig: unknown, userConfig: unknown) => {
+export const mergeConfigs = <C, U extends Partial<C>>(
+  defaultConfig: C,
+  userConfig?: U,
+): C => {
   if (userConfig) {
     return merge(defaultConfig, userConfig, mergeCustomizer);
   }

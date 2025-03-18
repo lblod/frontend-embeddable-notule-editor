@@ -19,7 +19,6 @@ import {
 import { placeholder } from '@lblod/ember-rdfa-editor/plugins/placeholder';
 import { blockquote } from '@lblod/ember-rdfa-editor/plugins/blockquote';
 import { code_block } from '@lblod/ember-rdfa-editor/plugins/code';
-import type { PluginInitializer } from '../../shared-types/editor-options';
 import { highlight } from '@lblod/ember-rdfa-editor/plugins/highlight/marks/highlight';
 import { color } from '@lblod/ember-rdfa-editor/plugins/color/marks/color';
 import { firefoxCursorFix } from '@lblod/ember-rdfa-editor/plugins/firefox-cursor-fix';
@@ -39,12 +38,22 @@ import {
 } from '@lblod/ember-rdfa-editor/plugins/list';
 import { headingWithConfig } from '@lblod/ember-rdfa-editor/plugins/heading';
 import { inlineRdfaWithConfig } from '@lblod/ember-rdfa-editor/nodes/inline-rdfa';
-type CoreConfig = { docContent: string };
+import type { PluginInitializer } from '../../shared-types/embedded-plugin';
+import type { ProsePlugin } from '@lblod/ember-rdfa-editor';
+const name = 'core' as const;
+declare module 'plugin-registry' {
+  export interface OtherOptions {
+    docContent: string;
+  }
+  export interface EmbeddedPlugins {
+    [name]: typeof coreSetup;
+  }
+}
 
-export const coreSetup: PluginInitializer<CoreConfig> = (_setup, config) => {
+export const coreSetup = (({ options }) => {
   const nodes = {
     doc: docWithConfig({
-      content: config.docContent ?? 'block+',
+      content: options?.docContent ?? 'block+',
       rdfaAware: true,
     }),
     paragraph,
@@ -80,7 +89,7 @@ export const coreSetup: PluginInitializer<CoreConfig> = (_setup, config) => {
     recreateUuidsOnPaste,
     createInvisiblesPlugin([hardBreak, paragraphInvisible, headingInvisible], {
       shouldShowInvisibles: false,
-    }),
+    }) as ProsePlugin,
   ];
-  return { name: 'core', config, nodes, marks, prosePlugins };
-};
+  return { name: 'core', nodes, marks, prosePlugins };
+}) satisfies PluginInitializer;

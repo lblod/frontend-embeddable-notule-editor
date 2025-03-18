@@ -39,6 +39,7 @@ import DebugInfo from '@lblod/ember-rdfa-editor/components/_private/debug-info';
 import type { ResolvedPNode } from '@lblod/ember-rdfa-editor/utils/_private/types';
 import AttributeEditor from '@lblod/ember-rdfa-editor/components/_private/attribute-editor';
 import RdfaEditor from '@lblod/ember-rdfa-editor/components/_private/rdfa-editor';
+import type { EditorSetup } from '../config/setup-plugins';
 
 type ToolbarWidgetComponent = ComponentLike<WidgetSignature>;
 
@@ -46,57 +47,56 @@ const SIDEBAR_WIDGET_MAP: Record<SidebarWidget, ToolbarWidgetComponent> = {
   'besluit:topic': <template>
     <BesluitTopicDropdown
       @controller={{@controller}}
-      {{! @glint-expect-error }}
-      @options={{@config.besluitTopic}}
+      @options={{@setup.pluginSpecs.besluitTopic.config}}
     />
-  </template> as TOC<WidgetSignature>,
+  </template> satisfies TOC<WidgetSignature>,
   'structure:edit': StructureControlCard,
   'variable:insert': <template>
     <InsertVariableCard
       @controller={{@controller}}
-      {{! @glint-expect-error }}
-      @variableTypes={{@config.variable.insert.variableTypes}}
+      @variableTypes={{@setup.pluginSpecs.variable.insert.variableTypes}}
     />
-  </template> as TOC<WidgetSignature>,
+  </template> satisfies TOC<WidgetSignature>,
   'variable:edit': <template>
     <CodelistEdit
       @controller={{@controller}}
-      {{! @glint-expect-error }}
-      @options={{@config.variable.edit.codelist}}
+      @options={{@setup.pluginConfigs.variable.edit.codelist}}
     />
     <DateEdit
       @controller={{@controller}}
-      {{! @glint-expect-error }}
-      @options={{@config.variable.edit.date}}
+      @options={{@setup.pluginConfigs.variable.edit.date}}
     />
     <LocationEdit
       @controller={{@controller}}
-      {{! @glint-expect-error }}
-      @options={{@config.variable.edit.location}}
+      @options={{@setup.pluginConfigs.variable.edit.location}}
     />
     <AddressEdit
       @controller={{@controller}}
-      {{! @glint-expect-error }}
-      @defaultMunicipality={{@config.variable.edit.address.defaultMunicipality}}
+      @defaultMunicipality={{@setup.pluginConfigs.variable.edit.address.defaultMunicipality}}
     />
-  </template> as TOC<WidgetSignature>,
+  </template> satisfies TOC<WidgetSignature>,
   'template-comments:edit': TemplateCommentEditCard,
   'citation:edit': <template>
     <CitationEditCard
       @controller={{@controller}}
-      {{! @glint-expect-error }}
-      @config={{@config.citation}}
+      @config={{@setup.pluginConfigs.citation}}
     />
-  </template> as TOC<WidgetSignature>,
+  </template> satisfies TOC<WidgetSignature>,
   'devtools:debug-info': <template>
-    <DebugInfo @node={{@activeNode}} />
-  </template> as TOC<WidgetSignature>,
+    {{#if @activeNode}}
+      <DebugInfo @node={{@activeNode}} />
+    {{/if}}
+  </template> satisfies TOC<WidgetSignature>,
   'devtools:attribute-editor': <template>
-    <AttributeEditor @node={{@activeNode}} @controller={{@controller}} />
-  </template> as TOC<WidgetSignature>,
+    {{#if @activeNode}}
+      <AttributeEditor @node={{@activeNode}} @controller={{@controller}} />
+    {{/if}}
+  </template> satisfies TOC<WidgetSignature>,
   'devtools:rdfa-editor': <template>
-    <RdfaEditor @node={{@activeNode}} @controller={{@controller}} />
-  </template> as TOC<WidgetSignature>,
+    {{#if @activeNode}}
+      <RdfaEditor @node={{@activeNode}} @controller={{@controller}} />
+    {{/if}}
+  </template> satisfies TOC<WidgetSignature>,
 } as const;
 
 const SIDEBAR_LIST_ITEM_WIDGET_MAP: Record<
@@ -106,49 +106,41 @@ const SIDEBAR_LIST_ITEM_WIDGET_MAP: Record<
   'besluit:article-insert': <template>
     <InsertArticleComponent
       @controller={{@controller}}
-      {{! @glint-expect-error }}
-      @options={{@config.besluit}}
+      @options={{@setup.pluginConfigs.besluit}}
     />
-  </template> as TOC<WidgetSignature>,
+  </template> satisfies TOC<WidgetSignature>,
   'lpdc:insert': <template>
     <LpdcInsert
       @controller={{@controller}}
-      {{! @glint-expect-error }}
-      @config={{@config.lpdc}}
+      @config={{@setup.pluginConfigs.lpdc}}
     />
-  </template> as TOC<WidgetSignature>,
+  </template> satisfies TOC<WidgetSignature>,
   'article-structure:insert': <template>
     <ArticleStructureInsert
       @controller={{@controller}}
-      {{! @glint-expect-error }}
-      @options={{@config.structures}}
+      @options={{@setup.pluginConfigs.structures}}
     />
-  </template> as TOC<WidgetSignature>,
+  </template> satisfies TOC<WidgetSignature>,
   'citation:insert': <template>
     <CitationInsert
       @controller={{@controller}}
-      {{! @glint-expect-error }}
-      @config={{@config.citation}}
+      @config={{@setup.pluginConfigs.citation}}
     />
   </template> as TOC<WidgetSignature>,
   'roadsign-regulation:insert': <template>
     <RoadsignRegulationInsert
       @controller={{@controller}}
-      {{! @glint-expect-error }}
-      @options={{@config.roadsignRegulation}}
+      @options={{@setup.pluginConfigs.roadsignRegulation}}
     />
-  </template> as TOC<WidgetSignature>,
+  </template> satisfies TOC<WidgetSignature>,
   'location:insert': <template>
     <OSLOLocationInsert
       @controller={{@controller}}
-      {{! @glint-expect-error }}
-      @config={{@config.location}}
-      {{! @glint-expect-error }}
-      @defaultMunicipality={{@config.location.defaultMunicipality}}
-      {{! @glint-expect-error }}
-      @locationTypes={{@config.location.locationTypes}}
+      @config={{@setup.pluginConfigs.location}}
+      @defaultMunicipality={{@setup.pluginConfigs.location.defaultMunicipality}}
+      @locationTypes={{@setup.pluginConfigs.location.locationTypes}}
     />
-  </template> as TOC<WidgetSignature>,
+  </template> satisfies TOC<WidgetSignature>,
   'template-comments:insert': TemplateCommentInsert,
 };
 
@@ -156,8 +148,7 @@ type SidebarSignature = {
   activeNode: ResolvedPNode;
   controller: SayController;
   sidebar: SidebarConfig;
-  config: EditorConfig;
-  plugins: PluginName[];
+  setup: EditorSetup;
 };
 
 export default class Sidebar extends Component<SidebarSignature> {
@@ -211,8 +202,7 @@ export default class Sidebar extends Component<SidebarSignature> {
                 <ListItemWidgetComponent
                   @activeNode={{@activeNode}}
                   @controller={{@controller}}
-                  @plugins={{@plugins}}
-                  @config={{@config}}
+                  @setup={{@setup}}
                 />
               {{/let}}
             {{/each}}
@@ -225,8 +215,7 @@ export default class Sidebar extends Component<SidebarSignature> {
             <SidebarWidgetComponent
               @activeNode={{@activeNode}}
               @controller={{@controller}}
-              @plugins={{@plugins}}
-              @config={{@config}}
+              @setup={{@setup}}
             />
           {{/let}}
         {{/if}}

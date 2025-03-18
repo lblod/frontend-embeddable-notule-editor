@@ -2,17 +2,20 @@ import {
   templateComment,
   templateCommentView,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/template-comments-plugin';
-import type { PluginInitializer } from '../../shared-types/editor-options';
 import type { SayController } from '@lblod/ember-rdfa-editor';
-export type TemplateCommentsPluginConfig = unknown;
+import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 
-export const setupTemplateCommentsPlugin: PluginInitializer<
-  TemplateCommentsPluginConfig
-> = (_setup, config) => {
+const name = 'templateComments' as const;
+declare module 'plugin-registry' {
+  export interface EmbeddedPlugins {
+    [name]: typeof setupTemplateCommentsPlugin;
+  }
+}
+export const setupTemplateCommentsPlugin = (() => {
   const nodes = { templateComment };
   const nodeViews = {
     templateComment: (controller: SayController) =>
       templateCommentView(controller),
   };
-  return { name: 'template-comments', nodes, nodeViews, config };
-};
+  return { name, nodes, nodeViews };
+}) satisfies PluginInitializer;

@@ -2,17 +2,18 @@ import {
   table_of_contents,
   tableOfContentsView,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/table-of-contents-plugin/nodes';
-import type { PluginInitializer } from '../../shared-types/editor-options';
-import type { TableOfContentsConfig } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/table-of-contents-plugin';
+import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 
-export const setupTableOfContentsPlugin: PluginInitializer<
-  TableOfContentsConfig
-> = (setup, config) => {
+const name = 'tableOfContents' as const;
+declare module 'plugin-registry' {
+  export interface EmbeddedPlugins {
+    [name]: typeof setupTableOfContentsPlugin;
+  }
+}
+
+export const setupTableOfContentsPlugin = (({ plugins }) => {
   if (
-    !(
-      setup.activePlugins.includes('article-structure') ||
-      setup.activePlugins.includes('besluit')
-    )
+    !(plugins?.includes('article-structure') || plugins?.includes('besluit'))
   ) {
     console.warn(
       `The table of contents plugin will not show any contents unless either the 'besluit' or 'article-structure' plugins are active,
@@ -21,11 +22,10 @@ export const setupTableOfContentsPlugin: PluginInitializer<
   }
 
   return {
-    name: 'table-of-contents',
-    config,
-    nodes: { table_of_contents: table_of_contents(config) },
+    name,
+    nodes: { table_of_contents: table_of_contents() },
     nodeViews: {
-      table_of_contents: tableOfContentsView(config),
+      table_of_contents: tableOfContentsView(),
     },
   };
-};
+}) satisfies PluginInitializer;

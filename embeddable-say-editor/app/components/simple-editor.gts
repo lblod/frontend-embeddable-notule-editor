@@ -7,13 +7,8 @@ import { modifier } from 'ember-modifier';
 import { SayController, Schema } from '@lblod/ember-rdfa-editor';
 
 import { getActiveEditableNode } from '@lblod/ember-rdfa-editor/plugins/_private/editable-node';
-import AttributeEditor from '@lblod/ember-rdfa-editor/components/_private/attribute-editor';
-import RdfaEditor from '@lblod/ember-rdfa-editor/components/_private/rdfa-editor';
-import DebugInfo from '@lblod/ember-rdfa-editor/components/_private/debug-info';
 import EditorContainer from '@lblod/ember-rdfa-editor/components/editor-container';
 import Editor from '@lblod/ember-rdfa-editor/components/editor';
-import StructureControlCardComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/structure-plugin/control-card';
-import InsertArticleComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/decision-plugin/insert-article';
 import TableTooltip from '@lblod/ember-rdfa-editor/components/plugins/table/table-tooltip';
 //@ts-expect-error no types yet
 import EnvironmentBanner from '@lblod/ember-environment-banner/components/environment-banner';
@@ -22,19 +17,9 @@ import type IntlService from 'ember-intl/services/intl';
 import Toolbar from './toolbar';
 import Sidebar from './sidebar';
 import { hash } from '@ember/helper';
+import type { EditorElement } from '../../shared-types/editor-element';
+import { setupPlugins, type EditorSetup } from '../config/setup-plugins';
 
-export type EnhancedElement = HTMLElement & {
-  getHtmlContent(): string | undefined;
-  setHtmlContent(html: string): void;
-  controller: SayController;
-  enableEnvironmentBanner: (environment: string) => void;
-  disableEnvironmentBanner: () => void;
-  setLocaleToDutch: () => void;
-  setLocaleToEnglish: () => void;
-  getLocale: () => string | undefined;
-  setLocale: (locale: string) => void;
-  resolveEditorPromise?: () => void;
-};
 interface Sig {
   Args: void;
   Blocks: { default: [] };
@@ -46,18 +31,15 @@ export default class SimpleEditorComponent extends Component<Sig> {
 
   @tracked showEnvironmentBanner = false;
   @tracked initCompleted = false;
-  @tracked resolveEditorPromise?: () => void;
 
-  declare editorElement: EnhancedElement;
+  @tracked schema?: Schema;
+
+  resolveEditorPromise?: (value?: unknown) => void;
+
+  declare editorElement: EditorElement;
 
   @service
   declare intl: IntlService;
-
-  AttributeEditor = AttributeEditor;
-  RdfaEditor = RdfaEditor;
-  DebugInfo = DebugInfo;
-  StructureControlCard = StructureControlCardComponent;
-  InsertArticle = InsertArticleComponent;
 
   get vocabString() {
     return DEFAULT_CONTEXT.vocab;
@@ -87,7 +69,7 @@ export default class SimpleEditorComponent extends Component<Sig> {
   insertedInDom = modifier((element: HTMLElement) => {
     this.setVocab(element);
     this.setPrefix(element);
-    this.editorElement = element as EnhancedElement;
+    this.editorElement = element as EditorElement;
     // `insertedInDom` will run before `handleRdfaEditorInit`, which gives access to the controller
     // these methods can be used before the controller has been loaded
     this.editorElement.initEditor = this.initEditor;
@@ -160,25 +142,8 @@ export default class SimpleEditorComponent extends Component<Sig> {
   }
 
   @action
-  async initEditor(activePlugins, userConfig = {}) {
-    this.initCompleted = false;
-    this.activePlugins = activePlugins;
-    const nodeViews = {};
-    const setup = {
-      nodes,
-      marks,
-      plugins,
-      nodeViews,
-      userConfig,
-      config,
-      activePlugins,
-    };
-    this.config = setup.config;
-    this.plugins = setup.plugins;
-    this.expandInsertMenu = userConfig.ui?.expandInsertMenu ?? false;
-    setup.nodes = {
-      ...setup.nodes,
-    };
+  async initEditor(plugins: InitializedPluginSetup[]) {
+    const setup = setupPlugins(plugins);
     this.schema = new Schema({ nodes: setup.nodes, marks: setup.marks });
 
     const editorPromise = new Promise(

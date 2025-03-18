@@ -32,14 +32,11 @@ import type { ComponentLike } from '@glint/template';
 import HTMLPreviewMenu from './html-preview/menu';
 import Component from '@glimmer/component';
 import type { SayController } from '@lblod/ember-rdfa-editor';
-import type {
-  EditorConfig,
-  PluginName,
-} from '../../shared-types/editor-options';
 
 import { get } from '@ember/helper';
 import type { TOC } from '@ember/component/template-only';
 import type { ResolvedPNode } from '@lblod/ember-rdfa-editor/utils/_private/types';
+import type { EditorSetup } from '../config/setup-plugins';
 
 type ToolbarWidgetComponent = ComponentLike<WidgetSignature>;
 
@@ -80,11 +77,12 @@ const TOOLBAR_WIDGET_MAP: Record<ToolbarWidget, ToolbarWidgetComponent> = {
 };
 
 type ToolbarSignature = {
-  activeNode: ResolvedPNode;
-  controller: SayController;
-  toolbar: ToolbarConfig;
-  config: EditorConfig;
-  plugins: PluginName[];
+  Args: {
+    activeNode: ResolvedPNode;
+    controller: SayController;
+    toolbar: ToolbarConfig;
+    setup: EditorSetup;
+  };
 };
 
 const Toolbar: TOC<ToolbarSignature> = <template>
@@ -96,9 +94,8 @@ const Toolbar: TOC<ToolbarSignature> = <template>
           <ToolbarGroup
             @activeNode={{@activeNode}}
             @controller={{@controller}}
-            @config={{@config}}
             @toolbarGroup={{toolbarGroup}}
-            @plugins={{@plugins}}
+            @setup={{@setup}}
           />
         </Tb.Group>
       {{/each}}
@@ -110,9 +107,8 @@ const Toolbar: TOC<ToolbarSignature> = <template>
           <ToolbarGroup
             @activeNode={{@activeNode}}
             @controller={{@controller}}
-            @config={{@config}}
             @toolbarGroup={{toolbarGroup}}
-            @plugins={{@plugins}}
+            @setup={{@setup}}
           />
         </Tb.Group>
       {{/each}}
@@ -123,11 +119,10 @@ const Toolbar: TOC<ToolbarSignature> = <template>
 export default Toolbar;
 
 type ToolbarGroupSignature = {
-  activeNode: ResolvedPNode;
+  activeNode?: ResolvedPNode | null;
   controller: SayController;
   toolbarGroup: ToolbarGroupConfig;
-  config: EditorConfig;
-  plugins: PluginName[];
+  setup: EditorSetup;
 };
 class ToolbarGroup extends Component<ToolbarGroupSignature> {
   get widgets() {
@@ -142,8 +137,7 @@ class ToolbarGroup extends Component<ToolbarGroupSignature> {
       {{#let (get TOOLBAR_WIDGET_MAP widget) as |WidgetComponent|}}
         <WidgetComponent
           @activeNode={{@activeNode}}
-          @config={{@config}}
-          @plugins={{@plugins}}
+          @setup={{@setup}}
           @controller={{@controller}}
         />
       {{/let}}

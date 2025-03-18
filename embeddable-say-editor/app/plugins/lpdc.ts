@@ -1,9 +1,10 @@
-import type { PluginInitializer } from '../../shared-types/editor-options';
-export type LpdcPluginConfig = unknown;
+import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 
-export const setupLpdcPlugin: PluginInitializer<LpdcPluginConfig> = (
-  _setup,
-  config,
-) => {
-  return { name: 'lpdc', config };
-};
+declare module 'plugin-registry' {
+  export interface EmbeddedPlugins {
+    lpdc: typeof setupLpdcPlugin;
+  }
+}
+export const setupLpdcPlugin = (() => {
+  return { name: 'lpdc' };
+}) satisfies PluginInitializer;

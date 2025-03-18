@@ -3,17 +3,29 @@ import {
   imageView,
   imageWithConfig,
 } from '@lblod/ember-rdfa-editor/plugins/image';
-import type { PluginInitializer } from '../../shared-types/editor-options';
+import type { PluginInitializer } from '../../shared-types/embedded-plugin';
+import { mergeConfigs } from '../config/defaults';
 export type ImagePluginConfig = {
   allowBase64Images: boolean;
   pasteLimit: number;
-  onLimitReached: () => void;
+  onLimitReached?: () => void;
 };
 
-export const setupImagePlugin: PluginInitializer<ImagePluginConfig> = (
-  _setup,
-  config,
-) => {
+const name = 'image' as const;
+declare module 'plugin-registry' {
+  export interface PluginOptions {
+    [name]?: Partial<ImagePluginConfig>;
+  }
+  export interface EmbeddedPlugins {
+    [name]: typeof setupImagePlugin;
+  }
+}
+const defaultConfig: ImagePluginConfig = {
+  allowBase64Images: true,
+  pasteLimit: 2000000,
+};
+export const setupImagePlugin = (({ options }) => {
+  const config = mergeConfigs(defaultConfig, options?.image);
   const nodes = {
     image: imageWithConfig({
       allowBase64Images: config.allowBase64Images,
@@ -33,4 +45,4 @@ export const setupImagePlugin: PluginInitializer<ImagePluginConfig> = (
         ]
       : [],
   };
-};
+}) satisfies PluginInitializer;
