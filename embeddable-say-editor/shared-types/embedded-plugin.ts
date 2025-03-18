@@ -12,6 +12,15 @@ import type {
   OtherOptions,
   PluginOptions,
 } from 'plugin-registry';
+import type { ToolbarWidgets } from 'plugin-registry';
+import type {
+  SidebarListItemWidgetName,
+  SidebarWidgetName,
+  ToolbarConfig,
+  ToolbarWidgetName,
+} from './widgets';
+import type { SidebarConfig } from './_private/sidebar';
+import type { SidebarWidgets } from 'plugin-registry';
 
 /**
  * Valid plugin names, as defined by the registry
@@ -35,6 +44,10 @@ export interface EmbeddedPluginSpec {
   >;
   prosePlugins?: ProsePlugin[];
   config?: unknown;
+  toolbarWidgets?: { [K in ToolbarWidgetName]?: ToolbarWidgets[K] };
+  sidebarWidgets?: {
+    [K in SidebarWidgetName | SidebarListItemWidgetName]?: SidebarWidgets[K];
+  };
 }
 
 export type PluginInitArgs = EditorOptions & {
@@ -89,4 +102,6 @@ export interface EditorOptions {
    * The options to initialize the editor with.
    */
   options?: UserPluginOptions;
+  toolbar?: ToolbarConfig;
+  sidebar?: SidebarConfig;
 }

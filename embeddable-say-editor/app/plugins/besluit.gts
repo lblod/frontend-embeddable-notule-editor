@@ -1,8 +1,12 @@
 import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 import { mergeConfigs } from '../config/defaults';
 import { v4 as uuidv4 } from 'uuid';
+import type { TOC } from '@ember/component/template-only';
+import InsertArticleComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/decision-plugin/insert-article';
+import type { WidgetSignature } from '../../shared-types/widgets';
 
 const name = 'besluit' as const;
+
 interface BesluitPluginConfig {
   uriGenerator: () => string;
   fullLengthArticles: boolean;
@@ -16,7 +20,18 @@ declare module 'plugin-registry' {
   export interface PluginOptions {
     [name]?: Partial<BesluitPluginConfig>;
   }
+  export interface SidebarWidgets {
+    'besluit:article-insert': typeof articleInsert;
+  }
 }
+const articleInsert: TOC<WidgetSignature> = <template>
+  <InsertArticleComponent
+    @controller={{@controller}}
+    @options={{@setup.pluginSpecs.besluit.config}}
+    @label='Voeg artikel in'
+  />
+</template>;
+
 const defaultConfig: BesluitPluginConfig = {
   fullLengthArticles: true,
   onlyArticleSpecialName: false,
@@ -32,5 +47,8 @@ export const besluitPlugin = (({ options, plugins }) => {
   return {
     name,
     config: mergeConfigs(defaultConfig, options?.besluit),
+    sidebarWidgets: {
+      'besluit:article-insert': articleInsert,
+    },
   };
 }) satisfies PluginInitializer;

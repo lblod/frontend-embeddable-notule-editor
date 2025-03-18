@@ -3,11 +3,15 @@ import {
   tableOfContentsView,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/table-of-contents-plugin/nodes';
 import type { PluginInitializer } from '../../shared-types/embedded-plugin';
+import TOCToggle from '@lblod/ember-rdfa-editor-lblod-plugins/components/table-of-contents-plugin/toolbar-button';
 
 const name = 'tableOfContents' as const;
 declare module 'plugin-registry' {
   export interface EmbeddedPlugins {
     [name]: typeof setupTableOfContentsPlugin;
+  }
+  export interface ToolbarWidgets {
+    'table-of-contents': typeof TOCToggle;
   }
 }
 
@@ -26,6 +30,9 @@ export const setupTableOfContentsPlugin = (({ plugins }) => {
     nodes: { table_of_contents: table_of_contents() },
     nodeViews: {
       table_of_contents: tableOfContentsView(),
+    },
+    toolbarWidgets: {
+      'table-of-contents': TOCToggle,
     },
   };
 }) satisfies PluginInitializer;
