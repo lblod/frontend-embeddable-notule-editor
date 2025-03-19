@@ -101,11 +101,11 @@ export type UserPluginOptions = KebabKeys<PluginOptions> & OtherOptions;
 /**
  * User-facing config for the internal say-editor
  */
-export interface EditorOptions {
+export interface EditorOptions<N extends KebabPluginName> {
   /**
    * The plugins to initialize the editor with.
    */
-  plugins?: KebabPluginName[];
+  plugins?: readonly N[];
   /**
    * The options to initialize the editor with.
    */

@@ -41,12 +41,14 @@ import { defaultSidebar } from './default-sidebar';
 import { setupHtmlEdit } from '../plugins/html-edit';
 import { setupHtmlPreview } from '../plugins/html-preview';
 import { setupFormattingToggle } from '../plugins/formatting-toggle';
-export type EditorSetup = {
+type EnsuredSpecs<S extends PluginSpecs, N extends PluginName> = S &
+  Required<Pick<S, N>>;
+export type EditorSetup<N extends PluginName> = {
   nodes: Record<string, SayNodeSpec>;
   marks: Record<string, MarkSpec>;
 
   nodeViews: (controller: SayController) => Record<string, NodeViewConstructor>;
-  pluginSpecs: PluginSpecs;
+  pluginSpecs: EnsuredSpecs<PluginSpecs, N>;
   schema: Schema;
   prosePlugins: ProsePlugin[];
   toolbarConfig: ToolbarConfig;
@@ -87,7 +89,9 @@ const PLUGIN_MAP: { [K in PluginName]: EmbeddedPlugins[K] } = {
   templateComments: setupTemplateCommentsPlugin,
   variable: setupVariablePlugin,
 } as const;
-export function setupPlugins(args: PluginInitArgs): EditorSetup {
+export function setupPlugins<const N extends PluginName>(
+  args: PluginInitArgs,
+): EditorSetup<N> {
   const { plugins, sidebar, toolbar } = args;
 
   let nodes: Record<string, SayNodeSpec> = {};
