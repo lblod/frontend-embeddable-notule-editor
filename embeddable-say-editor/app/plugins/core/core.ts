@@ -40,7 +40,8 @@ import { headingWithConfig } from '@lblod/ember-rdfa-editor/plugins/heading';
 import { inlineRdfaWithConfig } from '@lblod/ember-rdfa-editor/nodes/inline-rdfa';
 import type { PluginInitializer } from '../../../shared-types/embedded-plugin';
 import type { ProsePlugin } from '@lblod/ember-rdfa-editor';
-import { coreToolbarWidgets } from './widgets';
+import { coreToolbarWidgets } from './toolbar-widgets';
+import { coreSidebarWidgets } from './sidebar-widgets';
 const name = 'core' as const;
 declare module 'plugin-registry' {
   export interface OtherOptions {
@@ -98,5 +99,6 @@ export const coreSetup = (({ options }) => {
     marks,
     prosePlugins,
     toolbarWidgets: coreToolbarWidgets,
+    sidebarWidgets: coreSidebarWidgets,
   };
 }) satisfies PluginInitializer;

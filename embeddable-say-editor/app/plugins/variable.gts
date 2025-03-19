@@ -13,7 +13,7 @@ import {
   textVariableView,
   type DateOptions,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/variable-plugin/variables';
-import type { NodeSpec } from '@lblod/ember-rdfa-editor';
+import type { NodeSpec, SayController } from '@lblod/ember-rdfa-editor';
 import { inlineRdfaWithConfigView } from '@lblod/ember-rdfa-editor/nodes/inline-rdfa';
 import CodelistInsertComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/codelist/insert';
 import DateInsertVariableComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/date/insert-variable';
@@ -21,10 +21,16 @@ import VariablePluginAddressInsertVariableComponent from '@lblod/ember-rdfa-edit
 import LocationInsertComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/location/insert';
 import NumberInsertComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/number/insert';
 import TextVariableInsertComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/text/insert';
+import InsertVariableCard from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/insert-variable-card';
+import CodelistEdit from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/codelist/edit';
+import DateEdit from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/date/edit';
+import LocationEdit from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/location/edit';
+import AddressEdit from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/address/edit';
 import type { LocationEditOptions } from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/location/edit';
 import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 import { mergeConfigs } from '../config/defaults';
-import type { EditorSetup } from '../config/setup-plugins';
+import type { WidgetSignature } from '../../shared-types/widgets';
+import type { TOC } from '@ember/component/template-only';
 
 const name = 'variable' as const;
 export type VariablePluginConfig = {
@@ -44,7 +50,36 @@ declare module 'plugin-registry' {
   export interface EmbeddedPlugins {
     [name]: typeof setupVariablePlugin;
   }
+  export interface SidebarWidgets {
+    'variable:insert': typeof insert;
+    'variable:edit': typeof edit;
+  }
 }
+
+const insert: TOC<WidgetSignature> = <template>
+  <InsertVariableCard
+    @controller={{@controller}}
+    @variableTypes={{@setup.pluginSpecs.variable.config.insert.variableTypes}}
+  />
+</template>;
+const edit: TOC<WidgetSignature> = <template>
+  <CodelistEdit
+    @controller={{@controller}}
+    @options={{@setup.pluginSpecs.variable.config.edit.codelist}}
+  />
+  <DateEdit
+    @controller={{@controller}}
+    @options={{@setup.pluginSpecs.variable.config.edit.date}}
+  />
+  <LocationEdit
+    @controller={{@controller}}
+    @options={{@setup.pluginSpecs.variable.config.edit.location}}
+  />
+  <AddressEdit
+    @controller={{@controller}}
+    @defaultMunicipality={{@setup.pluginSpecs.variable.config.edit.address.defaultMunicipality}}
+  />
+</template>;
 const defaultConfig: VariablePluginConfig = {
   insert: {
     enable: true,
@@ -90,14 +125,14 @@ export const setupVariablePlugin = (({ options, intl }) => {
     location,
     codelist,
   };
-  const variableNodeViews: EditorSetup['nodeViews'] = {
-    address: (controller) => addressView(controller),
-    number: (controller) => numberView(controller),
-    text_variable: (controller) => textVariableView(controller),
-    location: (controller) => locationView(controller),
-    codelist: (controller) => codelistView(controller),
-    date: (controller) => dateView(config.edit.date)(controller),
-    inline_rdfa: (controller) =>
+  const variableNodeViews = {
+    address: (controller: SayController) => addressView(controller),
+    number: (controller: SayController) => numberView(controller),
+    text_variable: (controller: SayController) => textVariableView(controller),
+    location: (controller: SayController) => locationView(controller),
+    codelist: (controller: SayController) => codelistView(controller),
+    date: (controller: SayController) => dateView(config.edit.date)(controller),
+    inline_rdfa: (controller: SayController) =>
       inlineRdfaWithConfigView({ rdfaAware: true })(controller),
   };
   if (config.insert.enable) {
@@ -140,5 +175,9 @@ export const setupVariablePlugin = (({ options, intl }) => {
     config,
     nodes: variableNodes,
     nodeViews: variableNodeViews,
+    sidebarWidgets: {
+      'variable:insert': insert,
+      'variable:edit': edit,
+    },
   };
 }) satisfies PluginInitializer;

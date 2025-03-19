@@ -18,7 +18,10 @@ declare module 'plugin-registry' {
     [name]?: Partial<BesluitTopicConfig>;
   }
   export interface ToolbarWidgets {
-    'besluit-topic': typeof besluitTopicWidget;
+    'besluit:topic': typeof besluitTopicWidget;
+  }
+  export interface SidebarWidgets {
+    'besluit:topic': typeof besluitTopicWidget;
   }
 }
 
@@ -39,6 +42,7 @@ export const besluitTopic = (({ options }) => {
   return {
     name,
     config: mergeConfigs(defaultConfig, config),
-    toolbarWidgets: { 'besluit-topic': besluitTopicWidget },
+    toolbarWidgets: { 'besluit:topic': besluitTopicWidget },
+    sidebarWidgets: { 'besluit:topic': besluitTopicWidget },
   };
 }) satisfies PluginInitializer;

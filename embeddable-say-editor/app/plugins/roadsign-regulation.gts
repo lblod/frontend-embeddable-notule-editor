@@ -2,6 +2,9 @@ import { roadsign_regulation } from '@lblod/ember-rdfa-editor-lblod-plugins/plug
 import type { RoadsignRegulationPluginOptions } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/roadsign-regulation-plugin';
 import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 import { mergeConfigs } from '../config/defaults';
+import type { WidgetSignature } from '../utils/types';
+import RoadsignRegulationInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/roadsign-regulation-plugin/roadsign-regulation-card';
+import type { TOC } from '@ember/component/template-only';
 
 const name = 'roadsignRegulation' as const;
 declare module 'plugin-registry' {
@@ -11,7 +14,17 @@ declare module 'plugin-registry' {
   export interface EmbeddedPlugins {
     [name]: typeof setupRoadsignRegulationPlugin;
   }
+  export interface SidebarListItemWidgets {
+    'roadsign-regulation:insert': typeof insert;
+  }
 }
+
+const insert: TOC<WidgetSignature> = <template>
+  <RoadsignRegulationInsert
+    @controller={{@controller}}
+    @options={{@setup.pluginSpecs.roadsignRegulation.config}}
+  />
+</template>;
 const defaultConfig: RoadsignRegulationPluginOptions = {
   endpoint: 'https://dev.roadsigns.lblod.info/sparql',
   imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
@@ -21,5 +34,6 @@ export const setupRoadsignRegulationPlugin = (({ options }) => {
     name,
     config: mergeConfigs(defaultConfig, options?.['roadsign-regulation']),
     nodes: { roadsign_regulation },
+    sidebarWidgets: { 'roadsign-regulation:insert': insert },
   };
 }) satisfies PluginInitializer;

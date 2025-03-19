@@ -20,7 +20,7 @@ declare module 'plugin-registry' {
   export interface PluginOptions {
     [name]?: Partial<BesluitPluginConfig>;
   }
-  export interface SidebarWidgets {
+  export interface SidebarListItemWidgets {
     'besluit:article-insert': typeof articleInsert;
   }
 }

@@ -1,16 +1,8 @@
-import type { WidgetSignature } from '../utils/types';
-import type { ComponentLike } from '@glint/template';
 import type { SayController } from '@lblod/ember-rdfa-editor';
-import type {
-  EditorConfig,
-  PluginName,
-} from '../../shared-types/editor-options';
 
-import type { TOC } from '@ember/component/template-only';
 import type {
   SidebarCollapsibleConfig,
   SidebarConfig,
-  SidebarListItemWidget,
   SidebarWidget,
 } from '../../shared-types/_private/sidebar';
 import Component from '@glimmer/component';
@@ -18,131 +10,9 @@ import { service } from '@ember/service';
 import type IntlService from 'ember-intl/services/intl';
 import { get } from '@ember/helper';
 import RdfaEditorSidebar from '@lblod/ember-rdfa-editor/components/sidebar';
-import StructureControlCard from '@lblod/ember-rdfa-editor-lblod-plugins/components/structure-plugin/control-card';
-import InsertVariableCard from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/insert-variable-card';
-import CodelistEdit from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/codelist/edit';
-import DateEdit from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/date/edit';
-import LocationEdit from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/location/edit';
-import AddressEdit from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/address/edit';
-import TemplateCommentEditCard from '@lblod/ember-rdfa-editor-lblod-plugins/components/template-comments-plugin/edit-card';
-import CitationEditCard from '@lblod/ember-rdfa-editor-lblod-plugins/components/citation-plugin/citation-card';
-import BesluitTopicDropdown from '@lblod/ember-rdfa-editor-lblod-plugins/components/besluit-topic-plugin/besluit-topic-toolbar-dropdown';
-import InsertArticleComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/decision-plugin/insert-article';
-import LpdcInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/lpdc-plugin/lpdc-insert';
-import CitationInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/citation-plugin/citation-insert';
-import RoadsignRegulationInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/roadsign-regulation-plugin/roadsign-regulation-card';
-import OSLOLocationInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/location-plugin/insert';
-import TemplateCommentInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/template-comments-plugin/insert';
-import ArticleStructureInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/article-structure-plugin/article-structure-card';
 
-import DebugInfo from '@lblod/ember-rdfa-editor/components/_private/debug-info';
 import type { ResolvedPNode } from '@lblod/ember-rdfa-editor/utils/_private/types';
-import AttributeEditor from '@lblod/ember-rdfa-editor/components/_private/attribute-editor';
-import RdfaEditor from '@lblod/ember-rdfa-editor/components/_private/rdfa-editor';
 import type { EditorSetup } from '../config/setup-plugins';
-
-type ToolbarWidgetComponent = ComponentLike<WidgetSignature>;
-
-const SIDEBAR_WIDGET_MAP: Record<SidebarWidget, ToolbarWidgetComponent> = {
-  'besluit:topic': <template>
-    <BesluitTopicDropdown
-      @controller={{@controller}}
-      @options={{@setup.pluginSpecs.besluitTopic.config}}
-    />
-  </template> satisfies TOC<WidgetSignature>,
-  'structure:edit': StructureControlCard,
-  'variable:insert': <template>
-    <InsertVariableCard
-      @controller={{@controller}}
-      @variableTypes={{@setup.pluginSpecs.variable.insert.variableTypes}}
-    />
-  </template> satisfies TOC<WidgetSignature>,
-  'variable:edit': <template>
-    <CodelistEdit
-      @controller={{@controller}}
-      @options={{@setup.pluginConfigs.variable.edit.codelist}}
-    />
-    <DateEdit
-      @controller={{@controller}}
-      @options={{@setup.pluginConfigs.variable.edit.date}}
-    />
-    <LocationEdit
-      @controller={{@controller}}
-      @options={{@setup.pluginConfigs.variable.edit.location}}
-    />
-    <AddressEdit
-      @controller={{@controller}}
-      @defaultMunicipality={{@setup.pluginConfigs.variable.edit.address.defaultMunicipality}}
-    />
-  </template> satisfies TOC<WidgetSignature>,
-  'template-comments:edit': TemplateCommentEditCard,
-  'citation:edit': <template>
-    <CitationEditCard
-      @controller={{@controller}}
-      @config={{@setup.pluginConfigs.citation}}
-    />
-  </template> satisfies TOC<WidgetSignature>,
-  'devtools:debug-info': <template>
-    {{#if @activeNode}}
-      <DebugInfo @node={{@activeNode}} />
-    {{/if}}
-  </template> satisfies TOC<WidgetSignature>,
-  'devtools:attribute-editor': <template>
-    {{#if @activeNode}}
-      <AttributeEditor @node={{@activeNode}} @controller={{@controller}} />
-    {{/if}}
-  </template> satisfies TOC<WidgetSignature>,
-  'devtools:rdfa-editor': <template>
-    {{#if @activeNode}}
-      <RdfaEditor @node={{@activeNode}} @controller={{@controller}} />
-    {{/if}}
-  </template> satisfies TOC<WidgetSignature>,
-} as const;
-
-const SIDEBAR_LIST_ITEM_WIDGET_MAP: Record<
-  SidebarListItemWidget,
-  ToolbarWidgetComponent
-> = {
-  'besluit:article-insert': <template>
-    <InsertArticleComponent
-      @controller={{@controller}}
-      @options={{@setup.pluginConfigs.besluit}}
-    />
-  </template> satisfies TOC<WidgetSignature>,
-  'lpdc:insert': <template>
-    <LpdcInsert
-      @controller={{@controller}}
-      @config={{@setup.pluginConfigs.lpdc}}
-    />
-  </template> satisfies TOC<WidgetSignature>,
-  'article-structure:insert': <template>
-    <ArticleStructureInsert
-      @controller={{@controller}}
-      @options={{@setup.pluginConfigs.structures}}
-    />
-  </template> satisfies TOC<WidgetSignature>,
-  'citation:insert': <template>
-    <CitationInsert
-      @controller={{@controller}}
-      @config={{@setup.pluginConfigs.citation}}
-    />
-  </template> as TOC<WidgetSignature>,
-  'roadsign-regulation:insert': <template>
-    <RoadsignRegulationInsert
-      @controller={{@controller}}
-      @options={{@setup.pluginConfigs.roadsignRegulation}}
-    />
-  </template> satisfies TOC<WidgetSignature>,
-  'location:insert': <template>
-    <OSLOLocationInsert
-      @controller={{@controller}}
-      @config={{@setup.pluginConfigs.location}}
-      @defaultMunicipality={{@setup.pluginConfigs.location.defaultMunicipality}}
-      @locationTypes={{@setup.pluginConfigs.location.locationTypes}}
-    />
-  </template> satisfies TOC<WidgetSignature>,
-  'template-comments:insert': TemplateCommentInsert,
-};
 
 type SidebarSignature = {
   activeNode: ResolvedPNode;

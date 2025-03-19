@@ -21,6 +21,7 @@ import type {
 } from './widgets';
 import type { SidebarConfig } from './_private/sidebar';
 import type { SidebarWidgets } from 'plugin-registry';
+import type { SidebarListItemWidgets } from 'plugin-registry';
 
 /**
  * Valid plugin names, as defined by the registry
@@ -46,7 +47,13 @@ export interface EmbeddedPluginSpec {
   config?: unknown;
   toolbarWidgets?: { [K in ToolbarWidgetName]?: ToolbarWidgets[K] };
   sidebarWidgets?: {
-    [K in SidebarWidgetName | SidebarListItemWidgetName]?: SidebarWidgets[K];
+    [K in
+      | SidebarWidgetName
+      | SidebarListItemWidgetName]?: K extends SidebarWidgetName
+      ? SidebarWidgets[K]
+      : K extends SidebarListItemWidgetName
+        ? SidebarListItemWidgets[K]
+        : never;
   };
 }
 
