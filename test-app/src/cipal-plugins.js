@@ -11,6 +11,7 @@ const options = {
   },
   besluitTopic: {
     endpoint: 'https://data.vlaanderen.be/sparql',
+    widgetLocation: 'sidebar',
     decisionUri,
   },
   location: {

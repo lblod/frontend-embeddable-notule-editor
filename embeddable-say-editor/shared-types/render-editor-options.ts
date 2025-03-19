@@ -1,21 +1,5 @@
-export type PluginName =
-  | 'citation'
-  | 'article-structure'
-  | 'besluit'
-  | 'besluit-topic'
-  | 'lpdc'
-  | 'roadsign-regulation'
-  | 'variable'
-  | 'table-of-contents'
-  | 'template-comments'
-  | 'confidentiality'
-  | 'location'
-  | 'rdfa-editor'
-  | 'formatting-toggle'
-  | 'html-edit'
-  | 'html-preview';
+import type { EditorOptions } from './embedded-plugin';
 
-export type EditorConfig = Record<string, unknown>;
 /**
  * The options for rendering the editor.
  */
@@ -37,14 +21,6 @@ export type RenderEditorOptions = {
    */
   height: string;
   /**
-   * The plugins to initialize the editor with.
-   */
-  plugins?: PluginName[];
-  /**
-   * The options to initialize the editor with.
-   */
-  options?: EditorConfig;
-  /**
    * Record of CSS Variables and their values to be applied to the editor.
    */
   cssVariables?: Record<string, string>;
@@ -52,4 +28,4 @@ export type RenderEditorOptions = {
    * Whether the editor should grow to fit its content.
    */
   growEditor?: boolean;
-};
+} & EditorOptions;
