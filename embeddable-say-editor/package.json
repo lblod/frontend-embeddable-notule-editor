@@ -33,10 +33,10 @@
     "lint:types": "glint"
   },
   "dependencies": {
-    "ember-intl": "^7.0.2"
+    "ember-intl": "^7.1.5"
   },
   "devDependencies": {
-    "@appuniversum/ember-appuniversum": "^3.7.2",
+    "@appuniversum/ember-appuniversum": "^3.8.0",
     "@babel/core": "^7.25.2",
     "@babel/eslint-parser": "^7.25.1",
     "@babel/plugin-syntax-decorators": "^7.23.3",

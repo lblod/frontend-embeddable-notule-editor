@@ -4,10 +4,10 @@ export const pluginDemoConfig = {
   height: '800px',
   plugins: [
     'citation',
-    // 'besluit',
+    'besluit',
     'besluit-topic',
     'lpdc',
-    'article-structure',
+    // 'article-structure',
     'variable',
     'table-of-contents',
     'roadsign-regulation',

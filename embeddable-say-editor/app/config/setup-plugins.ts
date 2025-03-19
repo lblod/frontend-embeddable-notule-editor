@@ -106,6 +106,7 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
   const pluginsWithCore: KebabPluginName[] = [
     'core',
     'table',
+    'link',
     ...(plugins ?? []),
   ];
   let toolbarWidgets: Record<string, WidgetComponent> = {};

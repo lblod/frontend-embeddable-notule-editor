@@ -21,6 +21,7 @@ import type { EditorElement } from '../../shared-types/editor-element';
 import { setupPlugins, type EditorSetup } from '../config/setup-plugins';
 import type { PluginOptions } from 'plugin-registry';
 import type { KebabPluginName } from '../../shared-types/embedded-plugin';
+import type { ModifierLike } from '@glint/template';
 
 interface Sig {
   Args: void;
@@ -67,20 +68,23 @@ export default class SimpleEditorComponent extends Component<Sig> {
     this.resolveEditorPromise?.();
   }
 
-  insertedInDom = modifier((element: HTMLElement) => {
-    this.setVocab(element);
-    this.setPrefix(element);
-    this.editorElement = element as EditorElement;
-    // `insertedInDom` will run before `handleRdfaEditorInit`, which gives access to the controller
-    // these methods can be used before the controller has been loaded
-    this.editorElement.initEditor = this.initEditor;
-    this.editorElement.enableEnvironmentBanner = this.enableEnvironmentBanner;
-    this.editorElement.disableEnvironmentBanner = this.disableEnvironmentBanner;
-    this.editorElement.setLocaleToDutch = this.setLocaleToDutch;
-    this.editorElement.setLocaleToEnglish = this.setLocaleToEnglish;
-    this.editorElement.getLocale = this.getLocale;
-    this.editorElement.setLocale = this.setLocale;
-  });
+  insertedInDom: ModifierLike<{ Element: HTMLElement }> = modifier(
+    (element: HTMLElement) => {
+      this.setVocab(element);
+      this.setPrefix(element);
+      this.editorElement = element as EditorElement;
+      // `insertedInDom` will run before `handleRdfaEditorInit`, which gives access to the controller
+      // these methods can be used before the controller has been loaded
+      this.editorElement.initEditor = this.initEditor;
+      this.editorElement.enableEnvironmentBanner = this.enableEnvironmentBanner;
+      this.editorElement.disableEnvironmentBanner =
+        this.disableEnvironmentBanner;
+      this.editorElement.setLocaleToDutch = this.setLocaleToDutch;
+      this.editorElement.setLocaleToEnglish = this.setLocaleToEnglish;
+      this.editorElement.getLocale = this.getLocale;
+      this.editorElement.setLocale = this.setLocale;
+    },
+  );
 
   /**
    * this is a workaround because emberjs does not allow us to assign the prefix attribute in the template
