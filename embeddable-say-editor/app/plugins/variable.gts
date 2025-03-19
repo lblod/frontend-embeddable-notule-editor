@@ -56,13 +56,13 @@ declare module 'plugin-registry' {
   }
 }
 
-const insert: TOC<WidgetSignature> = <template>
+const insert: TOC<WidgetSignature<'variable'>> = <template>
   <InsertVariableCard
     @controller={{@controller}}
     @variableTypes={{@setup.pluginSpecs.variable.config.insert.variableTypes}}
   />
 </template>;
-const edit: TOC<WidgetSignature> = <template>
+const edit: TOC<WidgetSignature<'variable'>> = <template>
   <CodelistEdit
     @controller={{@controller}}
     @options={{@setup.pluginSpecs.variable.config.edit.codelist}}

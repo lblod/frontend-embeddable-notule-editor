@@ -21,7 +21,7 @@ declare module 'plugin-registry' {
   }
 }
 
-const insert: TOC<WidgetSignature> = <template>
+const insert: TOC<WidgetSignature<'lpdc'>> = <template>
   <LpdcInsert
     @controller={{@controller}}
     @config={{@setup.pluginSpecs.lpdc.config}}

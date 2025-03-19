@@ -5,10 +5,10 @@ import {
 import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 import { mergeConfigs } from '../config/defaults';
 import type { EditorState } from '@lblod/ember-rdfa-editor';
-import type { WidgetSignature } from '../utils/types';
 import type { TOC } from '@ember/component/template-only';
 import CitationInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/citation-plugin/citation-insert';
 import CitationEditCard from '@lblod/ember-rdfa-editor-lblod-plugins/components/citation-plugin/citation-card';
+import type { WidgetSignature } from '../../shared-types/widgets';
 
 const name = 'citation' as const;
 
@@ -27,14 +27,14 @@ declare module 'plugin-registry' {
   }
 }
 
-const insert: TOC<WidgetSignature> = <template>
+const insert: TOC<WidgetSignature<'citation'>> = <template>
   <CitationInsert
     @controller={{@controller}}
     @config={{@setup.pluginSpecs.citation.config}}
   />
 </template>;
 
-const edit: TOC<WidgetSignature> = <template>
+const edit: TOC<WidgetSignature<'citation'>> = <template>
   <CitationEditCard
     @controller={{@controller}}
     @config={{@setup.pluginSpecs.citation.config}}

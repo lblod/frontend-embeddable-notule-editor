@@ -23,7 +23,7 @@ declare module 'plugin-registry' {
     'article-structure:insert': typeof insert;
   }
 }
-const insert: TOC<WidgetSignature> = <template>
+const insert: TOC<WidgetSignature<'articleStructure'>> = <template>
   <ArticleStructureInsert
     @controller={{@controller}}
     @options={{@setup.pluginSpecs.articleStructure.config}}

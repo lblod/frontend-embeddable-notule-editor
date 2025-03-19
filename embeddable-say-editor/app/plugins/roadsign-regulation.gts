@@ -2,9 +2,9 @@ import { roadsign_regulation } from '@lblod/ember-rdfa-editor-lblod-plugins/plug
 import type { RoadsignRegulationPluginOptions } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/roadsign-regulation-plugin';
 import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 import { mergeConfigs } from '../config/defaults';
-import type { WidgetSignature } from '../utils/types';
 import RoadsignRegulationInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/roadsign-regulation-plugin/roadsign-regulation-card';
 import type { TOC } from '@ember/component/template-only';
+import type { WidgetSignature } from '../../shared-types/widgets';
 
 const name = 'roadsignRegulation' as const;
 declare module 'plugin-registry' {
@@ -19,7 +19,7 @@ declare module 'plugin-registry' {
   }
 }
 
-const insert: TOC<WidgetSignature> = <template>
+const insert: TOC<WidgetSignature<'roadsignRegulation'>> = <template>
   <RoadsignRegulationInsert
     @controller={{@controller}}
     @options={{@setup.pluginSpecs.roadsignRegulation.config}}

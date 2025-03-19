@@ -41,14 +41,17 @@ import { defaultSidebar } from './default-sidebar';
 import { setupHtmlEdit } from '../plugins/html-edit';
 import { setupHtmlPreview } from '../plugins/html-preview';
 import { setupFormattingToggle } from '../plugins/formatting-toggle';
-type EnsuredSpecs<S extends PluginSpecs, N extends PluginName> = S &
-  Required<Pick<S, N>>;
-export type EditorSetup<N extends PluginName> = {
+type EnsuredSpecs<
+  S extends PluginSpecs,
+  N extends PluginName | void,
+> = N extends PluginName ? S & Required<Pick<S, N>> : S;
+type CoreSpecs = EnsuredSpecs<PluginSpecs, 'core' | 'table'>;
+export type EditorSetup<N extends PluginName | void = void> = {
   nodes: Record<string, SayNodeSpec>;
   marks: Record<string, MarkSpec>;
 
   nodeViews: (controller: SayController) => Record<string, NodeViewConstructor>;
-  pluginSpecs: EnsuredSpecs<PluginSpecs, N>;
+  pluginSpecs: EnsuredSpecs<CoreSpecs, N>;
   schema: Schema;
   prosePlugins: ProsePlugin[];
   toolbarConfig: ToolbarConfig;
@@ -89,10 +92,8 @@ const PLUGIN_MAP: { [K in PluginName]: EmbeddedPlugins[K] } = {
   templateComments: setupTemplateCommentsPlugin,
   variable: setupVariablePlugin,
 } as const;
-export function setupPlugins<const N extends PluginName>(
-  args: PluginInitArgs,
-): EditorSetup<N> {
-  const { plugins, sidebar, toolbar } = args;
+export function setupPlugins(args: PluginInitArgs): EditorSetup {
+  const { plugins = [] as const, sidebar, toolbar } = args;
 
   let nodes: Record<string, SayNodeSpec> = {};
   let marks: Record<string, MarkSpec> = {};
@@ -130,17 +131,26 @@ export function setupPlugins<const N extends PluginName>(
       nodeViews = { ...nodeViews, ...spec.nodeViews };
     }
     if (spec.toolbarWidgets) {
-      toolbarWidgets = { ...toolbarWidgets, ...spec.toolbarWidgets };
+      toolbarWidgets = {
+        ...toolbarWidgets,
+        // TODO make this safe
+        ...(spec.toolbarWidgets as Record<string, WidgetComponent>),
+      };
     }
     if (spec.sidebarWidgets) {
-      sidebarWidgets = { ...sidebarWidgets, ...spec.sidebarWidgets };
+      sidebarWidgets = {
+        ...sidebarWidgets,
+        // TODO make this safe
+        ...(spec.sidebarWidgets as Record<string, WidgetComponent>),
+      };
     }
   }
   const schema = new Schema({ nodes, marks });
   return {
     nodes,
     marks,
-    pluginSpecs,
+    // safe cast, we guarantee core and table exist
+    pluginSpecs: pluginSpecs as CoreSpecs,
     prosePlugins,
     schema,
     nodeViews: (controller: SayController) => {

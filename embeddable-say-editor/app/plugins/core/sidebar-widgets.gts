@@ -1,10 +1,10 @@
 import StructureControlCard from '@lblod/ember-rdfa-editor-lblod-plugins/components/structure-plugin/control-card';
-import type { WidgetSignature } from '../../utils/types';
 import type { TOC } from '@ember/component/template-only';
 
 import DebugInfo from '@lblod/ember-rdfa-editor/components/_private/debug-info';
 import AttributeEditor from '@lblod/ember-rdfa-editor/components/_private/attribute-editor';
 import RdfaEditor from '@lblod/ember-rdfa-editor/components/_private/rdfa-editor';
+import type { WidgetSignature } from '../../../shared-types/widgets';
 
 declare module 'plugin-registry' {
   export interface SidebarWidgets {

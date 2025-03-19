@@ -7,12 +7,13 @@ import type {
   SidebarListItemWidgets,
 } from 'plugin-registry';
 import type { ComponentLike } from '@glint/template';
+import type { PluginName } from './embedded-plugin';
 
-export type WidgetSignature = {
+export type WidgetSignature<N extends PluginName | void = void> = {
   Args: {
     activeNode?: ResolvedPNode | null;
     controller: SayController;
-    setup: EditorSetup;
+    setup: EditorSetup<N>;
   };
 };
 export type WidgetComponent = ComponentLike<WidgetSignature>;

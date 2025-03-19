@@ -7,7 +7,7 @@ import { mergeConfigs } from '../config/defaults';
 import OSLOLocationInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/location-plugin/insert';
 import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 import type { TOC } from '@ember/component/template-only';
-import type { WidgetSignature } from '../utils/types';
+import type { WidgetSignature } from '../../shared-types/widgets';
 
 const name = 'location' as const;
 type Config = LocationPluginConfig & {
@@ -25,7 +25,7 @@ declare module 'plugin-registry' {
     'location:insert': typeof insert;
   }
 }
-const insert: TOC<WidgetSignature> = <template>
+const insert: TOC<WidgetSignature<'location'>> = <template>
   <OSLOLocationInsert
     @controller={{@controller}}
     @config={{@setup.pluginSpecs.location.config}}

@@ -1,8 +1,8 @@
 import BesluitTopicDropdown from '@lblod/ember-rdfa-editor-lblod-plugins/components/besluit-topic-plugin/besluit-topic-toolbar-dropdown';
 import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 import { mergeConfigs } from '../config/defaults';
-import type { WidgetSignature } from '../utils/types';
 import type { TOC } from '@ember/component/template-only';
+import type { WidgetSignature } from '../../shared-types/widgets';
 
 const name = 'besluitTopic' as const;
 export interface BesluitTopicConfig {
@@ -25,7 +25,7 @@ declare module 'plugin-registry' {
   }
 }
 
-const besluitTopicWidget: TOC<WidgetSignature> = <template>
+const besluitTopicWidget: TOC<WidgetSignature<'besluitTopic'>> = <template>
   <BesluitTopicDropdown
     @controller={{@controller}}
     @options={{@setup.pluginSpecs.besluitTopic.config}}
