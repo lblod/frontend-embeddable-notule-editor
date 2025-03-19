@@ -31,6 +31,16 @@ import { tableSetup } from '../plugins/table';
 import { setupTemplateCommentsPlugin } from '../plugins/template-comments';
 import { setupVariablePlugin } from '../plugins/variable';
 import type { SayNodeViewConstructor } from '@lblod/ember-rdfa-editor/utils/ember-node';
+import type {
+  SidebarConfig,
+  ToolbarConfig,
+  WidgetComponent,
+} from '../../shared-types/widgets';
+import { defaultToolbar } from './default-toolbar';
+import { defaultSidebar } from './default-sidebar';
+import { setupHtmlEdit } from '../plugins/html-edit';
+import { setupHtmlPreview } from '../plugins/html-preview';
+import { setupFormattingToggle } from '../plugins/formatting-toggle';
 export type EditorSetup = {
   nodes: Record<string, SayNodeSpec>;
   marks: Record<string, MarkSpec>;
@@ -39,6 +49,12 @@ export type EditorSetup = {
   pluginSpecs: PluginSpecs;
   schema: Schema;
   prosePlugins: ProsePlugin[];
+  toolbarConfig: ToolbarConfig;
+  sidebarConfig: SidebarConfig;
+  widgetMaps: {
+    toolbar: Record<string, WidgetComponent>;
+    sidebar: Record<string, WidgetComponent>;
+  };
 };
 export type ToCamel<S extends string | number | symbol> = S extends string
   ? S extends `${infer Head}_${infer Tail}`
@@ -57,6 +73,9 @@ const PLUGIN_MAP: { [K in PluginName]: EmbeddedPlugins[K] } = {
   besluit: besluitPlugin,
   citation: setupCitationPlugin,
   confidentiality: confidentialityPlugin,
+  htmlEdit: setupHtmlEdit,
+  htmlPreview: setupHtmlPreview,
+  formattingToggle: setupFormattingToggle,
   rdfaEditor: setupEditableRdfaPlugin,
   image: setupImagePlugin,
   link: setupLinkPlugin,
@@ -69,7 +88,7 @@ const PLUGIN_MAP: { [K in PluginName]: EmbeddedPlugins[K] } = {
   variable: setupVariablePlugin,
 } as const;
 export function setupPlugins(args: PluginInitArgs): EditorSetup {
-  const { plugins } = args;
+  const { plugins, sidebar, toolbar } = args;
 
   let nodes: Record<string, SayNodeSpec> = {};
   let marks: Record<string, MarkSpec> = {};
@@ -84,6 +103,8 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
     'table',
     ...(plugins ?? []),
   ];
+  let toolbarWidgets: Record<string, WidgetComponent> = {};
+  let sidebarWidgets: Record<string, WidgetComponent> = {};
   for (const plugin of pluginsWithCore) {
     const name: PluginName = camelize(plugin);
     const realSpec = PLUGIN_MAP[camelize(name)](args);
@@ -104,6 +125,12 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
     if (spec.nodeViews) {
       nodeViews = { ...nodeViews, ...spec.nodeViews };
     }
+    if (spec.toolbarWidgets) {
+      toolbarWidgets = { ...toolbarWidgets, ...spec.toolbarWidgets };
+    }
+    if (spec.sidebarWidgets) {
+      sidebarWidgets = { ...sidebarWidgets, ...spec.sidebarWidgets };
+    }
   }
   const schema = new Schema({ nodes, marks });
   return {
@@ -119,5 +146,8 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
       }
       return result;
     },
+    sidebarConfig: sidebar ?? defaultSidebar(args),
+    toolbarConfig: toolbar ?? defaultToolbar(args),
+    widgetMaps: { sidebar: sidebarWidgets, toolbar: toolbarWidgets },
   };
 }

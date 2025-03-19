@@ -16,11 +16,8 @@ import AlignmentMenu from '@lblod/ember-rdfa-editor/components/plugins/alignment
 import LinkMenu from '@lblod/ember-rdfa-editor/components/plugins/link/link-menu';
 import ImageInsertMenu from '@lblod/ember-rdfa-editor/components/plugins/image/insert-menu';
 import TableMenu from '@lblod/ember-rdfa-editor/components/plugins/table/table-menu';
-import FormattingToggle from '@lblod/ember-rdfa-editor/components/plugins/formatting/formatting-toggle';
-import HTMLEditorMenu from '@lblod/ember-rdfa-editor/components/plugins/html-editor/menu';
 
 import type { TOC } from '@ember/component/template-only';
-import HTMLPreviewMenu from '../../components/html-preview/menu';
 import type { WidgetSignature } from '../../../shared-types/widgets';
 import type { ToolbarWidgetMap } from '../../../shared-types/embedded-plugin';
 
@@ -52,9 +49,6 @@ declare module 'plugin-registry' {
     hyperlink: typeof LinkMenu;
     image: typeof ImageInsertMenu;
     table: typeof TableMenu;
-    formatting: typeof FormattingToggle;
-    'html:edit': typeof HTMLEditorMenu;
-    'html:preview': typeof HTMLPreviewMenu;
   }
 }
 export const coreToolbarWidgets: ToolbarWidgetMap = {
@@ -76,7 +70,4 @@ export const coreToolbarWidgets: ToolbarWidgetMap = {
   hyperlink: LinkMenu,
   image: ImageInsertMenu,
   table: TableMenu,
-  formatting: FormattingToggle,
-  'html:edit': HTMLEditorMenu,
-  'html:preview': HTMLPreviewMenu,
 } as const;

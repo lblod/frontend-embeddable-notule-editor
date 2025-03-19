@@ -19,9 +19,11 @@ declare module 'plugin-registry' {
   export interface EmbeddedPlugins {
     [name]: typeof setupCitationPlugin;
   }
+  export interface SidebarWidgets {
+    'citation:edit': typeof edit;
+  }
   export interface SidebarListItemWidgets {
     'citation:insert': typeof insert;
-    'citation:edit': typeof edit;
   }
 }
 

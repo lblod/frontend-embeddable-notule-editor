@@ -15,7 +15,7 @@ import type { ResolvedPNode } from '@lblod/ember-rdfa-editor/utils/_private/type
 import type { EditorSetup } from '../config/setup-plugins';
 
 type SidebarSignature = {
-  activeNode: ResolvedPNode;
+  activeNode?: ResolvedPNode | null;
   controller: SayController;
   sidebar: SidebarConfig;
   setup: EditorSetup;
@@ -66,7 +66,7 @@ export default class Sidebar extends Component<SidebarSignature> {
           >
             {{#each (this.widgets sidebarEntry) as |listItemWidget|}}
               {{#let
-                (get SIDEBAR_LIST_ITEM_WIDGET_MAP listItemWidget)
+                (get @setup.widgetMaps.sidebar listItemWidget)
                 as |ListItemWidgetComponent|
               }}
                 <ListItemWidgetComponent
@@ -79,7 +79,7 @@ export default class Sidebar extends Component<SidebarSignature> {
           </Sb.Collapsible>
         {{else}}
           {{#let
-            (get SIDEBAR_WIDGET_MAP sidebarEntry)
+            (get @setup.widgetMaps.sidebar sidebarEntry)
             as |SidebarWidgetComponent|
           }}
             <SidebarWidgetComponent

@@ -6,6 +6,7 @@ import type {
   SidebarWidgets,
   SidebarListItemWidgets,
 } from 'plugin-registry';
+import type { ComponentLike } from '@glint/template';
 
 export type WidgetSignature = {
   Args: {
@@ -14,6 +15,7 @@ export type WidgetSignature = {
     setup: EditorSetup;
   };
 };
+export type WidgetComponent = ComponentLike<WidgetSignature>;
 export type ToolbarWidgetName = keyof ToolbarWidgets;
 
 export type ToolbarGroupConfig =
@@ -22,7 +24,7 @@ export type ToolbarGroupConfig =
       items: ToolbarWidgetName[];
     };
 
-type ToolbarSection = ToolbarGroupConfig[];
+export type ToolbarSection = ToolbarGroupConfig[];
 
 export type ToolbarConfig = {
   main?: ToolbarSection;

@@ -185,10 +185,9 @@ export default class SimpleEditorComponent extends Component<Sig> {
               {{#if this.controller}}
                 <Toolbar
                   @activeNode={{this.activeNode}}
-                  @toolbar={{this.defaultToolbarConfig}}
+                  @toolbar={{s.toolbarConfig}}
                   @controller={{this.controller}}
-                  @plugins={{this.activePlugins}}
-                  @config={{this.config}}
+                  @setup={{s}}
                 />
               {{/if}}
             </:top>
@@ -207,10 +206,9 @@ export default class SimpleEditorComponent extends Component<Sig> {
               {{#if this.controller}}
                 <Sidebar
                   @activeNode={{this.activeNode}}
-                  @sidebar={{this.defaultSidebarConfig}}
+                  @sidebar={{s.sidebarConfig}}
                   @controller={{this.controller}}
-                  @plugins={{this.activePlugins}}
-                  @config={{this.config}}
+                  @setup={{s}}
                 />
               {{/if}}
             </:aside>

@@ -14,7 +14,7 @@ import type { EditorSetup } from '../config/setup-plugins';
 
 type ToolbarSignature = {
   Args: {
-    activeNode: ResolvedPNode;
+    activeNode?: ResolvedPNode | null;
     controller: SayController;
     toolbar: ToolbarConfig;
     setup: EditorSetup;
@@ -70,7 +70,7 @@ class ToolbarGroup extends Component<ToolbarGroupSignature> {
   }
   <template>
     {{#each this.widgets as |widget|}}
-      {{#let (get TOOLBAR_WIDGET_MAP widget) as |WidgetComponent|}}
+      {{#let (get @setup.widgetMaps.toolbar widget) as |WidgetComponent|}}
         <WidgetComponent
           @activeNode={{@activeNode}}
           @setup={{@setup}}
