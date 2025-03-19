@@ -15,7 +15,7 @@ const editor = await renderEditor({
       defaultPlaceUriRoot: 'https://example.net/id/plaats/',
       defaultAddressUriRoot: 'https://example.net/id/adres/',
       defaultMunicipality: 'Gent',
-      locationOptions: ['address', 'place', 'area'],
+      locationTypes: ['address', 'place', 'area'],
     }
   }
   /*...*/
