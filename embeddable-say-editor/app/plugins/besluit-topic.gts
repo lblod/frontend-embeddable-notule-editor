@@ -37,7 +37,7 @@ const defaultConfig: BesluitTopicConfig = {
 };
 
 export const besluitTopic = (({ options }) => {
-  const config = options?.['besluit-topic'];
+  const config = options?.besluitTopic;
 
   return {
     name,

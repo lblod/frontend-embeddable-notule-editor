@@ -48,7 +48,7 @@ export function defaultToolbar({
   }
   if (
     plugins.includes('besluit-topic') &&
-    options?.['besluit-topic']?.widgetLocation === 'toolbar'
+    options?.besluitTopic?.widgetLocation === 'toolbar'
   ) {
     group.push('besluit:topic');
   }

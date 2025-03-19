@@ -112,7 +112,7 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
   let sidebarWidgets: Record<string, WidgetComponent> = {};
 
   const realSpecs = pluginsWithCore.map((name) => ({
-    name,
+    name: camelize(name),
     spec: PLUGIN_MAP[camelize(name)](args),
   }));
 

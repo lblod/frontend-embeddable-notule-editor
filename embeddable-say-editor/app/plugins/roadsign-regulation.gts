@@ -32,7 +32,7 @@ const defaultConfig: RoadsignRegulationPluginOptions = {
 export const setupRoadsignRegulationPlugin = (({ options }) => {
   return {
     name,
-    config: mergeConfigs(defaultConfig, options?.['roadsign-regulation']),
+    config: mergeConfigs(defaultConfig, options?.roadsignRegulation),
     nodes: { roadsign_regulation },
     sidebarWidgets: { 'roadsign-regulation:insert': insert },
   };

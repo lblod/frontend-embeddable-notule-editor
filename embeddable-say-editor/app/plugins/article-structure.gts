@@ -44,6 +44,6 @@ export const articleStructurePlugin = (({ plugins, options }) => {
   return {
     name,
     sidebarWidgets: { 'article-structure:insert': insert },
-    config: mergeConfigs(defaultConfig, options?.['article-structure']),
+    config: mergeConfigs(defaultConfig, options?.articleStructure),
   };
 }) satisfies PluginInitializer;

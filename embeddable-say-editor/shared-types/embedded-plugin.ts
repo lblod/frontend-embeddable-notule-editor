@@ -6,7 +6,7 @@ import type {
 import type SayNodeSpec from '@lblod/ember-rdfa-editor/core/say-node-spec';
 import type { SayNodeViewConstructor } from '@lblod/ember-rdfa-editor/utils/ember-node';
 import type IntlService from 'ember-intl/services/intl';
-import type { Kebab, KebabKeys } from './type-utils';
+import type { Kebab } from './type-utils';
 import type {
   EmbeddedPlugins,
   OtherOptions,
@@ -98,7 +98,7 @@ export type KebabPluginName = Kebab<PluginName>;
  * options
  * TODO: deprecate kebab-casing
  */
-export type UserPluginOptions = KebabKeys<PluginOptions> & OtherOptions;
+export type UserPluginOptions = PluginOptions & OtherOptions;
 
 /**
  * User-facing config for the internal say-editor
