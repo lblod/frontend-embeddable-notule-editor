@@ -27,7 +27,7 @@ const insert: TOC<WidgetSignature<'roadsignRegulation'>> = <template>
 </template>;
 const defaultConfig: RoadsignRegulationPluginOptions = {
   endpoint: 'https://dev.roadsigns.lblod.info/sparql',
-  imageBaseUrl: 'https://register.mobiliteit.vlaanderen.be/',
+  imageBaseUrl: 'https://dev.roadsigns.lblod.info/',
 };
 export const setupRoadsignRegulationPlugin = (({ options }) => {
   return {
