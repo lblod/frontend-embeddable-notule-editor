@@ -16,7 +16,7 @@ export type EditorElement = HTMLElement & {
    * See {@link file://./README.md#managing-plugins} for more info.
    */
   initEditor: (
-    arrayOfPluginNames: KebabPluginName[],
+    arrayOfPluginNames: readonly KebabPluginName[],
     options: UserPluginOptions,
   ) => Promise<void>;
   /**

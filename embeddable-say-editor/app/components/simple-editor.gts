@@ -151,7 +151,7 @@ export default class SimpleEditorComponent extends Component<Sig> {
 
   @action
   async initEditor(
-    plugins: KebabPluginName[],
+    plugins: readonly KebabPluginName[],
     options: PluginOptions,
   ): Promise<void> {
     const setup = setupPlugins({ plugins, options, intl: this.intl });

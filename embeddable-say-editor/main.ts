@@ -73,7 +73,7 @@ export async function renderEditor({
 
   // append scripts
   const vendorScript = document.createElement('script');
-  vendorScript.text = vendor;
+  vendorScript.text = vendor as string;
   frameDoc.appendChild(vendorScript);
 
   const vendorBundleScript = document.createElement('script');
@@ -378,7 +378,7 @@ export class SayWebComponent extends HTMLElement {
     shadow.append(editorStyle, vendorStyle, extraStyle);
 
     const vendorScript = document.createElement('script');
-    vendorScript.text = vendor;
+    vendorScript.text = vendor as string;
     shadow.appendChild(vendorScript);
 
     const appScript = document.createElement('script');
