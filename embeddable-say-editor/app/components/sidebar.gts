@@ -1,10 +1,5 @@
 import type { SayController } from '@lblod/ember-rdfa-editor';
 
-import type {
-  SidebarCollapsibleConfig,
-  SidebarConfig,
-  SidebarWidget,
-} from '../../shared-types/_private/sidebar';
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import type IntlService from 'ember-intl/services/intl';
@@ -13,6 +8,11 @@ import RdfaEditorSidebar from '@lblod/ember-rdfa-editor/components/sidebar';
 
 import type { ResolvedPNode } from '@lblod/ember-rdfa-editor/utils/_private/types';
 import type { EditorSetup } from '../config/setup-plugins';
+import type {
+  SidebarCollapsibleConfig,
+  SidebarConfig,
+  SidebarWidgetName,
+} from '../../shared-types/widgets';
 
 type SidebarSignature = {
   activeNode?: ResolvedPNode | null;
@@ -25,7 +25,7 @@ export default class Sidebar extends Component<SidebarSignature> {
   @service declare intl: IntlService;
 
   isCollapsibleContainer = (
-    sidebarEntry: SidebarWidget | SidebarCollapsibleConfig,
+    sidebarEntry: SidebarWidgetName | SidebarCollapsibleConfig,
   ): sidebarEntry is SidebarCollapsibleConfig => {
     return typeof sidebarEntry === 'object';
   };

@@ -14,12 +14,12 @@ import type {
 } from 'plugin-registry';
 import type { ToolbarWidgets } from 'plugin-registry';
 import type {
+  SidebarConfig,
   SidebarListItemWidgetName,
   SidebarWidgetName,
   ToolbarConfig,
   ToolbarWidgetName,
 } from './widgets';
-import type { SidebarConfig } from './_private/sidebar';
 import type { SidebarWidgets } from 'plugin-registry';
 import type { SidebarListItemWidgets } from 'plugin-registry';
 import type { EditorSetup } from '../app/config/setup-plugins';

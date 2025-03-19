@@ -1,7 +1,3 @@
-import type {
-  ToolbarConfig,
-  ToolbarGroupConfig,
-} from '../../shared-types/_private/toolbar';
 import ResponsiveToolbar from '@lblod/ember-rdfa-editor/components/responsive-toolbar';
 
 import Component from '@glimmer/component';
@@ -11,6 +7,10 @@ import { get } from '@ember/helper';
 import type { TOC } from '@ember/component/template-only';
 import type { ResolvedPNode } from '@lblod/ember-rdfa-editor/utils/_private/types';
 import type { EditorSetup } from '../config/setup-plugins';
+import type {
+  ToolbarConfig,
+  ToolbarGroupConfig,
+} from '../../shared-types/widgets';
 
 type ToolbarSignature = {
   Args: {
