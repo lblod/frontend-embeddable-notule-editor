@@ -22,6 +22,7 @@ import type {
 import type { SidebarConfig } from './_private/sidebar';
 import type { SidebarWidgets } from 'plugin-registry';
 import type { SidebarListItemWidgets } from 'plugin-registry';
+import type { EditorSetup } from '../app/config/setup-plugins';
 
 /**
  * Valid plugin names, as defined by the registry
@@ -56,6 +57,7 @@ export interface EmbeddedPluginSpec {
         ? SidebarListItemWidgets[K]
         : never;
   };
+  afterSetup?: (setup: EditorSetup) => EditorSetup;
 }
 
 export type PluginInitArgs = EditorOptions & {

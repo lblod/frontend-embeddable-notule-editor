@@ -23,6 +23,18 @@ export const setupLinkPlugin = (() => {
     config,
     nodes,
     nodeViews: { link: linkView(config) },
-    prosePlugins: [linkPasteHandler(nodes.link)],
+    afterSetup(setup) {
+      const { schema } = setup;
+      const link = schema.nodes['link'];
+      if (!link) {
+        throw new Error(
+          'impossible plugin state, link plugin sets up link node but was not found in resulting schema',
+        );
+      }
+      return {
+        ...setup,
+        prosePlugins: [...setup.prosePlugins, linkPasteHandler(link)],
+      };
+    },
   };
 }) satisfies PluginInitializer;

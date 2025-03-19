@@ -110,13 +110,17 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
   ];
   let toolbarWidgets: Record<string, WidgetComponent> = {};
   let sidebarWidgets: Record<string, WidgetComponent> = {};
-  for (const plugin of pluginsWithCore) {
-    const name: PluginName = camelize(plugin);
-    const realSpec = PLUGIN_MAP[camelize(name)](args);
-    pluginSpecs = { ...pluginSpecs, [name]: realSpec };
+
+  const realSpecs = pluginsWithCore.map((name) => ({
+    name,
+    spec: PLUGIN_MAP[camelize(name)](args),
+  }));
+
+  for (const realSpec of realSpecs) {
+    pluginSpecs = { ...pluginSpecs, [realSpec.name]: realSpec.spec };
 
     // safe cast, the types are too specific here, we want the general type
-    const spec = realSpec as EmbeddedPluginSpec;
+    const spec = realSpec.spec as EmbeddedPluginSpec;
 
     if (spec.nodes) {
       nodes = { ...nodes, ...spec.nodes };
@@ -146,7 +150,7 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
     }
   }
   const schema = new Schema({ nodes, marks });
-  return {
+  let result = {
     nodes,
     marks,
     // safe cast, we guarantee core and table exist
@@ -156,6 +160,7 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
     nodeViews: (controller: SayController) => {
       const result: Record<string, NodeViewConstructor> = {};
       for (const [name, nodeView] of Object.entries(nodeViews)) {
+        // TODO: these core types are weird, should be fixed in the editor
         result[name] = nodeView(controller) as unknown as NodeViewConstructor;
       }
       return result;
@@ -164,4 +169,13 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
     toolbarConfig: toolbar ?? defaultToolbar(args),
     widgetMaps: { sidebar: sidebarWidgets, toolbar: toolbarWidgets },
   };
+
+  for (const realSpec of realSpecs) {
+    // safe cast, the types are too specific here, we want the general type
+    const spec = realSpec.spec as EmbeddedPluginSpec;
+    if (spec.afterSetup) {
+      result = spec.afterSetup(result);
+    }
+  }
+  return result;
 }
