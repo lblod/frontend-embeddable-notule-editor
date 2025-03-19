@@ -22,14 +22,15 @@ import HTMLEditorMenu from '@lblod/ember-rdfa-editor/components/plugins/html-edi
 import type { TOC } from '@ember/component/template-only';
 import HTMLPreviewMenu from '../../components/html-preview/menu';
 import type { WidgetSignature } from '../../../shared-types/widgets';
+import type { ToolbarWidgetMap } from '../../../shared-types/embedded-plugin';
 
 const highlight: TOC<WidgetSignature> = <template>
   <Highlight @controller={{@controller}} @defaultColor='#000000' />
-</template> as TOC<WidgetSignature>;
+</template>;
 
 const color: TOC<WidgetSignature> = <template>
   <ColorMenu @controller={{@controller}} @defaultColor='#000000' />
-</template> as TOC<WidgetSignature>;
+</template>;
 
 declare module 'plugin-registry' {
   export interface ToolbarWidgets {
@@ -56,7 +57,7 @@ declare module 'plugin-registry' {
     'html:preview': typeof HTMLPreviewMenu;
   }
 }
-export const coreToolbarWidgets = {
+export const coreToolbarWidgets: ToolbarWidgetMap = {
   undo: Undo,
   redo: Redo,
   bold: Bold,

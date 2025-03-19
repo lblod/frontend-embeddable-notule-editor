@@ -27,6 +27,7 @@ import type { SidebarListItemWidgets } from 'plugin-registry';
  * Valid plugin names, as defined by the registry
  */
 export type PluginName = Extract<keyof EmbeddedPlugins, string>;
+export type ToolbarWidgetMap = { [K in ToolbarWidgetName]?: ToolbarWidgets[K] };
 
 /**
  * Spec for a plugin as it is understood in embeddable, a collection of
@@ -45,7 +46,7 @@ export interface EmbeddedPluginSpec {
   >;
   prosePlugins?: ProsePlugin[];
   config?: unknown;
-  toolbarWidgets?: { [K in ToolbarWidgetName]?: ToolbarWidgets[K] };
+  toolbarWidgets?: ToolbarWidgetMap;
   sidebarWidgets?: {
     [K in
       | SidebarWidgetName
@@ -82,7 +83,7 @@ export type SpecOf<F extends PluginInitializer> = F extends (
   : never;
 
 export type PluginSpecs = {
-  [K in keyof EmbeddedPlugins]: SpecOf<EmbeddedPlugins[K]>;
+  [K in keyof EmbeddedPlugins]?: SpecOf<EmbeddedPlugins[K]>;
 };
 
 /**
