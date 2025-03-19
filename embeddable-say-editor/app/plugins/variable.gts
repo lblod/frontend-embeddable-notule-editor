@@ -21,8 +21,12 @@ import VariablePluginAddressInsertVariableComponent from '@lblod/ember-rdfa-edit
 import LocationInsertComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/location/insert';
 import NumberInsertComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/number/insert';
 import TextVariableInsertComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/text/insert';
-import InsertVariableCard from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/insert-variable-card';
-import CodelistEdit from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/codelist/edit';
+import InsertVariableCard, {
+  type VariableConfig,
+} from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/insert-variable-card';
+import CodelistEdit, {
+  type CodelistEditOptions,
+} from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/codelist/edit';
 import DateEdit from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/date/edit';
 import LocationEdit from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/location/edit';
 import AddressEdit from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/address/edit';
@@ -31,6 +35,7 @@ import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 import { mergeConfigs } from '../config/defaults';
 import type { WidgetSignature } from '../../shared-types/widgets';
 import type { TOC } from '@ember/component/template-only';
+import type IntlService from 'ember-intl/services/intl';
 
 const name = 'variable' as const;
 export type VariablePluginConfig = {
@@ -39,8 +44,15 @@ export type VariablePluginConfig = {
     locationEndpoint: string;
     codelistEndpoint: string;
     codelistPublisher?: string | null;
+    variableTypes: VariableConfig[];
   };
-  edit: { enable: boolean; date: DateOptions; location: LocationEditOptions };
+  edit: {
+    enable: boolean;
+    date: DateOptions;
+    location: LocationEditOptions;
+    codelist: CodelistEditOptions;
+    address: { defaultMunicipality?: string };
+  };
 };
 
 declare module 'plugin-registry' {
@@ -80,43 +92,89 @@ const edit: TOC<WidgetSignature<'variable'>> = <template>
     @defaultMunicipality={{@setup.pluginSpecs.variable.config.edit.address.defaultMunicipality}}
   />
 </template>;
-const defaultConfig: VariablePluginConfig = {
-  insert: {
-    enable: true,
-    codelistEndpoint: 'https://dev.roadsigns.lblod.info/sparql',
-    codelistPublisher: null,
-    locationEndpoint: 'https://dev.roadsigns.lblod.info',
-  },
-  edit: {
-    enable: true,
-    location: {
-      endpoint: 'https://dev.roadsigns.lblod.info',
-      zonalLocationCodelistUri:
-        'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
-      nonZonalLocationCodelistUri:
-        'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
-    },
-    date: {
-      allowCustomFormat: true,
-      formats: [
+const defaultConfig = (intl: IntlService): VariablePluginConfig => {
+  const codelistEndpoint = 'https://dev.roadsigns.lblod.info/sparql';
+  const locationEndpoint = 'https://dev.roadsigns.lblod.info';
+  const codelistPublisher = null;
+  return {
+    insert: {
+      enable: true,
+      codelistEndpoint,
+      codelistPublisher,
+      locationEndpoint,
+      variableTypes: [
         {
-          label: 'Short Date',
-          key: 'short',
-          dateFormat: 'dd/MM/yy',
-          dateTimeFormat: 'dd/MM/yy HH:mm',
+          label: intl.t('editor.variables.text'),
+          component: TextVariableInsertComponent,
         },
         {
-          label: 'Long Date',
-          key: 'long',
-          dateFormat: 'EEEE dd MMMM yyyy',
-          dateTimeFormat: 'PPPPp',
+          label: intl.t('editor.variables.number'),
+          component: NumberInsertComponent,
+        },
+        {
+          label: intl.t('editor.variables.location'),
+          //@ts-expect-error TODO: fix variable config types of plugins
+          component: LocationInsertComponent,
+          options: {
+            endpoint: locationEndpoint,
+          },
+        },
+        {
+          label: intl.t('editor.variables.address'),
+          component: VariablePluginAddressInsertVariableComponent,
+        },
+        {
+          label: intl.t('editor.variables.date'),
+          component: DateInsertVariableComponent,
+        },
+        {
+          label: intl.t('editor.variables.codelist'),
+          //@ts-expect-error TODO: fix variable config types of plugins
+          component: CodelistInsertComponent,
+          options: {
+            endpoint: codelistEndpoint,
+
+            publisher: codelistPublisher,
+          },
         },
       ],
     },
-  },
+    edit: {
+      enable: true,
+      location: {
+        endpoint: 'https://dev.roadsigns.lblod.info',
+        zonalLocationCodelistUri:
+          'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
+        nonZonalLocationCodelistUri:
+          'http://lblod.data.gift/concept-schemes/62331FDD00730AE7B99DF7F2',
+      },
+      date: {
+        allowCustomFormat: true,
+        formats: [
+          {
+            label: 'Short Date',
+            key: 'short',
+            dateFormat: 'dd/MM/yy',
+            dateTimeFormat: 'dd/MM/yy HH:mm',
+          },
+          {
+            label: 'Long Date',
+            key: 'long',
+            dateFormat: 'EEEE dd MMMM yyyy',
+            dateTimeFormat: 'PPPPp',
+          },
+        ],
+      },
+      address: {},
+      codelist: {
+        endpoint: codelistEndpoint,
+      },
+    },
+  };
 };
 export const setupVariablePlugin = (({ options, intl }) => {
-  const config = mergeConfigs(defaultConfig, options?.variable);
+  const config = mergeConfigs(defaultConfig(intl), options?.variable);
+
   const variableNodes: Record<string, NodeSpec> = {
     text_variable,
     number,
@@ -135,41 +193,6 @@ export const setupVariablePlugin = (({ options, intl }) => {
     inline_rdfa: (controller: SayController) =>
       inlineRdfaWithConfigView({ rdfaAware: true })(controller),
   };
-  if (config.insert.enable) {
-    const variableTypes = [
-      {
-        label: intl.t('editor.variables.text'),
-        component: TextVariableInsertComponent,
-      },
-      {
-        label: intl.t('editor.variables.number'),
-        component: NumberInsertComponent,
-      },
-      {
-        label: intl.t('editor.variables.location'),
-        component: LocationInsertComponent,
-        options: {
-          endpoint: config.insert.locationEndpoint,
-        },
-      },
-      {
-        label: intl.t('editor.variables.address'),
-        component: VariablePluginAddressInsertVariableComponent,
-      },
-      {
-        label: intl.t('editor.variables.date'),
-        component: DateInsertVariableComponent,
-      },
-      {
-        label: intl.t('editor.variables.codelist'),
-        component: CodelistInsertComponent,
-        options: {
-          endpoint: config.insert.codelistEndpoint,
-          publisher: config.insert.codelistPublisher,
-        },
-      },
-    ];
-  }
   return {
     name: 'variable',
     config,
