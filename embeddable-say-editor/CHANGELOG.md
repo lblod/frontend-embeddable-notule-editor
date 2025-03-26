@@ -1,5 +1,11 @@
 # frontend-embeddable-notule-editor
 
+## 5.6.0
+
+### Minor Changes
+
+- [#279](https://github.com/lblod/frontend-embeddable-notule-editor/pull/279) [`d2b49e0`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/d2b49e074eb00203bd89a6ca18c6aec7fc881c04) Thanks [@piemonkey](https://github.com/piemonkey)! - Use version of @lblod/ember-rdfa-editor-lblod-plugins that includes bundled markers for the location plugin
+
 ## 5.5.0
 
 ### Minor Changes
