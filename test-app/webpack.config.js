@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const pages = require('./pages');
-const CopyPlugin = require('copy-webpack-plugin');
 
 const htmlPlugins = [];
 const entries = {};
@@ -40,20 +39,6 @@ module.exports = (environment) => {
       filename: '[name].js',
       path: path.resolve(__dirname, 'dist'),
     },
-    plugins: [
-      ...htmlPlugins,
-      new CopyPlugin({
-        patterns: [
-          {
-            from: 'assets/images/**/*',
-            context: path.resolve(
-              __dirname,
-              'node_modules/@lblod/embeddable-say-editor/dist',
-            ),
-            to: path.resolve(__dirname, 'dist'),
-          },
-        ],
-      }),
-    ],
+    plugins: [...htmlPlugins],
   };
 };

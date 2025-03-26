@@ -13,7 +13,6 @@
     "lint:js:fix": "eslint . --fix"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "^12.0.2",
     "cypress": "^13.6.2",
     "eslint": "^8.37.0",
     "eslint-plugin-cypress": "^2.15.1",
