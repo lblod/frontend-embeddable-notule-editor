@@ -127,8 +127,8 @@ importers:
         specifier: 11.3.0
         version: 11.3.0(6zonndjbxwrvaluwxcycbqbemq)
       '@lblod/ember-rdfa-editor-lblod-plugins':
-        specifier: 29.0.0
-        version: 29.0.0(fnk4xsjsgnsjkwtrfhoazlnlxq)
+        specifier: 29.0.1
+        version: 29.0.1(fnk4xsjsgnsjkwtrfhoazlnlxq)
       '@tsconfig/ember':
         specifier: ^3.0.9
         version: 3.0.9
@@ -1899,8 +1899,8 @@ packages:
       '@appuniversum/ember-appuniversum': ^2.0.0 || ^3.0.0
       ember-source: ^4.0.0
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@29.0.0':
-    resolution: {integrity: sha512-gpma762YbF4w+jGzX7/ATJONN5CUBwwqjP/16sQNcWVuonvv4t53ZePqIQK9oPD552oS4bvG8rSt4EYV+Qw7xQ==}
+  '@lblod/ember-rdfa-editor-lblod-plugins@29.0.1':
+    resolution: {integrity: sha512-hAoNQX3avlyBJm6HNoB4Q7fCDEZUs6wlP6vfIcF5I6zFl+suwO9OMXkxARJsYKkd2qZavK9p9MRh4OZB4UPxVA==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@appuniversum/ember-appuniversum': ^3.5.0
@@ -12451,7 +12451,7 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@29.0.0(fnk4xsjsgnsjkwtrfhoazlnlxq)':
+  '@lblod/ember-rdfa-editor-lblod-plugins@29.0.1(fnk4xsjsgnsjkwtrfhoazlnlxq)':
     dependencies:
       '@appuniversum/ember-appuniversum': 3.8.0(smjpcym6solncpes2bgwll3u6a)
       '@babel/core': 7.25.2
@@ -13405,12 +13405,12 @@ snapshots:
   '@webpack-cli/configtest@2.1.1(webpack-cli@5.1.4)(webpack@5.91.0)':
     dependencies:
       webpack: 5.91.0(webpack-cli@5.1.4)
-      webpack-cli: 5.1.4(webpack@5.91.0)
+      webpack-cli: 5.1.4(webpack-dev-server@4.15.1)(webpack@5.91.0)
 
   '@webpack-cli/info@2.0.2(webpack-cli@5.1.4)(webpack@5.91.0)':
     dependencies:
       webpack: 5.91.0(webpack-cli@5.1.4)
-      webpack-cli: 5.1.4(webpack@5.91.0)
+      webpack-cli: 5.1.4(webpack-dev-server@4.15.1)(webpack@5.91.0)
 
   '@webpack-cli/serve@2.0.5(webpack-cli@5.1.4)(webpack-dev-server@4.15.1)(webpack@5.91.0)':
     dependencies:
@@ -21967,7 +21967,7 @@ snapshots:
       watchpack: 2.4.1
       webpack-sources: 3.2.3
     optionalDependencies:
-      webpack-cli: 5.1.4(webpack@5.91.0)
+      webpack-cli: 5.1.4(webpack-dev-server@4.15.1)(webpack@5.91.0)
     transitivePeerDependencies:
       - '@swc/core'
       - esbuild
