@@ -6,7 +6,6 @@ import { babel } from '@rollup/plugin-babel';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
-
   build: {
     lib: {
       entry: resolve(__dirname, 'main.ts'),

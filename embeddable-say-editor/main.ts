@@ -40,27 +40,30 @@ export async function renderEditor({
   growEditor = false,
 }: RenderEditorOptions): Promise<EditorElement> {
   // build the iframe
+  console.log('hello from main.ts');
 
-  const app = App.create({
-    autoboot: false,
+  const app = await App.create({
+    // autoboot: false,
     name: '@lblod/embeddable-say-editor',
     location: 'none',
   });
   // Launch the editor
-  await app.visit('/', { rootElement: element.id, location: 'none' });
+  await app.visit('/', {
+    rootElement: element as unknown as string,
+    location: 'none',
+  });
   // get the element
-  const editorElement = document.getElementsByClassName(
-    'notule-editor',
-  )[0] as unknown as EditorElement;
-  // remove the now unnecessary javascript to avoid overloading the dom
+  // const editorElement = document.getElementsByClassName(
+  //   'notule-editor',
+  // )[0] as unknown as EditorElement;
   // initialize the editor
-  await editorElement.initEditor(plugins, options);
+  // await editorElement.initEditor(plugins, options);
 
-  if (cssVariables && Object.keys(cssVariables).length > 0) {
-    Object.entries(cssVariables).forEach(([key, value]) => {
-      editorElement.style.setProperty(key, value);
-    });
-  }
+  // if (cssVariables && Object.keys(cssVariables).length > 0) {
+  //   Object.entries(cssVariables).forEach(([key, value]) => {
+  //     editorElement.style.setProperty(key, value);
+  //   });
+  // }
 
-  return editorElement;
+  // return editorElement;
 }

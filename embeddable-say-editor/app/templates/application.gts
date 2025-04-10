@@ -6,9 +6,10 @@ import BasicDropdownWormhole from 'ember-basic-dropdown/components/basic-dropdow
 
 export default Route(
   <template>
-    {{pageTitle "EmbeddableSayEditor"}}
+    {{pageTitle "EmbeddableblehEditor"}}
 
     {{! Feel free to remove this! }}
+    yeet
     <AuModalContainer />
     <SimpleEditor />
     <BasicDropdownWormhole />

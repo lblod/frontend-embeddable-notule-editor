@@ -61,6 +61,7 @@
     "@embroider/config-meta-loader": "^1.0.0",
     "@embroider/core": "^4.0.1",
     "@embroider/macros": "^1.17.1",
+    "@embroider/util": "^1.13.2",
     "@embroider/vite": "^1.0.2",
     "@eslint/js": "^9.23.0",
     "@glimmer/component": "^2.0.0",
