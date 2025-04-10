@@ -1,3 +1,15 @@
 packages:
   - 'embeddable-say-editor'
   - 'test-app'
+overrides:
+  '@ember/string': 4.0.1
+packageExtensions:
+  ember-leaflet:
+    dependencies:
+      '@ember/string': 4.0.1
+    devDependencies:
+      '@ember/string': 4.0.1
+patchedDependencies:
+  ember-leaflet: patches/ember-leaflet.patch
+  '@lblod/ember-rdfa-editor-lblod-plugins': >-
+    patches/@lblod__ember-rdfa-editor-lblod-plugins.patch
