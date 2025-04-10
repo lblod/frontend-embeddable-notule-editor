@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>EmbeddableSayEditor</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     {{content-for "head"}}
 
-    <link integrity="" rel="stylesheet" href="/@embroider/virtual/vendor.css">
-    <link integrity="" rel="stylesheet" href="/@embroider/virtual/app.css">
+    <link integrity="" rel="stylesheet" href="/@embroider/virtual/vendor.css" />
+    <link integrity="" rel="stylesheet" href="/@embroider/virtual/app.css" />
 
     {{content-for "head-footer"}}
   </head>
@@ -17,11 +17,11 @@
     {{content-for "body"}}
 
     <script src="/@embroider/virtual/vendor.js"></script>
+    <div id="editorContainer" />
     <script type="module">
-      import Application from './app/app';
-      import environment from './app/config/environment';
+      import { renderEditor } from "./main.ts";
 
-      Application.create(environment.APP);
+      renderEditor({ element: "#editorContainer", plugins: ['location'] });
     </script>
 
     {{content-for "body-footer"}}

@@ -42,8 +42,8 @@ export async function renderEditor({
   // build the iframe
   console.log('hello from main.ts');
 
-  const app = await App.create({
-    // autoboot: false,
+  const app = App.create({
+    autoboot: false,
     name: '@lblod/embeddable-say-editor',
     location: 'none',
   });
@@ -53,17 +53,17 @@ export async function renderEditor({
     location: 'none',
   });
   // get the element
-  // const editorElement = document.getElementsByClassName(
-  //   'notule-editor',
-  // )[0] as unknown as EditorElement;
+  const editorElement = document.getElementsByClassName(
+    'notule-editor',
+  )[0] as unknown as EditorElement;
   // initialize the editor
-  // await editorElement.initEditor(plugins, options);
+  await editorElement.initEditor(plugins, options);
 
-  // if (cssVariables && Object.keys(cssVariables).length > 0) {
-  //   Object.entries(cssVariables).forEach(([key, value]) => {
-  //     editorElement.style.setProperty(key, value);
-  //   });
-  // }
+  if (cssVariables && Object.keys(cssVariables).length > 0) {
+    Object.entries(cssVariables).forEach(([key, value]) => {
+      editorElement.style.setProperty(key, value);
+    });
+  }
 
-  // return editorElement;
+  return editorElement;
 }
