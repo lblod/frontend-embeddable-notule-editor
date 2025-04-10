@@ -1,0 +1,12 @@
+overrides:
+  '@ember/string': $@ember/string
+packageExtensions:
+  ember-leaflet:
+    dependencies:
+      '@ember/string': 4.0.1
+    devDependencies:
+      '@ember/string': 4.0.1
+patchedDependencies:
+  ember-leaflet: patches/ember-leaflet.patch
+  '@lblod/ember-rdfa-editor-lblod-plugins': >-
+    /home/arne/repos/redpencil/embeddable-say-editor/patches/@lblod__ember-rdfa-editor-lblod-plugins.patch

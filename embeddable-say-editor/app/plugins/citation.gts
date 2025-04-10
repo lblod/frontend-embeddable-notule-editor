@@ -3,7 +3,7 @@ import {
   type CitationPluginEmberComponentConfig,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/citation-plugin';
 import type { PluginInitializer } from '../../shared-types/embedded-plugin';
-import { mergeConfigs } from '../config/defaults';
+import { mergeConfigs } from '../setup/defaults';
 import type { EditorState } from '@lblod/ember-rdfa-editor';
 import type { TOC } from '@ember/component/template-only';
 import CitationInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/citation-plugin/citation-insert';
@@ -12,7 +12,7 @@ import type { WidgetSignature } from '../../shared-types/widgets';
 
 const name = 'citation' as const;
 
-declare module 'plugin-registry' {
+declare module '../../shared-types/plugin-registry' {
   export interface PluginOptions {
     [name]?: Partial<CitationPluginEmberComponentConfig>;
   }

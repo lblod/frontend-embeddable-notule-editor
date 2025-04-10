@@ -2,7 +2,7 @@ import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 import FormattingToggle from '@lblod/ember-rdfa-editor/components/plugins/formatting/formatting-toggle';
 const name = 'formattingToggle' as const;
 
-declare module 'plugin-registry' {
+declare module '../../shared-types/plugin-registry' {
   export interface EmbeddedPlugins {
     [name]: typeof setupFormattingToggle;
   }

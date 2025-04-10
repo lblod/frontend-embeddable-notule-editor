@@ -29,7 +29,7 @@ const color: TOC<WidgetSignature> = <template>
   <ColorMenu @controller={{@controller}} @defaultColor='#000000' />
 </template>;
 
-declare module 'plugin-registry' {
+declare module '../../../shared-types/plugin-registry' {
   export interface ToolbarWidgets {
     undo: typeof Undo;
     redo: typeof Redo;

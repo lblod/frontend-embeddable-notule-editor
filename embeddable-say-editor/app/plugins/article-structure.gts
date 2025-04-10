@@ -13,7 +13,7 @@ import type { SayController } from '@lblod/ember-rdfa-editor';
 
 const name = 'articleStructure' as const;
 
-declare module 'plugin-registry' {
+declare module '../../shared-types/plugin-registry' {
   export interface EmbeddedPlugins {
     [name]: typeof articleStructurePlugin;
   }

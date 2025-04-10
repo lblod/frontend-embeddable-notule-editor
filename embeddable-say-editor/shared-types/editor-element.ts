@@ -1,4 +1,4 @@
-import type { SayController } from '@lblod/ember-rdfa-editor';
+import type SayController from '@lblod/ember-rdfa-editor/core/say-controller';
 import type { KebabPluginName, UserPluginOptions } from './embedded-plugin';
 
 /**

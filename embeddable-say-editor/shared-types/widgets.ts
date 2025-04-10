@@ -1,13 +1,13 @@
-import type { SayController } from '@lblod/ember-rdfa-editor';
+import type SayController from '@lblod/ember-rdfa-editor/core/say-controller';
 import type { ResolvedPNode } from '@lblod/ember-rdfa-editor/utils/_private/types';
-import type { EditorSetup } from '../app/config/setup-plugins';
-import type {
-  ToolbarWidgets,
-  SidebarWidgets,
-  SidebarListItemWidgets,
-} from 'plugin-registry';
+import type { EditorSetup } from '../app/setup/setup-plugins';
 import type { ComponentLike } from '@glint/template';
 import type { PluginName } from './embedded-plugin';
+import type {
+  SidebarListItemWidgets,
+  SidebarWidgets,
+  ToolbarWidgets,
+} from './plugin-registry';
 
 export type WidgetSignature<N extends PluginName | void = void> = {
   Args: {

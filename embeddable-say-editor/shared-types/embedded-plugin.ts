@@ -1,18 +1,7 @@
-import type {
-  MarkSpec,
-  ProsePlugin,
-  SayController,
-} from '@lblod/ember-rdfa-editor';
+import type SayController from '@lblod/ember-rdfa-editor/core/say-controller';
 import type SayNodeSpec from '@lblod/ember-rdfa-editor/core/say-node-spec';
 import type { SayNodeViewConstructor } from '@lblod/ember-rdfa-editor/utils/ember-node';
-import type IntlService from 'ember-intl/services/intl';
 import type { Kebab } from './type-utils';
-import type {
-  EmbeddedPlugins,
-  OtherOptions,
-  PluginOptions,
-} from 'plugin-registry';
-import type { ToolbarWidgets } from 'plugin-registry';
 import type {
   SidebarConfig,
   SidebarListItemWidgetName,
@@ -20,9 +9,17 @@ import type {
   ToolbarConfig,
   ToolbarWidgetName,
 } from './widgets';
-import type { SidebarWidgets } from 'plugin-registry';
-import type { SidebarListItemWidgets } from 'plugin-registry';
-import type { EditorSetup } from '../app/config/setup-plugins';
+import type { EditorSetup } from '../app/setup/setup-plugins';
+import type {
+  EmbeddedPlugins,
+  OtherOptions,
+  PluginOptions,
+  SidebarListItemWidgets,
+  SidebarWidgets,
+  ToolbarWidgets,
+} from './plugin-registry';
+import type IntlService from 'ember-intl/services/intl';
+import type { MarkSpec, ProsePlugin } from '@lblod/ember-rdfa-editor';
 
 /**
  * Valid plugin names, as defined by the registry

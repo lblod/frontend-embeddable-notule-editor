@@ -3,7 +3,7 @@ import {
   osloLocationView,
   type LocationPluginConfig,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/location-plugin/node';
-import { mergeConfigs } from '../config/defaults';
+import { mergeConfigs } from '../setup/defaults';
 import OSLOLocationInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/location-plugin/insert';
 import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 import type { TOC } from '@ember/component/template-only';
@@ -14,7 +14,7 @@ type Config = LocationPluginConfig & {
   defaultMunicipality?: string;
   locationTypes: ['address', 'place', 'area'];
 };
-declare module 'plugin-registry' {
+declare module '../../shared-types/plugin-registry' {
   export interface PluginOptions {
     [name]?: Config;
   }

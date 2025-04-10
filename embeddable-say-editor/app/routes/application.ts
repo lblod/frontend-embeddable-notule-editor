@@ -1,14 +1,17 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
-import type Transition from '@ember/routing/transition';
-import IntlService from 'ember-intl/services/intl';
+import { decentLocaleMatch } from '@lblod/ember-rdfa-editor/utils/intl-utils';
+import type IntlService from 'ember-intl/services/intl';
 
 export default class ApplicationRoute extends Route {
   @service declare intl: IntlService;
 
-  beforeModel(transition: Transition) {
-    const userLocale = navigator.language ?? navigator.languages[0];
-    this.intl.setLocale([userLocale, 'nl-BE']);
-    return super.beforeModel(transition);
+  beforeModel() {
+    const userLocales = decentLocaleMatch(
+      navigator.languages,
+      this.intl.locales,
+      'en-US',
+    );
+    this.intl.setLocale(userLocales);
   }
 }

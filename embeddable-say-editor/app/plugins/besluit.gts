@@ -1,5 +1,5 @@
 import type { PluginInitializer } from '../../shared-types/embedded-plugin';
-import { mergeConfigs } from '../config/defaults';
+import { mergeConfigs } from '../setup/defaults';
 import { v4 as uuidv4 } from 'uuid';
 import type { TOC } from '@ember/component/template-only';
 import InsertArticleComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/decision-plugin/insert-article';
@@ -20,7 +20,7 @@ interface BesluitPluginConfig {
   onlyArticleSpecialName: boolean;
 }
 
-declare module 'plugin-registry' {
+declare module '../../shared-types/plugin-registry' {
   export interface EmbeddedPlugins {
     [name]: typeof besluitPlugin;
   }

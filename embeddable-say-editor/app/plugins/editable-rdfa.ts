@@ -2,7 +2,7 @@ import { editableNodePlugin } from '@lblod/ember-rdfa-editor/plugins/_private/ed
 import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 
 const name = 'rdfaEditor' as const;
-declare module 'plugin-registry' {
+declare module '../../shared-types/plugin-registry' {
   export interface EmbeddedPlugins {
     [name]: typeof setupEditableRdfaPlugin;
   }

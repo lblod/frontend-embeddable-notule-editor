@@ -6,7 +6,7 @@ import AttributeEditor from '@lblod/ember-rdfa-editor/components/_private/attrib
 import RdfaEditor from '@lblod/ember-rdfa-editor/components/_private/rdfa-editor';
 import type { WidgetSignature } from '../../../shared-types/widgets';
 
-declare module 'plugin-registry' {
+declare module '../../../shared-types/plugin-registry' {
   export interface SidebarWidgets {
     'structure:edit': typeof StructureControlCard;
     'devtools:debug-info': typeof debugInfo;

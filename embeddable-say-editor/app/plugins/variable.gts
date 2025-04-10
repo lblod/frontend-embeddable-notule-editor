@@ -32,7 +32,7 @@ import LocationEdit from '@lblod/ember-rdfa-editor-lblod-plugins/components/vari
 import AddressEdit from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/address/edit';
 import type { LocationEditOptions } from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/location/edit';
 import type { PluginInitializer } from '../../shared-types/embedded-plugin';
-import { mergeConfigs } from '../config/defaults';
+import { mergeConfigs } from '../setup/defaults';
 import type { WidgetSignature } from '../../shared-types/widgets';
 import type { TOC } from '@ember/component/template-only';
 import type IntlService from 'ember-intl/services/intl';
@@ -55,7 +55,7 @@ export type VariablePluginConfig = {
   };
 };
 
-declare module 'plugin-registry' {
+declare module '../../shared-types/plugin-registry' {
   export interface PluginOptions {
     [name]?: Partial<VariablePluginConfig>;
   }

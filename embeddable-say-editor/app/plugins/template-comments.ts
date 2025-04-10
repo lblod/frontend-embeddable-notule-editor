@@ -8,7 +8,7 @@ import TemplateCommentEditCard from '@lblod/ember-rdfa-editor-lblod-plugins/comp
 import TemplateCommentInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/template-comments-plugin/insert';
 
 const name = 'templateComments' as const;
-declare module 'plugin-registry' {
+declare module '../../shared-types/plugin-registry' {
   export interface EmbeddedPlugins {
     [name]: typeof setupTemplateCommentsPlugin;
   }

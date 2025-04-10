@@ -43,7 +43,7 @@ import type { ProsePlugin } from '@lblod/ember-rdfa-editor';
 import { coreToolbarWidgets } from './toolbar-widgets';
 import { coreSidebarWidgets } from './sidebar-widgets';
 const name = 'core' as const;
-declare module 'plugin-registry' {
+declare module '../../../shared-types/plugin-registry' {
   export interface OtherOptions {
     docContent?: string;
   }

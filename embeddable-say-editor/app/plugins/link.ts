@@ -7,7 +7,7 @@ import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 
 const name = 'link' as const;
 
-declare module 'plugin-registry' {
+declare module '../../shared-types/plugin-registry' {
   export interface EmbeddedPlugins {
     [name]: typeof setupLinkPlugin;
   }

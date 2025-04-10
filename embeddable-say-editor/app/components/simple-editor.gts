@@ -10,21 +10,18 @@ import { getActiveEditableNode } from '@lblod/ember-rdfa-editor/plugins/_private
 import EditorContainer from '@lblod/ember-rdfa-editor/components/editor-container';
 import Editor from '@lblod/ember-rdfa-editor/components/editor';
 import TableTooltip from '@lblod/ember-rdfa-editor/components/plugins/table/table-tooltip';
-//@ts-expect-error no types yet
-import EnvironmentBanner from '@lblod/ember-environment-banner/components/environment-banner';
 import { DEFAULT_CONTEXT } from '../utils/constants';
 import type IntlService from 'ember-intl/services/intl';
 import Toolbar from './toolbar';
 import Sidebar from './sidebar';
 import { hash } from '@ember/helper';
 import type { EditorElement } from '../../shared-types/editor-element';
-import { setupPlugins, type EditorSetup } from '../config/setup-plugins';
-import type { PluginOptions } from 'plugin-registry';
+import { setupPlugins, type EditorSetup } from '../setup/setup-plugins';
 import type { KebabPluginName } from '../../shared-types/embedded-plugin';
 import type { ModifierLike } from '@glint/template';
+import type { PluginOptions } from '../../shared-types/plugin-registry';
 
 interface Sig {
-  Args: void;
   Blocks: { default: [] };
 }
 export default class SimpleEditorComponent extends Component<Sig> {
@@ -172,12 +169,6 @@ export default class SimpleEditorComponent extends Component<Sig> {
   }
   <template>
     <div id='ember-appuniversum-wormhole'></div>
-    {{#if this.showEnvironmentBanner}}
-      <EnvironmentBanner
-        @environmentName={{this.environment}}
-        @applicationName='Embeddable Notule Editor'
-      />
-    {{/if}}
     <div {{this.insertedInDom}} class='notule-editor'>
       <div id='ember-basic-dropdown-wormhole'></div>
       {{#if this.setup}}

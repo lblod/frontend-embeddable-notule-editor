@@ -2,14 +2,14 @@ import type { TOC } from '@ember/component/template-only';
 import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 import type { WidgetSignature } from '../../shared-types/widgets';
 import LpdcInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/lpdc-plugin/lpdc-insert';
-import { mergeConfigs } from '../config/defaults';
+import { mergeConfigs } from '../setup/defaults';
 
 const name = 'lpdc' as const;
 interface LpdcConfig {
   endpoint: string;
   decisionUri?: string;
 }
-declare module 'plugin-registry' {
+declare module '../../shared-types/plugin-registry' {
   export interface EmbeddedPlugins {
     [name]: typeof setupLpdcPlugin;
   }

@@ -1,6 +1,5 @@
 import EmberRouter from '@ember/routing/router';
-//@ts-expect-error TODO figure out how to type this
-import config from '@lblod/embeddable-say-editor/config/environment';
+import config from 'embeddable-say-editor/config/environment';
 
 export default class Router extends EmberRouter {
   location = config.locationType;
@@ -8,7 +7,5 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function () {
-  this.route('route-not-found', {
-    path: '/*wildcard',
-  });
+  // Add route declarations here
 });

@@ -4,7 +4,7 @@ import {
   imageWithConfig,
 } from '@lblod/ember-rdfa-editor/plugins/image';
 import type { PluginInitializer } from '../../shared-types/embedded-plugin';
-import { mergeConfigs } from '../config/defaults';
+import { mergeConfigs } from '../setup/defaults';
 export type ImagePluginConfig = {
   allowBase64Images: boolean;
   pasteLimit: number;
@@ -12,7 +12,7 @@ export type ImagePluginConfig = {
 };
 
 const name = 'image' as const;
-declare module 'plugin-registry' {
+declare module '../../shared-types/plugin-registry' {
   export interface PluginOptions {
     [name]?: Partial<ImagePluginConfig>;
   }

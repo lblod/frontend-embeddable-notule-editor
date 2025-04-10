@@ -4,7 +4,7 @@ import {
   tablePlugins,
 } from '@lblod/ember-rdfa-editor/plugins/table';
 import type { PluginInitializer } from '../../shared-types/embedded-plugin';
-import { mergeConfigs } from '../config/defaults';
+import { mergeConfigs } from '../setup/defaults';
 
 const name = 'table' as const;
 
@@ -15,7 +15,7 @@ export type TableConfig = {
   rowBackground?: { even?: string; odd?: string };
 };
 
-declare module 'plugin-registry' {
+declare module '../../shared-types/plugin-registry' {
   export interface PluginOptions {
     [name]?: Partial<TableConfig>;
   }

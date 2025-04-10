@@ -30,11 +30,9 @@ export default class HTMLPreviewMenu extends Component<Signature> {
   }
 
   <template>
-    {{! @glint-expect-error fix typechecking here }}
     <ToolbarButton
-      {{! @glint-expect-error fix typechecking here }}
-      {{on 'click' this.openPreview}}
-      class='au-u-margin-left-tiny au-u-margin-right-tiny'
+      {{on "click" this.openPreview}}
+      class="au-u-margin-left-tiny au-u-margin-right-tiny"
     >
       Preview Rendered HTML
     </ToolbarButton>
