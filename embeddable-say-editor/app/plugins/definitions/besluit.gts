@@ -1,9 +1,9 @@
-import type { PluginInitializer } from '../../shared-types/embedded-plugin';
+import type { PluginInitializer } from '../embedded-plugin.ts';
 import { mergeConfigs } from '../setup/defaults';
 import { v4 as uuidv4 } from 'uuid';
 import type { TOC } from '@ember/component/template-only';
 import InsertArticleComponent from '@lblod/ember-rdfa-editor-lblod-plugins/components/decision-plugin/insert-article';
-import type { WidgetSignature } from '../../shared-types/widgets';
+import type { WidgetSignature } from '../widgets';
 import {
   structureWithConfig,
   structureViewWithConfig,
@@ -20,7 +20,7 @@ interface BesluitPluginConfig {
   decisionUri?: string;
 }
 
-declare module '../../shared-types/plugin-registry' {
+declare module '../plugin-registry' {
   export interface EmbeddedPlugins {
     [name]: typeof besluitPlugin;
   }

@@ -12,35 +12,35 @@ import type {
   PluginInitArgs,
   PluginName,
   PluginSpecs,
-} from '../../shared-types/embedded-plugin.ts';
-import { articleStructurePlugin } from '../plugins/article-structure.gts';
-import { besluitTopic } from '../plugins/besluit-topic.gts';
-import { besluitPlugin } from '../plugins/besluit.gts';
-import { setupCitationPlugin } from '../plugins/citation.gts';
-import { confidentialityPlugin } from '../plugins/confidentiality.ts';
-import { setupEditableRdfaPlugin } from '../plugins/editable-rdfa.ts';
-import { setupImagePlugin } from '../plugins/image.ts';
-import { coreSetup } from '../plugins/core/core.ts';
-import { setupLinkPlugin } from '../plugins/link.ts';
-import { setupLocationPlugin } from '../plugins/location.gts';
-import { setupLpdcPlugin } from '../plugins/lpdc.gts';
-import { setupRoadsignRegulationPlugin } from '../plugins/roadsign-regulation.gts';
-import { setupTableOfContentsPlugin } from '../plugins/table-of-contents.ts';
-import { tableSetup } from '../plugins/table.ts';
-import { setupTemplateCommentsPlugin } from '../plugins/template-comments.ts';
-import { setupVariablePlugin } from '../plugins/variable.gts';
+} from '../embedded-plugin.ts';
+import { articleStructurePlugin } from '../definitions/article-structure.gts';
+import { besluitTopic } from '../definitions/besluit-topic.gts';
+import { besluitPlugin } from '../definitions/besluit.gts';
+import { setupCitationPlugin } from '../definitions/citation.gts';
+import { confidentialityPlugin } from '../definitions/confidentiality.ts';
+import { setupEditableRdfaPlugin } from '../definitions/editable-rdfa.ts';
+import { setupImagePlugin } from '../definitions/image.ts';
+import { coreSetup } from '../definitions/core/core.ts';
+import { setupLinkPlugin } from '../definitions/link.ts';
+import { setupLocationPlugin } from '../definitions/location.gts';
+import { setupLpdcPlugin } from '../definitions/lpdc.gts';
+import { setupRoadsignRegulationPlugin } from '../definitions/roadsign-regulation.gts';
+import { setupTableOfContentsPlugin } from '../definitions/table-of-contents.ts';
+import { tableSetup } from '../definitions/table.ts';
+import { setupTemplateCommentsPlugin } from '../definitions/template-comments.ts';
+import { setupVariablePlugin } from '../definitions/variable.gts';
 import type { SayNodeViewConstructor } from '@lblod/ember-rdfa-editor/utils/ember-node';
 import type {
   SidebarConfig,
   ToolbarConfig,
   WidgetComponent,
-} from '../../shared-types/widgets.ts';
+} from '../widgets.ts';
 import { defaultToolbar } from './default-toolbar.ts';
 import { defaultSidebar } from './default-sidebar.ts';
-import { setupHtmlEdit } from '../plugins/html-edit.gts';
-import { setupHtmlPreview } from '../plugins/html-preview.ts';
-import { setupFormattingToggle } from '../plugins/formatting-toggle.ts';
-import type { EmbeddedPlugins } from '../../shared-types/plugin-registry.ts';
+import { setupHtmlEdit } from '../definitions/html-edit.gts';
+import { setupHtmlPreview } from '../definitions/html-preview.ts';
+import { setupFormattingToggle } from '../definitions/formatting-toggle.ts';
+import type { EmbeddedPlugins } from '../plugin-registry.ts';
 type EnsuredSpecs<
   S extends PluginSpecs,
   N extends PluginName | void,

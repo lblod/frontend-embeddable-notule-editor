@@ -15,11 +15,14 @@ import type IntlService from 'ember-intl/services/intl';
 import Toolbar from './toolbar';
 import Sidebar from './sidebar';
 import { hash } from '@ember/helper';
-import type { EditorElement } from '../../shared-types/editor-element';
-import { setupPlugins, type EditorSetup } from '../setup/setup-plugins';
-import type { KebabPluginName } from '../../shared-types/embedded-plugin';
+import type { EditorElement } from '../editor-element';
+import {
+  setupPlugins,
+  type EditorSetup,
+} from '../plugins/setup/setup-plugins.ts';
+import type { KebabPluginName } from '../plugins/embedded-plugin.ts';
 import type { ModifierLike } from '@glint/template';
-import type { PluginOptions } from '../../shared-types/plugin-registry';
+import type { PluginOptions } from '../plugins/plugin-registry';
 
 interface Sig {
   Blocks: { default: [] };

@@ -18,8 +18,8 @@ import ImageInsertMenu from '@lblod/ember-rdfa-editor/components/plugins/image/i
 import TableMenu from '@lblod/ember-rdfa-editor/components/plugins/table/table-menu';
 
 import type { TOC } from '@ember/component/template-only';
-import type { WidgetSignature } from '../../../shared-types/widgets';
-import type { ToolbarWidgetMap } from '../../../shared-types/embedded-plugin';
+import type { WidgetSignature } from '../../widgets';
+import type { ToolbarWidgetMap } from '../../embedded-plugin';
 
 const highlight: TOC<WidgetSignature> = <template>
   <Highlight @controller={{@controller}} @defaultColor="#000000" />
@@ -29,7 +29,7 @@ const color: TOC<WidgetSignature> = <template>
   <ColorMenu @controller={{@controller}} @defaultColor="#000000" />
 </template>;
 
-declare module '../../../shared-types/plugin-registry' {
+declare module '../../plugin-registry' {
   export interface ToolbarWidgets {
     undo: typeof Undo;
     redo: typeof Redo;

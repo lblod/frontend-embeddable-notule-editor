@@ -1,6 +1,4 @@
 import type { TOC } from '@ember/component/template-only';
-import type { PluginInitializer } from '../../shared-types/embedded-plugin';
-import type { WidgetSignature } from '../../shared-types/widgets';
 import ArticleStructureInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/article-structure-plugin/article-structure-card';
 import {
   structureWithConfig,
@@ -9,10 +7,12 @@ import {
 import type { StructurePluginOptions } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/structure-plugin/structure-types';
 import type { SayNodeViewConstructor } from '@lblod/ember-rdfa-editor/utils/ember-node';
 import type { SayController } from '@lblod/ember-rdfa-editor';
+import type { WidgetSignature } from '../widgets.ts';
+import type { PluginInitializer } from '../embedded-plugin.ts';
 
 const name = 'articleStructure';
 
-declare module '../../shared-types/plugin-registry' {
+declare module '../plugin-registry' {
   export interface EmbeddedPlugins {
     [name]: typeof articleStructurePlugin;
   }

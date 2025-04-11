@@ -4,9 +4,9 @@ import type { TOC } from '@ember/component/template-only';
 import DebugInfo from '@lblod/ember-rdfa-editor/components/_private/debug-info';
 import AttributeEditor from '@lblod/ember-rdfa-editor/components/_private/attribute-editor';
 import RdfaEditor from '@lblod/ember-rdfa-editor/components/_private/rdfa-editor';
-import type { WidgetSignature } from '../../../shared-types/widgets';
+import type { WidgetSignature } from '../../widgets.ts';
 
-declare module '../../../shared-types/plugin-registry' {
+declare module '../../plugin-registry' {
   export interface SidebarWidgets {
     'structure:edit': typeof StructureControlCard;
     'devtools:debug-info': typeof debugInfo;

@@ -2,7 +2,7 @@ import { renderEditor } from '../../app/main.ts';
 import type {
   KebabPluginName,
   UserPluginOptions,
-} from '../../shared-types/embedded-plugin.ts';
+} from '../embedded-plugin.ts';
 import { router } from '../router.ts';
 
 const plugins: KebabPluginName[] = ['besluit', 'lpdc', 'roadsign-regulation'];

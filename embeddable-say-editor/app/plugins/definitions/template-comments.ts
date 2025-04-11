@@ -3,12 +3,12 @@ import {
   templateCommentView,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/template-comments-plugin';
 import type { SayController } from '@lblod/ember-rdfa-editor';
-import type { PluginInitializer } from '../../shared-types/embedded-plugin';
+import type { PluginInitializer } from '../embedded-plugin.ts';
 import TemplateCommentEditCard from '@lblod/ember-rdfa-editor-lblod-plugins/components/template-comments-plugin/edit-card';
 import TemplateCommentInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/template-comments-plugin/insert';
 
 const name = 'templateComments';
-declare module '../../shared-types/plugin-registry' {
+declare module '../plugin-registry' {
   export interface EmbeddedPlugins {
     [name]: typeof setupTemplateCommentsPlugin;
   }

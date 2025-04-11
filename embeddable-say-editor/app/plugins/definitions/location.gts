@@ -5,16 +5,16 @@ import {
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/location-plugin/node';
 import { mergeConfigs } from '../setup/defaults';
 import OSLOLocationInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/location-plugin/insert';
-import type { PluginInitializer } from '../../shared-types/embedded-plugin';
+import type { PluginInitializer } from '../embedded-plugin';
 import type { TOC } from '@ember/component/template-only';
-import type { WidgetSignature } from '../../shared-types/widgets';
+import type { WidgetSignature } from '../widgets';
 
 const name = 'location';
 type Config = LocationPluginConfig & {
   defaultMunicipality?: string;
   locationTypes: Array<'address' | 'place' | 'area'>;
 };
-declare module '../../shared-types/plugin-registry' {
+declare module '../plugin-registry' {
   export interface PluginOptions {
     [name]?: Partial<Config>;
   }

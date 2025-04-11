@@ -1,7 +1,7 @@
 import type SayController from '@lblod/ember-rdfa-editor/core/say-controller';
 import type SayNodeSpec from '@lblod/ember-rdfa-editor/core/say-node-spec';
 import type { SayNodeViewConstructor } from '@lblod/ember-rdfa-editor/utils/ember-node';
-import type { Kebab } from './type-utils';
+import type { Kebab } from '../utils/type-utils.ts';
 import type {
   SidebarConfig,
   SidebarListItemWidgetName,
@@ -9,7 +9,6 @@ import type {
   ToolbarConfig,
   ToolbarWidgetName,
 } from './widgets';
-import type { EditorSetup } from '../app/setup/setup-plugins';
 import type {
   EmbeddedPlugins,
   OtherOptions,
@@ -20,6 +19,7 @@ import type {
 } from './plugin-registry';
 import type IntlService from 'ember-intl/services/intl';
 import type { MarkSpec, ProsePlugin } from '@lblod/ember-rdfa-editor';
+import type { EditorSetup } from './setup/setup-plugins.ts';
 
 /**
  * Valid plugin names, as defined by the registry

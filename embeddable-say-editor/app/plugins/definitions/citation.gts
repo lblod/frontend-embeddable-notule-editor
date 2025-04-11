@@ -2,17 +2,17 @@ import {
   citationPlugin,
   type CitationPluginEmberComponentConfig,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/citation-plugin';
-import type { PluginInitializer } from '../../shared-types/embedded-plugin';
+import type { PluginInitializer } from '../embedded-plugin';
 import { mergeConfigs } from '../setup/defaults';
 import type { EditorState } from '@lblod/ember-rdfa-editor';
 import type { TOC } from '@ember/component/template-only';
 import CitationInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/citation-plugin/citation-insert';
 import CitationEditCard from '@lblod/ember-rdfa-editor-lblod-plugins/components/citation-plugin/citation-card';
-import type { WidgetSignature } from '../../shared-types/widgets';
+import type { WidgetSignature } from '../widgets';
 
 const name = 'citation';
 
-declare module '../../shared-types/plugin-registry' {
+declare module '../plugin-registry' {
   export interface PluginOptions {
     [name]?: Partial<
       CitationPluginEmberComponentConfig & {

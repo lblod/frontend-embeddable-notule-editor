@@ -38,12 +38,12 @@ import {
 } from '@lblod/ember-rdfa-editor/plugins/list';
 import { headingWithConfig } from '@lblod/ember-rdfa-editor/plugins/heading';
 import { inlineRdfaWithConfig } from '@lblod/ember-rdfa-editor/nodes/inline-rdfa';
-import type { PluginInitializer } from '../../../shared-types/embedded-plugin';
+import type { PluginInitializer } from '../../embedded-plugin.ts';
 import type { ProsePlugin } from '@lblod/ember-rdfa-editor';
 import { coreToolbarWidgets } from './toolbar-widgets.gts';
 import { coreSidebarWidgets } from './sidebar-widgets.gts';
 const name = 'core';
-declare module '../../../shared-types/plugin-registry' {
+declare module '../../plugin-registry' {
   export interface OtherOptions {
     docContent?: string;
     /**

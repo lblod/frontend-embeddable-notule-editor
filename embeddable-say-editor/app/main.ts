@@ -1,7 +1,7 @@
 import { default as App } from './app.ts';
-import type { EditorElement } from '../shared-types/editor-element.ts';
-export type { EditorElement } from '../shared-types/editor-element.ts';
-import type { RenderEditorOptions } from '../shared-types/render-editor-options.ts';
+import type { EditorElement } from './editor-element.ts';
+export type { EditorElement } from './editor-element.ts';
+import type { RenderEditorOptions } from './render-editor-options.ts';
 
 type SimpleElement = Parameters<App['visit']>[1]['rootElement'];
 

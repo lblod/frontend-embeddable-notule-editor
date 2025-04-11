@@ -10,7 +10,7 @@ import type { EditorSetup } from '../setup/setup-plugins';
 import type {
   ToolbarConfig,
   ToolbarGroupConfig,
-} from '../../shared-types/widgets';
+} from '../plugins/widgets';
 
 type ToolbarSignature = {
   Args: {

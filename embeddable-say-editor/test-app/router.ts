@@ -1,4 +1,4 @@
-import type { EditorElement } from '../shared-types/editor-element.ts';
+import type { EditorElement } from '../app/editor-element.ts';
 import './router.css';
 
 declare global {

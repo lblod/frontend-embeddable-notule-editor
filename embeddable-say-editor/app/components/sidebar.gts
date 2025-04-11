@@ -12,7 +12,7 @@ import type {
   SidebarCollapsibleConfig,
   SidebarConfig,
   SidebarWidgetName,
-} from '../../shared-types/widgets';
+} from '../plugins/widgets';
 
 type SidebarSignature = {
   activeNode?: ResolvedPNode | null;

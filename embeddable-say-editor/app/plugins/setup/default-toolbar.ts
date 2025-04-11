@@ -1,9 +1,9 @@
-import type { PluginInitArgs } from '../../shared-types/embedded-plugin';
+import type { PluginInitArgs } from '../embedded-plugin';
 import type {
   ToolbarConfig,
   ToolbarGroupConfig,
   ToolbarSection,
-} from '../../shared-types/widgets';
+} from '../widgets';
 
 export function defaultToolbar({
   plugins = [],

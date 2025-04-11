@@ -1,4 +1,4 @@
-import type { RenderEditorOptions } from '../shared-types/render-editor-options';
+import type { RenderEditorOptions } from '../app/render-editor-options';
 
 export const pluginDemoConfig: Omit<RenderEditorOptions, 'element'> &
   Required<Pick<RenderEditorOptions, 'plugins'>> = {

@@ -1,8 +1,8 @@
-import type { PluginInitializer } from '../../shared-types/embedded-plugin.ts';
-import HTMLPreviewMenu from '../components/html-preview/menu.gts';
+import type { PluginInitializer } from '../embedded-plugin.ts';
+import HTMLPreviewMenu from '../../components/html-preview/menu.gts';
 const name = 'htmlPreview';
 
-declare module '../../shared-types/plugin-registry' {
+declare module '../plugin-registry' {
   export interface EmbeddedPlugins {
     [name]: typeof setupHtmlPreview;
   }
