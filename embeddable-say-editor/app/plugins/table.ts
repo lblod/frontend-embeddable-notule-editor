@@ -6,7 +6,7 @@ import {
 import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 import { mergeConfigs } from '../setup/defaults';
 
-const name = 'table' as const;
+const name = 'table';
 
 export type TableConfig = {
   tableGroup: string;

@@ -6,10 +6,10 @@ import RoadsignRegulationInsert from '@lblod/ember-rdfa-editor-lblod-plugins/com
 import type { TOC } from '@ember/component/template-only';
 import type { WidgetSignature } from '../../shared-types/widgets';
 
-const name = 'roadsignRegulation' as const;
+const name = 'roadsignRegulation';
 declare module '../../shared-types/plugin-registry' {
   export interface PluginOptions {
-    [name]?: RoadsignRegulationPluginOptions;
+    [name]?: Partial<RoadsignRegulationPluginOptions>;
   }
   export interface EmbeddedPlugins {
     [name]: typeof setupRoadsignRegulationPlugin;

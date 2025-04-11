@@ -8,10 +8,9 @@ import {
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/structure-plugin/node';
 import type { StructurePluginOptions } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/structure-plugin/structure-types';
 import type { SayNodeViewConstructor } from '@lblod/ember-rdfa-editor/utils/ember-node';
-import type SayNodeSpec from '@lblod/ember-rdfa-editor/core/say-node-spec';
 import type { SayController } from '@lblod/ember-rdfa-editor';
 
-const name = 'articleStructure' as const;
+const name = 'articleStructure';
 
 declare module '../../shared-types/plugin-registry' {
   export interface EmbeddedPlugins {
@@ -44,7 +43,7 @@ export const articleStructurePlugin = (({ plugins }) => {
     sidebarWidgets: { 'article-structure:insert': insert },
     config: structureConfig,
     nodes: {
-      structure: structureWithConfig(structureConfig) as SayNodeSpec,
+      structure: structureWithConfig(structureConfig),
     },
     nodeViews: {
       structure: (controller: SayController): SayNodeViewConstructor =>

@@ -10,7 +10,7 @@ import CitationInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/ci
 import CitationEditCard from '@lblod/ember-rdfa-editor-lblod-plugins/components/citation-plugin/citation-card';
 import type { WidgetSignature } from '../../shared-types/widgets';
 
-const name = 'citation' as const;
+const name = 'citation';
 
 declare module '../../shared-types/plugin-registry' {
   export interface PluginOptions {

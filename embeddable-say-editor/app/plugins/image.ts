@@ -11,7 +11,7 @@ export type ImagePluginConfig = {
   onLimitReached?: () => void;
 };
 
-const name = 'image' as const;
+const name = 'image';
 declare module '../../shared-types/plugin-registry' {
   export interface PluginOptions {
     [name]?: Partial<ImagePluginConfig>;

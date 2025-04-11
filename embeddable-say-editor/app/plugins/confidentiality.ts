@@ -1,7 +1,7 @@
 import { redacted } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/confidentiality-plugin/marks/redacted';
 import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 
-const name = 'confidentiality' as const;
+const name = 'confidentiality';
 
 declare module '../../shared-types/plugin-registry' {
   export interface EmbeddedPlugins {

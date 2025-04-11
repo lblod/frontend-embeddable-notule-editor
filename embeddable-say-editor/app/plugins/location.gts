@@ -9,7 +9,7 @@ import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 import type { TOC } from '@ember/component/template-only';
 import type { WidgetSignature } from '../../shared-types/widgets';
 
-const name = 'location' as const;
+const name = 'location';
 type Config = LocationPluginConfig & {
   defaultMunicipality?: string;
   locationTypes: Array<'address' | 'place' | 'area'>;

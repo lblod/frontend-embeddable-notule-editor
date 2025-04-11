@@ -5,7 +5,7 @@ import {
 } from '@lblod/ember-rdfa-editor/plugins/link';
 import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 
-const name = 'link' as const;
+const name = 'link';
 
 declare module '../../shared-types/plugin-registry' {
   export interface EmbeddedPlugins {

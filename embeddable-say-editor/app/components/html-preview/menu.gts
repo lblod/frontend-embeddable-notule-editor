@@ -5,7 +5,7 @@ import { tracked } from '@glimmer/tracking';
 import type { SayController } from '@lblod/ember-rdfa-editor';
 import { generatePageForExport } from '@lblod/ember-rdfa-editor/utils/export-utils';
 import ToolbarButton from '@lblod/ember-rdfa-editor/components/toolbar/button';
-import HTMLPreviewModal from './modal';
+import HTMLPreviewModal from './modal.gts';
 
 type Signature = {
   Args: {

@@ -8,16 +8,16 @@ import {
   structureWithConfig,
   structureViewWithConfig,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/structure-plugin/node';
-import type SayNodeSpec from '@lblod/ember-rdfa-editor/core/say-node-spec';
 import type { SayController } from '@lblod/ember-rdfa-editor';
 import type { SayNodeViewConstructor } from '@lblod/ember-rdfa-editor/utils/ember-node';
 
-const name = 'besluit' as const;
+const name = 'besluit';
 
 interface BesluitPluginConfig {
   uriGenerator: () => string;
   fullLengthArticles: boolean;
   onlyArticleSpecialName: boolean;
+  decisionUri?: string;
 }
 
 declare module '../../shared-types/plugin-registry' {
@@ -35,7 +35,7 @@ const articleInsert: TOC<WidgetSignature> = <template>
   <InsertArticleComponent
     @controller={{@controller}}
     @options={{@setup.pluginSpecs.besluit.config}}
-    @label='Voeg artikel in'
+    @label="Voeg artikel in"
   />
 </template>;
 
@@ -57,7 +57,7 @@ export const besluitPlugin = (({ options, plugins }) => {
     config,
 
     nodes: {
-      structure: structureWithConfig(config) as SayNodeSpec,
+      structure: structureWithConfig(config),
     },
     nodeViews: {
       structure: (controller: SayController): SayNodeViewConstructor =>

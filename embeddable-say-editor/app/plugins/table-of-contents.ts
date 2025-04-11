@@ -5,7 +5,7 @@ import {
 import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 import TOCToggle from '@lblod/ember-rdfa-editor-lblod-plugins/components/table-of-contents-plugin/toolbar-button';
 
-const name = 'tableOfContents' as const;
+const name = 'tableOfContents';
 declare module '../../shared-types/plugin-registry' {
   export interface EmbeddedPlugins {
     [name]: typeof setupTableOfContentsPlugin;

@@ -4,7 +4,7 @@ import type { WidgetSignature } from '../../shared-types/widgets';
 import LpdcInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/lpdc-plugin/lpdc-insert';
 import { mergeConfigs } from '../setup/defaults';
 
-const name = 'lpdc' as const;
+const name = 'lpdc';
 interface LpdcConfig {
   endpoint: string;
   decisionUri?: string;

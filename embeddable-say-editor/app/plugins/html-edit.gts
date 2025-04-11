@@ -1,6 +1,6 @@
 import type { PluginInitializer } from '../../shared-types/embedded-plugin';
 import HTMLEditorMenu from '@lblod/ember-rdfa-editor/components/plugins/html-editor/menu';
-const name = 'htmlEdit' as const;
+const name = 'htmlEdit';
 
 declare module '../../shared-types/plugin-registry' {
   export interface EmbeddedPlugins {

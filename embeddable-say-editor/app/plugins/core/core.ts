@@ -40,12 +40,16 @@ import { headingWithConfig } from '@lblod/ember-rdfa-editor/plugins/heading';
 import { inlineRdfaWithConfig } from '@lblod/ember-rdfa-editor/nodes/inline-rdfa';
 import type { PluginInitializer } from '../../../shared-types/embedded-plugin';
 import type { ProsePlugin } from '@lblod/ember-rdfa-editor';
-import { coreToolbarWidgets } from './toolbar-widgets';
-import { coreSidebarWidgets } from './sidebar-widgets';
-const name = 'core' as const;
+import { coreToolbarWidgets } from './toolbar-widgets.gts';
+import { coreSidebarWidgets } from './sidebar-widgets.gts';
+const name = 'core';
 declare module '../../../shared-types/plugin-registry' {
   export interface OtherOptions {
     docContent?: string;
+    /**
+     * @deprecated no longer does anything, use the widget configuration
+     */
+    ui?: { expandInsertMenu?: boolean };
   }
   export interface EmbeddedPlugins {
     [name]: typeof coreSetup;

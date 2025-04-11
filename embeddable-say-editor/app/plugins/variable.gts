@@ -37,7 +37,7 @@ import type { WidgetSignature } from '../../shared-types/widgets';
 import type { TOC } from '@ember/component/template-only';
 import type IntlService from 'ember-intl/services/intl';
 
-const name = 'variable' as const;
+const name = 'variable';
 export type VariablePluginConfig = {
   insert: {
     enable: boolean;

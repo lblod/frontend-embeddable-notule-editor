@@ -4,10 +4,11 @@ import { mergeConfigs } from '../setup/defaults';
 import type { TOC } from '@ember/component/template-only';
 import type { WidgetSignature } from '../../shared-types/widgets';
 
-const name = 'besluitTopic' as const;
+const name = 'besluitTopic';
 export interface BesluitTopicConfig {
   widgetLocation: 'toolbar' | 'sidebar';
   endpoint: string;
+  decisionUri?: string;
 }
 
 declare module '../../shared-types/plugin-registry' {
