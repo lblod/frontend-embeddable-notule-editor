@@ -1,5 +1,5 @@
 import { renderEditor } from '../main.ts';
-import { router } from './router';
+import { router } from './router.ts';
 
 const container = document.createElement('div');
 document.body.appendChild(router);

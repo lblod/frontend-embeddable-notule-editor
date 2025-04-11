@@ -1,11 +1,22 @@
-import pages from './pages.ts';
+import type { EditorElement } from '../shared-types/editor-element.ts';
+import './router.css';
 
-export const router = document.createElement('div');
-router.style.display = 'flex';
-Object.entries(pages).forEach(([page, config]) => {
-  const link = document.createElement('a');
-  link.style.marginRight = '1rem';
-  link.setAttribute('href', `${page}.html`);
-  link.innerHTML = config.title;
-  router.appendChild(link);
-});
+declare global {
+  interface Window {
+    editor?: EditorElement;
+    editors?: Record<string, EditorElement>;
+  }
+}
+const navbar = document.createElement('template');
+
+const html = String.raw;
+navbar.innerHTML = html`<div class="navbar">
+  <a href="/test-app/">index</a>
+  <a href="/test-app/multiple-editors/">Multiple Editors</a>
+  <a href="/test-app/multiple-growing-editors/">Multiple growing editors</a>
+  <a href="/test-app/plugins/">Plugins</a>
+  <a href="/test-app/plugins-with-rdfa-editor/">Plugins with RDFa editor</a>
+  <a href="/test-app/cipal-plugins/">cipal-plugins</a>
+</div>`;
+
+export const router = navbar.content;

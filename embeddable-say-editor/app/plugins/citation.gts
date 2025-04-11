@@ -14,7 +14,14 @@ const name = 'citation' as const;
 
 declare module '../../shared-types/plugin-registry' {
   export interface PluginOptions {
-    [name]?: Partial<CitationPluginEmberComponentConfig>;
+    [name]?: Partial<
+      CitationPluginEmberComponentConfig & {
+        /**
+         * @deprecated no longer does anything
+         */
+        type: 'nodes' | 'ranges';
+      }
+    >;
   }
   export interface EmbeddedPlugins {
     [name]: typeof setupCitationPlugin;

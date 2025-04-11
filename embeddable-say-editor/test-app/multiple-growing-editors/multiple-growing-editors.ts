@@ -1,28 +1,22 @@
-import { renderEditor } from '../main.ts';
-import { router } from './router';
+import { renderEditor } from '../../main.ts';
+import type {
+  KebabPluginName,
+  UserPluginOptions,
+} from '../../shared-types/embedded-plugin.ts';
+import { router } from '../router.ts';
 
-const plugins = ['besluit-topic', 'lpdc', 'location'];
+const plugins: KebabPluginName[] = ['besluit', 'lpdc', 'roadsign-regulation'];
 const decisionUri = 'http://example.org/besluit/12345';
-const options = {
+const decisionType =
+  'https://data.vlaanderen.be/id/concept/BesluitType/0d1278af-b69e-4152-a418-ec5cfd1c7d0b';
+const options: UserPluginOptions = {
+  besluit: { decisionUri },
   lpdc: {
     endpoint:
       'https://embeddable.dev.gelinkt-notuleren.lblod.info/lpdc-service',
     decisionUri,
   },
-  besluitTopic: {
-    endpoint: 'https://data.vlaanderen.be/sparql',
-    widgetLocation: 'sidebar',
-    decisionUri,
-  },
-  location: {
-    defaultPointUriRoot: 'https://example.net/id/geometrie/',
-    defaultPlaceUriRoot: 'https://example.net/id/plaats/',
-    defaultAddressUriRoot: 'https://example.net/id/adres/',
-    defaultMunicipality: 'Gent',
-  },
-  ui: {
-    expandInsertMenu: true,
-  },
+  roadsignRegulation: { decisionContext: { decisionUri, decisionType } },
 };
 
 document.body.appendChild(router);
@@ -57,7 +51,7 @@ editors.forEach((config) => {
   container.append(element);
   renderEditor({
     element,
-    width: '60%',
+    width: '1000px',
     height: config.height,
     growEditor: true,
     plugins,
@@ -65,7 +59,7 @@ editors.forEach((config) => {
   })
     .then((editor) => {
       editor.setHtmlContent(config.content);
-      window.editors[config.label] = editor;
+      window.editors![config.label] = editor;
     })
     .catch(console.error);
 });

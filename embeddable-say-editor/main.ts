@@ -2,8 +2,13 @@ import { default as App } from './app/app.ts';
 import type { EditorElement } from './shared-types/editor-element';
 export type { EditorElement } from './shared-types/editor-element';
 import type { RenderEditorOptions } from './shared-types/render-editor-options';
+import { v4 as uuidv4 } from 'uuid';
 import type { UserPluginOptions } from './shared-types/embedded-plugin.js';
 
+import styles from './app/styles/app.scss?inline';
+declare global {
+  const SHADOW_STYLE: string;
+}
 const srcDoc = `
 <!DOCTYPE html>
 <html style="overflow: hidden;">
@@ -42,18 +47,22 @@ export async function renderEditor({
 }: RenderEditorOptions): Promise<EditorElement> {
   const app = App.create({
     autoboot: false,
-    name: '@lblod/embeddable-say-editor',
+    name: `@lblod/embeddable-say-editor`,
     location: 'none',
   });
+  if (typeof element === 'string') {
+    throw new Error();
+  }
+
   // Launch the editor
   await app.visit('/', {
-    rootElement: element as SimpleElement | string,
+    rootElement: element,
     location: 'none',
   });
   // get the element
-  const editorElement = document.getElementsByClassName(
-    'notule-editor',
-  )[0] as unknown as EditorElement;
+  const editorElement = element.querySelector(
+    '.notule-editor',
+  ) as unknown as EditorElement;
   // initialize the editor
   await editorElement.initEditor(plugins, options);
 

@@ -1,6 +1,6 @@
-import { renderEditor } from '../main.ts';
-import { router } from './router';
-import { pluginDemoConfig } from './shared-config';
+import { renderEditor } from '../../main.ts';
+import { router } from '../router.ts';
+import { pluginDemoConfig } from '../shared-config.ts';
 
 const container = document.createElement('div');
 

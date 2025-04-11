@@ -1,6 +1,7 @@
 import type { RenderEditorOptions } from '../shared-types/render-editor-options';
 
-export const pluginDemoConfig: RenderEditorOptions = {
+export const pluginDemoConfig: Omit<RenderEditorOptions, 'element'> &
+  Required<Pick<RenderEditorOptions, 'plugins'>> = {
   title: 'my editor',
   width: '100%',
   height: '800px',

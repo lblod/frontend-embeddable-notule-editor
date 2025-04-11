@@ -1,7 +1,8 @@
-import { renderEditor } from '../main.ts';
-import { router } from './router';
+import { renderEditor } from '../../main.ts';
+import { router } from '../router.ts';
 
 document.body.appendChild(router);
+
 const container = document.createElement('div');
 document.body.appendChild(container);
 container.style.display = 'flex';
@@ -14,17 +15,13 @@ const editors = [
 ];
 container.append(...editors);
 
-editors.forEach((element, i) => {
-  renderEditor({
+window.editors = {};
+for (const element of editors) {
+  await renderEditor({
     element,
     width: '500px',
     height: '500px',
     plugins: [],
     options: {},
-  })
-    .then((editor) => {
-      editor.setHtmlContent(`Editor ${i}`);
-      window[`editor${i}`] = editor;
-    })
-    .catch(console.error);
-});
+  });
+}

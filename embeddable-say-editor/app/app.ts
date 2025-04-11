@@ -2,7 +2,7 @@ import Application from '@ember/application';
 import compatModules from '@embroider/virtual/compat-modules';
 import Resolver from 'ember-resolver';
 import loadInitializers from 'ember-load-initializers';
-// import './styles/app.scss';
+import './styles/app.scss';
 import config from './config/environment';
 
 // const ENV = {
@@ -24,9 +24,8 @@ import config from './config/environment';
 //   },
 // };
 export default class App extends Application {
-  modulePrefix = config.modulePrefix;
-  podModulePrefix = config.podModulePrefix;
+  modulePrefix = '@lblod/embeddable-say-editor'
   Resolver = Resolver.withModules(compatModules);
 }
 
-loadInitializers(App, config.modulePrefix, compatModules);
+loadInitializers(App, '@lblod/embeddable-say-editor', compatModules);

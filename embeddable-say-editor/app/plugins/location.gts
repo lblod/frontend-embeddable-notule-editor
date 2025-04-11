@@ -12,11 +12,11 @@ import type { WidgetSignature } from '../../shared-types/widgets';
 const name = 'location' as const;
 type Config = LocationPluginConfig & {
   defaultMunicipality?: string;
-  locationTypes: ['address', 'place', 'area'];
+  locationTypes: Array<'address' | 'place' | 'area'>;
 };
 declare module '../../shared-types/plugin-registry' {
   export interface PluginOptions {
-    [name]?: Config;
+    [name]?: Partial<Config>;
   }
   export interface EmbeddedPlugins {
     [name]: typeof setupLocationPlugin;

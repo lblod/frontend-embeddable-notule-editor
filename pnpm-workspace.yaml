@@ -13,7 +13,7 @@ packageExtensions:
       ember-auto-import: 2.10.0
 
 patchedDependencies:
-  ember-leaflet: patches/ember-leaflet.patch
+  ember-leaflet: /home/arne/repos/redpencil/frontend-embeddable-notule-editor/patches/ember-leaflet.patch
   '@lblod/ember-rdfa-editor-lblod-plugins': /home/arne/repos/redpencil/frontend-embeddable-notule-editor/patches/@lblod__ember-rdfa-editor-lblod-plugins.patch
 
 onlyBuiltDependencies:
