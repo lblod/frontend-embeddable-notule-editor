@@ -120,7 +120,7 @@ The following widgets are available when the `template-comments` plugin is confi
 
 ### Variable plugin
 
-The following widgets are available when the `template-comments` plugin is configured.
+The following widgets are available when the `variable` plugin is configured.
 
 | Widget identifier | Widget type | Description                         |
 | ----------------- | ----------- | ----------------------------------- |
