@@ -7,7 +7,7 @@ The editor toolbar can be configured through a simple API which allows you to ea
 
 A toolbar always consists of a `main` section, and a `side` section.
 - The `main` section is the most prevalent option, and may take most of the toolbar width
-- The `side` option is shown on the right side of the toolbar. If there is not enough toolbar space, the `side` section will be collapsed first.
+- The `side` option is shown on the right side of the toolbar. If there is not enough toolbar space, the `side` section will be collapsed first, toolbar group by toolbar group. Ensure that toolbar groups do not contain too many widgets at once, as their contents will not wrap onto a new line (regardless of screen size).
 
 An example of a simple toolbar:
 ```ts
