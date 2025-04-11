@@ -13,9 +13,10 @@
     "test": "tests"
   },
   "scripts": {
-    "prepack": "concurrently \"pnpm build\" \"pnpm build:types\" --names \"build,types\"",
-    "build": "vite build",
+    "prepack": "pnpm build",
+    "build": "concurrently \"pnpm:build:*\" --names \"build,types\"",
     "build:types": "glint --declaration --emitDeclarationOnly",
+    "build:app": "vite build",
     "format": "prettier . --cache --write",
     "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
     "lint:css": "stylelint \"**/*.css\"",
