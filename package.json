@@ -6,12 +6,14 @@
   "license": "MIT",
   "workspaces": [
     "embeddable-say-editor",
-    "test-app"
+    "test-angular"
   ],
   "scripts": {
     "say": "pnpm --filter embeddable-say-editor",
+    "angular": "pnpm --filter angbeddable",
     "build": "pnpm say build",
     "start": "pnpm say start",
+    "start:angular": "pnpm angular start",
     "release": "release-it",
     "docker:build-test": "docker build -f test-app/Dockerfile .",
     "docker:check-types": "docker build -f test-angular/Dockerfile .",
