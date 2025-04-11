@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-undef
-module.exports = {
+const pages = {
   index: {
     title: 'Index',
     source: './src/index.js',
@@ -25,3 +24,5 @@ module.exports = {
     source: './src/cipal-plugins.js',
   },
 };
+
+export default pages;

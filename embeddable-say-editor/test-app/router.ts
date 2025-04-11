@@ -1,4 +1,4 @@
-import pages from '../pages';
+import pages from './pages.ts';
 
 export const router = document.createElement('div');
 router.style.display = 'flex';

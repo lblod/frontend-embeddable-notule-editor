@@ -1,4 +1,4 @@
-import { renderEditor } from '@lblod/embeddable-say-editor';
+import { renderEditor } from '../main.ts';
 import { router } from './router';
 
 document.body.appendChild(router);

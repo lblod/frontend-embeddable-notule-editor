@@ -1,4 +1,6 @@
-export const pluginDemoConfig = {
+import type { RenderEditorOptions } from '../shared-types/render-editor-options';
+
+export const pluginDemoConfig: RenderEditorOptions = {
   title: 'my editor',
   width: '100%',
   height: '800px',

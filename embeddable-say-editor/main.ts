@@ -23,6 +23,7 @@ const EDITOR_CONTAINER_ID = 'my-editor';
 // adjusting this won't actually change the toolbar height, this is just the constant
 // value of the height as given by the editor css
 const TOOLBAR_HEIGHT = '44px';
+type SimpleElement = Parameters<App['visit']>[1]['rootElement'];
 
 /**
  * Renders the editor in an iframe and initializes it with the passed in plugins
@@ -39,9 +40,6 @@ export async function renderEditor({
   cssVariables = {},
   growEditor = false,
 }: RenderEditorOptions): Promise<EditorElement> {
-  // build the iframe
-  console.log('hello from main.ts');
-
   const app = App.create({
     autoboot: false,
     name: '@lblod/embeddable-say-editor',
@@ -49,7 +47,7 @@ export async function renderEditor({
   });
   // Launch the editor
   await app.visit('/', {
-    rootElement: element as unknown as string,
+    rootElement: element as SimpleElement | string,
     location: 'none',
   });
   // get the element

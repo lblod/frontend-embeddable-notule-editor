@@ -7,7 +7,7 @@ export type RenderEditorOptions = {
   /**
    * The HTML element to render the editor in.
    */
-  element: HTMLElement;
+  element: Element | string;
   /**
    * The title for the editor.
    */
