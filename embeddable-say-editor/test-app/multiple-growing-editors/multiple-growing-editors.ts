@@ -1,4 +1,4 @@
-import { renderEditor } from '../../main.ts';
+import { renderEditor } from '../../app/main.ts';
 import type {
   KebabPluginName,
   UserPluginOptions,

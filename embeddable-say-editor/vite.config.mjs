@@ -14,12 +14,12 @@ export default defineConfig({
   appType: 'mpa',
   build: {
     lib: {
-      entry: resolve(__dirname, 'main.ts'),
+      entry: resolve(__dirname, 'app/main.ts'),
       name: 'embeddable-say-editor',
       fileName: 'embeddable-say-editor',
     },
     rollupOptions: {
-      input: 'main.ts',
+      input: 'app/main.ts',
     },
   },
   plugins: [

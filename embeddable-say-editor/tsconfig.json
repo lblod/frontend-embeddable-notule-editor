@@ -1,6 +1,6 @@
 {
   "extends": "@tsconfig/ember/tsconfig.json",
-  "include": ["app", "tests", "types", "main.ts", "test-app"],
+  "include": ["app", "tests", "types", "test-app"],
   "glint": {
     "environment": ["ember-template-imports"]
   },

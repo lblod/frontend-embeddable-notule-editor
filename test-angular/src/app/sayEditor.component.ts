@@ -21,6 +21,7 @@ export class SayEditor {
           title: 'angular embedded say editor',
           width: '1000px',
           height: '500px',
+          plugins: ['citation'],
         });
         this.editor?.setHtmlContent('Hello Angular');
       },
