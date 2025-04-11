@@ -97,60 +97,51 @@ export default class SimpleEditorComponent extends Component<Sig> {
     element.setAttribute('vocab', this.vocabString);
   }
 
-  @action
-  getHtmlContent() {
+  getHtmlContent = () => {
     return this.controller?.htmlContent ?? '';
-  }
+  };
 
-  @action
-  setHtmlContent(content: string) {
+  setHtmlContent = (content: string) => {
     if (!this.controller) {
       throw new Error('Controller used before editor was initialized');
     }
     this.controller.setHtmlContent(content);
-  }
+  };
 
-  @action
-  setLocaleToDutch() {
+  setLocaleToDutch = () => {
     this.intl.setLocale(['nl-BE']);
-  }
+  };
 
-  @action
-  setLocaleToEnglish() {
+  setLocaleToEnglish = () => {
     this.intl.setLocale(['en-US', 'nl-BE']);
-  }
+  };
 
-  @action
-  getLocale() {
+  getLocale = () => {
     return this.intl.primaryLocale ?? '';
-  }
+  };
 
-  @action
-  setLocale(locale: string) {
+  setLocale = (locale: string) => {
     return this.intl.setLocale([locale, 'nl-BE']);
-  }
+  };
 
   @action
   setEnvironment(environment: string) {
     this.environment = environment;
   }
 
-  @action
-  enableEnvironmentBanner(environment: string = 'Test') {
+  enableEnvironmentBanner = (environment: string = 'Test') => {
     this.environment = environment;
     this.showEnvironmentBanner = true;
-  }
+  };
 
-  @action
-  disableEnvironmentBanner() {
+  disableEnvironmentBanner = () => {
     this.showEnvironmentBanner = false;
-  }
+  };
 
-  @action
-  async initEditor(
+  initEditor = async (
     plugins: readonly KebabPluginName[],
     options: PluginOptions,
-  ): Promise<void> {
+  ): Promise<void> => {
     const setup = setupPlugins({ plugins, options, intl: this.intl });
 
     const editorPromise = new Promise<void>((resolve): void => {
@@ -158,7 +149,7 @@ export default class SimpleEditorComponent extends Component<Sig> {
     });
     this.setup = setup;
     return editorPromise;
-  }
+  };
 
   get activeNode() {
     if (this.controller) {
@@ -168,9 +159,9 @@ export default class SimpleEditorComponent extends Component<Sig> {
     return null;
   }
   <template>
-    <div id='ember-appuniversum-wormhole'></div>
-    <div {{this.insertedInDom}} class='notule-editor'>
-      <div id='ember-basic-dropdown-wormhole'></div>
+    <div id="ember-appuniversum-wormhole"></div>
+    <div {{this.insertedInDom}} class="notule-editor">
+      <div id="ember-basic-dropdown-wormhole"></div>
       {{#if this.setup}}
         {{#let this.setup as |s|}}
           <EditorContainer
