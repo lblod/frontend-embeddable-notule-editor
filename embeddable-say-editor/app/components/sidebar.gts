@@ -182,7 +182,7 @@ export default class Sidebar extends Component<SidebarSignature> {
     if (Array.isArray(sidebarCollapsible)) {
       return true;
     } else {
-      return sidebarCollapsible.initallyExpanded ?? true;
+      return sidebarCollapsible.initiallyExpanded ?? true;
     }
   };
 

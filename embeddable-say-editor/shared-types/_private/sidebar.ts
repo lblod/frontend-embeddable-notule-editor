@@ -35,7 +35,7 @@ export type SidebarCollapsibleConfig =
   | SidebarListItemWidget[]
   | {
       title?: string;
-      initallyExpanded?: boolean;
+      initiallyExpanded?: boolean;
       items: SidebarListItemWidget[];
     };
 export type SidebarConfig = (SidebarWidget | SidebarCollapsibleConfig)[];

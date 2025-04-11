@@ -20,7 +20,7 @@ sidebar: [
   ],
   {
     title: 'Second collapsible group',
-    initallyExpanded: false,
+    initiallyExpanded: false,
     items: [
       'citation:insert',
       'location:insert'
