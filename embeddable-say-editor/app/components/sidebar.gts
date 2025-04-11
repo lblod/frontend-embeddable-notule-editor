@@ -198,10 +198,9 @@ export default class Sidebar extends Component<SidebarSignature> {
     <RdfaEditorSidebar as |Sb|>
       {{#each @sidebar as |sidebarEntry|}}
         {{#if (this.isCollapsibleContainer sidebarEntry)}}
-          {{! @glint-expect-error }}
           <Sb.Collapsible
             @title={{this.title sidebarEntry}}
-            @expandedInitially={{this.initiallyExpanded sidebarEntry}}
+            @expanded={{this.initiallyExpanded sidebarEntry}}
           >
             {{#each (this.widgets sidebarEntry) as |listItemWidget|}}
               {{#let
