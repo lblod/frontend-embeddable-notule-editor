@@ -11,4 +11,3 @@ EmbeddedPluginSpec.
 
 This spec can define all nodes, marks, nodeviews, prosePlugins, widgets and
 other configuration the various elements need.
-

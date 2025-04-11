@@ -33,6 +33,7 @@ const parserOptions = {
     },
     ts: {
       projectService: true,
+      project: true,
       tsconfigRootDir: import.meta.dirname,
     },
   },
@@ -49,7 +50,7 @@ export default ts.config(
    * https://eslint.org/docs/latest/use/configure/ignore
    */
   {
-    ignores: ['dist/', 'node_modules/', 'coverage/', '!**/.*'],
+    ignores: ['dist/', 'dist-types/', 'node_modules/', 'coverage/', '!**/.*'],
   },
   /**
    * https://eslint.org/docs/latest/use/configure/configuration-files#configuring-linter-options
@@ -81,16 +82,6 @@ export default ts.config(
       parserOptions: parserOptions.esm.ts,
     },
     extends: [...ts.configs.recommendedTypeChecked, ember.configs.gts],
-    rules: {
-      '@typescript-eslint/no-unused-vars': [
-        'error',
-        {
-          argsIgnorePattern: '^_',
-          destructuredArrayIgnorePattern: '^_',
-          varsIgnorePattern: '^_',
-        },
-      ],
-    },
   },
   {
     files: ['tests/**/*-test.{js,gjs,ts,gts}'],

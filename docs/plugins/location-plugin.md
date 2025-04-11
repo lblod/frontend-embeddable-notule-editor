@@ -2,28 +2,28 @@
 
 ## Setup
 
->[!WARNING]
+> [!WARNING]
 > Unlike most plugins, the default configuration is not production ready
-and has to be adjusted. 
+> and has to be adjusted.
 
 ```javascript
 const editor = await renderEditor({
-  plugins: [/*...*/,"location"], 
+  plugins: [, /*...*/ "location"],
   options: {
     location: {
-      defaultPointUriRoot: 'https://example.net/id/geometrie/',
-      defaultPlaceUriRoot: 'https://example.net/id/plaats/',
-      defaultAddressUriRoot: 'https://example.net/id/adres/',
-      defaultMunicipality: 'Gent',
-      locationOptions: ['address', 'place', 'area'],
-    }
-  }
+      defaultPointUriRoot: "https://example.net/id/geometrie/",
+      defaultPlaceUriRoot: "https://example.net/id/plaats/",
+      defaultAddressUriRoot: "https://example.net/id/adres/",
+      defaultMunicipality: "Gent",
+      locationOptions: ["address", "place", "area"],
+    },
+  },
   /*...*/
-})
-
+});
 ```
 
 The plugin expects the following configuration options:
+
 - `defaultPointUriRoot` (default: 'https://example.net/id/geometrie/')
 - `defaultPlaceUriRoot` (default: 'https://example.net/id/plaats/)
 - `defaultAddressUriRoot` (default: 'https://example.net/id/adres/')
@@ -45,6 +45,7 @@ flanders**.
 There are currently 3 ways to define a location:
 
 ### Address
+
 This is the default mode. Address lookups target the [flemish location services](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/gebouwen-en-adressenregister)
 
 <details>
@@ -54,7 +55,6 @@ This is the default mode. Address lookups target the [flemish location services]
 
 </details>
 
-
 When searching for the address, the map will update and show the selected
 location:
 
@@ -62,6 +62,7 @@ location:
 <summary>Show image</summary>
 
 ![img.png](/docs/images/location-plugin-address-mode-filled.png)
+
 </details>
 
 To enable this mode, add the `address` locationOption to the `locationTypes` array.
@@ -79,10 +80,11 @@ the text. The location will be annotated with its geographical coordinates.
 <summary>Show image</summary>
 
 ![img.png](/docs/images/location-plugin-point-mode.png)
+
 </details>
 
 In this mode, the search feature only centers the map. The user can then click
-on the map to choose a specific location. 
+on the map to choose a specific location.
 
 To enable this mode, add the `place` locationOption to the `locationTypes` array.
 
@@ -97,6 +99,7 @@ which will be annotated with the coordinates of the shape's points.
 <summary>Show image</summary>
 
 ![img.png](/docs/images/location-plugin-area-mode.png)
+
 </details>
 
 Click on the map to create a shape. Each subsequent point will connect in

@@ -1,11 +1,12 @@
 # Configuring the editor sidebar
-> [!WARNING]
->This document is a work in progress. 
->The features described in this document are not (yet) public API.
 
+> [!WARNING]
+> This document is a work in progress.
+> The features described in this document are not (yet) public API.
 
 The editor toolbar can be configured through a simple API which allows you to easily enable/disable sidebar widgets.
 Two types of sidebar widgets may be configured:
+
 - Card widgets: these are widgets which may be configured at the root of the sidebar
 - List-item widgets: these are widgets which may only be configured as part of a (collapsible) sidebar group.
 
@@ -14,22 +15,16 @@ An example of a simple sidebar:
 ```ts
 sidebar: [
   // List-item widgets
-  [
-    'besluit:article-insert',
-    'lpdc:insert',
-  ],
+  ["besluit:article-insert", "lpdc:insert"],
   {
-    title: 'Second collapsible group',
+    title: "Second collapsible group",
     initallyExpanded: false,
-    items: [
-      'citation:insert',
-      'location:insert'
-    ]
+    items: ["citation:insert", "location:insert"],
   },
   //Card widgets
-  'structure:edit',
-  'citation:edit',
-]
+  "structure:edit",
+  "citation:edit",
+];
 ```
 
 Rendered:
@@ -38,15 +33,15 @@ Rendered:
 The above example configures a simple sidebar with two collapsible groups, and two card widgets.
 
 A collapsible group may be configured in two ways:
+
 - As a simple array
 - Using an object, in which you can provide some additional configuration options:
-  * `title`: the title of the group (default: 'Invoegen' (nl-be), 'Insert' (en-us))
-  * `initiallyExpanded`: whether the toolbar should be initially expanded or not (default: `true`)
-  * `items`: the list-item widgets configured as part of the group
+  - `title`: the title of the group (default: 'Invoegen' (nl-be), 'Insert' (en-us))
+  - `initiallyExpanded`: whether the toolbar should be initially expanded or not (default: `true`)
+  - `items`: the list-item widgets configured as part of the group
 
 You can find an index of all toolbar widgets below.
 Some widgets are only available if a certain plugin is configured.
-
 
 ## An overview of sidebar widgets
 
@@ -135,5 +130,4 @@ The following widgets are available when the `rdfa-editor` plugin is configured.
 | --------------------------- | ----------- | -------------------------------------------------------------------------------- |
 | `devtools:rdfa-editor`      | Card        | Allows a user to inspect/configure the RDFa of the active node                   |
 | `devtools:attribute-editor` | Card        | Allows a user to inspect/configure the Prosemirror attributes of the active node |
-| `devtools:debug-info`       | Card        | Allows a user to inspect additional information of the active node     |
-
+| `devtools:debug-info`       | Card        | Allows a user to inspect additional information of the active node               |

@@ -3,7 +3,7 @@
    ================================== */
 @use "@appuniversum/ember-appuniversum/styles";
 @use "@lblod/ember-rdfa-editor";
-@use 'leaflet';
+@use "leaflet";
 
 code {
   background-color: #eee;
@@ -14,4 +14,3 @@ code {
 .leaflet-container {
   height: 100%;
 }
-

@@ -1,15 +1,18 @@
 # Configuring the editor toolbar
+
 > [!WARNING]
->This document is a work in progress. 
->The features described in this document are not (yet) public API.
+> This document is a work in progress.
+> The features described in this document are not (yet) public API.
 
 The editor toolbar can be configured through a simple API which allows you to easily enable/disable toolbar widgets, and arrange the widgets in different toolbar groups.
 
 A toolbar always consists of a `main` section, and a `side` section.
+
 - The `main` section is the most prevalent option, and may take most of the toolbar width
 - The `side` option is shown on the right side of the toolbar. If there is not enough toolbar space, the `side` section will be collapsed first.
 
 An example of a simple toolbar:
+
 ```ts
 toolbar: {
   main: [['undo', 'redo'], ['bold', 'italic', 'strikethrough']],
@@ -50,7 +53,6 @@ Some widgets are only available if a certain plugin is configured.
 | `table`           | Insert/configure table                  |
 | `formatting`      | Show hide formatting marks              |
 
-
 ### HTML plugin
 
 The following widgets are available when the `html` plugin is configured.
@@ -59,11 +61,10 @@ The following widgets are available when the `html` plugin is configured.
 | ----------------- | ------------------------------------- |
 | `html:preview`    | Preview the html output of the editor |
 | `html:edit`       | Edit the html output of the editor    |
-  
+
 ### Table of contents plugin
 
 The following widgets are available when the `table-of-contents` plugin is configured.
-
 
 | Widget identifier   | Description                            |
 | ------------------- | -------------------------------------- |
@@ -73,7 +74,6 @@ The following widgets are available when the `table-of-contents` plugin is confi
 
 The following widgets are available when the `besluit-topic` plugin is configured.
 
-| Widget identifier | Description          |
-| ----------------- | -------------------- |
+| Widget identifier | Description                     |
+| ----------------- | ------------------------------- |
 | `besluit-topic`   | Select decision (besluit) topic |
-

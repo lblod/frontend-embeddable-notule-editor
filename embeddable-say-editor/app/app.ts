@@ -5,7 +5,7 @@ import loadInitializers from 'ember-load-initializers';
 import './styles/app.scss';
 
 export default class App extends Application {
-  modulePrefix = '@lblod/embeddable-say-editor'
+  modulePrefix = '@lblod/embeddable-say-editor';
   Resolver = Resolver.withModules(compatModules);
 }
 

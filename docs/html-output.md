@@ -6,13 +6,12 @@ In other cases, the generated html needs to be displayed somewhere, which means
 it needs some styling applied to make it readable. This document attempts to
 encode the supported ways to interact with this html output.
 
-
 ## A note about stability
 
 It is a difficult task to stabilize the html output of a wysiwyg editor. To
 tackle the various challenges we face, we often have to rethink the
 implementation of a certain element, often (unintentionally) leading to subtle
-changes in the html output. 
+changes in the html output.
 
 Up until now, we've neve formally committed to supporting a certain html
 structure or certain html attributes as part of our SemVer contract. We've tried
@@ -22,7 +21,6 @@ to the rules described in this document.
 Please help us out by reporting any deviation from this policy in the bug
 tracker on this repo.
 
-
 # Basic structure
 
 ## 2 kinds of nodes
@@ -31,12 +29,11 @@ In this guide, we will distinguish between 2 kinds of nodes: ones which carry
 RDFa information, and ones which do not. They differ in html structure, so it is
 an important distinction.
 
-
 ### Basic nodes
 
 These nodes do not carry rdfa information. They are simply an html element with
 a certain css class assigned to them, and directly contain their content, if
-they have any. 
+they have any.
 
 ### RDFa-aware nodes
 
@@ -73,11 +70,10 @@ ability to be able to target the content containers directly.
 node. This is not guaranteed (although it is in practice almost always the case), so we recommend always using `querySelector` or
 equivalent methods to search for the containers you'd like to target.
 
-
 ## classes
 
-All nodes carry a class, such that the output can be easily styled. All 
-classes which start with the `say-` prefix are considered stable. 
+All nodes carry a class, such that the output can be easily styled. All
+classes which start with the `say-` prefix are considered stable.
 
 ## attributes
 
@@ -87,7 +83,7 @@ the editor parsing logic and to store various editor-specific information.
 
 It is our intention to gradually stabilize some of the `data-` attributes which are useful
 for working with the generated html. We are cautious here, because we are still
-  settling interally on which attributes to use.
+settling interally on which attributes to use.
 
 # Noteworthy nodes
 
@@ -104,11 +100,11 @@ always an rdfa-aware node.
 
 The paragraph is the second most important node we use. It is the basic
 container for any text, and is also how the editor makes a newline when the user
-hits the `enter` key. 
+hits the `enter` key.
 
 It is always a `<p>` element, tagged with the `say-paragraph` class. Most other
 nodes will not directly contain their text content, but rather have it wrapped
-in a paragraph element. 
+in a paragraph element.
 
 ## block-rdfa
 
@@ -120,28 +116,28 @@ the user what the block is about.
 ## structure
 
 The structure node is likely our most complex node. It is also under active
-development, so the guarantees we will provide here are limited. 
+development, so the guarantees we will provide here are limited.
 
 The basic premise of this node is to support a "section"-like interface, meaning
 it:
+
 - can have a title
 - can have a number
 - can have a name, e.g. "article", or "chapter"
 - has a body
 
 This means it has an additional layer of structure in its content:
+
 ```
 <div>
   <div data-rdfa-container="true"></div>
   <div data-content-container="true">
     <div>
-      <h5> <span data-say-structure-title="true"><!-- optional! --></span> </h5> 
+      <h5> <span data-say-structure-title="true"><!-- optional! --></span> </h5>
       <div data-say-structure-content="true"></div>
     </div>
   </div>
 </div>
 ```
+
 The level of the header element can be different for each structure type.
-
-
-

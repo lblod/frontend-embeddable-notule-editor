@@ -14,22 +14,22 @@ type Signature = {
 const HTMLPreviewModal: TOC<Signature> = <template>
   {{! FIXME fix the copy-pasted things }}
   <AuModal
-    class='say-html-editor-modal'
-    @title='HTML Editor'
+    class="say-html-editor-modal"
+    @title="HTML Editor"
     @closable={{true}}
     @closeModal={{@onClose}}
     @modalOpen={{@open}}
-    @size='large'
-    @padding='none'
+    @size="large"
+    @padding="none"
   >
     <:title>Preview</:title>
     <:body>
- 
-      <iframe title='preview' height='100%' width='100%' srcdoc={{@doc}} />
+
+      <iframe title="preview" height="100%" width="100%" srcdoc={{@doc}} />
     </:body>
     <:footer>
       <AuButtonGroup>
-        <AuButton @skin='secondary' {{on 'click' @onClose}}>
+        <AuButton @skin="secondary" {{on "click" @onClose}}>
           Close
         </AuButton>
       </AuButtonGroup>

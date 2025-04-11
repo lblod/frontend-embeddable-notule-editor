@@ -12,7 +12,7 @@ import type {
   PluginInitArgs,
   PluginName,
   PluginSpecs,
-} from '../../shared-types/embedded-plugin';
+} from '../../shared-types/embedded-plugin.ts';
 import { articleStructurePlugin } from '../plugins/article-structure.gts';
 import { besluitTopic } from '../plugins/besluit-topic.gts';
 import { besluitPlugin } from '../plugins/besluit.gts';

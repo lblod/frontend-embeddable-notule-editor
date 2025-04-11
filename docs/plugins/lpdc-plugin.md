@@ -1,26 +1,28 @@
 # LPDC plugin
 
 ## Setup
+
 ```javascript
 const editor = await renderEditor({
-  plugins: [/*...*/, "lpdc"], 
+  plugins: [, /*...*/ "lpdc"],
   options: {
     lpdc: {
-      endpoint: 'https://some.endpoint.be/lpdc',
-      decisionUri: 'http://my-domain.be/id/besluiten/1234'
-    }
-  }
+      endpoint: "https://some.endpoint.be/lpdc",
+      decisionUri: "http://my-domain.be/id/besluiten/1234",
+    },
+  },
   /*...*/
-})
-
+});
 ```
+
 #### `endpoint`
 
 There is no public endpoint available for LPDC codes, so you will need to provide your own. See [here](https://vlaamseoverheid.atlassian.net/wiki/external/6317081715/ZGU4MGNlODM2N2U1NDU5MGFlY2NlYzcxYmQyYWUwMTc) for more information.
 
 #### `decisionUri`
+
 If you aren't able to provide a `besluit` node, you can instead configure the
-URI of the decision directly (see [usage section](#usage)) 
+URI of the decision directly (see [usage section](#usage))
 
 ## Usage
 
@@ -34,8 +36,7 @@ By default, the plugin looks for a surrounding `besluit` node (see
 connected to the node via rdfa.
 
 ### Direct mode
+
 If you aren't able to provide a `besluit` node, you can instead configure the
 URI of the decision directly (see [setup](#setup)). The inserted instance will
 be linked to that URI.
-
-

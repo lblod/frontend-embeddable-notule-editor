@@ -22,11 +22,11 @@ import type { WidgetSignature } from '../../../shared-types/widgets';
 import type { ToolbarWidgetMap } from '../../../shared-types/embedded-plugin';
 
 const highlight: TOC<WidgetSignature> = <template>
-  <Highlight @controller={{@controller}} @defaultColor='#000000' />
+  <Highlight @controller={{@controller}} @defaultColor="#000000" />
 </template>;
 
 const color: TOC<WidgetSignature> = <template>
-  <ColorMenu @controller={{@controller}} @defaultColor='#000000' />
+  <ColorMenu @controller={{@controller}} @defaultColor="#000000" />
 </template>;
 
 declare module '../../../shared-types/plugin-registry' {
