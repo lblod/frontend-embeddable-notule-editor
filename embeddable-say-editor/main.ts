@@ -2,32 +2,7 @@ import { default as App } from './app/app.ts';
 import type { EditorElement } from './shared-types/editor-element';
 export type { EditorElement } from './shared-types/editor-element';
 import type { RenderEditorOptions } from './shared-types/render-editor-options';
-import { v4 as uuidv4 } from 'uuid';
-import type { UserPluginOptions } from './shared-types/embedded-plugin.js';
 
-import styles from './app/styles/app.scss?inline';
-declare global {
-  const SHADOW_STYLE: string;
-}
-const srcDoc = `
-<!DOCTYPE html>
-<html style="overflow: hidden;">
-  <head>
-    <meta charset="utf-8" />
-    <!-- Requirements for the style -->
-  </head>
-
-  <!-- Next up, we put some tags in the body of our web page. We'll place the editor in those tags. -->
-
-  <body>
-  </body>
-</html>
-`;
-
-const EDITOR_CONTAINER_ID = 'my-editor';
-// adjusting this won't actually change the toolbar height, this is just the constant
-// value of the height as given by the editor css
-const TOOLBAR_HEIGHT = '44px';
 type SimpleElement = Parameters<App['visit']>[1]['rootElement'];
 
 /**
@@ -37,13 +12,9 @@ type SimpleElement = Parameters<App['visit']>[1]['rootElement'];
  */
 export async function renderEditor({
   element,
-  title,
-  width,
-  height,
   plugins = [],
   options = {},
   cssVariables = {},
-  growEditor = false,
 }: RenderEditorOptions): Promise<EditorElement> {
   const app = App.create({
     autoboot: false,
@@ -56,7 +27,8 @@ export async function renderEditor({
 
   // Launch the editor
   await app.visit('/', {
-    rootElement: element,
+    // SimpleElement is a weird internal type, but just passing a normal html element works fine
+    rootElement: element as unknown as SimpleElement | string,
     location: 'none',
   });
   // get the element

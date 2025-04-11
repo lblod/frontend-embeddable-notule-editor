@@ -9,14 +9,10 @@
     "test-app"
   ],
   "scripts": {
-    "build": "pnpm --filter embeddable-say-editor build",
-    "start": "pnpm --recursive --parallel start",
-    "start:addon": "pnpm --filter embeddable-say-editor start",
-    "start:tests": "pnpm --filter test-app start",
+    "say": "pnpm --filter embeddable-say-editor",
+    "build": "pnpm say build",
+    "start": "pnpm say start",
     "release": "release-it",
-    "cypress:open": "pnpm --filter test-app cypress:open",
-    "cypress:run": "pnpm --filter test-app cypress:run",
-    "ci:cypress": "start-server-and-test start http://localhost:8080 cypress:run",
     "docker:build-test": "docker build -f test-app/Dockerfile .",
     "docker:check-types": "docker build -f test-angular/Dockerfile .",
     "lint": "pnpm --recursive lint",

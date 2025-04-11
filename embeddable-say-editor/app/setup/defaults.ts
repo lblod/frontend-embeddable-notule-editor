@@ -6,7 +6,7 @@ const mergeCustomizer = (
 ): Array<unknown> | undefined => {
   // if the src provides an array, overwrite instead of merging
   if (Array.isArray(objValue) && Array.isArray(srcValue)) {
-    return srcValue;
+    return srcValue as unknown[];
   }
 };
 
