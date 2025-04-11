@@ -29,7 +29,6 @@ import BesluitTopicDropdown from '@lblod/ember-rdfa-editor-lblod-plugins/compone
 import ResponsiveToolbar from '@lblod/ember-rdfa-editor/components/responsive-toolbar';
 
 import type { ComponentLike } from '@glint/template';
-import HTMLPreviewMenu from './html-preview/menu';
 import Component from '@glimmer/component';
 import type { SayController } from '@lblod/ember-rdfa-editor';
 import type {
@@ -40,6 +39,7 @@ import type {
 import { get } from '@ember/helper';
 import type { TOC } from '@ember/component/template-only';
 import type { ResolvedPNode } from '@lblod/ember-rdfa-editor/utils/_private/types';
+import HTMLPreviewMenu from './widgets/html-preview-menu';
 
 type ToolbarWidgetComponent = ComponentLike<WidgetSignature>;
 
