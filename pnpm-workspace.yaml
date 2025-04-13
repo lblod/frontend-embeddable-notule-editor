@@ -3,18 +3,23 @@ packages:
   - test-angular
 
 overrides:
-  '@ember/string': 4.0.1
+  "@ember/string": 4.0.1
   ember-mu-transform-helpers: 2.1.3
 
 packageExtensions:
   ember-leaflet:
     dependencies:
-      '@ember/string': 4.0.1
+      "@ember/string": 4.0.1
       ember-auto-import: 2.10.0
 
 patchedDependencies:
   ember-leaflet: /home/arne/repos/redpencil/frontend-embeddable-notule-editor/patches/ember-leaflet.patch
-  '@lblod/ember-rdfa-editor-lblod-plugins': /home/arne/repos/redpencil/frontend-embeddable-notule-editor/patches/@lblod__ember-rdfa-editor-lblod-plugins.patch
+  "@lblod/ember-rdfa-editor-lblod-plugins": /home/arne/repos/redpencil/frontend-embeddable-notule-editor/patches/@lblod__ember-rdfa-editor-lblod-plugins.patch
+
+injectWorkspacePackages: true
+syncInjectedDepsAfterScripts:
+  - start
+  - build
 
 onlyBuiltDependencies:
   - core-js

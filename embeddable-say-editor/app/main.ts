@@ -1,5 +1,6 @@
 import { default as App } from './app.ts';
 import type { EditorElement } from './editor-element.ts';
+export { setupPlugins } from './plugins/setup/setup-plugins.ts';
 export type { EditorElement } from './editor-element.ts';
 import type { RenderEditorOptions } from './render-editor-options.ts';
 

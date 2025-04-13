@@ -1,5 +1,8 @@
 import type SayController from '@lblod/ember-rdfa-editor/core/say-controller';
-import type { KebabPluginName, UserPluginOptions } from './embedded-plugin';
+import type {
+  KebabPluginName,
+  UserPluginOptions,
+} from './plugins/embedded-plugin.ts';
 
 /**
  * An HTML element with the class `notule-editor`.

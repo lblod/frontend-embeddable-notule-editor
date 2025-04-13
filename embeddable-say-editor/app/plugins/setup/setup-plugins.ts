@@ -180,3 +180,5 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
   }
   return result;
 }
+
+export type InitializedPluginName = keyof PluginSpecs;

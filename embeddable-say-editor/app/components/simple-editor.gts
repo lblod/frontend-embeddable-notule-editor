@@ -13,7 +13,6 @@ import TableTooltip from '@lblod/ember-rdfa-editor/components/plugins/table/tabl
 import { DEFAULT_CONTEXT } from '../utils/constants';
 import type IntlService from 'ember-intl/services/intl';
 import Toolbar from './toolbar';
-import Sidebar from './sidebar';
 import { hash } from '@ember/helper';
 import type { EditorElement } from '../editor-element';
 import {
@@ -23,6 +22,7 @@ import {
 import type { KebabPluginName } from '../plugins/embedded-plugin.ts';
 import type { ModifierLike } from '@glint/template';
 import type { PluginOptions } from '../plugins/plugin-registry';
+import Sidebar from './sidebar.gts';
 
 interface Sig {
   Blocks: { default: [] };

@@ -7,7 +7,7 @@ import { get } from '@ember/helper';
 import RdfaEditorSidebar from '@lblod/ember-rdfa-editor/components/sidebar';
 
 import type { ResolvedPNode } from '@lblod/ember-rdfa-editor/utils/_private/types';
-import type { EditorSetup } from '../setup/setup-plugins';
+import type { EditorSetup } from '../plugins/setup/setup-plugins.ts';
 import type {
   SidebarCollapsibleConfig,
   SidebarConfig,

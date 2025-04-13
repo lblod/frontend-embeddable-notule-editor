@@ -11,6 +11,7 @@
 # misc
 /.env*
 /.pnp*
+/.log
 /.eslintcache
 /coverage/
 /npm-debug.log*

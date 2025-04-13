@@ -1,4 +1,4 @@
-import type { EditorOptions } from './embedded-plugin';
+import type { EditorOptions } from './plugins/embedded-plugin.ts';
 
 /**
  * The options for rendering the editor.

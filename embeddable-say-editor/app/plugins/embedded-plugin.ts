@@ -19,7 +19,10 @@ import type {
 } from './plugin-registry';
 import type IntlService from 'ember-intl/services/intl';
 import type { MarkSpec, ProsePlugin } from '@lblod/ember-rdfa-editor';
-import type { EditorSetup } from './setup/setup-plugins.ts';
+import type {
+  EditorSetup,
+  InitializedPluginName,
+} from './setup/setup-plugins.ts';
 
 /**
  * Valid plugin names, as defined by the registry
@@ -104,7 +107,7 @@ export interface EditorOptions {
   /**
    * The plugins to initialize the editor with.
    */
-  plugins?: readonly KebabPluginName[];
+  plugins?: readonly Kebab<InitializedPluginName>[];
   /**
    * The options to initialize the editor with.
    */
