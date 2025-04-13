@@ -42,19 +42,6 @@ import type { PluginInitializer } from '../../embedded-plugin.ts';
 import type { ProsePlugin } from '@lblod/ember-rdfa-editor';
 import { coreToolbarWidgets } from './toolbar-widgets.gts';
 import { coreSidebarWidgets } from './sidebar-widgets.gts';
-const name = 'core';
-declare module '../../plugin-registry' {
-  export interface OtherOptions {
-    docContent?: string;
-    /**
-     * @deprecated no longer does anything, use the widget configuration
-     */
-    ui?: { expandInsertMenu?: boolean };
-  }
-  export interface EmbeddedPlugins {
-    [name]: typeof coreSetup;
-  }
-}
 
 export const coreSetup = (({ options }) => {
   const nodes = {

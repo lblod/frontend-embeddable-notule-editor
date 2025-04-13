@@ -11,27 +11,13 @@ export interface BesluitTopicConfig {
   decisionUri?: string;
 }
 
-declare module '../plugin-registry' {
-  interface EmbeddedPlugins {
-    [name]: typeof besluitTopic;
-  }
-  interface PluginOptions {
-    [name]?: Partial<BesluitTopicConfig>;
-  }
-  interface ToolbarWidgets {
-    'besluit:topic': typeof besluitTopicWidget;
-  }
-  interface SidebarWidgets {
-    'besluit:topic': typeof besluitTopicWidget;
-  }
-}
-
-const besluitTopicWidget: TOC<WidgetSignature<'besluitTopic'>> = <template>
-  <BesluitTopicDropdown
-    @controller={{@controller}}
-    @options={{@setup.pluginSpecs.besluitTopic.config}}
-  />
-</template>;
+export const besluitTopicWidget: TOC<WidgetSignature<'besluitTopic'>> =
+  <template>
+    <BesluitTopicDropdown
+      @controller={{@controller}}
+      @options={{@setup.pluginSpecs.besluitTopic.config}}
+    />
+  </template>;
 const defaultConfig: BesluitTopicConfig = {
   widgetLocation: 'toolbar',
   endpoint: 'https://data.vlaanderen.be/sparql',

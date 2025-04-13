@@ -12,36 +12,14 @@ import type { WidgetSignature } from '../widgets';
 
 const name = 'citation';
 
-declare module '../plugin-registry' {
-  export interface PluginOptions {
-    [name]?: Partial<
-      CitationPluginEmberComponentConfig & {
-        /**
-         * @deprecated no longer does anything
-         */
-        type: 'nodes' | 'ranges';
-      }
-    >;
-  }
-  export interface EmbeddedPlugins {
-    [name]: typeof setupCitationPlugin;
-  }
-  export interface SidebarWidgets {
-    'citation:edit': typeof edit;
-  }
-  export interface SidebarListItemWidgets {
-    'citation:insert': typeof insert;
-  }
-}
-
-const insert: TOC<WidgetSignature<'citation'>> = <template>
+export const citationInsert: TOC<WidgetSignature<'citation'>> = <template>
   <CitationInsert
     @controller={{@controller}}
     @config={{@setup.pluginSpecs.citation.config}}
   />
 </template>;
 
-const edit: TOC<WidgetSignature<'citation'>> = <template>
+export const citationEdit: TOC<WidgetSignature<'citation'>> = <template>
   <CitationEditCard
     @controller={{@controller}}
     @config={{@setup.pluginSpecs.citation.config}}
@@ -59,8 +37,8 @@ export const setupCitationPlugin = (({ options }) => {
     config,
     prosePlugins: [citationPlugin(config)],
     sidebarWidgets: {
-      'citation:insert': insert,
-      'citation:edit': edit,
+      'citation:insert': citationInsert,
+      'citation:edit': citationEdit,
     },
   };
 }) satisfies PluginInitializer;

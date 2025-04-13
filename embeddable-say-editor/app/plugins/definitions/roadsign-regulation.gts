@@ -7,24 +7,14 @@ import type { TOC } from '@ember/component/template-only';
 import type { WidgetSignature } from '../widgets';
 
 const name = 'roadsignRegulation';
-declare module '../plugin-registry' {
-  export interface PluginOptions {
-    [name]?: Partial<RoadsignRegulationPluginOptions>;
-  }
-  export interface EmbeddedPlugins {
-    [name]: typeof setupRoadsignRegulationPlugin;
-  }
-  export interface SidebarListItemWidgets {
-    'roadsign-regulation:insert': typeof insert;
-  }
-}
 
-const insert: TOC<WidgetSignature<'roadsignRegulation'>> = <template>
-  <RoadsignRegulationInsert
-    @controller={{@controller}}
-    @options={{@setup.pluginSpecs.roadsignRegulation.config}}
-  />
-</template>;
+export const roadsignInsert: TOC<WidgetSignature<'roadsignRegulation'>> =
+  <template>
+    <RoadsignRegulationInsert
+      @controller={{@controller}}
+      @options={{@setup.pluginSpecs.roadsignRegulation.config}}
+    />
+  </template>;
 const defaultConfig: RoadsignRegulationPluginOptions = {
   endpoint: 'https://dev.roadsigns.lblod.info/sparql',
   imageBaseUrl: 'https://dev.roadsigns.lblod.info/',
@@ -34,6 +24,6 @@ export const setupRoadsignRegulationPlugin = (({ options }) => {
     name,
     config: mergeConfigs(defaultConfig, options?.roadsignRegulation),
     nodes: { roadsign_regulation },
-    sidebarWidgets: { 'roadsign-regulation:insert': insert },
+    sidebarWidgets: { 'roadsign-regulation:insert': roadsignInsert },
   };
 }) satisfies PluginInitializer;

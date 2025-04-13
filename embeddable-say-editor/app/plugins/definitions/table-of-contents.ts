@@ -5,16 +5,6 @@ import {
 import type { PluginInitializer } from '../embedded-plugin.ts';
 import TOCToggle from '@lblod/ember-rdfa-editor-lblod-plugins/components/table-of-contents-plugin/toolbar-button';
 
-const name = 'tableOfContents';
-declare module '../plugin-registry' {
-  export interface EmbeddedPlugins {
-    [name]: typeof setupTableOfContentsPlugin;
-  }
-  export interface ToolbarWidgets {
-    'table-of-contents': typeof TOCToggle;
-  }
-}
-
 export const setupTableOfContentsPlugin = (({ plugins }) => {
   if (
     !(plugins?.includes('article-structure') || plugins?.includes('besluit'))
@@ -26,7 +16,7 @@ export const setupTableOfContentsPlugin = (({ plugins }) => {
   }
 
   return {
-    name,
+    name: 'tableOfContents',
     nodes: { table_of_contents: table_of_contents() },
     nodeViews: {
       table_of_contents: tableOfContentsView(),

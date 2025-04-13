@@ -13,25 +13,14 @@ import type { SayNodeViewConstructor } from '@lblod/ember-rdfa-editor/utils/embe
 
 const name = 'besluit';
 
-interface BesluitPluginConfig {
+export interface BesluitPluginConfig {
   uriGenerator: () => string;
   fullLengthArticles: boolean;
   onlyArticleSpecialName: boolean;
   decisionUri?: string;
 }
 
-declare module '../plugin-registry' {
-  export interface EmbeddedPlugins {
-    [name]: typeof besluitPlugin;
-  }
-  export interface PluginOptions {
-    [name]?: Partial<BesluitPluginConfig>;
-  }
-  export interface SidebarListItemWidgets {
-    'besluit:article-insert': typeof articleInsert;
-  }
-}
-const articleInsert: TOC<WidgetSignature> = <template>
+export const articleInsert: TOC<WidgetSignature> = <template>
   <InsertArticleComponent
     @controller={{@controller}}
     @options={{@setup.pluginSpecs.besluit.config}}

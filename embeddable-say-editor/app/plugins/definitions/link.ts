@@ -7,11 +7,6 @@ import type { PluginInitializer } from '../embedded-plugin.ts';
 
 const name = 'link';
 
-declare module '../plugin-registry' {
-  export interface EmbeddedPlugins {
-    [name]: typeof setupLinkPlugin;
-  }
-}
 export const setupLinkPlugin = (() => {
   const config = { interactive: true, rdfaAware: true };
 

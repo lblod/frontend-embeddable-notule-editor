@@ -37,7 +37,6 @@ import type { WidgetSignature } from '../widgets';
 import type { TOC } from '@ember/component/template-only';
 import type IntlService from 'ember-intl/services/intl';
 
-const name = 'variable';
 export type VariablePluginConfig = {
   insert: {
     enable: boolean;
@@ -55,26 +54,13 @@ export type VariablePluginConfig = {
   };
 };
 
-declare module '../plugin-registry' {
-  export interface PluginOptions {
-    [name]?: Partial<VariablePluginConfig>;
-  }
-  export interface EmbeddedPlugins {
-    [name]: typeof setupVariablePlugin;
-  }
-  export interface SidebarWidgets {
-    'variable:insert': typeof insert;
-    'variable:edit': typeof edit;
-  }
-}
-
-const insert: TOC<WidgetSignature<'variable'>> = <template>
+export const variableInsert: TOC<WidgetSignature<'variable'>> = <template>
   <InsertVariableCard
     @controller={{@controller}}
     @variableTypes={{@setup.pluginSpecs.variable.config.insert.variableTypes}}
   />
 </template>;
-const edit: TOC<WidgetSignature<'variable'>> = <template>
+export const variableEdit: TOC<WidgetSignature<'variable'>> = <template>
   <CodelistEdit
     @controller={{@controller}}
     @options={{@setup.pluginSpecs.variable.config.edit.codelist}}
@@ -199,8 +185,8 @@ export const setupVariablePlugin = (({ options, intl }) => {
     nodes: variableNodes,
     nodeViews: variableNodeViews,
     sidebarWidgets: {
-      'variable:insert': insert,
-      'variable:edit': edit,
+      'variable:insert': variableInsert,
+      'variable:edit': variableEdit,
     },
   };
 }) satisfies PluginInitializer;

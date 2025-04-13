@@ -10,22 +10,11 @@ import type { TOC } from '@ember/component/template-only';
 import type { WidgetSignature } from '../widgets';
 
 const name = 'location';
-type Config = LocationPluginConfig & {
+export type LocationConfig = LocationPluginConfig & {
   defaultMunicipality?: string;
   locationTypes: Array<'address' | 'place' | 'area'>;
 };
-declare module '../plugin-registry' {
-  export interface PluginOptions {
-    [name]?: Partial<Config>;
-  }
-  export interface EmbeddedPlugins {
-    [name]: typeof setupLocationPlugin;
-  }
-  export interface SidebarListItemWidgets {
-    'location:insert': typeof insert;
-  }
-}
-const insert: TOC<WidgetSignature<'location'>> = <template>
+export const locationInsert: TOC<WidgetSignature<'location'>> = <template>
   <OSLOLocationInsert
     @controller={{@controller}}
     @config={{@setup.pluginSpecs.location.config}}
@@ -33,7 +22,7 @@ const insert: TOC<WidgetSignature<'location'>> = <template>
     @locationTypes={{@setup.pluginSpecs.location.config.locationTypes}}
   />
 </template>;
-const defaultConfig: Config = {
+const defaultConfig: LocationConfig = {
   defaultPointUriRoot: 'https://example.net/id/geometrie/',
   defaultPlaceUriRoot: 'https://example.net/id/plaats/',
   defaultAddressUriRoot: 'https://example.net/id/adres/',
@@ -48,6 +37,6 @@ export const setupLocationPlugin = (({ options }) => {
     nodeViews: {
       oslo_location: (controller) => osloLocationView(config)(controller),
     },
-    sidebarWidgets: { 'location:insert': insert },
+    sidebarWidgets: { 'location:insert': locationInsert },
   };
 }) satisfies PluginInitializer;

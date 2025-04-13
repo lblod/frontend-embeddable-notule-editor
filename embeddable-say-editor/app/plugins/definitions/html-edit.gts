@@ -1,15 +1,6 @@
 import type { PluginInitializer } from '../embedded-plugin';
 import HTMLEditorMenu from '@lblod/ember-rdfa-editor/components/plugins/html-editor/menu';
 const name = 'htmlEdit';
-
-declare module '../plugin-registry' {
-  export interface EmbeddedPlugins {
-    [name]: typeof setupHtmlEdit;
-  }
-  export interface ToolbarWidgets {
-    'html:edit': typeof HTMLEditorMenu;
-  }
-}
 export const setupHtmlEdit = (() => {
   return {
     name,

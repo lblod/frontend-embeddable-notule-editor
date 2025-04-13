@@ -6,23 +6,12 @@ import {
 import type { PluginInitializer } from '../embedded-plugin.ts';
 import { mergeConfigs } from '../setup/defaults';
 
-const name = 'table';
-
 export type TableConfig = {
   tableGroup: string;
   cellContent: string;
   inlineBorderStyle: { width: string; color: string };
   rowBackground?: { even?: string; odd?: string };
 };
-
-declare module '../plugin-registry' {
-  export interface PluginOptions {
-    [name]?: Partial<TableConfig>;
-  }
-  export interface EmbeddedPlugins {
-    [name]: typeof tableSetup;
-  }
-}
 
 const defaultTableConfig: TableConfig = {
   tableGroup: 'block',
@@ -37,7 +26,7 @@ export const tableSetup = (({ options }) => {
   };
   const prosePlugins = [...tablePlugins, tableKeymap];
   return {
-    name,
+    name: 'table',
     config,
     nodes,
     prosePlugins,

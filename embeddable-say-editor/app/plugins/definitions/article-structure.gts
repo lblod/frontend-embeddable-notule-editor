@@ -12,15 +12,7 @@ import type { PluginInitializer } from '../embedded-plugin.ts';
 
 const name = 'articleStructure';
 
-declare module '../plugin-registry' {
-  export interface EmbeddedPlugins {
-    [name]: typeof articleStructurePlugin;
-  }
-  export interface SidebarListItemWidgets {
-    'article-structure:insert': typeof insert;
-  }
-}
-const insert: TOC<WidgetSignature<'articleStructure'>> = <template>
+export const insert: TOC<WidgetSignature<'articleStructure'>> = <template>
   <ArticleStructureInsert
     @controller={{@controller}}
     @options={{@setup.pluginSpecs.articleStructure.config}}

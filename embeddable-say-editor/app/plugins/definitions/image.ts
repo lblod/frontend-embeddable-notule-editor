@@ -12,14 +12,6 @@ export type ImagePluginConfig = {
 };
 
 const name = 'image';
-declare module '../plugin-registry' {
-  export interface PluginOptions {
-    [name]?: Partial<ImagePluginConfig>;
-  }
-  export interface EmbeddedPlugins {
-    [name]: typeof setupImagePlugin;
-  }
-}
 const defaultConfig: ImagePluginConfig = {
   allowBase64Images: true,
   pasteLimit: 2000000,
@@ -32,7 +24,7 @@ export const setupImagePlugin = (({ options }) => {
     }),
   };
   return {
-    name: 'image',
+    name,
     config,
     nodes,
     nodeViews: { image: imageView },

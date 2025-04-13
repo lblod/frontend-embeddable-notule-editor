@@ -7,18 +7,6 @@ import type { PluginInitializer } from '../embedded-plugin.ts';
 import TemplateCommentEditCard from '@lblod/ember-rdfa-editor-lblod-plugins/components/template-comments-plugin/edit-card';
 import TemplateCommentInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/template-comments-plugin/insert';
 
-const name = 'templateComments';
-declare module '../plugin-registry' {
-  export interface EmbeddedPlugins {
-    [name]: typeof setupTemplateCommentsPlugin;
-  }
-  export interface SidebarWidgets {
-    'template-comments:edit': typeof TemplateCommentEditCard;
-  }
-  export interface SidebarListItemWidgets {
-    'template-comments:insert': typeof TemplateCommentInsert;
-  }
-}
 export const setupTemplateCommentsPlugin = (() => {
   const nodes = { templateComment };
   const nodeViews = {
@@ -26,7 +14,7 @@ export const setupTemplateCommentsPlugin = (() => {
       templateCommentView(controller),
   };
   return {
-    name,
+    name: 'templateComments',
     nodes,
     nodeViews,
     sidebarWidgets: {
