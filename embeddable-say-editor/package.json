@@ -145,6 +145,10 @@
       "import": "./dist/embeddable-say-editor.mjs",
       "require": "./dist/embeddable-say-editor.umd.js"
     },
+    "./*": {
+      "types": "./dist-types/*.d.ts",
+      "default": "./app/*"
+    },
     "./tests/*": "./tests/*",
     "./style.css": "./dist/embeddable-say-editor.css"
   },
