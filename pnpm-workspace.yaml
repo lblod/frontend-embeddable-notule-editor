@@ -3,23 +3,19 @@ packages:
   - test-angular
 
 overrides:
-  "@ember/string": 4.0.1
+  '@ember/string': 4.0.1
   ember-mu-transform-helpers: 2.1.3
 
 packageExtensions:
   ember-leaflet:
     dependencies:
-      "@ember/string": 4.0.1
+      '@ember/string': 4.0.1
       ember-auto-import: 2.10.0
 
 patchedDependencies:
-  ember-leaflet: patches/ember-leaflet.patch
-  "@lblod/ember-rdfa-editor-lblod-plugins": patches/@lblod__ember-rdfa-editor-lblod-plugins.patch
-
-# injectWorkspacePackages: true
-# syncInjectedDepsAfterScripts:
-#   - start
-#   - build
+  ember-leaflet: /home/elena/Projects/lblod/Embeddable/frontend-embeddable-notule-editor/patches/ember-leaflet.patch
+  '@lblod/ember-rdfa-editor-lblod-plugins': /home/elena/Projects/lblod/Embeddable/frontend-embeddable-notule-editor/patches/@lblod__ember-rdfa-editor-lblod-plugins.patch
+  ember-source: patches/ember-source.patch
 
 onlyBuiltDependencies:
   - core-js
