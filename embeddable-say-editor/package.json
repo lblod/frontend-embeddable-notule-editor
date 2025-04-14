@@ -141,15 +141,11 @@
   },
   "exports": {
     ".": {
-      "types": "./dist-types/main.d.ts",
+      "types": "./dist-types/app/main.d.ts",
       "import": "./dist/embeddable-say-editor.mjs",
       "require": "./dist/embeddable-say-editor.umd.js"
     },
     "./tests/*": "./tests/*",
-    "./*": {
-      "types": "./dist-types/*.d.ts",
-      "default": "./app/*"
-    },
     "./style.css": "./dist/embeddable-say-editor.css"
   },
   "dependencies": {

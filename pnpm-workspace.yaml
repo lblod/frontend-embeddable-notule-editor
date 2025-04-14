@@ -16,10 +16,10 @@ patchedDependencies:
   ember-leaflet: /home/arne/repos/redpencil/frontend-embeddable-notule-editor/patches/ember-leaflet.patch
   "@lblod/ember-rdfa-editor-lblod-plugins": /home/arne/repos/redpencil/frontend-embeddable-notule-editor/patches/@lblod__ember-rdfa-editor-lblod-plugins.patch
 
-injectWorkspacePackages: true
-syncInjectedDepsAfterScripts:
-  - start
-  - build
+# injectWorkspacePackages: true
+# syncInjectedDepsAfterScripts:
+#   - start
+#   - build
 
 onlyBuiltDependencies:
   - core-js

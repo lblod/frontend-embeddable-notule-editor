@@ -1,6 +1,5 @@
 import { afterRender, Component, ElementRef } from '@angular/core';
-import { EditorElement, renderEditor } from '@lblod/embeddable-say-editor';
-import { EditorSetup } from '@lblod/embeddable-say-editor/app/plugins/setup/setup-plugins';
+import { type EditorElement, renderEditor } from '@lblod/embeddable-say-editor';
 import '@lblod/embeddable-say-editor/style.css';
 
 @Component({
