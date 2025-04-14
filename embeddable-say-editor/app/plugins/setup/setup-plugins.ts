@@ -13,22 +13,6 @@ import type {
   PluginName,
   PluginSpecs,
 } from '../embedded-plugin.ts';
-import { articleStructurePlugin } from '../definitions/article-structure.gts';
-import { besluitTopic } from '../definitions/besluit-topic.gts';
-import { besluitPlugin } from '../definitions/besluit.gts';
-import { setupCitationPlugin } from '../definitions/citation.gts';
-import { confidentialityPlugin } from '../definitions/confidentiality.ts';
-import { setupEditableRdfaPlugin } from '../definitions/editable-rdfa.ts';
-import { setupImagePlugin } from '../definitions/image.ts';
-import { coreSetup } from '../definitions/core/core.ts';
-import { setupLinkPlugin } from '../definitions/link.ts';
-import { setupLocationPlugin } from '../definitions/location.gts';
-import { setupLpdcPlugin } from '../definitions/lpdc.gts';
-import { setupRoadsignRegulationPlugin } from '../definitions/roadsign-regulation.gts';
-import { setupTableOfContentsPlugin } from '../definitions/table-of-contents.ts';
-import { tableSetup } from '../definitions/table.ts';
-import { setupTemplateCommentsPlugin } from '../definitions/template-comments.ts';
-import { setupVariablePlugin } from '../definitions/variable.gts';
 import type { SayNodeViewConstructor } from '@lblod/ember-rdfa-editor/utils/ember-node';
 import type {
   SidebarConfig,
@@ -37,10 +21,7 @@ import type {
 } from '../widgets.ts';
 import { defaultToolbar } from './default-toolbar.ts';
 import { defaultSidebar } from './default-sidebar.ts';
-import { setupHtmlEdit } from '../definitions/html-edit.gts';
-import { setupHtmlPreview } from '../definitions/html-preview.ts';
-import { setupFormattingToggle } from '../definitions/formatting-toggle.ts';
-import type { EmbeddedPlugins } from '../plugin-registry.ts';
+import { PLUGIN_MAP } from '../plugin-registry';
 type EnsuredSpecs<
   S extends PluginSpecs,
   N extends PluginName | void,
@@ -71,27 +52,6 @@ export type ToCamel<S extends string | number | symbol> = S extends string
 const camelize = <const S extends string>(s: S): ToCamel<S> =>
   s.replace(/-./g, (match) => match?.[1]?.toUpperCase() ?? '') as ToCamel<S>;
 
-const PLUGIN_MAP: { [K in PluginName]: EmbeddedPlugins[K] } = {
-  core: coreSetup,
-  articleStructure: articleStructurePlugin,
-  besluitTopic: besluitTopic,
-  besluit: besluitPlugin,
-  citation: setupCitationPlugin,
-  confidentiality: confidentialityPlugin,
-  htmlEdit: setupHtmlEdit,
-  htmlPreview: setupHtmlPreview,
-  formattingToggle: setupFormattingToggle,
-  rdfaEditor: setupEditableRdfaPlugin,
-  image: setupImagePlugin,
-  link: setupLinkPlugin,
-  location: setupLocationPlugin,
-  lpdc: setupLpdcPlugin,
-  roadsignRegulation: setupRoadsignRegulationPlugin,
-  tableOfContents: setupTableOfContentsPlugin,
-  table: tableSetup,
-  templateComments: setupTemplateCommentsPlugin,
-  variable: setupVariablePlugin,
-} as const;
 export function setupPlugins(args: PluginInitArgs): EditorSetup {
   const { plugins = [] as const, sidebar, toolbar } = args;
 
