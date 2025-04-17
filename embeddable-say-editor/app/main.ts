@@ -105,11 +105,7 @@ async function renderInShadow(options: RenderEditorOptions) {
   editorContainer.style.container = 'say-editor';
   editorContainer.style.containerType = 'size';
   const style = document.createElement('style');
-  style.innerHTML = (await import('../app/styles/app.scss?inline')).default
-    .replace(/:root/g, ':host')
-    .replace(/html/g, ':host')
-    .replace(/body/g, '.ember-application')
-    .replace(/@media/g, '@container say-editor');
+  style.innerHTML = (await import('../app/styles/app.scss?inline')).default;
 
   container.shadowRoot!.appendChild(style);
   container.shadowRoot!.appendChild(editorContainer);
