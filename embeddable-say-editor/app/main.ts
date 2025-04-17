@@ -42,7 +42,7 @@ async function startApp({
   }
 
   if (height) {
-    container.style.minHeight = height;
+    container.style.height = height;
     if (!growEditor) {
       container.style.maxHeight = height;
     }
