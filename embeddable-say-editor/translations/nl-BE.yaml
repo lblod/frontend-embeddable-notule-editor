@@ -1,0 +1,15 @@
+editor:
+  variables:
+    text: tekst
+    number: nummer
+    address: adres
+    location: locatie
+    date: datum
+    codelist: codelijst
+  insert: "Invoegen"
+  besluit:
+    title: Besluit
+  article-structure:
+    title: Document Structuren
+  others:
+    title: Algemeen
