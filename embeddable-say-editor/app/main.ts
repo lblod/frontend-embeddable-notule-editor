@@ -108,6 +108,7 @@ async function renderInShadow(options: RenderEditorOptions) {
   style.innerHTML = (await import('../app/styles/app.scss?inline')).default
     .replace(/:root/g, ':host')
     .replace(/html/g, ':host')
+    .replace(/body/g, '.ember-application')
     .replace(/@media/g, '@container say-editor');
 
   container.shadowRoot!.appendChild(style);
