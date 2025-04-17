@@ -1,7 +1,6 @@
 import { renderEditor } from '../../app/main.ts';
 import { router } from '../router.ts';
 import { pluginDemoConfig } from '../shared-config.ts';
-import '../../app/styles/app.scss';
 
 const container = document.createElement('div');
 
