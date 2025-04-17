@@ -1,11 +1,12 @@
-import { renderEditor, renderInShadowRoot } from '../app/main.ts';
+import { renderEditor } from '../app/main.ts';
 import { router } from './router.ts';
 
 const container = document.createElement('div');
 document.body.appendChild(router);
 document.body.appendChild(container);
 container.style.height = '90vh';
-const editor = await renderInShadowRoot({
+container.style.width = '90vw';
+const editor = await renderEditor({
   element: container,
   title: 'my editor', // optional, this will set the "title" attribute of the iframe
   width: '100%', // width attribute of the iframe
