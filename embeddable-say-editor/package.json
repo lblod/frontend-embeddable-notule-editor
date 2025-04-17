@@ -40,7 +40,7 @@
   "main": "./dist/embeddable-say-editor.umd.js",
   "module": "./dist/embeddable-say-editor.mjs",
   "devDependencies": {
-    "@appuniversum/ember-appuniversum": "file:../../ember-appuniversum/appuniversum-ember-appuniversum-3.8.0.tgz",
+    "@appuniversum/ember-appuniversum": "https://github.com/abeforgit/ember-appuniversum/raw/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.8.0.tgz",
     "@babel/core": "^7.26.10",
     "@babel/eslint-parser": "^7.26.10",
     "@babel/plugin-transform-runtime": "^7.26.10",
