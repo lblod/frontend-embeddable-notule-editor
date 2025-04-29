@@ -2,15 +2,72 @@
    #DUMMY APP
    ================================== */
 @use "@appuniversum/ember-appuniversum/styles";
-@use "@lblod/ember-rdfa-editor";
+@use "@lblod/ember-rdfa-editor" with (
+  $say-paper-min-height: var(
+      --say-editor-minimum-page-height,
+      calc(100% + 2.4rem)
+    )
+);
 @use "leaflet";
 
-code {
-  background-color: #eee;
-  border-radius: 3px;
-  font-family: courier, monospace;
-  padding: 0 3px;
+.notule-editor {
+  // VARIABLES START
+
+  // Font Family
+  --au-font: var(
+    --say-font-family,
+    "flanders-sans",
+    BlinkMacSystemFont,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  );
+
+  // TODO: Create a variable inside the editor repo itself, so we can target it instead of using selectors.
+  //       Using this approach for a proof of concept.
+  .say-container--paper .say-editor {
+    background-color: var(--say-page-bg, #f7f9fc);
+  }
+
+  .say-content {
+    font-size: var(--say-font-size-text, 15px);
+
+    $default-heading-font-sizes: (
+      "h1": 44px,
+      "h2": 32px,
+      "h3": 26px,
+      "h4": 20px,
+      "h5": 18px,
+      "h6": 16px,
+    );
+
+    @each $heading, $default-font-size in $default-heading-font-sizes {
+      #{$heading} {
+        font-size: var(--say-font-size-#{$heading}, #{$default-font-size});
+      }
+    }
+
+    line-height: var(--say-editor-line-height, var(--au-global-line-height));
+
+    p + * {
+      margin-top: var(
+        --say-paragraph-spacing,
+        12px
+      );
+    }
+  }
+
+  code {
+    background-color: #eee;
+    border-radius: 3px;
+    font-family: courier, monospace;
+    padding: 0 3px;
+  }
 }
+
 .leaflet-container {
   height: 100%;
 }

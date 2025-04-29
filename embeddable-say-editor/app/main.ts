@@ -4,6 +4,10 @@ export { setupPlugins } from './plugins/setup/setup-plugins.ts';
 export type { EditorElement } from './editor-element.ts';
 import type { RenderEditorOptions } from './render-editor-options.ts';
 
+// adjusting this won't actually change the toolbar height, this is just the constant
+// value of the height as given by the editor css
+const TOOLBAR_HEIGHT = '44px';
+
 type SimpleElement = Parameters<App['visit']>[1]['rootElement'];
 
 /**
@@ -20,15 +24,18 @@ export async function renderEditor(
   }
   return startApp(options);
 }
-async function startApp({
-  element,
-  plugins = [],
-  options = {},
-  width,
-  height,
-  growEditor,
-  cssVariables,
-}: RenderEditorOptions): Promise<EditorElement> {
+async function startApp(
+  editorOptions: RenderEditorOptions,
+): Promise<EditorElement> {
+  const {
+    element,
+    plugins = [],
+    options = {},
+    width,
+    height,
+    growEditor,
+  } = editorOptions;
+  let cssVariables = editorOptions.cssVariables;
   const app = App.create({
     autoboot: false,
     name: `@lblod/embeddable-say-editor`,
@@ -36,17 +43,6 @@ async function startApp({
   });
 
   const container: HTMLElement = ensureElement(element as HTMLElement);
-  container.style.overflow = 'auto';
-  if (width) {
-    container.style.maxWidth = width;
-  }
-
-  if (height) {
-    container.style.height = height;
-    if (!growEditor) {
-      container.style.maxHeight = height;
-    }
-  }
 
   // Launch the editor
   await app.visit('/', {
@@ -60,6 +56,34 @@ async function startApp({
   ) as unknown as EditorElement;
   // initialize the editor
   await editorElement.initEditor(plugins, options);
+
+  if (width) {
+    container.style.width = width;
+  }
+
+  if (height) {
+    if (growEditor) {
+      container.style.height = 'fit-content';
+      const sayEditorElement = editorElement.getElementsByClassName(
+        'say-editor',
+      )[0] as HTMLElement;
+      let topPadding: string, bottomPadding: string;
+      if (sayEditorElement.computedStyleMap) {
+        const stylemap = sayEditorElement.computedStyleMap();
+        topPadding = stylemap.get('padding-top') as string;
+        bottomPadding = stylemap.get('padding-bottom') as string;
+      } else {
+        // firefox doesn't support the computedStyleMap yet, so we hardcode it
+        topPadding = '24px';
+        bottomPadding = '24px';
+      }
+      cssVariables = {
+        '--say-editor-minimum-page-height': `calc(${height} - ${TOOLBAR_HEIGHT} - ${topPadding} - ${bottomPadding})`,
+      };
+    } else {
+      container.style.height = height;
+    }
+  }
 
   if (cssVariables && Object.keys(cssVariables).length > 0) {
     Object.entries(cssVariables).forEach(([key, value]) => {
@@ -84,26 +108,15 @@ function ensureElement(selectorOrElement: HTMLElement | string): HTMLElement {
   }
 }
 async function renderInShadow(options: RenderEditorOptions) {
-  const { element, width, height, growEditor } = options;
+  const { element } = options;
   const container = ensureElement(element as HTMLElement);
   container.attachShadow({ mode: 'open' });
-  container.style.width = '100%';
 
-  if (width) {
-    container.style.maxWidth = width;
-  }
-
-  if (height) {
-    container.style.minHeight = height;
-    if (!growEditor) {
-      container.style.maxHeight = height;
-    }
-  }
   const editorContainer = document.createElement('div');
   // This is a small hack needed for elements which have `position: fixed` to display correctly in the shadow-root (https://stackoverflow.com/questions/30271404/how-should-position-fixed-work-in-a-shadow-dom-root/70422489#70422489)
   editorContainer.style.transform = 'scale(1)';
   editorContainer.style.container = 'say-editor';
-  editorContainer.style.containerType = 'size';
+  editorContainer.style.containerType = 'inline-size';
   const style = document.createElement('style');
   style.innerHTML = (await import('../app/styles/app.scss?inline')).default;
 

@@ -46,7 +46,7 @@ const editors = [
     height: '250px',
     content: 'Each editor has a decision URI passed to the plugins',
   },
-  { heading: 'Ruling', label: 'ruling', height: '500px', content: '...' },
+  { heading: 'Ruling', label: 'ruling', height: '250px', content: '...' },
 ];
 window.editors = {};
 
@@ -58,6 +58,7 @@ editors.forEach((config) => {
   );
 
   const element = document.createElement('div');
+  element.className = 'editor-container';
   container.append(element);
   renderEditor({
     element,
