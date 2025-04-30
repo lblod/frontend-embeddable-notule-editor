@@ -28,8 +28,8 @@ export const pluginDemoConfig = {
       endpoint: 'https://data.vlaanderen.be/sparql',
     },
     lpdc: {
-      endpoint:
-        'https://embeddable.dev.gelinkt-notuleren.lblod.info/lpdc-service',
+      lpdcEndpoint:
+        'https://embeddable.dev.gelinkt-notuleren.lblod.info/lpdc-service/doc/instantie',
     },
     besluit: {
       fullLengthArticles: false,

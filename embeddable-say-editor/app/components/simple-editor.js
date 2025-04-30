@@ -469,8 +469,12 @@ export default class SimpleEditorComponent extends Component {
 
   setupLpdcPlugin(setup) {
     const { config, userConfig } = setup;
-
-    config.lpdc = userConfig.lpdc;
+    const endpoint = userConfig.lpdc.endpoint
+      ? userConfig.lpdc.endpoint + '/doc/instantie'
+      : userConfig.lpdc.lpdcEndpoint;
+    config.lpdc = {
+      endpoint,
+    };
   }
   setupLocationPlugin(setup) {
     const { nodes, nodeViews, config, userConfig } = setup;
