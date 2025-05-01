@@ -183,11 +183,11 @@ importers:
         specifier: ^0.6.0
         version: 0.6.0(@appuniversum/ember-appuniversum@https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.8.0.tgz(9c6ded0e85ce110b1513bc0128b71671))(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))
       '@lblod/ember-rdfa-editor':
-        specifier: 12.4.0-dev.63e5cdb5ae6d6b48b86b567f2ddcc232d78ca770
-        version: 12.4.0-dev.63e5cdb5ae6d6b48b86b567f2ddcc232d78ca770(4846c1863bd76270f45493c203572541)
+        specifier: 12.5.0
+        version: 12.5.0(114dea69726e03fe6e3d7749a5627025)
       '@lblod/ember-rdfa-editor-lblod-plugins':
-        specifier: ^29.1.1
-        version: 29.1.1(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(236374c500debaa45ff241feb390dc08)
+        specifier: ^31.0.3
+        version: 31.0.3(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(a3104c473f922fcfec7e30ee0cc2d68a)
       '@rollup/plugin-babel':
         specifier: ^6.0.4
         version: 6.0.4(@babel/core@7.27.1)(rollup@4.40.1)
@@ -2574,14 +2574,14 @@ packages:
       '@appuniversum/ember-appuniversum': ^2.0.0 || ^3.0.0
       ember-source: ^4.0.0 || ^5.0.0
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@29.1.1':
-    resolution: {integrity: sha512-9/rErMETkz6+kmG+0+lhpsuKfXeaIH1s5VrnRy55ko/e+znEJ+gbDhLmF18ehZ49/qpIkvJCSdiELbrheithiA==}
+  '@lblod/ember-rdfa-editor-lblod-plugins@31.0.3':
+    resolution: {integrity: sha512-rIp8Fv/YQ/evKkHCO8dFQdW3kvXJ7l65bAhdNFQFqzTvEW1G6nuVF/Yw1xfa0zYPeU+whSaKI37YA63KH5qMEg==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@appuniversum/ember-appuniversum': ^3.5.0
       '@ember/string': 4.0.1
       '@glint/template': ^1.4.0
-      '@lblod/ember-rdfa-editor': ^11.0.0
+      '@lblod/ember-rdfa-editor': ^12.1.0
       ember-concurrency: ^4.0.2
       ember-element-helper: ^0.8.6
       ember-intl: ^7.0.0
@@ -2598,8 +2598,8 @@ packages:
       ember-template-imports:
         optional: true
 
-  '@lblod/ember-rdfa-editor@12.4.0-dev.63e5cdb5ae6d6b48b86b567f2ddcc232d78ca770':
-    resolution: {integrity: sha512-9u7w5CdxRiLVhmZJi7T56PbnB5SnTqH9F3550G0UFofaKYSBjry3qfNL1bnpCimcFfYNN7YHy1+p7TWxymKmDw==}
+  '@lblod/ember-rdfa-editor@12.5.0':
+    resolution: {integrity: sha512-f3LqNM8wZdVSIZdLKTHrncQDaijWtIjbUK2fI7dDlV03XFQbeiT8MCjFWbxyU96tlU4hPhRqjCIpsBjoGwUbNg==}
     peerDependencies:
       '@appuniversum/ember-appuniversum': ^3.5.0
       '@ember/test-helpers': ^2.9.4 || ^3.2.1 || ^4.0.2 || ^5.0.0
@@ -10985,7 +10985,7 @@ snapshots:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@angular-devkit/architect': 0.1802.19(chokidar@3.6.0)
-      '@angular-devkit/build-webpack': 0.1802.19(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0))(webpack@5.94.0(esbuild@0.23.0))
+      '@angular-devkit/build-webpack': 0.1802.19(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0))(webpack@5.94.0)
       '@angular-devkit/core': 18.2.19(chokidar@3.6.0)
       '@angular/build': 18.2.19(@angular/compiler-cli@18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.4))(@types/node@22.13.10)(chokidar@3.6.0)(less@4.2.0)(postcss@8.4.41)(sass-embedded@1.87.0)(terser@5.31.6)(typescript@5.5.4)
       '@angular/compiler-cli': 18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.4)
@@ -10999,14 +10999,14 @@ snapshots:
       '@babel/preset-env': 7.26.9(@babel/core@7.26.10)
       '@babel/runtime': 7.26.10
       '@discoveryjs/json-ext': 0.6.1
-      '@ngtools/webpack': 18.2.19(@angular/compiler-cli@18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.4))(typescript@5.5.4)(webpack@5.94.0(esbuild@0.23.0))
+      '@ngtools/webpack': 18.2.19(@angular/compiler-cli@18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.4))(typescript@5.5.4)(webpack@5.94.0)
       ansi-colors: 4.1.3
       autoprefixer: 10.4.20(postcss@8.4.41)
-      babel-loader: 9.1.3(@babel/core@7.26.10)(webpack@5.94.0(esbuild@0.23.0))
+      babel-loader: 9.1.3(@babel/core@7.26.10)(webpack@5.94.0)
       browserslist: 4.24.4
-      copy-webpack-plugin: 12.0.2(webpack@5.94.0(esbuild@0.23.0))
+      copy-webpack-plugin: 12.0.2(webpack@5.94.0)
       critters: 0.0.24
-      css-loader: 7.1.2(webpack@5.94.0(esbuild@0.23.0))
+      css-loader: 7.1.2(webpack@5.94.0)
       esbuild-wasm: 0.23.0
       fast-glob: 3.3.2
       http-proxy-middleware: 3.0.5
@@ -11015,11 +11015,11 @@ snapshots:
       jsonc-parser: 3.3.1
       karma-source-map-support: 1.4.0
       less: 4.2.0
-      less-loader: 12.2.0(less@4.2.0)(webpack@5.94.0(esbuild@0.23.0))
-      license-webpack-plugin: 4.0.2(webpack@5.94.0(esbuild@0.23.0))
+      less-loader: 12.2.0(less@4.2.0)(webpack@5.94.0)
+      license-webpack-plugin: 4.0.2(webpack@5.94.0)
       loader-utils: 3.3.1
       magic-string: 0.30.11
-      mini-css-extract-plugin: 2.9.0(webpack@5.94.0(esbuild@0.23.0))
+      mini-css-extract-plugin: 2.9.0(webpack@5.94.0)
       mrmime: 2.0.0
       open: 10.1.0
       ora: 5.4.1
@@ -11027,13 +11027,13 @@ snapshots:
       picomatch: 4.0.2
       piscina: 4.6.1
       postcss: 8.4.41
-      postcss-loader: 8.1.1(postcss@8.4.41)(typescript@5.5.4)(webpack@5.94.0(esbuild@0.23.0))
+      postcss-loader: 8.1.1(postcss@8.4.41)(typescript@5.5.4)(webpack@5.94.0)
       resolve-url-loader: 5.0.0
       rxjs: 7.8.1
       sass: 1.77.6
-      sass-loader: 16.0.0(sass-embedded@1.87.0)(sass@1.77.6)(webpack@5.94.0(esbuild@0.23.0))
+      sass-loader: 16.0.0(sass-embedded@1.87.0)(sass@1.77.6)(webpack@5.94.0)
       semver: 7.6.3
-      source-map-loader: 5.0.0(webpack@5.94.0(esbuild@0.23.0))
+      source-map-loader: 5.0.0(webpack@5.94.0)
       source-map-support: 0.5.21
       terser: 5.31.6
       tree-kill: 1.2.2
@@ -11044,7 +11044,7 @@ snapshots:
       webpack-dev-middleware: 7.4.2(webpack@5.94.0)
       webpack-dev-server: 5.0.4(webpack@5.94.0)
       webpack-merge: 6.0.1
-      webpack-subresource-integrity: 5.1.0(html-webpack-plugin@5.6.0(webpack@5.94.0))(webpack@5.94.0(esbuild@0.23.0))
+      webpack-subresource-integrity: 5.1.0(html-webpack-plugin@5.6.0(webpack@5.94.0))(webpack@5.94.0)
     optionalDependencies:
       esbuild: 0.23.0
       karma: 6.4.4
@@ -11066,7 +11066,7 @@ snapshots:
       - utf-8-validate
       - webpack-cli
 
-  '@angular-devkit/build-webpack@0.1802.19(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0))(webpack@5.94.0(esbuild@0.23.0))':
+  '@angular-devkit/build-webpack@0.1802.19(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0))(webpack@5.94.0)':
     dependencies:
       '@angular-devkit/architect': 0.1802.19(chokidar@3.6.0)
       rxjs: 7.8.1
@@ -14339,7 +14339,7 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@29.1.1(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(236374c500debaa45ff241feb390dc08)':
+  '@lblod/ember-rdfa-editor-lblod-plugins@31.0.3(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(a3104c473f922fcfec7e30ee0cc2d68a)':
     dependencies:
       '@appuniversum/ember-appuniversum': https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.8.0.tgz(9c6ded0e85ce110b1513bc0128b71671)
       '@babel/core': 7.27.1
@@ -14349,7 +14349,7 @@ snapshots:
       '@curvenote/prosemirror-utils': 1.0.5(prosemirror-model@1.22.1)(prosemirror-state@1.4.3)
       '@ember/string': 4.0.1
       '@embroider/macros': 1.17.2(@glint/template@1.4.1-unstable.afcad36)
-      '@lblod/ember-rdfa-editor': 12.4.0-dev.63e5cdb5ae6d6b48b86b567f2ddcc232d78ca770(4846c1863bd76270f45493c203572541)
+      '@lblod/ember-rdfa-editor': 12.5.0(114dea69726e03fe6e3d7749a5627025)
       '@lblod/marawa': 0.8.0-beta.6
       '@lblod/template-uuid-instantiator': 1.0.3
       '@rdfjs/data-model': 2.0.2
@@ -14404,7 +14404,7 @@ snapshots:
       - web-streams-polyfill
       - webpack
 
-  '@lblod/ember-rdfa-editor@12.4.0-dev.63e5cdb5ae6d6b48b86b567f2ddcc232d78ca770(4846c1863bd76270f45493c203572541)':
+  '@lblod/ember-rdfa-editor@12.5.0(114dea69726e03fe6e3d7749a5627025)':
     dependencies:
       '@appuniversum/ember-appuniversum': https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.8.0.tgz(9c6ded0e85ce110b1513bc0128b71671)
       '@codemirror/commands': 6.6.0
@@ -14464,6 +14464,7 @@ snapshots:
       prosemirror-transform: 1.9.0
       prosemirror-view: 1.33.8
       rdf-data-factory: 1.1.2
+      reactiveweb: 1.3.0(@babel/core@7.27.1)(@ember/test-waiters@3.1.0)(@glimmer/component@2.0.0)(@glimmer/tracking@1.1.2)(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))
       relative-to-absolute-iri: 1.0.7
       stream-browserify: 3.0.0
       tracked-built-ins: 3.4.0(@babel/core@7.27.1)
@@ -14474,6 +14475,7 @@ snapshots:
       '@glint/template': 1.4.1-unstable.afcad36
     transitivePeerDependencies:
       - '@babel/core'
+      - '@ember/test-waiters'
       - '@glint/environment-ember-loose'
       - '@lezer/common'
       - ember-data
@@ -14608,7 +14610,7 @@ snapshots:
   '@msgpackr-extract/msgpackr-extract-win32-x64@3.0.3':
     optional: true
 
-  '@ngtools/webpack@18.2.19(@angular/compiler-cli@18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.4))(typescript@5.5.4)(webpack@5.94.0(esbuild@0.23.0))':
+  '@ngtools/webpack@18.2.19(@angular/compiler-cli@18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.4))(typescript@5.5.4)(webpack@5.94.0)':
     dependencies:
       '@angular/compiler-cli': 18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.4)
       typescript: 5.5.4
@@ -15999,10 +16001,10 @@ snapshots:
 
   babel-eslint@10.1.0(eslint@9.25.1(jiti@2.4.2)):
     dependencies:
-      '@babel/code-frame': 7.26.2
-      '@babel/parser': 7.26.9
-      '@babel/traverse': 7.26.9
-      '@babel/types': 7.26.9
+      '@babel/code-frame': 7.27.1
+      '@babel/parser': 7.27.1
+      '@babel/traverse': 7.27.1
+      '@babel/types': 7.27.1
       eslint: 9.25.1(jiti@2.4.2)
       eslint-visitor-keys: 1.3.0
       resolve: 1.22.8
@@ -16050,7 +16052,7 @@ snapshots:
       schema-utils: 2.7.1
       webpack: 5.94.0
 
-  babel-loader@9.1.3(@babel/core@7.26.10)(webpack@5.94.0(esbuild@0.23.0)):
+  babel-loader@9.1.3(@babel/core@7.26.10)(webpack@5.94.0):
     dependencies:
       '@babel/core': 7.26.10
       find-cache-dir: 4.0.0
@@ -16847,7 +16849,7 @@ snapshots:
   camel-case@4.1.2:
     dependencies:
       pascal-case: 3.1.2
-      tslib: 2.6.2
+      tslib: 2.8.1
     optional: true
 
   can-symlink@1.0.0:
@@ -17178,7 +17180,7 @@ snapshots:
 
   copy-descriptor@0.1.1: {}
 
-  copy-webpack-plugin@12.0.2(webpack@5.94.0(esbuild@0.23.0)):
+  copy-webpack-plugin@12.0.2(webpack@5.94.0):
     dependencies:
       fast-glob: 3.3.2
       glob-parent: 6.0.2
@@ -17307,7 +17309,7 @@ snapshots:
       semver: 7.6.3
       webpack: 5.94.0
 
-  css-loader@7.1.2(webpack@5.94.0(esbuild@0.23.0)):
+  css-loader@7.1.2(webpack@5.94.0):
     dependencies:
       icss-utils: 5.1.0(postcss@8.5.3)
       postcss: 8.5.3
@@ -17386,7 +17388,7 @@ snapshots:
 
   date-fns@2.30.0:
     dependencies:
-      '@babel/runtime': 7.25.0
+      '@babel/runtime': 7.26.10
 
   date-fns@3.6.0: {}
 
@@ -17622,7 +17624,7 @@ snapshots:
       '@one-ini/wasm': 0.1.1
       commander: 10.0.1
       minimatch: 9.0.1
-      semver: 7.6.3
+      semver: 7.7.1
 
   ee-first@1.1.1: {}
 
@@ -18261,7 +18263,7 @@ snapshots:
 
   ember-headless-form@1.1.1(@babel/core@7.27.1)(@glimmer/component@2.0.0)(@glimmer/tracking@1.1.2)(@glint/environment-ember-loose@1.4.1-unstable.afcad36(@glimmer/component@2.0.0)(@glint/core@1.4.1-unstable.afcad36(typescript@5.5.4))(@glint/template@1.4.1-unstable.afcad36)(ember-cli-htmlbars@6.3.0)(ember-modifier@4.2.0(@babel/core@7.27.1)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))))(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))(eslint@9.25.1(jiti@2.4.2)):
     dependencies:
-      '@babel/runtime': 7.25.0
+      '@babel/runtime': 7.26.10
       '@embroider/addon-shim': 1.9.0
       '@embroider/util': 1.13.2(@glint/environment-ember-loose@1.4.1-unstable.afcad36(@glimmer/component@2.0.0)(@glint/core@1.4.1-unstable.afcad36(typescript@5.5.4))(@glint/template@1.4.1-unstable.afcad36)(ember-cli-htmlbars@6.3.0)(ember-modifier@4.2.0(@babel/core@7.27.1)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))))(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))
       '@glimmer/component': 2.0.0
@@ -20099,7 +20101,7 @@ snapshots:
       he: 1.2.0
       param-case: 3.0.4
       relateurl: 0.2.7
-      terser: 5.30.3
+      terser: 5.31.6
     optional: true
 
   html-tags@3.3.1: {}
@@ -20634,7 +20636,7 @@ snapshots:
 
   iter-tools@7.5.3:
     dependencies:
-      '@babel/runtime': 7.25.0
+      '@babel/runtime': 7.26.10
 
   jackspeak@2.3.6:
     dependencies:
@@ -20932,7 +20934,7 @@ snapshots:
 
   leaflet@1.9.4: {}
 
-  less-loader@12.2.0(less@4.2.0)(webpack@5.94.0(esbuild@0.23.0)):
+  less-loader@12.2.0(less@4.2.0)(webpack@5.94.0):
     dependencies:
       less: 4.2.0
     optionalDependencies:
@@ -20957,7 +20959,7 @@ snapshots:
       prelude-ls: 1.2.1
       type-check: 0.4.0
 
-  license-webpack-plugin@4.0.2(webpack@5.94.0(esbuild@0.23.0)):
+  license-webpack-plugin@4.0.2(webpack@5.94.0):
     dependencies:
       webpack-sources: 3.2.3
     optionalDependencies:
@@ -21513,7 +21515,7 @@ snapshots:
       tapable: 2.2.1
       webpack: 5.94.0
 
-  mini-css-extract-plugin@2.9.0(webpack@5.94.0(esbuild@0.23.0)):
+  mini-css-extract-plugin@2.9.0(webpack@5.94.0):
     dependencies:
       schema-utils: 4.2.0
       tapable: 2.2.1
@@ -22094,7 +22096,7 @@ snapshots:
   param-case@3.0.4:
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.6.2
+      tslib: 2.8.1
     optional: true
 
   parent-module@1.0.1:
@@ -22155,7 +22157,7 @@ snapshots:
   pascal-case@3.1.2:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.2
+      tslib: 2.8.1
     optional: true
 
   pascalcase@0.1.1: {}
@@ -22261,7 +22263,7 @@ snapshots:
       postcss: 8.5.3
       tsx: 4.19.3
 
-  postcss-loader@8.1.1(postcss@8.4.41)(typescript@5.5.4)(webpack@5.94.0(esbuild@0.23.0)):
+  postcss-loader@8.1.1(postcss@8.4.41)(typescript@5.5.4)(webpack@5.94.0):
     dependencies:
       cosmiconfig: 9.0.0(typescript@5.5.4)
       jiti: 1.21.7
@@ -23167,7 +23169,7 @@ snapshots:
       sass-embedded-win32-ia32: 1.87.0
       sass-embedded-win32-x64: 1.87.0
 
-  sass-loader@16.0.0(sass-embedded@1.87.0)(sass@1.77.6)(webpack@5.94.0(esbuild@0.23.0)):
+  sass-loader@16.0.0(sass-embedded@1.87.0)(sass@1.77.6)(webpack@5.94.0):
     dependencies:
       neo-async: 2.6.2
     optionalDependencies:
@@ -23497,7 +23499,7 @@ snapshots:
 
   source-map-js@1.2.1: {}
 
-  source-map-loader@5.0.0(webpack@5.94.0(esbuild@0.23.0)):
+  source-map-loader@5.0.0(webpack@5.94.0):
     dependencies:
       iconv-lite: 0.6.3
       source-map-js: 1.2.0
@@ -24253,7 +24255,7 @@ snapshots:
 
   typescript-auto-import-cache@0.3.5:
     dependencies:
-      semver: 7.6.3
+      semver: 7.7.1
 
   typescript-eslint@8.31.1(eslint@9.25.1(jiti@2.4.2))(typescript@5.5.4):
     dependencies:
@@ -24495,7 +24497,7 @@ snapshots:
   volar-service-typescript@0.0.64(@volar/language-service@2.4.12):
     dependencies:
       path-browserify: 1.0.1
-      semver: 7.6.3
+      semver: 7.7.1
       typescript-auto-import-cache: 0.3.5
       vscode-languageserver-textdocument: 1.0.12
       vscode-nls: 5.2.0
@@ -24662,7 +24664,7 @@ snapshots:
 
   webpack-sources@3.2.3: {}
 
-  webpack-subresource-integrity@5.1.0(html-webpack-plugin@5.6.0(webpack@5.94.0))(webpack@5.94.0(esbuild@0.23.0)):
+  webpack-subresource-integrity@5.1.0(html-webpack-plugin@5.6.0(webpack@5.94.0))(webpack@5.94.0):
     dependencies:
       typed-assert: 1.0.9
       webpack: 5.94.0(esbuild@0.23.0)

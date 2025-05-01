@@ -5,7 +5,9 @@ import LpdcInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/lpdc-p
 import { mergeConfigs } from '../setup/defaults';
 
 export interface LpdcConfig {
-  endpoint: string;
+  /** @deprecated use the explicit lpdcEndpoint where you specify the full url*/
+  endpoint?: string;
+  lpdcEndpoint?: string;
   decisionUri?: string;
 }
 
@@ -16,12 +18,18 @@ export const lpdcInsert: TOC<WidgetSignature<'lpdc'>> = <template>
   />
 </template>;
 const defaultConfig: LpdcConfig = {
-  endpoint: 'https://some.endpoint.be/lpdc',
+  lpdcEndpoint: 'https://some.endpoint.be/lpdc/doc/instanties',
 };
 export const setupLpdcPlugin = (({ options }) => {
+  const { endpoint, lpdcEndpoint, ...rest } = mergeConfigs(
+    defaultConfig,
+    options?.lpdc,
+  );
+  const fullEndpoint = lpdcEndpoint ?? endpoint + '/doc/instantie';
+  const pluginConfig = { ...rest, endpoint: fullEndpoint };
   return {
     name: 'lpdc',
-    config: mergeConfigs(defaultConfig, options?.lpdc),
+    config: pluginConfig,
     sidebarWidgets: { 'lpdc:insert': lpdcInsert },
   };
 }) satisfies PluginInitializer;

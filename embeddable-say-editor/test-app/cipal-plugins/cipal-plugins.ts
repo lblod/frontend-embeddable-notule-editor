@@ -9,8 +9,8 @@ const plugins: KebabPluginName[] = ['besluit-topic', 'lpdc', 'location'];
 const decisionUri = 'http://example.org/besluit/12345';
 const options: UserPluginOptions = {
   lpdc: {
-    endpoint:
-      'https://embeddable.dev.gelinkt-notuleren.lblod.info/lpdc-service',
+    lpdcEndpoint:
+      'https://embeddable.dev.gelinkt-notuleren.lblod.info/lpdc-service/doc/instantie',
     decisionUri,
   },
   besluitTopic: {
