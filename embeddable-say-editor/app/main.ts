@@ -22,7 +22,7 @@ export async function renderEditor(
   if (scopedCss) {
     return renderInShadow(options);
   }
-  return startApp(options);
+  return renderWithoutShadow(options);
 }
 async function startApp(
   editorOptions: RenderEditorOptions,
@@ -114,13 +114,32 @@ async function renderInShadow(options: RenderEditorOptions) {
 
   const editorContainer = document.createElement('div');
   // This is a small hack needed for elements which have `position: fixed` to display correctly in the shadow-root (https://stackoverflow.com/questions/30271404/how-should-position-fixed-work-in-a-shadow-dom-root/70422489#70422489)
-  editorContainer.style.transform = 'scale(1)';
+  // currently, the hack is not needed because we can tell velcro to use
+  // absolute positioning instead of fixed
+  // enabling the hack also limits modals to the size of the editor, which
+  // is explicitly something we don't want (they are unusable that way)
+  // so if we need this again, we have to find a better workaround
+  // editorContainer.style.transform = 'scale(1)';
   editorContainer.style.container = 'say-editor';
   editorContainer.style.containerType = 'inline-size';
   const style = document.createElement('style');
-  style.innerHTML = (await import('../app/styles/app.scss?inline')).default;
+  style.innerHTML = (
+    await import('../app/styles/app-shadowed.scss?inline')
+  ).default;
 
   container.shadowRoot!.appendChild(style);
   container.shadowRoot!.appendChild(editorContainer);
+  return startApp({ ...options, element: editorContainer });
+}
+async function renderWithoutShadow(options: RenderEditorOptions) {
+  await import('../app/styles/app.scss');
+  const { element } = options;
+  const container = ensureElement(element as HTMLElement);
+
+  const editorContainer = document.createElement('div');
+  editorContainer.style.container = 'say-editor';
+  editorContainer.style.containerType = 'inline-size';
+
+  container.appendChild(editorContainer);
   return startApp({ ...options, element: editorContainer });
 }
