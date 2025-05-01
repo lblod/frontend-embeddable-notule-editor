@@ -7,7 +7,7 @@ const editor = await renderEditor({
   plugins: [, /*...*/ "lpdc"],
   options: {
     lpdc: {
-      lpdcEndpoint: "https://some.endpoint.be/lpdc/doc/instatie",
+      lpdcEndpoint: "https://some.endpoint.be/lpdc/doc/instantie",
       decisionUri: "http://my-domain.be/id/besluiten/1234",
     },
   },
