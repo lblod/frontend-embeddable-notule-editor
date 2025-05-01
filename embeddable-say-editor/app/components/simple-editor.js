@@ -473,6 +473,7 @@ export default class SimpleEditorComponent extends Component {
       ? userConfig.lpdc.endpoint + '/doc/instantie'
       : userConfig.lpdc.lpdcEndpoint;
     config.lpdc = {
+      ...userConfig.lpdc,
       endpoint,
     };
   }
