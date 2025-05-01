@@ -6,7 +6,8 @@
 const editor = await renderEditor({
   plugins: [/*...*/,"citation"],
   options: {
-    endpoint: '/codex/sparql',
+    // below is the default endpoint. If you have your own proxy for codex vlaanderen, this is where you'd change the config
+    endpoint: 'https://codex.opendata.api.vlaanderen.be:8888/sparql',
     type: 'ranges',
 
     activeInNodeTypes(schema, _state) {

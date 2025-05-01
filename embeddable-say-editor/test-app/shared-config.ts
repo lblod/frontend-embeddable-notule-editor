@@ -32,8 +32,8 @@ export const pluginDemoConfig: Omit<RenderEditorOptions, 'element'> &
       widgetLocation: 'sidebar',
     },
     lpdc: {
-      endpoint:
-        'https://embeddable.dev.gelinkt-notuleren.lblod.info/lpdc-service',
+      lpdcEndpoint:
+        'https://embeddable.dev.gelinkt-notuleren.lblod.info/lpdc-service/doc/instantie',
     },
     besluit: {
       fullLengthArticles: false,
