@@ -183,11 +183,11 @@ importers:
         specifier: ^0.6.0
         version: 0.6.0(@appuniversum/ember-appuniversum@https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.8.0.tgz(9c6ded0e85ce110b1513bc0128b71671))(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))
       '@lblod/ember-rdfa-editor':
-        specifier: 12.5.0
-        version: 12.5.0(114dea69726e03fe6e3d7749a5627025)
+        specifier: 12.5.0-dev.328ca619c48310d7dea5a335e6ddf803cd5fedc3
+        version: 12.5.0-dev.328ca619c48310d7dea5a335e6ddf803cd5fedc3(114dea69726e03fe6e3d7749a5627025)
       '@lblod/ember-rdfa-editor-lblod-plugins':
         specifier: ^31.0.3
-        version: 31.0.3(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(a3104c473f922fcfec7e30ee0cc2d68a)
+        version: 31.0.3(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(8f6f1460a0e1c1e150b26234ec88a88e)
       '@rollup/plugin-babel':
         specifier: ^6.0.4
         version: 6.0.4(@babel/core@7.27.1)(rollup@4.40.1)
@@ -2598,8 +2598,8 @@ packages:
       ember-template-imports:
         optional: true
 
-  '@lblod/ember-rdfa-editor@12.5.0':
-    resolution: {integrity: sha512-f3LqNM8wZdVSIZdLKTHrncQDaijWtIjbUK2fI7dDlV03XFQbeiT8MCjFWbxyU96tlU4hPhRqjCIpsBjoGwUbNg==}
+  '@lblod/ember-rdfa-editor@12.5.0-dev.328ca619c48310d7dea5a335e6ddf803cd5fedc3':
+    resolution: {integrity: sha512-R5ILF5+W3eXnQWoEkiX0Yjefb3iyt6Og/bZcN9kzxPCw5Yvt2cEGP3DHBDJFHggcCGb6AT6Z4Ed7al9wCxBYYw==}
     peerDependencies:
       '@appuniversum/ember-appuniversum': ^3.5.0
       '@ember/test-helpers': ^2.9.4 || ^3.2.1 || ^4.0.2 || ^5.0.0
@@ -14339,7 +14339,7 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@31.0.3(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(a3104c473f922fcfec7e30ee0cc2d68a)':
+  '@lblod/ember-rdfa-editor-lblod-plugins@31.0.3(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(8f6f1460a0e1c1e150b26234ec88a88e)':
     dependencies:
       '@appuniversum/ember-appuniversum': https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.8.0.tgz(9c6ded0e85ce110b1513bc0128b71671)
       '@babel/core': 7.27.1
@@ -14349,7 +14349,7 @@ snapshots:
       '@curvenote/prosemirror-utils': 1.0.5(prosemirror-model@1.22.1)(prosemirror-state@1.4.3)
       '@ember/string': 4.0.1
       '@embroider/macros': 1.17.2(@glint/template@1.4.1-unstable.afcad36)
-      '@lblod/ember-rdfa-editor': 12.5.0(114dea69726e03fe6e3d7749a5627025)
+      '@lblod/ember-rdfa-editor': 12.5.0-dev.328ca619c48310d7dea5a335e6ddf803cd5fedc3(114dea69726e03fe6e3d7749a5627025)
       '@lblod/marawa': 0.8.0-beta.6
       '@lblod/template-uuid-instantiator': 1.0.3
       '@rdfjs/data-model': 2.0.2
@@ -14404,7 +14404,7 @@ snapshots:
       - web-streams-polyfill
       - webpack
 
-  '@lblod/ember-rdfa-editor@12.5.0(114dea69726e03fe6e3d7749a5627025)':
+  '@lblod/ember-rdfa-editor@12.5.0-dev.328ca619c48310d7dea5a335e6ddf803cd5fedc3(114dea69726e03fe6e3d7749a5627025)':
     dependencies:
       '@appuniversum/ember-appuniversum': https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.8.0.tgz(9c6ded0e85ce110b1513bc0128b71671)
       '@codemirror/commands': 6.6.0

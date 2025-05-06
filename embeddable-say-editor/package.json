@@ -74,7 +74,7 @@
     "@glint/template": "1.4.1-unstable.afcad36",
     "@glint/tsserver-plugin": "1.4.1-unstable.afcad36",
     "@lblod/ember-environment-banner": "^0.6.0",
-    "@lblod/ember-rdfa-editor": "12.5.0",
+    "@lblod/ember-rdfa-editor": "12.5.0-dev.328ca619c48310d7dea5a335e6ddf803cd5fedc3",
     "@lblod/ember-rdfa-editor-lblod-plugins": "^31.0.3",
     "@rollup/plugin-babel": "^6.0.4",
     "@thedutchcoder/postcss-rem-to-px": "^0.0.2",
