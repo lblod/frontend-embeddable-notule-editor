@@ -14,6 +14,9 @@ patchedDependencies:
   '@lblod/ember-rdfa-editor-lblod-plugins':
     hash: 1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03
     path: patches/@lblod__ember-rdfa-editor-lblod-plugins.patch
+  ember-headless-form:
+    hash: 3ffd83a43b842fdb4a0b3056a043c8a1a03cf60563de70328abd79a49a1707dd
+    path: patches/ember-headless-form.patch
   ember-leaflet:
     hash: 900e4f8e17b9d0ed55cf777a1703335ae268238efe1a366ad7ddd74d416e59d1
     path: patches/ember-leaflet.patch
@@ -10985,7 +10988,7 @@ snapshots:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@angular-devkit/architect': 0.1802.19(chokidar@3.6.0)
-      '@angular-devkit/build-webpack': 0.1802.19(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0))(webpack@5.94.0)
+      '@angular-devkit/build-webpack': 0.1802.19(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0))(webpack@5.94.0(esbuild@0.23.0))
       '@angular-devkit/core': 18.2.19(chokidar@3.6.0)
       '@angular/build': 18.2.19(@angular/compiler-cli@18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.4))(@types/node@22.13.10)(chokidar@3.6.0)(less@4.2.0)(postcss@8.4.41)(sass-embedded@1.87.0)(terser@5.31.6)(typescript@5.5.4)
       '@angular/compiler-cli': 18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.4)
@@ -10999,14 +11002,14 @@ snapshots:
       '@babel/preset-env': 7.26.9(@babel/core@7.26.10)
       '@babel/runtime': 7.26.10
       '@discoveryjs/json-ext': 0.6.1
-      '@ngtools/webpack': 18.2.19(@angular/compiler-cli@18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.4))(typescript@5.5.4)(webpack@5.94.0)
+      '@ngtools/webpack': 18.2.19(@angular/compiler-cli@18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.4))(typescript@5.5.4)(webpack@5.94.0(esbuild@0.23.0))
       ansi-colors: 4.1.3
       autoprefixer: 10.4.20(postcss@8.4.41)
-      babel-loader: 9.1.3(@babel/core@7.26.10)(webpack@5.94.0)
+      babel-loader: 9.1.3(@babel/core@7.26.10)(webpack@5.94.0(esbuild@0.23.0))
       browserslist: 4.24.4
-      copy-webpack-plugin: 12.0.2(webpack@5.94.0)
+      copy-webpack-plugin: 12.0.2(webpack@5.94.0(esbuild@0.23.0))
       critters: 0.0.24
-      css-loader: 7.1.2(webpack@5.94.0)
+      css-loader: 7.1.2(webpack@5.94.0(esbuild@0.23.0))
       esbuild-wasm: 0.23.0
       fast-glob: 3.3.2
       http-proxy-middleware: 3.0.5
@@ -11015,11 +11018,11 @@ snapshots:
       jsonc-parser: 3.3.1
       karma-source-map-support: 1.4.0
       less: 4.2.0
-      less-loader: 12.2.0(less@4.2.0)(webpack@5.94.0)
-      license-webpack-plugin: 4.0.2(webpack@5.94.0)
+      less-loader: 12.2.0(less@4.2.0)(webpack@5.94.0(esbuild@0.23.0))
+      license-webpack-plugin: 4.0.2(webpack@5.94.0(esbuild@0.23.0))
       loader-utils: 3.3.1
       magic-string: 0.30.11
-      mini-css-extract-plugin: 2.9.0(webpack@5.94.0)
+      mini-css-extract-plugin: 2.9.0(webpack@5.94.0(esbuild@0.23.0))
       mrmime: 2.0.0
       open: 10.1.0
       ora: 5.4.1
@@ -11027,13 +11030,13 @@ snapshots:
       picomatch: 4.0.2
       piscina: 4.6.1
       postcss: 8.4.41
-      postcss-loader: 8.1.1(postcss@8.4.41)(typescript@5.5.4)(webpack@5.94.0)
+      postcss-loader: 8.1.1(postcss@8.4.41)(typescript@5.5.4)(webpack@5.94.0(esbuild@0.23.0))
       resolve-url-loader: 5.0.0
       rxjs: 7.8.1
       sass: 1.77.6
-      sass-loader: 16.0.0(sass-embedded@1.87.0)(sass@1.77.6)(webpack@5.94.0)
+      sass-loader: 16.0.0(sass-embedded@1.87.0)(sass@1.77.6)(webpack@5.94.0(esbuild@0.23.0))
       semver: 7.6.3
-      source-map-loader: 5.0.0(webpack@5.94.0)
+      source-map-loader: 5.0.0(webpack@5.94.0(esbuild@0.23.0))
       source-map-support: 0.5.21
       terser: 5.31.6
       tree-kill: 1.2.2
@@ -11044,7 +11047,7 @@ snapshots:
       webpack-dev-middleware: 7.4.2(webpack@5.94.0)
       webpack-dev-server: 5.0.4(webpack@5.94.0)
       webpack-merge: 6.0.1
-      webpack-subresource-integrity: 5.1.0(html-webpack-plugin@5.6.0(webpack@5.94.0))(webpack@5.94.0)
+      webpack-subresource-integrity: 5.1.0(html-webpack-plugin@5.6.0(webpack@5.94.0))(webpack@5.94.0(esbuild@0.23.0))
     optionalDependencies:
       esbuild: 0.23.0
       karma: 6.4.4
@@ -11066,7 +11069,7 @@ snapshots:
       - utf-8-validate
       - webpack-cli
 
-  '@angular-devkit/build-webpack@0.1802.19(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0))(webpack@5.94.0)':
+  '@angular-devkit/build-webpack@0.1802.19(chokidar@3.6.0)(webpack-dev-server@5.0.4(webpack@5.94.0))(webpack@5.94.0(esbuild@0.23.0))':
     dependencies:
       '@angular-devkit/architect': 0.1802.19(chokidar@3.6.0)
       rxjs: 7.8.1
@@ -14438,8 +14441,8 @@ snapshots:
       ember-cli-htmlbars: 6.3.0
       ember-concurrency: 4.0.3(@babel/core@7.27.1)(@glimmer/tracking@1.1.2)(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))
       ember-focus-trap: 1.1.0(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))
-      ember-headless-form: 1.1.1(@babel/core@7.27.1)(@glimmer/component@2.0.0)(@glimmer/tracking@1.1.2)(@glint/environment-ember-loose@1.4.1-unstable.afcad36(@glimmer/component@2.0.0)(@glint/core@1.4.1-unstable.afcad36(typescript@5.5.4))(@glint/template@1.4.1-unstable.afcad36)(ember-cli-htmlbars@6.3.0)(ember-modifier@4.2.0(@babel/core@7.27.1)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))))(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))(eslint@9.25.1(jiti@2.4.2))
-      ember-headless-form-yup: 1.0.0(ember-headless-form@1.1.1(@babel/core@7.27.1)(@glimmer/component@2.0.0)(@glimmer/tracking@1.1.2)(@glint/environment-ember-loose@1.4.1-unstable.afcad36(@glimmer/component@2.0.0)(@glint/core@1.4.1-unstable.afcad36(typescript@5.5.4))(@glint/template@1.4.1-unstable.afcad36)(ember-cli-htmlbars@6.3.0)(ember-modifier@4.2.0(@babel/core@7.27.1)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))))(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))(eslint@9.25.1(jiti@2.4.2)))(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))(yup@1.4.0)
+      ember-headless-form: 1.1.1(patch_hash=3ffd83a43b842fdb4a0b3056a043c8a1a03cf60563de70328abd79a49a1707dd)(@babel/core@7.27.1)(@glimmer/component@2.0.0)(@glimmer/tracking@1.1.2)(@glint/environment-ember-loose@1.4.1-unstable.afcad36(@glimmer/component@2.0.0)(@glint/core@1.4.1-unstable.afcad36(typescript@5.5.4))(@glint/template@1.4.1-unstable.afcad36)(ember-cli-htmlbars@6.3.0)(ember-modifier@4.2.0(@babel/core@7.27.1)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))))(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))(eslint@9.25.1(jiti@2.4.2))
+      ember-headless-form-yup: 1.0.0(ember-headless-form@1.1.1(patch_hash=3ffd83a43b842fdb4a0b3056a043c8a1a03cf60563de70328abd79a49a1707dd)(@babel/core@7.27.1)(@glimmer/component@2.0.0)(@glimmer/tracking@1.1.2)(@glint/environment-ember-loose@1.4.1-unstable.afcad36(@glimmer/component@2.0.0)(@glint/core@1.4.1-unstable.afcad36(typescript@5.5.4))(@glint/template@1.4.1-unstable.afcad36)(ember-cli-htmlbars@6.3.0)(ember-modifier@4.2.0(@babel/core@7.27.1)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))))(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))(eslint@9.25.1(jiti@2.4.2)))(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))(yup@1.4.0)
       ember-intl: 7.1.7(@ember/test-helpers@4.0.5(@babel/core@7.27.1)(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0)))(@glint/template@1.4.1-unstable.afcad36)(typescript@5.5.4)(webpack@5.94.0)
       ember-modifier: 4.2.0(@babel/core@7.27.1)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))
       ember-power-select: 8.7.0(1c6b0599e8d837a064e764f77a8c13d2)
@@ -14610,7 +14613,7 @@ snapshots:
   '@msgpackr-extract/msgpackr-extract-win32-x64@3.0.3':
     optional: true
 
-  '@ngtools/webpack@18.2.19(@angular/compiler-cli@18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.4))(typescript@5.5.4)(webpack@5.94.0)':
+  '@ngtools/webpack@18.2.19(@angular/compiler-cli@18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.4))(typescript@5.5.4)(webpack@5.94.0(esbuild@0.23.0))':
     dependencies:
       '@angular/compiler-cli': 18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.4)
       typescript: 5.5.4
@@ -14644,7 +14647,7 @@ snapshots:
 
   '@npmcli/fs@3.1.1':
     dependencies:
-      semver: 7.6.3
+      semver: 7.7.1
 
   '@npmcli/git@5.0.8':
     dependencies:
@@ -16052,7 +16055,7 @@ snapshots:
       schema-utils: 2.7.1
       webpack: 5.94.0
 
-  babel-loader@9.1.3(@babel/core@7.26.10)(webpack@5.94.0):
+  babel-loader@9.1.3(@babel/core@7.26.10)(webpack@5.94.0(esbuild@0.23.0)):
     dependencies:
       '@babel/core': 7.26.10
       find-cache-dir: 4.0.0
@@ -17180,7 +17183,7 @@ snapshots:
 
   copy-descriptor@0.1.1: {}
 
-  copy-webpack-plugin@12.0.2(webpack@5.94.0):
+  copy-webpack-plugin@12.0.2(webpack@5.94.0(esbuild@0.23.0)):
     dependencies:
       fast-glob: 3.3.2
       glob-parent: 6.0.2
@@ -17309,7 +17312,7 @@ snapshots:
       semver: 7.6.3
       webpack: 5.94.0
 
-  css-loader@7.1.2(webpack@5.94.0):
+  css-loader@7.1.2(webpack@5.94.0(esbuild@0.23.0)):
     dependencies:
       icss-utils: 5.1.0(postcss@8.5.3)
       postcss: 8.5.3
@@ -18251,17 +18254,17 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-headless-form-yup@1.0.0(ember-headless-form@1.1.1(@babel/core@7.27.1)(@glimmer/component@2.0.0)(@glimmer/tracking@1.1.2)(@glint/environment-ember-loose@1.4.1-unstable.afcad36(@glimmer/component@2.0.0)(@glint/core@1.4.1-unstable.afcad36(typescript@5.5.4))(@glint/template@1.4.1-unstable.afcad36)(ember-cli-htmlbars@6.3.0)(ember-modifier@4.2.0(@babel/core@7.27.1)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))))(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))(eslint@9.25.1(jiti@2.4.2)))(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))(yup@1.4.0):
+  ember-headless-form-yup@1.0.0(ember-headless-form@1.1.1(patch_hash=3ffd83a43b842fdb4a0b3056a043c8a1a03cf60563de70328abd79a49a1707dd)(@babel/core@7.27.1)(@glimmer/component@2.0.0)(@glimmer/tracking@1.1.2)(@glint/environment-ember-loose@1.4.1-unstable.afcad36(@glimmer/component@2.0.0)(@glint/core@1.4.1-unstable.afcad36(typescript@5.5.4))(@glint/template@1.4.1-unstable.afcad36)(ember-cli-htmlbars@6.3.0)(ember-modifier@4.2.0(@babel/core@7.27.1)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))))(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))(eslint@9.25.1(jiti@2.4.2)))(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))(yup@1.4.0):
     dependencies:
       '@embroider/addon-shim': 1.9.0
       ember-functions-as-helper-polyfill: 2.1.2(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))
-      ember-headless-form: 1.1.1(@babel/core@7.27.1)(@glimmer/component@2.0.0)(@glimmer/tracking@1.1.2)(@glint/environment-ember-loose@1.4.1-unstable.afcad36(@glimmer/component@2.0.0)(@glint/core@1.4.1-unstable.afcad36(typescript@5.5.4))(@glint/template@1.4.1-unstable.afcad36)(ember-cli-htmlbars@6.3.0)(ember-modifier@4.2.0(@babel/core@7.27.1)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))))(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))(eslint@9.25.1(jiti@2.4.2))
+      ember-headless-form: 1.1.1(patch_hash=3ffd83a43b842fdb4a0b3056a043c8a1a03cf60563de70328abd79a49a1707dd)(@babel/core@7.27.1)(@glimmer/component@2.0.0)(@glimmer/tracking@1.1.2)(@glint/environment-ember-loose@1.4.1-unstable.afcad36(@glimmer/component@2.0.0)(@glint/core@1.4.1-unstable.afcad36(typescript@5.5.4))(@glint/template@1.4.1-unstable.afcad36)(ember-cli-htmlbars@6.3.0)(ember-modifier@4.2.0(@babel/core@7.27.1)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))))(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))(eslint@9.25.1(jiti@2.4.2))
       ember-source: 6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0)
       yup: 1.4.0
     transitivePeerDependencies:
       - supports-color
 
-  ember-headless-form@1.1.1(@babel/core@7.27.1)(@glimmer/component@2.0.0)(@glimmer/tracking@1.1.2)(@glint/environment-ember-loose@1.4.1-unstable.afcad36(@glimmer/component@2.0.0)(@glint/core@1.4.1-unstable.afcad36(typescript@5.5.4))(@glint/template@1.4.1-unstable.afcad36)(ember-cli-htmlbars@6.3.0)(ember-modifier@4.2.0(@babel/core@7.27.1)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))))(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))(eslint@9.25.1(jiti@2.4.2)):
+  ember-headless-form@1.1.1(patch_hash=3ffd83a43b842fdb4a0b3056a043c8a1a03cf60563de70328abd79a49a1707dd)(@babel/core@7.27.1)(@glimmer/component@2.0.0)(@glimmer/tracking@1.1.2)(@glint/environment-ember-loose@1.4.1-unstable.afcad36(@glimmer/component@2.0.0)(@glint/core@1.4.1-unstable.afcad36(typescript@5.5.4))(@glint/template@1.4.1-unstable.afcad36)(ember-cli-htmlbars@6.3.0)(ember-modifier@4.2.0(@babel/core@7.27.1)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))))(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))(eslint@9.25.1(jiti@2.4.2)):
     dependencies:
       '@babel/runtime': 7.26.10
       '@embroider/addon-shim': 1.9.0
@@ -20934,7 +20937,7 @@ snapshots:
 
   leaflet@1.9.4: {}
 
-  less-loader@12.2.0(less@4.2.0)(webpack@5.94.0):
+  less-loader@12.2.0(less@4.2.0)(webpack@5.94.0(esbuild@0.23.0)):
     dependencies:
       less: 4.2.0
     optionalDependencies:
@@ -20959,7 +20962,7 @@ snapshots:
       prelude-ls: 1.2.1
       type-check: 0.4.0
 
-  license-webpack-plugin@4.0.2(webpack@5.94.0):
+  license-webpack-plugin@4.0.2(webpack@5.94.0(esbuild@0.23.0)):
     dependencies:
       webpack-sources: 3.2.3
     optionalDependencies:
@@ -21515,7 +21518,7 @@ snapshots:
       tapable: 2.2.1
       webpack: 5.94.0
 
-  mini-css-extract-plugin@2.9.0(webpack@5.94.0):
+  mini-css-extract-plugin@2.9.0(webpack@5.94.0(esbuild@0.23.0)):
     dependencies:
       schema-utils: 4.2.0
       tapable: 2.2.1
@@ -21785,7 +21788,7 @@ snapshots:
   normalize-package-data@6.0.2:
     dependencies:
       hosted-git-info: 7.0.2
-      semver: 7.6.3
+      semver: 7.7.1
       validate-npm-package-license: 3.0.4
 
   normalize-path@2.1.1:
@@ -22263,7 +22266,7 @@ snapshots:
       postcss: 8.5.3
       tsx: 4.19.3
 
-  postcss-loader@8.1.1(postcss@8.4.41)(typescript@5.5.4)(webpack@5.94.0):
+  postcss-loader@8.1.1(postcss@8.4.41)(typescript@5.5.4)(webpack@5.94.0(esbuild@0.23.0)):
     dependencies:
       cosmiconfig: 9.0.0(typescript@5.5.4)
       jiti: 1.21.7
@@ -23169,7 +23172,7 @@ snapshots:
       sass-embedded-win32-ia32: 1.87.0
       sass-embedded-win32-x64: 1.87.0
 
-  sass-loader@16.0.0(sass-embedded@1.87.0)(sass@1.77.6)(webpack@5.94.0):
+  sass-loader@16.0.0(sass-embedded@1.87.0)(sass@1.77.6)(webpack@5.94.0(esbuild@0.23.0)):
     dependencies:
       neo-async: 2.6.2
     optionalDependencies:
@@ -23499,7 +23502,7 @@ snapshots:
 
   source-map-js@1.2.1: {}
 
-  source-map-loader@5.0.0(webpack@5.94.0):
+  source-map-loader@5.0.0(webpack@5.94.0(esbuild@0.23.0)):
     dependencies:
       iconv-lite: 0.6.3
       source-map-js: 1.2.0
@@ -24664,7 +24667,7 @@ snapshots:
 
   webpack-sources@3.2.3: {}
 
-  webpack-subresource-integrity@5.1.0(html-webpack-plugin@5.6.0(webpack@5.94.0))(webpack@5.94.0):
+  webpack-subresource-integrity@5.1.0(html-webpack-plugin@5.6.0(webpack@5.94.0))(webpack@5.94.0(esbuild@0.23.0)):
     dependencies:
       typed-assert: 1.0.9
       webpack: 5.94.0(esbuild@0.23.0)

@@ -13,8 +13,9 @@ packageExtensions:
       ember-auto-import: 2.10.0
 
 patchedDependencies:
-  ember-leaflet: patches/ember-leaflet.patch
-  '@lblod/ember-rdfa-editor-lblod-plugins': patches/@lblod__ember-rdfa-editor-lblod-plugins.patch
+  ember-leaflet: /home/elena/Projects/lblod/Embeddable/frontend-embeddable-notule-editor/patches/ember-leaflet.patch
+  '@lblod/ember-rdfa-editor-lblod-plugins': /home/elena/Projects/lblod/Embeddable/frontend-embeddable-notule-editor/patches/@lblod__ember-rdfa-editor-lblod-plugins.patch
+  ember-headless-form: patches/ember-headless-form.patch
 
 onlyBuiltDependencies:
   - core-js
