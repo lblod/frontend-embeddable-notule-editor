@@ -14,7 +14,7 @@
   },
   "scripts": {
     "prepack": "pnpm build",
-    "build": "concurrently \"pnpm:build:*\" --names \"build,types\"",
+    "build": "concurrently \"pnpm:build:types\" \"pnpm:build:package\" --names \"types,build\"",
     "build:types": "glint --declaration --emitDeclarationOnly",
     "build:package": "vite build --config vite.config.mjs",
     "build:test-app": "vite build --config vite.config.test-app.mts",
