@@ -11,13 +11,13 @@ const editor = await renderEditor({
   plugins: [, /*...*/ "location"],
   options: {
     location: {
-      defaultPointUriRoot: 'https://example.net/id/geometrie/',
-      defaultPlaceUriRoot: 'https://example.net/id/plaats/',
-      defaultAddressUriRoot: 'https://example.net/id/adres/',
-      defaultMunicipality: 'Gent',
-      locationTypes: ['address', 'place', 'area'],
-    }
-  }
+      defaultPointUriRoot: "https://example.net/id/geometrie/",
+      defaultPlaceUriRoot: "https://example.net/id/plaats/",
+      defaultAddressUriRoot: "https://example.net/id/adres/",
+      defaultMunicipality: "Gent",
+      locationTypes: ["address", "place", "area"],
+    },
+  },
   /*...*/
 });
 ```

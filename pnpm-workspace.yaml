@@ -3,18 +3,18 @@ packages:
   - test-angular
 
 overrides:
-  '@ember/string': 4.0.1
+  "@ember/string": 4.0.1
   ember-mu-transform-helpers: 2.1.3
 
 packageExtensions:
   ember-leaflet:
     dependencies:
-      '@ember/string': 4.0.1
+      "@ember/string": 4.0.1
       ember-auto-import: 2.10.0
 
 patchedDependencies:
   ember-leaflet: patches/ember-leaflet.patch
-  '@lblod/ember-rdfa-editor-lblod-plugins': patches/@lblod__ember-rdfa-editor-lblod-plugins.patch
+  "@lblod/ember-rdfa-editor-lblod-plugins": patches/@lblod__ember-rdfa-editor-lblod-plugins.patch
   ember-headless-form: patches/ember-headless-form.patch
 
 onlyBuiltDependencies:

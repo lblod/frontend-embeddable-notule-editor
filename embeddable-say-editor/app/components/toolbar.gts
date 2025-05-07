@@ -7,10 +7,7 @@ import { get } from '@ember/helper';
 import type { TOC } from '@ember/component/template-only';
 import type { ResolvedPNode } from '@lblod/ember-rdfa-editor/utils/_private/types';
 import type { EditorSetup } from '../plugins/setup/setup-plugins.ts';
-import type {
-  ToolbarConfig,
-  ToolbarGroupConfig,
-} from '../plugins/widgets';
+import type { ToolbarConfig, ToolbarGroupConfig } from '../plugins/widgets';
 
 type ToolbarSignature = {
   Args: {

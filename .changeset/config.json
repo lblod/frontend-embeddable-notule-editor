@@ -11,7 +11,5 @@
   "access": "restricted",
   "baseBranch": "master",
   "updateInternalDependencies": "patch",
-  "ignore": [
-    "test-angular"
-  ]
+  "ignore": ["test-angular"]
 }

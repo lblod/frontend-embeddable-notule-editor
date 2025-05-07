@@ -84,7 +84,7 @@ const gitDiffResult = await execa({
 
 if (gitDiffResult.failed) {
   console.error(
-    "\nYou have outstanding changes in your working directory. Please commit or stash them first before proceeding."
+    "\nYou have outstanding changes in your working directory. Please commit or stash them first before proceeding.",
   );
   process.exit(1);
 }
@@ -98,7 +98,10 @@ if (releasePlan.changesets.length === 0) {
   process.exit(1);
 }
 
-const statusResult = await execa({ reject: false, preferLocal: true })`changeset status --verbose`;
+const statusResult = await execa({
+  reject: false,
+  preferLocal: true,
+})`changeset status --verbose`;
 if (statusResult.failed) {
   console.error(statusResult.stderr);
   process.exit(1);
@@ -106,7 +109,10 @@ if (statusResult.failed) {
 
 console.log(`${statusResult.stdout}\n`);
 
-const versionResult = await execa({ reject: false, preferLocal: true })`changeset version`;
+const versionResult = await execa({
+  reject: false,
+  preferLocal: true,
+})`changeset version`;
 if (versionResult.failed) {
   console.error(versionResult.stderr);
   process.exit(1);
@@ -145,7 +151,10 @@ if (!shouldTag) {
   process.exit(0);
 }
 
-const tagResult = await execa({ reject: false, preferLocal: true })`changeset tag`;
+const tagResult = await execa({
+  reject: false,
+  preferLocal: true,
+})`changeset tag`;
 
 if (tagResult.failed) {
   console.error(tagResult.stderr);
@@ -185,7 +194,7 @@ for (const { pkg, tagName } of packagesToRelease) {
   } catch (e) {
     console.error(e);
     console.error(
-      `\nSomething went wrong while releasing ${pkg.packageJson.name}`
+      `\nSomething went wrong while releasing ${pkg.packageJson.name}`,
     );
     process.exit(1);
   }

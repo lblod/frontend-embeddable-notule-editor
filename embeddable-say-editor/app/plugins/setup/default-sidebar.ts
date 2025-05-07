@@ -1,8 +1,5 @@
 import type { PluginInitArgs } from '../embedded-plugin';
-import type {
-  SidebarCollapsibleConfig,
-  SidebarConfig,
-} from '../widgets';
+import type { SidebarCollapsibleConfig, SidebarConfig } from '../widgets';
 
 export function defaultSidebar({
   plugins = [],

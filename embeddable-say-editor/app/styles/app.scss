@@ -53,10 +53,7 @@
     line-height: var(--say-editor-line-height, var(--au-global-line-height));
 
     p + * {
-      margin-top: var(
-        --say-paragraph-spacing,
-        12px
-      );
+      margin-top: var(--say-paragraph-spacing, 12px);
     }
   }
 
