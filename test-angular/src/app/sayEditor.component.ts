@@ -17,10 +17,10 @@ export class SayEditor {
         const container =
           elementRef.nativeElement.querySelector('#editorContainer');
         this.editor = await renderEditor({
+          plugins: ['besluit'],
+          options: { besluit: { decisionUri: 'http://test/lmao' } },
           element: container,
           title: 'angular embedded say editor',
-          width: '1000px',
-          height: '500px',
         });
         this.editor?.setHtmlContent('Hello Angular');
       },
