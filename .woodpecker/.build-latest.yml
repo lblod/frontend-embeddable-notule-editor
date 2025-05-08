@@ -5,7 +5,10 @@ steps:
       repo: lblod/frontend-embeddable-notule-editor
       dockerfile: test-app/Dockerfile
       tags: latest
-    secrets: [docker_username, docker_password]
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
 when:
   branch: master
   event: push
