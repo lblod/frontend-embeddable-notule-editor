@@ -4,7 +4,7 @@
 
 ```javascript
 const editor = await renderEditor({
-  plugins: [, /*...*/ "besluit"],
+  plugins: [/*...*/, "besluit"],
   options: {
     /*...*/
     // optional
