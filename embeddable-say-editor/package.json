@@ -114,7 +114,7 @@
     "@glimmer/component": "^2.0.0",
     "@glimmer/tracking": "^1.1.2",
     "@lblod/ember-environment-banner": "^0.6.0",
-    "@lblod/ember-rdfa-editor": "12.5.0-dev.328ca619c48310d7dea5a335e6ddf803cd5fedc3",
+    "@lblod/ember-rdfa-editor": "12.5.1",
     "@lblod/ember-rdfa-editor-lblod-plugins": "^31.0.3",
     "@types/leaflet": "^1.9.17",
     "@types/lodash.mergewith": "^4.6.9",
