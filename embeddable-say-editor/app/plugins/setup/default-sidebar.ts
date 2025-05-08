@@ -6,12 +6,10 @@ export function defaultSidebar({
   options,
 }: PluginInitArgs): SidebarConfig {
   const sidebar: SidebarConfig = [];
-  console.log(plugins, options);
   if (
     plugins.includes('besluit-topic') &&
     options?.besluitTopic?.widgetLocation === 'sidebar'
   ) {
-    console.log('here');
     sidebar.push('besluit:topic');
   }
   const insertContainer: SidebarCollapsibleConfig = [];
