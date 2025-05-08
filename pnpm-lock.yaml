@@ -128,8 +128,8 @@ importers:
         specifier: 12.5.1
         version: 12.5.1(114dea69726e03fe6e3d7749a5627025)
       '@lblod/ember-rdfa-editor-lblod-plugins':
-        specifier: ^31.0.3
-        version: 31.0.3(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(82a0f35ff41747aa92b09791602d16c5)
+        specifier: 31.0.3-dev.1d1f3816089d2b570218c8365d8d3d688ecf2790
+        version: 31.0.3-dev.1d1f3816089d2b570218c8365d8d3d688ecf2790(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(82a0f35ff41747aa92b09791602d16c5)
       '@types/leaflet':
         specifier: ^1.9.17
         version: 1.9.17
@@ -2577,8 +2577,8 @@ packages:
       '@appuniversum/ember-appuniversum': ^2.0.0 || ^3.0.0
       ember-source: ^4.0.0 || ^5.0.0
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@31.0.3':
-    resolution: {integrity: sha512-rIp8Fv/YQ/evKkHCO8dFQdW3kvXJ7l65bAhdNFQFqzTvEW1G6nuVF/Yw1xfa0zYPeU+whSaKI37YA63KH5qMEg==}
+  '@lblod/ember-rdfa-editor-lblod-plugins@31.0.3-dev.1d1f3816089d2b570218c8365d8d3d688ecf2790':
+    resolution: {integrity: sha512-joR+bKOFHAsiyePhxsYjhLyDJIKd/gjO6UCj7PuQ+uEmafHC3bbaDRv/xp1I4KOBF1IMxgdou7SGvq2XClFGQA==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@appuniversum/ember-appuniversum': ^3.5.0
@@ -14342,7 +14342,7 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@31.0.3(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(82a0f35ff41747aa92b09791602d16c5)':
+  '@lblod/ember-rdfa-editor-lblod-plugins@31.0.3-dev.1d1f3816089d2b570218c8365d8d3d688ecf2790(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(82a0f35ff41747aa92b09791602d16c5)':
     dependencies:
       '@appuniversum/ember-appuniversum': https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.8.0.tgz(9c6ded0e85ce110b1513bc0128b71671)
       '@babel/core': 7.27.1
