@@ -1,7 +1,6 @@
 /* ==================================
    #DUMMY APP
    ================================== */
-@use "@appuniversum/ember-appuniversum/styles";
 @use "@lblod/ember-rdfa-editor" with (
   $say-paper-min-height: var(
       --say-editor-minimum-page-height,
@@ -9,6 +8,23 @@
     )
 );
 @use "leaflet";
+
+// We need to use `@import` for these as they also still use the old `@import` syntax (and thus do not have scoped imports)
+@import "@appuniversum/ember-appuniversum/styles";
+@import "@lblod/ember-rdfa-editor-lblod-plugins/app/styles/citaten-plugin";
+@import "@lblod/ember-rdfa-editor-lblod-plugins/app/styles/date-plugin";
+@import "@lblod/ember-rdfa-editor-lblod-plugins/app/styles/variable-plugin";
+@import "@lblod/ember-rdfa-editor-lblod-plugins/app/styles/besluit-plugin";
+@import "@lblod/ember-rdfa-editor-lblod-plugins/app/styles/address-plugin";
+@import "@lblod/ember-rdfa-editor-lblod-plugins/app/styles/generic-rdfa-variable";
+@import "@lblod/ember-rdfa-editor-lblod-plugins/app/styles/snippet-plugin";
+@import "@lblod/ember-rdfa-editor-lblod-plugins/app/styles/template-comments-plugin";
+@import "@lblod/ember-rdfa-editor-lblod-plugins/app/styles/confidentiality-plugin";
+@import "@lblod/ember-rdfa-editor-lblod-plugins/app/styles/worship-plugin";
+@import "@lblod/ember-rdfa-editor-lblod-plugins/app/styles/structure-plugin";
+@import "@lblod/ember-rdfa-editor-lblod-plugins/app/styles/location-plugin";
+@import "@lblod/ember-rdfa-editor-lblod-plugins/app/styles/mandatee-table-plugin";
+@import "@lblod/ember-rdfa-editor-lblod-plugins/app/styles/roadsign-regulation-table";
 
 .notule-editor {
   // VARIABLES START
@@ -54,6 +70,30 @@
 
     p + * {
       margin-top: var(--say-paragraph-spacing, 12px);
+    }
+
+    div.table-of-contents {
+      padding: $au-unit-small !important;
+      margin-bottom: $au-unit-large;
+      outline: 0.2rem dashed var(--au-gray-300);
+      outline-offset: 0.2rem;
+
+      h3 {
+        margin-top: 0;
+      }
+
+      ul {
+        margin-top: $au-unit-tiny;
+        padding-left: 0;
+      }
+
+      ul ul {
+        margin-left: 0;
+      }
+
+      ul li {
+        list-style-type: none !important;
+      }
     }
   }
 
