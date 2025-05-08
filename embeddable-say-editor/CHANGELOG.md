@@ -547,7 +547,7 @@ NOTE: While this version technically works, and is identical to 3.7.1, due to a 
 - [#176](https://github.com/lblod/frontend-embeddable-notule-editor/pull/176) [`8a9471d`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/8a9471d0f14da965d776f6819d8ccca180f58d96) Thanks [@abeforgit](https://github.com/abeforgit)! - Adds a way to import the editor through npm
 
   - rename the package to `@lblod/embeddable-say-editor`
-  - export `renderEditor`, a function which renders the editor in an iframe
+  - export `renderEditor`, a function which renders the editor inside a provided element
   - export `SayWebComponent`, which can be imported and registered as a custom element
   - adds a prepare script to bundle the project in an npm-compatible way
 

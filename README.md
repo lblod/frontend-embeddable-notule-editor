@@ -19,8 +19,8 @@ for a quickstart guide.
 
 `npm install @lblod/embeddable-say-editor`
 
-We export a simple function to launch the editor in your app. It currently renders inside an
-iframe element. A WebComponent version is also in the works.
+We export a simple function to launch the editor in your app. 
+By default, the editor is rendered inside a Shadow DOM element.
 
 ```javascript
 import { renderEditor } from "@lblod/embeddable-say-editor";
@@ -35,12 +35,6 @@ import { renderEditor } from "@lblod/embeddable-say-editor";
 const container = document.getElementById("editorContainer");
 const editor = await renderEditor({
   element: container,
-  title: "my editor", // optional, this will set the "title" attribute of the iframe
-  width: "500px", // width attribute of the iframe
-  height: "300px", // height attribute of the iframe
-  // optional, if true the editor will grow to fit the content.
-  // When this is true, the height option will determine the minimum height at which the editor starts
-  growEditor: true,
   plugins: [], // array of plugin names (see below)
   options: {}, // configuration object (see below)
 });
@@ -92,10 +86,6 @@ window.addEventListener("load", async function () {
   const editorContainer = document.getElementById("my-editor");
   const editorElement = await renderEditor({
     element: editorContainer,
-    title: "my editor", // optional, this will set the "title" attribute of the iframe
-    width: "500px", // width attribute of the iframe
-    growEditor: true, // optional, if true the editor will grow to fit the content, this will disregard the height attribute
-    height: "300px", // height attribute of the iframe
     plugins: arrayOfPluginNames, // array of plugin names (see below)
     options: configurationOptions, // configuration object (see below)
   });

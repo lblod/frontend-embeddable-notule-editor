@@ -8,7 +8,6 @@ document.body.appendChild(router);
 document.body.appendChild(container);
 const editor = await renderEditor({
   element: container,
-  title: 'my editor', // optional, this will set the "title" attribute of the iframe
   plugins: ['html-edit'], // array of plugin names (see below)
   options: {
     table: {

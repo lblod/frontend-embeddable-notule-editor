@@ -11,7 +11,7 @@ const TOOLBAR_HEIGHT = '44px';
 type SimpleElement = Parameters<App['visit']>[1]['rootElement'];
 
 /**
- * Renders the editor in an iframe and initializes it with the passed in plugins
+ * Renders the editor inside the provided element and initializes it with the passed in plugins
  * and options. It waits for everything to initialize and returns the fully initialized
  * editor element, which has access to a controller and other methods (see docs)
  */

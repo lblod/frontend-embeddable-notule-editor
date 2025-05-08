@@ -37,9 +37,6 @@ editorElement.style.setProperty("--say-font-family", "Comic Sans MS");
 
 ### Setting CSS variables by targeting the editor in your own CSS
 
-> [!IMPORTANT]
-> This wont work if you are using the `npm` package and the `renderEditor` it provides, as the editor is isolated inside an `iframe`.
-
 This method uses the CSS specificity to override the default CSS variables used by the editor.
 You can target the editor by using the `notule-editor` class on the element that contains the editor.
 
