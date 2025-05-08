@@ -1,5 +1,14 @@
 # frontend-embeddable-notule-editor
 
+## 5.7.0
+
+### Minor Changes
+
+- [#281](https://github.com/lblod/frontend-embeddable-notule-editor/pull/281) [`2cf778b`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/2cf778bac8e35decc4bca542e43b4ac12f40a68f) Thanks [@lagartoverde](https://github.com/lagartoverde)! - Update `@lblod/ember-rdfa-editor` to version [12.4.0](https://github.com/lblod/ember-rdfa-editor/releases/tag/%40lblod%2Fember-rdfa-editor%4012.4.0)
+  Update `@lblod/ember-rdfa-editor-lblod-plugins` to version [31.0.2](https://github.com/lblod/ember-rdfa-editor-lblod-plugins/releases/tag/v31.0.2)
+  Added new parameter to the lpdc plugin config called `lpdcEndpoint` that lets you specify if you want to fetch concepts or instancies
+  Deprecate `endpoint` config parameter from lpdc plugin
+
 ## 5.6.1
 
 ### Patch Changes
