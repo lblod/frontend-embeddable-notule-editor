@@ -11,7 +11,6 @@ You will need the following things properly installed on your computer.
 - [Node.js](https://nodejs.org/)
 - [pnpm](https://pnpm.io/)
 - [Ember CLI](https://cli.emberjs.com/release/)
-- [Google Chrome](https://google.com/chrome/)
 
 ## Installation
 
