@@ -38,20 +38,20 @@ editorElement.style.setProperty("--say-font-family", "Comic Sans MS");
 ### Setting CSS variables by targeting the editor in your own CSS
 
 This method uses the CSS specificity to override the default CSS variables used by the editor.
-You can target the editor by using the `notule-editor` class on the element that contains the editor.
 
 Below example expects that the editor was attached to an element with id `my-editor`.
 
 ```css
-#my-editor .notule-editor {
+#my-editor {
   --say-font-family: "Comic Sans MS";
 }
 ```
 
 ### Exposed CSS variables
-
-- `--say-font-family`: controls the font family used by the editor.
 - `--say-page-bg`: controls the background of the editor (not the background of the editor's page).
+- `--say-page-minimum-height`: controls the minimum height of the editor page/document
+  
+- `--say-font-family`: controls the font family used by the editor.
 - `--say-font-size-text`: size of the basic text in the editor.
 - `--say-font-size-h1`: size of the Heading 1 in the editor.
 - `--say-font-size-h2`: size of the Heading 2 in the editor.

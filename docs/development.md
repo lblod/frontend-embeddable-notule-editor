@@ -52,9 +52,9 @@ Take special care when releasing a new version of this.
 
 #### How it works
 
-This repository includes [the editor](https://github.com/lblod/ember-rdfa-editor) and [editor plugins](https://github.com/lblod/ember-rdfa-editor-lblod-plugins) packaged together with Ember so the editor can be used in projects outside of Ember. This is mostly done by adjust the build process in `ember-cli-build.js`, by specifying the output filename and limiting the chunks to one file, for easy importing.
+This repository includes [the editor](https://github.com/lblod/ember-rdfa-editor) and [editor plugins](https://github.com/lblod/ember-rdfa-editor-lblod-plugins) packaged together with Vite and Ember so the editor can be used in projects outside of Ember. This is mostly done by building the application in Vite's library mode (https://vite.dev/guide/build#library-mode)
 
-the consumer loads the editor in their own div element. This editor is fully defined in `app/components/simple-editor.js`, with consumer-facing logic bound in `insertedInDom` and logic that needs a controller bound in `handleRdfaEditorInit`.
+The consumer loads the editor in their own div element. This editor is fully defined in `app/components/simple-editor.gts`, with consumer-facing logic bound in `insertedInDom` and logic that needs a controller bound in `handleRdfaEditorInit`.
 Because the editor is a black box for the consumer, it is not possible to load plugins the same way as in Ember for them. Instead, all plugins are loaded in ember code depending on a config the consumer passes.
 
 The consumer will access the controller and other methods by accessing the `notule-editor` element. For developing, you can access this element easily in the console by searching for the div with `class="notule-editor"`, right-click and select click "use in console" (Firefox) or "store as global variable" (Chrome).

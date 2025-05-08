@@ -8,7 +8,6 @@ import { renderEditor } from "@lblod/embeddable-say-editor";
 const container = document.getElementById("editorContainer");
 const editor = await renderEditor({
   element: container,
-  title: "my editor",
   plugins: [], // array of plugin names (see below)
   options: {
     docContent: "block+",
@@ -31,13 +30,19 @@ The html element the editor will render in.
 #### `width` and `height`
 
 These options set the corresponding styling attributes on the editor element.
-Deprecated, use CSS style rules instead.
+
+> [!WARNING]  
+> The `width` and `height` options are deprecated and will be removed in a future release. Please use CSS style rules instead.
 
 #### `growEditor`
 
 When set to true, the editor will expand vertically in order to fit its content.
 The height attribute will determine the minimum height the editor will start at.
-Deprecated, use CSS style rules instead.
+
+> [!WARNING]  
+> The `growEditor` option is deprecated and will be removed in a future release. 
+> Please use CSS style rules instead. 
+> To control the minimum height of the editor page/document, you may use the `--say-page-minimum-height` CSS variable
 
 #### `plugins`
 

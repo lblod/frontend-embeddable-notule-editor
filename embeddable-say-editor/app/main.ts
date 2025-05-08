@@ -78,7 +78,7 @@ async function startApp(
         bottomPadding = '24px';
       }
       cssVariables = {
-        '--say-editor-minimum-page-height': `calc(${height} - ${TOOLBAR_HEIGHT} - ${topPadding} - ${bottomPadding})`,
+        '--say-page-minimum-height': `calc(${height} - ${TOOLBAR_HEIGHT} - ${topPadding} - ${bottomPadding})`,
       };
     } else {
       container.style.height = height;

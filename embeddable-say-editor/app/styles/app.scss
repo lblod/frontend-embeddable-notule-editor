@@ -3,7 +3,7 @@
    ================================== */
 @use "@lblod/ember-rdfa-editor" with (
   $say-paper-min-height: var(
-      --say-editor-minimum-page-height,
+      --say-page-minimum-height,
       calc(100% + 2.4rem)
     )
 );
