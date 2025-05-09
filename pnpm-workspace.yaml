@@ -1,6 +1,5 @@
 packages:
   - embeddable-say-editor
-  - test-angular
 
 overrides:
   '@ember/string': 4.0.1
