@@ -7,7 +7,7 @@ import { SayEditor } from './sayEditor.component';
   standalone: true,
   imports: [RouterOutlet, SayEditor],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'angbeddable';

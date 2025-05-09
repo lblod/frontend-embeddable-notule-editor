@@ -1,0 +1,13 @@
+diff --git a/dist/packages/@ember/application/instance.js b/dist/packages/@ember/application/instance.js
+index c0082c344578069478e10cc34f537c8af109bbfa..990c753bdd889454f54b1ac9471f75b3929aeacb 100644
+--- a/dist/packages/@ember/application/instance.js
++++ b/dist/packages/@ember/application/instance.js
+@@ -195,7 +195,7 @@ class ApplicationInstance extends EngineInstance {
+     let applicationCustomEvents = get(this.application, 'customEvents');
+     let instanceCustomEvents = get(this, 'customEvents');
+     let customEvents = Object.assign({}, applicationCustomEvents, instanceCustomEvents);
+-    (isDevelopingApp() && !(this.rootElement === null || typeof this.rootElement === 'string' || this.rootElement instanceof Element) && assert('[BUG] Tried to set up dispatcher with an invalid root element', this.rootElement === null || typeof this.rootElement === 'string' || this.rootElement instanceof Element));
++    (isDevelopingApp() && !(this.rootElement === null || typeof this.rootElement === 'string') && assert('[BUG] Tried to set up dispatcher with an invalid root element', this.rootElement === null || typeof this.rootElement === 'string'));
+     dispatcher.setup(customEvents, this.rootElement);
+     return dispatcher;
+   }

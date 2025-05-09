@@ -1,0 +1,6 @@
+diff --git a/app/models/template.js b/app/models/template.js
+deleted file mode 100644
+index 2b9ceb2a81b5a1c7c86a1aa402f694f3102013ee..0000000000000000000000000000000000000000
+diff --git a/pnpm-lock.yaml b/pnpm-lock.yaml
+deleted file mode 100644
+index 07621b5183b3e291fa80402e625bbc74977a3e83..0000000000000000000000000000000000000000

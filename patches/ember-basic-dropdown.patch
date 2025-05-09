@@ -1,0 +1,30 @@
+diff --git a/dist/components/basic-dropdown-content.js b/dist/components/basic-dropdown-content.js
+index 1c8964fa3e9ca2a56bd79d5f584801970244dad1..06428147ba1ccef49366551f69e791d0ecc42b24 100644
+--- a/dist/components/basic-dropdown-content.js
++++ b/dist/components/basic-dropdown-content.js
+@@ -122,9 +122,9 @@ class BasicDropdownContent extends Component {
+     if (this._contentWormhole && this._contentWormhole.getRootNode() instanceof ShadowRoot) {
+       rootElement = this._contentWormhole.getRootNode();
+     }
+-    if (rootElement) {
+-      rootElement.addEventListener(this.args.rootEventType || 'click', this.handleRootMouseDown, true);
+-    }
++    // if (rootElement) {
++    //   rootElement.addEventListener(this.args.rootEventType || 'click', this.handleRootMouseDown, true);
++    // }
+     window.addEventListener('resize', this.runloopAwareRepositionBound);
+     window.addEventListener('orientationchange', this.runloopAwareRepositionBound);
+     if (this.isTouchDevice) {
+@@ -148,9 +148,9 @@ class BasicDropdownContent extends Component {
+       if (this._contentWormhole && this._contentWormhole.getRootNode() instanceof ShadowRoot) {
+         rootElement = this._contentWormhole.getRootNode();
+       }
+-      if (rootElement) {
+-        rootElement.removeEventListener(this.args.rootEventType || 'click', this.handleRootMouseDown, true);
+-      }
++      // if (rootElement) {
++      //   rootElement.removeEventListener(this.args.rootEventType || 'click', this.handleRootMouseDown, true);
++      // }
+       if (this.isTouchDevice) {
+         document.removeEventListener('touchstart', this.touchStartHandlerBound, true);
+         document.removeEventListener('touchend', this.handleRootMouseDown, true);

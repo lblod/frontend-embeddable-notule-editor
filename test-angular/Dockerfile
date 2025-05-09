@@ -12,7 +12,7 @@ WORKDIR /app
 RUN npm i -g corepack@0.31
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY embeddable-say-editor/package.json embeddable-say-editor/
-COPY test-app/package.json test-app/
+COPY patches patches/
 RUN pnpm i --frozen-lockfile
 COPY . .
 
@@ -27,8 +27,8 @@ WORKDIR /app
 RUN npm i -g corepack@0.31
 # put angular app into /app and ignore the rest of the repo to avoid false positives
 COPY test-angular/package.json ./
-RUN pnpm install
 COPY --from=builder /app/embeddable-say-editor/lblod-embeddable-say-editor.tgz ./
-RUN pnpm install ./lblod-embeddable-say-editor.tgz
+RUN pnpm install
+RUN pnpm add ./lblod-embeddable-say-editor.tgz
 COPY test-angular ./
 RUN pnpm tsc --noEmit

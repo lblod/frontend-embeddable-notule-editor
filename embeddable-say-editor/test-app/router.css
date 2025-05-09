@@ -1,0 +1,7 @@
+.navbar {
+  display: flex;
+}
+
+.navbar > a {
+  padding-left: 1em;
+}

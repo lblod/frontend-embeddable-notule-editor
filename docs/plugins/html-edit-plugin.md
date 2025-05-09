@@ -1,18 +1,17 @@
-# HTML Edit 
+# HTML Edit
 
 ## Setup
+
 ```javascript
 const editor = await renderEditor({
-  plugins: [/*...*/,"html-edit"], 
+  plugins: [, /*...*/ "html-edit"],
   /*...*/
-})
-
+});
 ```
 
 ## Usage
 
 This plugin enables a toolbar button which displays the HTML representation of the current editor contents and allows it to be modified.
-
 
 #### rdfa-awareness
 

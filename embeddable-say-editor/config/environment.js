@@ -5,7 +5,7 @@ module.exports = function (environment) {
     modulePrefix: '@lblod/embeddable-say-editor',
     environment,
     rootURL: '/',
-    locationType: 'none',
+    locationType: 'history',
     EmberENV: {
       EXTEND_PROTOTYPES: false,
       FEATURES: {
@@ -17,8 +17,6 @@ module.exports = function (environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-      autoboot: false,
-      plugins: [],
     },
   };
 
@@ -43,7 +41,6 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
-    ENV.featureFlags = { 'editor-html-paste': true };
     // here you can enable a production-specific feature
   }
 
