@@ -18,8 +18,8 @@ type SimpleElement = Parameters<App['visit']>[1]['rootElement'];
 export async function renderEditor(
   options: RenderEditorOptions,
 ): Promise<EditorElement> {
-  const { scopedCss = true } = options;
-  if (scopedCss) {
+  const { shadowDom = true } = options;
+  if (shadowDom) {
     return renderInShadow(options);
   }
   return renderWithoutShadow(options);

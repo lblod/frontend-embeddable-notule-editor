@@ -66,7 +66,7 @@ editors.forEach((config) => {
     height: config.height,
     growEditor: true,
     plugins,
-    scopedCss: true,
+    shadowDom: true,
     options,
   })
     .then((editor) => {

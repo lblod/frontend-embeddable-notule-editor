@@ -33,8 +33,7 @@ export type RenderEditorOptions = {
    */
   growEditor?: boolean;
   /**
-   * Whether the css will be scoped to the editor
-   * NOTE: browser support is limited, see https://developer.mozilla.org/en-US/docs/Web/CSS/@scope
+   * Whether the editor will be rendered using the shadow DOM
    */
-  scopedCss?: boolean;
+  shadowDom?: boolean;
 } & EditorOptions;
