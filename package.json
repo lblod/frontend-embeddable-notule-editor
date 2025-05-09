@@ -43,5 +43,5 @@
     "tsx": "^4.19.3",
     "unified": "^11.0.5"
   },
-  "packageManager": "pnpm@10.8.0"
+  "packageManager": "pnpm@10.10.0"
 }
