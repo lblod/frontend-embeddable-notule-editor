@@ -6,7 +6,7 @@ editor:
     location: locatie
     date: datum
     codelist: codelijst
-  insert: "{type} invoegen"
+  insert: "Invoegen"
   besluit:
     title: Besluit
   article-structure:

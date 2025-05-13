@@ -167,14 +167,14 @@ export function getChangelogEntry(changelog: string, version: string) {
 
 async function getCurrentBranch() {
   const response = await execa`git rev-parse --abbrev-ref HEAD`.catch(
-    () => null
+    () => null,
   );
   return response?.stdout;
 }
 
 async function getRemoteForBranch(branch: string) {
   const response = await execa`git config --get branch.${branch}.remote`.catch(
-    () => null
+    () => null,
   );
   return response?.stdout;
 }
@@ -187,12 +187,12 @@ async function getRemote() {
 export async function getRepoInfo() {
   const remote = (await getRemote()) ?? "origin";
   const url = (await execa`git remote get-url ${remote}`).stdout;
-  return GitUrlParse(url)
+  return GitUrlParse(url);
 }
 
 export async function createRelease(
   octokit: Octokit,
-  { pkg, tagName }: { pkg: Package; tagName: string }
+  { pkg, tagName }: { pkg: Package; tagName: string },
 ) {
   let changelogFileName = path.join(pkg.dir, "CHANGELOG.md");
 
@@ -203,7 +203,7 @@ export async function createRelease(
     // we can find a changelog but not the entry for this version
     // if this is true, something has probably gone wrong
     throw new Error(
-      `Could not find changelog entry for ${pkg.packageJson.name}@${pkg.packageJson.version}`
+      `Could not find changelog entry for ${pkg.packageJson.name}@${pkg.packageJson.version}`,
     );
   }
   const { owner, name } = await getRepoInfo();
@@ -221,7 +221,7 @@ export async function createRelease(
 export async function yesNoQuestion(
   rl: readline.Interface,
   question: string,
-  { defaultAnswer = false } = {}
+  { defaultAnswer = false } = {},
 ) {
   const answer = (await rl.question(`${question} (Y/n) `)).trim();
   return answer ? answer === "Y" || answer === "y" : defaultAnswer;

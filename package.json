@@ -5,17 +5,15 @@
   "license": "MIT",
   "workspaces": [
     "embeddable-say-editor",
-    "test-app"
+    "test-angular"
   ],
   "scripts": {
-    "build": "pnpm --filter embeddable-say-editor build",
-    "start": "pnpm --recursive --parallel start",
-    "start:addon": "pnpm --filter embeddable-say-editor start",
-    "start:tests": "pnpm --filter test-app start",
-    "release": "tsx scripts/release/run.mts",
-    "cypress:open": "pnpm --filter test-app cypress:open",
-    "cypress:run": "pnpm --filter test-app cypress:run",
-    "ci:cypress": "start-server-and-test start http://localhost:8080 cypress:run",
+    "say": "pnpm --filter embeddable-say-editor",
+    "angular": "pnpm --filter angbeddable",
+    "build": "pnpm say build",
+    "start": "pnpm say start",
+    "start:angular": "pnpm angular start",
+    "release": "release-it",
     "docker:build-test": "docker build -f test-app/Dockerfile .",
     "docker:check-types": "docker build -f test-angular/Dockerfile .",
     "lint": "pnpm --recursive lint",
@@ -45,5 +43,5 @@
     "tsx": "^4.19.3",
     "unified": "^11.0.5"
   },
-  "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0"
+  "packageManager": "pnpm@10.10.0"
 }

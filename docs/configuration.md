@@ -8,12 +8,6 @@ import { renderEditor } from "@lblod/embeddable-say-editor";
 const container = document.getElementById("editorContainer");
 const editor = await renderEditor({
   element: container,
-  title: "my editor",
-  width: "500px", // width attribute of the iframe
-  height: "300px", // height attribute of the iframe
-  // optional, if true the editor will grow to fit the content.
-  // When this is true, the height option will determine the minimum height at which the editor starts
-  growEditor: true,
   plugins: [], // array of plugin names (see below)
   options: {
     docContent: "block+",
@@ -33,14 +27,22 @@ const editor = await renderEditor({
 
 The html element the editor will render in.
 
-#### `title`, `width` and `height`
+#### `width` and `height`
 
-These options set the corresponding attributes on the editor's iframe
+These options set the corresponding styling attributes on the editor element.
+
+> [!WARNING]  
+> The `width` and `height` options are deprecated and will be removed in a future release. Please use CSS style rules instead.
 
 #### `growEditor`
 
 When set to true, the editor will expand vertically in order to fit its content.
 The height attribute will determine the minimum height the editor will start at.
+
+> [!WARNING]  
+> The `growEditor` option is deprecated and will be removed in a future release. 
+> Please use CSS style rules instead. 
+> To control the minimum height of the editor page/document, you may use the `--say-page-minimum-height` CSS variable
 
 #### `plugins`
 

@@ -1,4 +1,5 @@
 ### RDFA
+
 The [rdfa](https://rdfa.info/) standard is a way to add data annotations to xml (and in particular, html) documents.
 It uses linked data as its data modelling method.
 RDFA-annotated html is the one and only document format of the say-editor. Because it is a strict superset of html,

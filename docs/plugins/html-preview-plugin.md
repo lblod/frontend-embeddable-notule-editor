@@ -1,18 +1,17 @@
 # HTML Preview
 
 ## Setup
+
 ```javascript
 const editor = await renderEditor({
-  plugins: [/*...*/,"html-preview"], 
+  plugins: [, /*...*/ "html-preview"],
   /*...*/
-})
-
+});
 ```
 
 ## Usage
 
 `"html-preview"` enables a modal which renders a preview of the editor contents if they were exported as HTML and put into an otherwise blank HTML document.
-
 
 #### rdfa-awareness
 

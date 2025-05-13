@@ -16,6 +16,38 @@ type Signature = {
   };
 };
 
+type ModalSignature = {
+  Args: {
+    onClose: () => void;
+    open?: boolean;
+    doc: string;
+  };
+};
+const Modal: TOC<ModalSignature> = <template>
+  {{! FIXME fix the copy-pasted things }}
+  <AuModal
+    class="say-html-editor-modal"
+    @title="HTML Editor"
+    @closable={{true}}
+    @closeModal={{@onClose}}
+    @modalOpen={{@open}}
+    @size="large"
+    @padding="none"
+  >
+    <:title>Preview</:title>
+    <:body>
+      <iframe title="preview" height="100%" width="100%" srcdoc={{@doc}} />
+    </:body>
+    <:footer>
+      <AuButtonGroup>
+        <AuButton @skin="secondary" {{on "click" @onClose}}>
+          Close
+        </AuButton>
+      </AuButtonGroup>
+    </:footer>
+  </AuModal>
+</template>;
+
 export default class HTMLPreviewMenu extends Component<Signature> {
   @tracked previewOpen = false;
 
@@ -33,11 +65,9 @@ export default class HTMLPreviewMenu extends Component<Signature> {
   }
 
   <template>
-    {{! @glint-expect-error fix typechecking here }}
     <ToolbarButton
-      {{! @glint-expect-error fix typechecking here }}
-      {{on 'click' this.openPreview}}
-      class='au-u-margin-left-tiny au-u-margin-right-tiny'
+      {{on "click" this.openPreview}}
+      class="au-u-margin-left-tiny au-u-margin-right-tiny"
     >
       Preview Rendered HTML
     </ToolbarButton>
@@ -48,35 +78,3 @@ export default class HTMLPreviewMenu extends Component<Signature> {
     />
   </template>
 }
-
-type ModalSignature = {
-  Args: {
-    onClose: () => void;
-    open?: boolean;
-    doc: string;
-  };
-};
-const Modal: TOC<ModalSignature> = <template>
-  {{! FIXME fix the copy-pasted things }}
-  <AuModal
-    class='say-html-editor-modal'
-    @title='HTML Editor'
-    @closable={{true}}
-    @closeModal={{@onClose}}
-    @modalOpen={{@open}}
-    @size='large'
-    @padding='none'
-  >
-    <:title>Preview</:title>
-    <:body>
-      <iframe title='preview' height='100%' width='100%' srcdoc={{@doc}} />
-    </:body>
-    <:footer>
-      <AuButtonGroup>
-        <AuButton @skin='secondary' {{on 'click' @onClose}}>
-          Close
-        </AuButton>
-      </AuButtonGroup>
-    </:footer>
-  </AuModal>
-</template>;
