@@ -42,11 +42,26 @@ As mentioned, this now allows the usage of lpdc `concepts` instead of
 `instances` by simply changing the URL. The plugin works with both
 `/doc/instantie` and `/doc/concept` endpoints.
 
+### ui.expandInsertMenu no longer does anything
+
+As part of the new widget configuration interface, we've removed the
+`expandInsertMenu` option from the editor configuration.
+
+If you had this set to true, you will likely find you can simply remove the
+configuration, as the default sidebar expands its insert menu by default.
+
+The editor comes with (what we think are) sensible defaults for the sidebar and toolbar
+configuration, but we recommend tweaking this to your needs.
+
+refer to [the widget documentation](./widgets.md) for more info
+
+
 ### Css clashes/changes
 
-As far as we know, the above change to the lpdc plugin config is the only
-breaking change in the v6 release. But as mentioned, the way the editor
+As far as we know, the above changes are the only
+breaking changes in the v6 release. But as mentioned, the way the editor
 interacts with the page is completely different, so please test thoroughly.
+We appreciate any feedback or bug reports.
 
 ## What's new
 
@@ -103,8 +118,5 @@ setting a max-height (or height) on the outer element.
 When this was set to true, it changed the behavior of the height option to be a
 min-height for the growing editor. You can now set a min-height directly by
 using the `--say-page-minimum-height` css variable.
-
-`options.ui.expandInsertMenu`: is replaced by the widget api and no longer does
-anything
 
 
