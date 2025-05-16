@@ -1,10 +1,6 @@
 # Widgets
 
-> [!WARNING]
-> This document is a work in progress.
-> The features described in this document are not (yet) public API.
-
-Editor widgets are a new, experimental feature which allow for a more fine-grained configuration of the toolbar and sidebar behaviour.
+Editor widgets allow for a more fine-grained configuration of the toolbar and sidebar behaviour.
 Both the toolbar and sidebar may be configured through widgets, some of which become available through the configuration of certain editor plugins.
 
 Custom toolbar and sidebar options may be configured while initializing the editor through the `toolbar` and `sidebar` configurations.

@@ -1,9 +1,5 @@
 # Configuring the editor sidebar
 
-> [!WARNING]
-> This document is a work in progress.
-> The features described in this document are not (yet) public API.
-
 The editor toolbar can be configured through a simple API which allows you to easily enable/disable sidebar widgets.
 Two types of sidebar widgets may be configured:
 
