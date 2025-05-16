@@ -36,14 +36,12 @@ const editors = [
   {
     heading: 'Description',
     label: 'desc',
-    height: '250px',
     content:
       'This sample simulates using multiple embedded editors for the parts of a decision',
   },
   {
     heading: 'Motivation',
     label: 'motiv',
-    height: '250px',
     content: 'Each editor has a decision URI passed to the plugins',
   },
   { heading: 'Ruling', label: 'ruling', height: '250px', content: '...' },
@@ -62,12 +60,15 @@ editors.forEach((config) => {
   container.append(element);
   renderEditor({
     element,
-    width: '60%',
-    height: config.height,
-    growEditor: true,
+    // width: '60%',
+    // height: config.height,
+    // growEditor: true,
     plugins,
     shadowDom: true,
     options,
+    cssVariables: {
+      '--say-page-minimum-height': '400px',
+    },
   })
     .then((editor) => {
       editor.setHtmlContent(config.content);

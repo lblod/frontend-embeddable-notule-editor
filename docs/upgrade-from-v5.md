@@ -83,3 +83,28 @@ We added a new system for customizing the tool- and sidebar, including
 making your own sidebar groups.
 
 Read more [here](./widgets.md).
+
+### Deprecations
+
+Thanks to the more direct way of rendering, a number of special options are no
+longer required. We decided to keep supporting them for the v6 release, but
+deprecate them and remove them in the next release. 
+
+These are:
+
+`title`: this was only needed for the iframe, and makes no sense anymore. It
+simply does nothing now, you can safely remove it.
+`width` and `height`: You can now simply apply styles to the element you are
+rendering the editor in. The options still work as before though.
+`growEditor`: this used to be quite a complicated implementation because of the
+limitations of iframes. Now, we get this behavior "for free" by simply not
+setting a max-height (or height) on the outer element. 
+
+When this was set to true, it changed the behavior of the height option to be a
+min-height for the growing editor. You can now set a min-height directly by
+using the `--say-page-minimum-height` css variable.
+
+`options.ui.expandInsertMenu`: is replaced by the widget api and no longer does
+anything
+
+
