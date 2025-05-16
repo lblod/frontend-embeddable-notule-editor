@@ -13,7 +13,7 @@ const options: UserPluginOptions = {
   besluit: { decisionUri },
   lpdc: {
     endpoint:
-      'https://embeddable.dev.gelinkt-notuleren.lblod.info/lpdc-service',
+      'https://embeddable.dev.gelinkt-notuleren.lblod.info/lpdc-service/doc/instantie',
     decisionUri,
   },
   roadsignRegulation: { decisionContext: { decisionUri, decisionType } },

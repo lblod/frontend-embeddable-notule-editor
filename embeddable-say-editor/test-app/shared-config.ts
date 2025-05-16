@@ -32,7 +32,7 @@ export const pluginDemoConfig: Omit<RenderEditorOptions, 'element'> &
       widgetLocation: 'sidebar',
     },
     lpdc: {
-      lpdcEndpoint:
+      endpoint:
         'https://embeddable.dev.gelinkt-notuleren.lblod.info/lpdc-service/doc/instantie',
     },
     besluit: {
