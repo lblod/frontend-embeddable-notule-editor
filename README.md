@@ -68,7 +68,7 @@ Unlike the example which does not specify the version, for production use, we re
 > the version string can be any semver range or tag supported by unpkg.
 
 ```html
-<script src="https://unpkg.com/@lblod/embeddable-say-editor@^3.2.1"></script>
+<script type="module" src="https://unpkg.com/@lblod/embeddable-say-editor@^6.0.0?module"></script>
 ```
 
 In this section, we will assume you are using unpkg, but using another service that serves npm modules or building and hosting the bundles yourself should work just as well. Simply link the corresponding files to the correct location for your setup.
@@ -80,7 +80,6 @@ For an interactive example, refer to this [jsfiddle](https://jsfiddle.net/abefor
 <html>
   <head>
     <title>I have an editor in my document</title>
-    <script src="https://unpkg.com/@lblod/embeddable-say-editor@^3.2.1"></script>
   </head>
 
   <body>
@@ -89,9 +88,11 @@ For an interactive example, refer to this [jsfiddle](https://jsfiddle.net/abefor
 </html>
 ```
 
-Next, we'll instantiate the editor. We wait until the DOM has loaded and then render the editor inside it. Put this script in the head of the HTML page with `<script>...</script>`, or use another method if desired (e.g. at the bottom of the HTML, or in a separate js file you refer to in the html).
+Next, we'll instantiate the editor. We wait until the DOM has loaded and then render the editor inside it. Put this script in the head of the HTML page with `<script type="module">...</script>`, or use another method if desired (e.g. at the bottom of the HTML, or in a separate js file you refer to in the html).
 
 ```javascript
+import {renderEditor} from "https://unpkg.com/@lblod/embeddable-say-editor@^6.0.0?module";
+
 window.addEventListener("load", async function () {
   const renderEditor = window["@lblod/embeddable-say-editor"].renderEditor;
 
