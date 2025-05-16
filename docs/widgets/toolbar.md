@@ -1,9 +1,5 @@
 # Configuring the editor toolbar
 
-> [!WARNING]
-> This document is a work in progress.
-> The features described in this document are not (yet) public API.
-
 The editor toolbar can be configured through a simple API which allows you to easily enable/disable toolbar widgets, and arrange the widgets in different toolbar groups.
 
 A toolbar always consists of a `main` section, and a `side` section.

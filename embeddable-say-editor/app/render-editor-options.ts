@@ -29,7 +29,8 @@ export type RenderEditorOptions = {
   cssVariables?: Record<string, string>;
   /**
    * Whether the editor should grow to fit its content.
-   * @deprecated prefer setting no max-height on the outer element
+   * @deprecated prefer setting no max-height on the outer element, and using
+   * the --say-page-minimum-height css variable
    */
   growEditor?: boolean;
   /**
