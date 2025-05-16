@@ -1,5 +1,32 @@
 # frontend-embeddable-notule-editor
 
+## 6.0.0
+
+### Major Changes
+
+- [#283](https://github.com/lblod/frontend-embeddable-notule-editor/pull/283) [`b89697a`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/b89697a7d7ea43638f9bda87134a6f7c509cbad3) Thanks [@abeforgit](https://github.com/abeforgit)! - Change LPDC config to require full endpoint URL
+
+### Minor Changes
+
+- [#278](https://github.com/lblod/frontend-embeddable-notule-editor/pull/278) [`fbc7f5f`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/fbc7f5f6ba4e559ba9aa2e86e465d00d54b84edb) Thanks [@abeforgit](https://github.com/abeforgit)! - Refactor plugin system
+
+  Make the plugin setup and configuration modular, as well as (almost) fully typechecked.
+  Plugins now hinge on the definition of a plain PluginInitializer function, which
+  receives all the relevant configuration and should produce an
+  EmbeddedPluginSpec.
+
+  This spec can define all nodes, marks, nodeviews, prosePlugins, widgets and
+  other configuration the various elements need.
+
+- [#278](https://github.com/lblod/frontend-embeddable-notule-editor/pull/278) [`1f2ab76`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/1f2ab76c93667935f6a4f85f9f6f3af6d0709756) Thanks [@abeforgit](https://github.com/abeforgit)! - 'besluit-topic' plugin: add support for adding widget to sidebar
+
+- [#278](https://github.com/lblod/frontend-embeddable-notule-editor/pull/278) [`fbc7f5f`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/fbc7f5f6ba4e559ba9aa2e86e465d00d54b84edb) Thanks [@abeforgit](https://github.com/abeforgit)! - Upgrade ember to 5.12
+
+### Patch Changes
+
+- [#278](https://github.com/lblod/frontend-embeddable-notule-editor/pull/278) [`3da99de`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/3da99de946ad8ff342924832a090879c4ee8d890) Thanks [@abeforgit](https://github.com/abeforgit)! - Update `@lblod/ember-rdfa-editor` to version 12.6.0
+  Update `@lblod/ember-rdfa-editor-lblod-plugins` to version 31.1.1
+
 ## 5.7.0
 
 ### Minor Changes
