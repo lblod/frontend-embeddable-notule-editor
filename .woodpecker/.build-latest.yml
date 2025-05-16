@@ -3,7 +3,7 @@ steps:
     image: plugins/docker
     settings:
       repo: lblod/frontend-embeddable-notule-editor
-      dockerfile: test-app/Dockerfile
+      dockerfile: embeddable-say-editor/Dockerfile
       tags: latest
       username:
         from_secret: docker_username
