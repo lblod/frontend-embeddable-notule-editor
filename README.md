@@ -8,6 +8,18 @@ A [live demo](https://embeddable.dev.gelinkt-notuleren.lblod.info) is available 
 This environment is NOT suited for any production use, as it might change without notice and might be an outdated version.
 Any content entered here will not be saved.
 
+## Upgrading from version 5
+
+Version 6 uses a new packaging and rendering strategy made possible by
+advancements in the EmberJS framework. We recommend upgrading as soon as
+possible. 
+
+We've done our best to make as little breaking changes as we could, but given
+the magnitude of the changes we can't guarantee full equivalence. 
+
+Make sure to read the [upgrade guide](./docs/upgrade-from-v5.md) for an overview
+of the breaking changes and reasoning behind them.
+
 ## Docs
 
 You can find the docs in **[the docs folder](docs/index.md)**, or keep reading
