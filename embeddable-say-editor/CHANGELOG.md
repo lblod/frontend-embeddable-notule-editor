@@ -1,5 +1,11 @@
 # frontend-embeddable-notule-editor
 
+## 6.0.1
+
+### Patch Changes
+
+- [`abc349e`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/abc349ef8dc794ca72e02ea54efb139fceabec98) Thanks [@abeforgit](https://github.com/abeforgit)! - Fix docker build
+
 ## 6.0.0
 
 ### Major Changes
