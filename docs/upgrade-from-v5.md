@@ -107,11 +107,11 @@ deprecate them and remove them in the next release.
 
 These are:
 
-`title`: this was only needed for the iframe, and makes no sense anymore. It
+- `title`: this was only needed for the iframe, and makes no sense anymore. It
 simply does nothing now, you can safely remove it.
-`width` and `height`: You can now simply apply styles to the element you are
+- `width` and `height`: You can now simply apply styles to the element you are
 rendering the editor in. The options still work as before though.
-`growEditor`: this used to be quite a complicated implementation because of the
+- `growEditor`: this used to be quite a complicated implementation because of the
 limitations of iframes. Now, we get this behavior "for free" by simply not
 setting a max-height (or height) on the outer element. 
 
