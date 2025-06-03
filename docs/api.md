@@ -2,7 +2,7 @@
 
 The RDFa editor uses [the Prosemirror toolkit](https://prosemirror.net/) as a base. After the `editorElement.initEditor()` function is called and awaited, you will have access to the editor methods, including the controller with `editorElement.controller`.
 The `renderEditor` function does this for you, but you might want to call it again at a later point to re-initialize the editor.
-This controller is an instance of the [SayController](https://github.com/lblod/ember-rdfa-editor/blob/master/addon/core/say-controller.ts) class of the [ember-rdfa-editor](https://github.com/lblod/ember-rdfa-editor).
+This controller is an instance of the [SayController](https://github.com/lblod/ember-rdfa-editor/blob/master/packages/ember-rdfa-editor/src/core/say-controller.ts) class of the [ember-rdfa-editor](https://github.com/lblod/ember-rdfa-editor).
 
 #### editorElement API
 
@@ -12,7 +12,7 @@ These are functions available from the editor element, which is the HTML element
   :warning: **`initEditor` has to be called before accessing any other methods**.
 - `enableEnvironmentBanner()`: enable the banner that shows the environment and versions of plugins used.
 - `disableEnvironmentBanner()`: disable the banner.
-- `controller`: provides direct access to a [SayController](https://github.com/lblod/ember-rdfa-editor/blob/master/addon/core/say-controller.ts) object. See [controller API](#controller-api).
+- `controller`: provides direct access to a [SayController](https://github.com/lblod/ember-rdfa-editor/blob/master/packages/ember-rdfa-editor/src/core/say-controller.ts) object. See [controller API](#controller-api).
 - `setHtmlContent(content: string)`: set the HTML content inside the editor, overwriting all previous content.
 - `getHtmlContent()`: Get the HTML content of the editor. This might be different than custom content set via `setHtmlContent`, because of HTML parsing logic.
 - `setLocaleToDutch()`: Set the locale (language used) of the editor to Dutch.
@@ -22,7 +22,7 @@ These are functions available from the editor element, which is the HTML element
 
 #### controller API
 
-These methods are accessible via `editorElement.controller` and contain a way to directly interact with the Prosemirror logic underneath. This is an instance of [SayController](https://github.com/lblod/ember-rdfa-editor/blob/master/addon/core/say-controller.ts). Not all possible methods are shown.
+These methods are accessible via `editorElement.controller` and contain a way to directly interact with the Prosemirror logic underneath. This is an instance of [SayController](https://github.com/lblod/ember-rdfa-editor/blob/master/packages/ember-rdfa-editor/src/core/say-controller.ts). Not all possible methods are shown.
 
 - `focus()`: focus the window to the main editor view
 - `setHtmlContent(content: string)`: sets the content of the main editor, overwriting all previous content.
