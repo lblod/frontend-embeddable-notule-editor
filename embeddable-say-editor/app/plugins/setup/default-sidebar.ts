@@ -52,7 +52,7 @@ export function defaultSidebar({
   }
   if (plugins.includes('rdfa-editor')) {
     sidebar.push(
-      'devtools:rdfa-editor',
+      'devtools:relationship-editor',
       'devtools:attribute-editor',
       'devtools:debug-info',
     );

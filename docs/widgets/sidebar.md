@@ -124,6 +124,6 @@ The following widgets are available when the `rdfa-editor` plugin is configured.
 
 | Widget identifier           | Widget type | Description                                                                      |
 | --------------------------- | ----------- | -------------------------------------------------------------------------------- |
-| `devtools:rdfa-editor`      | Card        | Allows a user to inspect/configure the RDFa of the active node                   |
+| `devtools:relationship-editor`      | Card        | Allows a user to inspect/configure the RDFa of the active node                   |
 | `devtools:attribute-editor` | Card        | Allows a user to inspect/configure the Prosemirror attributes of the active node |
 | `devtools:debug-info`       | Card        | Allows a user to inspect additional information of the active node               |

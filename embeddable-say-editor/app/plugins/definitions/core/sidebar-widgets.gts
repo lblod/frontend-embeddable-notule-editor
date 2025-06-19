@@ -3,7 +3,7 @@ import type { TOC } from '@ember/component/template-only';
 
 import DebugInfo from '@lblod/ember-rdfa-editor/components/_private/debug-info';
 import AttributeEditor from '@lblod/ember-rdfa-editor/components/_private/attribute-editor';
-import RdfaEditor from '@lblod/ember-rdfa-editor/components/_private/rdfa-editor';
+import RelationshipEditor from '@lblod/ember-rdfa-editor/components/_private/relationship-editor/card';
 import type { WidgetSignature } from '../../widgets.ts';
 
 declare module '../../plugin-registry' {
@@ -11,7 +11,9 @@ declare module '../../plugin-registry' {
     'structure:edit': typeof StructureControlCard;
     'devtools:debug-info': typeof debugInfo;
     'devtools:attribute-editor': typeof attributeEditor;
-    'devtools:rdfa-editor': typeof rdfaEditor;
+    /** @deprecated use 'devtools:relationship-editor' instead */
+    'devtools:rdfa-editor': typeof relationshipEditor;
+    'devtools:relationship-editor': typeof relationshipEditor;
   }
 }
 const debugInfo: TOC<WidgetSignature> = <template>
@@ -26,9 +28,9 @@ const attributeEditor: TOC<WidgetSignature> = <template>
   {{/if}}
 </template>;
 
-const rdfaEditor: TOC<WidgetSignature> = <template>
+const relationshipEditor: TOC<WidgetSignature> = <template>
   {{#if @activeNode}}
-    <RdfaEditor @node={{@activeNode}} @controller={{@controller}} />
+    <RelationshipEditor @node={{@activeNode}} @controller={{@controller}} />
   {{/if}}
 </template>;
 
@@ -36,5 +38,7 @@ export const coreSidebarWidgets = {
   'structure:edit': StructureControlCard,
   'devtools:debug-info': debugInfo,
   'devtools:attribute-editor': attributeEditor,
-  'devtools:rdfa-editor': rdfaEditor,
+  /** @deprecated use 'devtools:relationship-editor' instead */
+  'devtools:rdfa-editor': relationshipEditor,
+  'devtools:relationship-editor': relationshipEditor,
 } as const;
