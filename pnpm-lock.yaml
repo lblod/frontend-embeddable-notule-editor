@@ -83,8 +83,8 @@ importers:
   embeddable-say-editor:
     dependencies:
       '@appuniversum/ember-appuniversum':
-        specifier: https://github.com/abeforgit/ember-appuniversum/raw/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.8.0.tgz
-        version: https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.8.0.tgz(788f7ca88f195390e11bedc62ec2035c)
+        specifier: https://github.com/abeforgit/ember-appuniversum/raw/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.12.0.tgz
+        version: https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.12.0.tgz(788f7ca88f195390e11bedc62ec2035c)
       '@ember/string':
         specifier: 4.0.1
         version: 4.0.1
@@ -96,13 +96,13 @@ importers:
         version: 1.1.2
       '@lblod/ember-environment-banner':
         specifier: ^0.6.0
-        version: 0.6.0(@appuniversum/ember-appuniversum@https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.8.0.tgz(788f7ca88f195390e11bedc62ec2035c))(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))
+        version: 0.6.0(@appuniversum/ember-appuniversum@https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.12.0.tgz(788f7ca88f195390e11bedc62ec2035c))(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))
       '@lblod/ember-rdfa-editor':
-        specifier: 12.6.0
-        version: 12.6.0(2f14c107ec07293e00ecbbeb5be52409)
+        specifier: 12.10.2
+        version: 12.10.2(e46010b46f23d4a974941771efe3609c)
       '@lblod/ember-rdfa-editor-lblod-plugins':
         specifier: 31.1.1
-        version: 31.1.1(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(0cf1d605a1292ad1b480790eaa1823f2)
+        version: 31.1.1(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(14277bedb9f0871466c115c41330912e)
       '@types/leaflet':
         specifier: ^1.9.17
         version: 1.9.17
@@ -340,9 +340,9 @@ packages:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
 
-  '@appuniversum/ember-appuniversum@https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.8.0.tgz':
-    resolution: {tarball: https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.8.0.tgz}
-    version: 3.8.0
+  '@appuniversum/ember-appuniversum@https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.12.0.tgz':
+    resolution: {tarball: https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.12.0.tgz}
+    version: 3.12.0
     engines: {node: '>= 18'}
     peerDependencies:
       ember-source: ^4.12.0 || ^5.0.0 || ^6.0.0
@@ -1236,6 +1236,10 @@ packages:
     resolution: {integrity: sha512-bb9h95ktG2wKY9+ja1sdsFBdOms2lB19VWs8wmNpzgHv1NCetonBoV5jHBV4DHt0uS1tg9z66cZqhUVlYs96KQ==}
     engines: {node: 10.* || 12.* || >= 14.*}
 
+  '@embroider/addon-shim@1.10.0':
+    resolution: {integrity: sha512-gcJuHiXgnrzaU8NyU+2bMbtS6PNOr5v5B8OXBqaBvTCsMpXLvKo8OBOQFCoUN0rPX2J6VaFqrbi/371sMvzZug==}
+    engines: {node: 12.* || 14.* || >= 16}
+
   '@embroider/addon-shim@1.9.0':
     resolution: {integrity: sha512-fMzayl/licUL8VRAy4qXROKcYvHwUbV8aTh4m97L5/MRuVpxbcAy92DGGTqx5OBKCSQN3gMg+sUKeE6AviefpQ==}
     engines: {node: 12.* || 14.* || >= 16}
@@ -1789,10 +1793,10 @@ packages:
       ember-template-imports:
         optional: true
 
-  '@lblod/ember-rdfa-editor@12.6.0':
-    resolution: {integrity: sha512-LrdXe7lk++zYin5IzP+Bele0d2gkA6ZpgoG9HlPb2fcuiei1pxnWOcWwbN2WxAGgd3igNlUPTihDFTE6w68/NQ==}
+  '@lblod/ember-rdfa-editor@12.10.2':
+    resolution: {integrity: sha512-h2HltQ+lmhzLUuo1ge/4eH7Ozw4jaYhNy3dE3A4Wf2qN8u1Uv0oHH5OXKyU3UrV7F99sINuh9c0dfsk/mUxjqg==}
     peerDependencies:
-      '@appuniversum/ember-appuniversum': ^3.5.0
+      '@appuniversum/ember-appuniversum': ^3.11.0
       '@ember/test-helpers': ^2.9.4 || ^3.2.1 || ^4.0.2 || ^5.0.0
       '@glimmer/component': ^1.1.2 || ^2.0.0
       '@glimmer/tracking': ^1.1.2
@@ -1801,6 +1805,7 @@ packages:
       ember-concurrency: ^4.0.2
       ember-intl: ^6.4.0 || ^7.0.0
       ember-power-select: ^7.0.0 || ^8.0.0
+      ember-power-select-with-create: ^2.0.0 || ^3.0.0
       ember-source: ^4.12.0 || >=5.0.0
       tracked-built-ins: ^3.3.0
     peerDependenciesMeta:
@@ -4245,6 +4250,13 @@ packages:
     engines: {node: 16.* || >= 18}
     peerDependencies:
       ember-source: '>= 4.2.0'
+
+  ember-power-select-with-create@3.0.1:
+    resolution: {integrity: sha512-Jq+/5LleUWpHRBOKzvz0URrhzRlpE451R0AHg4z7bMSYZCLtPXcSUBR8/5qKelp01ACzpY1kTZu6iOBQwVALiQ==}
+    peerDependencies:
+      '@glimmer/component': ^1.1.2 || ^2.0.0
+      ember-basic-dropdown: ^8.6.1
+      ember-power-select: ^8.7.1
 
   ember-power-select@8.7.0:
     resolution: {integrity: sha512-9T9M5QqgmAYORxxwiz4A9Hm8cZPWFsliIM8X2UVnQpO8Zd+oU/grIIF5MFkv2xTa9HGWCEvwnVRRUSPqFRBW7Q==}
@@ -8625,7 +8637,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@appuniversum/ember-appuniversum@https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.8.0.tgz(788f7ca88f195390e11bedc62ec2035c)':
+  '@appuniversum/ember-appuniversum@https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.12.0.tgz(788f7ca88f195390e11bedc62ec2035c)':
     dependencies:
       '@babel/core': 7.27.1
       '@duetds/date-picker': 1.4.0
@@ -9913,6 +9925,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@embroider/addon-shim@1.10.0':
+    dependencies:
+      '@embroider/shared-internals': 3.0.0
+      broccoli-funnel: 3.0.8
+      common-ancestor-path: 1.0.1
+      semver: 7.7.1
+    transitivePeerDependencies:
+      - supports-color
+
   '@embroider/addon-shim@1.9.0':
     dependencies:
       '@embroider/shared-internals': 2.9.0
@@ -10689,9 +10710,9 @@ snapshots:
     dependencies:
       buffer: 6.0.3
 
-  '@lblod/ember-environment-banner@0.6.0(@appuniversum/ember-appuniversum@https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.8.0.tgz(788f7ca88f195390e11bedc62ec2035c))(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))':
+  '@lblod/ember-environment-banner@0.6.0(@appuniversum/ember-appuniversum@https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.12.0.tgz(788f7ca88f195390e11bedc62ec2035c))(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))':
     dependencies:
-      '@appuniversum/ember-appuniversum': https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.8.0.tgz(788f7ca88f195390e11bedc62ec2035c)
+      '@appuniversum/ember-appuniversum': https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.12.0.tgz(788f7ca88f195390e11bedc62ec2035c)
       '@embroider/macros': 1.17.2(@glint/template@1.4.1-unstable.afcad36)
       ember-cli-babel: 7.26.11
       ember-cli-htmlbars: 6.3.0
@@ -10700,9 +10721,9 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@31.1.1(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(0cf1d605a1292ad1b480790eaa1823f2)':
+  '@lblod/ember-rdfa-editor-lblod-plugins@31.1.1(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(14277bedb9f0871466c115c41330912e)':
     dependencies:
-      '@appuniversum/ember-appuniversum': https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.8.0.tgz(788f7ca88f195390e11bedc62ec2035c)
+      '@appuniversum/ember-appuniversum': https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.12.0.tgz(788f7ca88f195390e11bedc62ec2035c)
       '@babel/core': 7.27.1
       '@codemirror/lang-html': 6.4.9
       '@codemirror/state': 6.4.1
@@ -10710,7 +10731,7 @@ snapshots:
       '@curvenote/prosemirror-utils': 1.0.5(prosemirror-model@1.22.1)(prosemirror-state@1.4.3)
       '@ember/string': 4.0.1
       '@embroider/macros': 1.17.2(@glint/template@1.4.1-unstable.afcad36)
-      '@lblod/ember-rdfa-editor': 12.6.0(2f14c107ec07293e00ecbbeb5be52409)
+      '@lblod/ember-rdfa-editor': 12.10.2(e46010b46f23d4a974941771efe3609c)
       '@lblod/marawa': 0.8.0-beta.6
       '@lblod/template-uuid-instantiator': 1.0.3
       '@rdfjs/data-model': 2.0.2
@@ -10763,9 +10784,9 @@ snapshots:
       - web-streams-polyfill
       - webpack
 
-  '@lblod/ember-rdfa-editor@12.6.0(2f14c107ec07293e00ecbbeb5be52409)':
+  '@lblod/ember-rdfa-editor@12.10.2(e46010b46f23d4a974941771efe3609c)':
     dependencies:
-      '@appuniversum/ember-appuniversum': https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.8.0.tgz(788f7ca88f195390e11bedc62ec2035c)
+      '@appuniversum/ember-appuniversum': https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.12.0.tgz(788f7ca88f195390e11bedc62ec2035c)
       '@codemirror/commands': 6.6.0
       '@codemirror/lang-html': 6.4.9
       '@codemirror/lang-xml': 6.1.0
@@ -10801,6 +10822,7 @@ snapshots:
       ember-intl: 7.1.7(@ember/test-helpers@4.0.5(@babel/core@7.27.1)(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0)))(@glint/template@1.4.1-unstable.afcad36)(typescript@5.5.4)(webpack@5.94.0)
       ember-modifier: 4.2.0(@babel/core@7.27.1)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))
       ember-power-select: 8.7.0(cbd1c6d9c9ec449e33b609a6414a7d7d)
+      ember-power-select-with-create: 3.0.1(0545941b7d5eaaa594a3b1b256001c0d)
       ember-source: 6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0)
       ember-template-imports: 4.3.0
       ember-truth-helpers: 4.0.3(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))
@@ -14117,6 +14139,21 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  ember-power-select-with-create@3.0.1(0545941b7d5eaaa594a3b1b256001c0d):
+    dependencies:
+      '@embroider/addon-shim': 1.10.0
+      '@embroider/util': 1.13.2(@glint/environment-ember-loose@1.4.1-unstable.afcad36(@glimmer/component@2.0.0)(@glint/core@1.4.1-unstable.afcad36(typescript@5.5.4))(@glint/template@1.4.1-unstable.afcad36)(ember-cli-htmlbars@6.3.0)(ember-modifier@4.2.0(@babel/core@7.27.1)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))))(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))
+      '@glimmer/component': 2.0.0
+      decorator-transforms: 2.3.0(@babel/core@7.27.1)
+      ember-basic-dropdown: 8.6.0(patch_hash=32d0ca6074742b7542b79098a075ec9e093646363f297ed83f067e56968957c4)(@babel/core@7.27.1)(@ember/string@4.0.1)(@ember/test-helpers@4.0.5(@babel/core@7.27.1)(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0)))(@glimmer/component@2.0.0)(@glimmer/tracking@1.1.2)(@glint/environment-ember-loose@1.4.1-unstable.afcad36(@glimmer/component@2.0.0)(@glint/core@1.4.1-unstable.afcad36(typescript@5.5.4))(@glint/template@1.4.1-unstable.afcad36)(ember-cli-htmlbars@6.3.0)(ember-modifier@4.2.0(@babel/core@7.27.1)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))))(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))
+      ember-power-select: 8.7.0(cbd1c6d9c9ec449e33b609a6414a7d7d)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@glint/environment-ember-loose'
+      - '@glint/template'
+      - ember-source
+      - supports-color
+
   ember-power-select@8.7.0(cbd1c6d9c9ec449e33b609a6414a7d7d):
     dependencies:
       '@ember/test-helpers': 4.0.5(@babel/core@7.27.1)(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.94.0))
@@ -15400,7 +15437,7 @@ snapshots:
     dependencies:
       foreground-child: 3.1.1
       jackspeak: 2.3.6
-      minimatch: 9.0.4
+      minimatch: 9.0.5
       minipass: 7.0.4
       path-scurry: 1.10.2
 
@@ -17168,7 +17205,7 @@ snapshots:
 
   path-scurry@1.10.2:
     dependencies:
-      lru-cache: 10.2.0
+      lru-cache: 10.4.3
       minipass: 7.0.4
 
   path-to-regexp@0.1.12: {}
