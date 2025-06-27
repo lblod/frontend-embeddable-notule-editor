@@ -13,17 +13,34 @@ export function defaultToolbar({
   mainSection.push(
     ['undo', 'redo'],
     [
-      'bold',
-      'italic',
-      'strikethrough',
-      'underline',
-      'subscript',
-      'superscript',
+      {
+        type: 'dropdown',
+        attributes: {
+          icon: 'format-text',
+        },
+        children: [
+          'bold',
+          'italic',
+          'strikethrough',
+          'underline',
+          'subscript',
+          'superscript',
+        ],
+      },
+
       'highlight',
       'color',
     ],
     ['list:bullet', 'list:numbered', 'indentation'],
-    ['hyperlink', 'image'],
+    [
+      {
+        type: 'dropdown',
+        attributes: {
+          icon: 'plus',
+        },
+        children: ['hyperlink', 'image'],
+      },
+    ],
     ['table'],
     ['heading'],
     ['alignment'],

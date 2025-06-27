@@ -123,7 +123,8 @@
     "leaflet": "^1.9.4",
     "lodash.mergewith": "^4.6.2",
     "tracked-built-ins": "^3.4.0",
-    "uuid": "^11.1.0"
+    "uuid": "^11.1.0",
+    "ember-container-query": "^6.0.1"
   },
   "engines": {
     "node": ">= 18"

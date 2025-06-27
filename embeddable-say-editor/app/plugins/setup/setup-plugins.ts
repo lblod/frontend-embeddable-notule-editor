@@ -71,6 +71,7 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
   ];
   let toolbarWidgets: Record<string, WidgetComponent> = {};
   let sidebarWidgets: Record<string, WidgetComponent> = {};
+  let icons: Record<string, WidgetComponent> = {};
 
   const realSpecs = pluginsWithCore.map((name) => ({
     name: camelize(name),
@@ -109,7 +110,15 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
         ...(spec.sidebarWidgets as Record<string, WidgetComponent>),
       };
     }
+    if (spec.icons) {
+      icons = {
+        ...icons,
+        // TODO make this safe
+        ...(spec.icons as Record<string, WidgetComponent>),
+      };
+    }
   }
+  console.log(icons);
   const schema = new Schema({ nodes, marks });
   let result = {
     nodes,
@@ -129,6 +138,7 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
     sidebarConfig: sidebar ?? defaultSidebar(args),
     toolbarConfig: toolbar ?? defaultToolbar(args),
     widgetMaps: { sidebar: sidebarWidgets, toolbar: toolbarWidgets },
+    iconMap: icons,
   };
 
   for (const realSpec of realSpecs) {

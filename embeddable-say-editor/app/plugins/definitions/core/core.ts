@@ -42,6 +42,15 @@ import type { PluginInitializer } from '../../embedded-plugin.ts';
 import type { ProsePlugin } from '@lblod/ember-rdfa-editor';
 import { coreToolbarWidgets } from './toolbar-widgets.gts';
 import { coreSidebarWidgets } from './sidebar-widgets.gts';
+import FormatTextIcon from '@lblod/ember-rdfa-editor/components/icons/format-text';
+import { PlusIcon } from '@appuniversum/ember-appuniversum/components/icons/plus';
+import { ThreeDotsIcon } from '@appuniversum/ember-appuniversum/components/icons/three-dots';
+
+const icons = {
+  'format-text': FormatTextIcon,
+  plus: PlusIcon,
+  'three-dots': ThreeDotsIcon,
+};
 
 export const coreSetup = (({ options }) => {
   const nodes = {
@@ -91,5 +100,6 @@ export const coreSetup = (({ options }) => {
     prosePlugins,
     toolbarWidgets: coreToolbarWidgets,
     sidebarWidgets: coreSidebarWidgets,
+    icons,
   };
 }) satisfies PluginInitializer;

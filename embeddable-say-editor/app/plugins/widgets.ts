@@ -30,6 +30,7 @@ export type ToolbarSection = ToolbarGroupConfig[];
 export type ToolbarConfig = {
   main?: ToolbarSection;
   side?: ToolbarSection;
+  responsiveWidt: number;
 };
 
 export type SidebarWidgetName = keyof SidebarWidgets;

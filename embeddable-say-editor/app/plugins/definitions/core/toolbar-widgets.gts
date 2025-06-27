@@ -16,10 +16,13 @@ import AlignmentMenu from '@lblod/ember-rdfa-editor/components/plugins/alignment
 import LinkMenu from '@lblod/ember-rdfa-editor/components/plugins/link/link-menu';
 import ImageInsertMenu from '@lblod/ember-rdfa-editor/components/plugins/image/insert-menu';
 import TableMenu from '@lblod/ember-rdfa-editor/components/plugins/table/table-menu';
+import ToolbarDropdown from '@lblod/ember-rdfa-editor/components/toolbar/dropdown';
 
 import type { TOC } from '@ember/component/template-only';
 import type { WidgetSignature } from '../../widgets';
 import type { ToolbarWidgetMap } from '../../embedded-plugin';
+
+import { get } from '@ember/helper';
 
 const highlight: TOC<WidgetSignature> = <template>
   <Highlight @controller={{@controller}} @defaultColor="#000000" />
@@ -27,6 +30,38 @@ const highlight: TOC<WidgetSignature> = <template>
 
 const color: TOC<WidgetSignature> = <template>
   <ColorMenu @controller={{@controller}} @defaultColor="#000000" />
+</template>;
+
+const ToolbarDropdownEmbeddable = <template>
+  {{#if @cq.features.large}}
+    {{#each @children as |widget|}}
+      {{#let (get @toolbarWidgets widget) as |WidgetComponent|}}
+        <WidgetComponent
+          @activeNode={{@activeNode}}
+          @setup={{@setup}}
+          @controller={{@controller}}
+        />
+      {{/let}}
+    {{/each}}
+  {{else}}
+    <ToolbarDropdown
+      @icon={{get @icons @attributes.icon}}
+      @direction="horizontal"
+      @title={{@attributes.title}}
+      as |Menu|
+    >
+      {{#each @children as |widget|}}
+        {{#let (get @toolbarWidgets widget) as |WidgetComponent|}}
+          <WidgetComponent
+            @activeNode={{@activeNode}}
+            @setup={{@setup}}
+            @controller={{@controller}}
+            @onActivate={{Menu.closeDropdown}}
+          />
+        {{/let}}
+      {{/each}}
+    </ToolbarDropdown>
+  {{/if}}
 </template>;
 
 declare module '../../plugin-registry' {
@@ -49,6 +84,7 @@ declare module '../../plugin-registry' {
     hyperlink: typeof LinkMenu;
     image: typeof ImageInsertMenu;
     table: typeof TableMenu;
+    dropdown: typeof ToolbarDropdownEmbeddable;
   }
 }
 export const coreToolbarWidgets: ToolbarWidgetMap = {
@@ -70,4 +106,5 @@ export const coreToolbarWidgets: ToolbarWidgetMap = {
   hyperlink: LinkMenu,
   image: ImageInsertMenu,
   table: TableMenu,
+  dropdown: ToolbarDropdownEmbeddable,
 } as const;
