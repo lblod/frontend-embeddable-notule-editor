@@ -6,7 +6,7 @@ x-logging: &default-logging
 
 services:
   frontend:
-    image: lblod/frontend-embeddable-notule-editor:5.4.0
+    image: lblod/frontend-embeddable-notule-editor:latest
     restart: always
     logging: *default-logging
     environment:
