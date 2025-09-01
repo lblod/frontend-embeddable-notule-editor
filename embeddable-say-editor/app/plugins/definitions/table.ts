@@ -9,7 +9,7 @@ import { mergeConfigs } from '../setup/defaults';
 export type TableConfig = {
   tableGroup: string;
   cellContent: string;
-  inlineBorderStyle: { width: string; color: string };
+  inlineBorderStyle: { width: string; style?: string; color: string };
   rowBackground?: { even?: string; odd?: string };
 };
 
