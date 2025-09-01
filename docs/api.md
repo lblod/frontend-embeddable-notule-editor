@@ -9,7 +9,8 @@ This controller is an instance of the [SayController](https://github.com/lblod/e
 These are functions available from the editor element, which is the HTML element with the class `notule-editor`.
 
 - `async initEditor(arrayOfPluginNames: string[], configurationOptions)`: Initialize the editor by passing an array of plugin names that should be activated and an object that contains the configuration for the editor and its plugins. See [Managing Plugins](managing-plugins) for more info.
-  :warning: **`initEditor` has to be called before accessing any other methods**.
+  
+  > [!WARNING] `initEditor` has to be called before accessing any other methods. If you used the `renderEditor` function, the `initEditor` is already called for you.
 - `enableEnvironmentBanner()`: enable the banner that shows the environment and versions of plugins used.
 - `disableEnvironmentBanner()`: disable the banner.
 - `controller`: provides direct access to a [SayController](https://github.com/lblod/ember-rdfa-editor/blob/master/packages/ember-rdfa-editor/src/core/say-controller.ts) object. See [controller API](#controller-api).
