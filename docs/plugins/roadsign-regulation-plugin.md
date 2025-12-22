@@ -75,3 +75,14 @@ When the cursor is inside such a _besluit_, the button _Voeg mobiliteitsmaatrege
 
 If you pass the `decisionUri` and `decisionType` options, the plugin will be
 active anywhere in the document.
+
+### Required prefixes
+
+The output of this plugin makes use of the following prefixes, so ensure they are defined when
+interpreting or publishing the documents produced:
+
+- dct: `http://purl.org/dc/terms/`
+- ext: `http://mu.semte.ch/vocabularies/ext/`
+- mobiliteit: `https://data.vlaanderen.be/ns/mobiliteit#`
+- onderdeel: `https://wegenenverkeer.data.vlaanderen.be/ns/onderdeel#`
+- prov: `http://www.w3.org/ns/prov#`

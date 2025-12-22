@@ -97,3 +97,19 @@ A variable can be inserted with the card shown in the right sidebar.
 #### rdfa-awareness
 
 The serialization format of these variables uses rdfa to store its data.
+
+##### Required prefixes
+
+The output of this plugin makes use of the following prefixes, so ensure they are defined when
+interpreting or publishing the documents produced:
+
+- adres: `https://data.vlaanderen.be/ns/adres#`
+- dct: `http://purl.org/dc/terms/`
+- ext: `http://mu.semte.ch/vocabularies/ext/`
+- foaf: `http://xmlns.com/foaf/0.1/`
+- generiek: `https://data.vlaanderen.be/ns/generiek/#`
+- geosparql: `http://www.opengis.net/ont/geosparql#`
+- locn: `http://www.w3.org/ns/locn#`
+- mobiliteit: `https://data.vlaanderen.be/ns/mobiliteit#`
+- persoon: `http://data.vlaanderen.be/ns/persoon#`
+- variables: `http://lblod.data.gift/vocabularies/variables/`

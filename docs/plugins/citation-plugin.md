@@ -73,3 +73,10 @@ After typing this trigger phrase, a card will appear in the right sidebar with t
 
 The citations inserted are rdfa-annotated, but as you can see above, this plugin uses a
 different mechanism to determine where it is active.
+
+##### Required prefixes
+
+The output of this plugin makes use of the following prefixes, so ensure they are defined when
+interpreting or publishing the documents produced:
+
+- eli: `http://data.europa.eu/eli/ontology#`
