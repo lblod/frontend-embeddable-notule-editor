@@ -34,3 +34,10 @@ URI you provided.
 It is then possible to manage topics from the toolbar. The cursor should be inside a `besluit` node to see the button.
 
 ![besluit topics](/docs/images/besluit-topic.png)
+
+### Required prefixes
+
+The output of this plugin makes use of the following prefixes, so ensure they are defined when
+interpreting or publishing the documents produced:
+
+- dct: `http://purl.org/dc/terms/`

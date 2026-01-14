@@ -93,3 +93,14 @@ const options = {
 In this mode, the plugin will not search in the way described above, and will
 instead allow you to insert articles anywhere in the document, linking them to
 the provided URI.
+
+#### Required prefixes
+
+The output of this plugin makes use of the following prefixes, so ensure they are defined when
+interpreting or publishing the documents produced:
+
+- besluit: `http://data.vlaanderen.be/ns/besluit#`
+- eli: `http://data.europa.eu/eli/ontology#`
+- ext: `http://mu.semte.ch/vocabularies/ext/`
+- prov: `http://www.w3.org/ns/prov#`
+- say: `https://say.data.gift/ns/`

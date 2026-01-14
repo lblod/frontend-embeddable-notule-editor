@@ -18,3 +18,10 @@ It has a special RDFa type `ext:TemplateComment` with `ext` the prefix for `http
 #### rdfa-awareness
 
 The serialization format of the comment blocks uses rdfa.
+
+##### Required prefixes
+
+The output of this plugin makes use of the following prefixes, so ensure they are defined when
+interpreting or publishing the documents produced:
+
+- ext: `http://mu.semte.ch/vocabularies/ext/`

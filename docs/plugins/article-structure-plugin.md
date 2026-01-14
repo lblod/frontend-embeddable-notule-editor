@@ -24,3 +24,14 @@ We are currently working on building templates for regulations, which use these
 structures. When these materialize, we intend to document and solidify the
 data model this plugin follows, and we don't expect it will be extremely
 different from what is there now.
+
+##### Required prefixes
+
+The output of this plugin makes use of the following prefixes, so ensure they are defined when
+interpreting or publishing the documents produced:
+
+- besluit: `http://data.vlaanderen.be/ns/besluit#`
+- eli: `http://data.europa.eu/eli/ontology#`
+- ext: `http://mu.semte.ch/vocabularies/ext/`
+- prov: `http://www.w3.org/ns/prov#`
+- say: `https://say.data.gift/ns/`

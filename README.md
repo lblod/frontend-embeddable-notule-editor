@@ -25,6 +25,11 @@ of the breaking changes and reasoning behind them.
 You can find the docs in **[the docs folder](docs/index.md)**, or keep reading
 for a quickstart guide.
 
+> [!NOTE]
+> The quickstart guide focuses on integrating the editor in an application, but not on using the
+> HTML output. The docs hold further information on [Configuration](./docs/configuration.md) and how
+> to use the [HTML Output](./docs/html-output.md) and the [RDFa](./docs/rdfa.md) that it contains.
+
 ## Quickstart
 
 ### nodejs
@@ -62,7 +67,7 @@ For a full explanation of all the options, see
 
 If you can't use an npm package directly in your app, the easiest way is using a CDN such as unpkg.com to use the version from npm directly in a `<script>` tag. For details on how to use start and customise the editor, see the [basic code example](#basic-example-the-editor-in-an-html-file) section below.
 
-Unlike the example which does not specify the version, for production use, we recommend to use a fixed major version number to avoid breaking changes. The changelog can be seen [on Github](https://github.com/lblod/frontend-embeddable-notule-editor/releases), any update with breaking changes will have a higher version number. For example, to have the latest version of the v3 release, use the following import:
+Unlike the example which does not specify the version, for production use, we recommend to use a fixed major version number to avoid breaking changes. The changelog can be seen [on Github](https://github.com/lblod/frontend-embeddable-notule-editor/releases), any update with breaking changes will have a higher version number. For example, to have the latest version of the v6 release, use the following import:
 
 > [!NOTE]
 > the version string can be any semver range or tag supported by unpkg.

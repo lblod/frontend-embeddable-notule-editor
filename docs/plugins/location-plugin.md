@@ -109,3 +109,21 @@ To change an existing shape, simply start drawing a new one. When it is
 completed, it will replace the old shape.
 
 To enable this mode, add the `area` locationOption to the `locationTypes` array.
+
+#### rdfa-awareness
+
+This plugin outputs RDFa that conforms to the OSLO standard for [location based
+information](https://github.com/Informatievlaanderen/OSLOthema-slimmeRaadpleegOmgeving).
+
+##### Required prefixes
+
+The output of this plugin makes use of the following prefixes, so ensure they are defined when
+interpreting or publishing the documents produced:
+
+- ext: `http://mu.semte.ch/vocabularies/ext/`
+- adres: `https://data.vlaanderen.be/ns/adres#`
+- dct: `http://purl.org/dc/terms/`
+- locn: `http://www.w3.org/ns/locn#`
+- rdfs: `http://www.w3.org/2000/01/rdf-schema#`
+- geosparql: `http://www.opengis.net/ont/geosparql#`
+- prov: `http://www.w3.org/ns/prov#`

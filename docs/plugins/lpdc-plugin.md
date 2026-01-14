@@ -41,3 +41,10 @@ connected to the node via rdfa.
 If you aren't able to provide a `besluit` node, you can instead configure the
 URI of the decision directly (see [setup](#setup)). The inserted instance will
 be linked to that URI.
+
+### Required prefixes
+
+The output of this plugin makes use of the following prefixes, so ensure they are defined when
+interpreting or publishing the documents produced:
+
+- sro: `https://data.vlaanderen.be/ns/slimmeraadpleegomgeving#`
