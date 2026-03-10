@@ -8,7 +8,7 @@ document.body.appendChild(router);
 document.body.appendChild(container);
 const editor = await renderEditor({
   element: container,
-  plugins: ['html-edit'], // array of plugin names (see below)
+  plugins: ['html-edit', 'image'], // array of plugin names (see below)
   options: {
     table: {
       rowBackground: {
