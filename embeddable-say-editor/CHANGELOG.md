@@ -1,5 +1,15 @@
 # frontend-embeddable-notule-editor
 
+## 6.1.0
+
+### Minor Changes
+
+- [#286](https://github.com/lblod/frontend-embeddable-notule-editor/pull/286) [`f870bd0`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/f870bd00d08c7e7149749df0cc881e110ceb7a36) Thanks [@kobemertens](https://github.com/kobemertens)! - Bump editor to 13.1.1 and plugins to 35.0.1
+
+### Patch Changes
+
+- [#285](https://github.com/lblod/frontend-embeddable-notule-editor/pull/285) [`bf445dc`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/bf445dcc8c29250a2d7e11ede4219dbc0906b632) Thanks [@piemonkey](https://github.com/piemonkey)! - Add documentation to specify all prefixes used by the plugins of the editor
+
 ## 6.0.1
 
 ### Patch Changes
