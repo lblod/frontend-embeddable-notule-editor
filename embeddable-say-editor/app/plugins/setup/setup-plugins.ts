@@ -67,6 +67,7 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
     'core',
     'table',
     'link',
+    'image',
     ...(plugins ?? []),
   ];
   let toolbarWidgets: Record<string, WidgetComponent> = {};

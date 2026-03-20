@@ -262,7 +262,6 @@ NOTE: While this version technically works, and is identical to 3.7.1, due to a 
 - [#232](https://github.com/lblod/frontend-embeddable-notule-editor/pull/232) [`33278fc`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/33278fc4972e15a4a844680f3c97890fe339b449) Thanks [@elpoelma](https://github.com/elpoelma)! - Add floating table menu which provides users quick access to table editing tools
   This floating menu is implemented to be as non-intrusive as possible: it only displays when clicking; and disappears when typing.
   The menu contains the following actions:
-
   - Add row after
   - Add row before
   - Add column after
@@ -276,15 +275,12 @@ NOTE: While this version technically works, and is identical to 3.7.1, due to a 
 - [#245](https://github.com/lblod/frontend-embeddable-notule-editor/pull/245) [`b53d4ab`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/b53d4ab846a0684973c8def7d281ebca2b7ad4ac) Thanks [@elpoelma](https://github.com/elpoelma)! - Enable support for customizable, alternating row backgrounds
 
 - [#245](https://github.com/lblod/frontend-embeddable-notule-editor/pull/245) [`f669800`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/f669800b4771f825a96f5245ad9531b624e85fd6) Thanks [@elpoelma](https://github.com/elpoelma)! - - Update `@lblod/ember-rdfa-editor` to version 9.5.1
-
   - Update `@lblod/ember-rdfa-editor-lblod-plugins` to 16.2.0
 
   These releases contain support for the following features:
-
   - Table cell backgrounds
 
   These release also contain the following fixes/improvements:
-
   - Addition of title attributes to toolbar buttons
   - Improvements in translations of toolbar buttons
 
@@ -295,7 +291,6 @@ NOTE: While this version technically works, and is identical to 3.7.1, due to a 
 - [#233](https://github.com/lblod/frontend-embeddable-notule-editor/pull/233) [`67a660a`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/67a660a049838cdae11a90bba9b6e35442b7df20) Thanks [@dkozickis](https://github.com/dkozickis)! - Update `@lblod/ember-rdfa-editor` to version [9.4.0](https://github.com/lblod/ember-rdfa-editor/releases/tag/v9.4.0)
 
   This release includes the following (improved) features:
-
   - Better support for copying lists
   - When resizing tables, percentages are used instead of absolute pixels
   - Merge/Split table cells
@@ -317,15 +312,12 @@ NOTE: While this version technically works, and is identical to 3.7.1, due to a 
 - [#245](https://github.com/lblod/frontend-embeddable-notule-editor/pull/245) [`b53d4ab`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/b53d4ab846a0684973c8def7d281ebca2b7ad4ac) Thanks [@elpoelma](https://github.com/elpoelma)! - Enable support for customizable, alternating row backgrounds
 
 - [#245](https://github.com/lblod/frontend-embeddable-notule-editor/pull/245) [`f669800`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/f669800b4771f825a96f5245ad9531b624e85fd6) Thanks [@elpoelma](https://github.com/elpoelma)! - - Update `@lblod/ember-rdfa-editor` to version 9.5.1
-
   - Update `@lblod/ember-rdfa-editor-lblod-plugins` to 16.2.0
 
   These releases contain support for the following features:
-
   - Table cell backgrounds
 
   These release also contain the following fixes/improvements:
-
   - Addition of title attributes to toolbar buttons
   - Improvements in translations of toolbar buttons
 
@@ -336,7 +328,6 @@ NOTE: While this version technically works, and is identical to 3.7.1, due to a 
 - [#233](https://github.com/lblod/frontend-embeddable-notule-editor/pull/233) [`67a660a`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/67a660a049838cdae11a90bba9b6e35442b7df20) Thanks [@dkozickis](https://github.com/dkozickis)! - Update `@lblod/ember-rdfa-editor` to version [9.4.0](https://github.com/lblod/ember-rdfa-editor/releases/tag/v9.4.0)
 
   This release includes the following (improved) features:
-
   - Better support for copying lists
   - When resizing tables, percentages are used instead of absolute pixels
   - Merge/Split table cells
@@ -352,7 +343,6 @@ NOTE: While this version technically works, and is identical to 3.7.1, due to a 
 - [#232](https://github.com/lblod/frontend-embeddable-notule-editor/pull/232) [`33278fc`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/33278fc4972e15a4a844680f3c97890fe339b449) Thanks [@elpoelma](https://github.com/elpoelma)! - Add floating table menu which provides users quick access to table editing tools
   This floating menu is implemented to be as non-intrusive as possible: it only displays when clicking; and disappears when typing.
   The menu contains the following actions:
-
   - Add row after
   - Add row before
   - Add column after
@@ -370,7 +360,6 @@ NOTE: While this version technically works, and is identical to 3.7.1, due to a 
 - [#229](https://github.com/lblod/frontend-embeddable-notule-editor/pull/229) [`73d656f`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/73d656fdaf01ade77aa9ccda8926de1eb3613c20) Thanks [@elpoelma](https://github.com/elpoelma)! - Update `@lblod/ember-rdfa-editor` to version [9.3.0](https://github.com/lblod/ember-rdfa-editor/releases/tag/v9.3.0)
 
   This release includes the following (improved) features:
-
   - Better support for copying lists
   - When resizing tables, percentages are used instead of absolute pixels
 
@@ -517,7 +506,6 @@ NOTE: While this version technically works, and is identical to 3.7.1, due to a 
 ### Minor Changes
 
 - [#190](https://github.com/lblod/frontend-embeddable-notule-editor/pull/190) [`0a41560`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/0a41560f8e7ae4142d5f4184128414ad82517d3d) Thanks [@dkozickis](https://github.com/dkozickis)! - GN-4625: Expose CSS variable to adjust line spacing
-
   - `--say-paragraph-spacing`: spacing between paragraphs, default is 12px.
   - `--say-editor-line-height`: line height of the editor, default is 1.5.
 
@@ -573,12 +561,10 @@ NOTE: While this version technically works, and is identical to 3.7.1, due to a 
 ### Major Changes
 
 - [#163](https://github.com/lblod/frontend-embeddable-notule-editor/pull/163) [`5f61b89`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/5f61b89a8fca291af0f7482b73445efc1082c7aa) Thanks [@Dietr](https://github.com/Dietr)! - - replace ember-cli-sass with ember-cli-postcss
-
   - add postcss-rem-to-pixels
   - all rem units are converted to px units
 
 - [#176](https://github.com/lblod/frontend-embeddable-notule-editor/pull/176) [`8a9471d`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/8a9471d0f14da965d776f6819d8ccca180f58d96) Thanks [@abeforgit](https://github.com/abeforgit)! - Adds a way to import the editor through npm
-
   - rename the package to `@lblod/embeddable-say-editor`
   - export `renderEditor`, a function which renders the editor inside a provided element
   - export `SayWebComponent`, which can be imported and registered as a custom element
@@ -595,7 +581,6 @@ NOTE: While this version technically works, and is identical to 3.7.1, due to a 
 ### Major Changes
 
 - [#132](https://github.com/lblod/frontend-embeddable-notule-editor/pull/132) [`8cd3be4`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/8cd3be42c7f224adfeef15880e6f4aa83d994f98) Thanks [@abeforgit](https://github.com/abeforgit)! - Update all deps and necessary config values
-
   - removed "template-variable" config section: this plugin was merged into the
     variable plugin, and all its config options are also moved there to reflect this.
 
@@ -615,7 +600,6 @@ NOTE: While this version technically works, and is identical to 3.7.1, due to a 
     "codelistEndpoint" to better reflect it only matters for codelists
 
 - [#158](https://github.com/lblod/frontend-embeddable-notule-editor/pull/158) [`2aaa620`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/2aaa620f583832675f6b74754ae2a35c76d4ce05) Thanks [@abeforgit](https://github.com/abeforgit)! - - update ember to 4.12
-
   - bump editor and plugins to latest
   - adjust imports and components of date plugin to new names
   - move date config over to variable section
@@ -623,7 +607,6 @@ NOTE: While this version technically works, and is identical to 3.7.1, due to a 
   - remove date insert button from insert menu to be consistent with other variables
 
 - [#155](https://github.com/lblod/frontend-embeddable-notule-editor/pull/155) [`b656b3f`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/b656b3f6a2d9dfeb915f75f526b1b806fbc0986a) Thanks [@x-m-el](https://github.com/x-m-el)! - Changes the workings of the `besluit` and `article-structure` plugins
-
   - the modes for `article-structure` are gone.
   - `besluit` and `article-structure` can be used together
   - no more configuration needed for either plugins
@@ -633,18 +616,15 @@ NOTE: While this version technically works, and is identical to 3.7.1, due to a 
   Now the article structure plugin adds article structure nodes and insert buttons (like before) and is not connected at all anymore with besluit nodes (before insert buttons for besluit nodes were added via article structure plugin)
 
   To migrate:
-
   - What was `article-structure` in `regulatoryStatement` mode before is now just the `article-structure` plugin, without specifying a mode.
   - What was `article-structure` in `besluit` mode before is now just the `besluit` plugin, without specifying a mode.
 
 ### Minor Changes
 
 - [#145](https://github.com/lblod/frontend-embeddable-notule-editor/pull/145) [`d10cff0`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/d10cff0f62336ead94dabf158284e29b02dbb913) Thanks [@x-m-el](https://github.com/x-m-el)! - - Bugfix: controller is now loaded correctly to the `editorElement` and can be used.
-
   - On/Off methods bound to the `editorElement` are removed, as they are methods that didn't do anything.
 
 - [#148](https://github.com/lblod/frontend-embeddable-notule-editor/pull/148) [`109016a`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/109016af39d06e18caf9b521381da43a5face112) Thanks [@x-m-el](https://github.com/x-m-el)! - - fix: localize language of the editor based on the user's browser local. The fallback in all cases is Dutch (nl-BE)
-
   - Add extra locale helper functions to give control over the editor's language to a consumer
     - `setLocale` to set a general locale
     - `getLocale` to get the current locale
@@ -657,7 +637,6 @@ NOTE: While this version technically works, and is identical to 3.7.1, due to a 
 - [#142](https://github.com/lblod/frontend-embeddable-notule-editor/pull/142) [`7cb6a74`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/7cb6a74bcadbd78cfbecd514a93a230b01aabe02) Thanks [@elpoelma](https://github.com/elpoelma)! - Render svgs inline in order to solve svg symbol file cors issues
 
 - [#159](https://github.com/lblod/frontend-embeddable-notule-editor/pull/159) [`f4b18f8`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/f4b18f8748ac4361e079d1daf8b6578b4f85cbf7) Thanks [@dkozickis](https://github.com/dkozickis)! - GN-4543: Fix issues reported by `dependency-lint`
-
   - Pin `tracked-toolbox` to `^2.0.0` based on this comment - https://github.com/appuniversum/ember-appuniversum/pull/421#issuecomment-1706553230
   - Pin `ember-focus-trap` to `1.0.1` based on this issue - https://github.com/josemarluedke/ember-focus-trap/issues/82
 

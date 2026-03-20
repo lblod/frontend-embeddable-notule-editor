@@ -100,8 +100,9 @@ export interface EmbeddedPlugins {
   variable: typeof setupVariablePlugin;
 }
 
-export interface PluginOptions
-  extends Partial<Record<keyof EmbeddedPlugins, unknown>> {
+export interface PluginOptions extends Partial<
+  Record<keyof EmbeddedPlugins, unknown>
+> {
   besluitTopic?: Partial<BesluitTopicConfig>;
   besluit?: Partial<BesluitPluginConfig>;
   citation?: Partial<

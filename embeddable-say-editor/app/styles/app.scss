@@ -2,10 +2,7 @@
    #DUMMY APP
    ================================== */
 @use "@lblod/ember-rdfa-editor" with (
-  $say-paper-min-height: var(
-      --say-page-minimum-height,
-      calc(100% + 2.4rem)
-    )
+  $say-paper-min-height: var(--say-page-minimum-height, calc(100% + 2.4rem))
 );
 @use "leaflet";
 

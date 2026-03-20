@@ -3,7 +3,7 @@ import type { TOC } from '@ember/component/template-only';
 
 import DebugInfo from '@lblod/ember-rdfa-editor/components/_private/debug-info';
 import AttributeEditor from '@lblod/ember-rdfa-editor/components/_private/attribute-editor';
-import RdfaEditor from '@lblod/ember-rdfa-editor/components/_private/rdfa-editor';
+import RdfaEditor from '@lblod/ember-rdfa-editor/components/_private/relationship-editor/card';
 import type { WidgetSignature } from '../../widgets.ts';
 
 declare module '../../plugin-registry' {
