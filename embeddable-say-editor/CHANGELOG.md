@@ -1,5 +1,17 @@
 # frontend-embeddable-notule-editor
 
+## 6.2.0
+
+### Minor Changes
+
+- [`1a065b4`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/1a065b44354d6864c9bc93b8e7db42c385afbb0a) Thanks [@abeforgit](https://github.com/abeforgit)! - Location plugin improvements
+  - add GRB basiskaart as a default tile layer. Users can still opt to go back to the OSM layer
+  - Area locations now correctly close the WKT polygons
+
+- [`1a065b4`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/1a065b44354d6864c9bc93b8e7db42c385afbb0a) Thanks [@abeforgit](https://github.com/abeforgit)! - Image plugin is now always enabled, as was the intention
+
+- [`1a065b4`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/1a065b44354d6864c9bc93b8e7db42c385afbb0a) Thanks [@abeforgit](https://github.com/abeforgit)! - Bump editor to [@lblod](https://github.com/lblod/ember-rdfa-editor/releases/tag/@lblod/ember-rdfa-editor@13.4.0) and plugins to [v35.1.2](https://github.com/lblod/ember-rdfa-editor-lblod-plugins/releases/tag/v35.1.2)
+
 ## 6.1.0
 
 ### Minor Changes
