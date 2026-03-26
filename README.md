@@ -96,10 +96,9 @@ For an interactive example, refer to this [jsfiddle](https://jsfiddle.net/abefor
 Next, we'll instantiate the editor. We wait until the DOM has loaded and then render the editor inside it. Put this script in the head of the HTML page with `<script type="module">...</script>`, or use another method if desired (e.g. at the bottom of the HTML, or in a separate js file you refer to in the html).
 
 ```javascript
-import {renderEditor} from "https://unpkg.com/@lblod/embeddable-say-editor@^6.0.0?module";
+import {renderEditor} from "https://unpkg.com/@lblod/embeddable-say-editor@^6.2.0?module";
 
 window.addEventListener("load", async function () {
-  const renderEditor = window["@lblod/embeddable-say-editor"].renderEditor;
 
   const editorContainer = document.getElementById("my-editor");
   const editorElement = await renderEditor({
