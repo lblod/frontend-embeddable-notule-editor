@@ -1,5 +1,11 @@
 # frontend-embeddable-notule-editor
 
+## 6.2.1
+
+### Patch Changes
+
+- [#287](https://github.com/lblod/frontend-embeddable-notule-editor/pull/287) [`125ee97`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/125ee9734b91d70970bc99363bd16624aad88862) Thanks [@abeforgit](https://github.com/abeforgit)! - Include codelist_option nodetype in variable plugin
+
 ## 6.2.0
 
 ### Minor Changes
