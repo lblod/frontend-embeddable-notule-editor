@@ -16,6 +16,10 @@ const editor = await renderEditor({
       defaultAddressUriRoot: "https://example.net/id/adres/",
       defaultMunicipality: "Gent",
       locationTypes: ["address", "place", "area"],
+      // both below options are optional, see below for explanation
+      // you'll likely only need one or the other
+      explicitSubjectToLinkTo: "https://my-namespace.net/decisions/12341234",
+      subjectTypesToLinkTo: ["http://data.vlaanderen.be/ns/besluit#Besluit", "http://data.vlaanderen.be/ns/besluit#Artikel"]
     },
   },
   /*...*/
@@ -29,6 +33,8 @@ The plugin expects the following configuration options:
 - `defaultAddressUriRoot` (default: 'https://example.net/id/adres/')
 - `defaultMunicipality` (default: none)
 - `locationTypes` (default: `['address', 'place', 'area']`)
+- `explicitSubjectToLinkTo` (default: none)
+- `subjectTypesToLinkTo` (default: none)
 
 This plugin needs the base URI options for annotating the
 locations. Unfortunately we cannot provide a reasonable default for this,
@@ -36,6 +42,28 @@ because it is up to the application to manage its URI namespace.
 
 If you are unsure which base to choose here, we might be able to help you figure
 it out.
+
+## Linking the locations to the outer document
+
+While inserting a location on its own is already pretty useful, it becomes more valuable if we can connect it to the surrounding document, such that [rdfa](../rdfa.md) parsers can understand the connection.
+There are two ways to do this. You can use both, but you'll likely only need one.
+
+### Direct mode
+
+#### `explicitSubjectToLinkTo`
+
+This option allows you to specify an explicit uri to which all locations will be linked. This is useful in cases where you are building a document from multiple form fields, and as such do not have the full context available to the editor.
+It works the same way as the `decisionUri` option in the [besluit plugin](./besluit-plugin.md) or the [besluit topic plugin](./besluit-topic-plugin.md). We did not call it `decisionUri` here because you might want to link to something other than a decision, for example an article. 
+
+### Contextual mode
+
+#### `subjectTypesToLinkTo`
+
+This option allows for a more dynamic approach, where the editor will link the location to a relevant subject based on the place it's been inserted in the document. This is useful when the editor works on a more complete document,
+for example in a case where you would use the [besluit plugin](./besluit-plugin.md) to handle the insertion of articles. This way, each location can link itself to the nearest surrounding article.
+
+The editor will search upwards in the node hierarchy for the first node which has one of the specified RDF types.
+
 
 ## Usage
 

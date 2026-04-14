@@ -22,6 +22,7 @@ const options: UserPluginOptions = {
     defaultPointUriRoot: 'https://example.net/id/geometrie/',
     defaultPlaceUriRoot: 'https://example.net/id/plaats/',
     defaultAddressUriRoot: 'https://example.net/id/adres/',
+    explicitSubjectToLinkTo: 'https://example.net/decision-uri',
     defaultMunicipality: 'Gent',
   },
   ui: {
