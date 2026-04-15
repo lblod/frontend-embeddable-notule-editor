@@ -1,5 +1,11 @@
 # frontend-embeddable-notule-editor
 
+## 6.3.0
+
+### Minor Changes
+
+- [#288](https://github.com/lblod/frontend-embeddable-notule-editor/pull/288) [`21f7b3e`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/21f7b3ea00eba5f4399748691b6a89bdaf78d948) Thanks [@abeforgit](https://github.com/abeforgit)! - Expose and document option to explicitly specify the subject to link locations to
+
 ## 6.2.1
 
 ### Patch Changes
