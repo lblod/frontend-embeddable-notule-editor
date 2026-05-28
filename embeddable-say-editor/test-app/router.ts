@@ -16,6 +16,7 @@ navbar.innerHTML = html`<div class="navbar">
   <a href="/multiple-growing-editors/">Multiple growing editors</a>
   <a href="/plugins/">Plugins</a>
   <a href="/cipal-plugins/">cipal-plugins</a>
+  <a href="/headless-test/">Headless test</a>
 </div>`;
 
 export const router = navbar.content;
