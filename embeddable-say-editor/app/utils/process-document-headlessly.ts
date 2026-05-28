@@ -6,16 +6,17 @@ import { defaultAttributeValueGeneration } from '@lblod/ember-rdfa-editor/plugin
 import { removePropertiesOfDeletedNodes } from '@lblod/ember-rdfa-editor/plugins/remove-properties-of-deleted-nodes';
 import { rdfaInfoPlugin } from '@lblod/ember-rdfa-editor/plugins/rdfa-info';
 import { v4 as uuidv4 } from 'uuid';
-import type { PluginInitArgs } from '../plugins/embedded-plugin.ts';
+import type { EditorOptions } from '../plugins/embedded-plugin.ts';
 import { setupPlugins } from '../plugins/setup/setup-plugins.ts';
 import { onChangedPlugin } from '@lblod/ember-rdfa-editor/plugins/on-changed/plugin';
+import type IntlService from 'ember-intl/services/intl';
 
 export function processDocumentHeadlessly(
   html: string,
   transactionGenerator: (
     state: EditorState,
   ) => TransactionCombinatorResult<boolean>,
-  editorConfig: PluginInitArgs,
+  editorConfig: EditorOptions,
 ): string {
   let state = getState(html, editorConfig);
   const combResult = transactionGenerator(state);
@@ -30,14 +31,17 @@ export function processDocumentHeadlessly(
   return div.innerHTML;
 }
 
-function getState(html: string, editorConfig: PluginInitArgs): EditorState {
-  const { schema, prosePlugins } = setupPlugins({intl: {t: () => {}},...editorConfig});
+function getState(html: string, editorConfig: EditorOptions): EditorState {
+  // We mock the intl service as we don't have it available in this context and we don't need it
+  const { schema, prosePlugins } = setupPlugins({
+    intl: { t: () => '' } as unknown as IntlService,
+    ...editorConfig,
+  });
   const parser = ProseParser.fromSchema(schema);
   const doc = htmlToDoc(html, {
     schema: schema,
     parser,
   });
-  console.log(prosePlugins)
 
   const state = EditorState.create({
     doc,
