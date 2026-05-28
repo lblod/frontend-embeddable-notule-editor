@@ -3,6 +3,7 @@ import type { EditorElement } from './editor-element.ts';
 export { setupPlugins } from './plugins/setup/setup-plugins.ts';
 export type { EditorElement } from './editor-element.ts';
 import type { RenderEditorOptions } from './render-editor-options.ts';
+export { processDocumentHeadlessly } from './utils/process-document-headlessly.ts';
 
 // adjusting this won't actually change the toolbar height, this is just the constant
 // value of the height as given by the editor css
