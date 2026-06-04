@@ -168,18 +168,17 @@ export default class SimpleEditorComponent extends Component<Sig> {
       {{#if this.setup}}
         {{#let this.setup as |s|}}
           <EditorContainer
+            @controller={{this.controller}}
             @editorOptions={{hash showPaper=true showToolbarBottom=false}}
           >
-            <:top>
-              {{#if this.controller}}
-                <Toolbar
-                  @activeNode={{this.activeNode}}
-                  @toolbar={{s.toolbarConfig}}
-                  @controller={{this.controller}}
-                  @setup={{s}}
-                />
-              {{/if}}
-            </:top>
+            <:toolbar as |container|>
+              <Toolbar
+                @activeNode={{this.activeNode}}
+                @toolbar={{s.toolbarConfig}}
+                @controller={{container.controller}}
+                @setup={{s}}
+              />
+            </:toolbar>
             <:default>
               <Editor
                 @plugins={{s.prosePlugins}}
@@ -191,16 +190,14 @@ export default class SimpleEditorComponent extends Component<Sig> {
                 <TableTooltip @controller={{this.controller}} />
               {{/if}}
             </:default>
-            <:aside>
-              {{#if this.controller}}
-                <Sidebar
-                  @activeNode={{this.activeNode}}
-                  @sidebar={{s.sidebarConfig}}
-                  @controller={{this.controller}}
-                  @setup={{s}}
-                />
-              {{/if}}
-            </:aside>
+            <:sidebarRight as |container|>
+              <Sidebar
+                @activeNode={{this.activeNode}}
+                @sidebar={{s.sidebarConfig}}
+                @controller={{container.controller}}
+                @setup={{s}}
+              />
+            </:sidebarRight>
           </EditorContainer>
         {{/let}}
       {{/if}}
