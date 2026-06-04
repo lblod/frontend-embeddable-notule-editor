@@ -3,7 +3,7 @@
 # It would be nice to do this as just a step of the test-app build, but since the steps have no
 # input in the final image the builder optimises them out.
 # NOTE Needs to be built with the root of the monorepo as the context
-FROM node:lts-iron AS builder
+FROM node:22-trixie AS builder
 
 LABEL maintainer="info@redpencil.io"
 
@@ -22,7 +22,7 @@ RUN pnpm pack
 RUN mv lblod-embeddable-say-editor-*.tgz lblod-embeddable-say-editor.tgz
 
 # Test the types in the angular app
-FROM node:lts-iron AS types
+FROM node:22-trixie AS types
 WORKDIR /app
 RUN npm i -g corepack@0.31
 # put angular app into /app and ignore the rest of the repo to avoid false positives
