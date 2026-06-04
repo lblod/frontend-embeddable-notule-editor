@@ -26,7 +26,7 @@ FROM node:22-trixie AS types
 WORKDIR /app
 RUN npm i -g corepack@0.31
 # put angular app into /app and ignore the rest of the repo to avoid false positives
-COPY test-angular/package.json ./
+COPY test-angular/package.json test-angular/pnpm-workspace.yaml ./
 COPY --from=builder /app/embeddable-say-editor/lblod-embeddable-say-editor.tgz ./
 RUN pnpm install
 RUN pnpm add ./lblod-embeddable-say-editor.tgz
