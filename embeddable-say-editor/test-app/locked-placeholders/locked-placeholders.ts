@@ -1,6 +1,8 @@
-import { processDocumentHeadlessly } from '../../app/main.ts';
+import {
+  processDocumentHeadlessly,
+  replaceLockedPlaceholderContent,
+} from '../../app/main.ts';
 import { pluginDemoConfig } from '../shared-config.ts';
-import replaceLockedPlaceholderContent from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/locked-placeholder-plugin/utils/replace-content-function';
 import { router } from '../router.ts';
 
 document.body.insertBefore(router, document.body.firstChild);
