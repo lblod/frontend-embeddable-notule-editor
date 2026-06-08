@@ -99,11 +99,11 @@ importers:
         specifier: ^0.6.0
         version: 0.6.0(@appuniversum/ember-appuniversum@https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.17.0.tgz(eece83bb29f53bd1a6e914b0bfc7e965))(@babel/core@7.29.0)(@glint/template@1.4.1-unstable.afcad36)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.4.1-unstable.afcad36)(rsvp@4.8.5)(webpack@5.105.4))
       '@lblod/ember-rdfa-editor':
-        specifier: 13.9.0
-        version: 13.9.0(56e928a07dd9ffa0bfb65979ede25f1e)
+        specifier: 13.9.1
+        version: 13.9.1(56e928a07dd9ffa0bfb65979ede25f1e)
       '@lblod/ember-rdfa-editor-lblod-plugins':
         specifier: 35.2.0
-        version: 35.2.0(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(8354b508467244e40768acdd71a63efb)
+        version: 35.2.0(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(7a2bfd45d070ac35eda7b62c00b0891b)
       '@types/leaflet':
         specifier: ^1.9.17
         version: 1.9.21
@@ -2033,8 +2033,8 @@ packages:
       ember-template-imports:
         optional: true
 
-  '@lblod/ember-rdfa-editor@13.9.0':
-    resolution: {integrity: sha512-WLWe7nygyQxUbsyj5630R8Jlbh0k4hidrAdjwFKXeYFoSapgZklUuM0p+lxhTsGAH/KLQNACQpxr7ejzbPXKRw==}
+  '@lblod/ember-rdfa-editor@13.9.1':
+    resolution: {integrity: sha512-3n+sjOr/jobmlTUyOF1f9pJuEZCVoWv4CjF0hs7dYzJng5Qjsy049qnc1lmrnGrGyEwb4Ig4qLGE+NDMn9y8Fw==}
     peerDependencies:
       '@appuniversum/ember-appuniversum': ^3.11.0 || ^4.2.1
       '@ember/test-helpers': ^2.9.4 || ^3.2.1 || ^4.0.2 || ^5.0.0
@@ -11800,7 +11800,7 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@35.2.0(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(8354b508467244e40768acdd71a63efb)':
+  '@lblod/ember-rdfa-editor-lblod-plugins@35.2.0(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(7a2bfd45d070ac35eda7b62c00b0891b)':
     dependencies:
       '@appuniversum/ember-appuniversum': https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.17.0.tgz(eece83bb29f53bd1a6e914b0bfc7e965)
       '@babel/core': 7.29.0
@@ -11810,7 +11810,7 @@ snapshots:
       '@curvenote/prosemirror-utils': 1.0.5(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)
       '@ember/string': 4.0.1
       '@embroider/macros': 1.20.1(@babel/core@7.29.0)(@glint/template@1.4.1-unstable.afcad36)
-      '@lblod/ember-rdfa-editor': 13.9.0(56e928a07dd9ffa0bfb65979ede25f1e)
+      '@lblod/ember-rdfa-editor': 13.9.1(56e928a07dd9ffa0bfb65979ede25f1e)
       '@lblod/lib-decision-shapes': 0.0.25(@babel/core@7.29.0)(@jest/transform@30.3.0)(@jest/types@30.3.0)(babel-jest@30.3.0(@babel/core@7.29.0))(jest-util@30.3.0)(jest@30.3.0(@types/node@22.19.15)(node-notifier@10.0.1))(typescript@5.9.3)
       '@lblod/marawa': 0.8.0-beta.6
       '@lblod/template-uuid-instantiator': 1.0.3
@@ -11869,7 +11869,7 @@ snapshots:
       - typescript
       - webpack
 
-  '@lblod/ember-rdfa-editor@13.9.0(56e928a07dd9ffa0bfb65979ede25f1e)':
+  '@lblod/ember-rdfa-editor@13.9.1(56e928a07dd9ffa0bfb65979ede25f1e)':
     dependencies:
       '@appuniversum/ember-appuniversum': https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.17.0.tgz(eece83bb29f53bd1a6e914b0bfc7e965)
       '@codemirror/commands': 6.10.2
