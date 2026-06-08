@@ -1,5 +1,5 @@
 # NOTE Needs to be built with the root of the monorepo as the context
-FROM node:lts-iron AS builder
+FROM node:22-trixie AS builder
 
 LABEL maintainer="info@redpencil.io"
 

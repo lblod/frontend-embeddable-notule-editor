@@ -1,0 +1,8 @@
+allowBuilds:
+  core-js: false
+  esbuild: false
+  lmdb: false
+  msgpackr-extract: false
+  nice-napi: false
+# Needed for patched AU version
+blockExoticSubdeps: false
