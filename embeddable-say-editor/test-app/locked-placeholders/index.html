@@ -6,14 +6,37 @@
     <title>EMB test - Plugins</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./locked-placeholders.css" />
   </head>
   <body>
-    <div style="margin: 20px">
+    <div class="page">
+      <div class="before">
+        <div class="before-input box">
+          <b>Insert html to test with:</b>
+          <textarea id="besluit" class="html-input"></textarea>
+          <div class="buttons">
+            <button id="sample-document">Use sample document</button>
+            <button id="insert-content">Load in editor --></button>
+          </div>
+        </div>
+        <div id="editor-before" class="editor-before box"></div>
+      </div>
 
-      <b>Document:</b><br />
-      <textarea id="besluit" style="min-height: 400px; width: 1000px; "></textarea> <br />
-      <button id="sample-document">Use sample document</button> <button id="replace">Replace placeholders</button><br />
-      <p id="result"></p>
+
+      <div class="replacement-step box">
+        <button id="replace">V Replace placeholders V</button>
+      </div>
+
+      <div class="after">
+        <div class="after-result box">
+          <b>HTML after replacement</b>
+          <code class="code-box" id="result"></code>
+          <div class="buttons">
+            <button id="insert-content-after">Load in editor --></button>
+          </div>
+        </div>
+        <div id="editor-after" class="editor-after box"></div>
+      </div>
     </div>
     <script type="module" src="./locked-placeholders.ts"></script>
   </body>
