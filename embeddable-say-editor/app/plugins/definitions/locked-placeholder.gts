@@ -9,7 +9,7 @@ import {
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/locked-placeholder-plugin/nodes/block-locked-placeholder';
 import type { PluginInitializer } from '../embedded-plugin.ts';
 
-const name = 'locked-placeholder';
+const name = 'lockedPlaceholder';
 
 export const setupLockedPlaceholderPlugin = (() => {
   const nodes = {
