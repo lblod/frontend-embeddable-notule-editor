@@ -21,6 +21,7 @@
     "lint:fix": "pnpm --recursive lint:fix",
     "lint:js": "pnpm --recursive lint:js",
     "lint:js:fix": "pnpm --recursive lint:js:fix",
+    "lint:types": "pnpm --recursive lint:types",
     "lint:hbs": "pnpm --recursive lint:hbs",
     "lint:hbs:fix": "pnpm --recursive lint:hbs:fix",
     "lint:dependencies": "pnpm --recursive lint:dependencies"
