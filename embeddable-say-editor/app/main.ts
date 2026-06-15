@@ -5,6 +5,10 @@ export type { EditorElement } from './editor-element.ts';
 import type { RenderEditorOptions } from './render-editor-options.ts';
 export { processDocumentHeadlessly } from './utils/process-document-headlessly.ts';
 import replaceLockedPlaceholderContent from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/locked-placeholder-plugin/utils/replace-content-function';
+import {
+  transactionCombinator,
+  type TransactionCombinatorResult,
+} from '@lblod/ember-rdfa-editor/utils/transaction-utils';
 
 // adjusting this won't actually change the toolbar height, this is just the constant
 // value of the height as given by the editor css
@@ -146,4 +150,8 @@ async function renderWithoutShadow(options: RenderEditorOptions) {
   return startApp({ ...options, element: editorContainer });
 }
 
-export { replaceLockedPlaceholderContent };
+export {
+  replaceLockedPlaceholderContent,
+  transactionCombinator,
+  TransactionCombinatorResult,
+};
