@@ -102,8 +102,8 @@ importers:
         specifier: 13.9.1
         version: 13.9.1(56e928a07dd9ffa0bfb65979ede25f1e)
       '@lblod/ember-rdfa-editor-lblod-plugins':
-        specifier: 37.0.3
-        version: 37.0.3(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(7a2bfd45d070ac35eda7b62c00b0891b)
+        specifier: 37.2.1
+        version: 37.2.1(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(7a2bfd45d070ac35eda7b62c00b0891b)
       '@types/leaflet':
         specifier: ^1.9.17
         version: 1.9.21
@@ -2009,14 +2009,14 @@ packages:
       '@appuniversum/ember-appuniversum': ^2.0.0 || ^3.0.0
       ember-source: ^4.0.0 || ^5.0.0
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@37.0.3':
-    resolution: {integrity: sha512-WvTO9XWS3iYKTkbAApGkWgCLzFsmSaVw+IKA6Cb1+2/DfZbiX8ABcNdylaHllFo4um5Ob0ek2pjybCBpEB4r9A==}
+  '@lblod/ember-rdfa-editor-lblod-plugins@37.2.1':
+    resolution: {integrity: sha512-0OLwlS+K/JnDL6ZWTn2jThjeI7K0hbp12qJ70lPVL6FodBDWdlgAxPFZ0FkObK32ejIcQxQ7HGX1bf45VwWldA==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@appuniversum/ember-appuniversum': ^3.12.0
       '@ember/string': 4.0.1
       '@glint/template': ^1.4.0
-      '@lblod/ember-rdfa-editor': ^13.8.0
+      '@lblod/ember-rdfa-editor': ^13.10.0
       ember-concurrency: ^4.0.2
       ember-element-helper: ^0.8.6
       ember-intl: ^7.0.0
@@ -11800,7 +11800,7 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@37.0.3(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(7a2bfd45d070ac35eda7b62c00b0891b)':
+  '@lblod/ember-rdfa-editor-lblod-plugins@37.2.1(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(7a2bfd45d070ac35eda7b62c00b0891b)':
     dependencies:
       '@appuniversum/ember-appuniversum': https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.17.0.tgz(eece83bb29f53bd1a6e914b0bfc7e965)
       '@babel/core': 7.29.0
