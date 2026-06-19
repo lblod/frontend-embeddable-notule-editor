@@ -1,5 +1,12 @@
 # test-angular
 
+## 5.0.8
+
+### Patch Changes
+
+- Updated dependencies [[`89b9cb3`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/89b9cb381c2776aa1ae1915ed1202789afb6139a), [`14b61fa`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/14b61fa617707fa2eba393c0d120c5c6fca54806), [`4baf1d5`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/4baf1d583a19601dda2c673bf56b94903d3e0d68)]:
+  - @lblod/embeddable-say-editor@6.4.0
+
 ## 5.0.7
 
 ### Patch Changes

@@ -1,5 +1,17 @@
 # frontend-embeddable-notule-editor
 
+## 6.4.0
+
+### Minor Changes
+
+- [#290](https://github.com/lblod/frontend-embeddable-notule-editor/pull/290) [`4baf1d5`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/4baf1d583a19601dda2c673bf56b94903d3e0d68) Thanks [@lagartoverde](https://github.com/lagartoverde)! - Export processDocumentHeadlessly function so the user can make headless changes to documents
+
+### Patch Changes
+
+- [#291](https://github.com/lblod/frontend-embeddable-notule-editor/pull/291) [`89b9cb3`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/89b9cb381c2776aa1ae1915ed1202789afb6139a) Thanks [@piemonkey](https://github.com/piemonkey)! - Update to [@lblod/ember-rdfa-editor v13.9.0](https://github.com/lblod/ember-rdfa-editor/releases/tag/%40lblod/ember-rdfa-editor%4013.9.0) to include fixes for handling enter key after headings
+
+- [#291](https://github.com/lblod/frontend-embeddable-notule-editor/pull/291) [`14b61fa`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/14b61fa617707fa2eba393c0d120c5c6fca54806) Thanks [@piemonkey](https://github.com/piemonkey)! - Update build process to use node v22
+
 ## 6.3.0
 
 ### Minor Changes
