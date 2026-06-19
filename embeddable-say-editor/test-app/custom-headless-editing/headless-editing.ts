@@ -6,7 +6,6 @@ import {
 import { pluginDemoConfig } from '../shared-config.ts';
 import { router } from '../router.ts';
 import { renderEditor } from '../../app/main.ts';
-
 document.body.insertBefore(router, document.body.firstChild);
 
 const editorBeforeElement = document.getElementById('editor-before')!;
@@ -50,11 +49,21 @@ document.getElementById('replace')?.addEventListener('click', () => {
 
   const myCustomProcessor = (state: EditorState) => {
     const tr = state.tr;
-    tr.replaceRangeWith(
-      0,
-      tr.doc.nodeSize - 2,
-      state.schema.text('replaced with something else!'),
-    );
+    const headerNodes: number[] = [];
+    tr.doc.descendants((node, pos) => {
+      if (node.type.name === 'heading') {
+        headerNodes.push(pos);
+        return false;
+      }
+      return true;
+    });
+    for (const pos of headerNodes) {
+      const level =
+        (tr.doc.nodeAt(pos)?.attrs.level as number | undefined) ?? 1;
+      if (level > 1) {
+        tr.setNodeAttribute(pos, 'level', level - 1);
+      }
+    }
     return { initialState: state, transaction: tr, result: true };
   };
 
@@ -69,5 +78,8 @@ document.getElementById('replace')?.addEventListener('click', () => {
 
 document.getElementById('sample-document')?.addEventListener('click', () => {
   (document.getElementById('besluit') as unknown as HTMLInputElement).value =
-    'hello world';
+    `<h1>hello world<h1>
+<h2>hello world<h2>
+<h3>hello world<h3>
+<h4>hello world<h4>`;
 });
