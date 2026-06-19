@@ -176,7 +176,9 @@ if (pushResult.failed) {
 
 console.log(`\n ${pushResult.stdout}`);
 
-const shouldRelease = await yesNoQuestion(prompt, "\nRelease to Github?");
+const shouldRelease = await yesNoQuestion(prompt, "\nRelease to Github?", {
+  defaultAnswer: true,
+});
 if (!shouldRelease) {
   process.exit(1);
 }
