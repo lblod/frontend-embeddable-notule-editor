@@ -4,6 +4,12 @@ steps:
     commands:
       - npm i -g corepack@0.31
       - pnpm i --frozen-lockfile
+  lint-types:
+    image: node:22-slim
+    group: lint
+    commands:
+      - npm i -g corepack@0.31
+      - pnpm lint:types
   lint-js:
     image: node:22-slim
     group: lint

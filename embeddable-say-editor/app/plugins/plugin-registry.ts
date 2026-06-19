@@ -47,6 +47,7 @@ import { setupTableOfContentsPlugin } from './definitions/table-of-contents';
 import type TOCToggle from '@lblod/ember-rdfa-editor-lblod-plugins/components/table-of-contents-plugin/toolbar-button';
 import { tableSetup, type TableConfig } from './definitions/table';
 import { setupTemplateCommentsPlugin } from './definitions/template-comments';
+import { setupLockedPlaceholderPlugin } from './definitions/locked-placeholder';
 import type TemplateCommentEditCard from '@lblod/ember-rdfa-editor-lblod-plugins/components/template-comments-plugin/edit-card';
 import type TemplateCommentInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/template-comments-plugin/insert';
 import {
@@ -77,6 +78,7 @@ export const PLUGIN_MAP = {
   table: tableSetup,
   templateComments: setupTemplateCommentsPlugin,
   variable: setupVariablePlugin,
+  lockedPlaceholder: setupLockedPlaceholderPlugin,
 } as const;
 export interface EmbeddedPlugins {
   articleStructure: typeof articleStructurePlugin;
@@ -98,6 +100,7 @@ export interface EmbeddedPlugins {
   table: typeof tableSetup;
   templateComments: typeof setupTemplateCommentsPlugin;
   variable: typeof setupVariablePlugin;
+  lockedPlaceholder: typeof setupLockedPlaceholderPlugin;
 }
 
 export interface PluginOptions extends Partial<

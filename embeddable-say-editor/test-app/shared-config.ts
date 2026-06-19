@@ -20,6 +20,7 @@ export const pluginDemoConfig: Omit<RenderEditorOptions, 'element'> &
     'html-edit',
     'html-preview',
     'location',
+    'locked-placeholder',
   ],
   options: {
     docContent: 'table_of_contents? block+',

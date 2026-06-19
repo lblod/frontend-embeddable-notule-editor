@@ -21,6 +21,7 @@
     "lint:fix": "pnpm --recursive lint:fix",
     "lint:js": "pnpm --recursive lint:js",
     "lint:js:fix": "pnpm --recursive lint:js:fix",
+    "lint:types": "pnpm --recursive lint:types",
     "lint:hbs": "pnpm --recursive lint:hbs",
     "lint:hbs:fix": "pnpm --recursive lint:hbs:fix",
     "lint:dependencies": "pnpm --recursive lint:dependencies"
@@ -29,6 +30,7 @@
     "@changesets/changelog-github": "^0.5.1",
     "@changesets/cli": "^2.28.1",
     "@changesets/get-release-plan": "^4.0.8",
+    "@ember/app-tsconfig": "^2.0.0",
     "@manypkg/get-packages": "^2.2.2",
     "@types/git-url-parse": "^9.0.3",
     "@types/node": "^22.13.10",
