@@ -66,7 +66,9 @@ export default class HTMLPreviewMenu extends Component<Signature> {
 
   <template>
     <ToolbarButton
+      {{! @glint-expect-error missing types in editor repo}}
       {{on "click" this.openPreview}}
+      {{! @glint-expect-error missing types in editor repo}}
       class="au-u-margin-left-tiny au-u-margin-right-tiny"
     >
       Preview Rendered HTML
