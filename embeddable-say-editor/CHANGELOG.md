@@ -1,5 +1,11 @@
 # frontend-embeddable-notule-editor
 
+## 6.4.1
+
+### Patch Changes
+
+- [`47e97bc`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/47e97bc08ad05eabc5d925bb74911ab60dd01efa) Thanks [@abeforgit](https://github.com/abeforgit)! - Fix test-app routing
+
 ## 6.4.0
 
 ### Minor Changes
