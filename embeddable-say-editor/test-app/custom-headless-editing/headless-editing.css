@@ -1,0 +1,67 @@
+button {
+  cursor: pointer;
+  height: fit-content;
+}
+.box {
+  padding: 1em;
+}
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 95vh;
+  width: 100%;
+}
+.before {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.buttons {
+  padding: 0.5em 0;
+  height: 10%;
+}
+.before-input {
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.html-input {
+  height: 100%;
+}
+.editor-before {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.replacement-step {
+  display: flex;
+  height: 20%;
+}
+#replace {
+  margin: auto 0;
+  height: fit-content;
+  padding: 1em;
+}
+.after {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.after-result {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.code-box {
+  border: 2px solid black;
+  height: 100%;
+}
+.editor-after {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+}

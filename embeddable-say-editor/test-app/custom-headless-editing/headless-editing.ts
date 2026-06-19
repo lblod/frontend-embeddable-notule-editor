@@ -1,6 +1,7 @@
 import {
   processDocumentHeadlessly,
-  replaceLockedPlaceholderContent,
+  transactionCombinator,
+  type EditorState,
 } from '../../app/main.ts';
 import { pluginDemoConfig } from '../shared-config.ts';
 import { router } from '../router.ts';
@@ -8,8 +9,10 @@ import { renderEditor } from '../../app/main.ts';
 
 document.body.insertBefore(router, document.body.firstChild);
 
-const editorBeforeElement = document.getElementById('editor-before');
-const editorAfterElement = document.getElementById('editor-after');
+const editorBeforeElement = document.getElementById('editor-before')!;
+
+const editorAfterElement = document.getElementById('editor-after')!;
+
 if (editorBeforeElement && editorAfterElement) {
   const beforeEditor = await renderEditor({
     element: editorBeforeElement,
@@ -44,16 +47,18 @@ document.getElementById('replace')?.addEventListener('click', () => {
   const besluit = (
     document.getElementById('besluit') as unknown as HTMLInputElement
   ).value;
-  const values = {
-    inline: '<b>generated content for inline</b>',
-    block:
-      '<p>Generated content for block:</p><ul><li>Sample item 1</li><li>Sample item 2</li></ul>',
+
+  const myCustomProcessor = (state: EditorState) => {
+    const tr = state.tr;
+    return { initialState: state, transaction: tr, result: true };
   };
+
   const html = processDocumentHeadlessly(
     besluit,
-    (state) => replaceLockedPlaceholderContent(state, values),
+    (state) => transactionCombinator<boolean>(state)([myCustomProcessor]),
     pluginDemoConfig,
   );
+
   (document.getElementById('result') as HTMLElement).textContent = html;
 });
 
