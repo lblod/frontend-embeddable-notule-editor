@@ -38,7 +38,7 @@ import {
   type LpdcConfig,
   type lpdcInsert,
 } from './definitions/lpdc.gts';
-import type { RoadsignRegulationPluginOptions } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/roadsign-regulation-plugin';
+import type { RoadsignRegulationPluginOptions } from '@lblod/say-roadsign-regulation-plugin/plugin/types';
 import {
   setupRoadsignRegulationPlugin,
   type roadsignInsert,
