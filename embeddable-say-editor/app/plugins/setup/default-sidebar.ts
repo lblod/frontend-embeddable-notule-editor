@@ -28,6 +28,9 @@ export function defaultSidebar({
   if (plugins.includes('roadsign-regulation')) {
     insertContainer.push('roadsign-regulation:insert');
   }
+  if (plugins.includes('ar-design')) {
+    insertContainer.push('ar-design:insert');
+  }
   if (plugins.includes('location')) {
     insertContainer.push('location:insert');
   }

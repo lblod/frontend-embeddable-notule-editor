@@ -57,9 +57,15 @@ import {
   type VariablePluginConfig,
 } from './definitions/variable.gts';
 import { coreSetup } from './definitions/core/core';
+import {
+  type arDesignWidget,
+  setupArDesignPlugin,
+  type ArDesignPluginOptions,
+} from './definitions/ar-design';
 
 export const PLUGIN_MAP = {
   core: coreSetup,
+  arDesign: setupArDesignPlugin,
   articleStructure: articleStructurePlugin,
   besluitTopic: besluitTopic,
   besluit: besluitPlugin,
@@ -81,6 +87,7 @@ export const PLUGIN_MAP = {
   lockedPlaceholder: setupLockedPlaceholderPlugin,
 } as const;
 export interface EmbeddedPlugins {
+  arDesign: typeof setupArDesignPlugin;
   articleStructure: typeof articleStructurePlugin;
   besluitTopic: typeof besluitTopic;
   besluit: typeof besluitPlugin;
@@ -106,6 +113,7 @@ export interface EmbeddedPlugins {
 export interface PluginOptions extends Partial<
   Record<keyof EmbeddedPlugins, unknown>
 > {
+  arDesign?: Partial<ArDesignPluginOptions>;
   besluitTopic?: Partial<BesluitTopicConfig>;
   besluit?: Partial<BesluitPluginConfig>;
   citation?: Partial<
@@ -145,6 +153,7 @@ export interface SidebarListItemWidgets {
   'location:insert': typeof locationInsert;
   'lpdc:insert': typeof lpdcInsert;
   'roadsign-regulation:insert': typeof roadsignInsert;
+  'ar-design:insert': typeof arDesignWidget;
   'template-comments:insert': typeof TemplateCommentInsert;
 }
 
