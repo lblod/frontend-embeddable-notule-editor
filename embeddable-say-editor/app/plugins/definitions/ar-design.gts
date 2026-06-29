@@ -1,14 +1,19 @@
 import type { PluginInitializer } from '../embedded-plugin';
 import { mergeConfigs } from '../setup/defaults';
-import SidebarWidget, { type ArDesignSidebarWidgetSig } from '@lblod/say-ar-design-plugin/components/sidebar-widget';
+import SidebarWidget from '@lblod/say-ar-design-plugin/components/sidebar-widget';
 import type { TOC } from '@ember/component/template-only';
 import type { WidgetSignature } from '../widgets';
 import { _processDocumentHeadlesslyFromEditorSetup } from '../../utils/_private/headless-document-internals';
 import type { EditorSetup } from '../setup/setup-plugins';
+import type { ArDesignQuery } from '@lblod/say-ar-design-plugin/plugin/types';
 
 const name = 'arDesign';
 export interface ArDesignPluginOptions {
-  designQuery: ArDesignSidebarWidgetSig['Args']['designQuery'];
+  designQuery: ArDesignQuery;
+  decisionContext?: {
+    decisionUri: string;
+    decisionType?: string;
+  };
 }
 
 const arDesignTest = () =>
@@ -113,6 +118,7 @@ export const arDesignWidget: TOC<WidgetSignature<'arDesign'>> =
       @controller={{@controller}}
       @designQuery={{@setup.pluginSpecs.arDesign.config.designQuery}}
       @processDocumentHeadlessly={{processDocumentHelper @setup}}
+      @decisionContext={{@setup.pluginSpecs.arDesign.config.decisionContext}}
     />
   </template>;
 
