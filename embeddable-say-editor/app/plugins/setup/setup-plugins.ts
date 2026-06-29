@@ -13,7 +13,6 @@ import type {
   PluginName,
   PluginSpecs,
 } from '../embedded-plugin.ts';
-import type { SayNodeViewConstructor } from '@lblod/ember-rdfa-editor/utils/ember-node';
 import type {
   SidebarConfig,
   ToolbarConfig,
@@ -61,7 +60,7 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
   let pluginSpecs: PluginSpecs = {};
   let nodeViews: Record<
     string,
-    (controller: SayController) => SayNodeViewConstructor
+    (controller: SayController) => NodeViewConstructor
   > = {};
   const pluginsWithCore: KebabPluginName[] = [
     'core',
