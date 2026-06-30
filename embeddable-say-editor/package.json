@@ -102,7 +102,7 @@
     "@glimmer/tracking": "^1.1.2",
     "@glint/ember-tsc": "^1.8.1",
     "@lblod/ember-environment-banner": "^0.6.0",
-    "@lblod/ember-rdfa-editor": "13.12.1",
+    "@lblod/ember-rdfa-editor": "13.12.1-dev.dee24b7fd50d86d251cd72462299d55016b3afb5",
     "@lblod/ember-rdfa-editor-lblod-plugins": "37.3.0",
     "@lblod/say-ar-design-plugin": "2.0.0",
     "@lblod/say-roadsign-regulation-plugin": "2.0.0",
