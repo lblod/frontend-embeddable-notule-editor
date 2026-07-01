@@ -1,8 +1,8 @@
-import { roadsign_regulation } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/roadsign-regulation-plugin/nodes';
-import type { RoadsignRegulationPluginOptions } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/roadsign-regulation-plugin';
+import { roadsign_regulation } from '@lblod/say-roadsign-regulation-plugin/plugin/nodes';
+import type { RoadsignRegulationPluginOptions } from '@lblod/say-roadsign-regulation-plugin/plugin/types';
 import type { PluginInitializer } from '../embedded-plugin';
 import { mergeConfigs } from '../setup/defaults';
-import RoadsignRegulationInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/roadsign-regulation-plugin/roadsign-regulation-card';
+import RoadsignRegulationInsert from '@lblod/say-roadsign-regulation-plugin/components/roadsign-regulation-card';
 import type { TOC } from '@ember/component/template-only';
 import type { WidgetSignature } from '../widgets';
 

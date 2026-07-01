@@ -5,8 +5,7 @@ import {
   structureViewWithConfig,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/structure-plugin/node';
 import type { StructurePluginOptions } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/structure-plugin/structure-types';
-import type { SayNodeViewConstructor } from '@lblod/ember-rdfa-editor/utils/ember-node';
-import type { SayController } from '@lblod/ember-rdfa-editor';
+import type { NodeViewConstructor, SayController } from '@lblod/ember-rdfa-editor';
 import type { WidgetSignature } from '../widgets.ts';
 import type { PluginInitializer } from '../embedded-plugin.ts';
 
@@ -38,8 +37,8 @@ export const articleStructurePlugin = (({ plugins }) => {
       structure: structureWithConfig(structureConfig),
     },
     nodeViews: {
-      structure: (controller: SayController): SayNodeViewConstructor =>
+      structure: (controller: SayController): NodeViewConstructor =>
         structureViewWithConfig(structureConfig)(controller),
-    } as Record<string, (controller: SayController) => SayNodeViewConstructor>,
+    } as Record<string, (controller: SayController) => NodeViewConstructor>,
   };
 }) satisfies PluginInitializer;

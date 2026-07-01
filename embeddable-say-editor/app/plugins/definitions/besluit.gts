@@ -8,8 +8,7 @@ import {
   structureWithConfig,
   structureViewWithConfig,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/structure-plugin/node';
-import type { SayController } from '@lblod/ember-rdfa-editor';
-import type { SayNodeViewConstructor } from '@lblod/ember-rdfa-editor/utils/ember-node';
+import type { NodeViewConstructor, SayController } from '@lblod/ember-rdfa-editor';
 
 const name = 'besluit';
 
@@ -49,9 +48,9 @@ export const besluitPlugin = (({ options, plugins }) => {
       structure: structureWithConfig(config),
     },
     nodeViews: {
-      structure: (controller: SayController): SayNodeViewConstructor =>
+      structure: (controller: SayController): NodeViewConstructor =>
         structureViewWithConfig(config)(controller),
-    } as Record<string, (controller: SayController) => SayNodeViewConstructor>,
+    } as Record<string, (controller: SayController) => NodeViewConstructor>,
     sidebarWidgets: {
       'besluit:article-insert': articleInsert,
     },

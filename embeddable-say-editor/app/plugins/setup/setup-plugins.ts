@@ -13,7 +13,6 @@ import type {
   PluginName,
   PluginSpecs,
 } from '../embedded-plugin.ts';
-import type { SayNodeViewConstructor } from '@lblod/ember-rdfa-editor/utils/ember-node';
 import type {
   SidebarConfig,
   ToolbarConfig,
@@ -61,7 +60,7 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
   let pluginSpecs: PluginSpecs = {};
   let nodeViews: Record<
     string,
-    (controller: SayController) => SayNodeViewConstructor
+    (controller: SayController) => NodeViewConstructor
   > = {};
   const pluginsWithCore: KebabPluginName[] = [
     'core',
@@ -120,12 +119,11 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
     prosePlugins,
     schema,
     nodeViews: (controller: SayController) => {
-      const result: Record<string, NodeViewConstructor> = {};
+      const nvConstructors: Record<string, NodeViewConstructor> = {};
       for (const [name, nodeView] of Object.entries(nodeViews)) {
-        // TODO: these core types are weird, should be fixed in the editor
-        result[name] = nodeView(controller) as unknown as NodeViewConstructor;
+        nvConstructors[name] = nodeView(controller);
       }
-      return result;
+      return nvConstructors;
     },
     sidebarConfig: sidebar ?? defaultSidebar(args),
     toolbarConfig: toolbar ?? defaultToolbar(args),

@@ -21,6 +21,7 @@ export const pluginDemoConfig: Omit<RenderEditorOptions, 'element'> &
     'html-preview',
     'location',
     'locked-placeholder',
+    'ar-design',
   ],
   options: {
     docContent: 'table_of_contents? block+',
@@ -43,5 +44,6 @@ export const pluginDemoConfig: Omit<RenderEditorOptions, 'element'> &
     location: {
       locationTypes: ['address', 'place'],
     },
+    arDesign: {},
   },
 };

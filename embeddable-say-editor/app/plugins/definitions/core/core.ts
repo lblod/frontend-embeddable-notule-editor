@@ -24,7 +24,6 @@ import { color } from '@lblod/ember-rdfa-editor/plugins/color/marks/color';
 import { firefoxCursorFix } from '@lblod/ember-rdfa-editor/plugins/firefox-cursor-fix';
 import { lastKeyPressedPlugin } from '@lblod/ember-rdfa-editor/plugins/last-key-pressed';
 import recreateUuidsOnPaste from '@lblod/ember-rdfa-editor/plugins/recreateUuidsOnPaste';
-
 import {
   createInvisiblesPlugin,
   hardBreak,
@@ -37,9 +36,10 @@ import {
   orderedListWithConfig,
 } from '@lblod/ember-rdfa-editor/plugins/list';
 import { headingWithConfig } from '@lblod/ember-rdfa-editor/plugins/heading';
-import { inlineRdfaWithConfig } from '@lblod/ember-rdfa-editor/nodes/inline-rdfa';
-import type { PluginInitializer } from '../../embedded-plugin.ts';
+import { inlineRdfaWithConfig, inlineRdfaWithConfigView } from '@lblod/ember-rdfa-editor/nodes/inline-rdfa';
+import { BlockRDFaView } from '@lblod/ember-rdfa-editor/nodes/block-rdfa';
 import type { ProsePlugin } from '@lblod/ember-rdfa-editor';
+import type { EmbeddedPluginSpec, PluginInitializer } from '../../embedded-plugin.ts';
 import { coreToolbarWidgets } from './toolbar-widgets.gts';
 import { coreSidebarWidgets } from './sidebar-widgets.gts';
 
@@ -76,6 +76,10 @@ export const coreSetup = (({ options }) => {
     subscript,
     superscript,
   };
+  const nodeViews: EmbeddedPluginSpec['nodeViews'] = {
+    inline_rdfa: (controller) => inlineRdfaWithConfigView({ rdfaAware: true })(controller),
+    block_rdfa: (controller) => (...args) => new BlockRDFaView(args, controller),
+  };
   const prosePlugins = [
     firefoxCursorFix(),
     lastKeyPressedPlugin,
@@ -88,6 +92,7 @@ export const coreSetup = (({ options }) => {
     name: 'core',
     nodes,
     marks,
+    nodeViews,
     prosePlugins,
     toolbarWidgets: coreToolbarWidgets,
     sidebarWidgets: coreSidebarWidgets,

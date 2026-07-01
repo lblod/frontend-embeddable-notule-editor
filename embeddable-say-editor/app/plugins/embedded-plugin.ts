@@ -1,6 +1,5 @@
 import type SayController from '@lblod/ember-rdfa-editor/core/say-controller';
 import type SayNodeSpec from '@lblod/ember-rdfa-editor/core/say-node-spec';
-import type { SayNodeViewConstructor } from '@lblod/ember-rdfa-editor/utils/ember-node';
 import type { Kebab } from '../utils/type-utils.ts';
 import type {
   SidebarConfig,
@@ -18,7 +17,7 @@ import type {
   ToolbarWidgets,
 } from './plugin-registry';
 import type IntlService from 'ember-intl/services/intl';
-import type { MarkSpec, ProsePlugin } from '@lblod/ember-rdfa-editor';
+import type { MarkSpec, NodeViewConstructor, ProsePlugin } from '@lblod/ember-rdfa-editor';
 import type {
   EditorSetup,
   InitializedPluginName,
@@ -43,7 +42,7 @@ export interface EmbeddedPluginSpec {
   marks?: Record<string, MarkSpec>;
   nodeViews?: Record<
     string,
-    (controller: SayController) => SayNodeViewConstructor
+    (controller: SayController) => NodeViewConstructor
   >;
   prosePlugins?: ProsePlugin[];
   config?: unknown;
