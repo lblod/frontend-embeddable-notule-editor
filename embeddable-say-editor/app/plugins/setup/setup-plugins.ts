@@ -22,6 +22,7 @@ import type {
 import { defaultToolbar } from './default-toolbar.ts';
 import { defaultSidebar } from './default-sidebar.ts';
 import { PLUGIN_MAP } from '../plugin-registry';
+import { slashCommandsPlugin } from '@lblod/ember-rdfa-editor/plugins/slash-commands/index';
 
 type EnsuredSpecs<
   S extends PluginSpecs,
@@ -74,7 +75,7 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
   ];
   let toolbarWidgets: Record<string, WidgetComponent> = {};
   let sidebarWidgets: Record<string, WidgetComponent> = {};
-  let contextualActionGroupGetters: GetContextualActionGroups = [];
+  const contextualActionGroupGetters: GetContextualActionGroups = [];
 
   const realSpecs = pluginsWithCore.map((name) => ({
     name: camelize(name),
@@ -114,11 +115,14 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
       };
     }
     if (spec.contextualActionGroupGetters) {
-      contextualActionGroupGetters = [
-        ...contextualActionGroupGetters,
-        ...spec.contextualActionGroupGetters,
-      ];
+      contextualActionGroupGetters.push(...spec.contextualActionGroupGetters);
     }
+  }
+  if (contextualActionGroupGetters.length) {
+    prosePlugins.push(slashCommandsPlugin({
+      intl: args.intl,
+      getGroups: contextualActionGroupGetters,
+    }));
   }
   const schema = new Schema({ nodes, marks });
   let result = {
