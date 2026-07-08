@@ -2,6 +2,11 @@
 
 Add annotated _mobiliteitsmaatregelen_ from a specified registry, which will most likely be using the [public facing sparql endpoint](https://register.mobiliteit.vlaanderen.be/sparql) of [the roadsign registry](https://register.mobiliteit.vlaanderen.be). This data is maintained by experts at [MOW Vlaanderen](https://www.vlaanderen.be/departement-mobiliteit-en-openbare-werken).
 
+> [!NOTE]
+> This plugin requires the `variable` plugin in order to allow variables contained within the
+> regulations to be rendered and set correctly. This in practice means that without this, most
+> regulations will display an error in the console and will not be insertable.
+
 ## Setup
 
 ```javascript

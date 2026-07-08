@@ -1,3 +1,6 @@
+import type IntlService from 'ember-intl/services/intl';
+import type { MarkSpec, NodeViewConstructor, ProsePlugin } from '@lblod/ember-rdfa-editor';
+import type { GetContextualActionGroups } from '@lblod/ember-rdfa-editor/plugins/contextual-actions';
 import type SayController from '@lblod/ember-rdfa-editor/core/say-controller';
 import type SayNodeSpec from '@lblod/ember-rdfa-editor/core/say-node-spec';
 import type { Kebab } from '../utils/type-utils.ts';
@@ -16,8 +19,6 @@ import type {
   SidebarWidgets,
   ToolbarWidgets,
 } from './plugin-registry';
-import type IntlService from 'ember-intl/services/intl';
-import type { MarkSpec, NodeViewConstructor, ProsePlugin } from '@lblod/ember-rdfa-editor';
 import type {
   EditorSetup,
   InitializedPluginName,
@@ -46,6 +47,7 @@ export interface EmbeddedPluginSpec {
   >;
   prosePlugins?: ProsePlugin[];
   config?: unknown;
+  contextualActionGroupGetters?: GetContextualActionGroups;
   toolbarWidgets?: ToolbarWidgetMap;
   sidebarWidgets?: {
     [K in

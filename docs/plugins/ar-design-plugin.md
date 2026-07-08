@@ -2,6 +2,11 @@
 
 Add annotated traffic signaling designs to an _aanvullend reglement_ based on data returned by the passed query function.
 
+> [!NOTE]
+> This plugin requires the `variable` plugin in order to allow variables contained within the
+> designs to be rendered and set correctly. This in practice means that without this, most designs
+> will display an error on the preview and will not be insertable.
+
 ## Setup
 
 ```javascript
