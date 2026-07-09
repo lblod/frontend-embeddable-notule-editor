@@ -109,18 +109,20 @@ const arDesignTest = () =>
   });
 
 function processDocumentHelper(editorSetup: EditorSetup) {
-  return (html: Parameters<typeof _processDocumentHeadlesslyFromEditorSetup>[0], generator: Parameters<typeof _processDocumentHeadlesslyFromEditorSetup>[1]) => _processDocumentHeadlesslyFromEditorSetup(html, generator, editorSetup);
+  return (
+    html: Parameters<typeof _processDocumentHeadlesslyFromEditorSetup>[0],
+    generator: Parameters<typeof _processDocumentHeadlesslyFromEditorSetup>[1],
+  ) => _processDocumentHeadlesslyFromEditorSetup(html, generator, editorSetup);
 }
 
-export const arDesignWidget: TOC<WidgetSignature<'arDesign'>> =
-  <template>
-    <SidebarWidget
-      @controller={{@controller}}
-      @designQuery={{@setup.pluginSpecs.arDesign.config.designQuery}}
-      @processDocumentHeadlessly={{processDocumentHelper @setup}}
-      @decisionContext={{@setup.pluginSpecs.arDesign.config.decisionContext}}
-    />
-  </template>;
+export const arDesignWidget: TOC<WidgetSignature<'arDesign'>> = <template>
+  <SidebarWidget
+    @controller={{@controller}}
+    @designQuery={{@setup.pluginSpecs.arDesign.config.designQuery}}
+    @processDocumentHeadlessly={{processDocumentHelper @setup}}
+    @decisionContext={{@setup.pluginSpecs.arDesign.config.decisionContext}}
+  />
+</template>;
 
 const defaultConfig: ArDesignPluginOptions = {
   designQuery: arDesignTest,

@@ -119,10 +119,12 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
     }
   }
   if (contextualActionGroupGetters.length) {
-    prosePlugins.push(slashCommandsPlugin({
-      intl: args.intl,
-      getGroups: contextualActionGroupGetters,
-    }));
+    prosePlugins.push(
+      slashCommandsPlugin({
+        intl: args.intl,
+        getGroups: contextualActionGroupGetters,
+      }),
+    );
   }
   const schema = new Schema({ nodes, marks });
   let result = {

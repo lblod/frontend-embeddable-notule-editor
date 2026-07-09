@@ -1,5 +1,9 @@
 import type IntlService from 'ember-intl/services/intl';
-import type { MarkSpec, NodeViewConstructor, ProsePlugin } from '@lblod/ember-rdfa-editor';
+import type {
+  MarkSpec,
+  NodeViewConstructor,
+  ProsePlugin,
+} from '@lblod/ember-rdfa-editor';
 import type { GetContextualActionGroups } from '@lblod/ember-rdfa-editor/plugins/contextual-actions';
 import type SayController from '@lblod/ember-rdfa-editor/core/say-controller';
 import type SayNodeSpec from '@lblod/ember-rdfa-editor/core/say-node-spec';

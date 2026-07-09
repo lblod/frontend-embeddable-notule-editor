@@ -40,7 +40,10 @@ export function _doProcessDocument(
   return div.innerHTML;
 }
 
-export function _getState(html: string, { schema, prosePlugins }: EditorSetup): EditorState {
+export function _getState(
+  html: string,
+  { schema, prosePlugins }: EditorSetup,
+): EditorState {
   const parser = ProseParser.fromSchema(schema);
   const doc = htmlToDoc(html, {
     schema: schema,
