@@ -3,6 +3,7 @@ import {
   osloLocationView,
   type LocationPluginConfig,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/location-plugin/node';
+import { locationModalsPlugin } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/location-plugin';
 import { mergeConfigs } from '../setup/defaults';
 import OSLOLocationInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/location-plugin/insert';
 import type { PluginInitializer } from '../embedded-plugin';
@@ -37,6 +38,7 @@ export const setupLocationPlugin = (({ options }) => {
     nodeViews: {
       oslo_location: (controller) => osloLocationView(config)(controller),
     },
+    prosePlugins: [locationModalsPlugin()],
     sidebarWidgets: { 'location:insert': locationInsert },
   };
 }) satisfies PluginInitializer;
