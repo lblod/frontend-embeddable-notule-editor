@@ -4,8 +4,10 @@ import {
   type LocationPluginConfig,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/location-plugin/node';
 import { locationModalsPlugin } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/location-plugin';
+import { getContextualActionGroups as locationActionsGroups } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/location-plugin/contextual-actions';
 import { mergeConfigs } from '../setup/defaults';
 import OSLOLocationInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/location-plugin/insert';
+import OSLOLocationInsertPlaceholder from '@lblod/ember-rdfa-editor-lblod-plugins/components/location-plugin/insert-location-placeholder';
 import type { PluginInitializer } from '../embedded-plugin';
 import type { TOC } from '@ember/component/template-only';
 import type { WidgetSignature } from '../widgets';
@@ -16,6 +18,10 @@ export type LocationConfig = LocationPluginConfig & {
   locationTypes: Array<'address' | 'place' | 'area'>;
 };
 export const locationInsert: TOC<WidgetSignature<'location'>> = <template>
+  <OSLOLocationInsertPlaceholder
+    @controller={{@controller}}
+    @config={{@setup.pluginSpecs.location.config}}
+  />
   <OSLOLocationInsert
     @controller={{@controller}}
     @config={{@setup.pluginSpecs.location.config}}
@@ -39,6 +45,7 @@ export const setupLocationPlugin = (({ options }) => {
       oslo_location: (controller) => osloLocationView(config)(controller),
     },
     prosePlugins: [locationModalsPlugin()],
+    contextualActionGroupGetters: [locationActionsGroups()],
     sidebarWidgets: { 'location:insert': locationInsert },
   };
 }) satisfies PluginInitializer;
