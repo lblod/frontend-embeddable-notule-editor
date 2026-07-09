@@ -39,6 +39,7 @@ import { headingWithConfig } from '@lblod/ember-rdfa-editor/plugins/heading';
 import { inlineRdfaWithConfig, inlineRdfaWithConfigView } from '@lblod/ember-rdfa-editor/nodes/inline-rdfa';
 import { BlockRDFaView } from '@lblod/ember-rdfa-editor/nodes/block-rdfa';
 import type { ProsePlugin } from '@lblod/ember-rdfa-editor';
+import { emptyBlockPlaceholder } from '@lblod/ember-rdfa-editor/plugins/empty-block-placeholder';
 import type { EmbeddedPluginSpec, PluginInitializer } from '../../embedded-plugin.ts';
 import { coreToolbarWidgets } from './toolbar-widgets.gts';
 import { coreSidebarWidgets } from './sidebar-widgets.gts';
@@ -80,13 +81,14 @@ export const coreSetup = (({ options }) => {
     inline_rdfa: (controller) => inlineRdfaWithConfigView({ rdfaAware: true })(controller),
     block_rdfa: (controller) => (...args) => new BlockRDFaView(args, controller),
   };
-  const prosePlugins = [
+  const prosePlugins: ProsePlugin[] = [
     firefoxCursorFix(),
     lastKeyPressedPlugin,
     recreateUuidsOnPaste,
     createInvisiblesPlugin([hardBreak, paragraphInvisible, headingInvisible], {
       shouldShowInvisibles: false,
-    }) as ProsePlugin,
+    }),
+    emptyBlockPlaceholder(),
   ];
   return {
     name: 'core',
