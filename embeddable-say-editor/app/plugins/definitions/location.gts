@@ -7,26 +7,27 @@ import { locationModalsPlugin } from '@lblod/ember-rdfa-editor-lblod-plugins/plu
 import { getContextualActionGroups as locationActionsGroups } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/location-plugin/contextual-actions';
 import { mergeConfigs } from '../setup/defaults';
 import OSLOLocationInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/location-plugin/insert';
-import OSLOLocationInsertPlaceholder from '@lblod/ember-rdfa-editor-lblod-plugins/components/location-plugin/insert-location-placeholder';
 import type { PluginInitializer } from '../embedded-plugin';
 import type { TOC } from '@ember/component/template-only';
 import type { WidgetSignature } from '../widgets';
+
+const not = (val: boolean | undefined) => !val;
 
 const name = 'location';
 export type LocationConfig = LocationPluginConfig & {
   defaultMunicipality?: string;
   locationTypes: Array<'address' | 'place' | 'area'>;
+  openModalOnInsert?: boolean;
 };
 export const locationInsert: TOC<WidgetSignature<'location'>> = <template>
-  <OSLOLocationInsertPlaceholder
-    @controller={{@controller}}
-    @config={{@setup.pluginSpecs.location.config}}
-  />
   <OSLOLocationInsert
     @controller={{@controller}}
     @config={{@setup.pluginSpecs.location.config}}
     @defaultMunicipality={{@setup.pluginSpecs.location.config.defaultMunicipality}}
     @locationTypes={{@setup.pluginSpecs.location.config.locationTypes}}
+    @insertPlaceholder={{not
+      @setup.pluginSpecs.location.config.openModalOnInsert
+    }}
   />
 </template>;
 const defaultConfig: LocationConfig = {

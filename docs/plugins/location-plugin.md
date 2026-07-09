@@ -16,6 +16,7 @@ const editor = await renderEditor({
       defaultAddressUriRoot: "https://example.net/id/adres/",
       defaultMunicipality: "Gent",
       locationTypes: ["address", "place", "area"],
+      openModalOnInsert: false,
       // both below options are optional, see below for explanation
       // you'll likely only need one or the other
       explicitSubjectToLinkTo: "https://my-namespace.net/decisions/12341234",
@@ -33,6 +34,9 @@ The plugin expects the following configuration options:
 - `defaultAddressUriRoot` (default: 'https://example.net/id/adres/')
 - `defaultMunicipality` (default: none)
 - `locationTypes` (default: `['address', 'place', 'area']`)
+- `openModalOnInsert` (default: false) - when `false`, inserts a placeholder, which can be used with
+  the context actions menu, or using the sidebar button to open the modal. When `true` opens the
+  modal immediately.
 - `explicitSubjectToLinkTo` (default: none)
 - `subjectTypesToLinkTo` (default: none)
 
