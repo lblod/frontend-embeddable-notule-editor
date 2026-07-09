@@ -40,6 +40,7 @@ import { inlineRdfaWithConfig, inlineRdfaWithConfigView } from '@lblod/ember-rdf
 import { BlockRDFaView } from '@lblod/ember-rdfa-editor/nodes/block-rdfa';
 import type { ProsePlugin } from '@lblod/ember-rdfa-editor';
 import { emptyBlockPlaceholder } from '@lblod/ember-rdfa-editor/plugins/empty-block-placeholder';
+import { editableNodePlugin } from '@lblod/ember-rdfa-editor/plugins/_private/editable-node';
 import type { EmbeddedPluginSpec, PluginInitializer } from '../../embedded-plugin.ts';
 import { coreToolbarWidgets } from './toolbar-widgets.gts';
 import { coreSidebarWidgets } from './sidebar-widgets.gts';
@@ -88,6 +89,9 @@ export const coreSetup = (({ options }) => {
     createInvisiblesPlugin([hardBreak, paragraphInvisible, headingInvisible], {
       shouldShowInvisibles: false,
     }),
+    // This plugin is now used by many parts of the editor internally, so is considered a core
+    // plugin. For example, context actions rely on it to get the active node.
+    editableNodePlugin(),
     emptyBlockPlaceholder(),
   ];
   return {
