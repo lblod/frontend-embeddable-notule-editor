@@ -43,6 +43,7 @@ export const pluginDemoConfig: Omit<RenderEditorOptions, 'element'> &
     },
     location: {
       locationTypes: ['address', 'place'],
+      openModalOnInsert: false,
     },
     arDesign: {},
   },

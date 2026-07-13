@@ -8,7 +8,10 @@ import {
   structureWithConfig,
   structureViewWithConfig,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/structure-plugin/node';
-import type { NodeViewConstructor, SayController } from '@lblod/ember-rdfa-editor';
+import type {
+  NodeViewConstructor,
+  SayController,
+} from '@lblod/ember-rdfa-editor';
 
 const name = 'besluit';
 

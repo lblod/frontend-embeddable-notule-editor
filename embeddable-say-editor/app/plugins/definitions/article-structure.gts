@@ -5,7 +5,10 @@ import {
   structureViewWithConfig,
 } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/structure-plugin/node';
 import type { StructurePluginOptions } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/structure-plugin/structure-types';
-import type { NodeViewConstructor, SayController } from '@lblod/ember-rdfa-editor';
+import type {
+  NodeViewConstructor,
+  SayController,
+} from '@lblod/ember-rdfa-editor';
 import type { WidgetSignature } from '../widgets.ts';
 import type { PluginInitializer } from '../embedded-plugin.ts';
 

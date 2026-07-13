@@ -5,7 +5,12 @@ import type {
 } from '../../app/plugins/embedded-plugin.ts';
 import { router } from '../router.ts';
 
-const plugins: KebabPluginName[] = ['besluit', 'lpdc', 'roadsign-regulation'];
+const plugins: KebabPluginName[] = [
+  'besluit',
+  'lpdc',
+  'roadsign-regulation',
+  'variable',
+];
 const decisionUri = 'http://example.org/besluit/12345';
 const decisionType =
   'https://data.vlaanderen.be/id/concept/BesluitType/0d1278af-b69e-4152-a418-ec5cfd1c7d0b';

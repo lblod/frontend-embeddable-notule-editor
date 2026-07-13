@@ -24,6 +24,7 @@ const options: UserPluginOptions = {
     defaultAddressUriRoot: 'https://example.net/id/adres/',
     explicitSubjectToLinkTo: 'https://example.net/decision-uri',
     defaultMunicipality: 'Gent',
+    openModalOnInsert: true,
   },
   ui: {
     expandInsertMenu: true,

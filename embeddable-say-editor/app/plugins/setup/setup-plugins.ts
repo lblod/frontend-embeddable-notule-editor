@@ -6,6 +6,7 @@ import {
   type SayController,
 } from '@lblod/ember-rdfa-editor';
 import type SayNodeSpec from '@lblod/ember-rdfa-editor/core/say-node-spec';
+import type { GetContextualActionGroups } from '@lblod/ember-rdfa-editor/plugins/contextual-actions';
 import type {
   EmbeddedPluginSpec,
   KebabPluginName,
@@ -21,6 +22,8 @@ import type {
 import { defaultToolbar } from './default-toolbar.ts';
 import { defaultSidebar } from './default-sidebar.ts';
 import { PLUGIN_MAP } from '../plugin-registry';
+import { slashCommandsPlugin } from '@lblod/ember-rdfa-editor/plugins/slash-commands/index';
+
 type EnsuredSpecs<
   S extends PluginSpecs,
   N extends PluginName | void,
@@ -36,6 +39,7 @@ export type EditorSetup<N extends PluginName | void = void> = {
   prosePlugins: ProsePlugin[];
   toolbarConfig: ToolbarConfig;
   sidebarConfig: SidebarConfig;
+  contextualActionGroupGetters: GetContextualActionGroups;
   widgetMaps: {
     toolbar: Record<string, WidgetComponent>;
     sidebar: Record<string, WidgetComponent>;
@@ -71,6 +75,7 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
   ];
   let toolbarWidgets: Record<string, WidgetComponent> = {};
   let sidebarWidgets: Record<string, WidgetComponent> = {};
+  const contextualActionGroupGetters: GetContextualActionGroups = [];
 
   const realSpecs = pluginsWithCore.map((name) => ({
     name: camelize(name),
@@ -109,6 +114,17 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
         ...(spec.sidebarWidgets as Record<string, WidgetComponent>),
       };
     }
+    if (spec.contextualActionGroupGetters) {
+      contextualActionGroupGetters.push(...spec.contextualActionGroupGetters);
+    }
+  }
+  if (contextualActionGroupGetters.length) {
+    prosePlugins.push(
+      slashCommandsPlugin({
+        intl: args.intl,
+        getGroups: contextualActionGroupGetters,
+      }),
+    );
   }
   const schema = new Schema({ nodes, marks });
   let result = {
@@ -127,6 +143,7 @@ export function setupPlugins(args: PluginInitArgs): EditorSetup {
     },
     sidebarConfig: sidebar ?? defaultSidebar(args),
     toolbarConfig: toolbar ?? defaultToolbar(args),
+    contextualActionGroupGetters: contextualActionGroupGetters,
     widgetMaps: { sidebar: sidebarWidgets, toolbar: toolbarWidgets },
   };
 
