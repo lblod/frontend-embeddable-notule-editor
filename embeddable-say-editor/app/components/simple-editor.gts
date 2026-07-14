@@ -5,7 +5,7 @@ import { service } from '@ember/service';
 import { modifier } from 'ember-modifier';
 
 import { SayController } from '@lblod/ember-rdfa-editor';
-
+import ContextualActionsContainer from '@lblod/ember-rdfa-editor/components/plugins/contextual-actions/container';
 import { getActiveEditableNode } from '@lblod/ember-rdfa-editor/plugins/_private/editable-node';
 import EditorContainer from '@lblod/ember-rdfa-editor/components/editor-container';
 import Editor from '@lblod/ember-rdfa-editor/components/editor';
@@ -188,6 +188,10 @@ export default class SimpleEditorComponent extends Component<Sig> {
               />
               {{#if this.controller}}
                 <TableTooltip @controller={{this.controller}} />
+                <ContextualActionsContainer
+                  @controller={{this.controller}}
+                  @getGroups={{s.contextualActionGroupGetters}}
+                />
               {{/if}}
             </:default>
             <:sidebarRight as |container|>

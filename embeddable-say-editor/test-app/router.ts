@@ -15,6 +15,7 @@ navbar.innerHTML = html`<div class="navbar">
   <a href="/multiple-editors/">Multiple Editors</a>
   <a href="/multiple-growing-editors/">Multiple growing editors</a>
   <a href="/plugins/">Plugins</a>
+  <a href="/plugins-with-rdfa-editor/">Plugins (+RDFa)</a>
   <a href="/cipal-plugins/">cipal-plugins</a>
   <a href="/headless-test/">Headless test</a>
   <a href="/locked-placeholders/">Locked placeholders</a>

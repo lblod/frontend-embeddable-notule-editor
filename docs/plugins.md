@@ -61,6 +61,7 @@ Any configuration value not provided will use the default value, which are shown
   insert lpdc services
 - [citation](/docs/plugins/citation-plugin.md): Search and insert references to citations (a legal resource/expression).
 - [roadsign-regulation](/docs/plugins/roadsign-regulation-plugin.md): Insert roadsign regulations, based on the registry managed and provided by MOW (Mobiliteit en Openbare Werken).
+- [ar-design](/docs/plugins/ar-design-plugin.md): Insert aanvullend reglement designs representing one or more roadsign regulations.
 - [table-of-contents](/docs/plugins/table-of-contents-plugin.md): Show a table of contents with clickable sections defined by [article-structure](./docs/plugins/article-structure-plugin.md).
 - [variable](/docs/plugins/variable-plugin.md): Allows insertion and filling in of custom rdfa variables.
 - [formatting-toggle](/docs/plugins/formatting-toggle-plugin.md): Allows to toggle the formatting marks with a button.

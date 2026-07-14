@@ -32,6 +32,7 @@ import DateEdit from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable
 import LocationEdit from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/location/edit';
 import AddressEdit from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/address/edit';
 import type { LocationEditOptions } from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/location/edit';
+import { getContextualActionGroups as placeDescriptionActionGroups } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/variable-plugin/contextual-actions';
 import type { PluginInitializer } from '../embedded-plugin';
 import { mergeConfigs } from '../setup/defaults';
 import type { WidgetSignature } from '../widgets';
@@ -129,7 +130,7 @@ const defaultConfig = (intl: IntlService): VariablePluginConfig => {
     edit: {
       enable: true,
       location: {
-        endpoint: 'https://dev.roadsigns.lblod.info',
+        endpoint: 'https://dev.roadsigns.lblod.info/sparql',
         zonalLocationCodelistUri:
           'http://lblod.data.gift/concept-schemes/62331E6900730AE7B99DF7EF',
         nonZonalLocationCodelistUri:
@@ -186,6 +187,9 @@ export const setupVariablePlugin = (({ options, intl }) => {
     config,
     nodes: variableNodes,
     nodeViews: variableNodeViews,
+    contextualActionGroupGetters: [
+      placeDescriptionActionGroups(config.edit.location),
+    ],
     sidebarWidgets: {
       'variable:insert': variableInsert,
       'variable:edit': variableEdit,
