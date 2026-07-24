@@ -1,5 +1,35 @@
 # frontend-embeddable-notule-editor
 
+## 6.5.0
+
+### Minor Changes
+
+- [#293](https://github.com/lblod/frontend-embeddable-notule-editor/pull/293) [`2f43329`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/2f43329b824766a19476a42c5f5088c502b813c4) Thanks [@piemonkey](https://github.com/piemonkey)! - Add configuration for place description (old location variable) context actions
+
+- [#293](https://github.com/lblod/frontend-embeddable-notule-editor/pull/293) [`e433f39`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/e433f395ac105044f2f75326f8a3265fabc23878) Thanks [@piemonkey](https://github.com/piemonkey)! - Add plugin to display placeholder prompts for empty blocks to core plugins
+
+- [#292](https://github.com/lblod/frontend-embeddable-notule-editor/pull/292) [`f39ca76`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/f39ca76c47c03c89068436a4f728474ac3c3c866) Thanks [@piemonkey](https://github.com/piemonkey)! - Add AR design plugin
+
+- [#293](https://github.com/lblod/frontend-embeddable-notule-editor/pull/293) [`7b9e320`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/7b9e320635d8b28c0a1faef9c13b1e1002dbc1d2) Thanks [@piemonkey](https://github.com/piemonkey)! - Add slash command support to the editor if context actions are configured in any plugin
+
+### Patch Changes
+
+- [#292](https://github.com/lblod/frontend-embeddable-notule-editor/pull/292) [`4e24a29`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/4e24a29cc33a688d4cfd454fad580623ed1ac1fc) Thanks [@piemonkey](https://github.com/piemonkey)! - Use split-out version of roadsign-regulation-plugin
+
+- [#292](https://github.com/lblod/frontend-embeddable-notule-editor/pull/292) [`06fdeec`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/06fdeec79561e717927b2bde0dccd716c042a86a) Thanks [@piemonkey](https://github.com/piemonkey)! - Update to [v2.0.0 of @lblod/say-roadsign-regulation-plugin](https://github.com/lblod/ember-rdfa-editor/releases/tag/%40lblod/say-roadsign-regulation-plugin%402.0.0)
+
+- [#292](https://github.com/lblod/frontend-embeddable-notule-editor/pull/292) [`74d5925`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/74d592552f74f9eefb041577cff29e875d78332e) Thanks [@piemonkey](https://github.com/piemonkey)! - Update to [editor v13.13.0](https://github.com/lblod/ember-rdfa-editor/releases/tag/%40lblod%2Fember-rdfa-editor%4013.13.0), [roadsign plugin v3.0.0](https://github.com/lblod/ember-rdfa-editor/releases/tag/%40lblod%2Fsay-roadsign-regulation-plugin%403.0.0) and [ar design plugin v3.0.0](https://github.com/lblod/ember-rdfa-editor/releases/tag/%40lblod%2Fsay-ar-design-plugin%403.0.0)
+
+- [#292](https://github.com/lblod/frontend-embeddable-notule-editor/pull/292) [`4a1797f`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/4a1797fb239e5072fb4d086e64359dd62a9becbd) Thanks [@piemonkey](https://github.com/piemonkey)! - Add inline_rdfa and block_rdfa nodeviews to core plugins
+
+- [#292](https://github.com/lblod/frontend-embeddable-notule-editor/pull/292) [`06fdeec`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/06fdeec79561e717927b2bde0dccd716c042a86a) Thanks [@piemonkey](https://github.com/piemonkey)! - Update to [v2.0.0 of @lblod/say-ar-design-plugin](https://github.com/lblod/ember-rdfa-editor/releases/tag/%40lblod/say-ar-design-plugin%402.0.0)
+
+- [#292](https://github.com/lblod/frontend-embeddable-notule-editor/pull/292) [`06fdeec`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/06fdeec79561e717927b2bde0dccd716c042a86a) Thanks [@piemonkey](https://github.com/piemonkey)! - Update to [v13.2.1 of @lblod/ember-rdfa-editor](https://github.com/lblod/ember-rdfa-editor/releases/tag/%40lblod/ember-rdfa-editor%4013.12.1)
+
+- [#293](https://github.com/lblod/frontend-embeddable-notule-editor/pull/293) [`411170e`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/411170ee761f8cc76dac94d8401132eac69229ab) Thanks [@piemonkey](https://github.com/piemonkey)! - Update [@lblod/ember-rdfa-editor-lblod-plugins to v38.0.1](https://github.com/lblod/ember-rdfa-editor-lblod-plugins/releases/tag/v38.0.1)
+
+- [#293](https://github.com/lblod/frontend-embeddable-notule-editor/pull/293) [`7881da9`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/7881da9d133df577186e9c5b37a77e8843b158bc) Thanks [@piemonkey](https://github.com/piemonkey)! - Move editable node prose plugin to core plugins to support other functionality
+
 ## 6.4.1
 
 ### Patch Changes
