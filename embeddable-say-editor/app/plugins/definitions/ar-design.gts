@@ -14,6 +14,7 @@ export interface ArDesignPluginOptions {
     decisionUri: string;
     decisionType?: string;
   };
+  regulationStatementMode?: boolean
 }
 
 const arDesignTest = () =>
@@ -121,6 +122,7 @@ export const arDesignWidget: TOC<WidgetSignature<'arDesign'>> = <template>
     @designQuery={{@setup.pluginSpecs.arDesign.config.designQuery}}
     @processDocumentHeadlessly={{processDocumentHelper @setup}}
     @decisionContext={{@setup.pluginSpecs.arDesign.config.decisionContext}}
+    @regulatoryStatementMode={{@setup.pluginSpecs.arDesign.config.regulatoryStatementMode}}
   />
 </template>;
 
