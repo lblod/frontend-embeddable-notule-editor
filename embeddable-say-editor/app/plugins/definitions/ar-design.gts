@@ -14,7 +14,7 @@ export interface ArDesignPluginOptions {
     decisionUri: string;
     decisionType?: string;
   };
-  regulationStatementMode?: boolean
+  regulatoryStatementMode?: boolean
 }
 
 const arDesignTest = () =>
