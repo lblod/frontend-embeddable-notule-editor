@@ -32,7 +32,8 @@ import DateEdit from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable
 import LocationEdit from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/location/edit';
 import AddressEdit from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/address/edit';
 import type { LocationEditOptions } from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/location/edit';
-import { getContextualActionGroups as placeDescriptionActionGroups } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/variable-plugin/contextual-actions';
+import { getPlaceDescriptionActionGroups } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/variable-plugin/contextual-actions/place-description';
+import { getCodelistActionGroups } from '@lblod/ember-rdfa-editor-lblod-plugins/plugins/variable-plugin/contextual-actions/codelist';
 import type { PluginInitializer } from '../embedded-plugin';
 import { mergeConfigs } from '../setup/defaults';
 import type { WidgetSignature } from '../widgets';
@@ -188,7 +189,8 @@ export const setupVariablePlugin = (({ options, intl }) => {
     nodes: variableNodes,
     nodeViews: variableNodeViews,
     contextualActionGroupGetters: [
-      placeDescriptionActionGroups(config.edit.location),
+      getPlaceDescriptionActionGroups(config.edit.location),
+      getCodelistActionGroups(config.edit.codelist),
     ],
     sidebarWidgets: {
       'variable:insert': variableInsert,
