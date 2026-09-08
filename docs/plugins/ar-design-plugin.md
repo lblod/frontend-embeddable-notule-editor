@@ -14,7 +14,8 @@ const editor = await renderEditor({
   plugins: [, /*...*/ "ar-design"],
   options: {
     arDesign: {
-      designQuery: (pagination) => { /*...*/ },
+      proxyUrl: 'http://my-proxy-url.com',
+      proxyHeaders: '[{"name":"org-write","variables":["974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4"]}]',
       // optional
       decisionContext?: {
         decisionUri: "http://my-endpoint.be/id/besluiten/1234",
@@ -23,15 +24,21 @@ const editor = await renderEditor({
         decisionType:
           "https://data.vlaanderen.be/id/concept/BesluitType/4d8f678a-6fa4-4d5f-a2a1-80974e43bf34",
       };
+      // optional
+      regulatoryStatementMode: false
     },
   },
   /*...*/
 });
 ```
 
-#### `designQuery`
+#### `proxyUrl`
 
-The signature of the designQuery function can be found [in the @lblod/say-ar-design-plugin documentation](https://github.com/lblod/ember-rdfa-editor/blob/master/packages/say-ar-design-plugin/README.md#ardesignquery-function)
+The url of your proxy service that logins and interacts with the vks application
+
+#### `proxyHeaders`
+
+The headers to send to the proxy service, this will be included in the request, as a `mu-auth-allowed-groups` header
 
 #### `decisionUri`
 
@@ -42,6 +49,11 @@ This allows you to insert the articles which make up the AR design anywhere in y
 
 Along with the `decisionUri`, allows you to explicitly pass in the type of decision that is being worked on.
 This is used to disable the plugin when the type is not in the whitelist of valid types.
+
+#### `regulatoryStatementMode`
+
+If you activate this mode, the plugin will work without the need of a decision being present. Note that you will only be able to insert the designs at cursor position and the articles inserted by those designs
+will be of type `say:Article` instead of `besluit:Article`
 
 ## Usage
 
