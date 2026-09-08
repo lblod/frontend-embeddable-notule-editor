@@ -4,7 +4,7 @@ import Component from '@glimmer/component';
 import type { WidgetSignature } from '../widgets';
 import { _processDocumentHeadlesslyFromEditorSetup } from '../../utils/_private/headless-document-internals';
 import type { EditorSetup } from '../setup/setup-plugins';
-import type {  Pagination } from '@lblod/say-ar-design-plugin/plugin/types';
+import type {  DesignInfo, Pagination } from '@lblod/say-ar-design-plugin/plugin/types';
 
 const name = 'arDesign';
 export interface ArDesignPluginOptions {
@@ -43,9 +43,11 @@ const arDesignQuery = async (proxyUrl: string, header: string, pagination: Pagin
   if(pagination.nameFilter) {
     url.searchParams.append('filter[name]', pagination.nameFilter)
   }
-  url.searchParams.append('page[size]', pagination.pageSize)
-  url.searchParams.append('page[number]', pagination.pageNumber)
-  url.searchParams.append('sort', pagination.sort)
+  url.searchParams.append('page[size]', String(pagination.pageSize))
+  url.searchParams.append('page[number]', String(pagination.pageNumber))
+  if(pagination.sort) {
+    url.searchParams.append('sort', pagination.sort)
+  }
   const designsResponse = await fetch(url, {
     method: 'GET',
     headers: {
@@ -71,14 +73,16 @@ const arDesignQuery = async (proxyUrl: string, header: string, pagination: Pagin
   }))
     return {
       designs,
-    };
+      inDocs: []
+    } as unknown as DesignInfo
   };
 
-  function processEntity(includedData: RecordJsonApi[], entity: RecordJsonApi) {
-    if(!entity) return {}
+
+  function processEntity(includedData: RecordJsonApi[], entity?: RecordJsonApi) : Record<string, unknown> | undefined {
+    if(!entity) return undefined
     const attributesCamelCase = {} as Record<string, string>
     for(const key in entity.attributes) {
-      attributesCamelCase[kebabCaseToCamelCase(key)] = entity.attributes[key];
+      attributesCamelCase[kebabCaseToCamelCase(key)] = entity.attributes[key] as string;
     }
     return {
        id: entity.id,
@@ -89,14 +93,15 @@ const arDesignQuery = async (proxyUrl: string, header: string, pagination: Pagin
   }
 
   function processRelationships(includedData: RecordJsonApi[], relationships: Relationships) {
-    console.log(includedData)
-    const processedRelationships = {} as Record<string, string>
+    const processedRelationships = {} as Record<string, unknown>
     for(const key in relationships) {
       const camelCaseKey = kebabCaseToCamelCase(key)
-      if(relationships[key].data.id) {
-        processedRelationships[camelCaseKey] = processEntity(includedData, includedData.find(included => included.id === relationships[key].data.id))
-      } else {
-        processedRelationships[camelCaseKey] = (relationships[key].data as RecordJsonApi[]).map((data) => processEntity(includedData, includedData.find(included => included.id === data.id)))
+      if(relationships[key]) {
+        if(Array.isArray(relationships[key].data)) {
+          processedRelationships[camelCaseKey] = relationships[key].data.map((data) => processEntity(includedData, includedData.find(included => included.id === data.id)))
+        } else {
+          processedRelationships[camelCaseKey] = processEntity(includedData, includedData.find(included => relationships[key] && included.id === (relationships[key].data as RecordJsonApi).id))
+        }
       }
     }
     return processedRelationships;
@@ -121,7 +126,10 @@ function processDocumentHelper(editorSetup: EditorSetup) {
 export class arDesignWidget extends Component<WidgetSignature<'arDesign'>> {
   get designQuery() {
     const config = this.args.setup.pluginSpecs.arDesign.config;
-    return arDesignQuery.bind(undefined, config.proxyUrl, config.proxyHeader)
+    if(!config?.proxyUrl || !config?.proxyHeader) {
+      throw new Error('You have to configure proxyUrl and proxyHeader to use this component')
+    }
+    return arDesignQuery.bind(undefined, config?.proxyUrl, config?.proxyHeader)
   }
   <template>
     <SidebarWidget
