@@ -14,7 +14,8 @@ const editor = await renderEditor({
   plugins: [, /*...*/ "ar-design"],
   options: {
     arDesign: {
-      designQuery: (pagination) => { /*...*/ },
+      proxyUrl: 'http://my-proxy-url.com',
+      proxyHeaders: '[{"name":"org-write","variables":["974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4"]}]',
       // optional
       decisionContext?: {
         decisionUri: "http://my-endpoint.be/id/besluiten/1234",
@@ -31,9 +32,13 @@ const editor = await renderEditor({
 });
 ```
 
-#### `designQuery`
+#### `proxyUrl`
 
-The signature of the designQuery function can be found [in the @lblod/say-ar-design-plugin documentation](https://github.com/lblod/ember-rdfa-editor/blob/master/packages/say-ar-design-plugin/README.md#ardesignquery-function)
+The url of your proxy service that logins and interacts with the vks application
+
+#### `proxyHeaders`
+
+The headers to send to the proxy service, this will be included in the request, as a `mu-auth-allowed-groups` header
 
 #### `decisionUri`
 

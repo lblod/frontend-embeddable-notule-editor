@@ -1,15 +1,15 @@
 import type { PluginInitializer } from '../embedded-plugin';
-import { mergeConfigs } from '../setup/defaults';
 import SidebarWidget from '@lblod/say-ar-design-plugin/components/sidebar-widget';
-import type { TOC } from '@ember/component/template-only';
+import Component from '@glimmer/component';
 import type { WidgetSignature } from '../widgets';
 import { _processDocumentHeadlesslyFromEditorSetup } from '../../utils/_private/headless-document-internals';
 import type { EditorSetup } from '../setup/setup-plugins';
-import type { ArDesignQuery } from '@lblod/say-ar-design-plugin/plugin/types';
+import type {  Pagination } from '@lblod/say-ar-design-plugin/plugin/types';
 
 const name = 'arDesign';
 export interface ArDesignPluginOptions {
-  designQuery: ArDesignQuery;
+  proxyHeader: string,
+  proxyUrl: string,
   decisionContext?: {
     decisionUri: string;
     decisionType?: string;
@@ -17,97 +17,97 @@ export interface ArDesignPluginOptions {
   regulatoryStatementMode?: boolean
 }
 
-const arDesignTest = () =>
-  Promise.resolve({
-    designs: [
-      {
-        id: 'test',
-        uri: 'test',
-        name: 'test',
-        date: new Date(),
-        measureDesigns: Promise.resolve([
-          {
-            id: 'test',
-            uri: 'test',
-            trafficSignals: [
-              {
-                id: 'test',
-                uri: 'test',
-                designStatus:
-                  'https://data.vlaanderen.be/id/concept/Verkeerstekenontwerpstatus/fc1036e7-703b-4290-b732-49abb39d0588',
-                trafficSignalConcept: {
-                  id: 'test',
-                  uri: 'test',
-                  code: 'Parkeerautomaat',
-                  type: 'https://data.vlaanderen.be/ns/mobiliteit#Verkeersbordconcept',
-                  categories: [
-                    {
-                      id: 'test',
-                      uri: 'http://data.vlaanderen.be/id/concept/Verkeersbordcategorie/29ea3335e357e414d07229242607b352941c0c21e78760600cc0f5270f18c38b',
-                      label: 'StilstaanParkeerBord',
-                    },
-                  ],
-                },
-              },
-            ],
-            measureConcept: {
-              id: 'test',
-              uri: 'test',
-              label: 'E9a-GVIId-GVIId-GXa-GXd-GXb-Parkeerautomaat',
-              templateString:
-                '${locatie} \nhet parkeren is toegelaten; \nhet parkeren is voorbehouden voor ${categorie_voertuig}; \nhet parkeren is betalend; de parkeerreglementering is beperkt in de tijd ${maximumduur_betalend_parkeren}; \nhet begin van de parkeerreglementering wordt aangeduid; \nde parkeerreglementering geldt over een afstand van meer dan 300 meter; \nhet einde van de parkeerreglementering wordt aangeduid; \nbestuurders moeten parkeren op de wijze en onder de voorwaarden die op de parkeerautomaat zijn vermeld.',
-              rawTemplateString:
-                '${locatie} \n${E9a}; \n${GVIId}; \n${GVIId2}; \n${GXa}; \n${GXd}; \n${GXb}; \n${Parkeerautomaat}.',
-            },
-            unusedSignalConcepts: [],
-            unIncludedSignalConcepts: [],
-            variableInstances: [
-              {
-                id: 'test1',
-                uri: 'test1',
-                variable: {
-                  id: 'test1',
-                  uri: 'test1',
-                  type: 'codelist',
-                  label: 'categorie_voertuig',
-                  source: 'https://roadsigns.lblod.info/sparql',
-                  codelist:
-                    'http://lblod.data.gift/concept-schemes/61AE3534BF5C750009000050',
-                },
-              },
-              {
-                id: 'test2',
-                uri: 'test2',
-                variable: {
-                  id: 'test2',
-                  uri: 'test2',
-                  type: 'codelist',
-                  label: 'maximumduur_betalend_parkeren',
-                  source: 'https://roadsigns.lblod.info/sparql',
-                  codelist:
-                    'http://lblod.data.gift/concept-schemes/98ce0acb-a92d-4641-860e-d7f581810686',
-                },
-              },
-              {
-                id: 'test3',
-                uri: 'test3',
-                variable: {
-                  id: 'test3',
-                  uri: 'test3',
-                  type: 'location',
-                  label: 'locatie',
-                  source: 'https://roadsigns.lblod.info/sparql',
-                },
-              },
-            ],
-          },
-        ]),
-      },
-    ],
-    inDocs: {
-      test: Promise.resolve(1),
-    },
-  });
+
+type RecordJsonApi = {
+  id: string,
+  attributes: {
+    [s: string]: string;
+  }
+  relationships: Relationships
+}
+
+type Relationships = {
+  [s: string]: {data : RecordJsonApi | RecordJsonApi[]};
+}
+
+
+type JsonApiResponse = {
+  data: RecordJsonApi[]
+  included: RecordJsonApi[]
+}
+
+
+
+const arDesignQuery = async (proxyUrl: string, header: string, pagination: Pagination) => {
+  const url = new URL(proxyUrl);
+  if(pagination.nameFilter) {
+    url.searchParams.append('filter[name]', pagination.nameFilter)
+  }
+  url.searchParams.append('page[size]', pagination.pageSize)
+  url.searchParams.append('page[number]', pagination.pageNumber)
+  url.searchParams.append('sort', pagination.sort)
+  const designsResponse = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'mu-auth-allowed-groups': header
+    }
+  })
+  const designsData= await designsResponse.json() as JsonApiResponse;
+
+  const designs = await Promise.all(designsData.data.map(async design => {
+    const measureDesignsResponse = await fetch(`${proxyUrl}/${design.id}/measure-designs`, {
+      method: 'GET',
+      headers: {
+        'mu-auth-allowed-groups': header
+      }
+    })
+    const measureDesignsData = await measureDesignsResponse.json() as JsonApiResponse;
+    return {
+      id: design.id,
+      ...design.attributes,
+      measureDesigns: measureDesignsData.data.map(processEntity.bind(this, measureDesignsData.included))
+
+    }
+  }))
+    return {
+      designs,
+    };
+  };
+
+  function processEntity(includedData: RecordJsonApi[], entity: RecordJsonApi) {
+    if(!entity) return {}
+    const attributesCamelCase = {} as Record<string, string>
+    for(const key in entity.attributes) {
+      attributesCamelCase[kebabCaseToCamelCase(key)] = entity.attributes[key];
+    }
+    return {
+       id: entity.id,
+      ...attributesCamelCase,
+      ...processRelationships(includedData, entity.relationships)
+    }
+
+  }
+
+  function processRelationships(includedData: RecordJsonApi[], relationships: Relationships) {
+    console.log(includedData)
+    const processedRelationships = {} as Record<string, string>
+    for(const key in relationships) {
+      const camelCaseKey = kebabCaseToCamelCase(key)
+      if(relationships[key].data.id) {
+        processedRelationships[camelCaseKey] = processEntity(includedData, includedData.find(included => included.id === relationships[key].data.id))
+      } else {
+        processedRelationships[camelCaseKey] = (relationships[key].data as RecordJsonApi[]).map((data) => processEntity(includedData, includedData.find(included => included.id === data.id)))
+      }
+    }
+    return processedRelationships;
+  }
+
+  function kebabCaseToCamelCase(string: string) {
+    const arr = string.split('-');
+    const capital = arr.map((item,index) => index === 0 ? item : item.charAt(0).toUpperCase() + item.slice(1).toLowerCase());
+    const capitalString = capital.join("");
+    return capitalString
+  }
 
 function processDocumentHelper(editorSetup: EditorSetup) {
   return (
@@ -116,24 +116,28 @@ function processDocumentHelper(editorSetup: EditorSetup) {
   ) => _processDocumentHeadlesslyFromEditorSetup(html, generator, editorSetup);
 }
 
-export const arDesignWidget: TOC<WidgetSignature<'arDesign'>> = <template>
-  <SidebarWidget
-    @controller={{@controller}}
-    @designQuery={{@setup.pluginSpecs.arDesign.config.designQuery}}
-    @processDocumentHeadlessly={{processDocumentHelper @setup}}
-    @decisionContext={{@setup.pluginSpecs.arDesign.config.decisionContext}}
-    @regulatoryStatementMode={{@setup.pluginSpecs.arDesign.config.regulatoryStatementMode}}
-  />
-</template>;
 
-const defaultConfig: ArDesignPluginOptions = {
-  designQuery: arDesignTest,
-};
+
+export class arDesignWidget extends Component<WidgetSignature<'arDesign'>> {
+  get designQuery() {
+    const config = this.args.setup.pluginSpecs.arDesign.config;
+    return arDesignQuery.bind(undefined, config.proxyUrl, config.proxyHeader)
+  }
+  <template>
+    <SidebarWidget
+      @controller={{@controller}}
+      @designQuery={{this.designQuery}}
+      @processDocumentHeadlessly={{processDocumentHelper @setup}}
+      @decisionContext={{@setup.pluginSpecs.arDesign.config.decisionContext}}
+      @regulatoryStatementMode={{@setup.pluginSpecs.arDesign.config.regulatoryStatementMode}}
+    />
+  </template>
+}
 
 export const setupArDesignPlugin = (({ options }) => {
   return {
     name,
-    config: mergeConfigs(defaultConfig, options?.arDesign),
+    config: options?.arDesign,
     sidebarWidgets: { 'ar-design:insert': arDesignWidget },
   };
 }) satisfies PluginInitializer;
