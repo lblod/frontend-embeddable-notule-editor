@@ -39,6 +39,7 @@ import { mergeConfigs } from '../setup/defaults';
 import type { WidgetSignature } from '../widgets';
 import type { TOC } from '@ember/component/template-only';
 import type IntlService from 'ember-intl/services/intl';
+import DatePopoverContainer from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/date/floating-date-container';
 
 export type VariablePluginConfig = {
   insert: {
@@ -58,28 +59,43 @@ export type VariablePluginConfig = {
 };
 
 export const variableInsert: TOC<WidgetSignature<'variable'>> = <template>
-  <InsertVariableCard
-    @controller={{@controller}}
-    @variableTypes={{@setup.pluginSpecs.variable.config.insert.variableTypes}}
-  />
+  {{#if @setup.pluginSpecs.variable.config.insert.enable}}
+    <InsertVariableCard
+      @controller={{@controller}}
+      @variableTypes={{@setup.pluginSpecs.variable.config.insert.variableTypes}}
+    />
+  {{/if}}
 </template>;
+
+export const variableDatePopover: TOC<WidgetSignature<'variable'>> = <template>
+  {{#if @setup.pluginSpecs.variable.config.edit.enable}}
+    <DatePopoverContainer
+        @controller={{@controller}}
+        @options={{@setup.pluginSpecs.variable.config.edit.date}}
+      />
+  {{/if}}
+</template>;
+
+
 export const variableEdit: TOC<WidgetSignature<'variable'>> = <template>
-  <CodelistEdit
-    @controller={{@controller}}
-    @options={{@setup.pluginSpecs.variable.config.edit.codelist}}
-  />
-  <DateEdit
-    @controller={{@controller}}
-    @options={{@setup.pluginSpecs.variable.config.edit.date}}
-  />
-  <LocationEdit
-    @controller={{@controller}}
-    @options={{@setup.pluginSpecs.variable.config.edit.location}}
-  />
-  <AddressEdit
-    @controller={{@controller}}
-    @defaultMunicipality={{@setup.pluginSpecs.variable.config.edit.address.defaultMunicipality}}
-  />
+  {{#if @setup.pluginSpecs.variable.config.edit.enable}}
+    <CodelistEdit
+      @controller={{@controller}}
+      @options={{@setup.pluginSpecs.variable.config.edit.codelist}}
+    />
+    <DateEdit
+      @controller={{@controller}}
+      @options={{@setup.pluginSpecs.variable.config.edit.date}}
+    />
+    <LocationEdit
+      @controller={{@controller}}
+      @options={{@setup.pluginSpecs.variable.config.edit.location}}
+    />
+    <AddressEdit
+      @controller={{@controller}}
+      @defaultMunicipality={{@setup.pluginSpecs.variable.config.edit.address.defaultMunicipality}}
+    />
+  {{/if}}
 </template>;
 const defaultConfig = (intl: IntlService): VariablePluginConfig => {
   const codelistEndpoint = 'https://dev.roadsigns.lblod.info/sparql';
@@ -87,7 +103,7 @@ const defaultConfig = (intl: IntlService): VariablePluginConfig => {
   const codelistPublisher = null;
   return {
     insert: {
-      enable: true,
+      enable: false,
       codelistEndpoint,
       codelistPublisher,
       locationEndpoint,
@@ -163,7 +179,7 @@ const defaultConfig = (intl: IntlService): VariablePluginConfig => {
 };
 export const setupVariablePlugin = (({ options, intl }) => {
   const config = mergeConfigs(defaultConfig(intl), options?.variable);
-
+  console.log(config)
   const variableNodes: Record<string, NodeSpec> = {
     text_variable,
     number,
@@ -195,6 +211,7 @@ export const setupVariablePlugin = (({ options, intl }) => {
     sidebarWidgets: {
       'variable:insert': variableInsert,
       'variable:edit': variableEdit,
+      'variable:date-popover': variableDatePopover,
     },
   };
 }) satisfies PluginInitializer;
