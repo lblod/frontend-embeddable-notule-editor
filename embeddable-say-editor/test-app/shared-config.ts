@@ -46,5 +46,10 @@ export const pluginDemoConfig: Omit<RenderEditorOptions, 'element'> &
       openModalOnInsert: false,
     },
     arDesign: {},
+    variable: {
+      insert: {
+        enable: true
+      }
+    }
   },
 };

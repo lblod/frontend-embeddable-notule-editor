@@ -10,7 +10,7 @@ const editor = await renderEditor({
   options: {
     variable: {
       insert: {
-        enable: true,
+        enable: false,
         codelistEndpoint: "https://dev.roadsigns.lblod.info/sparql",
         codelistPublisher: null,
         locationEndpoint: "https://dev.roadsigns.lblod.info",
@@ -52,7 +52,7 @@ const editor = await renderEditor({
 
 configuration for inserting a variable
 
-- `enable`: is inserting a variable allowed (removing is always possible!)
+- `enable`: is inserting a variable allowed (removing is always possible!), disabled by default
 - `codelistEndpoint`: the endpoint from which to fetch the codelists, which will be added to a codelist variable's RDFa. For production you'll likely want to use https://register.mobiliteit.vlaanderen.be/sparql`.
 - `codelistPublisher`: Limit the codelists to a specific publisher. _null_ will allow all codelists.
 - `locationEndpoint`: the endpoint to fetch location options, which will be added to the location variable's RDFa and used as the endpoint when selecting a location variable. For production you'll likely want to use `https://register.mobiliteit.vlaanderen.be`.
