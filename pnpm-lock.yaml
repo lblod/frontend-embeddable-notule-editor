@@ -111,11 +111,11 @@ importers:
         specifier: 38.2.0
         version: 38.2.0(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(c77b4b5239eb3cb1717f463a1e0f15fc)
       '@lblod/say-ar-design-plugin':
-        specifier: 3.0.0
-        version: 3.0.0(3231be8ac97104b69b7be468755e4c2b)
+        specifier: 3.1.0
+        version: 3.1.0(915168bbbb8db95a0f8fb6b1648e7e44)
       '@lblod/say-roadsign-regulation-plugin':
-        specifier: 3.0.0
-        version: 3.0.0(221b9edf2a92d1b6022f680583690da5)
+        specifier: 3.1.0
+        version: 3.1.0(221b9edf2a92d1b6022f680583690da5)
       '@types/leaflet':
         specifier: ^1.9.17
         version: 1.9.21
@@ -2126,8 +2126,8 @@ packages:
   '@lblod/marawa@0.8.0-beta.6':
     resolution: {integrity: sha512-BW3yCpeQlk9EPnQAEQnM9uViA8RC5DkuoiaPJzbuhMcLvKHfI4cjc6dTg9i8qAijbL/xObmQ/Aexko2Xcj9ktw==}
 
-  '@lblod/say-ar-design-plugin@3.0.0':
-    resolution: {integrity: sha512-8yvsVVdcWB2VlTZj9K0yisv/Mdr0D8BR/AcAog4I5JLCVO8esYpj+6JPEfNN4cXDF9C6S0h9XF8gfD+PuIHjew==}
+  '@lblod/say-ar-design-plugin@3.1.0':
+    resolution: {integrity: sha512-jl1MpC0B1WgrTNZrUdPP3/e8y6RnuOY3c+kMwk3t0ki94H0zx0GVN8U6JAakekC/KSsWM4goYcBMBXnUdOLvRw==}
     peerDependencies:
       '@appuniversum/ember-appuniversum': ^3.11.0 || ^4.2.1
       '@ember/test-helpers': ^2.9.4 || ^3.2.1 || ^4.0.2 || ^5.0.0
@@ -2147,8 +2147,8 @@ packages:
       '@glint/template':
         optional: true
 
-  '@lblod/say-roadsign-regulation-plugin@3.0.0':
-    resolution: {integrity: sha512-uv2ruyHw133sRZqHQPdxTv5wg5U/xH9kN4zoYuMSjcsuXcY953En5b9EHcKLvY0HdF29O7G0ll7yVzECMutsYQ==}
+  '@lblod/say-roadsign-regulation-plugin@3.1.0':
+    resolution: {integrity: sha512-UL9TuPTKCM0TgmaSLf7THU+ciLCxZOal4LaWu8+3PGN6jEtUUaGov/5U1KHkfEHlhSLf6tuxYCUM8tQOMOgcZg==}
     peerDependencies:
       '@appuniversum/ember-appuniversum': ^3.11.0 || ^4.2.1
       '@ember/test-helpers': ^2.9.4 || ^3.2.1 || ^4.0.2 || ^5.0.0
@@ -12281,7 +12281,7 @@ snapshots:
       '@rdfjs/data-model': 1.3.4
       '@rdfjs/dataset': 1.1.1
 
-  '@lblod/say-ar-design-plugin@3.0.0(3231be8ac97104b69b7be468755e4c2b)':
+  '@lblod/say-ar-design-plugin@3.1.0(915168bbbb8db95a0f8fb6b1648e7e44)':
     dependencies:
       '@appuniversum/ember-appuniversum': https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.17.0.tgz(@ember/test-helpers@4.0.5(@babel/core@7.29.7)(@glint/template@1.7.8)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.7.8)(rsvp@4.8.5)(webpack@5.105.4(postcss@8.5.8))))(@glimmer/component@2.0.0)(@glint/template@1.7.8)(ember-basic-dropdown@8.11.0(patch_hash=32d0ca6074742b7542b79098a075ec9e093646363f297ed83f067e56968957c4)(@babel/core@7.29.7)(@ember/string@4.0.1)(@ember/test-helpers@4.0.5(@babel/core@7.29.7)(@glint/template@1.7.8)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.7.8)(rsvp@4.8.5)(webpack@5.105.4(postcss@8.5.8))))(@glimmer/component@2.0.0)(@glint/template@1.7.8)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.7.8)(rsvp@4.8.5)(webpack@5.105.4(postcss@8.5.8))))(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.7.8)(rsvp@4.8.5)(webpack@5.105.4(postcss@8.5.8)))(tracked-built-ins@3.4.0(@babel/core@7.29.7))(webpack@5.105.4(postcss@8.5.8))
       '@ember/optional-features': 2.3.0
@@ -12292,7 +12292,7 @@ snapshots:
       '@glimmer/tracking': 1.1.2
       '@glint/tsserver-plugin': 2.1.0
       '@lblod/ember-rdfa-editor': 13.18.0(093d873b706647876b67b6cf78f43e4c)
-      '@lblod/say-roadsign-regulation-plugin': 3.0.0(221b9edf2a92d1b6022f680583690da5)
+      '@lblod/say-roadsign-regulation-plugin': 3.1.0(221b9edf2a92d1b6022f680583690da5)
       decorator-transforms: 2.3.2(@babel/core@7.29.7)
       ember-basic-dropdown: 8.11.0(patch_hash=32d0ca6074742b7542b79098a075ec9e093646363f297ed83f067e56968957c4)(@babel/core@7.29.7)(@ember/string@4.0.1)(@ember/test-helpers@4.0.5(@babel/core@7.29.7)(@glint/template@1.7.8)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.7.8)(rsvp@4.8.5)(webpack@5.105.4(postcss@8.5.8))))(@glimmer/component@2.0.0)(@glint/template@1.7.8)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.7.8)(rsvp@4.8.5)(webpack@5.105.4(postcss@8.5.8)))
       ember-cli-babel: 8.3.1(@babel/core@7.29.7)
@@ -12318,7 +12318,7 @@ snapshots:
       - supports-color
       - typescript
 
-  '@lblod/say-roadsign-regulation-plugin@3.0.0(221b9edf2a92d1b6022f680583690da5)':
+  '@lblod/say-roadsign-regulation-plugin@3.1.0(221b9edf2a92d1b6022f680583690da5)':
     dependencies:
       '@appuniversum/ember-appuniversum': https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.17.0.tgz(@ember/test-helpers@4.0.5(@babel/core@7.29.7)(@glint/template@1.7.8)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.7.8)(rsvp@4.8.5)(webpack@5.105.4(postcss@8.5.8))))(@glimmer/component@2.0.0)(@glint/template@1.7.8)(ember-basic-dropdown@8.11.0(patch_hash=32d0ca6074742b7542b79098a075ec9e093646363f297ed83f067e56968957c4)(@babel/core@7.29.7)(@ember/string@4.0.1)(@ember/test-helpers@4.0.5(@babel/core@7.29.7)(@glint/template@1.7.8)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.7.8)(rsvp@4.8.5)(webpack@5.105.4(postcss@8.5.8))))(@glimmer/component@2.0.0)(@glint/template@1.7.8)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.7.8)(rsvp@4.8.5)(webpack@5.105.4(postcss@8.5.8))))(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.7.8)(rsvp@4.8.5)(webpack@5.105.4(postcss@8.5.8)))(tracked-built-ins@3.4.0(@babel/core@7.29.7))(webpack@5.105.4(postcss@8.5.8))
       '@ember/optional-features': 2.3.0
