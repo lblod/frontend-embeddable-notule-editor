@@ -46,7 +46,6 @@ export function defaultSidebar({
   }
   if (plugins.includes('variable')) {
     sidebar.push('variable:insert');
-    sidebar.push('variable:edit');
     sidebar.push('variable:date-popover')
   }
   if (plugins.includes('template-comments')) {

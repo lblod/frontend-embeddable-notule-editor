@@ -116,7 +116,6 @@ The following widgets are available when the `template-comments` plugin is confi
 | Widget identifier | Widget type | Description                         |
 | ----------------- | ----------- | ----------------------------------- |
 | `variable:insert` | Card        | Insert a variable into the document |
-| `variable:edit`   | Card        | Configure/edit a variable           |
 
 ### Rdfa-editor (devtools) plugin
 

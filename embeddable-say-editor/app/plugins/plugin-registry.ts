@@ -52,7 +52,6 @@ import type TemplateCommentEditCard from '@lblod/ember-rdfa-editor-lblod-plugins
 import type TemplateCommentInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/template-comments-plugin/insert';
 import {
   setupVariablePlugin,
-  type variableEdit,
   type variableInsert,
   type VariablePluginConfig,
 } from './definitions/variable.gts';
@@ -162,5 +161,4 @@ export interface SidebarWidgets {
   'citation:edit': typeof citationEdit;
   'template-comments:edit': typeof TemplateCommentEditCard;
   'variable:insert': typeof variableInsert;
-  'variable:edit': typeof variableEdit;
 }

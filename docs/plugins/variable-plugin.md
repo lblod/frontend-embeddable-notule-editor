@@ -16,7 +16,6 @@ const editor = await renderEditor({
         locationEndpoint: "https://dev.roadsigns.lblod.info",
       },
       edit: {
-        enable: true,
         location: {
           endpoint: "https://dev.roadsigns.lblod.info",
           zonalLocationCodelistUri:
@@ -61,7 +60,6 @@ configuration for inserting a variable
 
 configuration for editing an inserted variable
 
-- `enable`: is editing a variable allowed (removing is always possible!)
 - `location`: config for the location variable
   - `endpoint`: _fallback_ endpoint for location variable if the variable is missing the endpoint in its RDFa. This will most likely be the same as the endpoint used for inserting.
   - `zonalLocationCodelistUri`: the URI to search for if the location variable is included in a zonal traffic measure.
@@ -76,7 +74,7 @@ configuration for editing an inserted variable
 
 ## Usage
 
-These are placeholders that can be inserted in a document. A variable placeholder has a specific type (text, number, date, address or codelist), which changes the type of input it can receive. These placeholders can then be filled in by a user using the document.
+These are placeholders that can be inserted in a document. A variable placeholder has a specific type (text, number, date or codelist), which changes the type of input it can receive. These placeholders can then be filled in by a user using the document.
 
 Usually variables are inserted in an editor made to create _templates_ (documents to be filled in), and only edited in an editor to fill in these _templates_. Via the config you can customize if you want to allow insertion and/or filling in a variable.  
 **Note**: a user will always be able to remove a variable, even if insertion is not allowed.
@@ -91,8 +89,6 @@ A variable can be inserted with the card shown in the right sidebar.
 - _date_: insert date and time values using a datepicker. Supports a variety of formats. For more information about the syntax of defining date(time) formats check the documentation of the underlying library used [date-fns](https://date-fns.org/v2.29.3/docs/format).
 - _location_: choose out of a list of location options, that can contain placeholders themselves.
 - _codelist_: when inserting, a specific codelist has to be chosen. This codelist is a list of values the user can choose from to fill in the variable. Either the user can select one (single selection) or multiple (multiple selection).
-- _address_: when inserted, the user can click this to get a modal for searching addresses from the Belgium address register. This can be used to insert existing addresses.  
-  **note**: when searching for submunicipalities, only the main municipality will show up in the search. However, when searching for a street, the correct zip-code will be used.
 
 #### rdfa-awareness
 
