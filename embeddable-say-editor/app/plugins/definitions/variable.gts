@@ -42,12 +42,14 @@ export type VariablePluginConfig = {
     variableTypes: VariableConfig[];
   };
   edit: {
-    enable: boolean;
     date: DateOptions;
     location: LocationEditOptions;
     codelist: CodelistEditOptions;
-    address: { defaultMunicipality?: string };
   };
+};
+
+export type VariablePluginUserConfig = {
+  [K in keyof VariablePluginConfig]?: Partial<VariablePluginConfig[K]>;
 };
 
 export const variableInsert: TOC<WidgetSignature<'variable'>> = <template>
@@ -61,9 +63,9 @@ export const variableInsert: TOC<WidgetSignature<'variable'>> = <template>
 
 export const variableDatePopover: TOC<WidgetSignature<'variable'>> = <template>
   <DatePopoverContainer
-      @controller={{@controller}}
-      @options={{@setup.pluginSpecs.variable.config.edit.date}}
-    />
+    @controller={{@controller}}
+    @options={{@setup.pluginSpecs.variable.config.edit.date}}
+  />
 </template>;
 
 const defaultConfig = (intl: IntlService): VariablePluginConfig => {
@@ -141,7 +143,10 @@ const defaultConfig = (intl: IntlService): VariablePluginConfig => {
   };
 };
 export const setupVariablePlugin = (({ options, intl }) => {
-  const config = mergeConfigs(defaultConfig(intl), options?.variable);
+  const config = mergeConfigs(
+    defaultConfig(intl),
+    options?.variable as Partial<VariablePluginConfig> | undefined,
+  );
   const variableNodes: Record<string, NodeSpec> = {
     text_variable,
     number,
