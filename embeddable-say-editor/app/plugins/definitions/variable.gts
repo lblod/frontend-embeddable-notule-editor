@@ -31,7 +31,6 @@ import { mergeConfigs } from '../setup/defaults';
 import type { WidgetSignature } from '../widgets';
 import type { TOC } from '@ember/component/template-only';
 import type IntlService from 'ember-intl/services/intl';
-import DatePopoverContainer from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/date/floating-date-container';
 
 export type VariablePluginConfig = {
   insert: {
@@ -59,13 +58,6 @@ export const variableInsert: TOC<WidgetSignature<'variable'>> = <template>
       @variableTypes={{@setup.pluginSpecs.variable.config.insert.variableTypes}}
     />
   {{/if}}
-</template>;
-
-export const variableDatePopover: TOC<WidgetSignature<'variable'>> = <template>
-  <DatePopoverContainer
-    @controller={{@controller}}
-    @options={{@setup.pluginSpecs.variable.config.edit.date}}
-  />
 </template>;
 
 const defaultConfig = (intl: IntlService): VariablePluginConfig => {
@@ -175,7 +167,6 @@ export const setupVariablePlugin = (({ options, intl }) => {
     ],
     sidebarWidgets: {
       'variable:insert': variableInsert,
-      'variable:date-popover': variableDatePopover,
     },
   };
 }) satisfies PluginInitializer;

@@ -18,11 +18,13 @@ import type { EditorElement } from '../editor-element';
 import {
   setupPlugins,
   type EditorSetup,
+  type InitializedPluginName,
 } from '../plugins/setup/setup-plugins.ts';
 import type { KebabPluginName } from '../plugins/embedded-plugin.ts';
 import type { ModifierLike } from '@glint/template';
 import type { PluginOptions } from '../plugins/plugin-registry';
 import Sidebar from './sidebar.gts';
+import DatePopoverContainer from '@lblod/ember-rdfa-editor-lblod-plugins/components/variable-plugin/date/floating-date-container';
 
 interface Sig {
   Blocks: { default: [] };
@@ -161,6 +163,13 @@ export default class SimpleEditorComponent extends Component<Sig> {
 
     return null;
   }
+
+  isPluginActive<K extends InitializedPluginName>(
+    setup: EditorSetup,
+    pluginName: K,
+  ): setup is EditorSetup<K> {
+    return !!setup.pluginSpecs[pluginName];
+  }
   <template>
     <div id="ember-appuniversum-wormhole"></div>
     <div {{this.insertedInDom}} class="notule-editor">
@@ -192,6 +201,12 @@ export default class SimpleEditorComponent extends Component<Sig> {
                   @controller={{this.controller}}
                   @getGroups={{s.contextualActionGroupGetters}}
                 />
+                {{#if (this.isPluginActive s "variable")}}
+                  <DatePopoverContainer
+                    @controller={{this.controller}}
+                    @options={{s.pluginSpecs.variable.config.edit.date}}
+                  />
+                {{/if}}
               {{/if}}
             </:default>
             <:sidebarRight as |container|>
