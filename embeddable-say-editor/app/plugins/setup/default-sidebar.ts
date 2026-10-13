@@ -40,12 +40,12 @@ export function defaultSidebar({
   if (insertContainer.length) {
     sidebar.push(insertContainer);
   }
+
   if (plugins.includes('article-structure') || plugins.includes('besluit')) {
     sidebar.push('structure:edit');
   }
   if (plugins.includes('variable')) {
     sidebar.push('variable:insert');
-    sidebar.push('variable:edit');
   }
   if (plugins.includes('template-comments')) {
     sidebar.push('template-comments:edit');

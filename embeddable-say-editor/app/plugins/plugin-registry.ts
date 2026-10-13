@@ -52,9 +52,8 @@ import type TemplateCommentEditCard from '@lblod/ember-rdfa-editor-lblod-plugins
 import type TemplateCommentInsert from '@lblod/ember-rdfa-editor-lblod-plugins/components/template-comments-plugin/insert';
 import {
   setupVariablePlugin,
-  type variableEdit,
   type variableInsert,
-  type VariablePluginConfig,
+  type VariablePluginUserConfig,
 } from './definitions/variable.gts';
 import { coreSetup } from './definitions/core/core';
 import {
@@ -129,7 +128,7 @@ export interface PluginOptions extends Partial<
   lpdc?: Partial<LpdcConfig>;
   roadsignRegulation?: Partial<RoadsignRegulationPluginOptions>;
   table?: Partial<TableConfig>;
-  variable?: Partial<VariablePluginConfig>;
+  variable?: VariablePluginUserConfig;
 }
 export interface OtherOptions {
   docContent?: string;
@@ -162,5 +161,4 @@ export interface SidebarWidgets {
   'citation:edit': typeof citationEdit;
   'template-comments:edit': typeof TemplateCommentEditCard;
   'variable:insert': typeof variableInsert;
-  'variable:edit': typeof variableEdit;
 }
