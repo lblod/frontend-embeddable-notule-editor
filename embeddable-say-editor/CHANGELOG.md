@@ -1,5 +1,44 @@
 # frontend-embeddable-notule-editor
 
+## 7.0.0
+
+### Major Changes
+
+- [#296](https://github.com/lblod/frontend-embeddable-notule-editor/pull/296) [`1339acd`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/1339acdf8542cf39dbea49397a99a227d26a0b77) Thanks [@lagartoverde](https://github.com/lagartoverde)! - New UI for input-fields
+
+  This version introduces our new "floating" UI paradigm for all input fields (aka "variables"). We already saw this UI for number fields and for links, but now every interactive element in the text follows the same logic. Rather than requiring the user to fiddle with the sidebar, the edit-actions open immediately next to the interactive node, making it easy to discover, and following much more closely to established UI paradigms in other editors.
+
+  This is released as a breaking change, as we do not currently plan on maintaining support for the old "sidebar cards" workflow. Therefore, it is not possible to disable the new edit UI in this version. Since the UI is unobtrusive by design and only shows itself when needed, we did not see a reason to make it possible to disable it.
+
+  We are of course open to feedback. Let us know your usecases, and we can add new configuration options quite easily.
+
+  ### Breaking changes
+
+  #### new ui
+
+  As part of this change, the following configuration options were removed, since they no longer make sense:
+  - the `variable:edit` widget: this enabled the sidebar-cards for the various variables. As mentioned, this workflow is no longer supported, and the new edit interfaces appear automatically in-place when a variable is selected.
+  - the `variable>edit>enable` option: this one never made much sense: why would you ever need variables that you couldn't edit? In the background, this used to also enable the parsing support for these interactive variables. But now, this is simply always enabled and has become a core feature of the editor. When a template is loaded which contains variables, they will always render as expected.
+
+  The `variable>insert>enable` option and widget does remain, since "filling in" interactive fields is a significantly different action compared to defining input fields.
+
+  #### others
+
+  Additionally the deprecated "address" variable was removed, since it is superceded by the much more powerful "location" variable. The location variable can auto-convert from old address variables in your documents, but it is unlikely you'll have those in the first place.
+
+- [#296](https://github.com/lblod/frontend-embeddable-notule-editor/pull/296) [`2670bee`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/2670bee1f895e09daa9523932a908c8b0a3750db) Thanks [@lagartoverde](https://github.com/lagartoverde)! - Allow the user to enable or disable edit and insert variables individually (now the insert is disabled by default)
+
+### Minor Changes
+
+- [#296](https://github.com/lblod/frontend-embeddable-notule-editor/pull/296) [`2670bee`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/2670bee1f895e09daa9523932a908c8b0a3750db) Thanks [@lagartoverde](https://github.com/lagartoverde)! - Floating variables are now available in embeddable
+
+- [#294](https://github.com/lblod/frontend-embeddable-notule-editor/pull/294) [`bafbaea`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/bafbaea2ae02e089de66bfb0c711809aeb3cde43) Thanks [@lagartoverde](https://github.com/lagartoverde)! - Made the new regulatory statement mode for AR designs work on embeddable
+
+### Patch Changes
+
+- [`66a6130`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/66a61309e7f235e0c1d29f25b517a13ee57048b9) Thanks [@piemonkey](https://github.com/piemonkey)! - Update [@lblod/ember-rdfa-editor to v13.18.0](https://github.com/lblod/ember-rdfa-editor/releases/tag/%40lblod%2Fember-rdfa-editor%4013.18.0) and [@lblod/ember-rdfa-editor-lblod-plugins to v39.1.0](https://github.com/lblod/ember-rdfa-editor-lblod-plugins/releases/tag/v39.1.0)
+  Adds floating UI interaction for codelist variables.
+
 ## 6.5.0
 
 ### Minor Changes
