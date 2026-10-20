@@ -108,8 +108,8 @@ importers:
         specifier: 13.19.0
         version: 13.19.0(093d873b706647876b67b6cf78f43e4c)
       '@lblod/ember-rdfa-editor-lblod-plugins':
-        specifier: 39.1.0
-        version: 39.1.0(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(75d8d829642724ee9ddf1621e13513ec)
+        specifier: 39.1.2
+        version: 39.1.2(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(75d8d829642724ee9ddf1621e13513ec)
       '@lblod/say-ar-design-plugin':
         specifier: 3.1.0
         version: 3.1.0(96ea033338421c3deecd13a771a5c2fc)
@@ -2074,8 +2074,8 @@ packages:
       '@appuniversum/ember-appuniversum': ^2.0.0 || ^3.0.0
       ember-source: ^4.0.0 || ^5.0.0
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@39.1.0':
-    resolution: {integrity: sha512-cacEbM2rzLyD79ofPek3U4YTRe+3ggvvIMkJeNTj6jlSwST0nrgXOKfxnXxCQrF9nzl14lZjt9wAvHMeEsILZg==}
+  '@lblod/ember-rdfa-editor-lblod-plugins@39.1.2':
+    resolution: {integrity: sha512-junrkGjJm61nRIQ1MnpdYIHmOmTx/dXqRGxE1YzmUWN481Bfg7a381lHCI3jNrXcG9erdqpBaPQfR3MqREFn0Q==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@appuniversum/ember-appuniversum': ^3.12.0 || ^4.0.0
@@ -12099,7 +12099,7 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  '@lblod/ember-rdfa-editor-lblod-plugins@39.1.0(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(75d8d829642724ee9ddf1621e13513ec)':
+  '@lblod/ember-rdfa-editor-lblod-plugins@39.1.2(patch_hash=1d7a1dd5b51928e0cddcc2b22711c90af49e100f33aec3a96e9e3d67ad305e03)(75d8d829642724ee9ddf1621e13513ec)':
     dependencies:
       '@appuniversum/ember-appuniversum': https://raw.githubusercontent.com/abeforgit/ember-appuniversum/refs/heads/fix/local-scoped-queryselect/appuniversum-ember-appuniversum-3.17.0.tgz(@ember/test-helpers@4.0.5(@babel/core@7.29.7)(@glint/template@1.7.8)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.7.8)(rsvp@4.8.5)(webpack@5.105.4(postcss@8.5.8))))(@glimmer/component@2.0.0)(@glint/template@1.7.8)(ember-basic-dropdown@8.11.0(patch_hash=32d0ca6074742b7542b79098a075ec9e093646363f297ed83f067e56968957c4)(@babel/core@7.29.7)(@ember/string@4.0.1)(@ember/test-helpers@4.0.5(@babel/core@7.29.7)(@glint/template@1.7.8)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.7.8)(rsvp@4.8.5)(webpack@5.105.4(postcss@8.5.8))))(@glimmer/component@2.0.0)(@glint/template@1.7.8)(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.7.8)(rsvp@4.8.5)(webpack@5.105.4(postcss@8.5.8))))(ember-source@6.3.0(@glimmer/component@2.0.0)(@glint/template@1.7.8)(rsvp@4.8.5)(webpack@5.105.4(postcss@8.5.8)))(tracked-built-ins@3.4.0(@babel/core@7.29.7))(webpack@5.105.4(postcss@8.5.8))
       '@babel/core': 7.29.7
