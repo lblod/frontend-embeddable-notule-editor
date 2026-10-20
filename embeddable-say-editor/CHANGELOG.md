@@ -1,5 +1,11 @@
 # frontend-embeddable-notule-editor
 
+## 7.0.1
+
+### Patch Changes
+
+- [#297](https://github.com/lblod/frontend-embeddable-notule-editor/pull/297) [`b1c1b62`](https://github.com/lblod/frontend-embeddable-notule-editor/commit/b1c1b629861d404b1e92084a48e7c149c10c5fa6) Thanks [@abeforgit](https://github.com/abeforgit)! - Bump plugins to [v39.1.2](https://github.com/lblod/ember-rdfa-editor-lblod-plugins/releases/tag/v39.1.2)
+
 ## 7.0.0
 
 ### Major Changes
